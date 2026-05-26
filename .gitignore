@@ -1,0 +1,25 @@
+# Session data
+.claude/session-data/
+.claude/sessions/
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build outputs
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
