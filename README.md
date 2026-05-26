@@ -6,6 +6,17 @@
 
 ---
 
+## 🌐 Language / 语言 / 語言 / Dil / Язык / Ngôn ngữ
+
+English | Português (Brasil) | 简体中文 | 繁體中文 | 日本語 | 한국어 | Türkçe | Русский | Tiếng Việt | ไทย
+
+| [🇺🇸 English](./i18n/en/README.md) | [🇯🇵 日本語](./i18n/ja/README.md) | [🇰🇷 한국어](./i18n/ko/README.md) | [🇩🇪 Deutsch](./i18n/de/README.md) |
+|:---:|:---:|:---:|:---:|
+| [🇷🇺 Русский](./i18n/ru/README.md) | [🇹🇷 Türkçe](./i18n/tr/README.md) | [🇧🇷 Português](./i18n/pt-BR/README.md) | [🇻🇳 Tiếng Việt](./i18n/vi/README.md) |
+| [🇹🇭 ไทย](./i18n/th/README.md) | | | | |
+
+---
+
 ## 背景故事
 
 ### 为什么会有这个项目？
