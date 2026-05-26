@@ -310,9 +310,9 @@ project/
 
 ## 配套教材
 
-完整的 Rules 文档位于：`../../TaiLieuThamKhao/rules/Git工作流.md`
+完整的 Rules 文档位于：`../../TaiLieuThamKhao/rules/Git-Workflow.md`
 
 ## 下一步
 
 - 学习[练习题目](./exercises/练习.md)
-- 阅读 [Rules 完整文档](../../TaiLieuThamKhao/rules/Git工作流.md)
+- 阅读 [Rules 完整文档](../../TaiLieuThamKhao/rules/Git-Workflow.md)

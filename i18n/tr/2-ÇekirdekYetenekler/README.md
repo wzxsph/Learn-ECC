@@ -1,53 +1,53 @@
-# Asama 2: Temel Yetenekler (Temel Beceri Ustaligi)
+# Aşama 2: Çekirdek Yetenekler (Temel Beceri Ustalığı)
 
-> Tum temel komutlari kazanin, Agent isbirligini master edin, Hooks/Skills/Rules ozellestirmeyi ogrenin
+> Tüm temel komutları kazanın, Agent işbirliğini master edin, Hooks/Skills/Rules özelleştirmeyi öğrenin
 
-## Kurs Genel Gorunumu
+## Kurs Genel Görünümü
 
-Bu asam sizi Claude Code'un temel yeteneklerini derinlemesine ogrenmeye goturecek: 75+ komut sistemi, 6 tur Agent isbirligi, Hooks ozellestirme, Skills gelistirme ve Rules yazimi. Bu asamayi tamamladiktan sonra Claude Code'u tamamen kontrol edebilecek ve yuksek derecede ozellestirilmis gelistirme is akislarini olusturabileceksiniz.
+Bu aşama sizi Claude Code'un temel yeteneklerini derinlemesine öğrenmeye götürecek: 75+ komut sistemi, 6 tür Agent işbirliği, Hooks özelleştirme, Skills geliştirme ve Rules yazımı. Bu aşamayı tamamladıktan sonra Claude Code'u tamamen kontrol edebilecek ve yüksek derecede özelleştirilmiş geliştirme iş akışlarını oluşturabileceksiniz.
 
-## Ogrenme Suresi
+## Öğrenme Süresi
 
-**Tahmini zaman**: 1 hafta (gunde 2-3 saat)
+**Tahmini zaman**: 1 hafta (günde 2-3 saat)
 
-## On Gereksinimler
+## Ön Gereksinimler
 
-- [Asama 1: Baslangic](../1-Baslangic/README.md) tamamlandi
-- Claude Code ortami yapilandirildi
-- Temel terminal islemleri biliniyor
+- [Aşama 1: Başlangıç](../1-Başlangıç/README.md) tamamlandı
+- Claude Code ortamı yapılandırıldı
+- Temel terminal işlemleri biliniyor
 
-## Ogrenme Hedefleri
+## Öğrenme Hedefleri
 
-Bu asamayi tamamladiktan sonra su yeteneklere sahip olacaksiniz:
+Bu aşamayı tamamladıktan sonra şu yeteneklere sahip olacaksınız:
 
-1. **Komut sistemi ustaligi**: Tum 75+ komutu kullanabilecek, senaryoya gore en uygun komut kombinasyonlarini olusturabileceksiniz
-2. **Agent isbirligi**: 6 tur Agent'in sorumluluklarini anlayabilecek, karmaşik gorevleri tamamlamak icin birlikte kullanabileceksiniz
-3. **Hooks ozellestirme**: PreToolUse/PostToolUse/Stop Hooks yazabileceksiniz
-4. **Skills gelistirme**: Ozellestirilmis Skills olusturmayi ve yonetmeyi ogrenerek is akisi kalipolarini biriktireceksiniz
-5. **Rules yazimi**: Proje duzeyinde kurallar yazabilecek, kod inceleme ve kalite standartlarini ozellestirebileceksiniz
+1. **Komut sistemi ustalığı**: Tüm 75+ komutu kullanabilecek, senaryoya göre en uygun komut kombinasyonlarını oluşturabileceksiniz
+2. **Agent işbirliği**: 6 tür Agent'in sorumluluklarını anlayabilecek, karmaşık görevleri tamamlamak için birlikte kullanabileceksiniz
+3. **Hooks özelleştirme**: PreToolUse/PostToolUse/Stop Hooks yazabileceksiniz
+4. **Skills geliştirme**: Özelleştirilmiş Skills oluşturmayı ve yönetmeyi öğrenerek iş akışı kalıplarını biriktireceksiniz
+5. **Rules yazımı**: Proje düzeyinde kurallar yazabilecek, kod inceleme ve kalite standartlarını özelleştirebileceksiniz
 
-## Kurs Modulleri
+## Kurs Modülleri
 
-| Modul | Adi | Icerik |
+| Modül | Adı | İçerik |
 |------|------|--------|
-| 01 | [Komut Sistemi Ustaligi](./01-Komut-Sistemi-Ustalii/README.md) | 75+ komut siniflandirmasi, kullanim senaryolari, kombinasyon teknikleri |
-| 02 | [Agent Isbirligi](./02-Agent-Isbirligi/README.md) | 6 tur Agent, isbirligi kalipolari, gorev ayristirma |
-| 03 | [Hooks Ozellestirme](./03-Hooks-Ozellestirme/README.md) | Hook turleri, ozel Hook, kalite guvcleri |
-| 04 | [Skills Gelistirme](./04-Skills-Gelistirme/README.md) | Skill formati, olusturma yontemleri, kalip biriktirme |
-| 05 | [Rules Yazimi](./05-Rules-Yazimi/README.md) | Kural siniflandirmasi, ozel kurallar, oncelik yapilandirmasi |
+| 01 | [Komut Sistemi Ustalığı](./01-KomutSistemi/README.md) | 75+ komut sınıflandırması, kullanım senaryoları, kombinasyon teknikleri |
+| 02 | [Agent İşbirliği](./02-Agentİşbirliği/README.md) | 6 tür Agent, işbirliği kalıpları, görev ayrıştırma |
+| 03 | [Hooks Özelleştirme](./03-HooksÖzelleştirme/README.md) | Hook türleri, özel Hook, kalite güçleri |
+| 04 | [Skills Geliştirme](./04-SkillsGeliştirme/README.md) | Skill formatı, oluşturma yöntemleri, kalıp biriktirme |
+| 05 | [Rules Yazımı](./05-RulesYazma/README.md) | Kural sınıflandırması, özel kurallar, öncelik yapılandırması |
 
-## Eslik Eden Ders Kitabi
+## Eşlik Eden Ders Kitabı
 
-Bu kursun tam teknik referans kilavuzu ana dizinde bulunmaktadir:
-- [ECC Tam Kilavuzu](../Referans-belgeleri/README.md) - Tum komutlar, Agent'ler, Hooks, Skills ve Rules'un detayli dokumanlarini icerir
+Bu kursun tam teknik referans kılavuzu ana dizinde bulunmaktadır:
+- [ECC Tam Kılavuzu](../ReferansBelgeleri/README.md) - Tüm komutlar, Agent'ler, Hooks, Skills ve Rules'un detaylı dokümanlarını içerir
 
-## Ogrenme Tavsiyeleri
+## Öğrenme Tavsiyeleri
 
-1. **Adim adim ilerleyin**: Her modulu sirayla ogrenin, bir modulu tamamlamadan sonrakine gecmeyin
-2. **Pratik yapin**: Her alistirmayi gercektir, sadece okumayin
-3. **Ders kitabi okuyun**: Her modul detayli teknik dokuman linkleri icerir
-4. **Not tutun**: Kullanim ipuclarinizi ve en iyi uygulamalarinizi kaydedin
+1. **Adım adım ilerleyin**: Her modülü sırayla öğrenin, bir modülü tamamlamadan sonrakine geçmeyin
+2. **Pratik yapın**: Her alıştırmayı gerçekleştirin, sadece okumayın
+3. **Ders kitabı okuyun**: Her modül detaylı teknik doküman linkleri içerir
+4. **Not tutun**: Kullanım ipuçlarınızı ve en iyi uygulamalarınızı kaydedin
 
-## Sonraki Asama
+## Sonraki Aşama
 
-Bu asamayi tamamladiktan sonra, [Asama 3: Ileri Uygulamalar](../3-Uzman-Yolu/README.md) ile Agent basamaklama, otomasyon is akislari, CI/CD entegrasyonu gibi ileri konulari ogrenmeye gecin.
+Bu aşamayı tamamladıktan sonra, [Aşama 3: İleri Uygulamalar](../3-UzmanYolu/README.md) ile Agent basamaklama, otomasyon iş akışları, CI/CD entegrasyonu gibi ileri konuları öğrenmeye geçin.

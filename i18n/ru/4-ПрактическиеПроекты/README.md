@@ -1,44 +1,43 @@
-# 第四阶段：Реальные проекты
+# Etap 4: Prakticheskiye proekty
 
-Через真实项目巩固所学知识。
+Ukrepite svoi znaniya cherez real'nyye proekty.
 
-## Цели обучения
+## Tseli obucheniya
 
-Завершить本阶段后，你将Способен：
-- 从零构建完整的 CLI 工具
-- Реализовать自动化Код-ревью流程
-- Спроектировать端到端Автоматизированный рабочий процесс
-- 构建多 Сотрудничество Agent平台
+Posle zaversheniya etapa vy smozhete:
+- Stroit' polnyye CLI instrumenty s nulya
+- Realizovyvat' avtomatizirovannyy protsess proverkikoda
+- Proektirovat' end-to-end avtomatizirovannyye rabochiye potoki
+- Stroit' platformu mnogoagentnogo sotrudnichestva
 
-## 预计时长
+## Raschetnoye vremya
 
-10-15 小时
+10-15 chasov
 
-## 前提要求
+## Predvaritel'nyye trebovaniya
 
-- Завершить [第二阶段：Основные возможности](../2-Основные возможности/README.md)
-- 掌握至少一种脚本语言
-- 有项目开发经验
+- Zavershit' [Etap 2: Osnovnyye vozmozhnosti](../2-OsnovnyyeVozmozhnosti/README.md)
+- Vladet' kak minimum одним skriptovym yazykom
+- Imet' opyt proektnoy razrabotki
 
-## 学习内容
+## Soderzhaniye obucheniya
 
-| 项目 | 内容 | 难度 |
-|------|------|------|
-| [项目一：CLI工具](./project-1-cli.md) | 构建命令行工具 | 基础 |
-| [项目二：Код-ревью](./project-2-review.md) | 自动化审查流程 | 进阶 |
-| [项目三：Автоматизированный рабочий процесс](./project-3-auto.md) | 端到端自动化 | 进阶 |
-| [项目四：Agent系统](./project-4-agent.md) | 多 Сотрудничество Agent平台 | 高级 |
+| Proekt | Soderzhaniye | Slozhnost' |
+|--------|--------------|------------|
+| [Proekt 1: CLI-instrument](./project-1-cli.md) | Postroyeniye kommandnoy utiliti | Bazovyy |
+| [Proekt 2: Proverka koda](./project-2-review.md) | Avtomatizirovannyy protsess proverki | Prodvinutyy |
+| [Proekt 3: Avtomatizatsiya rabochego potoka](./project-3-auto.md) | End-to-end avtomatizatsiya | Prodvinutyy |
+| [Proekt 4: Sistema agentov](./project-4-agent.md) | Platforma mnogoagentnogo sotrudnichestva | Ekspert |
 
-## 建议
+## Rekomendatsii
 
-选择一个感兴趣的项目深入Завершить，而非蜻蜓点水式地做所有项目。
-建议按顺序Завершить：CLI工具 → Код-ревью → 工作流自动化 → Agent系统（难度递增）
+Vyberite proekt, kotoryy vam interesen, i gluboko ego prorabotayte, vmesto togo, chtoby delat' vse proekty poverkhnostno.
+Rekomenduyemyy poryadok: CLI-instrument → Proverka koda → Avtomatizatsiya rabochego potoka → Sistema agentov (vozrastayushchaya slozhnost').
 
-## 接下来
+## Sleduyushchiy shag
 
-ЗавершитьРеальные проекты后，进入 [第五阶段：Быстрая справка](../5-Быстрая справка/README.md) 查阅常用命令和模式。
+Posle zaversheniya prakticheskikh proektov, perestroyte k [Etap 5: Bystraya spravka](../5-BystrayaSpravka/README.md) dlya dostupa k chasto ispol'zuyemym komandam i patternam.
 
 ---
 
-[Назад主Содержание](../README.md)
-
+[Vernut'sya k osnovnomu soderzhaniyu](../README.md)

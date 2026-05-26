@@ -24,10 +24,10 @@ Nach dieser Phase wirst du in der Lage sein:
 
 | Kapitel | Inhalt | Übung |
 |---------|--------|-------|
-| [01-ECC简介](./01-ECC-Einführung.md) | Was ist ECC, Kernfunktionen, Fähigkeitsgrenzen | [Einsteiger-Übung](./exercises/Einstiegsübungen.md) |
-| [02-安装配置](./02-Installation.md) | Installationsschritte, Erstkonfiguration, Umgebungsverifizierung | - |
-| [03-基础命令](./03-Grundbefehle.md) | Übersicht häufiger Befehle, Befehlskategorien, Schnellzugriff | - |
-| [04-第一个任务](./04-Erste-Aufgabe.md) | Vollständiger Aufgabenablauf, von Anforderung bis Abschluss | - |
+| [01-ECC-Einführung](./01-ECC-Einführung.md) | Was ist ECC, Kernfunktionen, Fähigkeitsgrenzen | [Einsteiger-Übung](./exercises/Einstiegsübungen.md) |
+| [02-Installation](./02-Installation.md) | Installationsschritte, Erstkonfiguration, Umgebungsverifizierung | - |
+| [03-Grundbefehle](./03-Grundbefehle.md) | Übersicht häufiger Befehle, Befehlskategorien, Schnellzugriff | - |
+| [04-Erste-Aufgabe](./04-Erste-Aufgabe.md) | Vollständiger Aufgabenablauf, von Anforderung bis Abschluss | - |
 
 ## Nächste Schritte
 

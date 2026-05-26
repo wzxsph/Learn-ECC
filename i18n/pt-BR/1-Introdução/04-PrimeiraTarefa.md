@@ -296,5 +296,5 @@ feat: Implementar função truncate de truncamento de string
 
 ## Próximos Passos
 
-- Após completar o curso, fazer [exercises/入门练习.md](./exercises/入门练习.md)
+- Após completar o curso, fazer [exercises/入门Exercícios.md](./exercises/入门Exercícios.md)
 - Entrar em Phase 2: Avanço de Comandos Essenciais

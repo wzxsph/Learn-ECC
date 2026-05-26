@@ -176,9 +176,9 @@ Claude CodeのAgentは6大類に分類：
 
 ## 配套教材
 
-完全な Agent ドキュメント：`../../参考ドキュメント/agents/1. 代码审查类.md`
+完全な Agent ドキュメント：`../../参考ドキュメント/agents/01-Code-Review.md`
 
 ## 次へ
 
 - [演習题目](./exercises/演習.md)を学習
-- [Agent 完全ドキュメント](../../参考ドキュメント/agents/1. 代码审查类.md)を阅读
+- [Agent 完全ドキュメント](../../参考ドキュメント/agents/01-Code-Review.md)を阅读

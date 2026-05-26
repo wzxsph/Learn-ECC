@@ -1,36 +1,36 @@
-# 第三阶段：Uzmanlık Yolu
+# Aşama 3: Uzman Yolu
 
-本阶段探索 ECC 的高级特性和专家级Kullanım。
+Bu aşama ECC'nin gelişmiş özelliklerini ve uzman düzeyinde kullanımını keşfeder.
 
 ## Öğrenme Hedefleri
 
-Bitir本阶段后，你将Yapabilir：
-- 开发 MCP（模型上下文协议）扩展
-- 构建Otonom Ajanlar系统
-- 应用高级Tasarım模式和En İyi Uygulamalar
+Bu aşamayı tamamladıktan sonra şunları yapabileceksiniz:
+- MCP (Model Context Protocol) eklentisi geliştirme
+- Otonom aracı sistemleri oluşturma
+- Gelişmiş tasarım kalıpları ve en iyi uygulamaları uygulama
 
-## 预计时长
+## Tahmini Süre
 
-6-8 小时
+6-8 saat
 
-## 前提要求
+## Ön Gereksinimler
 
-- Bitir [第二阶段：Temel Yetenekler](../2-Temel Yetenekler/README.md)
-- 有丰富的项目开发经验
-- 理解系统架构Tasarım
+- [Aşama 2: Çekirdek Yetenekler](../2-ÇekirdekYetenekler/README.md) tamamlandı
+- Zengin proje geliştirme deneyimi
+- Sistem mimarisi tasarımını anlama
 
-## 学习内容
+## Öğrenme İçeriği
 
-| 章节 | 内容 |
-|------|------|
-| [01-MCP开发](./01-MCPGeliştirme.md) | 模型上下文协议、扩展开发 |
-| [02-Otonom Ajanlar](./02-Otonom Ajanlar.md) | 自治 Agent、决策系统 |
-| [03-İleri Düzey Kalıplar](./03-İleri Düzey Kalıplar.md) | Tasarım模式、En İyi Uygulamalar |
+| Bölüm | İçerik |
+|------|--------|
+| [01-MCP Geliştirme](./01-MCPGeliştirme.md) | Model Context Protocol, eklenti geliştirme |
+| [02-Otonom Acenteler](./02-OtonomAcenteler.md) | Otonom Agent'ler, karar sistemleri |
+| [03-İleri Düzey Kalıplar](./03-İleriDüzeyDesenler.md) | Tasarım kalıpları, en iyi uygulamalar |
 
-## 接下来
+## Sonraki Adımlar
 
-BitirUzmanlık Yolu阶段后，进入 [第四阶段：Gerçek Projeler](../4-Gerçek Projeler/README.md) 将所学应Kullanılan实践。
+Uzman yolu aşamasını tamamladıktan sonra, öğrendiklerinizi pratiğe uygulamak için [Aşama 4: Pratik Projeler](../4-PratikProjeler/README.md)'e geçin.
 
 ---
 
-[Geri Dön主Dizin](../README.md)
+[Ana dizine dön](../README.md)

@@ -1,36 +1,36 @@
-# 第三阶段：专家之路
+# Fase 3: Caminho do Especialista
 
-本阶段探索 ECC 的高级特性和专家级用法。
+Esta fase explora os recursos avançados e uso de nível especialista do ECC.
 
-## 学习目标
+## Objetivos de Aprendizado
 
-完成本阶段后，你将能够：
-- 开发 MCP（模型上下文协议）扩展
-- 构建自主代理系统
-- 应用高级设计模式和最佳实践
+Após completar esta fase, você será capaz de:
+- Desenvolver extensões MCP (Model Context Protocol)
+- Construir sistemas de agentes autônomos
+- Aplicar padrões de design avançados e melhores práticas
 
-## 预计时长
+## Tempo Estimado
 
-6-8 小时
+6-8 horas
 
-## 前提要求
+## Pré-requisitos
 
-- 完成 [第二阶段：核心能力](../2-HabilidadesCentrais/README.md)
-- 有丰富的项目开发经验
-- 理解系统架构设计
+- [Fase 2: Habilidades Essenciais](../2-HabilidadesCentrais/README.md) concluída
+- Rica experiência em desenvolvimento de projetos
+- Compreensão de design de arquitetura de sistemas
 
-## 学习内容
+## Conteúdo de Aprendizado
 
-| 章节 | 内容 |
-|------|------|
-| [01-MCP开发](./01-DesenvolvimentoMCP.md) | 模型上下文协议、扩展开发 |
-| [02-自主代理](./02-AgentesAutônomos.md) | 自治 Agent、决策系统 |
-| [03-高级模式](./03-PadrõesAvançados.md) | 设计模式、最佳实践 |
+| Capítulo | Conteúdo |
+|------|--------|
+| [01-Desenvolvimento MCP](./01-DesenvolvimentoMCP.md) | Model Context Protocol, desenvolvimento de extensões |
+| [02-Agentes Autônomos](./02-AgentesAutônomos.md) | Agentes autônomos, sistemas de decisão |
+| [03-Padrões Avançados](./03-PadrõesAvançados.md) | Padrões de design, melhores práticas |
 
-## 接下来
+## Próximos Passos
 
-完成专家之路阶段后，进入 [第四阶段：实战项目](../4-ProjetosPráticos/README.md) 将所学应用于实践。
+Após completar a fase do Caminho do Especialista, vá para [Fase 4: Projetos Práticos](../4-ProjetosPráticos/README.md) para aplicar o que aprendeu na prática.
 
 ---
 
-[返回主目录](../README.md)
+[Retornar ao diretório principal](../README.md)

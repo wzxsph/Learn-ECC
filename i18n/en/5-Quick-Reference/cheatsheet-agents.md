@@ -5,8 +5,8 @@
 ### Planning
 | Agent | Purpose | Characteristics |
 |-------|---------|-----------------|
-| `planner` | [Implementation planning](../Reference-Docs/agents/6.%20架构类.md) | Decompose tasks, generate steps |
-| `architect` | [System design](../Reference-Docs/agents/6.%20架构类.md) | Architecture decisions, technology selection |
+| `planner` | [Implementation planning](../Reference-Docs/agents/06-Architecture.md) | Decompose tasks, generate steps |
+| `architect` | [System design](../Reference-Docs/agents/06-Architecture.md) | Architecture decisions, technology selection |
 
 ### Review
 | Agent | Purpose | Characteristics |
@@ -18,14 +18,14 @@
 ### Development
 | Agent | Purpose | Characteristics |
 |-------|---------|-----------------|
-| `tdd-guide` | [TDD guidance](../Reference-Docs/agents/1.%20代码审查类.md) | Test-first, incremental refactoring |
-| `build-error-resolver` | [Build fix](../Reference-Docs/agents/2.%20构建修复类.md) | Error locating, fix suggestions |
+| `tdd-guide` | [TDD guidance](../Reference-Docs/agents/01-Code-Review.md) | Test-first, incremental refactoring |
+| `build-error-resolver` | [Build fix](../Reference-Docs/agents/02-Build-Fix.md) | Error locating, fix suggestions |
 
 ### Operations
 | Agent | Purpose | Characteristics |
 |-------|---------|-----------------|
-| `e2e-runner` | [E2E testing](../Reference-Docs/agents/1.%20代码审查类.md) | Critical paths, automation |
-| `refactor-cleaner` | [Refactoring cleanup](../Reference-Docs/agents/1.%20代码审查类.md) | Dead code removal |
+| `e2e-runner` | [E2E testing](../Reference-Docs/agents/01-Code-Review.md) | Critical paths, automation |
+| `refactor-cleaner` | [Refactoring cleanup](../Reference-Docs/agents/01-Code-Review.md) | Dead code removal |
 
 ## Agent Invocation Methods
 

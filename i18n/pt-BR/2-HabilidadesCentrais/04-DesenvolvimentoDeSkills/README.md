@@ -91,9 +91,9 @@
 { "success": true, "data": {...}, "error": null }
 ```
 
-### 3. 最佳实践类 Skill
+### 3. Melhores-Práticas类 Skill
 
-记录最佳实践：
+记录Melhores-Práticas：
 
 ```markdown
 # Git Commit Best Practices
@@ -180,7 +180,7 @@ docs: update README
 我需要开发一个支付模块，使用 TDD 工作流
 ```
 
-## Skill 最佳实践
+## Skill Melhores-Práticas
 
 1. **单一职责**: 每个 Skill 只做一件事
 2. **清晰命名**: 使用描述性的名称
@@ -190,9 +190,9 @@ docs: update README
 
 ## 配套教材
 
-完整的 Skills 文档位于：`../../DocumentosDeReferência/skills/最佳实践.md`
+完整的 Skills 文档位于：`../../DocumentosDeReferência/skills/Melhores-Práticas.md`
 
 ## 下一步
 
-- 学习[练习题目](./exercises/练习.md)
-- 阅读 [Skills 完整文档](../../DocumentosDeReferência/skills/最佳实践.md)
+- 学习[练习题目](./exercises/Exercícios.md)
+- 阅读 [Skills 完整文档](../../DocumentosDeReferência/skills/Melhores-Práticas.md)

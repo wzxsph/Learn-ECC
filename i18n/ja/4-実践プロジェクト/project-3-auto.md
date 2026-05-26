@@ -1,34 +1,34 @@
-# Project 3: Automated Workflow
+# プロジェクト 3: 自動化ワークフロー
 
 エンドツーエンドの自動化ワークフローシステムを構築します。
 
-## Project Goal
+## プロジェクト目標
 
-**Estimated time**: 2-3 hours
+**予想時間**: 2-3 時間
 
-Design and implement an automated workflow engine to handle common development tasks.
+常用開発タスクを処理する自動化ワークフローエンジンを設計・実装します。
 
-## Feature Requirements
+## 機能要件
 
-### 1. Workflow Definition
-- YAML format definition
-- Step serial and parallel execution
-- Conditional branches
-- Loop processing
+### 1. ワークフロー定義
+- YAML 形式定義
+- ステップ直列・並列実行
+- 条件分岐
+- ループ処理
 
-### 2. Built-in Workflows
-- **Code Check** - lint + type-check + test
-- **Build & Release** - build + test + deploy
-- **Issue Fix** - analyze + fix + verify
+### 2. 内蔵ワークフロー
+- **コードチェック** - lint + type-check + test
+- **ビルド＆リリース** - build + test + deploy
+- **イシュー修正** - 分析 + 修正 + 検証
 
-### 3. Monitoring & Alerts
-- Execution status tracking
-- Failure alert notifications
-- Time consumption statistics
+### 3. 監視とアラート
+- 実行状態追跡
+- 失敗アラート通知
+- 消費時間統計
 
-## Technical Solution
+## 技術ソリューション
 
-### Workflow Definition Example
+### ワークフロー定義例
 
 ```yaml
 name: code-check
@@ -42,19 +42,19 @@ steps:
     requires: [lint, type-check]
 ```
 
-### Hook Integration
-- PreToolUse - Parameter validation
-- PostToolUse - Output validation
-> Reference: [Hook Types](../参考ドキュメント/hooks/Hook类型.md) | [Automation & Scripts](../参考ドキュメント/skills/自动化与脚本.md)
+### Hook 統合
+- PreToolUse - パラメータ検証
+- PostToolUse - 出力検証
+> 参照: [Hook Types](../参考ドキュメント/hooks/Hook类型.md) | [Automation & Scripts](../参考ドキュメント/skills/自动化とスクリプト.md)
 
-## Acceptance Criteria
+## 完了基準
 
-- [ ] Support YAML definition
-- [ ] Step dependency resolution is correct
-- [ ] Parallel execution optimization
-- [ ] Failure retry mechanism
-- [ ] Complete execution logs
+- [ ] YAML 定義をサポート
+- [ ] ステップ依存解決が正しい
+- [ ] 並列実行最適化
+- [ ] 失敗リトライ機構
+- [ ] 完全な実行ログ
 
 ---
 
-[Return to practical projects directory](./README.md)
+[実践プロジェクトディレクトリに戻る](./README.md)

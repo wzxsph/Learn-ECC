@@ -1,17 +1,17 @@
 # Learn-ECC Guia de Contribuição
 
-Bem-vindo para contribuir com conteúdo para Learn-ECC! Este guia explica como adicionar novo conteúdo, melhorar conteúdo existente ou enviar alterações.
+Contribuir conteúdo para o Learn-ECC é bem-vindo! Este guia explica como adicionar novos conteúdos, melhorar conteúdos existentes ou enviar alterações.
 
 ## Tipos de Contribuição
 
 ### 1. Adicionar Novo Conteúdo
 
-Tipos de conteúdo que podem ser contribuídos:
-- Novo capítulo ou módulo
+Tipos de conteúdo que você pode contribuir:
+- Novos capítulos ou módulos
 - Novos exercícios
 - Novos projetos práticos
-- Complementos para cheatsheets
-- Melhorias de tradução
+- Complementação de cheatsheets
+- Melhorias em traduções
 
 ### 2. Melhorar Conteúdo Existente
 
@@ -24,15 +24,15 @@ Tipos de conteúdo que podem ser contribuídos:
 ### 3. Relatar Problemas
 
 - Erros de digitação ou gramática
-- Exemplos de código não funcionam
+- Exemplos de código que não funcionam
 - Links quebrados
-- Conteúdo faltando
+- Conteúdo ausente
 
 ## Padrões de Formato de Conteúdo
 
 ### Formato Markdown
 
-Todo conteúdo deve usar formato Markdown, contendo as seguintes seções:
+Todo conteúdo deve ser escrito em formato Markdown, incluindo as seguintes seções:
 
 ```markdown
 # Título
@@ -61,8 +61,8 @@ Descrição da tarefa...
 
 ### Método de Verificação
 
-1. Passo de verificação 1
-2. Passo de verificação 2
+1. Etapa de verificação 1
+2. Etapa de verificação 2
 
 ---
 
@@ -74,21 +74,21 @@ Descrição da tarefa...
 
 ### Nomenclatura de Arquivos
 
-- Use nomenclatura em chinês
+- Use nomes em português
 - Use hífen `-` para separar palavras
 - Nomenclatura de arquivos de capítulo: `01-NomeDoCapítulo.md`, `02-NomeDoCapítulo.md`
 - Nomenclatura de arquivos de exercício: `Exercício-Nome.md`
 
-### Padrões de Links
+### Padrões de Link
 
-- Links de documentação: `./DocumentosDeReferência/NomeDoArquivo.md`
-- Links internos do curso: `./NomeDoCapítulo.md`
-- Caminhos relativos: Calculados a partir do local do arquivo atual
+- Links de referência: `./DocumentosDeReferência/nomedoarquivo.md`
+- Links dentro do curso: `./nomedo capítulo.md`
+- Caminhos relativos: calculados a partir da localização do arquivo atual
 
 ### Exemplos de Código
 
 ```javascript
-// Anotação de linguagem de código
+// Etiqueta de linguagem de código
 function example() {
   return "Hello ECC"
 }
@@ -99,55 +99,55 @@ function example() {
 node tests/run-all.js
 ```
 
-### Formato de Tabelas
+### Formato de Tabela
 
-| Cabeçalho1 | Cabeçalho2 | Cabeçalho3 |
-|-------|-------|-------|
-| Conteúdo1 | Conteúdo2 | Conteúdo3 |
+| Cabeçalho 1 | Cabeçalho 2 | Cabeçalho 3 |
+|-------------|-------------|-------------|
+| Conteúdo 1  | Conteúdo 2  | Conteúdo 3  |
 
-## Enviando Alterações
+## Enviar Alterações
 
 ### Passos
 
 1. Fork do repositório
-2. Criar branch: `git checkout -b feature/NovaDescriçãoDeConteúdo`
+2. Criar branch: `git checkout -b feature/descrição-do-novo-conteúdo`
 3. Fazer alterações
-4. Commit: `git commit -m "feat: Adicionar novo conteúdo"`
-5. Push para remote: `git push origin feature/NovaDescriçãoDeConteúdo`
+4. Commitar: `git commit -m "feat: adicionar novo conteúdo"`
+5. Push para remote: `git push origin feature/descrição-do-novo-conteúdo`
 6. Criar Pull Request
 
-### Padrão de Mensagens de Commit
+### Padrões de Mensagem de Commit
 
 ```
 <type>: <description>
 
-<body opcional>
+<optional body>
 ```
 
 Tipos de Type:
 - `feat`: Nova funcionalidade
-- `fix`: Correção de bugs
+- `fix`: Correção de bug
 - `docs`: Atualização de documentação
-- `test`: Atualização de testes
+- `test`: Atualização de teste
 - `refactor`: Refatoração
 
-## Verificação de Qualidade
+## Controle de Qualidade
 
-Antes de fazer commit, por favor verifique:
+Antes de enviar, verifique:
 
 - [ ] Formato Markdown correto
-- [ ] Todos os links funcionando
+- [ ] Todos os links funcionam
 - [ ] Exemplos de código executáveis
-- [ ] Exercícios possuem métodos de verificação
-- [ ] Chinês sem erros de digitação
+- [ ] Exercícios têm método de verificação
+- [ ] Sem erros de digitação em português
 - [ ] Em conformidade com padrões de formato
 
 ## Feedback de Problemas
 
-Se encontrar problemas ou sugestões, crie um Issue contendo:
+Se encontrar um problema ou sugestão, crie um Issue incluindo:
 - Descrição do problema
 - Localização do arquivo
-- Forma de melhoria sugerida
+- Método de melhoria proposto
 
 ---
 

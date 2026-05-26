@@ -63,7 +63,7 @@ ecc-gen/
 - 인터랙티브 입력 처리
 - 모듈화 아키텍처
 
-> 참고 명령: [/build-fix](../참조문서/commands/04-构建修复.md) | [/test](../참조문서/commands/02-测试相关.md)
+> 참고 명령: [/build-fix](../참조문서/commands/04-빌드수정.md) | [/test](../참조문서/commands/02-테스트.md)
 
 ---
 

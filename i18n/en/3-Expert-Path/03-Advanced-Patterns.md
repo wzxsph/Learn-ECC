@@ -4,7 +4,7 @@ Master ECC's advanced design patterns and best practices.
 
 ## Pattern Classification
 
-> Reference: [Best Practices](../Reference-Docs/skills/最佳实践.md)
+> Reference: [Best Practices](../Reference-Docs/skills/Best-Practices.md)
 
 ### 1. Workflow Patterns
 - **Pipeline Pattern** - Data flows through multiple processing stages

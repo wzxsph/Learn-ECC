@@ -17,7 +17,7 @@ Usar digitando diretamente:
 | `/ecc:skill-create` | Gerar Skill do histórico Git | `/ecc:skill-create` |
 | `/ecc:sessions` | Gerenciamento de histórico de sessões | `/ecc:sessions` |
 
-Nota: Versões instaladas manualmente podem usar comandos sem prefixo (como `[/plan](../DocumentosDeReferência/commands/01-核心工作流.md)`), instalações via plugin usam prefixo `/ecc:`.
+Nota: Versões instaladas manualmente podem usar comandos sem prefixo (como `[/plan](../DocumentosDeReferência/commands/01-Workflow-Principal.md)`), instalações via plugin usam prefixo `/ecc:`.
 
 ### 2. Skills (Superfície Principal de Workflow)
 

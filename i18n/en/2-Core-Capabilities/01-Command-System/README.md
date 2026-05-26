@@ -64,7 +64,7 @@ Command Name
 
 ## How to Use Command Documentation
 
-The complete accompanying command documentation is located at: `../../Reference-Docs/commands/01-核心工作流.md`
+The complete accompanying command documentation is located at: `../../Reference-Docs/commands/01-Core-Workflow.md`
 
 Documentation includes:
 - Detailed explanation of each command
@@ -84,5 +84,5 @@ Output from each command can be passed to the next command, forming an automated
 
 ## Next Steps
 
-- Learn [exercises](./exercises/练习.md)
-- Read [complete command documentation](../../Reference-Docs/commands/01-核心工作流.md)
+- Learn [exercises](./exercises/Getting-Started-Exercises.md)
+- Read [complete command documentation](../../Reference-Docs/commands/01-Core-Workflow.md)

@@ -2,14 +2,14 @@
 
 ## [ECC](../TaiLieuThamKhao/README.md) là gì?
 
-[ECC](../TaiLieuThamKhao/README.md) (Everything Claude Code) là hệ thống plugin Claude Code, cung cấp [Agent](../TaiLieuThamKhao/agents/1.%20代码审查类.md), [Skills](../TaiLieuThamKhao/skills/最佳实践.md), hooks, rules, [Commands](../TaiLieuThamKhao/commands/01-核心工作流.md) và cấu hình MCP production-grade. Xuất phát từ dự án đoạt giải Anthropic Hackathon, đã được sử dụng thực tế hơn 10 tháng.
+[ECC](../TaiLieuThamKhao/README.md) (Everything Claude Code) là hệ thống plugin Claude Code, cung cấp [Agent](../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md), [Skills](../TaiLieuThamKhao/skills/最佳实践.md), hooks, rules, [Commands](../TaiLieuThamKhao/commands/01-Workflow-Co-Ban.md) và cấu hình MCP production-grade. Xuất phát từ dự án đoạt giải Anthropic Hackathon, đã được sử dụng thực tế hơn 10 tháng.
 
 ## [ECC](../TaiLieuThamKhao/README.md) có thể làm gì?
 
-### 1. Hệ thống [Agent](../TaiLieuThamKhao/agents/1.%20代码审查类.md)
-[ECC](../TaiLieuThamKhao/README.md) cung cấp 60+ [Agent](../TaiLieuThamKhao/agents/1.%20代码审查类.md) chuyên nghiệp, bao gồm review đa ngôn ngữ, sửa lỗi build, thiết kế kiến trúc, v.v.:
+### 1. Hệ thống [Agent](../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md)
+[ECC](../TaiLieuThamKhao/README.md) cung cấp 60+ [Agent](../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md) chuyên nghiệp, bao gồm review đa ngôn ngữ, sửa lỗi build, thiết kế kiến trúc, v.v.:
 
-| [Agent](../TaiLieuThamKhao/agents/1.%20代码审查类.md) | Mục đích |
+| [Agent](../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md) | Mục đích |
 |-------|------|
 | `planner` | Lập kế hoạch triển khai tính năng |
 | `code-reviewer` | Review chất lượng và bảo mật code |
@@ -27,7 +27,7 @@
 - `continuous-learning-v2` - Học tập liên tục dựa trên instinct
 - `eval-harness` - Evaluation vòng lặp verification
 
-### 3. [Commands](../TaiLieuThamKhao/commands/01-核心工作流.md)
+### 3. [Commands](../TaiLieuThamKhao/commands/01-Workflow-Co-Ban.md)
 Giữ lại tính tương thích với lệnh gạch chéo truyền thống (75+ lệnh):
 
 | Lệnh | Chức năng |
@@ -73,8 +73,8 @@ Hỗ trợ cấu hình 14+ MCP server: GitHub, Supabase, Vercel, Railway, Contex
 
 ## Khái niệm cốt lõi
 
-### [Agent](../TaiLieuThamKhao/agents/1.%20代码审查类.md)
-Người thực thi sub-task có thể tái sử dụng, mỗi [Agent](../TaiLieuThamKhao/agents/1.%20代码审查类.md) có trách nhiệm rõ ràng. Xây dựng workflow phức tạp bằng cách kết hợp nhiều [Agent](../TaiLieuThamKhao/agents/1.%20代码审查类.md).
+### [Agent](../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md)
+Người thực thi sub-task có thể tái sử dụng, mỗi [Agent](../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md) có trách nhiệm rõ ràng. Xây dựng workflow phức tạp bằng cách kết hợp nhiều [Agent](../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md).
 
 ### [Skill](../TaiLieuThamKhao/skills/最佳实践.md)
 Định nghĩa workflow hoàn thành task cụ thể, là bề mặt workflow chính của [ECC](../TaiLieuThamKhao/README.md).

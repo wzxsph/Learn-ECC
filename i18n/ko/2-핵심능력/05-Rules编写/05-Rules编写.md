@@ -305,7 +305,7 @@ trigger:
 
 ## 练习
 
-完成 [练习](./exercises/练习.md) 中的任务。
+完成 [练习](./exercises/연습.md) 中的任务。
 
 ---
 

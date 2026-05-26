@@ -1,36 +1,36 @@
-# 第三阶段：专家之路
+# Giai đoạn 3: Con đường chuyên gia
 
-本阶段探索 ECC 的高级特性和专家级用法。
+Giai đoạn này khám phá các tính năng nâng cao và cách sử dụng cấp chuyên gia của ECC.
 
-## 学习目标
+## Mục tiêu học tập
 
-完成本阶段后，你将能够：
-- 开发 MCP（模型上下文协议）扩展
-- 构建自主代理系统
-- 应用高级设计模式和最佳实践
+Sau khi hoàn thành giai đoạn này, bạn sẽ có khả năng:
+- Phát triển MCP (Model Context Protocol) mở rộng
+- Xây dựng hệ thống Agent tự trị
+- Áp dụng các mẫu thiết kế nâng cao và best practices
 
-## 预计时长
+## Thời gian ước tính
 
-6-8 小时
+6-8 giờ
 
-## 前提要求
+## Yêu cầu tiên quyết
 
-- 完成 [第二阶段：核心能力](../2-KienThucCoBan/README.md)
-- 有丰富的项目开发经验
-- 理解系统架构设计
+- Hoàn thành [Giai đoạn 2: Khả năng cốt lõi](../2-KienThucCoBan/README.md)
+- Có kinh nghiệm phát triển dự án phong phú
+- Hiểu thiết kế kiến trúc hệ thống
 
-## 学习内容
+## Nội dung học
 
-| 章节 | 内容 |
+| Chương | Nội dung |
 |------|------|
-| [01-PhatTrienMCP](./01-PhatTrienMCP.md) | 模型上下文协议、扩展开发 |
-| [02-AgentTuChu](./02-AgentTuChu.md) | 自治 Agent、决策系统 |
-| [03-MauNangCao](./03-MauNangCao.md) | 设计模式、最佳实践 |
+| [01-PhatTrienMCP](./01-PhatTrienMCP.md) | Model Context Protocol, phát triển mở rộng |
+| [02-AgentTuChu](./02-AgentTuChu.md) | Agent tự trị, hệ thống quyết định |
+| [03-MauNangCao](./03-MauNangCao.md) | Mẫu thiết kế, best practices |
 
-## 接下来
+## Bước tiếp theo
 
-完成专家之路阶段后，进入 [第四阶段：实战项目](../4-DuAnThucHanh/README.md) 将所学应用于实践。
+Sau khi hoàn thành giai đoạn con đường chuyên gia, vào [Giai đoạn 4: Dự án thực hành](../4-DuAnThucHanh/README.md) để áp dụng những gì đã học vào thực tiễn.
 
 ---
 
-[返回主目录](../README.md)
+[Quay lại thư mục chính](../README.md)

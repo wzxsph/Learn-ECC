@@ -1,28 +1,28 @@
-# 第五阶段：Hızlı Referans
+# Aşama 5: Hızlı Başvuru
 
-常用命令、Agent 和工作流的速查手册。
+Yaygın komutların, Agent'lerin ve iş akışlarının hızlı başvuru el kitabı.
 
-## 内容
+## İçerik
 
-| 速查表 | 内容 |
-|--------|------|
-| [命令速查](./cheatsheet-commands.md) | 斜杠命令、脚本命令、参数Açıklama |
-| [Agent速查](./cheatsheet-agents.md) | 内置 Ajan Listesi和能力 |
-| [工作流速查](./cheatsheet-workflows.md) | 常用工作流Şablon |
+| Hızlı Başvuru | İçerik |
+|--------------|--------|
+| [Komut Hızlı Başvurusu](./cheatsheet-commands.md) | Satır komutları, betik komutları, parametre açıklamaları |
+| [Agent Hızlı Başvurusu](./cheatsheet-agents.md) | Yerleşik Agent listesi ve yetenekleri |
+| [İş Akışı Hızlı Başvurusu](./cheatsheet-workflows.md) | Yaygın iş akışı şablonları |
 
-## 使用建议
+## Kullanım Önerileri
 
-- 收藏常用命令到笔记
-- 打印 Ajan Listesi作为参考
-- 保存工作流Şablon到收藏夹
+- Yaygın komutları notlarınıza kaydedin
+- Agent listesini referans olarak yazdırın
+- İş akışı şablonlarını favorilerinize kaydedin
 
-## Sonraki Adım
+## Sonraki Adımlar
 
-Bitir学习后，你Olabilir：
-- 回到 [第一阶段](../1-Başlangıç/README.md) 复习基础
-- Başla [Gerçek Projeler](../4-Gerçek Projeler/README.md)
-- 贡献你的 Skill 和规则到社区
+Öğrenmeyi tamamladıktan sonra şunları yapabilirsiniz:
+- Temelleri gözden geçirmek için [Aşama 1](../1-Başlangıç/README.md)'e dönün
+- [Pratik Projeler](../4-PratikProjeler/README.md)'e başlayın
+- Skill ve kurallarınızı toplulukla paylaşın
 
 ---
 
-[Geri Dön主Dizin](../README.md)
+[Ana dizine dön](../README.md)

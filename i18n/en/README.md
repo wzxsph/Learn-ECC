@@ -44,7 +44,7 @@ Honestly, this course was AI-generated. AI created the basic content based on EC
 
 ### What is Learn-ECC?
 
-**Learn-ECC** is a systematic learning path I整理的 for learning ECC, not ECC itself.
+**Learn-ECC** is a systematic learning path I organized for learning ECC, not ECC itself.
 
 It follows a "learning by doing" design philosophy, with each stage containing both theory and practical exercises. Through completing real projects, you will master Claude Code's core capabilities.
 
@@ -112,12 +112,12 @@ Content includes:
 ### Recommended Learning Sequence
 
 1. **Learn stage by stage in order** - Each stage builds on the previous one
-2. **Combine theory with practice** - Each chapter has exercises, understand first then动手
+2. **Combine theory with practice** - Each chapter has exercises, understand first then practice
 3. **Complete all exercises** - Exercises are the core of the learning path
 
 ### Learning Suggestions
 
-- **Getting Started**: 2-3 hours recommended, focus on熟悉 basic concepts and operations
+- **Getting Started**: 2-3 hours recommended, focus on familiarizing with basic concepts and operations
 - **Core Capabilities**: 8-12 hours recommended, practice亲手 every module
 - **Expert Path**: 6-8 hours recommended, requires some project experience
 - **Practical Projects**: 10-15 hours recommended, choose projects you're interested in

@@ -33,7 +33,7 @@ ECC를 사용하여 자동화 코드 검토 프로세스를 구축합니다.
 - **code-reviewer** - 메인 검토 Agent
 - **security-reviewer** - 보안 전문가
 - **tdd-guide** - 테스트 품질 평가
-> 참고: [/code-review](../참조문서/commands/01-核心工作流.md) | [code-reviewer Agent](../참조문서/agents/1.%20代码审查类.md)
+> 참고: [/code-review](../참조문서/commands/01-핵심워크플로우.md) | [code-reviewer Agent](../참조문서/agents/1.%20코드검토类.md)
 
 ### 출력 형식
 ```json

@@ -1,21 +1,21 @@
 # ECC ドキュメント体系
 
-ECC (Everything Claude Code) は一个 Claude Code プラグイン，提供 75 个コマンド、60 个 Agent、16 个 Skills、7 个ルールドキュメント和完整的 Hook/MCP 設定体系。
+ECC (Everything Claude Code) は Claude Code 用プラグインで、75個のコマンド、60個のAgent、16個のSkills分野、7つのルールドキュメント、Hook/MCP設定体系を提供します。
 
 ---
 
 ## 1. ECC ドキュメント体系概要
 
-ECC 为 Claude Code 提供生产级開発ワークフローサポート，涵盖多个 AI Agent フレームワーク（Claude Code、Codex、OpenCode、Cursor、Gemini）。
+ECC は Claude Code にプロダクションレベルの開発ワークフローサポートを提供し、複数の AI Agent フレームワーク（Claude Code、Codex、OpenCode、Cursor、Gemini）をカバーします。
 
-### テクスタック
+### 技術スタック
 
 | レイヤー | 技術 | バージョン |
 |------|------|------|
 | 主要言語 | JavaScript/Node.js | >=18 |
 | 次要言語 | Python | >=3.11 |
 | パッケージマネージャー | Yarn | 4.9.2 |
-| テストランナー | 自定义 Node.js テストランナー | - |
+| テストランナー | 自作 Node.js テストランナー | - |
 | カバレッジ | c8 | 11.x |
 | コード検査 | ESLint + markdownlint-cli | - |
 
@@ -23,13 +23,13 @@ ECC 为 Claude Code 提供生产级開発ワークフローサポート，涵盖
 
 ```
 ECC/
-├── agents/        # 60 个专业 Agent
-├── commands/      # 75 个コマンドファイル
-├── skills/        # 16 个 Skills ディレクトリ
-├── rules/         # 7 个ルールドキュメント（common + 言語特定）
-├── hooks/         # 3 个 Hook ドキュメント
-├── mcp/           # 6 个 MCP サーバー設定
-├── scripts/       # 54 个ツールスクリプト
+├── agents/        # 60個の専門Agent
+├── commands/      # 75個のコマンドファイル
+├── skills/        # 16個のSkillsディレクトリ
+├── rules/         # 7つのルールドキュメント（common + 言語特定）
+├── hooks/         # 3つのHookドキュメント
+├── mcp/           # 6つのMCPサーバー設定
+├── scripts/       # 54個のツールスクリプト
 ├── README.md
 ```
 
@@ -39,36 +39,36 @@ ECC/
 
 | 分類 | ドキュメント | 説明 |
 |------|------|------|
-| [コマンド总览](./commands/) | [commands/](commands/) | 75 个コマンド的完全リスト |
-| [Agent インデックス](./agents/) | [agents/](agents/) | 60 个专业 Agent |
-| [Skills インデックス](./skills/) | [skills/](skills/) | 16 个 Skills 按领域分類 |
-| [ルールインデックス](./rules/) | [rules/](rules/) | 7 个ルールドキュメント (common + 言語特定) |
-| [Hooks インデックス](./hooks/) | [hooks/](hooks/) | Hook システム設定和開発 |
-| [MCP インデックス](./mcp/) | [mcp/](mcp/) | MCP サーバー設定和開発 |
-| [Scripts インデックス](./scripts/) | [scripts/](scripts/) | 54 个ツールスクリプト |
+| [コマンド総覧](./commands/) | [commands/](commands/) | 75個のコマンド完全リスト |
+| [Agent インデックス](./agents/) | [agents/](agents/) | 60個の専門Agent |
+| [Skills インデックス](./skills/) | [skills/](skills/) | 16のSkillsを分野別に分類 |
+| [ルールインデックス](./rules/) | [rules/](rules/) | 7つのルールドキュメント (common + 言語特定) |
+| [Hooks インデックス](./hooks/) | [hooks/](hooks/) | Hookシステム設定と開発 |
+| [MCP インデックス](./mcp/) | [mcp/](mcp/) | MCPサーバー設定と開発 |
+| [Scripts インデックス](./scripts/) | [scripts/](scripts/) | 54個のツールスクリプト |
 
 ---
 
 ## 3. コマンドインデックス
 
-共 **75 个コマンド**，按クラス别分组：
+全 **75個のコマンド**、クラス別に分類：
 
 ### 3.1 コアワークフロー (6)
 
 | コマンド | ファイル | 用途 |
 |------|------|------|
-| `/plan` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 需求分析+风险评估+分ステップ計画 |
+| `/plan` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 需求分析+リスク評価+段階的計画 |
 | `/code-review` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | コード品質/セキュリティ/保守性レビュー |
-| `/build-fix` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 自動检测言語+增量修正ビルドエラー |
-| `/verify` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 完整検証ループ：ビルド→lint→テスト→タイプ検査 |
-| `/quality-gate` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 按需実行 ECC 品質流水线 |
-| `/tdd` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 通用 TDD ワークフロー |
+| `/build-fix` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 自動検出言語+増分修正ビルドエラー |
+| `/verify` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 完全検証ループ：ビルド→lint→テスト→型チェック |
+| `/quality-gate` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 需要に応じてECC品質パイプラインを実行 |
+| `/tdd` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 汎用 TDD ワークフロー |
 
 ### 3.2 テスト関連 (8)
 
 | コマンド | ファイル | 用途 |
 |------|------|------|
-| `/go-test` | [02-テスト関連.md](commands/02-テスト関連.md) | Go TDD (表格驱动，80%+ カバレッジ) |
+| `/go-test` | [02-テスト関連.md](commands/02-テスト関連.md) | Go TDD (テーブル駆動、80%+ カバレッジ) |
 | `/kotlin-test` | [02-テスト関連.md](commands/02-テスト関連.md) | Kotlin TDD (Kotest + Kover) |
 | `/rust-test` | [02-テスト関連.md](commands/02-テスト関連.md) | Rust TDD (cargo test + 統合テスト) |
 | `/cpp-test` | [02-テスト関連.md](commands/02-テスト関連.md) | C++ TDD (GoogleTest + gcov/lcov) |
@@ -82,10 +82,10 @@ ECC/
 | コマンド | ファイル | 用途 |
 |------|------|------|
 | `/python-review` | [03-言語レビュー.md](commands/03-言語レビュー.md) | Python PEP 8、型ヒント、セキュリティ |
-| `/go-review` | [03-言語レビュー.md](commands/03-言語レビュー.md) | Go 惯用法、並行処理、エラー処理 |
-| `/kotlin-review` | [03-言語レビュー.md](commands/03-言語レビュー.md) | Kotlin 空セキュリティ、コルーチン、アーキテクチャ |
-| `/rust-review` | [03-言語レビュー.md](commands/03-言語レビュー.md) | Rust すべて権、ライフタイム、unsafe |
-| `/cpp-review` | [03-言語レビュー.md](commands/03-言語レビュー.md) | C++ メモリセキュリティ、现代 idiom |
+| `/go-review` | [03-言語レビュー.md](commands/03-言語レビュー.md) | Go 慣用法、並行処理、エラー処理 |
+| `/kotlin-review` | [03-言語レビュー.md](commands/03-言語レビュー.md) | Kotlin 空安全、コルーチン、アーキテクチャ |
+| `/rust-review` | [03-言語レビュー.md](commands/03-言語レビュー.md) | Rust 所有権、ライフタイム、unsafe |
+| `/cpp-review` | [03-言語レビュー.md](commands/03-言語レビュー.md) | C++ メモリ安全、モダン idiom |
 | `/flutter-review` | [03-言語レビュー.md](commands/03-言語レビュー.md) | Flutter/Dart パターン |
 | `/fastapi-review` | [03-言語レビュー.md](commands/03-言語レビュー.md) | FastAPI アーキテクチャ、非同期、Pydantic |
 
@@ -93,227 +93,227 @@ ECC/
 
 | コマンド | ファイル | 用途 |
 |------|------|------|
-| `/go-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | 修正 Go ビルドエラー + go vet 警告 |
-| `/kotlin-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | 修正 Kotlin/Gradle コンパイル器エラー |
-| `/rust-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | 修正 Rust ビルド + 借用検査器問題 |
-| `/cpp-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | 修正 C++ CMake + 链接器問題 |
-| `/gradle-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | 修正 Android/KMP Gradle エラー |
+| `/go-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | Go ビルドエラー + go vet 警告を修正 |
+| `/kotlin-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | Kotlin/Gradle コンパイラエラー修正 |
+| `/rust-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | Rust ビルド + 借用チェッカー問題修正 |
+| `/cpp-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | C++ CMake + リンカー問題修正 |
+| `/gradle-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | Android/KMP Gradle エラー修正 |
 | `/flutter-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | Flutter ビルド修正 |
 
 ### 3.5 計画とアーキテクチャ (7)
 
 | コマンド | ファイル | 用途 |
 |------|------|------|
-| `/plan-prd` | [05-計画とアーキテクチャ.md](commands/05-計画とアーキテクチャ.md) | 交互式 PRD 生成器 |
+| `/plan-prd` | [05-計画とアーキテクチャ.md](commands/05-計画とアーキテクチャ.md) | インタラクティブ PRD 生成器 |
 | `/prp-plan` | [05-計画とアーキテクチャ.md](commands/05-計画とアーキテクチャ.md) | 全面的機能計画 |
 | `/prp-prd` | [05-計画とアーキテクチャ.md](commands/05-計画とアーキテクチャ.md) | PRP ワークフロー PRD 生成器 |
-| `/prp-implement` | [05-計画とアーキテクチャ.md](commands/05-計画とアーキテクチャ.md) | 実行 PRP 計画+検証ループ |
-| `/prp-pr` | [05-計画とアーキテクチャ.md](commands/05-計画とアーキテクチャ.md) | 从 PRP ワークフロー作成 PR |
+| `/prp-implement` | [05-計画とアーキテクチャ.md](commands/05-計画とアーキテクチャ.md) | PRP 計画を実行+検証ループ |
+| `/prp-pr` | [05-計画とアーキテクチャ.md](commands/05-計画とアーキテクチャ.md) | PRP ワークフローからPRを作成 |
 | `/prp-commit` | [05-計画とアーキテクチャ.md](commands/05-計画とアーキテクチャ.md) | PRP 検証コミット |
-| `/multi-plan` | [05-計画とアーキテクチャ.md](commands/05-計画とアーキテクチャ.md) | 多モデル协作計画 (Codex + Gemini) |
+| `/multi-plan` | [05-計画とアーキテクチャ.md](commands/05-計画とアーキテクチャ.md) | マルチモデル協力計画 (Codex + Gemini) |
 
 ### 3.6 セッション管理 (5)
 
 | コマンド | ファイル | 用途 |
 |------|------|------|
-| `/save-session` | [06-セッション管理.md](commands/06-セッション管理.md) | 保存セッション状态到 ~/.claude/session-data/ |
-| `/resume-session` | [06-セッション管理.md](commands/06-セッション管理.md) | 加载并再開保存的セッション |
-| `/sessions` | [06-セッション管理.md](commands/06-セッション管理.md) | 浏览+搜索+管理セッション历史 |
-| `/checkpoint` | [06-セッション管理.md](commands/06-セッション管理.md) | 作成/検証ワークフロー検査点 |
-| `/aside` | [06-セッション管理.md](commands/06-セッション管理.md) | 回答侧问而不丢失上下文 |
+| `/save-session` | [06-セッション管理.md](commands/06-セッション管理.md) | セッション状態を ~/.claude/session-data/ に保存 |
+| `/resume-session` | [06-セッション管理.md](commands/06-セッション管理.md) | 保存したセッションをロードして再開 |
+| `/sessions` | [06-セッション管理.md](commands/06-セッション管理.md) | セッション履歴を閲覧+検索+管理 |
+| `/checkpoint` | [06-セッション管理.md](commands/06-セッション管理.md) | ワークフローチェックポイントを作成/検証 |
+| `/aside` | [06-セッション管理.md](commands/06-セッション管理.md) | コンテキストを失わずにサイド问答に回答 |
 
 ### 3.7 学習と改善 (10)
 
 | コマンド | ファイル | 用途 |
 |------|------|------|
-| `/learn` | [07-学習と改善.md](commands/07-学習と改善.md) | 从セッション中提取可复用パターン |
-| `/learn-eval` | [07-学習と改善.md](commands/07-学習と改善.md) | 提取パターン + 自我评估品質 |
-| `/evolve` | [07-学習と改善.md](commands/07-学習と改善.md) | 分析 instinct + 推奨进化構造 |
-| `/promote` | [07-学習と改善.md](commands/07-学習と改善.md) | 将プロジェクト instinct 提升到全局范围 |
-| `/instinct-status` | [07-学習と改善.md](commands/07-学習と改善.md) | 表示すべて学習的 instinct |
-| `/instinct-export` | [07-学習と改善.md](commands/07-学習と改善.md) | エクスポート instinct 到ファイル |
-| `/instinct-import` | [07-学習と改善.md](commands/07-学習と改善.md) | 从ファイル/URL インポート instinct |
-| `/skill-create` | [07-学習と改善.md](commands/07-学習と改善.md) | 分析 git 历史+生成 skill ファイル |
-| `/skill-health` | [07-学習と改善.md](commands/07-学習と改善.md) | Skill 组合健康仪表板 |
-| `/rules-distill` | [07-学習と改善.md](commands/07-学習と改善.md) | 扫描 skills + 提取跨领域原則 |
+| `/learn` | [07-学習と改善.md](commands/07-学習と改善.md) | セッションから再利用可能なパターンを抽出 |
+| `/learn-eval` | [07-学習と改善.md](commands/07-学習と改善.md) | パターンを抽出 + 自己評価品質 |
+| `/evolve` | [07-学習と改善.md](commands/07-学習と改善.md) | instinct を分析 + 進化構造を提案 |
+| `/promote` | [07-学習と改善.md](commands/07-学習と改善.md) | プロジェクトの instinct をグローバル範囲に昇格 |
+| `/instinct-status` | [07-学習と改善.md](commands/07-学習と改善.md) | すべての学習した instinct を表示 |
+| `/instinct-export` | [07-学習と改善.md](commands/07-学習と改善.md) | instinct をファイルにエクスポート |
+| `/instinct-import` | [07-学習と改善.md](commands/07-学習と改善.md) | ファイル/URLから instinct をインポート |
+| `/skill-create` | [07-学習と改善.md](commands/07-学習と改善.md) | git 歴史を分析 + skill ファイルを生成 |
+| `/skill-health` | [07-学習と改善.md](commands/07-学習と改善.md) | Skill 組み合わせ健康ダッシュボード |
+| `/rules-distill` | [07-学習と改善.md](commands/07-学習と改善.md) | skills をスキャン + 分野横断原則を抽出 |
 
 ### 3.8 ループと自動化 (3)
 
 | コマンド | ファイル | 用途 |
 |------|------|------|
-| `/loop-start` | [08-ループと自動化.md](commands/08-ループと自動化.md) | 起動托管自主ループパターン |
-| `/loop-status` | [08-ループと自動化.md](commands/08-ループと自動化.md) | 検査実行中ループ的状态 |
-| `/santa-loop` | [08-ループと自動化.md](commands/08-ループと自動化.md) | Santa 风格自主ループ |
+| `/loop-start` | [08-ループと自動化.md](commands/08-ループと自動化.md) | 管理自主ループパターンを起動 |
+| `/loop-status` | [08-ループと自動化.md](commands/08-ループと自動化.md) | 実行中ループの状態を確認 |
+| `/santa-loop` | [08-ループと自動化.md](commands/08-ループと自動化.md) | Santa スタイル自主ループ |
 
 ### 3.9 プロジェクト管理 (6)
 
 | コマンド | ファイル | 用途 |
 |------|------|------|
-| `/projects` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | 列出已知プロジェクト + instinct 統計 |
-| `/harness-audit` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | 审计 agent harness 設定 |
-| `/model-route` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | ルーティングタスク到合适モデル |
-| `/pm2` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | PM2 プロセス管理器初期化 |
-| `/setup-pm` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | 設定パッケージマネージャー (npm/pnpm/yarn/bun) |
-| `/project-init` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | プロジェクト初期化 |
+| `/projects` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | 已知プロジェクト + instinct 統計を一覧表示 |
+| `/harness-audit` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | agent harness 設定を監査 |
+| `/model-route` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | タスクを適切なモデルにルーティング |
+| `/pm2` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | PM2 プロセス管理器を初期化 |
+| `/setup-pm` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | パッケージマネージャを設定 (npm/pnpm/yarn/bun) |
+| `/project-init` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | プロジェクトを初期化 |
 
 ### 3.10 PR ワークフロー (6)
 
 | コマンド | ファイル | 用途 |
 |------|------|------|
-| `/pr` | [10-PRワークフロー.md](commands/10-PRワークフロー.md) | 从当前ブランチ作成 GitHub PR |
-| `/review-pr` | [10-PRワークフロー.md](commands/10-PRワークフロー.md) | レビュー GitHub PR |
-| `/multi-workflow` | [10-PRワークフロー.md](commands/10-PRワークフロー.md) | 多モデル协作開発 |
+| `/pr` | [10-PRワークフロー.md](commands/10-PRワークフロー.md) | 現在のブランチから GitHub PR を作成 |
+| `/review-pr` | [10-PRワークフロー.md](commands/10-PRワークフロー.md) | GitHub PR をレビュー |
+| `/multi-workflow` | [10-PRワークフロー.md](commands/10-PRワークフロー.md) | マルチモデル協力開発 |
 | `/multi-backend` | [10-PRワークフロー.md](commands/10-PRワークフロー.md) | バックエンド多モデル開発 |
 | `/multi-frontend` | [10-PRワークフロー.md](commands/10-PRワークフロー.md) | フロントエンド多モデル開発 |
-| `/multi-execute` | [10-PRワークフロー.md](commands/10-PRワークフロー.md) | 多モデル协作実行 |
+| `/multi-execute` | [10-PRワークフロー.md](commands/10-PRワークフロー.md) | マルチモデル協力実行 |
 
 ### 3.11 Hookify システム (4)
 
 | コマンド | ファイル | 用途 |
 |------|------|------|
-| `/hookify` | [11-Hookifyシステム.md](commands/11-Hookifyシステム.md) | 作成 hooks 防止不良行为 |
-| `/hookify-list` | [11-Hookifyシステム.md](commands/11-Hookifyシステム.md) | 列出すべて設定的 hookify ルール |
-| `/hookify-configure` | [11-Hookifyシステム.md](commands/11-Hookifyシステム.md) | 交互式あり効化/無効化 hookify ルール |
-| `/hookify-help` | [11-Hookifyシステム.md](commands/11-Hookifyシステム.md) | Hookify システム帮助 |
+| `/hookify` | [11-Hookifyシステム.md](commands/11-Hookifyシステム.md) | 不良行為を防止するhooksを作成 |
+| `/hookify-list` | [11-Hookifyシステム.md](commands/11-Hookifyシステム.md) | 設定されたすべての hookify ルールを一覧表示 |
+| `/hookify-configure` | [11-Hookifyシステム.md](commands/11-Hookifyシステム.md) | インタラクティブに hookify ルールを有効/無効化 |
+| `/hookify-help` | [11-Hookifyシステム.md](commands/11-Hookifyシステム.md) | Hookify システムヘルプ |
 
 ### 3.12 ドキュメントと研究 (3)
 
 | コマンド | ファイル | 用途 |
 |------|------|------|
-| `/update-docs` | [12-ドキュメントと研究.md](commands/12-ドキュメントと研究.md) | 更新プロジェクトドキュメント |
-| `/update-codemaps` | [12-ドキュメントと研究.md](commands/12-ドキュメントと研究.md) | 重新生成 codemaps |
-| `/ecc-guide` | [12-ドキュメントと研究.md](commands/12-ドキュメントと研究.md) | ECC 用户ガイド |
+| `/update-docs` | [12-ドキュメントと研究.md](commands/12-ドキュメントと研究.md) | プロジェクトドキュメントを更新 |
+| `/update-codemaps` | [12-ドキュメントと研究.md](commands/12-ドキュメントと研究.md) | codemaps を再生成 |
+| `/ecc-guide` | [12-ドキュメントと研究.md](commands/12-ドキュメントと研究.md) | ECC ユーザーガイド |
 
 ### 3.13 リファクタリングとクリーンアップ (2)
 
 | コマンド | ファイル | 用途 |
 |------|------|------|
-| `/refactor-clean` | [13-リファクタリングとクリーンアップ.md](commands/13-リファクタリングとクリーンアップ.md) | 削除死コード+マージ重复 |
+| `/refactor-clean` | [13-リファクタリングとクリーンアップ.md](commands/13-リファクタリングとクリーンアップ.md) | 死コード削除+重複をマージ |
 | `/auto-update` | [13-リファクタリングとクリーンアップ.md](commands/13-リファクタリングとクリーンアップ.md) | 自動更新能力 |
 
 ### 3.14 その他のコマンド (7)
 
 | コマンド | ファイル | 用途 |
 |------|------|------|
-| `/jira` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | Jira 工单交互 |
+| `/jira` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | Jira チケットとの対話 |
 | `/gan-build` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | GAN ビルド操作 |
 | `/gan-design` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | GAN 設計操作 |
-| `/prune` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | 削除陈旧 instinct (>30天) |
-| `/security-scan` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | セキュリティ扫描 |
-| `/feature-dev` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | 機能開発助手 |
-| `/cost-report` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | モデル成本レポート |
+| `/prune` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | 古い instinct を削除 (>30日) |
+| `/security-scan` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | セキュリティスキャン |
+| `/feature-dev` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | 機能開発アシスタント |
+| `/cost-report` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | モデルコストレポート |
 
 ---
 
 ## 4. Agent インデックス
 
-共 **60 个 Agent**，按クラス别分组：
+全 **60個のAgent**、クラス別に分類：
 
-| Agent クラス别 | ファイル | 説明 |
+| Agent クラス | ファイル | 説明 |
 |------------|------|------|
-| [コードレビュー担当](agents/1.%20コードレビュー担当.md) | [1. コードレビュー担当.md](agents/1.%20コードレビュー担当.md) | 14 个レビュー Agent |
-| [ビルド修正クラス](agents/2.%20ビルド修正クラス.md) | [2. ビルド修正クラス.md](agents/2.%20ビルド修正クラス.md) | 14 个ビルド修正 Agent |
-| [計画類](agents/3.%20計画類.md) | [3. 計画類.md](agents/3.%20計画類.md) | 5 个計画 Agent |
-| [テスト類](agents/4.%20テスト類.md) | [4. テスト類.md](agents/4.%20テスト類.md) | 2 个テスト Agent |
-| [セキュリティ類](agents/5.%20セキュリティ類.md) | [5. セキュリティ類.md](agents/5.%20セキュリティ類.md) | 3 个セキュリティ Agent |
-| [アーキテクチャ類](agents/6.%20アーキテクチャ類.md) | [6. アーキテクチャ類.md](agents/6.%20アーキテクチャ類.md) | 3 个アーキテクチャ Agent |
+| [コードレビュー類](agents/1.%20コードレビュー類.md) | [1. コードレビュー類.md](agents/1.%20コードレビュー類.md) | 14個のレビューAgent |
+| [ビルドリペア類](agents/2.%20ビルドリペア類.md) | [2. ビルドリペア類.md](agents/2.%20ビルドリペア類.md) | 14個のビルド修正Agent |
+| [計画類](agents/3.%20計画類.md) | [3. 計画類.md](agents/3.%20計画類.md) | 5個の計画Agent |
+| [テスト類](agents/4.%20テスト類.md) | [4. テスト類.md](agents/4.%20テスト類.md) | 2個のテストAgent |
+| [セキュリティ類](agents/5.%20セキュリティ類.md) | [5. セキュリティ類.md](agents/5.%20セキュリティ類.md) | 3個のセキュリティAgent |
+| [アーキテクチャ類](agents/6.%20アーキテクチャ類.md) | [6. アーキテクチャ類.md](agents/6.%20アーキテクチャ類.md) | 3個のアーキテクチャAgent |
 
 ---
 
 ## 5. Skills インデックス
 
-$**16 个 Skills 领域**，按领域分類：
+**16個のSkills分野**、分野別に分類：
 
-| 领域 | ファイル | 説明 |
+| 分野 | ファイル | 説明 |
 |------|------|------|
-| [ベストプラクティス](skills/ベストプラクティス.md) | [ベストプラクティス.md](skills/ベストプラクティス.md) | エンコード標準、エラー処理、自主ループ |
+| [ベストプラクティス](skills/ベストプラクティス.md) | [ベストプラクティス.md](skills/ベストプラクティス.md) | コーディング標準、エラー処理、自主ループ |
 | [プログラミング言語](skills/プログラミング言語.md) | [プログラミング言語.md](skills/プログラミング言語.md) | Python/Go/Rust/Kotlin/C++ 等 |
 | [フレームワーク](skills/フレームワーク.md) | [フレームワーク.md](skills/フレームワーク.md) | Django/Laravel/NestJS/Spring Boot 等 |
 | [テスト](skills/テスト.md) | [テスト.md](skills/テスト.md) | TDD/ユニットテスト/統合テスト/E2E |
-| [セキュリティ](skills/セキュリティ.md) | [セキュリティ.md](skills/セキュリティ.md) | セキュリティレビュー、漏洞扫描 |
+| [セキュリティ](skills/セキュリティ.md) | [セキュリティ.md](skills/セキュリティ.md) | セキュリティレビュー、脆弱性スキャン |
 | [フロントエンドとデザイン](skills/フロントエンドとデザイン.md) | [フロントエンドとデザイン.md](skills/フロントエンドとデザイン.md) | フロントエンド開発、設計システム |
 | [バックエンドとAPI](skills/バックエンドとAPI.md) | [バックエンドとAPI.md](skills/バックエンドとAPI.md) | バックエンドサービス、API 設計、データベース |
 | [デプロイとDevOps](skills/デプロイとDevOps.md) | [デプロイとDevOps.md](skills/デプロイとDevOps.md) | Docker/K8s/デプロイ戦略 |
-| [監視とオブザーバビリティ](skills/監視とオブザーバビリティ.md) | [監視とオブザーバビリティ.md](skills/監視とオブザーバビリティ.md) | 可観測性、网络診断 |
-| [自動化とスクリプト](skills/自動化とスクリプト.md) | [自動化とスクリプト.md](skills/自動化とスクリプト.md) | 自主ループ、持续学習、プロキシ工程 |
-| [検索とデータ取得](skills/検索とデータ取得.md) | [検索とデータ取得.md](skills/検索とデータ取得.md) | Exa 搜索、データ抓取、MCP |
-| [GitHubと協業](skills/GitHubと協業.md) | [GitHubと協業.md](skills/GitHubと協業.md) | GitHub ワークフロー、コードレビュー |
-| [AIと機械学習](skills/AIと機械学習.md) | [AIと機械学習.md](skills/AIと機械学習.md) | 神经网络、PyTorch、MLOps |
+| [監視と可観測性](skills/監視と可観測性.md) | [監視と可観測性.md](skills/監視と可観測性.md) | 可観測性、ネットワーク診断 |
+| [自動化とスクリプト](skills/自動化とスクリプト.md) | [自動化とスクリプト.md](skills/自動化とスクリプト.md) | 自主ループ、持續学習、エージェント工学 |
+| [検索とデータ取得](skills/検索とデータ取得.md) | [検索とデータ取得.md](skills/検索とデータ取得.md) | Exa 検索、データスクレイピング、MCP |
+| [GitHubと協調](skills/GitHubと協調.md) | [GitHubと協調.md](skills/GitHubと協調.md) | GitHub ワークフロー、コードレビュー |
+| [AIと機械学習](skills/AIと機械学習.md) | [AIと機械学習.md](skills/AIと機械学習.md) | ニューラルネットワーク、PyTorch、MLOps |
 | [クラウドネイティブとインフラ](skills/クラウドネイティブとインフラ.md) | [クラウドネイティブとインフラ.md](skills/クラウドネイティブとインフラ.md) | Kubernetes、Docker、Terraform |
-| [特殊分野スキル](skills/特殊分野スキル.md) | [特殊分野スキル.md](skills/特殊分野スキル.md) | 区块链、游戏開発、音视频、IoT |
+| [特殊分野スキル](skills/特殊分野スキル.md) | [特殊分野スキル.md](skills/特殊分野スキル.md) | ブロックチェーン、ゲーム開発、音视频、IoT |
 | [開発ツールチェーン](skills/開発ツールチェーン.md) | [開発ツールチェーン.md](skills/開発ツールチェーン.md) | テストフレームワーク、CI/CD、コード品質 |
-| [最先端技術](skills/最先端技術.md) | [最先端技術.md](skills/最先端技術.md) | AI Agent、量子计算、边缘计算 |
+| [前沿技術](skills/前沿技術.md) | [前沿技術.md](skills/前沿技術.md) | AI Agent、量子計算、エッジ計算 |
 
 ---
 
 ## 6. ルールインデックス
 
-共 **7 个ルールドキュメント**（common + 言語特定）：
+全 **7つのルールドキュメント**（common + 言語特定）：
 
 | ルール | ファイル | 説明 |
 |------|------|------|
-| [Git ワークフロー](rules/Gitワークフロー.md) | [Gitワークフロー.md](rules/Gitワークフロー.md) | Git コミット仕様和 PR ワークフロー |
-| [Hooks システム](rules/Hooksシステム.md) | [Hooksシステム.md](rules/Hooksシステム.md) | Hook 設定和使用ガイド |
+| [Git ワークフロー](rules/Gitワークフロー.md) | [Gitワークフロー.md](rules/Gitワークフロー.md) | Git コミット仕様と PR ワークフロー |
+| [Hooks システム](rules/Hooksシステム.md) | [Hooksシステム.md](rules/Hooksシステム.md) | Hook 設定と使用ガイド |
 | [Agentオーケストレーション](rules/Agentオーケストレーション.md) | [Agentオーケストレーション.md](rules/Agentオーケストレーション.md) | Agent 编排パターン |
 | [パフォーマンス最適化](rules/パフォーマンス最適化.md) | [パフォーマンス最適化.md](rules/パフォーマンス最適化.md) | パフォーマンス最適化ガイド |
-| [コーディングスタイル](rules/コーディングスタイル.md) | [コーディングスタイル.md](rules/コーディングスタイル.md) | エンコード风格仕様 |
+| [コーディングスタイル](rules/コーディングスタイル.md) | [コーディングスタイル.md](rules/コーディングスタイル.md) | コーディングスタイル仕様 |
 | [テストルール](rules/テストルール.md) | [テストルール.md](rules/テストルール.md) | テスト要件（80% カバレッジ） |
-| [セキュリティルール](rules/セキュリティルール.md) | [セキュリティルール.md](rules/セキュリティルール.md) | セキュリティ検査清单 |
+| [セキュリティルール](rules/セキュリティルール.md) | [セキュリティルール.md](rules/セキュリティルール.md) | セキュリティチェックリスト |
 
 ---
 
 ## 7. Hooks インデックス
 
-共 **4 个ドキュメント**：
+全 **4つのドキュメント**：
 
 | ドキュメント | ファイル | 説明 |
 |------|------|------|
 | [Hook タイプ](hooks/Hookタイプ.md) | [Hookタイプ.md](hooks/Hookタイプ.md) | PreToolUse、PostToolUse、Stop タイプ |
-| [内置 Hooks](hooks/内置Hooks.md) | [内置Hooks.md](hooks/内置Hooks.md) | 内置 Hook 列表和使用 |
-| [カスタム開発](hooks/カスタム開発.md) | [カスタム開発.md](hooks/カスタム開発.md) | 自定义 Hook 開発ガイド |
+| [内置 Hooks](hooks/内置Hooks.md) | [内置Hooks.md](hooks/内置Hooks.md) | 内蔵 Hook リストと使用 |
+| [カスタム開発](hooks/カスタム開発.md) | [カスタム開発.md](hooks/カスタム開発.md) | カスタム Hook 開発ガイド |
 | [設定フォーマット](hooks/設定フォーマット.md) | [設定フォーマット.md](hooks/設定フォーマット.md) | hooks.json 設定フォーマット |
 
 ---
 
 ## 8. MCP インデックス
 
-共 **6 个 MCP サーバー設定**：
+全 **6つの MCP サーバー設定**：
 
 | ドキュメント | ファイル | 説明 |
 |------|------|------|
 | [MCP 設定フォーマット](mcp/MCP設定フォーマット.md) | [MCP設定フォーマット.md](mcp/MCP設定フォーマット.md) | MCP 設定ファイルフォーマット |
-| [内置サーバー](mcp/内置サーバー.md) | [内置サーバー.md](mcp/内置サーバー.md) | 内置 MCP サーバー |
-| [カスタム開発](mcp/カスタム開発.md) | [カスタム開発.md](mcp/カスタム開発.md) | 自定义 MCP サーバー開発 |
+| [内置サーバー](mcp/内置サーバー.md) | [内置サーバー.md](mcp/内置サーバー.md) | 内蔵 MCP サーバー |
+| [カスタム開発](mcp/カスタム開発.md) | [カスタム開発.md](mcp/カスタム開発.md) | カスタム MCP サーバー開発 |
 
 ---
 
 ## 9. Scripts インデックス
 
-共 **54 个ツールスクリプト**：
+全 **54個のツールスクリプト**：
 
 | ドキュメント | ファイル | 説明 |
 |------|------|------|
 | [ツールスクリプト](scripts/ツールスクリプト.md) | [ツールスクリプト.md](scripts/ツールスクリプト.md) | ecc.js、install-apply.js 等 |
-| [ツール関数ライブラリ](scripts/ツール関数ライブラリ.md) | [ツール関数ライブラリ.md](scripts/ツール関数ライブラリ.md) | 共享関数库 |
+| [ツール関数ライブラリ](scripts/ツール関数ライブラリ.md) | [ツール関数ライブラリ.md](scripts/ツール関数ライブラリ.md) | 共有関数ライブラリ |
 | [テストランナー](scripts/テストランナー.md) | [テストランナー.md](scripts/テストランナー.md) | テストランナー使用 |
 | [ビルドスクリプト](scripts/ビルドスクリプト.md) | [ビルドスクリプト.md](scripts/ビルドスクリプト.md) | ビルドスクリプト |
 
 ---
 
-## 10. 贡献ガイド
+## 10. 寄稿ガイド
 
 ### ファイル命名仕様
 
-- **コマンド、Skills、Agents、Hooks**: 小写 + 连字符（如 `code-review.md`）
-- **スクリプト**: camelCase 或 kebab-case（如 `session-start.js`）
-- **ルール**: 按言語/主题组织
+- **コマンド、Skills、Agents、Hooks**: 小文字 + ハイフン（如 `code-review.md`）
+- **スクリプト**: camelCase または kebab-case（如 `session-start.js`）
+- **ルール**: 言語/テーマ別に組織
 
 ### コマンドファイルフォーマット
 
 ```yaml
 ---
-description: "简短描述"
-argument-hint: "[オプション参数]"
+description: "短い説明"
+argument-hint: "[オプションパラメータ]"
 name: command-name
 command: true
 allowed_tools: ["Bash"]
@@ -343,12 +343,12 @@ model: sonnet
 
 ### コミット流程
 
-1. 作成新ファイル或修改现ありファイル
-2. 确保遵循命名仕様
-3. 実行テスト: `node tests/run-all.js`
-4. 実行 markdown lint: `npx markdownlint-cli '**/*.md' --ignore node_modules`
-5. 作成 PR リクエストレビュー
+1. 新規ファイル作成または既存ファイル修改
+2. 命名仕様準拠を確認
+3. テスト実行: `node tests/run-all.js`
+4. Markdown lint 実行: `npx markdownlint-cli '**/*.md' --ignore node_modules`
+5. PR を作成してレビューをリクエスト
 
 ---
 
-*ECC ドキュメント体系 - 为 Claude Code 提供生产级開発ワークフロー*
+*ECC ドキュメント体系 - Claude Code にプロダクションレベルの開発ワークフローを提供*

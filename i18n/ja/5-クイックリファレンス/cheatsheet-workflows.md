@@ -1,62 +1,62 @@
-# Workflows Cheat Sheet
+# ワークフロー速查
 
-## Common Workflow Templates
+## 常用ワークフローテンプレート
 
-### 1. TDD Development Process
+### 1. TDD 開発プロセス
 
 ```
-Requirements → Write test (RED) → Implement (GREEN) → Refactor (REFACTOR)
+要件 → テスト作成（レッド） → 実装（グリーン） → リファクタリング（リファクター）
 ```
 
-**Use**: `/tdd`
+**使用**: `/tdd`
 
 ---
 
-### 2. Code Review Process
+### 2. コードレビュープロセス
 
 ```
-Submit code → Start review → Issue classification → Fix → Re-review → Merge
+コード提出 → レビュー開始 → イシュー分類 → 修正 → 再レビュー → マージ
 ```
 
-**Use**: `/code-review`
+**使用**: `/code-review`
 
 ---
 
-### 3. Error Fix Process
+### 3. エラー修正プロセス
 
 ```
-Find error → Analyze cause → Locate code → Fix → Verify → Test
+エラー発見 → 原因分析 → コード特定 → 修正 → 検証 → テスト
 ```
 
-**Use**: `/build-fix`
+**使用**: `/build-fix`
 
 ---
 
-### 4. Skill Generation Process
+### 4. Skill 生成プロセス
 
 ```
-Analyze requirements → Reference existing patterns → Write template → Test & verify
+要件分析 → 既存パターンの参照 → テンプレート作成 → テストと検証
 ```
 
-**Use**: `/skill-create`
+**使用**: `/skill-create`
 
 ---
 
-## Custom Workflows
+## カスタムワークフロー
 
-Workflow definition format:
+ワークフロー定義形式：
 
 ```yaml
 name: my-workflow
-description: My workflow description
+description: 私のワークフロー説明
 steps:
   - name: step1
-    command: do-something
+    command: somethingを実行
   - name: step2
-    command: do-other
+    command: otherを実行
     requires: [step1]
 ```
 
 ---
 
-[Return to quick reference directory](./README.md)
+[クイックリファレンスディレクトリに戻る](./README.md)

@@ -1,6 +1,6 @@
 # 03 - Hooks 定制
 
-学习 ECC [Hook](../../DocumentosDeReferência/hooks/Hook类型.md) 系统，实现工作流自动化。
+学习 ECC [Hook](../../DocumentosDeReferência/hooks/Tipos-de-Hook.md) 系统，实现工作流自动化。
 
 ## 概述
 
@@ -359,7 +359,7 @@ export ECC_SESSION_START_CONTEXT=off
 
 ---
 
-## 7. 性能最佳实践
+## 7. 性能Melhores-Práticas
 
 | 钩子类型 | 性能要求 |
 |----------|----------|
@@ -411,9 +411,9 @@ process.stdin.on('end', () => {
 
 ---
 
-## 练习
+## Exercícios
 
-完成 [练习](./exercises/练习.md) 中的任务。
+完成 [练习](./exercises/Exercícios.md) 中的任务。
 
 ---
 

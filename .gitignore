@@ -1,6 +1,8 @@
 # Session data
+.claude/
 .claude/session-data/
 .claude/sessions/
+.claude/plans/
 
 # Temporary files
 *.tmp

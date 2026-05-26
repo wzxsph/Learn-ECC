@@ -2,7 +2,7 @@
 
 ## 什么是 [ECC](../เอกสารอ้างอิง/README.md)？
 
-[ECC](../เอกสารอ้างอิง/README.md)（Everything Claude Code）是一个 Claude Code 插件系统，提供生产级的 [Agent](../เอกสารอ้างอิง/agents/1.%20代码审查类.md)、[Skills](../เอกสารอ้างอิง/skills/最佳实践.md)、hooks、rules、[Commands](../เอกสารอ้างอิง/commands/01-核心工作流.md) 和 MCP 配置方案。源自 Anthropic Hackathon 获奖作品，经过 10+ 月的日常使用打磨。
+[ECC](../เอกสารอ้างอิง/README.md)（Everything Claude Code）是一个 Claude Code 插件系统，提供生产级的 [Agent](../เอกสารอ้างอิง/agents/1.%20代码审查类.md)、[Skills](../เอกสารอ้างอิง/skills/最佳实践.md)、hooks、rules、[Commands](../เอกสารอ้างอิง/commands/01-Workflowหลัก.md) 和 MCP 配置方案。源自 Anthropic Hackathon 获奖作品，经过 10+ 月的日常使用打磨。
 
 ## [ECC](../เอกสารอ้างอิง/README.md) 能做什么？
 
@@ -27,7 +27,7 @@
 - `continuous-learning-v2` - 基于 instinct 的持续学习
 - `eval-harness` - 验证循环评估
 
-### 3. [Commands](../เอกสารอ้างอิง/commands/01-核心工作流.md) 命令
+### 3. [Commands](../เอกสารอ้างอิง/commands/01-Workflowหลัก.md) 命令
 保留传统斜杠命令兼容性（共 75+ 命令）：
 
 | 命令 | 功能 |

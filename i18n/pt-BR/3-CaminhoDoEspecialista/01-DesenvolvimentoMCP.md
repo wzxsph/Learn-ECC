@@ -6,7 +6,7 @@
 
 MCP（Model Context Protocol）是一种让 Claude 与外部工具和服务集成的协议。通过 MCP，你可以扩展 Claude 的能力，连接数据库、API、其他 AI 模型等。
 
-> 参考: [MCP 配置格式](../DocumentosDeReferência/mcp/MCP配置格式.md)
+> 参考: [MCP Formato-de-Configuração](../DocumentosDeReferência/mcp/MCPFormato-de-Configuração.md)
 
 ## 学习目标
 

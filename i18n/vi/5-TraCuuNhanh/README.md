@@ -1,28 +1,28 @@
-# 第五阶段：快速参考
+# Giai đoạn 5: Tra cứu nhanh
 
-常用命令、Agent 和工作流的速查手册。
+Sổ tay tra cứu nhanh cho các lệnh, Agent và workflow thường dùng.
 
-## 内容
+## Nội dung
 
-| 速查表 | 内容 |
+| Bảng tra cứu | Nội dung |
 |--------|------|
-| [命令速查](./cheatsheet-commands.md) | 斜杠命令、脚本命令、参数说明 |
-| [Agent速查](./cheatsheet-agents.md) | 内置 Agent 列表和能力 |
-| [工作流速查](./cheatsheet-workflows.md) | 常用工作流模板 |
+| [Tra cứu lệnh](./cheatsheet-commands.md) | Lệnh slash, lệnh script, tham số |
+| [Tra cứu Agent](./cheatsheet-agents.md) | Danh sách Agent và khả năng |
+| [Tra cứu workflow](./cheatsheet-workflows.md) | Mẫu workflow thường dùng |
 
-## 使用建议
+## Đề xuất sử dụng
 
-- 收藏常用命令到笔记
-- 打印 Agent 列表作为参考
-- 保存工作流模板到收藏夹
+- Lưu các lệnh thường dùng vào ghi chú
+- In danh sách Agent làm tài liệu tham khảo
+- Lưu mẫu workflow vào mục yêu thích
 
-## 下一步
+## Bước tiếp theo
 
-完成学习后，你可以：
-- 回到 [第一阶段](../1-NhapMon/README.md) 复习基础
-- 开始 [实战项目](../4-DuAnThucHanh/README.md)
-- 贡献你的 Skill 和规则到社区
+Sau khi hoàn thành học tập, bạn có thể:
+- Quay lại [Giai đoạn 1](../1-NhapMon/README.md) để ôn tập kiến thức cơ bản
+- Bắt đầu [Dự án thực hành](../4-DuAnThucHanh/README.md)
+- Đóng góp Skill và rules của bạn cho cộng đồng
 
 ---
 
-[返回主目录](../README.md)
+[Quay lại thư mục chính](../README.md)

@@ -1,50 +1,50 @@
-# 命令速查
+# Befehls-Cheatsheet
 
-## 斜杠命令
+## Slash-Commands
 
-| 命令 | 功能 | 使用场景 |
-|------|------|----------|
-| `/tdd` | 测试驱动开发工作流 | 新功能开发 |
-| `/plan` | 实现计划生成 | 复杂任务规划 |
-| `/code-review` | [代码审查](../Referenzdokumente/commands/01-核心工作流.md) | 代码质量检查 |
-| `/build-fix` | [构建修复](../Referenzdokumente/commands/04-构建修复.md) | 构建失败时 |
-| `/learn` | 从会话提取模式 | 知识沉淀 |
-| `/skill-create` | 从 Git 生成 Skill | 经验复用 |
-| `/test` | [测试相关命令](../Referenzdokumente/commands/02-测试相关.md) | 测试相关 |
+| Befehl | Funktion | Verwendungsszenario |
+|--------|----------|---------------------|
+| `/tdd` | Testgetriebener Entwicklungsworkflow | Neue Funktionsentwicklung |
+| `/plan` | Implementierungsplan erstellen | Komplexe Aufgabenplanung |
+| `/code-review` | [Code-Review](../Referenzdokumente/commands/01-核心工作流.md) | Code-Qualitätsprüfung |
+| `/build-fix` | [Build-Reparatur](../Referenzdokumente/commands/04-构建修复.md) | Bei Build-Fehlern |
+| `/learn` | Muster aus Sitzung extrahieren | Wissens沉淀 |
+| `/skill-create` | Skill aus Git generieren | Erfahrungswiederverwendung |
+| `/test` | [Testbezogene Befehle](../Referenzdokumente/commands/02-测试相关.md) | Testbezogen |
 
-## 脚本命令
+## Skriptbefehle
 
-| 脚本 | 功能 |
-|------|------|
-| `node scripts/hooks/run-with-flags.js` | 带标志位运行钩子 |
-| `node tests/run-all.js` | 运行全量测试 |
-| `node scripts/lib/utils.js` | 工具函数库 |
+| Skript | Funktion |
+|--------|----------|
+| `node scripts/hooks/run-with-flags.js` | Hooks mit Flags ausführen |
+| `node tests/run-all.js` | Alle Tests ausführen |
+| `node scripts/lib/utils.js` | Utility-Funktionen |
 
-## Agent 命令
+## Agent-Befehle
 
-| Agent | 功能 |
-|-------|------|
-| `/planner` | 任务规划 |
-| `/code-reviewer` | 代码审查 |
-| `/tdd-guide` | TDD 指导 |
-| `/security-reviewer` | 安全审查 |
-| `/build-error-resolver` | 构建修复 |
+| Agent | Funktion |
+|-------|----------|
+| `/planner` | Aufgabenplanung |
+| `/code-reviewer` | Code-Review |
+| `/tdd-guide` | TDD-Anleitung |
+| `/security-reviewer` | Sicherheitsreview |
+| `/build-error-resolver` | Build-Reparatur |
 
-## 全局参数
+## Globale Parameter
 
-| 参数 | 说明 |
-|------|------|
-| `--model` | 指定模型 |
-| `--no-input` | 非交互模式 |
-| `--output` | 输出格式 |
+| Parameter | Beschreibung |
+|-----------|--------------|
+| `--model` | Modell angeben |
+| `--no-input` | Non-Interaktiv-Modus |
+| `--output` | Ausgabeformat |
 
-## Hook 环境变量
+## Hook-Umgebungsvariablen
 
-| 变量 | 说明 |
-|------|------|
-| `ECC_HOOK_PROFILE` | 钩子配置 |
-| `ECC_DISABLED_HOOKS` | 禁用钩子列表 |
+| Variable | Beschreibung |
+|----------|--------------|
+| `ECC_HOOK_PROFILE` | Hook-Konfiguration |
+| `ECC_DISABLED_HOOKS` | Deaktivierte Hook-Liste |
 
 ---
 
-[返回快速参考目录](./README.md)
+[Zurück zum Schnellreferenz-Verzeichnis](./README.md)

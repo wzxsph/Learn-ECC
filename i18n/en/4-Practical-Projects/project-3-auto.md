@@ -45,7 +45,7 @@ steps:
 ### Hook Integration
 - PreToolUse - Parameter validation
 - PostToolUse - Output validation
-> Reference: [Hook Types](../Reference-Docs/hooks/Hook类型.md) | [Automation & Scripting](../Reference-Docs/skills/自动化与脚本.md)
+> Reference: [Hook Types](../Reference-Docs/hooks/Hook-Types.md) | [Automation & Scripting](../Reference-Docs/skills/Automation-Scripting.md)
 
 ## Acceptance Criteria
 

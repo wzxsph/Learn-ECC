@@ -1,154 +1,154 @@
-# Learn-ECC Contribution Guide
+# Learn-ECC 寄稿ガイド
 
-Welcome to contributing to Learn-ECC! This guide explains how to add new content, improve existing content, or submit changes.
+Learn-ECCへの寄稿へようこそ！このガイドでは、新しいコンテンツの追加、既存のコンテンツの改善、変更の送信方法について説明します。
 
-## Contribution Types
+## 寄稿の種類
 
-### 1. Add New Content
+### 1. 新しいコンテンツの追加
 
-Types of content you can contribute:
-- New chapters or modules
-- New exercises
-- New practical projects
-- Cheat sheet additions
-- Translation improvements
+寄稿できるコンテンツの種類：
+- 新しいチャプターやモジュール
+- 新しい演習
+- 新しい実践プロジェクト
+- 早見表の追加
+- 翻訳の改善
 
-### 2. Improve Existing Content
+### 2. 既存のコンテンツの改善
 
-- Fix errors
-- Improve explanation clarity
-- Add more examples
-- Improve exercise answers
-- Update outdated information
+- エラーの修正
+- 説明の明確化
+- さらなる例を追加
+- 演習の回答を改善
+- 時代遅れの情報を更新
 
-### 3. Report Issues
+### 3. イシューの報告
 
-- Typos or grammatical errors
-- Code examples that don't work
-- Broken links
-- Missing content
+- タイプミスが文法エラー
+- 動作しないコード例
+- 壊れたリンク
+- 欠落しているコンテンツ
 
-## Content Format Standards
+## コンテンツ形式基準
 
-### Markdown Format
+### Markdown形式
 
-All content must use Markdown format, containing the following sections:
+すべてのコンテンツはMarkdown形式を使用し、以下のセクションを含む必要があります：
 
 ```markdown
-# Title
+# タイトル
 
-## Learning Objectives
+## 学習目標
 
-After completing this section, you will be able to:
-- Objective 1
-- Objective 2
-
----
-
-## Main Content
-
-### Subtitle
-
-Content...
+このセクションを完了すると、以下ができるようになります：
+- 目標1
+- 目標2
 
 ---
 
-## Exercises
+## メインコンテンツ
 
-### Exercise 1
+### サブタイトル
 
-Task description...
-
-### Verification Method
-
-1. Verification step 1
-2. Verification step 2
+コンテンツ...
 
 ---
 
-## Next Steps
+## 演習
 
-- Next chapter: [Link](./next.md)
-- Return: [Table of contents](../README.md)
+### 演習1
+
+タスクの説明...
+
+### 検証方法
+
+1. 検証ステップ1
+2. 検証ステップ2
+
+---
+
+## 次のステップ
+
+- 次のチャプター: [リンク](./next.md)
+- 目次: [テーブルに戻る](../README.md)
 ```
 
-### File Naming
+### ファイル命名
 
-- Use Chinese naming
-- Use hyphen `-` to separate words
-- Chapter file naming: `01-ChapterName.md`, `02-ChapterName.md`
-- Exercise file naming: `Exercise-Name.md`
+- 日本語命名を使用
+- ハイフン `-` で単語を区切る
+- チャプターファイルの命名: `01-章名.md`、`02-章名.md`
+- 演習ファイルの命名: `演習-名前.md`
 
-### Link Standards
+### リンク基準
 
-- Reference links: `./参考ドキュメント/fileName.md`
-- Course internal links: `./chapterName.md`
-- Relative path: Calculated from current file location
+- 参照リンク: `./参考ドキュメント/fileName.md`
+- コース内リンク: `./章名.md`
+- 相対パス: 現在のファイル的位置から計算
 
-### Code Examples
+### コード例
 
 ```javascript
-// Code language annotation
+// コード言語の注釈
 function example() {
   return "Hello ECC"
 }
 ```
 
 ```bash
-# Command line example
+# コマンドラインの例
 node tests/run-all.js
 ```
 
-### Table Format
+### テーブル形式
 
-| Header 1 | Header 2 | Header 3 |
+| ヘッダー1 | ヘッダー2 | ヘッダー3 |
 |-------|-------|-------|
-| Content 1 | Content 2 | Content 3 |
+| コンテンツ1 | コンテンツ2 | コンテンツ3 |
 
-## Submitting Changes
+## 変更の送信
 
-### Steps
+### 手順
 
-1. Fork the repository
-2. Create branch: `git checkout -b feature/new-content-description`
-3. Make changes
-4. Commit: `git commit -m "feat: add new content"`
-5. Push to remote: `git push origin feature/new-content-description`
-6. Create Pull Request
+1. リポジトリをフォーク
+2. ブランチを作成: `git checkout -b feature/new-content-description`
+3. 変更を加える
+4. コミット: `git commit -m "feat: add new content"`
+5. リモートにプッシュ: `git push origin feature/new-content-description`
+6. Pull Requestを作成
 
-### Commit Message Standards
+### コミットメッセージ基準
 
 ```
-<type>: <description>
+<タイプ>: <説明>
 
-<optional body>
+<任意のボディ>
 ```
 
-Type types:
-- `feat`: New feature
-- `fix`: Bug fix
-- `docs`: Documentation update
-- `test`: Test update
-- `refactor`: Refactoring
+タイプの種類：
+- `feat`: 新機能
+- `fix`: バグ修正
+- `docs`: ドキュメント更新
+- `test`: テスト更新
+- `refactor`: リファクタリング
 
-## Quality Check
+## 品質チェック
 
-Before submitting, please check:
+送信する前に、以下を確認してください：
 
-- [ ] Markdown format is correct
-- [ ] All links are valid
-- [ ] Code examples are runnable
-- [ ] Exercises have verification methods
-- [ ] No typos in Chinese
-- [ ] Meets format standards
+- [ ] Markdown形式が正しい
+- [ ] すべてのリンクが有効
+- [ ] コード例が実行可能
+- [ ] 演習に検証方法がある
+- [ ] 日本語のタイプミスがない
+- [ ] 形式基準を満たしている
 
-## Issue Feedback
+## イシューのフィードバック
 
-If you find problems or have suggestions, please create an Issue containing:
-- Problem description
-- File location
-- Suggested improvement method
+問題を発見したり提案がある場合は、以下を含むイシューを作成してください：
+- 問題の説明
+- ファイルの場所
+- 推奨される改善方法
 
 ---
 
-Thank you for your contribution!
+ご寄稿ありがとうございます！

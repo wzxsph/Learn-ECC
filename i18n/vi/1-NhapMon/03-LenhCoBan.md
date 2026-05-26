@@ -17,7 +17,7 @@ Sử dụng trực tiếp:
 | `/ecc:skill-create` | Tạo Skill từ lịch sử Git | `/ecc:skill-create` |
 | `/ecc:sessions` | Quản lý lịch sử session | `/ecc:sessions` |
 
-Lưu ý: Phiên bản cài thủ công có thể dùng lệnh không có tiền tố (như `[/plan](../TaiLieuThamKhao/commands/01-核心工作流.md)`), phiên bản plugin dùng tiền tố `/ecc:`.
+Lưu ý: Phiên bản cài thủ công có thể dùng lệnh không có tiền tố (như `[/plan](../TaiLieuThamKhao/commands/01-Workflow-Co-Ban.md)`), phiên bản plugin dùng tiền tố `/ecc:`.
 
 ### 2. Skills (Bề mặt workflow chính)
 

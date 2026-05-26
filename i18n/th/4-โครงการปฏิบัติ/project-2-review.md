@@ -33,7 +33,7 @@
 - **code-reviewer** - 主审查 Agent
 - **security-reviewer** - 安全专项
 - **tdd-guide** - 测试质量评估
-> 参考: [/code-review](../เอกสารอ้างอิง/commands/01-核心工作流.md) | [code-reviewer Agent](../เอกสารอ้างอิง/agents/1.%20代码审查类.md)
+> 参考: [/code-review](../เอกสารอ้างอิง/commands/01-Workflowหลัก.md) | [code-reviewer Agent](../เอกสารอ้างอิง/agents/1.%20ตรวจสอบภาษา.md)
 
 ### 输出格式
 ```json

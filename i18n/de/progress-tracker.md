@@ -8,10 +8,10 @@ Verwende diese Vorlage, um deinen ECC-Lernfortschritt zu verfolgen. Markiere nac
 
 ### Kursinhalt
 
-- [ ] 01-ECC简介
-- [ ] 02-安装配置
-- [ ] 03-基础命令
-- [ ] 04-第一个任务
+- [ ] 01-ECC-Einführung
+- [ ] 02-Installation
+- [ ] 03-Grundbefehle
+- [ ] 04-Erste-Aufgabe
 
 ### Übungen
 
@@ -126,7 +126,7 @@ Verwende diese Vorlage, um deinen ECC-Lernfortschritt zu verfolgen. Markiere nac
 
 ## Phase 5: Schnellreferenz
 
-Der Schnellreferenz-Inhalt wird kontinuierlich verwendet,无需标记完成.
+Der Schnellreferenz-Inhalt wird kontinuierlich verwendet, markiere nach bedarf.
 
 - [ ] Befehls-Cheatsheet sicher verwenden
 - [ ] Agent-Cheatsheet sicher verwenden
@@ -139,11 +139,11 @@ Der Schnellreferenz-Inhalt wird kontinuierlich verwendet,无需标记完成.
 
 | Phase | Status | Abschlussdatum |
 |-------|--------|----------|
-| Phase 1: Einsteiger | ⬜Nicht abgeschlossen / ✅Abgeschlossen | |
-| Phase 2: Kernfähigkeiten | ⬜Nicht abgeschlossen / ✅Abgeschlossen | |
-| Phase 3: Expertenweg | ⬜Nicht abgeschlossen / ✅Abgeschlossen | |
-| Phase 4: Praktische Projekte | ⬜Nicht abgeschlossen / ✅Abgeschlossen | |
-| Phase 5: Schnellreferenz | ⬜Nicht abgeschlossen / ✅Abgeschlossen | |
+| Phase 1: Einsteiger | Nicht abgeschlossen / Abgeschlossen | |
+| Phase 2: Kernfähigkeiten | Nicht abgeschlossen / Abgeschlossen | |
+| Phase 3: Expertenweg | Nicht abgeschlossen / Abgeschlossen | |
+| Phase 4: Praktische Projekte | Nicht abgeschlossen / Abgeschlossen | |
+| Phase 5: Schnellreferenz | Nicht abgeschlossen / Abgeschlossen | |
 
 ### Abgeschlossene Module
 

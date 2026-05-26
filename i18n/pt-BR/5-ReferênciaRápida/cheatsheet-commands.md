@@ -6,11 +6,11 @@
 |------|------|----------|
 | `/tdd` | 测试驱动开发工作流 | 新功能开发 |
 | `/plan` | 实现计划生成 | 复杂任务规划 |
-| `/code-review` | [代码审查](../DocumentosDeReferência/commands/01-核心工作流.md) | 代码质量检查 |
-| `/build-fix` | [构建修复](../DocumentosDeReferência/commands/04-构建修复.md) | 构建失败时 |
+| `/code-review` | [代码审查](../DocumentosDeReferência/commands/01-Workflow-Principal.md) | 代码质量检查 |
+| `/build-fix` | [构建修复](../DocumentosDeReferência/commands/04-Reparo-de-Build.md) | 构建失败时 |
 | `/learn` | 从会话提取模式 | 知识沉淀 |
 | `/skill-create` | 从 Git 生成 Skill | 经验复用 |
-| `/test` | [测试相关命令](../DocumentosDeReferência/commands/02-测试相关.md) | 测试相关 |
+| `/test` | [测试相关命令](../DocumentosDeReferência/commands/02-Testes.md) | 测试相关 |
 
 ## 脚本命令
 
@@ -18,7 +18,7 @@
 |------|------|
 | `node scripts/hooks/run-with-flags.js` | 带标志位运行钩子 |
 | `node tests/run-all.js` | 运行全量测试 |
-| `node scripts/lib/utils.js` | 工具函数库 |
+| `node scripts/lib/utils.js` | Biblioteca-de-Funções-de-Utilitários |
 
 ## Agent 命令
 

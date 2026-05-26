@@ -268,6 +268,6 @@ Phát triển module xác thực người dùng mới, bao gồm các chức nă
 
 ## Học tập sâu
 
-- Đọc tài liệu Agent đầy đủ: [../../../TaiLieuThamKhao/agents/1. 代码审查类.md](../../../TaiLieuThamKhao/agents/1. 代码审查类.md)
+- Đọc tài liệu Agent đầy đủ: [../../../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md](../../../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md)
 - Xem danh sách tất cả Agent khả dụng
 - Học cách tùy chỉnh hành vi Agent

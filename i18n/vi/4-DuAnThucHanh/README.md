@@ -1,44 +1,43 @@
-# 第四阶段：实战项目
+# Giai đoạn 4: Dự án thực hành
 
-通过真实项目巩固所学知识。
+Củng cố kiến thức đã học thông qua các dự án thực tế.
 
-## 学习目标
+## Mục tiêu học tập
 
-完成本阶段后，你将能够：
-- 从零构建完整的 CLI 工具
-- 实现自动化代码审查流程
-- 设计端到端自动化工作流
-- 构建多 Agent 协作平台
+Sau khi hoàn thành giai đoạn này, bạn sẽ có khả năng:
+- Xây dựng từ đầu một công cụ CLI hoàn chỉnh
+- Thực hiện quy trình review code tự động
+- Thiết kế workflow tự động đầu cuối
+- Xây dựng nền tảng hợp tác đa Agent
 
-## 预计时长
+## Thời gian ước tính
 
-10-15 小时
+10-15 giờ
 
-## 前提要求
+## Yêu cầu tiên quyết
 
-- 完成 [第二阶段：核心能力](../2-KienThucCoBan/README.md)
-- 掌握至少一种脚本语言
-- 有项目开发经验
+- Hoàn thành [Giai đoạn 2: Khả năng cốt lõi](../2-KienThucCoBan/README.md)
+- Nắm vững ít nhất một ngôn ngữ script
+- Có kinh nghiệm phát triển dự án
 
-## 学习内容
+## Nội dung học
 
-| 项目 | 内容 | 难度 |
+| Dự án | Nội dung | Độ khó |
 |------|------|------|
-| [项目一：CLI工具](./project-1-cli.md) | 构建命令行工具 | 基础 |
-| [项目二：代码审查](./project-2-review.md) | 自动化审查流程 | 进阶 |
-| [项目三：自动化工作流](./project-3-auto.md) | 端到端自动化 | 进阶 |
-| [项目四：Agent系统](./project-4-agent.md) | 多 Agent 协作平台 | 高级 |
+| [Dự án 1: Công cụ CLI](./project-1-cli.md) | Xây dựng công cụ dòng lệnh | Cơ bản |
+| [Dự án 2: Review code](./project-2-review.md) | Quy trình review tự động | Nâng cao |
+| [Dự án 3: Workflow tự động](./project-3-auto.md) | Tự động hóa đầu cuối | Nâng cao |
+| [Dự án 4: Hệ thống Agent](./project-4-agent.md) | Nền tảng hợp tác đa Agent | Chuyên gia |
 
-## 建议
+## Đề xuất
 
-选择一个感兴趣的项目深入完成，而非蜻蜓点水式地做所有项目。
-建议按顺序完成：CLI工具 → 代码审查 → 工作流自动化 → Agent系统（难度递增）
+Chọn một dự án quan tâm để hoàn thành sâu, thay vì làm hết tất cả một cách qua loa.
+Đề xuất hoàn thành theo thứ tự: Công cụ CLI → Review code → Workflow tự động → Hệ thống Agent (độ khó tăng dần)
 
-## 接下来
+## Bước tiếp theo
 
-完成实战项目后，进入 [第五阶段：快速参考](../5-TraCuuNhanh/README.md) 查阅常用命令和模式。
+Sau khi hoàn thành các dự án thực hành, vào [Giai đoạn 5: Tra cứu nhanh](../5-TraCuuNhanh/README.md) để tra cứu các lệnh và mẫu thường dùng.
 
 ---
 
-[返回主目录](../README.md)
-
+[Quay lại thư mục chính](../README.md)

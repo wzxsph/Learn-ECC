@@ -1,190 +1,190 @@
-# Learn-ECC Lernfortschritt-Tracker
+# ติดตามความก้าวหน้าการเรียน Learn-ECC
 
-Verwende diese Vorlage, um deinen ECC-Lernfortschritt zu verfolgen. Markiere nach dem Abschluss jedes Moduls das entsprechende Kontrollkästchen.
+ใช้เทมเพลตนี้เพื่อติดตามความก้าวหน้าการเรียน ECC ของคุณ ทำเครื่องหมายที่ checkbox ที่เกี่ยวข้องหลังจากเรียนแต่ละโมดูลเสร็จ
 
 ---
 
-## Phase 1: Einsteiger (1-2 Tage)
+## ขั้นตอนที่ 1: เริ่มต้น (1-2 วัน)
 
-### Kursinhalt
+### เนื้อหาหลักสูตร
 
 - [ ] 01-แนะนำECC
 - [ ] 02-การติดตั้ง
 - [ ] 01-คำสั่งพื้นฐาน
 - [ ] 04-งานแรก
 
-### Übungen
+### แบบฝึกหัด
 
-- [ ] Einsteiger-Übungen
+- [ ] แบบฝึกหัดเริ่มต้น
 
-**Phase 1 Abschlussdatum**: ____________
+**วันที่เรียนจบขั้นตอนที่ 1**: ____________
 
 ---
 
-## Phase 2: Kernfähigkeiten (3-5 Tage)
+## ขั้นตอนที่ 2: ความสามารถหลัก (3-5 วัน)
 
-### 01-Befehlssystem beherrschen
+### 01-เชี่ยวชาญระบบคำสั่ง
 
-- [ ] Befehlskategorien und Verwendung
-- [ ] Kernbefehle im Detail
-- [ ] Befehlskombinationen
-- [ ] Übungen
+- [ ] การจัดประเภทและการใช้งานคำสั่ง
+- [ ] คำอธิบายคำสั่งหลักโดยละเอียด
+- [ ] การรวมคำสั่ง
+- [ ] แบบฝึกหัด
 
-### 02-Agent-Zusammenarbeit
+### 02-การทำงานร่วมกันของ Agent
 
-- [ ] Agent-Einführung
-- [ ] Agent-Kategorien
-- [ ] Kollaborationsmodi
-- [ ] Übungen
+- [ ] บทนำ Agent
+- [ ] การจัดประเภท Agent
+- [ ] โหมดการทำงานร่วมกัน
+- [ ] แบบฝึกหัด
 
-### 03-Hooks-Anpassung
+### 03-กำหนดเอง Hooks
 
-- [ ] Hooks-System-Übersicht
+- [ ] ภาพรวมระบบ Hook
 - [ ] PreToolUse Hooks
 - [ ] PostToolUse Hooks
 - [ ] Stop Hooks
-- [ ] Übungen
+- [ ] แบบฝึกหัด
 
-### 04-Skills-Entwicklung
+### 04-พัฒนา Skills
 
-- [ ] Skills-System-Übersicht
-- [ ] Neues Skill erstellen
-- [ ] Skill-Struktur
-- [ ] Übungen
+- [ ] ภาพรวมระบบ Skills
+- [ ] สร้าง Skill ใหม่
+- [ ] โครงสร้าง Skill
+- [ ] แบบฝึกหัด
 
-### 05-Rules-Erstellung
+### 05-เขียน Rules
 
-- [ ] Rules-System-Übersicht
-- [ ] Regelschreibstandards
-- [ ] Regelprioritäten
-- [ ] Übungen
+- [ ] ภาพรวมระบบ Rules
+- [ ] มาตรฐานการเขียน rules
+- [ ] ลำดับความสำคัญของ rules
+- [ ] แบบฝึกหัด
 
-**Phase 2 Abschlussdatum**: ____________
-
----
-
-## Phase 3: Expertenweg (3-5 Tage)
-
-### 01-MCP-Entwicklung
-
-- [ ] MCP-Übersicht
-- [ ] MCP-Server-Konfiguration
-- [ ] Benutzerdefinierte MCP-Tools
-- [ ] Übungen
-
-### 02-Autonome Agents
-
-- [ ] Autonome Agent-Konzepte
-- [ ] Agent-Design-Patterns
-- [ ] Agent-Orchestrierung
-- [ ] Übungen
-
-### 03-Fortgeschrittene Patterns
-
-- [ ] Fortgeschrittene Architektur-Patterns
-- [ ] Performance-Optimierung
-- [ ] Sicherheitsmodi
-- [ ] Übungen
-
-**Phase 3 Abschlussdatum**: ____________
+**วันที่เรียนจบขั้นตอนที่ 2**: ____________
 
 ---
 
-## Phase 4: Praktische Projekte (5-7 Tage)
+## ขั้นตอนที่ 3: เส้นทางผู้เชี่ยวชาญ (3-5 วัน)
 
-### Projekt 1: CLI-Tool-Entwicklung
+### 01-พัฒนา MCP
 
-- [ ] Projektplanung
-- [ ] Befehlsentwicklung
-- [ ] Code-Statistik
-- [ ] Tests und Verifizierung
+- [ ] ภาพรวม MCP
+- [ ] การกำหนดค่า MCP server
+- [ ] เครื่องมือ MCP กำหนดเอง
+- [ ] แบบฝึกหัด
 
-### Projekt 2: Automatisierte Code-Review-Pipeline
+### 02-Agent อัตโนมัติ
 
-- [ ] PR-Review-Integration
-- [ ] CI/CD-Konfiguration
-- [ ] Automatische Korrektur
-- [ ] Tests und Verifizierung
+- [ ] แนวคิด Agent อัตโนมัติ
+- [ ] Pattern การออกแบบ Agent
+- [ ] การประสานงาน Agent
+- [ ] แบบฝึกหัด
 
-### Projekt 3: Workflow-Automatisierung
+### 03-Pattern ขั้นสูง
 
-- [ ] Hook-Konfiguration
-- [ ] Geplante Aufgaben
-- [ ] Benachrichtigungssystem
-- [ ] Tests und Verifizierung
+- [ ] Pattern สถาปัตยกรรมขั้นสูง
+- [ ] การเพิ่มประสิทธิภาพ
+- [ ] Pattern ความปลอดภัย
+- [ ] แบบฝึกหัด
 
-### Projekt 4: Benutzerdefinierte Agent-Entwicklung
-
-- [ ] Agent-Design
-- [ ] MCP-Tool-Entwicklung
-- [ ] Wissensintegration
-- [ ] Tests und Verifizierung
-
-**Phase 4 Abschlussdatum**: ____________
+**วันที่เรียนจบขั้นตอนที่ 3**: ____________
 
 ---
 
-## Phase 5: Schnellreferenz
+## ขั้นตอนที่ 4: โครงการปฏิบัติ (5-7 วัน)
 
-Der Schnellreferenz-Inhalt wird kontinuierlich verwendet,无需标记完成.
+### โครงการ 1: พัฒนาเครื่องมือ CLI
 
-- [ ] Befehls-Cheatsheet sicher verwenden
-- [ ] Agent-Cheatsheet sicher verwenden
+- [ ] การวางแผนโครงการ
+- [ ] การพัฒนาคำสั่ง
+- [ ] สถิติโค้ด
+- [ ] การทดสอบและการตรวจสอบ
 
----
+### โครงการ 2: สายการ review code อัตโนมัติ
 
-## Fortschrittsstatistik
+- [ ] การบูรณาการ review PR
+- [ ] การกำหนดค่า CI/CD
+- [ ] การแก้ไขข้อผิดพลาดอัตโนมัติ
+- [ ] การทดสอบและการตรวจสอบ
 
-### Abschlussstatus
+### โครงการ 3: การทำให้ workflow อัตโนมัติ
 
-| Phase | Status | Abschlussdatum |
-|-------|--------|----------|
-| Phase 1: Einsteiger | ⬜Nicht abgeschlossen / ✅Abgeschlossen | |
-| Phase 2: Kernfähigkeiten | ⬜Nicht abgeschlossen / ✅Abgeschlossen | |
-| Phase 3: Expertenweg | ⬜Nicht abgeschlossen / ✅Abgeschlossen | |
-| Phase 4: Praktische Projekte | ⬜Nicht abgeschlossen / ✅Abgeschlossen | |
-| Phase 5: Schnellreferenz | ⬜Nicht abgeschlossen / ✅Abgeschlossen | |
+- [ ] การกำหนดค่า Hook
+- [ ] ภารกิจที่กำหนดเวลา
+- [ ] ระบบการแจ้งเตือน
+- [ ] การทดสอบและการตรวจสอบ
 
-### Abgeschlossene Module
+### โครงการ 4: พัฒนา Agent กำหนดเอง
 
-- Gesamtzahl Module: 24
-- Abgeschlossen: ___/24
-- Prozentsatz: ___%
+- [ ] การออกแบบ Agent
+- [ ] การพัฒนาเครื่องมือ MCP
+- [ ] การบูรณาการความรู้
+- [ ] การทดสอบและการตรวจสอบ
 
-### Zeitstatistik
-
-- Startdatum: ____________
-- Geschätzte verbleibende Zeit: ___ Tage
-- Tatsächliche Zeit: ___ Tage
-
----
-
-## Lernnotizen
-
-### Diese Woche gelernt
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-### Probleme und Lösungen
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-### Nächste Woche geplant
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-_____________________________________________________________________
+**วันที่เรียนจบขั้นตอนที่ 4**: ____________
 
 ---
 
-*Verwendungshinweis: Fortschritt wöchentlich aktualisieren, in persönlichen Notizen speichern*
+## ขั้นตอนที่ 5: อ้างอิงเร็ว
+
+เนื้อหาอ้างอิงเร็วถูกใช้อย่างต่อเนื่อง ไม่ต้องทำเครื่องหมายว่าเสร็จ
+
+- [ ] ใช้ตารางคำสั่ง tra cứuได้อย่างเชี่ยวชาญ
+- [ ] ใช้ตาราง Agent tra cứuได้อย่างเชี่ยวชาญ
+
+---
+
+## สถิติความก้าวหน้า
+
+### สถานะการเรียนจบ
+
+| ขั้นตอน | สถานะ | วันที่เรียนจบ |
+|------|------|------|
+| ขั้นตอนที่ 1: เริ่มต้น | ⬜ยังไม่เรียนจบ / ✅เรียนจบแล้ว | |
+| ขั้นตอนที่ 2: ความสามารถหลัก | ⬜ยังไม่เรียนจบ / ✅เรียนจบแล้ว | |
+| ขั้นตอนที่ 3: เส้นทางผู้เชี่ยวชาญ | ⬜ยังไม่เรียนจบ / ✅เรียนจบแล้ว | |
+| ขั้นตอนที่ 4: โครงการปฏิบัติ | ⬜ยังไม่เรียนจบ / ✅เรียนจบแล้ว | |
+| ขั้นตอนที่ 5: อ้างอิงเร็ว | ⬜ยังไม่เรียนจบ / ✅เรียนจบแล้ว | |
+
+### โมดูลที่เรียนจบ
+
+- จำนวนโมดูลทั้งหมด: 24
+- เรียนจบแล้ว: ___/24
+- เปอร์เซ็นต์: ___%
+
+### สถิติเวลา
+
+- วันที่เริ่ม: ____________
+- เวลาที่เหลือโดยประมาณ: ___ วัน
+- เวลาที่ใช้จริง: ___ วัน
+
+---
+
+## บันทึกการเรียน
+
+### เนื้อหาที่เรียนสัปดาห์นี้
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+### ปัญหาและวิธีแก้ไข
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+### แผนสัปดาห์หน้า
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+---
+
+*คำแนะนำในการใช้: อัปเดตความก้าวหน้าทุกสัปดาห์ บันทึกในบันทึกส่วนตัว*

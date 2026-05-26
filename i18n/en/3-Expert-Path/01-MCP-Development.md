@@ -6,7 +6,7 @@ Learn Model Context Protocol extension development.
 
 MCP (Model Context Protocol) is a protocol that enables Claude to integrate with external tools and services. Through MCP, you can extend Claude's capabilities, connecting to databases, APIs, other AI models, and more.
 
-> Reference: [MCP Configuration Format](../Reference-Docs/mcp/MCP配置格式.md)
+> Reference: [MCP Configuration Format](../Reference-Docs/mcp/MCPConfiguration-Format.md)
 
 ## Learning Objectives
 

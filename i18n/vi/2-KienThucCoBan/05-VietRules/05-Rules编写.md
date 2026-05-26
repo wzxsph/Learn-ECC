@@ -4,7 +4,7 @@ Học cách viết các quy tắc phát triển tùy chỉnh.
 
 ## Tổng quan
 
-ECC [Rules](../../TaiLieuThamKhao/rules/代码风格.md) là bộ quy tắc phát triển bắt buộc, bao gồm code style, test, bảo mật, Git workflow, điều phối agent và tối ưu performance. Các quy tắc này đảm bảo chất lượng và tính nhất quán của code, thực thi thông qua kiểm tra và review tự động.
+ECC [Rules](../../TaiLieuThamKhao/rules/Phong-Cach-Lap-Trinh.md) là bộ quy tắc phát triển bắt buộc, bao gồm code style, test, bảo mật, Git workflow, điều phối agent và tối ưu performance. Các quy tắc này đảm bảo chất lượng và tính nhất quán của code, thực thi thông qua kiểm tra và review tự động.
 
 ---
 

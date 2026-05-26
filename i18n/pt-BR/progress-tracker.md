@@ -1,17 +1,17 @@
 # Learn-ECC Rastreador de Progresso de Aprendizado
 
-Use este modelo para acompanhar seu progresso de aprendizado ECC. After completing each module, mark the corresponding checkbox.
+Use este modelo para acompanhar seu progresso de aprendizado do ECC. Marque com um check quando completar cada módulo.
 
 ---
 
-## Fase 1: Iniciante (1-2 dias)
+## Fase 1: Introdução (1-2 dias)
 
 ### Conteúdo do Curso
 
-- [ ] 01-ECC简介
-- [ ] 02-安装配置
-- [ ] 03-基础命令
-- [ ] 04-第一个任务
+- [ ] 01-Introdução ao ECC
+- [ ] 02-Instalação
+- [ ] 03-Comandos Básicos
+- [ ] 04-Primeira Tarefa
 
 ### Exercícios
 
@@ -25,39 +25,39 @@ Use este modelo para acompanhar seu progresso de aprendizado ECC. After completi
 
 ### 01-Domínio do Sistema de Comandos
 
-- [ ] Categorias de comandos e uso
-- [ ] Comandos essenciais detalhados
-- [ ] Uso combinado de comandos
-- [ ] Exercícios
+- [ ] Classificação e uso de comandos
+- [ ] Explicação detalhada dos comandos principais
+- [ ] Uso de combinação de comandos
+- [ ] Exercício
 
 ### 02-Colaboração de Agents
 
 - [ ] Introdução a Agents
-- [ ] Categorias de Agents
-- [ ] Modos de colaboração
-- [ ] Exercícios
+- [ ] Classificação de Agents
+- [ ] Padrões de colaboração
+- [ ] Exercício
 
 ### 03-Customização de Hooks
 
 - [ ] Visão geral do sistema de Hooks
-- [ ] PreToolUse Hooks
-- [ ] PostToolUse Hooks
-- [ ] Stop Hooks
-- [ ] Exercícios
+- [ ] Hooks PreToolUse
+- [ ] Hooks PostToolUse
+- [ ] Hooks Stop
+- [ ] Exercício
 
 ### 04-Desenvolvimento de Skills
 
 - [ ] Visão geral do sistema de Skills
 - [ ] Criar novo Skill
-- [ ] Estrutura de Skill
-- [ ] Exercícios
+- [ ] Estrutura de Skills
+- [ ] Exercício
 
 ### 05-Criação de Rules
 
 - [ ] Visão geral do sistema de Rules
 - [ ] Padrões de escrita de regras
-- [ ] Prioridades de regras
-- [ ] Exercícios
+- [ ] Prioridade de regras
+- [ ] Exercício
 
 **Data de Conclusão da Fase 2**: ____________
 
@@ -70,21 +70,21 @@ Use este modelo para acompanhar seu progresso de aprendizado ECC. After completi
 - [ ] Visão geral de MCP
 - [ ] Configuração de servidor MCP
 - [ ] Ferramentas MCP personalizadas
-- [ ] Exercícios
+- [ ] Exercício
 
 ### 02-Agents Autônomos
 
-- [ ] Conceitos de agente autônomo
+- [ ] Conceitos de agents autônomos
 - [ ] Padrões de design de Agent
-- [ ] Orquestração de Agents
-- [ ] Exercícios
+- [ ] Orquestração de agents
+- [ ] Exercício
 
 ### 03-Padrões Avançados
 
-- [ ] Padrões de arquitetura avançados
+- [ ] Padrões arquitetônicos avançados
 - [ ] Otimização de performance
-- [ ] Modos de segurança
-- [ ] Exercícios
+- [ ] Padrões de segurança
+- [ ] Exercício
 
 **Data de Conclusão da Fase 3**: ____________
 
@@ -97,28 +97,28 @@ Use este modelo para acompanhar seu progresso de aprendizado ECC. After completi
 - [ ] Planejamento de projeto
 - [ ] Desenvolvimento de comandos
 - [ ] Estatísticas de código
-- [ ] Testes e verificação
+- [ ] Teste e verificação
 
 ### Projeto 2: Pipeline Automatizado de Code Review
 
-- [ ] Integração de review de PR
+- [ ] Integração de revisão de PR
 - [ ] Configuração de CI/CD
-- [ ] Correção automática
-- [ ] Testes e verificação
+- [ ] Reparo automático
+- [ ] Teste e verificação
 
 ### Projeto 3: Automação de Workflow
 
 - [ ] Configuração de Hooks
 - [ ] Tarefas agendadas
 - [ ] Sistema de notificações
-- [ ] Testes e verificação
+- [ ] Teste e verificação
 
 ### Projeto 4: Desenvolvimento de Agent Personalizado
 
 - [ ] Design de Agent
 - [ ] Desenvolvimento de ferramentas MCP
 - [ ] Integração de conhecimento
-- [ ] Testes e verificação
+- [ ] Teste e verificação
 
 **Data de Conclusão da Fase 4**: ____________
 
@@ -126,10 +126,10 @@ Use este modelo para acompanhar seu progresso de aprendizado ECC. After completi
 
 ## Fase 5: Referência Rápida
 
-O conteúdo de referência rápida é usado continuamente,无需标记完成.
+O conteúdo de referência rápida é usado continuamente, não é necessário marcar como concluído.
 
-- [ ] Uso proficiente do cheatsheet de comandos
-- [ ] Uso proficiente do cheatsheet de agents
+- [ ] Domínio no uso do cheatsheet de comandos
+- [ ] Domínio no uso do cheatsheet de agents
 
 ---
 
@@ -138,24 +138,24 @@ O conteúdo de referência rápida é usado continuamente,无需标记完成.
 ### Status de Conclusão
 
 | Fase | Status | Data de Conclusão |
-|-------|--------|----------|
-| Fase 1: Iniciante | ⬜Não concluído / ✅Concluído | |
-| Fase 2: Habilidades Essenciais | ⬜Não concluído / ✅Concluído | |
-| Fase 3: Caminho do Especialista | ⬜Não concluído / ✅Concluído | |
-| Fase 4: Projetos Práticos | ⬜Não concluído / ✅Concluído | |
-| Fase 5: Referência Rápida | ⬜Não concluído / ✅Concluído | |
+|------|--------|-------------------|
+| Fase 1: Introdução | ⬜Não Concluído / ✅Concluído | |
+| Fase 2: Habilidades Essenciais | ⬜Não Concluído / ✅Concluído | |
+| Fase 3: Caminho do Especialista | ⬜Não Concluído / ✅Concluído | |
+| Fase 4: Projetos Práticos | ⬜Não Concluído / ✅Concluído | |
+| Fase 5: Referência Rápida | ⬜Não Concluído / ✅Concluído | |
 
 ### Número de Módulos Concluídos
 
-- Total de módulos: 24
+- Número total de módulos: 24
 - Concluídos: ___/24
-- Porcentagem: ___%
+- Percentual de conclusão: ___%
 
 ### Estatísticas de Tempo
 
 - Data de início: ____________
-- Tempo restante estimado: ___ dias
-- Tempo real: ___ dias
+- Tempo estimado restante: ___ dias
+- Tempo decorrido: ___ dias
 
 ---
 
@@ -177,7 +177,7 @@ _____________________________________________________________________
 
 _____________________________________________________________________
 
-### Plano para Próxima Semana
+### Plano de Aprendizado da Próxima Semana
 
 _____________________________________________________________________
 
@@ -187,4 +187,4 @@ _____________________________________________________________________
 
 ---
 
-*Instruções de uso: Atualize o progresso semanalmente, salve em notas pessoais*
+*Instruções de uso: Atualize o progresso uma vez por semana, salve em suas anotações pessoais*

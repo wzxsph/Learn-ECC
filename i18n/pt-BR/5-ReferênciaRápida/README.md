@@ -1,28 +1,28 @@
-# 第五阶段：快速参考
+# Fase 5: Referência Rápida
 
-常用命令、Agent 和工作流的速查手册。
+Manual de consulta rápida para comandos comuns, Agents e workflows.
 
-## 内容
+## Conteúdo
 
-| 速查表 | 内容 |
-|--------|------|
-| [命令速查](./cheatsheet-commands.md) | 斜杠命令、脚本命令、参数说明 |
-| [Agent速查](./cheatsheet-agents.md) | 内置 Agent 列表和能力 |
-| [工作流速查](./cheatsheet-workflows.md) | 常用工作流模板 |
+| Referência Rápida | Conteúdo |
+|------------------|----------|
+| [Cheatsheet de Comandos](./cheatsheet-commands.md) | Comandos com barra, comandos de script, explicações de parâmetros |
+| [Cheatsheet de Agents](./cheatsheet-agents.md) | Lista de Agents integrados e suas capacidades |
+| [Cheatsheet de Workflows](./cheatsheet-workflows.md) | Templates de workflow comuns |
 
-## 使用建议
+## Sugestões de Uso
 
-- 收藏常用命令到笔记
-- 打印 Agent 列表作为参考
-- 保存工作流模板到收藏夹
+- Salve comandos comuns nas suas notas
+- Imprima a lista de Agents como referência
+- Salve templates de workflow nos favoritos
 
-## 下一步
+## Próximos Passos
 
-完成学习后，你可以：
-- 回到 [第一阶段](../1-Introdução/README.md) 复习基础
-- 开始 [实战项目](../4-ProjetosPráticos/README.md)
-- 贡献你的 Skill 和规则到社区
+Após completar o aprendizado, você pode:
+- Retornar à [Fase 1](../1-Introdução/README.md) para revisar o básico
+- Começar [Projetos Práticos](../4-ProjetosPráticos/README.md)
+- Contribuir com seus Skills e regras para a comunidade
 
 ---
 
-[返回主目录](../README.md)
+[Retornar ao diretório principal](../README.md)

@@ -1,190 +1,190 @@
-# Learn-ECC Learning Progress Tracker
+# Learn-ECC 学習進捗トラッカー
 
-Use this template to track your ECC learning progress. Check the box at the corresponding location after completing each module.
-
----
-
-## Stage 1: Introduction (1-2 days)
-
-### Course Content
-
-- [ ] 01-ECC Introduction
-- [ ] 02-Installation & Configuration
-- [ ] 03-Basic Commands
-- [ ] 04-First Task
-
-### Exercises
-
-- [ ] Introduction Exercises
-
-**Stage 1 Completion Date**: ____________
+このテンプレートを使用して、ECC学習の進捗を追跡します。各モジュールを完了したら、対応する場所でチェックボックスをオンにしてください。
 
 ---
 
-## Stage 2: Core Skills (3-5 days)
+## ステージ 1: 入門（1-2日）
 
-### 01-Command System Mastery
+### コース内容
 
-- [ ] Command classification and usage
-- [ ] Core commands detailed explanation
-- [ ] Command combination usage
-- [ ] Exercises
+- [ ] 01-ECC紹介
+- [ ] 02-インストールと設定
+- [ ] 03-基本コマンド
+- [ ] 04-最初のタスク
 
-### 02-Agent Collaboration
+### 演習
 
-- [ ] Agent introduction
-- [ ] Agent classification
-- [ ] Collaboration patterns
-- [ ] Exercises
+- [ ] 入門演習
 
-### 03-Hooks Customization
+**ステージ1完了日**: ____________
 
-- [ ] Hook system overview
+---
+
+## ステージ 2: コアスキル（3-5日）
+
+### 01-コマンドシステム掌握
+
+- [ ] コマンド分類と使用法
+- [ ] コアコマンドの詳細解説
+- [ ] コマンド組み合わせの使用
+- [ ] 演習
+
+### 02-エージェント協力
+
+- [ ] エージェント紹介
+- [ ] エージェント分類
+- [ ] 協力パターン
+- [ ] 演習
+
+### 03-Hooksカスタマイズ
+
+- [ ] Hooksシステム概要
 - [ ] PreToolUse Hooks
 - [ ] PostToolUse Hooks
 - [ ] Stop Hooks
-- [ ] Exercises
+- [ ] 演習
 
-### 04-Skills Development
+### 04-Skills開発
 
-- [ ] Skills system overview
-- [ ] Create new Skill
-- [ ] Skill structure
-- [ ] Exercises
+- [ ] Skillsシステム概要
+- [ ] 新規Skillの作成
+- [ ] Skill構造
+- [ ] 演習
 
-### 05-Rules Writing
+### 05-Rules作成
 
-- [ ] Rules system overview
-- [ ] Rule writing standards
-- [ ] Rule priority
-- [ ] Exercises
+- [ ] Rulesシステム概要
+- [ ] Rule作成基準
+- [ ] Rule優先順位
+- [ ] 演習
 
-**Stage 2 Completion Date**: ____________
-
----
-
-## Stage 3: Expert Path (3-5 days)
-
-### 01-MCP Development
-
-- [ ] MCP overview
-- [ ] MCP server configuration
-- [ ] Custom MCP tools
-- [ ] Exercises
-
-### 02-Autonomous Agents
-
-- [ ] Autonomous agent concepts
-- [ ] Agent design patterns
-- [ ] Agent orchestration
-- [ ] Exercises
-
-### 03-Advanced Patterns
-
-- [ ] Advanced architecture patterns
-- [ ] Performance optimization
-- [ ] Security patterns
-- [ ] Exercises
-
-**Stage 3 Completion Date**: ____________
+**ステージ2完了日**: ____________
 
 ---
 
-## Stage 4: Practical Projects (5-7 days)
+## ステージ 3: 熟練への道（3-5日）
 
-### Project 1: CLI Tool Development
+### 01-MCP開発
 
-- [ ] Project planning
-- [ ] Command development
-- [ ] Code statistics
-- [ ] Testing & verification
+- [ ] MCP概要
+- [ ] MCPサーバー設定
+- [ ] カスタムMCPツール
+- [ ] 演習
 
-### Project 2: Automated Code Review Pipeline
+### 02-自律エージェント
 
-- [ ] PR review integration
-- [ ] CI/CD configuration
-- [ ] Auto fix
-- [ ] Testing & verification
+- [ ] 自律エージェントの概念
+- [ ] エージェントデザインパターン
+- [ ] エージェントオーケストレーション
+- [ ] 演習
 
-### Project 3: Workflow Automation
+### 03-高度なパターン
 
-- [ ] Hook configuration
-- [ ] Scheduled tasks
-- [ ] Notification system
-- [ ] Testing & verification
+- [ ] 高度なアーキテクチャパターン
+- [ ] パフォーマンス最適化
+- [ ] セキュリティパターン
+- [ ] 演習
 
-### Project 4: Custom Agent Development
-
-- [ ] Agent design
-- [ ] MCP tool development
-- [ ] Knowledge integration
-- [ ] Testing & verification
-
-**Stage 4 Completion Date**: ____________
+**ステージ3完了日**: ____________
 
 ---
 
-## Stage 5: Quick Reference
+## ステージ 4: 実践プロジェクト（5-7日）
 
-Quick reference content is for continuous use, no need to mark completion.
+### プロジェクト1: CLIツール開発
 
-- [ ] Command cheat sheet proficient use
-- [ ] Agent cheat sheet proficient use
+- [ ] プロジェクト計画
+- [ ] コマンド開発
+- [ ] コード統計
+- [ ] テストと検証
+
+### プロジェクト2: 自動化コードレビューパイプライン
+
+- [ ] PRレビュー統合
+- [ ] CI/CD設定
+- [ ] 自動修正
+- [ ] テストと検証
+
+### プロジェクト3: ワークフロー自動化
+
+- [ ] Hook設定
+- [ ] スケジュールタスク
+- [ ] 通知システム
+- [ ] テストと検証
+
+### プロジェクト4: カスタムエージェント開発
+
+- [ ] エージェント設計
+- [ ] MCPツール開発
+- [ ] ナレッジ統合
+- [ ] テストと検証
+
+**ステージ4完了日**: ____________
 
 ---
 
-## Progress Statistics
+## ステージ 5: クイックリファレンス
 
-### Completion Status
+クイックリファレンスコンテンツは継続的に使用するためのものであり、完了マークは不要です。
 
-| Stage | Status | Completion Date |
+- [ ] コマンド早見表熟练使用
+- [ ] エージェント早見表熟练使用
+
+---
+
+## 進捗統計
+
+### 完了状況
+
+| ステージ | 状況 | 完了日 |
 |-------|------|----------|
-| Stage 1: Introduction | ⬜Incomplete / ✅Completed | |
-| Stage 2: Core Skills | ⬜Incomplete / ✅Completed | |
-| Stage 3: Expert Path | ⬜Incomplete / ✅Completed | |
-| Stage 4: Practical Projects | ⬜Incomplete / ✅Completed | |
-| Stage 5: Quick Reference | ⬜Incomplete / ✅Completed | |
+| ステージ1: 入門 | ⬜未完了 / ✅完了 | |
+| ステージ2: コアスキル | ⬜未完了 / ✅完了 | |
+| ステージ3: 熟練への道 | ⬜未完了 / ✅完了 | |
+| ステージ4: 実践プロジェクト | ⬜未完了 / ✅完了 | |
+| ステージ5: クイックリファレンス | ⬜未完了 / ✅完了 | |
 
-### Completed Modules
+### 完了モジュール
 
-- Total modules: 24
-- Completed: ___/24
-- Completion percentage: ___%
+- 合計モジュール数: 24
+- 完了: ___/24
+- 完了率: ___%
 
-### Time Statistics
+### 時間統計
 
-- Start date: ____________
-- Estimated remaining time: ___ days
-- Actual time spent: ___ days
-
----
-
-## Learning Notes
-
-### This Week's Learning Content
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-### Problems Encountered and Solutions
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-### Next Week's Learning Plan
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-_____________________________________________________________________
+- 開始日: ____________
+- 予想残り時間: ___ 日
+- 実際の学習時間: ___ 日
 
 ---
 
-*Usage: Update progress once a week, save to personal notes*
+## 学習ノート
+
+### 今週の学習内容
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+### 発生した問題と解決策
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+### 来週の学習計画
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+---
+
+*使用方法：週一回進捗を更新し、個人ノートとして保存*

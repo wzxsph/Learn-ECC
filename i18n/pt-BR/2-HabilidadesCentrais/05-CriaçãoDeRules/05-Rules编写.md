@@ -4,7 +4,7 @@
 
 ## 概述
 
-ECC [Rules](../../DocumentosDeReferência/rules/代码风格.md) 是一套强制性开发规则，涵盖代码风格、测试、安全、Git 工作流、代理编排和性能优化等方面。这些规则确保代码质量和一致性，通过自动化检查和审查流程实施。
+ECC [Rules](../../DocumentosDeReferência/rules/Estilo-de-Código.md) 是一套强制性开发规则，涵盖Estilo-de-Código、测试、安全、Git 工作流、Orquestração-de-Agentes和Otimização-de-Desempenho等方面。这些规则确保代码质量和一致性，通过自动化检查和审查流程实施。
 
 ---
 
@@ -38,9 +38,9 @@ category: 分类
 
 ## 2. 规则类型详解
 
-### 2.1 代码风格规则
+### 2.1 Estilo-de-Código规则
 
-定义代码组织的核心原则和最佳实践。
+定义代码组织的核心原则和Melhores-Práticas。
 
 #### 核心要求
 
@@ -76,7 +76,7 @@ function update(user, name) {
 | 接口、类型、组件 | PascalCase | `UserProfile` |
 | 常量 | UPPER_SNAKE_CASE | `MAX_RETRY_COUNT` |
 
-### 2.2 测试规则
+### 2.2 Regras-de-Teste
 
 确保代码质量的强制性测试标准。
 
@@ -99,7 +99,7 @@ function update(user, name) {
 6. 验证覆盖率        - 确保达到 80%+
 ```
 
-### 2.3 安全规则
+### 2.3 Regras-de-Segurança
 
 强制性安全检查清单。
 
@@ -151,7 +151,7 @@ Git 提交规范和 PR 工作流。
 4. 包含测试计划和 TODOs
 5. 如是新分支，使用 `-u` 标志推送
 
-### 2.5 代理编排规则
+### 2.5 Orquestração-de-Agentes规则
 
 多 Agent 协作模式。
 
@@ -177,7 +177,7 @@ Git 提交规范和 PR 工作流。
 先 agent 1，然后 agent 2，然后 agent 3
 ```
 
-### 2.6 性能优化规则
+### 2.6 Otimização-de-Desempenho规则
 
 模型选择和上下文管理。
 
@@ -303,9 +303,9 @@ trigger:
 
 ---
 
-## 练习
+## Exercícios
 
-完成 [练习](./exercises/练习.md) 中的任务。
+完成 [练习](./exercises/Exercícios.md) 中的任务。
 
 ---
 

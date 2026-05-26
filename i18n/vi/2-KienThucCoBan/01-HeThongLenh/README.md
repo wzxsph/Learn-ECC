@@ -64,7 +64,7 @@ Tên lệnh
 
 ## Cách sử dụng tài liệu lệnh
 
-Tài liệu lệnh đầy đủ nằm ở：`../../TaiLieuThamKhao/commands/01-核心工作流.md`
+Tài liệu lệnh đầy đủ nằm ở：`../../TaiLieuThamKhao/commands/01-Workflow-Co-Ban.md`
 
 Tài liệu bao gồm:
 - Mô tả chi tiết của mỗi lệnh
@@ -85,4 +85,4 @@ Output của mỗi lệnh có thể truyền cho lệnh tiếp theo, hình thàn
 ## Bước tiếp theo
 
 - Học [bài tập](./exercises/练习.md)
-- Đọc [tài liệu đầy đủ về lệnh](../../TaiLieuThamKhao/commands/01-核心工作流.md)
+- Đọc [tài liệu đầy đủ về lệnh](../../TaiLieuThamKhao/commands/01-Workflow-Co-Ban.md)

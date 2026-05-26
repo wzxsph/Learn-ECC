@@ -33,7 +33,7 @@ Skills are ECC's primary workflow calling method:
 
 Calling method:
 ```
-Use [tdd-workflow](../Reference-Docs/skills/测试.md) skill
+Use [tdd-workflow](../Reference-Docs/skills/Testing.md) skill
 ```
 
 ### 3. Agent Commands
@@ -60,7 +60,7 @@ Calling method:
 ```
 /ecc:plan "Add user authentication feature"
 → planner creates implementation blueprint
-Use [tdd-workflow](../Reference-Docs/skills/测试.md) skill
+Use [tdd-workflow](../Reference-Docs/skills/Testing.md) skill
 → tdd-guide enforces writing tests first
 /ecc:code-review
 → code-reviewer checks code
@@ -69,7 +69,7 @@ Use [tdd-workflow](../Reference-Docs/skills/测试.md) skill
 ### Fix Bug
 
 ```
-Use [tdd-workflow](../Reference-Docs/skills/测试.md) skill
+Use [tdd-workflow](../Reference-Docs/skills/Testing.md) skill
 → tdd-guide: Write reproduction test
 → Implement fix, verify test passes
 /ecc:code-review
@@ -81,7 +81,7 @@ Use [tdd-workflow](../Reference-Docs/skills/测试.md) skill
 ```
 /ecc:security-scan
 → security-reviewer: OWASP Top 10 audit
-Use [e2e-testing](../Reference-Docs/skills/测试.md) skill
+Use [e2e-testing](../Reference-Docs/skills/Testing.md) skill
 → e2e-runner: Critical user flow testing
 /ecc:test-coverage
 → Verify 80%+ coverage

@@ -1,36 +1,36 @@
-# 第三阶段：Путь к мастерству
+# Etap 3: Put' k masterstvu
 
-本阶段探索 ECC 的高级特性和专家级Использование。
+Etot etap issleduet prodvinutye funktsii i ekspertnoe ispol'zovaniye ECC.
 
-## Цели обучения
+## Tseli obucheniya
 
-Завершить本阶段后，你将Способен：
-- 开发 MCP（模型上下文协议）扩展
-- 构建Автономные агенты系统
-- 应用高级Спроектировать模式和Лучшие практики
+Posle zaversheniya etapa vy smozhete:
+- Razrabatyvat' rasshireniya MCP (Model Context Protocol)
+- Stroit' avtonomnyye sistemy agentov
+- Primenyat' prodvinutye patterny proektirovaniya i luchshiye praktiki
 
-## 预计时长
+## Raschetnoye vremya
 
-6-8 小时
+6-8 chasov
 
-## 前提要求
+## Predvaritel'nyye trebovaniya
 
-- Завершить [第二阶段：Основные возможности](../2-Основные возможности/README.md)
-- 有丰富的项目开发经验
-- 理解系统架构Спроектировать
+- Zavershit' [Etap 2: Osnovnyye vozmozhnosti](../2-OsnovnyyeVozmozhnosti/README.md)
+- Bogatyy opyt proyektnoy razrabotki
+- Ponimaniye arkhitekturnogo proektirovaniya sistem
 
-## 学习内容
+## Soderzhaniye obucheniya
 
-| 章节 | 内容 |
-|------|------|
-| [01-MCP开发](./01-MCP-Разработка.md) | 模型上下文协议、扩展开发 |
-| [02-Автономные агенты](./02-Автономные агенты.md) | 自治 Agent、决策系统 |
-| [03-Продвинутые паттерны](./03-Продвинутые паттерны.md) | Спроектировать模式、Лучшие практики |
+| Glava | Soderzhaniye |
+|-------|--------------|
+| [01-MCP-Razrabotka](./01-MCP-Razrabotka.md) | Model Context Protocol, razrabotka rasshireniy |
+| [02-Avtonomnyye agenty](./02-AvtonomnyyeAgenty.md) | Avtonomnyye agenty, resheniye sistem |
+| [03-Prodvinutyy patterny](./03-ProdvinutyyPatterny.md) | Patterny proektirovaniya, luchshiye praktiki |
 
-## 接下来
+## Sleduyushchiy shag
 
-ЗавершитьПуть к мастерству阶段后，进入 [第四阶段：Реальные проекты](../4-Реальные проекты/README.md) 将所学应Используется для实践。
+Posle zaversheniya etapa put' k masterstvu, perestroyte k [Etap 4: Prakticheskiye proekty](../4-PrakticheskiyeProekty/README.md) dlya primeneniya poluchennykh znaniy.
 
 ---
 
-[Назад主Содержание](../README.md)
+[Vernut'sya k osnovnomu soderzhaniyu](../README.md)

@@ -45,7 +45,7 @@ steps:
 ### Tích hợp Hook
 - PreToolUse - Xác thực tham số
 - PostToolUse - Xác thực đầu ra
-> Tham khảo: [Hook类型](../TaiLieuThamKhao/hooks/Hook类型.md) | [Tự động hóa và kịch bản](../TaiLieuThamKhao/skills/自动化与脚本.md)
+> Tham khảo: [Hook类型](../TaiLieuThamKhao/hooks/Loai-Hook.md) | [Tự động hóa và kịch bản](../TaiLieuThamKhao/skills/自动化与脚本.md)
 
 ## Tiêu chuẩn nghiệm thu
 

@@ -9,7 +9,7 @@ Autonomous agents are intelligent systems that can:
 - Adjust strategies based on environmental feedback
 - Continuously execute until goals are achieved
 
-> Reference: [Automation & Scripting](../Reference-Docs/skills/自动化与脚本.md) | [Code Review Agents](../Reference-Docs/agents/1.%20代码审查类.md)
+> Reference: [Automation & Scripting](../Reference-Docs/skills/Automation-Scripting.md) | [Code Review Agents](../Reference-Docs/agents/01-Code-Review.md)
 
 ## Learning Objectives
 

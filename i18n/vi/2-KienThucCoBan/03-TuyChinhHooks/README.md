@@ -214,9 +214,9 @@ Tín hiệu kết thúc session → Stop Hook → Thực thi cleanup → Session
 
 ## Tài liệu học tập đi kèm
 
-Tài liệu Hooks đầy đủ nằm ở：`../../TaiLieuThamKhao/hooks/Hook类型.md`
+Tài liệu Hooks đầy đủ nằm ở：`../../TaiLieuThamKhao/hooks/Loai-Hook.md`
 
 ## Bước tiếp theo
 
 - Học [bài tập](./exercises/练习.md)
-- Đọc [tài liệu đầy đủ về Hooks](../../TaiLieuThamKhao/hooks/Hook类型.md)
+- Đọc [tài liệu đầy đủ về Hooks](../../TaiLieuThamKhao/hooks/Loai-Hook.md)

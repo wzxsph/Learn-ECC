@@ -1,37 +1,37 @@
-# Project 4: Agent System
+# プロジェクト 4: Agent システム
 
 マルチエージェントコラボレーションプラットフォームを構築します。
 
-## Project Goal
+## プロジェクト目標
 
-**Estimated time**: 2-3 hours
+**予想時間**: 2-3 時間
 
-Create a multi-Agent collaboration system where multiple specialized Agents work together to complete complex tasks.
+複数の専門 Agent が協力して複雑なタスクを完了するマルチ Agent コラボレーションシステムを作成します。
 
-## Feature Requirements
+## 機能要件
 
-### 1. Agent Roles
-- **architect** - System design
-- **developer** - Code implementation
-- **code-reviewer** - Code review
-- **tester** - Test engineer
-> Reference: [Code Review Agents](../参考ドキュメント/agents/1.%20代码审查类.md) | [Architecture Agents](../参考ドキュメント/agents/6.%20架构类.md)
+### 1. Agent 役割
+- **architect** - システム設計
+- **developer** - コード実装
+- **code-reviewer** - コードレビュー
+- **tester** - テストエンジニア
+> 参照: [Code Review Agents](../参考ドキュメント/agents/01-Code-Review.md) | [Architecture Agents](../参考ドキュメント/agents/06-Architecture.md)
 
-### 2. Collaboration Mechanism
-- Task distribution
-- Result aggregation
-- Conflict resolution
-- State synchronization
+### 2. コラボレーション機構
+- タスク分配
+- 結果集約
+- 競合解決
+- 状態同期
 
-### 3. Management Features
-- Agent lifecycle management
-- Task queue
-- Performance monitoring
-- Resource scheduling
+### 3. 管理機能
+- Agent ライフサイクル管理
+- タスクキュー
+- パフォーマンス監視
+- リソーススケジューリング
 
-## Technical Solution
+## 技術ソリューション
 
-### Message Protocol
+### メッセージプロトコル
 
 ```json
 {
@@ -42,21 +42,21 @@ Create a multi-Agent collaboration system where multiple specialized Agents work
 }
 ```
 
-### Task State Machine
-- `pending` - Waiting for assignment
-- `running` - Executing
-- `completed` - Completed
-- `failed` - Failed
-- `blocked` - Blocked
+### タスクステートマシン
+- `pending` - 割り当て待ち
+- `running` - 実行中
+- `completed` - 完了
+- `failed` - 失敗
+- `blocked` - ブロック
 
-## Acceptance Criteria
+## 完了基準
 
-- [ ] Support 4+ Agent roles
-- [ ] Automatic task distribution
-- [ ] Correct result aggregation
-- [ ] Failure recovery mechanism
-- [ ] Real-time state monitoring
+- [ ] 4+ Agent 役割をサポート
+- [ ] 自動タスク分配
+- [ ] 正しい結果集約
+- [ ] 失敗回復機構
+- [ ] リアルタイム状態監視
 
 ---
 
-[Return to practical projects directory](./README.md)
+[実践プロジェクトディレクトリに戻る](./README.md)

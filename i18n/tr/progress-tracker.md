@@ -1,190 +1,190 @@
-# Learn-ECC Ogrenme Ilerlemesini Takip
+# Learn-ECC Öğrenme İlerlemesini Takip
 
-ECC ogrenme ilerlemenizi takip etmek icin bu sablonu kullanin. Her modulu tamamladiginizda, ilgili yere tik atin.
+ECC öğrenme ilerlemenizi takip etmek için bu şablonu kullanın. Her modülü tamamladığınızda, ilgili yere tik atın.
 
 ---
 
-## Asama 1: Baslangic (1-2 gun)
+## Aşama 1: Başlangıç (1-2 gün)
 
-### Kurs Icerigi
+### Kurs İçeriği
 
-- [ ] 01-ECC-Tanimi
+- [ ] 01-ECC-Tanıtımı
 - [ ] 02-Kurulum
-- [ ] 03-Temel-Komutlar
-- [ ] 04-Ilk-Gorev
+- [ ] 03-Temel Komutlar
+- [ ] 04-İlk Görev
 
-### Alistirmalar
+### Alıştırmalar
 
-- [ ] Baslangic Alistirmalari
+- [ ] Başlangıç Alıştırmaları
 
-**Asama 1 Tamamlama Tarihi**: ____________
+**Aşama 1 Tamamlama Tarihi**: ____________
 
 ---
 
-## Asama 2: Temel Yetenekler (3-5 gun)
+## Aşama 2: Çekirdek Yetenekler (3-5 gün)
 
-### 01-Komut Sistemi Ustaligi
+### 01-Komut Sistemi Ustalığı
 
-- [ ] Komut siniflandirmasi ve kullanim
-- [ ] Temel komutlarin detayli aciklamasi
-- [ ] Komut birlestirme kullanimi
-- [ ] Alistirma
+- [ ] Komut sınıflandırması ve kullanım
+- [ ] Temel komutların detaylı açıklaması
+- [ ] Komut birleştirme kullanımı
+- [ ] Alıştırma
 
-### 02-Agent Isbirligi
+### 02-Agent İşbirliği
 
-- [ ] Agent'e giris
-- [ ] Agent siniflandirmasi
-- [ ] Isbirligi kalipolari
-- [ ] Alistirma
+- [ ] Agent'a giriş
+- [ ] Agent sınıflandırması
+- [ ] İşbirliği kalıpları
+- [ ] Alıştırma
 
-### 03-Hooks Ozellestirme
+### 03-Hooks Özelleştirme
 
-- [ ] Hook sistemine genel bakis
+- [ ] Hook sistemine genel bakış
 - [ ] PreToolUse Hooks
 - [ ] PostToolUse Hooks
 - [ ] Stop Hooks
-- [ ] Alistirma
+- [ ] Alıştırma
 
-### 04-Skills Gelistirme
+### 04-Skills Geliştirme
 
-- [ ] Skills sistemine genel bakis
-- [ ] Yeni Skill olusturma
-- [ ] Skill yapisi
-- [ ] Alistirma
+- [ ] Skills sistemine genel bakış
+- [ ] Yeni Skill oluşturma
+- [ ] Skill yapısı
+- [ ] Alıştırma
 
-### 05-Rules Yazimi
+### 05-Rules Yazımı
 
-- [ ] Rules sistemine genel bakis
-- [ ] Kural yazim standartlari
-- [ ] Kural onceligi
-- [ ] Alistirma
+- [ ] Rules sistemine genel bakış
+- [ ] Kural yazım standartları
+- [ ] Kural önceliği
+- [ ] Alıştırma
 
-**Asama 2 Tamamlama Tarihi**: ____________
+**Aşama 2 Tamamlama Tarihi**: ____________
 
 ---
 
-## Asama 3: Uzman Yolu (3-5 gun)
+## Aşama 3: Uzman Yolu (3-5 gün)
 
-### 01-MCP Gelistirme
+### 01-MCP Geliştirme
 
-- [ ] MCP'ye genel bakis
-- [ ] MCP sunucu yapilandirmasi
-- [ ] Özel MCP araclari
-- [ ] Alistirma
+- [ ] MCP'ye genel bakış
+- [ ] MCP sunucu yapılandırması
+- [ ] Özel MCP araçları
+- [ ] Alıştırma
 
-### 02-Ozerk Ajanlar
+### 02-Özerk Ajanlar
 
-- [ ] Ozerk ajan kavramlari
-- [ ] Agent tasarim kalipolari
+- [ ] Özerk ajan kavramları
+- [ ] Agent tasarım kalıpları
 - [ ] Ajan orkestrasyonu
-- [ ] Alistirma
+- [ ] Alıştırma
 
-### 03-Ileri Duzey Kalipalar
+### 03-İleri Düzey Kalıplar
 
-- [ ] Ileri duzey mimari kalipalar
+- [ ] İleri düzey mimari kalıplar
 - [ ] Performans optimizasyonu
-- [ ] Guvenlik kalipolari
-- [ ] Alistirma
+- [ ] Güvenlik kalıpları
+- [ ] Alıştırma
 
-**Asama 3 Tamamlama Tarihi**: ____________
+**Aşama 3 Tamamlama Tarihi**: ____________
 
 ---
 
-## Asama 4: Pratik Projeler (5-7 gun)
+## Aşama 4: Pratik Projeler (5-7 gün)
 
-### Proje 1: CLI Araci Gelistirme
+### Proje 1: CLI Aracı Geliştirme
 
-- [ ] Proje planlamasi
-- [ ] Komut gelistirme
+- [ ] Proje planlaması
+- [ ] Komut geliştirme
 - [ ] Kod istatistikleri
-- [ ] Test ve dogrulama
+- [ ] Test ve doğrulama
 
-### Proje 2: Otomatik Kod Inceleme Hatliari
+### Proje 2: Otomatik Kod İnceleme Hatları
 
 - [ ] PR inceleme entegrasyonu
-- [ ] CI/CD yapilandirmasi
-- [ ] Otomatik duzeltme
-- [ ] Test ve dogrulama
+- [ ] CI/CD yapılandırması
+- [ ] Otomatik düzeltme
+- [ ] Test ve doğrulama
 
-### Proje 3: Is Akisi Otomasyonu
+### Proje 3: İş Akışı Otomasyonu
 
-- [ ] Hook yapilandirmasi
-- [ ] Zamanli gorevler
+- [ ] Hook yapılandırması
+- [ ] Zamanlı görevler
 - [ ] Bildirim sistemi
-- [ ] Test ve dogrulama
+- [ ] Test ve doğrulama
 
-### Proje 4: Ozel Agent Gelistirme
+### Proje 4: Özel Agent Geliştirme
 
-- [ ] Agent tasarimi
-- [ ] MCP arac gelistirme
+- [ ] Agent tasarımı
+- [ ] MCP araç geliştirme
 - [ ] Bilgi entegrasyonu
-- [ ] Test ve dogrulama
+- [ ] Test ve doğrulama
 
-**Asama 4 Tamamlama Tarihi**: ____________
-
----
-
-## Asama 5: Hizli Bagli
-
-Hizli bagli icerigi sürekli kullanilir, tamamlandi olarak isaretlemeye gerek yoktur.
-
-- [ ] Komut hizli rehberi kullanmada ustalik
-- [ ] Agent hizli rehberi kullanmada ustalik
+**Aşama 4 Tamamlama Tarihi**: ____________
 
 ---
 
-## Ilerleme Istatistikleri
+## Aşama 5: Hızlı Başvuru
+
+Hızlı başvuru içeriği sürekli kullanılır, tamamlandı olarak işaretlemeye gerek yoktur.
+
+- [ ] Komut hızlı rehberi kullanmada ustalık
+- [ ] Agent hızlı rehberi kullanmada ustalık
+
+---
+
+## İlerleme İstatistikleri
 
 ### Tamamlama Durumu
 
-| Asama | Durum | Tamamlama Tarihi |
+| Aşama | Durum | Tamamlama Tarihi |
 |-------|-------|------------------|
-| Asama 1: Baslangic | ⬜Tamamlanmadi / ✅Tamamlandi | |
-| Asama 2: Temel Yetenekler | ⬜Tamamlanmadi / ✅Tamamlandi | |
-| Asama 3: Uzman Yolu | ⬜Tamamlanmadi / ✅Tamamlandi | |
-| Asama 4: Pratik Projeler | ⬜Tamamlanmadi / ✅Tamamlandi | |
-| Asama 5: Hizli Bagli | ⬜Tamamlanmadi / ✅Tamamlandi | |
+| Aşama 1: Başlangıç | ⬜Tamamlanmadı / ✅Tamamlandı | |
+| Aşama 2: Çekirdek Yetenekler | ⬜Tamamlanmadı / ✅Tamamlandı | |
+| Aşama 3: Uzman Yolu | ⬜Tamamlanmadı / ✅Tamamlandı | |
+| Aşama 4: Pratik Projeler | ⬜Tamamlanmadı / ✅Tamamlandı | |
+| Aşama 5: Hızlı Başvuru | ⬜Tamamlanmadı / ✅Tamamlandı | |
 
-### Tamamlanan Modul Sayisi
+### Tamamlanan Modül Sayısı
 
-- Toplam modul sayisi: 24
+- Toplam modül sayısı: 24
 - Tamamlanan: ___/24
 - Tamamlanma yüzdesi: ___%
 
-### Zaman Istatistikleri
+### Zaman İstatistikleri
 
-- Baslangic tarihi: ____________
-- Tahmini kalan süre: ___ gun
-- Gecensure: ___ gun
-
----
-
-## Ogrenme Notlari
-
-### Bu Haftanin Ogrenme Icerigi
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-### Karsilasilan Sorunlar ve Cozumler
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-### Gelecek Hafta Ogrenme Plani
-
-_____________________________________________________________________
-
-_____________________________________________________________________
-
-_____________________________________________________________________
+- Başlangıç tarihi: ____________
+- Tahmini kalan süre: ___ gün
+- Geçen süre: ___ gün
 
 ---
 
-*Kullanim talimati: Ilerlemeyi haftada bir guncelleyin, sahsi notlariniza kaydedin*
+## Öğrenme Notları
+
+### Bu Haftanın Öğrenme İçeriği
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+### Karşılaşılan Sorunlar ve Çözümler
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+### Gelecek Hafta Öğrenme Planı
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+_____________________________________________________________________
+
+---
+
+*Kullanım talimatı: İlerlemeyi haftada bir güncelleyin, kişisel notlarınıza kaydedin*

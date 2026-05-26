@@ -4,7 +4,7 @@
 
 ## 概述
 
-ECC 提供 **234+ [Skills](../../DocumentosDeReferência/skills/最佳实践.md)**，按领域分类，涵盖最佳实践、编程语言、框架、测试、安全、前端与设计、后端与 API、部署与 DevOps 等 16 个领域。
+ECC 提供 **234+ [Skills](../../DocumentosDeReferência/skills/Melhores-Práticas.md)**，按领域分类，涵盖Melhores-Práticas、Linguagens-de-Programação、框架、测试、安全、Frontend-e-Design、后端与 API、部署与 DevOps 等 16 个领域。
 
 ---
 
@@ -48,23 +48,23 @@ category: 分类
 
 | 领域 | 说明 |
 |------|------|
-| [最佳实践](../../DocumentosDeReferência/skills/最佳实践.md) | 编码标准、错误处理、自主循环 |
-| [编程语言](../../DocumentosDeReferência/skills/编程语言.md) | Python/Go/Rust/Kotlin/C++ 等 |
+| [Melhores-Práticas](../../DocumentosDeReferência/skills/Melhores-Práticas.md) | 编码标准、错误处理、自主循环 |
+| [Linguagens-de-Programação](../../DocumentosDeReferência/skills/Linguagens-de-Programação.md) | Python/Go/Rust/Kotlin/C++ 等 |
 | [框架](../../DocumentosDeReferência/skills/框架.md) | Django/Laravel/NestJS/Spring Boot 等 |
 | [测试](../../DocumentosDeReferência/skills/测试.md) | TDD/单元测试/集成测试/E2E |
 | [安全](../../DocumentosDeReferência/skills/安全.md) | 安全审查、漏洞扫描 |
-| [前端与设计](../../DocumentosDeReferência/skills/前端与设计.md) | 前端开发、设计系统 |
-| [后端与API](../../DocumentosDeReferência/skills/后端与API.md) | 后端服务、API 设计、数据库 |
-| [部署与DevOps](../../DocumentosDeReferência/skills/部署与DevOps.md) | Docker/K8s/部署策略 |
-| [监控与可观测性](../../DocumentosDeReferência/skills/监控与可观测性.md) | 可观测性、网络诊断 |
-| [自动化与脚本](../../DocumentosDeReferência/skills/自动化与脚本.md) | 自主循环、持续学习、代理工程 |
-| [搜索与数据获取](../../DocumentosDeReferência/skills/搜索与数据获取.md) | Exa 搜索、数据抓取、MCP |
-| [GitHub与协作](../../DocumentosDeReferência/skills/GitHub与协作.md) | GitHub 工作流、代码审查 |
-| [AI与机器学习](../../DocumentosDeReferência/skills/AI与机器学习.md) | 神经网络、PyTorch、MLOps |
-| [云原生与基础设施](../../DocumentosDeReferência/skills/云原生与基础设施.md) | Kubernetes、Docker、Terraform |
-| [特殊领域技能](../../DocumentosDeReferência/skills/特殊领域技能.md) | 区块链、游戏开发、音视频、IoT |
-| [开发工具链](../../DocumentosDeReferência/skills/开发工具链.md) | 测试框架、CI/CD、代码质量 |
-| [前沿技术](../../DocumentosDeReferência/skills/前沿技术.md) | AI Agent、量子计算、边缘计算 |
+| [Frontend-e-Design](../../DocumentosDeReferência/skills/Frontend-e-Design.md) | 前端开发、设计系统 |
+| [Backend-e-API](../../DocumentosDeReferência/skills/Backend-e-API.md) | 后端服务、API 设计、数据库 |
+| [Implantação-e-DevOps](../../DocumentosDeReferência/skills/Implantação-e-DevOps.md) | Docker/K8s/部署策略 |
+| [Monitoramento-e-Observabilidade](../../DocumentosDeReferência/skills/Monitoramento-e-Observabilidade.md) | 可观测性、网络诊断 |
+| [Automação-e-Scripts](../../DocumentosDeReferência/skills/Automação-e-Scripts.md) | 自主循环、持续学习、代理工程 |
+| [Busca-e-Aquisição-de-Dados](../../DocumentosDeReferência/skills/Busca-e-Aquisição-de-Dados.md) | Exa 搜索、数据抓取、MCP |
+| [GitHub-e-Colaboração](../../DocumentosDeReferência/skills/GitHub-e-Colaboração.md) | GitHub 工作流、代码审查 |
+| [IA-e-Aprendizado-de-Máquina](../../DocumentosDeReferência/skills/IA-e-Aprendizado-de-Máquina.md) | 神经网络、PyTorch、MLOps |
+| [Nativo-de-Nuvem-e-Infraestrutura](../../DocumentosDeReferência/skills/Nativo-de-Nuvem-e-Infraestrutura.md) | Kubernetes、Docker、Terraform |
+| [Habilidades-de-Domínio-Especializado](../../DocumentosDeReferência/skills/Habilidades-de-Domínio-Especializado.md) | 区块链、游戏开发、音视频、IoT |
+| [Cadeia-de-Ferramentas-de-Desenvolvimento](../../DocumentosDeReferência/skills/Cadeia-de-Ferramentas-de-Desenvolvimento.md) | 测试框架、CI/CD、代码质量 |
+| [Tecnologias-de-Ponta](../../DocumentosDeReferência/skills/Tecnologias-de-Ponta.md) | AI Agent、量子计算、边缘计算 |
 
 ### 2.2 热门 Skills
 
@@ -74,7 +74,7 @@ category: 分类
 | 代码审查 | 代码质量检查清单 |
 | 安全审查 | OWASP Top 10 检查 |
 | API 设计 | RESTful API 设计原则 |
-| Docker 部署 | 容器化部署最佳实践 |
+| Docker 部署 | 容器化部署Melhores-Práticas |
 | CI/CD 流水线 | 持续集成和部署 |
 
 ---
@@ -130,7 +130,7 @@ category: 自定义
 | 类型 | 规范 | 示例 |
 |------|------|------|
 | 文件名 | 小写 + 连字符 | `code-review.md`, `tdd-workflow.md` |
-| 目录 | 按领域组织 | `skills/编程语言/` |
+| 目录 | 按领域组织 | `skills/Linguagens-de-Programação/` |
 | 位置 | 项目 skills/ 或全局 ~/.claude/skills/ | |
 
 ---
@@ -261,7 +261,7 @@ ECC 支持从市场安装共享的 Skills。
 
 ---
 
-## 8. 最佳实践
+## 8. Melhores-Práticas
 
 ### 8.1 设计原则
 
@@ -290,9 +290,9 @@ ECC 支持从市场安装共享的 Skills。
 
 ---
 
-## 练习
+## Exercícios
 
-完成 [练习](./exercises/练习.md) 中的任务。
+完成 [练习](./exercises/Exercícios.md) 中的任务。
 
 ---
 

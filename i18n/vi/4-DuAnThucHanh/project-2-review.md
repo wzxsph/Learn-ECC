@@ -33,7 +33,7 @@ Tạo một hệ thống kiểm tra mã tự động, tự động kiểm tra ch
 - **code-reviewer** - Agent kiểm tra chính
 - **security-reviewer** - Chuyên về bảo mật
 - **tdd-guide** - Đánh giá chất lượng kiểm tra
-> Tham khảo: [/code-review](../TaiLieuThamKhao/commands/01-核心工作流.md) | [code-reviewer Agent](../TaiLieuThamKhao/agents/1.%20代码审查类.md)
+> Tham khảo: [/code-review](../TaiLieuThamKhao/commands/01-Workflow-Co-Ban.md) | [code-reviewer Agent](../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md)
 
 ### Định dạng đầu ra
 ```json

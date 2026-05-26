@@ -5,8 +5,8 @@
 ### Lớp lập kế hoạch
 | Agent | Mục đích | Đặc điểm |
 |-------|------|------|
-| `planner` | [Lập kế hoạch thực hiện](../TaiLieuThamKhao/agents/6.%20架构类.md) | Phân rã nhiệm vụ, tạo các bước |
-| `architect` | [Thiết kế hệ thống](../TaiLieuThamKhao/agents/6.%20架构类.md) | Quyết định kiến trúc, lựa chọn công nghệ |
+| `planner` | [Lập kế hoạch thực hiện](../TaiLieuThamKhao/agents/06-Kien-Truc.md) | Phân rã nhiệm vụ, tạo các bước |
+| `architect` | [Thiết kế hệ thống](../TaiLieuThamKhao/agents/06-Kien-Truc.md) | Quyết định kiến trúc, lựa chọn công nghệ |
 
 ### Lớp kiểm tra
 | Agent | Mục đích | Đặc điểm |
@@ -18,14 +18,14 @@
 ### Lớp phát triển
 | Agent | Mục đích | Đặc điểm |
 |-------|------|------|
-| `tdd-guide` | [Hướng dẫn TDD](../TaiLieuThamKhao/agents/1.%20代码审查类.md) | Kiểm thử trước, tái cấu trúc tăng dần |
-| `build-error-resolver` | [Sửa lỗi build](../TaiLieuThamKhao/agents/2.%20构建修复类.md) | Định vị lỗi, đề xuất sửa chữa |
+| `tdd-guide` | [Hướng dẫn TDD](../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md) | Kiểm thử trước, tái cấu trúc tăng dần |
+| `build-error-resolver` | [Sửa lỗi build](../TaiLieuThamKhao/agents/02-Sua-Loi-Build.md) | Định vị lỗi, đề xuất sửa chữa |
 
 ### Lớp vận hành
 | Agent | Mục đích | Đặc điểm |
 |-------|------|------|
-| `e2e-runner` | [Kiểm thử E2E](../TaiLieuThamKhao/agents/1.%20代码审查类.md) | Luồng chính, tự động hóa |
-| `refactor-cleaner` | [Tái cấu trúc và dọn dẹp](../TaiLieuThamKhao/agents/1.%20代码审查类.md) | Loại bỏ mã chết |
+| `e2e-runner` | [Kiểm thử E2E](../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md) | Luồng chính, tự động hóa |
+| `refactor-cleaner` | [Tái cấu trúc và dọn dẹp](../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md) | Loại bỏ mã chết |
 
 ## Cách gọi Agent
 

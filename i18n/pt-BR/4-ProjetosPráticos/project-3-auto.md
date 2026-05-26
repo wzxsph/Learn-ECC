@@ -45,7 +45,7 @@ steps:
 ### Hook 集成
 - PreToolUse - 参数验证
 - PostToolUse - 输出验证
-> 参考: [Hook 类型](../DocumentosDeReferência/hooks/Hook类型.md) | [自动化与脚本](../DocumentosDeReferência/skills/自动化与脚本.md)
+> 参考: [Hook 类型](../DocumentosDeReferência/hooks/Tipos-de-Hook.md) | [Automação-e-Scripts](../DocumentosDeReferência/skills/Automação-e-Scripts.md)
 
 ## 验收标准
 

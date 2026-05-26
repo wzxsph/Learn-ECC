@@ -176,9 +176,9 @@ Phù hợp với: Dự án phức tạp, phát triển tính năng lớn
 
 ## Tài liệu học tập đi kèm
 
-Tài liệu Agent đầy đủ nằm ở：`../../TaiLieuThamKhao/agents/1. 代码审查类.md`
+Tài liệu Agent đầy đủ nằm ở：`../../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md`
 
 ## Bước tiếp theo
 
 - Học [bài tập](./exercises/练习.md)
-- Đọc [tài liệu đầy đủ về Agent](../../TaiLieuThamKhao/agents/1.%20代码审查类.md)
+- Đọc [tài liệu đầy đủ về Agent](../../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md)

@@ -214,9 +214,9 @@ Session end signal → Stop Hook → Execute cleanup → Session terminates
 
 ## Reference Materials
 
-Complete Hooks documentation is located at: `../../Reference-Docs/hooks/Hook类型.md`
+Complete Hooks documentation is located at: `../../Reference-Docs/hooks/Hook-Types.md`
 
 ## Next Steps
 
-- Learn [exercises](./exercises/练习.md)
-- Read [complete Hooks documentation](../../Reference-Docs/hooks/Hook类型.md)
+- Learn [exercises](./exercises/Getting-Started-Exercises.md)
+- Read [complete Hooks documentation](../../Reference-Docs/hooks/Hook-Types.md)

@@ -1,4 +1,4 @@
-# 01 命令系统精通
+# 01 01-Domínio-do-Sistema-de-Comandos
 
 > 掌握 Claude Code 的 75+ 命令，灵活组合实现高效开发
 
@@ -64,13 +64,13 @@ Claude Code 提供了 75+ 命令，涵盖以下分类：
 
 ## 如何使用命令文档
 
-配套的完整命令文档位于：`../../DocumentosDeReferência/commands/01-核心工作流.md`
+配套的完整命令文档位于：`../../DocumentosDeReferência/commands/01-Workflow-Principal.md`
 
 文档包含：
 - 每个命令的详细说明
 - 参数和选项说明
 - 使用示例和输出
-- 最佳实践建议
+- Melhores-Práticas建议
 
 ## 组合使用命令
 
@@ -84,5 +84,5 @@ Claude Code 提供了 75+ 命令，涵盖以下分类：
 
 ## 下一步
 
-- 学习[练习题目](./exercises/练习.md)
-- 阅读[命令完整文档](../../DocumentosDeReferência/commands/01-核心工作流.md)
+- 学习[练习题目](./exercises/Exercícios.md)
+- 阅读[命令完整文档](../../DocumentosDeReferência/commands/01-Workflow-Principal.md)

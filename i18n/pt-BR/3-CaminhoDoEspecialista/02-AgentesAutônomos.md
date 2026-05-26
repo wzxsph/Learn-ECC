@@ -11,7 +11,7 @@
 
 的智能系统。
 
-> 参考: [自动化与脚本](../DocumentosDeReferência/skills/自动化与脚本.md) | [代码审查类 Agent](../DocumentosDeReferência/agents/1.%20代码审查类.md)
+> 参考: [Automação-e-Scripts](../DocumentosDeReferência/skills/Automação-e-Scripts.md) | [代码审查类 Agent](../DocumentosDeReferência/agents/1.%20代码审查类.md)
 
 ## 学习目标
 
@@ -47,7 +47,7 @@
 
 ## 下一步
 
-- [高级模式](./03-PadrõesAvançados.md) - 设计模式与最佳实践
+- [高级模式](./03-PadrõesAvançados.md) - 设计模式与Melhores-Práticas
 - [返回专家之路目录](../README.md)
 
 ## 配套资源

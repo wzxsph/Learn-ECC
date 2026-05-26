@@ -4,7 +4,7 @@ Esta fase é projetada para usuários sem base prévia e ajuda você a entender 
 
 ## Objetivos de Aprendizado
 
-After completing this phase, you will be able to:
+Após completar esta fase, você será capaz de:
 - Entender os conceitos básicos e casos de uso do ECC
 - Concluir a instalação e configuração básica do Claude Code
 - Usar comandos frequentes com fluência
@@ -23,15 +23,15 @@ After completing this phase, you will be able to:
 ## Conteúdo de Aprendizado
 
 | Capítulo | Conteúdo | Exercício |
-|---------|---------|-------|
-| [01-ECC简介](./01-ECC-Introdução.md) | O que é ECC, funcionalidades centrais, limites de habilidade | [Exercícios para Iniciantes](./exercises/入门练习.md) |
-| [02-安装配置](./02-Instalação.md) | Passos de instalação, configuração inicial, verificação de ambiente | - |
-| [03-基础命令](./03-ComandosBásicos.md) | Visão geral de comandos frequentes, categorias de comandos, operações rápidas | - |
-| [04-第一个任务](./04-PrimeiraTarefa.md) | Fluxo completo de tarefas, from requirements to completion | - |
+|---------|---------|----------|
+| [01-ECC-Introdução](./01-ECC-Introdução.md) | O que é ECC, funcionalidades centrais, limites de habilidade | [Exercícios para Iniciantes](./exercises/入门Exercícios.md) |
+| [02-Instalação](./02-Instalação.md) | Passos de instalação, configuração inicial, verificação de ambiente | - |
+| [03-Comandos Básicos](./03-ComandosBásicos.md) | Visão geral de comandos frequentes, categorias de comandos, operações rápidas | - |
+| [04-Primeira Tarefa](./04-PrimeiraTarefa.md) | Fluxo completo de tarefas, from requirements to completion | - |
 
 ## Próximos Passos
 
-After completing the beginner phase, go to [Phase 2: Habilidades Essenciais](../2-HabilidadesCentrais/README.md) to learn advanced content.
+Após completar a fase de iniciante, vá para a [Fase 2: Habilidades Essenciais](../2-HabilidadesCentrais/README.md) para aprender conteúdo avançado.
 
 ---
 

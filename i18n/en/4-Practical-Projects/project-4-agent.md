@@ -15,7 +15,7 @@ Create a multi-Agent collaboration system where multiple specialized Agents work
 - **developer** - Code implementation
 - **code-reviewer** - Code review
 - **tester** - Test engineer
-> Reference: [Code Review Agents](../Reference-Docs/agents/1.%20代码审查类.md) | [Architecture Agents](../Reference-Docs/agents/6.%20架构类.md)
+> Reference: [Code Review Agents](../Reference-Docs/agents/01-Code-Review.md) | [Architecture Agents](../Reference-Docs/agents/06-Architecture.md)
 
 ### 2. Collaboration Mechanisms
 - Task distribution

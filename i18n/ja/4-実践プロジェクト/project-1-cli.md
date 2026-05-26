@@ -1,33 +1,33 @@
-# Project 1: CLI Tool
+# プロジェクト 1: CLI ツール
 
 ECC を使用してコマンドラインツールを構築します。
 
-## Project Goal
+## プロジェクト目標
 
-**Estimated time**: 2-3 hours
+**予想時間**: 2-3 時間
 
-Create an `ecc-gen` tool for generating ECC project components (Agent, Skill, Hook).
+`ecc-gen` ツールを作成して、ECC プロジェクトコンポーネント（Agent、Skill、Hook）を生成します。
 
-## Feature Requirements
+## 機能要件
 
-### 1. Core Features
-- `ecc-gen agent <name>` - Generate Agent files
-- `ecc-gen skill <name>` - Generate Skill files
-- `ecc-gen hook <name>` - Generate Hook configuration
+### 1. コア機能
+- `ecc-gen agent <name>` - Agent ファイルを生成
+- `ecc-gen skill <name>` - Skill ファイルを生成
+- `ecc-gen hook <name>` - Hook 設定を生成
 
-### 2. Interactive Features
-- Interactive Q&A generation
-- Template selection
-- Output path specification
+### 2. インタラクティブ機能
+- インタラクティブな Q&A 生成
+- テンプレート選択
+- 出力パス指定
 
-### 3. Advanced Features
-- Batch generation
-- Custom templates
-- Configuration file support
+### 3. 上級機能
+- 一括生成
+- カスタムテンプレート
+- 設定ファイルサポート
 
-## Technical Solution
+## 技術ソリューション
 
-### Directory Structure
+### ディレクトリ構造
 
 ```
 ecc-gen/
@@ -43,28 +43,28 @@ ecc-gen/
 └── README.md
 ```
 
-### Libraries Used
-- `commander` - CLI parameter parsing
-- `inquirer` - Interactive Q&A
-- `ejs` - Template engine
+### 使用ライブラリ
+- `commander` - CLI パラメータ解析
+- `inquirer` - インタラクティブ Q&A
+- `ejs` - テンプレートエンジン
 
-## Acceptance Criteria
+## 完了基準
 
-- [ ] All three subcommands work properly
-- [ ] Generated templates have correct format
-- [ ] Support `--output` to specify output path
-- [ ] Include unit tests
-- [ ] Complete documentation
+- [ ] 3つのサブコマンドが正常に動作
+- [ ] 生成されたテンプレートの形式が正しい
+- [ ] `--output` で出力パスを指定可能
+- [ ] ユニットテストを含む
+- [ ] 完全なドキュメント
 
-## Learning Points
+## 学習ポイント
 
-- CLI tool development
-- Template system design
-- Interactive input processing
-- Modular architecture
+- CLI ツール開発
+- テンプレートシステム設計
+- インタラクティブ入力処理
+- モジュラーアーキテクチャ
 
-> Reference commands: [/build-fix](../参考ドキュメント/commands/04-构建修复.md) | [/test](../参考ドキュメント/commands/02-测试相关.md)
+> 参照コマンド: [/build-fix](../参考ドキュメント/commands/04-ビルド修復.md) | [/test](../参考ドキュメント/commands/02-テスト.md)
 
 ---
 
-[Return to practical projects directory](./README.md)
+[実践プロジェクトディレクトリに戻る](./README.md)

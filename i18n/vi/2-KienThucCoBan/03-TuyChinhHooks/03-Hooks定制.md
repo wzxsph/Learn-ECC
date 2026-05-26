@@ -1,6 +1,6 @@
 # 03 - Tùy chỉnh Hooks
 
-Học hệ thống [Hook](../../TaiLieuThamKhao/hooks/Hook类型.md) của ECC, thực hiện tự động hóa workflow.
+Học hệ thống [Hook](../../TaiLieuThamKhao/hooks/Loai-Hook.md) của ECC, thực hiện tự động hóa workflow.
 
 ## Tổng quan
 

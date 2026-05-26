@@ -65,7 +65,7 @@ model: sonnet
 | fastapi-reviewer | FastAPI 架构、异步 |
 | typescript-reviewer | TypeScript 类型安全 |
 | java-reviewer | Java 编码标准 |
-| csharp-reviewer | C# 最佳实践 |
+| csharp-reviewer | C# Melhores-Práticas |
 | ruby-reviewer | Ruby 惯用法 |
 | php-reviewer | PHP 安全和性能 |
 | swift-reviewer | Swift 并发、内存管理 |
@@ -221,7 +221,7 @@ Agent 按顺序处理，每个 Agent 的输出是下一个的输入：
 | 角色 | 职责 |
 |------|------|
 | 事实审查员 | 验证信息和数据准确性 |
-| 高级工程师 | 评估技术可行性和最佳实践 |
+| 高级工程师 | 评估技术可行性和Melhores-Práticas |
 | 安全专家 | 识别安全风险和漏洞 |
 | 一致性审查员 | 确保解决方案内部一致 |
 | 冗余检查员 | 识别重复和浪费 |
@@ -272,9 +272,9 @@ Agent 按顺序处理，每个 Agent 的输出是下一个的输入：
 
 ---
 
-## 练习
+## Exercícios
 
-完成 [练习](./exercises/练习.md) 中的任务。
+完成 [练习](./exercises/Exercícios.md) 中的任务。
 
 ---
 

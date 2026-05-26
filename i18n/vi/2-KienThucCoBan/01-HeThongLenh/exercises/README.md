@@ -182,6 +182,6 @@ Tạo workflow phát triển cho dự án Flutter giả định.
 
 ## Học tập sâu
 
-- Đọc tài liệu lệnh đầy đủ: [../../../TaiLieuThamKhao/commands/01-核心工作流.md](../../../TaiLieuThamKhao/commands/01-核心工作流.md)
+- Đọc tài liệu lệnh đầy đủ: [../../../TaiLieuThamKhao/commands/01-Workflow-Co-Ban.md](../../../TaiLieuThamKhao/commands/01-Workflow-Co-Ban.md)
 - Xem tất cả các phân loại lệnh khả dụng
 - Học các tùy chọn và tham số ẩn của lệnh

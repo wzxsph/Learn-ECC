@@ -1,38 +1,38 @@
-# Birinci Asama: Baslangic
+# Birinci Aşama: Başlangıç
 
-Bu asam sifir bilgiyle baslayanlar icin tasarlanmistir, ECC'yi hizla anlamaniza ve kullanmaya baslamaniza yardimci olur.
+Bu aşama sıfır bilgiyle başlayanlar için tasarlanmıştır, ECC'yi hızla anlamanıza ve kullanmaya başlamanıza yardımcı olur.
 
-## Ogrenme Hedefleri
+## Öğrenme Hedefleri
 
-Bu asamayi tamamladiktan sonra su isleri yapabileceksiniz:
-- ECC'nin temel kavramlarini ve kullanim senaryolarini anlayabileceksiniz
-- Claude Code kurulumunu ve temel yapilandirmasini tamamlayabileceksiniz
-- Sik kullanilan komutlari etkin kullanabileceksiniz
-- Basit gelistirme gorevlerini bagimsiz olarak tamamlayabileceksiniz
+Bu aşamayı tamamladıktan sonra şu işleri yapabileceksiniz:
+- ECC'nin temel kavramlarını ve kullanım senaryolarını anlayabileceksiniz
+- Claude Code kurulumunu ve temel yapılandırmasını tamamlayabileceksiniz
+- Sık kullanılan komutları etkin kullanabileceksiniz
+- Basit geliştirme görevlerini bağımsız olarak tamamlayabileceksiniz
 
-## Tahmini Sure
+## Tahmini Süre
 
 2-3 saat
 
-## On Gereksinimler
+## Ön Gereksinimler
 
-- Komut satir temelleri
+- Komut satırı temelleri
 - JavaScript/Node.js temelleri (bilmek yeterli)
-- Git temel kavramlari
+- Git temel kavramları
 
-## Icerik
+## İçerik
 
-| Bolum | Icerik | Alistirma |
+| Bölüm | İçerik | Alıştırma |
 |------|--------|----------|
-| [01-ECC-Tanimi](./01-ECC-Tanimi.md) | ECC nedir, temel islevler, yetenek sinirlari | [Baslangic Alistirmalari](./exercises/Baslangic-Alistirmalari.md) |
-| [02-Kurulum](./02-Kurulum.md) | Kurulum adimlari, ilk yapilandirma, ortam dogrulama | - |
-| [03-Temel-Komutlar](./03-Temel-Komutlar.md) | Sik kullanilan komutlara genel bakis, komut siniflandirmasi, kisa yol islemleri | - |
-| [04-Ilk-Gorev](./04-Ilk-Gorev.md) | Tam gorev is akisi, gereksinimden tamamlamaya | - |
+| [01-ECC-Tanıtımı](./01-ECC-Tanıtım.md) | ECC nedir, temel işlevler, yetenek sınırları | [Başlangıç Alıştırmaları](./exercises/BaşlangıçAlıştırmaları.md) |
+| [02-Kurulum](./02-Kurulum.md) | Kurulum adımları, ilk yapılandırma, ortam doğrulama | - |
+| [03-Temel Komutlar](./03-TemelKomutlar.md) | Sık kullanılan komutlara genel bakış, komut sınıflandırması, kısa yol işlemleri | - |
+| [04-İlk Görev](./04-İlkGörev.md) | Tam görev iş akışı, gereksinimden tamamlamaya | - |
 
-## Sonraki Adim
+## Sonraki Adım
 
-Baslangic asamasini tamamladiktan sonra, [Ikinci Asama: Temel Yetenekler](../2-Temel-Yetenekler/README.md) ile ileri duzey icerigi ogrenmeye gecin.
+Başlangıç aşamasını tamamladıktan sonra, [İkinci Aşama: Çekirdek Yetenekler](../2-ÇekirdekYetenekler/README.md) ile ileri düzey içeriği öğrenmeye geçin.
 
 ---
 
-[Ana icindekiler](../README.md)
+[Ana içindekiler](../README.md)

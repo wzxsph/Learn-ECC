@@ -190,9 +190,9 @@ I need to develop a payment module using TDD workflow
 
 ## Reference Materials
 
-Complete Skills documentation is located at: `../../Reference-Docs/skills/最佳实践.md`
+Complete Skills documentation is located at: `../../Reference-Docs/skills/Best-Practices.md`
 
 ## Next Steps
 
-- Learn [exercises](./exercises/练习.md)
-- Read [complete Skills documentation](../../Reference-Docs/skills/最佳实践.md)
+- Learn [exercises](./exercises/Getting-Started-Exercises.md)
+- Read [complete Skills documentation](../../Reference-Docs/skills/Best-Practices.md)

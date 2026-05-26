@@ -1,48 +1,48 @@
-# Agent 速查
+# Agent-Cheatsheet
 
-## 内置 Agent
+## Integrierte Agents
 
-### 规划类
-| Agent | 用途 | 特点 |
-|-------|------|------|
-| `planner` | [实施规划](../Referenzdokumente/agents/6.%20架构类.md) | 分解任务、生成步骤 |
-| `architect` | [系统设计](../Referenzdokumente/agents/6.%20架构类.md) | 架构决策、技术选型 |
+### Planungsklasse
+| Agent | Verwendungszweck | Merkmale |
+|-------|------------------|----------|
+| `planner` | [Implementierungsplanung](../Referenzdokumente/agents/6.%20架构类.md) | Aufgaben zerlegen, Schritte generieren |
+| `architect` | [Systemdesign](../Referenzdokumente/agents/6.%20架构类.md) | Architekturentscheidungen, Technologieauswahl |
 
-### 审查类
-| Agent | 用途 | 特点 |
-|-------|------|------|
-| `code-reviewer` | 代码审查 | 质量把关、模式检查 |
-| `security-reviewer` | 安全审查 | 漏洞检测、OWASP |
-| `rust-reviewer` | Rust 审查 | 生命周期、借用检查 |
+### Review-Klasse
+| Agent | Verwendungszweck | Merkmale |
+|-------|------------------|----------|
+| `code-reviewer` | Code-Review | Qualitätskontrolle, Pattern-Prüfung |
+| `security-reviewer` | Sicherheitsreview | Schwachstellenerkennung, OWASP |
+| `rust-reviewer` | Rust-Review | Lebenszyklus, Borrow-Checking |
 
-### 开发类
-| Agent | 用途 | 特点 |
-|-------|------|------|
-| `tdd-guide` | [TDD指导](../Referenzdokumente/agents/1.%20代码审查类.md) | 测试先行、增量重构 |
-| `build-error-resolver` | [构建修复](../Referenzdokumente/agents/2.%20构建修复类.md) | 错误定位、修复建议 |
+### Entwicklungsklasse
+| Agent | Verwendungszweck | Merkmale |
+|-------|------------------|----------|
+| `tdd-guide` | [TDD-Anleitung](../Referenzdokumente/agents/1.%20代码审查类.md) | Test-First, Inkrementelles Refactoring |
+| `build-error-resolver` | [Build-Reparatur](../Referenzdokumente/agents/2.%20构建修复类.md) | Fehlerlokalisierung, Reparaturoptionen |
 
-### 运维类
-| Agent | 用途 | 特点 |
-|-------|------|------|
-| `e2e-runner` | [E2E测试](../Referenzdokumente/agents/1.%20代码审查类.md) | 关键路径、自动化 |
-| `refactor-cleaner` | [重构清理](../Referenzdokumente/agents/1.%20代码审查类.md) | 死代码移除 |
+### Operations-Klasse
+| Agent | Verwendungszweck | Merkmale |
+|-------|------------------|----------|
+| `e2e-runner` | [E2E-Tests](../Referenzdokumente/agents/1.%20代码审查类.md) | Kritische Pfade, Automatisierung |
+| `refactor-cleaner` | [Refactoring-Bereinigung](../Referenzdokumente/agents/1.%20代码审查类.md) | Tot-Code-Entfernung |
 
-## Agent 调用方式
+## Agent-Aufrufmethoden
 
 ```
-/[agent-name]                    # 直接调用
-/[agent-name] [parameters]       # 带参数
-/[agent-name] --option value    # 选项参数
+/[agent-name]                    # Direktaufruf
+/[agent-name] [parameters]       # Mit Parametern
+/[agent-name] --option value    # Optionsparameter
 ```
 
-## 自定义 Agent
+## Benutzerdefinierte Agents
 
-Agent 文件格式：`agents/*.md` + YAML frontmatter
+Agent-Dateiformat: `agents/*.md` + YAML Frontmatter
 
 ```yaml
 ---
 name: my-agent
-description: 我的自定义 Agent
+description: Mein benutzerdefinierter Agent
 tools: [Read, Bash, Edit]
 model: sonnet
 ---
@@ -50,4 +50,4 @@ model: sonnet
 
 ---
 
-[返回快速参考目录](./README.md)
+[Zurück zum Schnellreferenz-Verzeichnis](./README.md)

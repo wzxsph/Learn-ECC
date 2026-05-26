@@ -1,15 +1,15 @@
 # 01 - [ECC](../参考ドキュメント/README.md) 紹介
 
-## [ECC](../参考ドキュメント/README.md)とは何か
+## [ECC](../参考ドキュメント/README.md)とは
 
-[ECC](../参考ドキュメント/README.md)（Everything Claude Code）は、Claude Code用プラグインシステムであり、プロダクションレベルの[Agent](../参考ドキュメント/agents/1.%20代码审查类.md)、[Skills](../参考ドキュメント/skills/最佳实践.md)、hooks、rules、[Commands](../参考ドキュメント/commands/01-核心工作流.md)、およびMCP設定方案を提供します。Anthropic Hackathon受賞作品から生まれ、10ヶ月以上の日常使用的打磨を経てきました。
+[ECC](../参考ドキュメント/README.md)（Everything Claude Code）は、Claude Code用プラグインシステムであり、プロダクションレベルの[Agent](../参考ドキュメント/agents/01-Code-Review.md)、[Skills](../参考ドキュメント/skills/最佳实践.md)、hooks、rules、[Commands](../参考ドキュメント/commands/01-コアワークフロー.md)、およびMCP設定方案を提供します。Anthropic Hackathon受賞作品から生まれ、10ヶ月以上の日常使用的的打磨を経てきました。
 
 ## [ECC](../参考ドキュメント/README.md)は何ができるか？
 
-### 1. [Agent](../参考ドキュメント/agents/1.%20代码审查类.md)システム
-[ECC](../参考ドキュメント/README.md)は60+の専門[Agent](../参考ドキュメント/agents/1.%20代码审查类.md)を提供し、多言語レビュー、ビルドリペア、アーキテクチャ設計などをカバー：
+### 1. [Agent](../参考ドキュメント/agents/01-Code-Review.md)システム
+[ECC](../参考ドキュメント/README.md)は60+の専門[Agent](../参考ドキュメント/agents/01-Code-Review.md)を提供し、多言語レビュー、ビルドリペア、アーキテクチャ設計などをカバー：
 
-| [Agent](../参考ドキュメント/agents/1.%20代码审查类.md) | 用途 |
+| [Agent](../参考ドキュメント/agents/01-Code-Review.md) | 用途 |
 |-------|------|
 | `planner` | 機能実施計画 |
 | `code-reviewer` | コード品質とセキュリティレビュー |
@@ -27,7 +27,7 @@
 - `continuous-learning-v2` - instinctベースの継続的学習
 - `eval-harness` - 検証ループ評価
 
-### 3. [Commands](../参考ドキュメント/commands/01-核心工作流.md)コマンド
+### 3. [Commands](../参考ドキュメント/commands/01-コアワークフロー.md)コマンド
 伝統的なスラッシュコマンド互換性を保持（合計75+コマンド）：
 
 | コマンド | 機能 |
@@ -40,7 +40,7 @@
 | `/sessions` | セッション履歴管理 |
 
 ### 4. Hooks自動化
-柔軟なフッoksシステム（8種類のイベントタイプ）：
+柔軟なhooksシステム（8種類のイベントタイプ）：
 - `SessionStart` - セッション起動時にコンテキストを読み込む
 - `SessionEnd` - セッション終了時に状態を保存
 - `PreToolUse` - ツール実行前に検証
@@ -73,8 +73,8 @@
 
 ## コアコンセプト
 
-### [Agent](../参考ドキュメント/agents/1.%20代码审查类.md)
-再利用可能なサブタスク実行者で、各[Agent](../参考ドキュメント/agents/1.%20代码审查类.md)には明確な責務がある。複数の[Agent](../参考ドキュメント/agents/1.%20代码审查类.md)を組み合わせて复杂ワークフローを構築。
+### [Agent](../参考ドキュメント/agents/01-Code-Review.md)
+再利用可能なサブタスク実行者で、各[Agent](../参考ドキュメント/agents/01-Code-Review.md)には明確な責務がある。複数の[Agent](../参考ドキュメント/agents/01-Code-Review.md)を組み合わせて复杂ワークフローを構築。
 
 ### [Skill](../参考ドキュメント/skills/最佳实践.md)
 特定のタスクを完了するワークフローを定義し、[ECC](../参考ドキュメント/README.md)の主要ワークフロー面。

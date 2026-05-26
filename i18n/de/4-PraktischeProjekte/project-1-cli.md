@@ -1,33 +1,33 @@
-# 项目一：CLI 工具
+# Projekt 1: CLI-Tool
 
-使用 ECC 构建一个命令行工具。
+Erstelle ein Kommandozeilen-Tool mit ECC.
 
-## 项目目标
+## Projektziele
 
-**预计时长**: 2-3 小时
+**Geschätzte Dauer**: 2-3 Stunden
 
-创建一个 `ecc-gen` 工具，用于生成 ECC 项目组件（Agent、Skill、Hook）。
+Erstelle ein `ecc-gen` Tool zur Generierung von ECC-Projektkomponenten (Agent, Skill, Hook).
 
-## 功能需求
+## Funktionsanforderungen
 
-### 1. 核心功能
-- `ecc-gen agent <name>` - 生成 Agent 文件
-- `ecc-gen skill <name>` - 生成 Skill 文件
-- `ecc-gen hook <name>` - 生成 Hook 配置
+### 1. Kernfunktionen
+- `ecc-gen agent <name>` - Agent-Datei generieren
+- `ecc-gen skill <name>` - Skill-Datei generieren
+- `ecc-gen hook <name>` - Hook-Konfiguration generieren
 
-### 2. 交互功能
-- 交互式问答生成
-- 模板选择
-- 输出路径指定
+### 2. Interaktive Funktionen
+- Interaktive Frage-und-Antwort-Generierung
+- Vorlagenauswahl
+- Ausgabepfad festlegen
 
-### 3. 高级功能
-- 批量生成
-- 自定义模板
-- 配置文件支持
+### 3. Erweiterte Funktionen
+- Stapelgenerierung
+- Benutzerdefinierte Vorlagen
+- Konfigurationsdatei-Unterstützung
 
-## 技术方案
+## Technischer Ansatz
 
-### 目录结构
+### Verzeichnisstruktur
 
 ```
 ecc-gen/
@@ -43,28 +43,28 @@ ecc-gen/
 └── README.md
 ```
 
-### 使用库
-- `commander` - CLI 参数解析
-- `inquirer` - 交互式问答
-- `ejs` - 模板引擎
+### Verwendete Bibliotheken
+- `commander` - CLI-Parameter-Parsing
+- `inquirer` - Interaktive Fragen
+- `ejs` - Template-Engine
 
-## 验收标准
+## Abnahmekriterien
 
-- [ ] 三个子命令均可正常工作
-- [ ] 生成的模板格式正确
-- [ ] 支持 `--output` 指定输出路径
-- [ ] 包含单元测试
-- [ ] 文档完整
+- [ ] Alle drei Unterbefehle funktionieren korrekt
+- [ ] Generierte Vorlagen haben das richtige Format
+- [ ] `--output` zur Ausgabepfadangabe wird unterstützt
+- [ ] Unit-Tests enthalten
+- [ ] Dokumentation vollständig
 
-## 学习要点
+## Lernschwerpunkte
 
-- CLI 工具开发
-- 模板系统设计
-- 交互式输入处理
-- 模块化架构
+- CLI-Tool-Entwicklung
+- Vorlagensystem-Design
+- Interaktive Eingabeverarbeitung
+- Modulare Architektur
 
-> 参考命令: [/build-fix](../Referenzdokumente/commands/04-构建修复.md) | [/test](../Referenzdokumente/commands/02-测试相关.md)
+> Referenzbefehle: [/build-fix](../Referenzdokumente/commands/04-构建修复.md) | [/test](../Referenzdokumente/commands/02-测试相关.md)
 
 ---
 
-[返回实战项目目录](./README.md)
+[Zurück zum Verzeichnis der praktischen Projekte](./README.md)

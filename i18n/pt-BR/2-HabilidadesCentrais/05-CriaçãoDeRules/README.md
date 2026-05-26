@@ -7,7 +7,7 @@
 完成本模块后，你将能够：
 
 - 理解 Claude Code Rules 的格式和分类
-- 编写安全规则、代码风格规则、测试规则
+- 编写Regras-de-Segurança、Estilo-de-Código规则、Regras-de-Teste
 - 创建项目特定的开发规范
 - 配置规则优先级和执行策略
 
@@ -15,11 +15,11 @@
 
 | 分类 | 用途 | 示例 |
 |------|------|------|
-| **安全规则** | 安全检查、漏洞防护 | 不允许硬编码密码、SQL 注入防护 |
-| **代码风格** | 编码规范、格式化 | 缩进、命名约定、注释规范 |
-| **测试规则** | 测试覆盖率、测试质量 | 80% 覆盖率要求、AAA 模式 |
+| **Regras-de-Segurança** | 安全检查、漏洞防护 | 不允许硬编码密码、SQL 注入防护 |
+| **Estilo-de-Código** | 编码规范、格式化 | 缩进、命名约定、注释规范 |
+| **Regras-de-Teste** | 测试覆盖率、测试质量 | 80% 覆盖率要求、AAA 模式 |
 | **Git 规则** | 提交规范、分支策略 | 提交信息格式、PR 流程 |
-| **性能规则** | 性能优化、资源管理 | N+1 查询检测、缓存策略 |
+| **性能规则** | Otimização-de-Desempenho、资源管理 | N+1 查询检测、缓存策略 |
 
 ## Rules 格式
 
@@ -56,7 +56,7 @@ trigger: tool-name
 | trigger | 触发工具 | 否 |
 | enabled | 是否启用 | 否 |
 
-## 安全规则
+## Regras-de-Segurança
 
 ### 禁止硬编码凭证
 
@@ -117,7 +117,7 @@ db.query("SELECT * FROM users WHERE id = ?", [userId]);
 ```
 ```
 
-## 代码风格规则
+## Estilo-de-Código规则
 
 ### 函数长度限制
 
@@ -167,7 +167,7 @@ severity: low
 参考项目的 naming-conventions.md。
 ```
 
-## 测试规则
+## Regras-de-Teste
 
 ### 覆盖率要求
 
@@ -310,9 +310,9 @@ project/
 
 ## 配套教材
 
-完整的 Rules 文档位于：`../../DocumentosDeReferência/rules/Git工作流.md`
+完整的 Rules 文档位于：`../../DocumentosDeReferência/rules/Git-Workflow.md`
 
 ## 下一步
 
-- 学习[练习题目](./exercises/练习.md)
-- 阅读 [Rules 完整文档](../../DocumentosDeReferência/rules/Git工作流.md)
+- 学习[练习题目](./exercises/Exercícios.md)
+- 阅读 [Rules 完整文档](../../DocumentosDeReferência/rules/Git-Workflow.md)

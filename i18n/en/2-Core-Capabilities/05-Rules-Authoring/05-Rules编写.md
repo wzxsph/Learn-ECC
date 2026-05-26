@@ -1,312 +1,318 @@
 # 05 - Rules Authoring
 
-Learn how to write customized development rules.
+> Write project-level rules, customize code review and quality standards
 
-## Overview
+## Module Objectives
 
-ECC [Rules](../../Reference-Docs/rules/代码风格.md) are a set of mandatory development rules covering code style, testing, security, Git workflows, agent orchestration, and performance optimization. These rules ensure code quality and consistency, enforced through automated checks and review processes.
+After completing this module, you will be able to:
 
----
+- Understand Claude Code Rules format and classification
+- Write security rules, code style rules, testing rules
+- Create project-specific development standards
+- Configure rule priorities and execution strategies
 
-## 1. Rules Format
+## Rules Classification System
 
-### 1.1 Basic Format
+| Category | Purpose | Examples |
+|----------|---------|----------|
+| **Security rules** | Security checks, vulnerability prevention | No hardcoded passwords, SQL injection prevention |
+| **Code style** | Coding standards, formatting | Indentation, naming conventions, comment standards |
+| **Testing rules** | Test coverage, test quality | 80% coverage requirement, AAA pattern |
+| **Git rules** | Commit standards, branch strategy | Commit message format, PR workflow |
+| **Performance rules** | Performance optimization, resource management | N+1 query detection, caching strategy |
 
-Rules use Markdown format with YAML frontmatter:
+## Rules Format
 
-```yaml
+Rules files use Markdown format with YAML frontmatter support:
+
+```markdown
 ---
 name: rule-name
-description: Rule description
-category: category
+severity: high
+trigger: tool-name
 ---
+
+# Rule Name
+
+## Rule Description
+
+Detailed rule description...
+
+## Check Logic
+
+How to detect violations...
+
+## Fix Suggestions
+
+How to fix issues...
 ```
 
-### 1.2 Rule Levels
+### Frontmatter Fields
 
-| Level | Description | Priority |
+| Field | Description | Required |
 |-------|-------------|----------|
-| **Global rules** | `~/.claude/rules/` | Highest |
-| **Project rules** | Project `.claude/rules/` | Medium |
-| **Local rules** | Current session | Lowest |
+| name | Rule name | Yes |
+| severity | Severity (critical/high/medium/low) | Yes |
+| trigger | Trigger tool | No |
+| enabled | Whether enabled | No |
 
-### 1.3 Priority
+## Security Rules
 
-Global rules > Project rules > Local rules
+### No Hardcoded Credentials
 
+```markdown
+---
+name: no-hardcoded-credentials
+severity: critical
+trigger: Bash
 ---
 
-## 2. Rule Types Detailed
+# No Hardcoded Credentials
 
-### 2.1 Code Style Rules
+## Rule Description
 
-Define core principles and best practices for code organization.
+Hardcoding API keys, passwords, tokens and other sensitive information in code is prohibited.
 
-#### Core Requirements
+## Check Logic
 
-**Immutability (Critical Principle)**
+Use regular expressions to detect common credential patterns:
+- `api[_-]?key\s*=\s*["'][A-Za-z0-9]{20,}`
+- `password\s*=\s*["'][^"']+`
+- `token\s*=\s*["'][A-Za-z0-9]{32,}`
 
-```typescript
-// Wrong example - Mutating original object
-function modify(user, name) {
-  user.name = name;  // Mutates original object
-  return user;
-}
+## Fix Suggestions
 
-// Correct example - Return new object
-function update(user, name) {
-  return { ...user, name };  // Creates new copy
-}
+Use environment variables:
+```javascript
+const apiKey = process.env.API_KEY;
+```
 ```
 
-**Core Design Principles**
+### SQL Injection Prevention
 
-| Principle | Description | Practice |
-|-----------|-------------|----------|
-| **KISS** | Keep It Simple | Prefer the simplest viable solution |
-| **DRY** | Don't Repeat Yourself | Avoid copy-paste caused implementation drift |
-| **YAGNI** | You Aren't Gonna Need It | Refactor when actually needed |
+```markdown
+---
+name: no-sql-injection
+severity: critical
+trigger: Read
+---
 
-**Naming Conventions**
+# SQL Injection Prevention
 
-| Type | Convention | Example |
-|------|------------|---------|
-| Variables and functions | camelCase | `calculateTotal` |
-| Booleans | is/has/should/can prefix | `isActive` |
-| Interfaces, types, components | PascalCase | `UserProfile` |
-| Constants | UPPER_SNAKE_CASE | `MAX_RETRY_COUNT` |
+## Rule Description
 
-### 2.2 Testing Rules
+String concatenation to build SQL queries is prohibited.
 
-Mandatory testing standards that ensure code quality.
+## Check Logic
 
-#### Minimum Test Coverage: 80%
+Detect string-concatenated SQL statements:
+- `"SELECT * FROM users WHERE id = " + userId`
+- `query("SELECT * FROM " + tableName)`
 
-| Test Type | Description |
-|-----------|-------------|
-| Unit tests | Independent functions, utilities, components |
-| Integration tests | API endpoints, database operations |
-| E2E tests | Critical user flows |
+## Fix Suggestions
 
-#### TDD Workflow
-
+Use parameterized queries:
+```javascript
+db.query("SELECT * FROM users WHERE id = ?", [userId]);
 ```
-1. Write tests (RED)   - Write a failing test first
-2. Run tests           - Verify test fails
-3. Write minimal implementation (GREEN) - Write minimum code that passes
-4. Run tests           - Verify test passes
-5. Refactor (IMPROVE)   - Improve code structure
-6. Verify coverage      - Ensure 80%+ coverage
 ```
 
-### 2.3 Security Rules
+## Code Style Rules
 
-Mandatory security checklist.
+### Function Length Limit
 
-#### Pre-Commit Checks
+```markdown
+---
+name: max-function-length
+severity: medium
+---
 
-- [ ] No hardcoded credentials (API keys, passwords, tokens)
-- [ ] All user inputs validated
-- [ ] SQL injection prevention (parameterized queries)
-- [ ] XSS prevention (output escaping)
-- [ ] CSRF protection enabled
-- [ ] Authentication/authorization verified
-- [ ] Rate limiting
-- [ ] Error messages don't leak sensitive data
+# Function Length Limit
 
-#### Secret Management
+## Rule Description
 
-- **Never** hardcode secrets in source code
-- **Always** use environment variables or secret manager
-- Validate required secrets at startup
-- Rotate any secrets that may have been exposed
+Functions should remain short, ideally no more than 50 lines.
 
-### 2.4 Git Workflow Rules
+## Check Logic
 
-Git commit standards and PR workflow.
+Count function lines, warn if exceeding 50 lines.
 
-#### Commit Message Format
+## Fix Suggestions
 
+Split long functions into multiple smaller functions, each responsible for a single responsibility.
+```
+
+### Variable Naming Standards
+
+```markdown
+---
+name: consistent-naming
+severity: low
+---
+
+# Variable Naming Standards
+
+## Rule Description
+
+Use consistent naming conventions.
+
+## Check Logic
+
+- Variables and functions use camelCase
+- Constants use UPPER_SNAKE_CASE
+- Class names use PascalCase
+
+## Fix Suggestions
+
+Reference the project's naming-conventions.md.
+```
+
+## Testing Rules
+
+### Coverage Requirements
+
+```markdown
+---
+name: minimum-test-coverage
+severity: high
+---
+
+# Minimum Test Coverage
+
+## Rule Description
+
+All new code must have more than 80% test coverage.
+
+## Check Logic
+
+Run test coverage tools to check if 80% is reached.
+
+## Fix Suggestions
+
+Write test cases for uncovered code.
+```
+
+### AAA Test Pattern
+
+```markdown
+---
+name: aaa-test-pattern
+severity: medium
+---
+
+# AAA Test Pattern
+
+## Rule Description
+
+Tests should follow the Arrange-Act-Assert structure.
+
+## Check Logic
+
+Check if tests contain three distinct phases.
+
+## Fix Suggestions
+
+Rewrite tests with clear separation:
+1. Arrange - Prepare test data
+2. Act - Execute the operation under test
+3. Assert - Verify results
+```
+
+## Git Rules
+
+### Commit Message Format
+
+```markdown
+---
+name: conventional-commits
+severity: medium
+trigger: Bash
+condition: command.includes('git commit')
+---
+
+# Commit Message Format
+
+## Rule Description
+
+Follow Conventional Commits specification.
+
+## Check Logic
+
+Verify commit message format:
 ```
 <type>: <description>
 
-<optional body>
+[optional body]
 ```
 
-**Types**:
-- `feat`: New feature
-- `fix`: Bug fix
-- `refactor`: Refactoring
-- `docs`: Documentation
-- `test`: Test
-- `chore`: Maintenance
-- `perf`: Performance
-- `ci`: CI/CD
+Types: feat, fix, docs, test, refactor, perf, ci, chore
 
-#### PR Workflow
-
-1. Analyze full commit history
-2. Use `git diff [base-branch]...HEAD` to see all changes
-3. Draft comprehensive PR summary
-4. Include test plan and TODOs
-5. If new branch, push with `-u` flag
-
-### 2.5 Agent Orchestration Rules
-
-Multi-Agent collaboration patterns.
-
-#### Immediate Use Principles
-
-| Scenario | Agent |
-|----------|-------|
-| Complex feature request | **planner** |
-| Code just written/modified | **code-reviewer** |
-| Bug fix or new feature | **tdd-guide** |
-| Architecture decisions | **architect** |
-
-#### Parallel Task Execution
-
-```markdown
-# Good: Parallel execution
-Launch 3 Agents in parallel:
-1. Agent 1: Authentication module security analysis
-2. Agent 2: Cache system performance review
-3. Agent 3: Tool type checking
-
-# Bad: Unnecessary sequential execution
-First agent 1, then agent 2, then agent 3
-```
-
-### 2.6 Performance Optimization Rules
-
-Model selection and context management.
-
-#### Model Selection Strategy
-
-| Model | Purpose | Cost |
-|-------|---------|------|
-| **Haiku 4.5** | Lightweight agents, frequent invocation, pair programming | Low |
-| **Sonnet 4.6** | Main development work, multi-agent orchestration | Medium |
-| **Opus 4.5** | Complex architecture decisions, deep reasoning | High |
-
-#### Context Window Management
-
-Avoid doing in the last 20% of context window:
-- Large-scale refactoring
-- Feature implementation across multiple files
-- Complex interaction debugging
-
----
-
-## 3. Rule Authoring
-
-### 3.1 Trigger Conditions
-
-```yaml
----
-name: no-console-log
-description: Block commits containing console.log
-trigger:
-  - pre-commit
-  - pre-push
----
-```
-
-### 3.2 Check Logic
-
-```markdown
-## Check Logic
-
-1. Scan modified files
-2. Look for `console.log`, `console.error`, etc.
-3. If found, block commit and show warning
-```
-
-### 3.3 Fix Suggestions
-
-```markdown
 ## Fix Suggestions
 
-- Use structured logging library (like winston, pino)
-- Configure log levels (debug, info, warn, error)
-- Ensure production environment log levels are appropriate
+Rewrite commit message with correct format.
 ```
 
----
+## Rule Priorities
 
-## 4. Violation Handling
+| Level | Description | Behavior |
+|-------|-------------|----------|
+| critical | Serious security risk | Block immediately |
+| high | Important quality issue | Warn and block |
+| medium | Suggested improvement | Warn but don't block |
+| low | Style suggestion | Hint only |
 
-### 4.1 Severity Levels
+## Writing Project Rules
 
-| Level | Meaning | Action |
-|-------|---------|--------|
-| CRITICAL | Security vulnerability or data loss risk | **Block** - Must fix before merge |
-| HIGH | Bug or significant quality issue | **Warn** - Should fix before merge |
-| MEDIUM | Maintainability concern | **Hint** - Suggest fixing |
-| LOW | Style or minor suggestion | **Note** - Optional |
+### Step 1: Analyze Project Requirements
 
-### 4.2 Fix Flow
+```markdown
+# Project Rules Requirements Analysis
 
+## Must-have Standards
+1. Security: No hardcoded credentials
+2. Testing: 80% coverage for new code
+3. Commit: Follow Conventional Commits
+
+## Should-have Standards
+1. Functions no more than 50 lines
+2. Files no more than 800 lines
+3. No console.log
 ```
-1. Analyze violation reason
-2. Determine fix plan
-3. Execute fix
-4. Verify fix
-5. Resubmit for review
-```
 
----
+### Step 2: Create Rule Files
 
-## 5. Code Quality Checklist
-
-Must check before marking work complete:
-
-- [ ] Code is readable and well-named
-- [ ] Functions are short (<50 lines)
-- [ ] Files are focused (<800 lines)
-- [ ] No deep nesting (>4 levels)
-- [ ] Proper error handling
-- [ ] No hardcoded values (use constants or config)
-- [ ] Use immutable patterns (no mutation)
-- [ ] Test coverage ≥80%
-- [ ] All security checks pass
-
----
-
-## 6. Creating Project-Specific Rules
-
-### 6.1 Project Rules Location
+Create `.claude/rules/` directory in the project:
 
 ```
 project/
 └── .claude/
     └── rules/
-        ├── README.md
-        └── Custom rule files
+        ├── security.md
+        ├── testing.md
+        ├── coding-style.md
+        └── git.md
 ```
 
-### 6.2 Inherit Global Rules
+### Step 3: Configure Rule Priorities
 
-Project rules inherit from global rules, can extend on top:
+Create `rules.json` configuration for execution order:
 
-```markdown
-# Project-Specific Rules
-
-Inherited from global rules, with additional requirements:
-
-## Additional Requirements
-
-- [ ] Project-specific coding standards
-- [ ] Specific testing requirements
-- [ ] Specific documentation requirements
+```json
+{
+  "order": [
+    "security/no-hardcoded-credentials",
+    "security/no-sql-injection",
+    "testing/minimum-test-coverage",
+    "coding-style/max-function-length"
+  ]
+}
 ```
 
----
+## Reference Materials
 
-## Exercises
+Complete Rules documentation is located at: `../../Reference-Docs/rules/Git-Workflow.md`
 
-Complete tasks in [exercises](./exercises/练习.md).
+## Next Steps
 
----
-
-[Return to Core Capabilities README](../README.md)
+- Learn [exercises](./exercises/Getting-Started-Exercises.md)
+- Read [complete Rules documentation](../../Reference-Docs/rules/Git-Workflow.md)

@@ -63,7 +63,7 @@ ecc-gen/
 - Xử lý đầu vào tương tác
 - Kiến trúc mô-đun
 
-> Lệnh tham khảo: [/build-fix](../TaiLieuThamKhao/commands/04-构建修复.md) | [/test](../TaiLieuThamKhao/commands/02-测试相关.md)
+> Lệnh tham khảo: [/build-fix](../TaiLieuThamKhao/commands/04-Sua-Loi-Build.md) | [/test](../TaiLieuThamKhao/commands/02-Kiem-Thu.md)
 
 ---
 

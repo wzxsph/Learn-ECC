@@ -1,36 +1,36 @@
-# 第三阶段：专家之路
+# Phase 3: Expertenweg
 
-本阶段探索 ECC 的高级特性和专家级用法。
+Diese Phase erforscht die fortgeschrittenen Funktionen und Expertenanwendungen von ECC.
 
-## 学习目标
+## Lernziele
 
-完成本阶段后，你将能够：
-- 开发 MCP（模型上下文协议）扩展
-- 构建自主代理系统
-- 应用高级设计模式和最佳实践
+Nach dieser Phase wirst du in der Lage sein:
+- MCP-Erweiterungen (Model Context Protocol) zu entwickeln
+- Autonome Agent-Systeme zu bauen
+- Fortgeschrittene Design-Patterns und Best Practices anzuwenden
 
-## 预计时长
+## Geschätzte Dauer
 
-6-8 小时
+6-8 Stunden
 
-## 前提要求
+## Voraussetzungen
 
-- 完成 [第二阶段：核心能力](../2-Kernfähigkeiten/README.md)
-- 有丰富的项目开发经验
-- 理解系统架构设计
+- [Phase 2: Kernfähigkeiten](../2-Kernfähigkeiten/README.md) abgeschlossen
+- Umfangreiche Projekterfahrung
+- Verständnis von Systemarchitektur-Design
 
-## 学习内容
+## Lerninhalt
 
-| 章节 | 内容 |
-|------|------|
-| [01-MCP开发](./01-MCP-Entwicklung.md) | 模型上下文协议、扩展开发 |
-| [02-自主代理](./02-Autonome-Agenten.md) | 自治 Agent、决策系统 |
-| [03-高级模式](./03-Fortgeschrittene-Muster.md) | 设计模式、最佳实践 |
+| Kapitel | Inhalt |
+|---------|--------|
+| [01-MCP-Entwicklung](./01-MCP-Entwicklung.md) | Model Context Protocol, Erweiterungsentwicklung |
+| [02-Autonome-Agenten](./02-Autonome-Agenten.md) | Autonome Agents, Entscheidungssysteme |
+| [03-Fortgeschrittene-Muster](./03-Fortgeschrittene-Muster.md) | Design-Patterns, Best Practices |
 
-## 接下来
+## Nächste Schritte
 
-完成专家之路阶段后，进入 [第四阶段：实战项目](../4-PraktischeProjekte/README.md) 将所学应用于实践。
+Nach Abschluss des Expertenwegs, gehe zu [Phase 4: Praktische Projekte](../4-PraktischeProjekte/README.md) um das Gelernte anzuwenden.
 
 ---
 
-[返回主目录](../README.md)
+[Zurück zum Hauptverzeichnis](../README.md)

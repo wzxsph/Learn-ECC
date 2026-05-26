@@ -1,34 +1,34 @@
-# 项目三：自动化工作流
+# Projekt 3: Workflow-Automatisierung
 
-构建端到端自动化工作流系统。
+Erstelle ein End-to-End automatisiertes Workflow-System.
 
-## 项目目标
+## Projektziele
 
-**预计时长**: 2-3 小时
+**Geschätzte Dauer**: 2-3 Stunden
 
-设计并实现一个自动化工作流引擎，处理常见开发任务。
+Entwirf und implementiere eine automatisierte Workflow-Engine zur Verarbeitung häufiger Entwicklungsaufgaben.
 
-## 功能需求
+## Funktionsanforderungen
 
-### 1. 工作流定义
-- YAML 格式定义
-- 步骤串联和并行
-- 条件分支
-- 循环处理
+### 1. Workflow-Definition
+- YAML-Format-Definition
+- Schrittverknüpfung und Parallelisierung
+- Bedingte Verzweigung
+- Schleifenverarbeitung
 
-### 2. 内置工作流
-- **代码检查** - lint + type-check + test
-- **构建发布** - build + test + deploy
-- **问题修复** - analyze + fix + verify
+### 2. Integrierte Workflows
+- **Code-Prüfung** - lint + type-check + test
+- **Build und Release** - build + test + deploy
+- **Problembehebung** - analyze + fix + verify
 
-### 3. 监控告警
-- 执行状态追踪
-- 失败告警通知
-- 耗时统计
+### 3. Überwachung und Alarmierung
+- Ausführungsstatus-Verfolgung
+- Fehleralarm-Benachrichtigung
+- Zeitverbrauchsstatistik
 
-## 技术方案
+## Technischer Ansatz
 
-### 工作流定义示例
+### Workflow-Definitionsbeispiel
 
 ```yaml
 name: code-check
@@ -42,19 +42,19 @@ steps:
     requires: [lint, type-check]
 ```
 
-### Hook 集成
-- PreToolUse - 参数验证
-- PostToolUse - 输出验证
-> 参考: [Hook 类型](../Referenzdokumente/hooks/Hook类型.md) | [自动化与脚本](../Referenzdokumente/skills/自动化与脚本.md)
+### Hook-Integration
+- PreToolUse - Parametervalidierung
+- PostToolUse - Ausgabevalidierung
+> Referenz: [Hook-Typen](../Referenzdokumente/hooks/Hook类型.md) | [Automatisierung und Skripte](../Referenzdokumente/skills/自动化与脚本.md)
 
-## 验收标准
+## Abnahmekriterien
 
-- [ ] 支持 YAML 定义
-- [ ] 步骤依赖解析正确
-- [ ] 并行执行优化
-- [ ] 失败重试机制
-- [ ] 执行日志完整
+- [ ] YAML-Definition wird unterstützt
+- [ ] Schrittabhängigkeiten werden korrekt aufgelöst
+- [ ] Parallelisierungsausführung optimiert
+- [ ] Fehlerwiederholungsmechanismus
+- [ ] Ausführungsprotokoll vollständig
 
 ---
 
-[返回实战项目目录](./README.md)
+[Zurück zum Verzeichnis der praktischen Projekte](./README.md)

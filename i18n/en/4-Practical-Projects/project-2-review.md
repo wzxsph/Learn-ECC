@@ -33,7 +33,7 @@ Create an automated code review system that automatically checks code quality, s
 - **code-reviewer** - Main review Agent
 - **security-reviewer** - Security specialist
 - **tdd-guide** - Test quality evaluation
-> Reference: [/code-review](../Reference-Docs/commands/01-核心工作流.md) | [code-reviewer Agent](../Reference-Docs/agents/1.%20代码审查类.md)
+> Reference: [/code-review](../Reference-Docs/commands/01-Core-Workflow.md) | [code-reviewer Agent](../Reference-Docs/agents/01-Code-Review.md)
 
 ### Output Format
 ```json

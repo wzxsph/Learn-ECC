@@ -2,14 +2,14 @@
 
 ## [ECC](../참조문서/README.md)란?
 
-[ECC](../참조문서/README.md)（Everything Claude Code）는 Claude Code용 플러그인 시스템으로, 프로덕션 수준의 [Agent](../참조문서/agents/1.%20代码审查类.md), [Skills](../참조문서/skills/最佳实践.md), hooks, rules, [Commands](../참조문서/commands/01-核心工作流.md), 및 MCP 설정 방안을 제공합니다. Anthropic Hackathon 수상 작품에서 탄생하여 10개월 이상의 일상 사용的打磨를 거쳤습니다.
+[ECC](../참조문서/README.md)（Everything Claude Code）는 Claude Code용 플러그인 시스템으로, 프로덕션 수준의 [Agent](../참조문서/agents/1.%20코드검토类.md), [Skills](../참조문서/skills/最佳实践.md), hooks, rules, [Commands](../참조문서/commands/01-핵심워크플로우.md), 및 MCP 설정 방안을 제공합니다. Anthropic Hackathon 수상 작품에서 탄생하여 10개월 이상의 일상 사용的打磨를 거쳤습니다.
 
 ## [ECC](../참조문서/README.md)는 무엇을 할 수 있나요?
 
-### 1. [Agent](../참조문서/agents/1.%20代码审查类.md) 시스템
-[ECC](../참조문서/README.md)는 60+ 전문 [Agent](../참조문서/agents/1.%20代码审查类.md)를 제공하며, 다국어 리뷰, 빌드 수리, 아키텍처 설계 등을 커버:
+### 1. [Agent](../참조문서/agents/1.%20코드검토类.md) 시스템
+[ECC](../참조문서/README.md)는 60+ 전문 [Agent](../참조문서/agents/1.%20코드검토类.md)를 제공하며, 다국어 리뷰, 빌드 수리, 아키텍처 설계 등을 커버:
 
-| [Agent](../참조문서/agents/1.%20代码审查类.md) | 용도 |
+| [Agent](../참조문서/agents/1.%20코드검토类.md) | 용도 |
 |-------|------|
 | `planner` | 기능 실시 계획 |
 | `code-reviewer` | 코드 품질 및 보안 리뷰 |
@@ -27,7 +27,7 @@
 - `continuous-learning-v2` - instinct 기반의 지속적인 학습
 - `eval-harness` - 검증 루프 평가
 
-### 3. [Commands](../참조문서/commands/01-核心工作流.md) 명령
+### 3. [Commands](../참조문서/commands/01-핵심워크플로우.md) 명령
 전통적인 슬래시 명령 호환성을 유지（총 75+ 명령）:
 
 | 명령 | 기능 |
@@ -73,8 +73,8 @@
 
 ## 핵심 개념
 
-### [Agent](../참조문서/agents/1.%20代码审查类.md)
-재사용 가능한 서브태스크 실행자로, 각 [Agent](../참조문서/agents/1.%20代码审查类.md)에는 명확한 책임이 있다. 여러 [Agent](../참조문서/agents/1.%20代码审查类.md)를 조합하여 복잡한 워크플로를 구축한다.
+### [Agent](../참조문서/agents/1.%20코드검토类.md)
+재사용 가능한 서브태스크 실행자로, 각 [Agent](../참조문서/agents/1.%20코드검토类.md)에는 명확한 책임이 있다. 여러 [Agent](../참조문서/agents/1.%20코드검토类.md)를 조합하여 복잡한 워크플로를 구축한다.
 
 ### [Skill](../참조문서/skills/最佳实践.md)
 특정 태스크를 완료하는 워크플로를 정의하며, [ECC](../참조문서/README.md)의 주요 워크플로 면이다.

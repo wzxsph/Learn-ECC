@@ -2,14 +2,14 @@
 
 ## What is [ECC](../Reference-Docs/README.md)?
 
-[ECC](../Reference-Docs/README.md) (Everything Claude Code) is a Claude Code plugin system providing production-grade [Agents](../Reference-Docs/agents/1.%20代码审查类.md), [Skills](../Reference-Docs/skills/最佳实践.md), hooks, rules, [Commands](../Reference-Docs/commands/01-核心工作流.md), and MCP configuration solutions. Originated from an Anthropic Hackathon winning project, refined through 10+ months of daily use.
+[ECC](../Reference-Docs/README.md) (Everything Claude Code) is a Claude Code plugin system providing production-grade [Agents](../Reference-Docs/agents/01-Code-Review.md), [Skills](../Reference-Docs/skills/Best-Practices.md), hooks, rules, [Commands](../Reference-Docs/commands/01-Core-Workflow.md), and MCP configuration solutions. Originated from an Anthropic Hackathon winning project, refined through 10+ months of daily use.
 
 ## What Can [ECC](../Reference-Docs/README.md) Do?
 
-### 1. [Agent](../Reference-Docs/agents/1.%20代码审查类.md) System
-[ECC](../Reference-Docs/README.md) provides 60+ professional [Agents](../Reference-Docs/agents/1.%20代码审查类.md) covering multi-language review, build fixes, architecture design, and more:
+### 1. [Agent](../Reference-Docs/agents/01-Code-Review.md) System
+[ECC](../Reference-Docs/README.md) provides 60+ professional [Agents](../Reference-Docs/agents/01-Code-Review.md) covering multi-language review, build fixes, architecture design, and more:
 
-| [Agent](../Reference-Docs/agents/1.%20代码审查类.md) | Purpose |
+| [Agent](../Reference-Docs/agents/01-Code-Review.md) | Purpose |
 |-------|---------|
 | `planner` | Feature implementation planning |
 | `code-reviewer` | Code quality and security review |
@@ -18,8 +18,8 @@
 | `architect` | System architecture design |
 | `tdd-guide` | Test-driven development guidance |
 
-### 2. [Skills](../Reference-Docs/skills/最佳实践.md) Workflows
-[Skills](../Reference-Docs/skills/最佳实践.md) are the primary workflow interface. [ECC](../Reference-Docs/README.md) provides 232+ [Skills](../Reference-Docs/skills/最佳实践.md):
+### 2. [Skills](../Reference-Docs/skills/Best-Practices.md) Workflows
+[Skills](../Reference-Docs/skills/Best-Practices.md) are the primary workflow interface. [ECC](../Reference-Docs/README.md) provides 232+ [Skills](../Reference-Docs/skills/Best-Practices.md):
 
 - `tdd-workflow` - Test-driven development
 - `e2e-testing` - End-to-end testing
@@ -27,7 +27,7 @@
 - `continuous-learning-v2` - Instinct-based continuous learning
 - `eval-harness` - Verification loop evaluation
 
-### 3. [Commands](../Reference-Docs/commands/01-核心工作流.md)
+### 3. [Commands](../Reference-Docs/commands/01-Core-Workflow.md)
 Preserves traditional slash command compatibility (75+ commands):
 
 | Command | Function |
@@ -73,10 +73,10 @@ Supports 14+ MCP server configurations: GitHub, Supabase, Vercel, Railway, Conte
 
 ## Core Concepts
 
-### [Agent](../Reference-Docs/agents/1.%20代码审查类.md)
-Reusable subtask executors, each [Agent](../Reference-Docs/agents/1.%20代码审查类.md) has clear responsibilities. Build complex workflows by combining multiple [Agents](../Reference-Docs/agents/1.%20代码审查类.md).
+### [Agent](../Reference-Docs/agents/01-Code-Review.md)
+Reusable subtask executors, each [Agent](../Reference-Docs/agents/01-Code-Review.md) has clear responsibilities. Build complex workflows by combining multiple [Agents](../Reference-Docs/agents/01-Code-Review.md).
 
-### [Skill](../Reference-Docs/skills/最佳实践.md)
+### [Skill](../Reference-Docs/skills/Best-Practices.md)
 Defines workflows for completing specific tasks, is the primary workflow interface for [ECC](../Reference-Docs/README.md).
 
 ### Hook

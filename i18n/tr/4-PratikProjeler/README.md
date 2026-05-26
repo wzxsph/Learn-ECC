@@ -1,44 +1,43 @@
-# 第四阶段：Gerçek Projeler
+# Aşama 4: Pratik Projeler
 
-Vasıtasıyla真实项目巩固所学知识。
+Gerçek projelerle öğrenilen bilgileri pekiştirin.
 
 ## Öğrenme Hedefleri
 
-Bitir本阶段后，你将Yapabilir：
-- 从零构建完整的 CLI 工具
-- Gerçekleştir自动化Kod İnceleme流程
-- Tasarım端到端Otomatik İş Akışı
-- 构建多 Ajans İşbirliği平台
+Bu aşamayı tamamladıktan sonra şunları yapabileceksiniz:
+- Sıfırdan tam bir CLI aracı oluşturma
+- Otomatik kod inceleme süreci uygulama
+- Uçtan uca otomatik iş akışı tasarlama
+- Çoklu Agent işbirliği platformu oluşturma
 
-## 预计时长
+## Tahmini Süre
 
-10-15 小时
+10-15 saat
 
-## 前提要求
+## Ön Gereksinimler
 
-- Bitir [第二阶段：Temel Yetenekler](../2-Temel Yetenekler/README.md)
-- 掌握至少一种脚本语言
-- 有项目开发经验
+- [Aşama 2: Çekirdek Yetenekler](../2-ÇekirdekYetenekler/README.md) tamamlandı
+- En az bir betik dili bilme
+- Proje geliştirme deneyimi
 
-## 学习内容
+## Öğrenme İçeriği
 
-| 项目 | 内容 | 难度 |
-|------|------|------|
-| [项目一：CLI工具](./project-1-cli.md) | 构建命令行工具 | 基础 |
-| [项目二：Kod İnceleme](./project-2-review.md) | 自动化审查流程 | 进阶 |
-| [项目三：Otomatik İş Akışı](./project-3-auto.md) | 端到端自动化 | 进阶 |
-| [项目四：Agent系统](./project-4-agent.md) | 多 Ajans İşbirliği平台 | 高级 |
+| Proje | İçerik | Zorluk |
+|------|--------|--------|
+| [Proje Bir: CLI Aracı](./project-1-cli.md) | Komut satırı aracı oluşturma | Temel |
+| [Proje İki: Kod İnceleme](./project-2-review.md) | Otomatik inceleme süreci | Orta |
+| [Proje Üç: Otomasyon İş Akışı](./project-3-auto.md) | Uçtan uca otomasyon | Orta |
+| [Proje Dört: Agent Sistemi](./project-4-agent.md) | Çoklu Agent işbirliği platformu | İleri |
 
-## 建议
+## Öneriler
 
-选择一个感兴趣的项目深入Bitir，而非蜻蜓点水式地做所有项目。
-建议按顺序Bitir：CLI工具 → Kod İnceleme → 工作流自动化 → Agent系统（难度递增）
+Ilgi çeken bir projeyi derinlemesine tamamlamayı seçin, tüm projeleri yüzeysel yapmayın.
+Sırayla tamamlamanız önerilir: CLI aracı → Kod inceleme → İş akışı otomasyonu → Agent sistemi (zorluk artarak)
 
-## 接下来
+## Sonraki Adımlar
 
-BitirGerçek Projeler后，进入 [第五阶段：Hızlı Referans](../5-Hızlı Referans/README.md) 查阅常用命令和模式。
+Pratik projeleri tamamladıktan sonra, yaygın komutlar ve kalıpları incelemek için [Aşama 5: Hızlı Başvuru](../5-HızlıBaşvuru/README.md)'ya geçin.
 
 ---
 
-[Geri Dön主Dizin](../README.md)
-
+[Ana dizine dön](../README.md)

@@ -15,7 +15,7 @@ Tạo một hệ thống hợp tác đa Agent, nhiều Agent chuyên nghiệp ph
 - **developer** - Triển khai mã
 - **code-reviewer** - Kiểm tra mã
 - **tester** - Kỹ sư kiểm thử
-> Tham khảo: [Agent kiểm tra mã](../TaiLieuThamKhao/agents/1.%20代码审查类.md) | [Agent kiến trúc](../TaiLieuThamKhao/agents/6.%20架构类.md)
+> Tham khảo: [Agent kiểm tra mã](../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md) | [Agent kiến trúc](../TaiLieuThamKhao/agents/06-Kien-Truc.md)
 
 ### 2. Cơ chế phối hợp
 - Phân phát nhiệm vụ

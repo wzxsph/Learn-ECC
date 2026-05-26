@@ -57,151 +57,151 @@ ECC/
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/plan` | [01-核心工作流.md](commands/01-核心工作流.md) | 需求分析+风险评估+分步骤计划 |
-| `/code-review` | [01-核心工作流.md](commands/01-核心工作流.md) | 代码质量/安全/可维护性审查 |
-| `/build-fix` | [01-核心工作流.md](commands/01-核心工作流.md) | 自动检测语言+增量修复构建错误 |
-| `/verify` | [01-核心工作流.md](commands/01-核心工作流.md) | 完整验证循环：构建→lint→测试→类型检查 |
-| `/quality-gate` | [01-核心工作流.md](commands/01-核心工作流.md) | 按需运行 ECC 质量流水线 |
-| `/tdd` | [01-核心工作流.md](commands/01-核心工作流.md) | 通用 TDD 工作流 |
+| `/plan` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | 需求分析+风险评估+分步骤计划 |
+| `/code-review` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | 代码质量/安全/可维护性审查 |
+| `/build-fix` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | 自动检测语言+增量修复构建错误 |
+| `/verify` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | 完整验证循环：构建→lint→测试→类型检查 |
+| `/quality-gate` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | 按需运行 ECC 质量流水线 |
+| `/tdd` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | 通用 TDD 工作流 |
 
 ### 3.2 测试相关 (8)
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/go-test` | [02-测试相关.md](commands/02-测试相关.md) | Go TDD (表格驱动，80%+ 覆盖率) |
-| `/kotlin-test` | [02-测试相关.md](commands/02-测试相关.md) | Kotlin TDD (Kotest + Kover) |
-| `/rust-test` | [02-测试相关.md](commands/02-测试相关.md) | Rust TDD (cargo test + 集成测试) |
-| `/cpp-test` | [02-测试相关.md](commands/02-测试相关.md) | C++ TDD (GoogleTest + gcov/lcov) |
-| `/flutter-test` | [02-测试相关.md](commands/02-测试相关.md) | Flutter TDD |
-| `/e2e` | [02-测试相关.md](commands/02-测试相关.md) | 生成 + 运行 Playwright e2e 测试 |
-| `/test-coverage` | [02-测试相关.md](commands/02-测试相关.md) | 测试覆盖率报告+差距分析 |
-| `/python-testing` | [02-测试相关.md](commands/02-测试相关.md) | Python 测试最佳实践 |
+| `/go-test` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Go TDD (表格驱动，80%+ 覆盖率) |
+| `/kotlin-test` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Kotlin TDD (Kotest + Kover) |
+| `/rust-test` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Rust TDD (cargo test + 集成测试) |
+| `/cpp-test` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | C++ TDD (GoogleTest + gcov/lcov) |
+| `/flutter-test` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Flutter TDD |
+| `/e2e` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | 生成 + 运行 Playwright e2e 测试 |
+| `/test-coverage` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | 测试覆盖率报告+差距分析 |
+| `/python-testing` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Python 测试最佳实践 |
 
 ### 3.3 语言审查 (7)
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/python-review` | [03-语言审查.md](commands/03-语言审查.md) | Python PEP 8、类型提示、安全 |
-| `/go-review` | [03-语言审查.md](commands/03-语言审查.md) | Go 惯用法、并发、错误处理 |
-| `/kotlin-review` | [03-语言审查.md](commands/03-语言审查.md) | Kotlin 空安全、协程、架构 |
-| `/rust-review` | [03-语言审查.md](commands/03-语言审查.md) | Rust 所有权、生命周期、unsafe |
-| `/cpp-review` | [03-语言审查.md](commands/03-语言审查.md) | C++ 内存安全、现代 idiom |
-| `/flutter-review` | [03-语言审查.md](commands/03-语言审查.md) | Flutter/Dart 模式 |
-| `/fastapi-review` | [03-语言审查.md](commands/03-语言审查.md) | FastAPI 架构、异步、Pydantic |
+| `/python-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Python PEP 8、类型提示、安全 |
+| `/go-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Go 惯用法、并发、错误处理 |
+| `/kotlin-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Kotlin 空安全、协程、架构 |
+| `/rust-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Rust 所有权、生命周期、unsafe |
+| `/cpp-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | C++ 内存安全、现代 idiom |
+| `/flutter-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Flutter/Dart 模式 |
+| `/fastapi-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | FastAPI 架构、异步、Pydantic |
 
 ### 3.4 构建修复 (6)
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/go-build` | [04-构建修复.md](commands/04-构建修复.md) | 修复 Go 构建错误 + go vet 警告 |
-| `/kotlin-build` | [04-构建修复.md](commands/04-构建修复.md) | 修复 Kotlin/Gradle 编译器错误 |
-| `/rust-build` | [04-构建修复.md](commands/04-构建修复.md) | 修复 Rust 构建 + 借用检查器问题 |
-| `/cpp-build` | [04-构建修复.md](commands/04-构建修复.md) | 修复 C++ CMake + 链接器问题 |
-| `/gradle-build` | [04-构建修复.md](commands/04-构建修复.md) | 修复 Android/KMP Gradle 错误 |
-| `/flutter-build` | [04-构建修复.md](commands/04-构建修复.md) | Flutter 构建修复 |
+| `/go-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | 修复 Go 构建错误 + go vet 警告 |
+| `/kotlin-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | 修复 Kotlin/Gradle 编译器错误 |
+| `/rust-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | 修复 Rust 构建 + 借用检查器问题 |
+| `/cpp-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | 修复 C++ CMake + 链接器问题 |
+| `/gradle-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | 修复 Android/KMP Gradle 错误 |
+| `/flutter-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | Flutter 构建修复 |
 
 ### 3.5 规划与架构 (7)
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/plan-prd` | [05-规划与架构.md](commands/05-规划与架构.md) | 交互式 PRD 生成器 |
-| `/prp-plan` | [05-规划与架构.md](commands/05-规划与架构.md) | 全面的功能规划 |
-| `/prp-prd` | [05-规划与架构.md](commands/05-规划与架构.md) | PRP 工作流 PRD 生成器 |
-| `/prp-implement` | [05-规划与架构.md](commands/05-规划与架构.md) | 执行 PRP 计划+验证循环 |
-| `/prp-pr` | [05-规划与架构.md](commands/05-规划与架构.md) | 从 PRP 工作流创建 PR |
-| `/prp-commit` | [05-规划与架构.md](commands/05-规划与架构.md) | PRP 验证提交 |
-| `/multi-plan` | [05-规划与架构.md](commands/05-规划与架构.md) | 多模型协作规划 (Codex + Gemini) |
+| `/plan-prd` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | 交互式 PRD 生成器 |
+| `/prp-plan` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | 全面的功能规划 |
+| `/prp-prd` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | PRP 工作流 PRD 生成器 |
+| `/prp-implement` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | 执行 PRP 计划+验证循环 |
+| `/prp-pr` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | 从 PRP 工作流创建 PR |
+| `/prp-commit` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | PRP 验证提交 |
+| `/multi-plan` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | 多模型协作规划 (Codex + Gemini) |
 
 ### 3.6 会话管理 (5)
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/save-session` | [06-会话管理.md](commands/06-会话管理.md) | 保存会话状态到 ~/.claude/session-data/ |
-| `/resume-session` | [06-会话管理.md](commands/06-会话管理.md) | 加载并恢复保存的会话 |
-| `/sessions` | [06-会话管理.md](commands/06-会话管理.md) | 浏览+搜索+管理会话历史 |
-| `/checkpoint` | [06-会话管理.md](commands/06-会话管理.md) | 创建/验证工作流检查点 |
-| `/aside` | [06-会话管理.md](commands/06-会话管理.md) | 回答侧问而不丢失上下文 |
+| `/save-session` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | 保存会话状态到 ~/.claude/session-data/ |
+| `/resume-session` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | 加载并恢复保存的会话 |
+| `/sessions` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | 浏览+搜索+管理会话历史 |
+| `/checkpoint` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | 创建/验证工作流检查点 |
+| `/aside` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | 回答侧问而不丢失上下文 |
 
 ### 3.7 学习与改进 (10)
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/learn` | [07-学习与改进.md](commands/07-学习与改进.md) | 从会话中提取可复用模式 |
-| `/learn-eval` | [07-学习与改进.md](commands/07-学习与改进.md) | 提取模式 + 自我评估质量 |
-| `/evolve` | [07-学习与改进.md](commands/07-学习与改进.md) | 分析 instinct + 建议进化结构 |
-| `/promote` | [07-学习与改进.md](commands/07-学习与改进.md) | 将项目 instinct 提升到全局范围 |
-| `/instinct-status` | [07-学习与改进.md](commands/07-学习与改进.md) | 显示所有学习的 instinct |
-| `/instinct-export` | [07-学习与改进.md](commands/07-学习与改进.md) | 导出 instinct 到文件 |
-| `/instinct-import` | [07-学习与改进.md](commands/07-学习与改进.md) | 从文件/URL 导入 instinct |
-| `/skill-create` | [07-学习与改进.md](commands/07-学习与改进.md) | 分析 git 历史+生成 skill 文件 |
-| `/skill-health` | [07-学习与改进.md](commands/07-学习与改进.md) | Skill 组合健康仪表板 |
-| `/rules-distill` | [07-学习与改进.md](commands/07-学习与改进.md) | 扫描 skills + 提取跨领域原则 |
+| `/learn` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 从会话中提取可复用模式 |
+| `/learn-eval` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 提取模式 + 自我评估质量 |
+| `/evolve` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 分析 instinct + 建议进化结构 |
+| `/promote` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 将项目 instinct 提升到全局范围 |
+| `/instinct-status` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 显示所有学习的 instinct |
+| `/instinct-export` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 导出 instinct 到文件 |
+| `/instinct-import` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 从文件/URL 导入 instinct |
+| `/skill-create` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 分析 git 历史+生成 skill 文件 |
+| `/skill-health` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | Skill 组合健康仪表板 |
+| `/rules-distill` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 扫描 skills + 提取跨领域原则 |
 
 ### 3.8 循环与自动化 (3)
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/loop-start` | [08-循环与自动化.md](commands/08-循环与自动化.md) | 启动托管自主循环模式 |
-| `/loop-status` | [08-循环与自动化.md](commands/08-循环与自动化.md) | 检查运行中循环的状态 |
-| `/santa-loop` | [08-循环与自动化.md](commands/08-循环与自动化.md) | Santa 风格自主循环 |
+| `/loop-start` | [08-Vong-Lap-Tu-Dong.md](commands/08-Vong-Lap-Tu-Dong.md) | 启动托管自主循环模式 |
+| `/loop-status` | [08-Vong-Lap-Tu-Dong.md](commands/08-Vong-Lap-Tu-Dong.md) | 检查运行中循环的状态 |
+| `/santa-loop` | [08-Vong-Lap-Tu-Dong.md](commands/08-Vong-Lap-Tu-Dong.md) | Santa 风格自主循环 |
 
 ### 3.9 项目管理 (6)
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/projects` | [09-项目管理.md](commands/09-项目管理.md) | 列出已知项目 + instinct 统计 |
-| `/harness-audit` | [09-项目管理.md](commands/09-项目管理.md) | 审计 agent harness 配置 |
-| `/model-route` | [09-项目管理.md](commands/09-项目管理.md) | 路由任务到合适模型 |
-| `/pm2` | [09-项目管理.md](commands/09-项目管理.md) | PM2 进程管理器初始化 |
-| `/setup-pm` | [09-项目管理.md](commands/09-项目管理.md) | 配置包管理器 (npm/pnpm/yarn/bun) |
-| `/project-init` | [09-项目管理.md](commands/09-项目管理.md) | 项目初始化 |
+| `/projects` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | 列出已知项目 + instinct 统计 |
+| `/harness-audit` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | 审计 agent harness 配置 |
+| `/model-route` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | 路由任务到合适模型 |
+| `/pm2` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | PM2 进程管理器初始化 |
+| `/setup-pm` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | 配置包管理器 (npm/pnpm/yarn/bun) |
+| `/project-init` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | 项目初始化 |
 
 ### 3.10 PR 工作流 (6)
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/pr` | [10-PR工作流.md](commands/10-PR工作流.md) | 从当前分支创建 GitHub PR |
-| `/review-pr` | [10-PR工作流.md](commands/10-PR工作流.md) | 审查 GitHub PR |
-| `/multi-workflow` | [10-PR工作流.md](commands/10-PR工作流.md) | 多模型协作开发 |
-| `/multi-backend` | [10-PR工作流.md](commands/10-PR工作流.md) | 后端多模型开发 |
-| `/multi-frontend` | [10-PR工作流.md](commands/10-PR工作流.md) | 前端多模型开发 |
-| `/multi-execute` | [10-PR工作流.md](commands/10-PR工作流.md) | 多模型协作执行 |
+| `/pr` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 从当前分支创建 GitHub PR |
+| `/review-pr` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 审查 GitHub PR |
+| `/multi-workflow` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 多模型协作开发 |
+| `/multi-backend` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 后端多模型开发 |
+| `/multi-frontend` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 前端多模型开发 |
+| `/multi-execute` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 多模型协作执行 |
 
 ### 3.11 Hookify 系统 (4)
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/hookify` | [11-Hookify系统.md](commands/11-Hookify系统.md) | 创建 hooks 防止不良行为 |
-| `/hookify-list` | [11-Hookify系统.md](commands/11-Hookify系统.md) | 列出所有配置的 hookify 规则 |
-| `/hookify-configure` | [11-Hookify系统.md](commands/11-Hookify系统.md) | 交互式启用/禁用 hookify 规则 |
-| `/hookify-help` | [11-Hookify系统.md](commands/11-Hookify系统.md) | Hookify 系统帮助 |
+| `/hookify` | [11-He-Thong-Hookify.md](commands/11-He-Thong-Hookify.md) | 创建 hooks 防止不良行为 |
+| `/hookify-list` | [11-He-Thong-Hookify.md](commands/11-He-Thong-Hookify.md) | 列出所有配置的 hookify 规则 |
+| `/hookify-configure` | [11-He-Thong-Hookify.md](commands/11-He-Thong-Hookify.md) | 交互式启用/禁用 hookify 规则 |
+| `/hookify-help` | [11-He-Thong-Hookify.md](commands/11-He-Thong-Hookify.md) | Hookify 系统帮助 |
 
 ### 3.12 文档与研究 (3)
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/update-docs` | [12-文档与研究.md](commands/12-文档与研究.md) | 更新项目文档 |
-| `/update-codemaps` | [12-文档与研究.md](commands/12-文档与研究.md) | 重新生成 codemaps |
-| `/ecc-guide` | [12-文档与研究.md](commands/12-文档与研究.md) | ECC 用户指南 |
+| `/update-docs` | [12-Tai-Lieu-Nghien-Cuu.md](commands/12-Tai-Lieu-Nghien-Cuu.md) | 更新项目文档 |
+| `/update-codemaps` | [12-Tai-Lieu-Nghien-Cuu.md](commands/12-Tai-Lieu-Nghien-Cuu.md) | 重新生成 codemaps |
+| `/ecc-guide` | [12-Tai-Lieu-Nghien-Cuu.md](commands/12-Tai-Lieu-Nghien-Cuu.md) | ECC 用户指南 |
 
 ### 3.13 重构与清理 (2)
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/refactor-clean` | [13-重构与清理.md](commands/13-重构与清理.md) | 删除死代码+合并重复 |
-| `/auto-update` | [13-重构与清理.md](commands/13-重构与清理.md) | 自动更新能力 |
+| `/refactor-clean` | [13-Tai-Cau-Don-Dep.md](commands/13-Tai-Cau-Don-Dep.md) | 删除死代码+合并重复 |
+| `/auto-update` | [13-Tai-Cau-Don-Dep.md](commands/13-Tai-Cau-Don-Dep.md) | 自动更新能力 |
 
 ### 3.14 其他命令 (7)
 
 | 命令 | 文件 | 用途 |
 |------|------|------|
-| `/jira` | [14-其他命令.md](commands/14-其他命令.md) | Jira 工单交互 |
-| `/gan-build` | [14-其他命令.md](commands/14-其他命令.md) | GAN 构建操作 |
-| `/gan-design` | [14-其他命令.md](commands/14-其他命令.md) | GAN 设计操作 |
-| `/prune` | [14-其他命令.md](commands/14-其他命令.md) | 删除陈旧 instinct (>30天) |
-| `/security-scan` | [14-其他命令.md](commands/14-其他命令.md) | 安全扫描 |
-| `/feature-dev` | [14-其他命令.md](commands/14-其他命令.md) | 功能开发助手 |
-| `/cost-report` | [14-其他命令.md](commands/14-其他命令.md) | 模型成本报告 |
+| `/jira` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | Jira 工单交互 |
+| `/gan-build` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | GAN 构建操作 |
+| `/gan-design` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | GAN 设计操作 |
+| `/prune` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | 删除陈旧 instinct (>30天) |
+| `/security-scan` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | 安全扫描 |
+| `/feature-dev` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | 功能开发助手 |
+| `/cost-report` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | 模型成本报告 |
 
 ---
 
@@ -211,12 +211,12 @@ ECC/
 
 | Agent 类别 | 文件 | 说明 |
 |------------|------|------|
-| [代码审查类](agents/1.%20代码审查类.md) | [1. 代码审查类.md](agents/1.%20代码审查类.md) | 14 个审查 Agent |
-| [构建修复类](agents/2.%20构建修复类.md) | [2. 构建修复类.md](agents/2.%20构建修复类.md) | 14 个构建修复 Agent |
-| [规划类](agents/3.%20规划类.md) | [3. 规划类.md](agents/3.%20规划类.md) | 5 个规划 Agent |
-| [测试类](agents/4.%20测试类.md) | [4. 测试类.md](agents/4.%20测试类.md) | 2 个测试 Agent |
-| [安全类](agents/5.%20安全类.md) | [5. 安全类.md](agents/5.%20安全类.md) | 3 个安全 Agent |
-| [架构类](agents/6.%20架构类.md) | [6. 架构类.md](agents/6.%20架构类.md) | 3 个架构 Agent |
+| [代码审查类](agents/01-Kiem-Duyet-Ma.md) | [01-Kiem-Duyet-Ma.md](agents/01-Kiem-Duyet-Ma.md) | 14 个审查 Agent |
+| [构建修复类](agents/02-Sua-Loi-Build.md) | [02-Sua-Loi-Build.md](agents/02-Sua-Loi-Build.md) | 14 个构建修复 Agent |
+| [规划类](agents/03-Lap-Trinh.md) | [03-Lap-Trinh.md](agents/03-Lap-Trinh.md) | 5 个规划 Agent |
+| [测试类](agents/04-Kiem-Thu.md) | [04-Kiem-Thu.md](agents/04-Kiem-Thu.md) | 2 个测试 Agent |
+| [安全类](agents/05-Bao-Mat.md) | [05-Bao-Mat.md](agents/05-Bao-Mat.md) | 3 个安全 Agent |
+| [架构类](agents/06-Kien-Truc.md) | [06-Kien-Truc.md](agents/06-Kien-Truc.md) | 3 个架构 Agent |
 
 ---
 
@@ -252,13 +252,13 @@ $**16 个 Skills 领域**，按领域分类：
 
 | 规则 | 文件 | 说明 |
 |------|------|------|
-| [Git 工作流](rules/Git工作流.md) | [Git工作流.md](rules/Git工作流.md) | Git 提交规范和 PR 工作流 |
-| [Hooks 系统](rules/Hooks系统.md) | [Hooks系统.md](rules/Hooks系统.md) | Hook 配置和使用指南 |
-| [代理编排](rules/代理编排.md) | [代理编排.md](rules/代理编排.md) | Agent 编排模式 |
-| [性能优化](rules/性能优化.md) | [性能优化.md](rules/性能优化.md) | 性能优化指南 |
-| [代码风格](rules/代码风格.md) | [代码风格.md](rules/代码风格.md) | 编码风格规范 |
-| [测试规则](rules/测试规则.md) | [测试规则.md](rules/测试规则.md) | 测试要求（80% 覆盖率） |
-| [安全规则](rules/安全规则.md) | [安全规则.md](rules/安全规则.md) | 安全检查清单 |
+| [Git 工作流](rules/Git-Workflow.md) | [Git-Workflow.md](rules/Git-Workflow.md) | Git 提交规范和 PR 工作流 |
+| [Hooks 系统](rules/He-Thong-Hooks.md) | [He-Thong-Hooks.md](rules/He-Thong-Hooks.md) | Hook 配置和使用指南 |
+| [代理编排](rules/Dien-Tro-Agent.md) | [Dien-Tro-Agent.md](rules/Dien-Tro-Agent.md) | Agent 编排模式 |
+| [性能优化](rules/Toi-Uu-Hieu-Suat.md) | [Toi-Uu-Hieu-Suat.md](rules/Toi-Uu-Hieu-Suat.md) | 性能优化指南 |
+| [代码风格](rules/Phong-Cach-Lap-Trinh.md) | [Phong-Cach-Lap-Trinh.md](rules/Phong-Cach-Lap-Trinh.md) | 编码风格规范 |
+| [测试规则](rules/Quy-Tac-Kiem-Thu.md) | [Quy-Tac-Kiem-Thu.md](rules/Quy-Tac-Kiem-Thu.md) | 测试要求（80% 覆盖率） |
+| [安全规则](rules/Quy-Tac-Bao-Mat.md) | [Quy-Tac-Bao-Mat.md](rules/Quy-Tac-Bao-Mat.md) | 安全检查清单 |
 
 ---
 
@@ -268,10 +268,10 @@ $**16 个 Skills 领域**，按领域分类：
 
 | 文档 | 文件 | 说明 |
 |------|------|------|
-| [Hook 类型](hooks/Hook类型.md) | [Hook类型.md](hooks/Hook类型.md) | PreToolUse、PostToolUse、Stop 类型 |
-| [内置 Hooks](hooks/内置Hooks.md) | [内置Hooks.md](hooks/内置Hooks.md) | 内置 Hook 列表和使用 |
-| [自定义开发](hooks/自定义开发.md) | [自定义开发.md](hooks/自定义开发.md) | 自定义 Hook 开发指南 |
-| [配置格式](hooks/配置格式.md) | [配置格式.md](hooks/配置格式.md) | hooks.json 配置格式 |
+| [Hook 类型](hooks/Loai-Hook.md) | [Loai-Hook.md](hooks/Loai-Hook.md) | PreToolUse、PostToolUse、Stop 类型 |
+| [内置 Hooks](hooks/Hooks-Dung-San.md) | [Hooks-Dung-San.md](hooks/Hooks-Dung-San.md) | 内置 Hook 列表和使用 |
+| [自定义开发](hooks/Phat-Trien-Tuy-Chinh.md) | [Phat-Trien-Tuy-Chinh.md](hooks/Phat-Trien-Tuy-Chinh.md) | 自定义 Hook 开发指南 |
+| [配置格式](hooks/Dinh-Dang-Cau-Hinh.md) | [Dinh-Dang-Cau-Hinh.md](hooks/Dinh-Dang-Cau-Hinh.md) | hooks.json 配置格式 |
 
 ---
 
@@ -281,9 +281,9 @@ $**16 个 Skills 领域**，按领域分类：
 
 | 文档 | 文件 | 说明 |
 |------|------|------|
-| [MCP 配置格式](mcp/MCP配置格式.md) | [MCP配置格式.md](mcp/MCP配置格式.md) | MCP 配置文件格式 |
-| [内置服务器](mcp/内置服务器.md) | [内置服务器.md](mcp/内置服务器.md) | 内置 MCP 服务器 |
-| [自定义开发](mcp/自定义开发.md) | [自定义开发.md](mcp/自定义开发.md) | 自定义 MCP 服务器开发 |
+| [MCP 配置格式](mcp/MCPDinh-Dang-Cau-Hinh.md) | [MCPDinh-Dang-Cau-Hinh.md](mcp/MCPDinh-Dang-Cau-Hinh.md) | MCP 配置文件格式 |
+| [内置服务器](mcp/May-Chu-Dung-San.md) | [May-Chu-Dung-San.md](mcp/May-Chu-Dung-San.md) | 内置 MCP 服务器 |
+| [自定义开发](mcp/Phat-Trien-Tuy-Chinh.md) | [Phat-Trien-Tuy-Chinh.md](mcp/Phat-Trien-Tuy-Chinh.md) | 自定义 MCP 服务器开发 |
 
 ---
 

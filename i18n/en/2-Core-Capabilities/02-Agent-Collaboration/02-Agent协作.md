@@ -1,281 +1,184 @@
-# 02 - Agent Collaboration
+# 02 Agent Collaboration
 
-Learn how to design, implement, and manage multi-Agent collaboration systems.
+> Understand the responsibilities of 6 types of Agents, combine them to complete complex development tasks
 
-## Overview
+## Module Objectives
 
-ECC provides **66 professional [Agents](../../Reference-Docs/agents/1.%20代码审查类.md)**, divided into 6 major categories. These Agents work together through standardized workflows to complete complex tasks from code review to system design.
+After completing this module, you will be able to:
 
----
+- Identify Claude Code's 6 types of Agents and their respective responsibilities
+- Select appropriate Agents based on task type
+- Combine multiple Agents to complete complex tasks
+- Understand Agent collaboration patterns and best practices
 
-## 1. Agent Architecture
+## Agent Classification System
 
-### 1.1 Single Agent vs Multi-Agent
+Claude Code's Agents are divided into 6 major categories:
 
-| Architecture | Use Case | Characteristics |
-|--------------|----------|-----------------|
-| **Single Agent** | Simple tasks, independent operations | Direct call, fast response |
-| **Multi-Agent** | Complex tasks, need collaboration | Task decomposition, result aggregation |
+| Agent Type | Core Responsibility | Applicable Scenarios |
+|------------|---------------------|---------------------|
+| **Review** | Code quality, pattern compliance, security vulnerabilities | Code review, tech debt cleanup |
+| **Build** | Compilation, error fixing, dependency management | Build failures, compilation errors |
+| **Planning** | Task decomposition, architecture design, implementation plans | New features, architecture changes |
+| **Testing** | Test writing, coverage analysis, test strategy | TDD, test supplementation |
+| **Security** | Security audit, vulnerability scanning, compliance checking | Security-sensitive code, payment modules |
+| **Architecture** | System design, pattern selection, technology selection | Large-scale refactoring, architecture evolution |
 
-### 1.2 Available Agents List
+## 6 Types of Agents Detailed
 
-| Agent | Purpose | Usage Timing |
-|-------|--------|-------------|
-| **planner** | Implementation planning | Complex features, refactoring |
-| **architect** | System design | Architecture decisions |
-| **tdd-guide** | Test-driven development | New features, bug fixes |
-| **code-reviewer** | Code review | After writing code |
-| **security-reviewer** | Security analysis | Before commit |
-| **build-error-resolver** | Fix build errors | When build fails |
-| **e2e-runner** | End-to-end testing | Critical user flows |
-| **refactor-cleaner** | Dead code cleanup | Code maintenance |
-| **doc-updater** | Documentation update | When updating docs |
-| **rust-reviewer** | Rust code review | Rust projects |
-| **harmonyos-app-resolver** | HarmonyOS app development | HarmonyOS/ArkTS projects |
+### 1. Review Agents
 
-### 1.3 Agent File Format
+**Responsibility**: Code quality review, pattern compliance checking
 
-```yaml
----
-name: agent-name
-description: Agent purpose
-tools: ["Read", "Grep", "Glob", "Bash"]
-model: sonnet
----
-```
+Available Agents:
+- `code-reviewer` - General code review
+- `python-reviewer` - Python specialized review
+- `go-reviewer` - Go language review
+- `rust-reviewer` - Rust security review
+- `security-reviewer` - Security vulnerability review
 
----
+**Applicable scenarios**:
+- Quality checks before committing code
+- Discovering potential code smells
+- Reviewing third-party code
 
-## 2. Agent Categories Detailed
+### 2. Build Agents
 
-### 2.1 Code Review (16)
+**Responsibility**: Compilation, error fixing, dependency management
 
-Responsible for code quality, security, and maintainability review.
+Available Agents:
+- `build-error-resolver` - Build error resolution
+- `go-build` - Go build
+- `rust-build` - Rust build
+- `kotlin-build` - Kotlin build
+- `flutter-build` - Flutter build
 
-| Agent | Specialty |
-|-------|------------|
-| code-reviewer | General code review |
-| security-reviewer | Security vulnerability analysis |
-| python-reviewer | Python PEP 8, type hints |
-| go-reviewer | Go idioms, concurrency |
-| kotlin-reviewer | Kotlin null safety, coroutines |
-| rust-reviewer | Rust ownership, lifetimes |
-| cpp-reviewer | C++ memory safety |
-| flutter-reviewer | Flutter/Dart patterns |
-| fastapi-reviewer | FastAPI architecture, async |
-| typescript-reviewer | TypeScript type safety |
-| java-reviewer | Java coding standards |
-| csharp-reviewer | C# best practices |
-| ruby-reviewer | Ruby idioms |
-| php-reviewer | PHP security and performance |
-| swift-reviewer | Swift concurrency, memory management |
-| go-security-reviewer | Go security review |
+**Applicable scenarios**:
+- Error fixing when build fails
+- Dependency conflict resolution
+- Cross-platform build issues
 
-### 2.2 Build & Fix (10)
+### 3. Planning Agents
 
-Focus on fixing build errors for various languages.
+**Responsibility**: Task decomposition, architecture design, implementation plans
 
-| Agent | Specialty |
-|-------|------------|
-| build-error-resolver | General build error fixing |
-| go-build | Go build + go vet |
-| kotlin-build | Kotlin/Gradle compilation |
-| rust-build | Rust borrow checker |
-| cpp-build | C++ CMake + linker |
-| gradle-build | Android/KMP Gradle |
-| flutter-build | Flutter build |
-| maven-build | Maven build |
-| cmake-build | CMake configuration |
-| ninja-build | Ninja build system |
+Available Agents:
+- `planner` - Implementation plan generation
+- `architect` - Architecture design
+- `tdd-guide` - TDD workflow guidance
 
-### 2.3 Planning (5)
+**Applicable scenarios**:
+- New feature development planning
+- Technology solution evaluation
+- Complex task decomposition
 
-Responsible for requirements analysis and system planning.
+### 4. Testing Agents
 
-| Agent | Specialty |
-|-------|------------|
-| planner | Implementation planning |
-| architect | System architecture design |
-| prp-planner | PRP workflow planning |
-| multi-plan | Multi-model collaborative planning |
-| product-manager | Product requirements analysis |
+**Responsibility**: Test writing, coverage improvement, test strategy
 
-### 2.4 Testing (2)
+Available Agents:
+- `tdd-guide` - Test-driven development
+- `e2e-runner` - End-to-end testing
+- `test-coverage` - Coverage analysis
 
-Focus on test-driven development and coverage.
+**Applicable scenarios**:
+- Writing tests for new features
+- Improving test coverage
+- E2E test scenario design
 
-| Agent | Specialty |
-|-------|------------|
-| tdd-guide | TDD workflow guidance |
-| e2e-runner | Playwright E2E testing |
+### 5. Security Agents
 
-### 2.5 Security (5)
+**Responsibility**: Security audit, vulnerability scanning, compliance checking
 
-Responsible for security review and vulnerability scanning.
+Available Agents:
+- `security-reviewer` - Security vulnerability review
+- `security-scan` - Automated security scanning
 
-| Agent | Specialty |
-|-------|------------|
-| security-reviewer | General security review |
-| owasp-reviewer | OWASP Top 10 |
-| pentest-reviewer | Penetration testing |
-| vulnerability-scanner | Vulnerability scanning |
-| secrets-detector | Keys and credentials detection |
+**Applicable scenarios**:
+- Payment and authentication code review
+- External data processing checks
+- Compliance verification
 
-### 2.6 Architecture (5)
+### 6. Architecture Agents
 
-Responsible for system architecture and technical decisions.
+**Responsibility**: System design, pattern selection, technology selection
 
-| Agent | Specialty |
-|-------|------------|
-| architect | System architecture design |
-| microservices-architect | Microservices architecture |
-| frontend-architect | Frontend architecture |
-| backend-architect | Backend architecture |
-| devops-architect | DevOps architecture |
+Available Agents:
+- `architect` - Architecture design
+- `refactor-cleaner` - Refactoring guidance
+- `api-design-reviewer` - API design review
 
----
+**Applicable scenarios**:
+- Microservices splitting
+- Database design
+- API architecture evolution
 
-## 3. Collaboration Patterns
+## Agent Collaboration Patterns
 
-### 3.1 Master-Slave Pattern
-
-One master Agent coordinates multiple slave Agents:
+### Pattern 1: Serial Collaboration
 
 ```
-User request → Master Agent (planner)
-           ├── Slave Agent 1 (code-reviewer)
-           ├── Slave Agent 2 (tdd-guide)
-           └── Slave Agent 3 (build-error-resolver)
+Task → Planner → Implementation → Reviewer → Testing → Complete
 ```
 
-### 3.2 Peer-to-Peer Pattern
+Applicable: Linear process, dependencies between steps
 
-Multiple Agents work in parallel, results aggregated:
-
-```
-User request → Agent 1 (security analysis)
-        → Agent 2 (performance analysis)
-        → Agent 3 (code quality analysis)
-           ↓ Result aggregation
-        Final report
-```
-
-### 3.3 Pipeline Pattern
-
-Agents process sequentially, each Agent's output is the next's input:
+### Pattern 2: Parallel Collaboration
 
 ```
-Input → Agent 1 → Agent 2 → Agent 3 → Output
+            → Reviewer A →
+Task → Decompose → Reviewer B → → Aggregate → Complete
+            → Reviewer C →
 ```
 
----
+Applicable: Multi-angle review, independent module review
 
-## 4. Task Distribution Strategy
+### Pattern 3: Cascade Collaboration
 
-### 4.1 Task Decomposition
-
-Decompose complex tasks into independent subtasks:
-
-```markdown
-# Complex Task Decomposition Example
-Original task: Implement user authentication system
-
-After decomposition:
-1. Design database schema → architect
-2. Implement API endpoints → backend-developer
-3. Write tests → tdd-guide
-4. Security review → security-reviewer
+```
+Major Task → Architect → Planner → Implementation → All Levels of Reviewer → Merge
 ```
 
-### 4.2 Parallel Execution
+Applicable: Complex projects, large feature development
 
-Independent tasks execute in parallel for efficiency:
+## Agent Combination Examples
 
-```markdown
-# Good: Parallel execution
-Launch 3 Agents in parallel:
-1. Agent 1: Authentication module security analysis
-2. Agent 2: Cache system performance review
-3. Agent 3: Tool type checking
+### Scenario: Develop New Feature
 
-# Bad: Unnecessary sequential execution
-First agent 1, then agent 2, then agent 3
+```
+1. Use /plan to plan feature
+2. Use tdd-guide for TDD development
+3. Use code-reviewer to review code
+4. Use security-reviewer to check security
+5. Use verify to verify functionality
 ```
 
-### 4.3 Load Balancing
+### Scenario: Fix Security Vulnerability
 
-Distribute tasks based on Agent load:
-
-| Factor | Description |
-|--------|-------------|
-| Task complexity | Simple task → lightweight Agent |
-| Resource requirements | Heavy computation → dedicated Agent |
-| Availability | Avoid overloaded Agents |
-
----
-
-## 5. Multi-Perspective Analysis
-
-For complex problems, use split role sub-agents:
-
-| Role | Responsibility |
-|------|---------------|
-| Factual reviewer | Verify information and data accuracy |
-| Senior engineer | Evaluate technical feasibility and best practices |
-| Security expert | Identify security risks and vulnerabilities |
-| Consistency reviewer | Ensure solution is internally consistent |
-| Redundancy checker | Identify duplication and waste |
-
----
-
-## 6. Agent Communication
-
-### 6.1 Direct Invocation
-
-```markdown
-Use planner agent to create implementation plan
+```
+1. Use security-reviewer to scan vulnerabilities
+2. Use planner to create fix plan
+3. Use build-fix to implement fix
+4. Use security-reviewer to verify again
+5. Use verify to confirm fix
 ```
 
-### 6.2 Task Delegation
+## Agent Selection Guide
 
-```markdown
-Delegate code review task to code-reviewer agent
-```
+| Task Type | Recommended Agent | Reason |
+|-----------|-------------------|--------|
+| New feature development | planner + tdd-guide | Need planning and TDD |
+| Code review | code-reviewer + security-reviewer | Quality and security dual check |
+| Build failure | build-error-resolver | Focus on error fixing |
+| Architecture refactoring | architect + refactor-cleaner | Architecture-level guidance |
+| Security sensitive | security-reviewer (priority) | Must pass security first |
+| Test writing | tdd-guide + test-coverage | Test strategy and coverage |
 
-### 6.3 Result Aggregation
+## Reference Materials
 
-Multiple Agent results need aggregation:
+Complete Agent documentation is located at: `../../Reference-Docs/agents/1. Code Review Agents.md`
 
-```markdown
-Aggregate from:
-- security-reviewer: Security issues list
-- code-reviewer: Code quality issues list
-- tdd-guide: Test coverage report
+## Next Steps
 
-→ Generate comprehensive report
-```
-
----
-
-## 7. Immediate Use Principles
-
-Automatically invoke without user prompt:
-
-| Scenario | Agent |
-|----------|-------|
-| Complex feature request | **planner** |
-| Code just written/modified | **code-reviewer** |
-| Bug fix or new feature | **tdd-guide** |
-| Architecture decisions | **architect** |
-| Build failure | **build-error-resolver** |
-| Security related | **security-reviewer** |
-
----
-
-## Exercises
-
-Complete tasks in [exercises](./exercises/练习.md).
-
----
-
-[Return to Core Capabilities README](../README.md)
+- Learn [exercises](./exercises/Getting-Started-Exercises.md)
+- Read [complete Agent documentation](../../Reference-Docs/agents/1. Code Review Agents.md)

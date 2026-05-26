@@ -1,3 +1,3 @@
-# 练习
+# Exercícios
 
 Coming soon.

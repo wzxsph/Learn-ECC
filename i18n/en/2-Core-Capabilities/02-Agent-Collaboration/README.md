@@ -180,5 +180,5 @@ Claude Code 的 Agent 分为 6 大类：
 
 ## 下一步
 
-- 学习[练习题目](./exercises/练习.md)
+- 学习[练习题目](./exercises/Getting-Started-Exercises.md)
 - 阅读 [Agent 完整文档](../../Reference-Docs/agents/1. 代码审查类.md)

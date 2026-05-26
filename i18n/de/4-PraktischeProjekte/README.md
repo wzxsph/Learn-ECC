@@ -1,44 +1,43 @@
-# 第四阶段：实战项目
+# Phase 4: Praktische Projekte
 
-通过真实项目巩固所学知识。
+Festige dein Wissen durch echte Projekte.
 
-## 学习目标
+## Lernziele
 
-完成本阶段后，你将能够：
-- 从零构建完整的 CLI 工具
-- 实现自动化代码审查流程
-- 设计端到端自动化工作流
-- 构建多 Agent 协作平台
+Nach dieser Phase wirst du in der Lage sein:
+- Vollständige CLI-Tools von Grund auf zu bauen
+- Automatisierte Code-Review-Prozesse zu implementieren
+- End-to-End automatisierte Arbeitsabläufe zu designen
+- Multi-Agent-Kollaborationsplattformen zu bauen
 
-## 预计时长
+## Geschätzte Dauer
 
-10-15 小时
+10-15 Stunden
 
-## 前提要求
+## Voraussetzungen
 
-- 完成 [第二阶段：核心能力](../2-Kernfähigkeiten/README.md)
-- 掌握至少一种脚本语言
-- 有项目开发经验
+- [Phase 2: Kernfähigkeiten](../2-Kernfähigkeiten/README.md) abgeschlossen
+- Beherrschung mindestens einer Skriptsprache
+- Projekterfahrung
 
-## 学习内容
+## Lerninhalt
 
-| 项目 | 内容 | 难度 |
-|------|------|------|
-| [项目一：CLI工具](./project-1-cli.md) | 构建命令行工具 | 基础 |
-| [项目二：代码审查](./project-2-review.md) | 自动化审查流程 | 进阶 |
-| [项目三：自动化工作流](./project-3-auto.md) | 端到端自动化 | 进阶 |
-| [项目四：Agent系统](./project-4-agent.md) | 多 Agent 协作平台 | 高级 |
+| Projekt | Inhalt | Schwierigkeit |
+|---------|--------|---------------|
+| [Projekt 1: CLI-Tool](./project-1-cli.md) | Kommandozeilen-Tools bauen | Grundlagen |
+| [Projekt 2: Code-Review](./project-2-review.md) | Automatisierte Review-Prozesse | Fortgeschritten |
+| [Projekt 3: Workflow-Automatisierung](./project-3-auto.md) | End-to-End-Automatisierung | Fortgeschritten |
+| [Projekt 4: Agent-System](./project-4-agent.md) | Multi-Agent-Kollaborationsplattform | Experte |
 
-## 建议
+## Empfehlungen
 
-选择一个感兴趣的项目深入完成，而非蜻蜓点水式地做所有项目。
-建议按顺序完成：CLI工具 → 代码审查 → 工作流自动化 → Agent系统（难度递增）
+Wähle ein Projekt, das dich interessiert, und arbeite es tiefgehend durch, anstatt alle Projekte oberflächlich zu machen.
+Empfohlene Reihenfolge: CLI-Tool → Code-Review → Workflow-Automatisierung → Agent-System (steigende Schwierigkeit).
 
-## 接下来
+## Nächste Schritte
 
-完成实战项目后，进入 [第五阶段：快速参考](../5-Schnellreferenz/README.md) 查阅常用命令和模式。
+Nach Abschluss der praktischen Projekte, gehe zu [Phase 5: Schnellreferenz](../5-Schnellreferenz/README.md) für häufig verwendete Befehle und Patterns.
 
 ---
 
-[返回主目录](../README.md)
-
+[Zurück zum Hauptverzeichnis](../README.md)

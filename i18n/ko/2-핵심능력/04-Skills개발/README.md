@@ -194,5 +194,5 @@ docs: update README
 
 ## 下一步
 
-- 学习[练习题目](./exercises/练习.md)
+- 学习[练习题目](./exercises/연습.md)
 - 阅读 [Skills 完整文档](../../참조문서/skills/最佳实践.md)

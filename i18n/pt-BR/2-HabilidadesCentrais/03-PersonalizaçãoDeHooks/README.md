@@ -204,7 +204,7 @@
 }
 ```
 
-## Hook 开发最佳实践
+## Hook 开发Melhores-Práticas
 
 1. **保持简单**: Hook 逻辑应该简单直接
 2. **快速执行**: PreToolUse Hook 应在 200ms 内完成
@@ -214,9 +214,9 @@
 
 ## 配套教材
 
-完整的 Hooks 文档位于：`../../DocumentosDeReferência/hooks/Hook类型.md`
+完整的 Hooks 文档位于：`../../DocumentosDeReferência/hooks/Tipos-de-Hook.md`
 
 ## 下一步
 
-- 学习[练习题目](./exercises/练习.md)
-- 阅读 [Hooks 完整文档](../../DocumentosDeReferência/hooks/Hook类型.md)
+- 学习[练习题目](./exercises/Exercícios.md)
+- 阅读 [Hooks 完整文档](../../DocumentosDeReferência/hooks/Tipos-de-Hook.md)

@@ -9,7 +9,7 @@ Tìm hiểu cách xây dựng hệ thống đại lý có khả năng tự ra qu
 - Điều chỉnh chiến lược theo phản hồi từ môi trường
 - Thực thi liên tục cho đến khi đạt được mục tiêu
 
-> Tham khảo: [Tự động hóa và kịch bản](../TaiLieuThamKhao/skills/自动化与脚本.md) | [Agent kiểm tra mã](../TaiLieuThamKhao/agents/1.%20代码审查类.md)
+> Tham khảo: [Tự động hóa và kịch bản](../TaiLieuThamKhao/skills/自动化与脚本.md) | [Agent kiểm tra mã](../TaiLieuThamKhao/agents/01-Kiem-Duyet-Ma.md)
 
 ## Mục tiêu học tập
 

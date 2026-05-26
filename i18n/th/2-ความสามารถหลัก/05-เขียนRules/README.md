@@ -314,5 +314,5 @@ project/
 
 ## 下一步
 
-- 学习[练习题目](./exercises/练习.md)
+- 学习[练习题目](./exercises/README.md)
 - 阅读 [Rules 完整文档](../../เอกสารอ้างอิง/rules/Git工作流.md)

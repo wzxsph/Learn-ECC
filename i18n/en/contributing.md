@@ -68,7 +68,6 @@ Task description...
 
 ## Next Steps
 
-- Next chapter: [Link](./next.md)
 - Return: [Table of Contents](../README.md)
 ```
 

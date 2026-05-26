@@ -1,8 +1,8 @@
 # Learn-ECC
 
-> Claude Code'yi (Everything Claude Code) ustalanmak icin yapilandirilmis bir ogrenme yolu
+> ECC'yi (Everything Claude Code) ustalanmak için yapılandırılmış bir öğrenme yolu
 
-Learn-ECC'ye hos geldiniz! Bu, sizi yeni baslayandan deneyimli kullaniciya dogru ilerleten sistematik bir Claude Code ileri ogrenme yoludur.
+Learn-ECC'ye hoş geldiniz! Bu, sizi yeni başlayandan deneyimli kullanıcıya doğru ilerleten sistematik bir Claude Code öğrenme yoludur.
 
 ---
 
@@ -21,13 +21,13 @@ English | Português (Brasil) | 简体中文 | 繁體中文 | 日本語 | 한국
 
 ### Neden Bu Proje Var?
 
-Ingilizcem pek iyi degil, ECC'nin Ingilizce belgelerini okumakta zorlanlyorum. Bu yuzden ECC'deki Komutlari (Commands), Ajanlari (Agents), Becerileri (Skills) ve benzeri bilgileri Cince'den Turkce'ye cevirdim ve bunlari bir ogrenme kursu olarak duzenledim.
+İngilizcem pek iyi değil, ECC'nin İngilizce belgelerini okumakta zorlanıyorum. Bu yüzden ECC'deki Komutları (Commands), Ajanları (Agents), Becerileri (Skills) ve benzeri bilgileri Çince'den Türkçe'ye çevirdim ve bunları bir öğrenme kursu olarak düzenledim.
 
-Referans belgeleri de boyle ortaya cikti - ECC ana projesindeki icerigi cevirip, her komutun ve her Agent'in ne ise yaradigini size anlatan bir kaynak.
+Referans belgeleri de böyle ortaya çıktı - ECC ana projesindeki içeriği çevirip, her komutun ve her Agent'ın ne işe yaradığını size anlatan bir kaynak.
 
-### Kurs Nasil Olustu?
+### Kurs Nasıl Oluştu?
 
-Acikcasi bu kurs AI tarafindan olusturuldu. AI, ECC'nin dosya yapisina gore temel icerik olusturdu, ancak detayli dusunceler ve gercek degerlendirmeler eksikti. Icerikte bir sorun fark ederseniz veya yeterince net degilse, lutfen duzeltme oneririlerinizi paylasiyor.
+Açıkçası bu kurs AI tarafından oluşturuldu. AI, ECC'nin dosya yapısına göre temel içerik oluşturdu, ancak detaylı düşünceler ve gerçek değerlendirmeler eksikti. İçerikte bir sorun fark ederseniz veya yeterince net değilse, lütfen düzeltme önerilerinizi paylaşın.
 
 ---
 
@@ -35,131 +35,131 @@ Acikcasi bu kurs AI tarafindan olusturuldu. AI, ECC'nin dosya yapisina gore teme
 
 ### ECC Nedir?
 
-**ECC** (Everything Claude Code), bir Claude Code eklenti projesidir ([orijinal depo](https://github.com/affaan-m/ECC)) ve sunlari saglar:
-- **75 komut** - Satir komutlari (orn. `/plan`, `/code-review`) ve script komutlari
-- **60 uzmanlikli Agent** - Kod inceleme, build tamir, mimari tasarim ve benzeri
-- **232+ Beceri** - Yeniden kullanilabilir is akisi sablonlari
-- **Hooks sistemi** - Olay tarafindan tetiklenen otomasyon mekanizmasi
-- **Rules kurallari** - Zorunlu gelistirme standartlari
+**ECC** (Everything Claude Code), bir Claude Code eklenti projesidir ([orijinal depo](https://github.com/affaan-m/ECC)) ve şunları sağlar:
+- **75 komut** - Satır komutları (örn. `/plan`, `/code-review`) ve script komutları
+- **60 uzmanlıkli Agent** - Kod inceleme, build tamir, mimari tasarım ve benzeri
+- **232+ Beceri** - Yeniden kullanılabilir iş akışı şablonları
+- **Hooks sistemi** - Olay tarafından tetiklenen otomasyon mekanizması
+- **Rules kuralları** - Zorunlu geliştirme standartları
 
 ### Learn-ECC Nedir?
 
-**Learn-ECC**, ECC'yi ogrenmek icin duzenledigim sistematik bir ogrenme yoludur, ECC'nin kendisi degildir.
+**Learn-ECC**, ECC'yi öğrenmek için düzenlediğim sistematik bir öğrenme yoludur, ECC'nin kendisi değildir.
 
-"Ynte ogrenme" tasarim felsefesini benimser ve her asamada hem teorik ogrenme hem de pratik alistirmalar icerir. Gercek projeleri tamamlayarak Claude Code'un temel yeteneklerini edineceksiniz.
+"Öğrenerek yapma" tasarım felsefesini benimser ve her aşamada hem teorik öğrenme hem de pratik alıştırmalar içerir. Gerçek projeleri tamamlayarak Claude Code'un temel yeteneklerini edineceksiniz.
 
 ### Referans Belgeleri Nedir?
 
-**Referans belgeleri** (./Referans-belgeleri/), ECC ana projesinin Turkce cevirisidir. ECC'nin Ingilizce belgelerini Turkce'ye cevirdim, boylece kendim (ve siz) rahatca basvurabiliriz.
+**Referans belgeleri** (./ReferansBelgeleri/), ECC ana projesinin Türkçe çevirisidir. ECC'nin İngilizce belgelerini Türkçe'ye çevirdim, böylece kendim (ve siz) rahatça başvurabiliriz.
 
-Icerik sudur:
-- Tam komut aciklamalari (her komutun ne ise yaradigi)
-- Tum Agent'lerin detayli aciklamalari
-- Skills dizin yapisi ve yazim standartlari
+İçerik şudur:
+- Tam komut açıklamaları (her komutun ne işe yaradığı)
+- Tüm Agent'lerin detaylı açıklamaları
+- Skills dizin yapısı ve yazım standartları
 - Hooks sisteminin tam belgesi
-- En iyi uygulamalar ve tasarim kalipolari
+- En iyi uygulamalar ve tasarım kalıpları
 
 ---
 
-## Ogrenme Yolu Genel Gorunumu
+## Öğrenme Yolu Genel Görünümü
 
-| Asama | Icerik | Tahmini Sure | Zorluk |
+| Aşama | İçerik | Tahmini Süre | Zorluk |
 |------|--------|--------------|--------|
-| [1-Baslangic](./1-Baslangic/README.md) | ECC komutlari, Agent'ler, Skills'e giris + Kurulum | 2-3 saat | Baslangic |
-| [2-Temel-Yetenekler](./2-Temel-Yetenekler/README.md) | Komut sistemi, Agent isbirligi, Hooks ozellestirme, Skills gelistirme, Rules yazimi | 8-12 saat | Ileri |
-| [3-Uzman-Yolu](./3-Uzman-Yolu/README.md) | MCP gelistirme, Ozerk agent'ler, Ileri duzey kaliplar | 6-8 saat | Ileri |
-| [4-Pratik-Projeler](./4-Pratik-Projeler/README.md) | CLI araclari, Kod inceleme, Otomasyon, Agent sistemleri | 10-15 saat | Pratik |
-| [5-Hizli-Bagli](./5-Hizli-Bagli/README.md) | Komut hizli rehberi, Agent hizli rehberi, Is akisi hizli rehberi | Ihtiyac duyuldugunda | Referans |
+| [1-Başlangıç](./1-Başlangıç/README.md) | ECC komutları, Agent'ler, Skills'e giriş + Kurulum | 2-3 saat | Başlangıç |
+| [2-Çekirdek Yetenekler](./2-ÇekirdekYetenekler/README.md) | Komut sistemi, Agent işbirliği, Hooks özelleştirme, Skills geliştirme, Rules yazımı | 8-12 saat | Orta |
+| [3-Uzman Yolu](./3-UzmanYolu/README.md) | MCP geliştirme, Özerk agent'ler, İleri düzey kalıplar | 6-8 saat | İleri |
+| [4-Pratik Projeler](./4-PratikProjeler/README.md) | CLI araçları, Kod inceleme, Otomasyon, Agent sistemleri | 10-15 saat | Pratik |
+| [5-Hızlı Başvuru](./5-HızlıBaşvuru/README.md) | Komut hızlı rehberi, Agent hızlı rehberi, İş akışı hızlı rehberi | İhtiyaç duyulduğunda | Referans |
 
 ---
 
-## Hizli Navigasyon
+## Hızlı Navigasyon
 
-### Birinci Asama: Baslangic
-- [Kurs Girisi](./1-Baslangic/01-ECC-Tanimi.md) - ECC nedir, Learn-ECC ne yapabilir
-- [Kurulum](./1-Baslangic/02-Kurulum.md) - Hizli baslangic yapilandirmasi
-- [Temel Komutlar](./1-Baslangic/03-Temel-Komutlar.md) - Sik kullanilan komutlar
-- [Ilk Gorev](./1-Baslangic/04-Ilk-Gorev.md) - Ilk gorevinizi tamamlayin
-- [Baslangic Alistirmalari](./1-Baslangic/exercises/Baslangic-Alistirmalari.md) - Temelleri pekistirin
+### Birinci Aşama: Başlangıç
+- [Kurs Girişi](./1-Başlangıç/01-ECC-Tanıtım.md) - ECC nedir, Learn-ECC ne yapabilir
+- [Kurulum](./1-Başlangıç/02-Kurulum.md) - Hızlı başlangıç yapılandırması
+- [Temel Komutlar](./1-Başlangıç/03-TemelKomutlar.md) - Sık kullanılan komutlar
+- [İlk Görev](./1-Başlangıç/04-İlkGörev.md) - İlk görevinizi tamamlayın
+- [Başlangıç Alıştırmaları](./1-Başlangıç/exercises/BaşlangıçAlıştırmaları.md) - Temelleri pekiştirin
 
-### Ikinci Asama: Temel Yetenekler
-- [Komut Sistemi Ustaligi](./2-Temel-Yetenekler/01-Komut-Sistemi-Ustalii/README.md) - Tum komut turlerini ogrenin
-- [Agent Isbirligi](./2-Temel-Yetenekler/02-Agent-Isbirligi/README.md) - Coklu agent sistem tasarimi
-- [Hooks Ozellestirme](./2-Temel-Yetenekler/03-Hooks-Ozellestirme/README.md) - Otomatik is akislari
-- [Skills Gelistirme](./2-Temel-Yetenekler/04-Skills-Gelistirme/README.md) - Yeniden kullanilabilir beceriler olusturun
-- [Rules Yazimi](./2-Temel-Yetenekler/05-Rules-Yazimi/README.md) - Gelistirme standartlari olusturun
+### İkinci Aşama: Çekirdek Yetenekler
+- [Komut Sistemi Ustalığı](./2-ÇekirdekYetenekler/01-KomutSistemi/README.md) - Tüm komut türlerini öğrenin
+- [Agent İşbirliği](./2-ÇekirdekYetenekler/02-Agentİşbirliği/README.md) - Çoklu agent sistem tasarımı
+- [Hooks Özelleştirme](./2-ÇekirdekYetenekler/03-HooksÖzelleştirme/README.md) - Otomatik iş akışları
+- [Skills Geliştirme](./2-ÇekirdekYetenekler/04-SkillsGeliştirme/README.md) - Yeniden kullanılabilir beceriler oluşturun
+- [Rules Yazımı](./2-ÇekirdekYetenekler/05-RulesYazma/README.md) - Geliştirme standartları oluşturun
 
-### Ucuncu Asama: Ileri Duzey Yol
-- [MCP Gelistirme](./3-Uzman-Yolu/01-MCP-Gelistirme.md) - Model Context Protocol
-- [Ozerk Ajanlar](./3-Uzman-Yolu/02-Ozerk-Ajanlar.md) - Ozerk Agent'ler olusturun
-- [Ileri Duzey Kalipalar](./3-Uzman-Yolu/03-Ileri-Duzey-Kalipalar.md) - Tasarim kalipolari ve en iyi uygulamalar
+### Üçüncü Aşama: Uzman Yolu
+- [MCP Geliştirme](./3-UzmanYolu/01-MCPGeliştirme.md) - Model Context Protocol
+- [Özerk Ajanlar](./3-UzmanYolu/02-OtonomAcenteler.md) - Özerk Agent'ler oluşturun
+- [İleri Düzey Kalıplar](./3-UzmanYolu/03-İleriDüzeyDesenler.md) - Tasarım kalıpları ve en iyi uygulamalar
 
-### Dorduncu Asama: Pratik Projeler
-- [Proje Bir: CLI Araci](./4-Pratik-Projeler/project-1-cli.md) - Komut satir araci olusturun
-- [Proje Iki: Kod Inceleme](./4-Pratik-Projeler/project-2-review.md) - Otomatik inceleme is akisi
-- [Proje Uc: Otomasyon Is Akisi](./4-Pratik-Projeler/project-3-auto.md) - Ucten uca otomasyon
-- [Proje Dort: Agent Sistemi](./4-Pratik-Projeler/project-4-agent.md) - Coklu agent isbirligi platformu
+### Dördüncü Aşama: Pratik Projeler
+- [Proje Bir: CLI Aracı](./4-PratikProjeler/project-1-cli.md) - Komut satırı aracı oluşturun
+- [Proje İki: Kod İnceleme](./4-PratikProjeler/project-2-review.md) - Otomatik inceleme iş akışı
+- [Proje Üç: Otomasyon İş Akışı](./4-PratikProjeler/project-3-auto.md) - Uçtan uca otomasyon
+- [Proje Dört: Agent Sistemi](./4-PratikProjeler/project-4-agent.md) - Çoklu agent işbirliği platformu
 
-### Besinci Asama: Hizli Bagli
-- [Komut Hizli Rehberi](./5-Hizli-Bagli/cheatsheet-commands.md)
-- [Agent Hizli Rehberi](./5-Hizli-Bagli/cheatsheet-agents.md)
-- [Is Akisi Hizli Rehberi](./5-Hizli-Bagli/cheatsheet-workflows.md)
+### Beşinci Aşama: Hızlı Başvuru
+- [Komut Hızlı Rehberi](./5-HızlıBaşvuru/cheatsheet-commands.md)
+- [Agent Hızlı Rehberi](./5-HızlıBaşvuru/cheatsheet-agents.md)
+- [İş Akışı Hızlı Rehberi](./5-HızlıBaşvuru/cheatsheet-workflows.md)
 
 ---
 
-## Bu Kursu Nasil Kullanabilirsiniz
+## Bu Kursu Nasıl Kullanabilirsiniz
 
-### Tavsiye Edilen Ogrenme Siralamasi
+### Tavsiye Edilen Öğrenme Sıralaması
 
-1. **Asama asama ilerleyin** - Her asama bir onceki asamanin uzerine insa edilir
-2. **Teori ve pratigi birlestirin** - Her bolumde alistirma vardir, once anlayin sonra uygulayin
-3. **Tum alistirmalari tamamlayin** - Alistirmalar ogrenme yolunun temel bolumleridir
+1. **Aşama aşama ilerleyin** - Her aşama bir önceki aşamanın üzerine inşa edilir
+2. **Teori ve pratiği birleştirin** - Her bölümde alıştırma var, önce anlayın sonra uygulayın
+3. **Tüm alıştırmaları tamamlayın** - Alıştırmalar öğrenme yolunun temel bölümleridir
 
-### Ogrenme Tavsiyeleri
+### Öğrenme Tavsiyeleri
 
-- **Baslangic asaması**: 2-3 saatte tamamlanmasi tavsiye edilir, temel kavramlar ve islemlere alisin
-- **Temel yetenekler**: 8-12 saat tavsiye edilir, her modulu elinizle uygulayin
+- **Başlangıç aşaması**: 2-3 saatte tamamlanması tavsiye edilir, temel kavramlar ve işlemlere alışın
+- **Çekirdek yetenekler**: 8-12 saat tavsiye edilir, her modülü elinizle uygulayın
 - **Uzman yolu**: 6-8 saat tavsiye edilir, belirli proje deneyimi gerektirir
-- **Pratik projeler**: 10-15 saat tavsiye edilir, ilginizi ceken projeleri derinlemesine inceleyin
+- **Pratik projeler**: 10-15 saat tavsiye edilir, ilginizi çeken projeleri derinlemesine inceleyin
 
-### Ogrenme Kontrol Noktalari
+### Öğrenme Kontrol Noktaları
 
-Her asamayi tamamladiktan sonra, su yeteneklere sahip oldugunuzu dogrulayin:
-- Tum islemleri otonom olarak tamamlayabilirsiniz
-- Temel kavramlari baskasina acıklayabilirsiniz
-- Bilgiyi diger senaryolara uygulayabilirsiniz
+Her aşamayı tamamladıktan sonra, şu yeteneklere sahip olduğunuzu doğrulayın:
+- Tüm işlemleri otonom olarak tamamlayabilirsiniz
+- Temel kavramları başkasına açıklayabilirsiniz
+- Bilgiyi diğer senaryolara uygulayabilirsiniz
 
 ---
 
-## On Koşullar
+## Ön Koşullar
 
 ### Temel Bilgiler
-- Komut satir temelleri (temel komutlari bilme)
-- JavaScript/Node.js temelleri (bazı ileri duzey ozellikler icin gerekli)
-- Git temelleri (versiyon kontrol kavramlari)
+- Komut satırı temelleri (temel komutları bilme)
+- JavaScript/Node.js temelleri (bazı ileri düzey özellikler için gerekli)
+- Git temelleri (versiyon kontrol kavramları)
 
 ### Ortam Gereksinimleri
 - Node.js >= 18
 - npm/pnpm/yarn/bun herhangi biri
-- Metin duzenleyici (VS Code tavsiye edilir)
+- Metin düzenleyici (VS Code tavsiye edilir)
 
-### Onceki Dersler
-Yok. Baslangic asaması sifir bilgiyle baslayanlar icin tasarlanmistir.
+### Önceki Dersler
+Yok. Başlangıç aşaması sıfır bilgiyle başlayanlar için tasarlanmıştır.
 
 ---
 
-## Ogrenme Yol Haritasi
+## Öğrenme Yol Haritası
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     Learn-ECC Ogrenme Yol Haritasi             │
+│                     Learn-ECC Öğrenme Yol Haritası             │
 └─────────────────────────────────────────────────────────────────┘
 
-    Asama 1: Baslangic
+    Aşama 1: Başlangıç
         │
         ↓
     ┌───────────────────────┐
-    │   Asama 2: Temel       │←───────────────────┐
+    │   Aşama 2: Çekirdek     │←───────────────────┐
     │   Yetenekler           │                    │
     │  (Komut/Agent/Hooks/   │                    │
     │   Skills/Rules)        │                    │
@@ -167,115 +167,115 @@ Yok. Baslangic asaması sifir bilgiyle baslayanlar icin tasarlanmistir.
                 │                                │
                 ↓                                │
     ┌───────────────────────┐                    │
-    │   Asama 3: Uzman Yolu  │                    │
-    │  (MCP/Ozerk Agent/    │                    │
-    │   Ileri Kalipalar)    │                    │
+    │   Aşama 3: Uzman Yolu  │                    │
+    │  (MCP/Özerk Agent/    │                    │
+    │   İleri Kalıplar)     │                    │
     └───────────┬───────────┘                    │
                 │                                │
                 ↓                                │
     ┌───────────────────────┐                    │
-    │   Asama 4: Pratik      │────────────────────┘
+    │   Aşama 4: Pratik      │────────────────────┘
     │   Projeler             │
     └───────────┬───────────┘
                 │
                 ↓
     ┌───────────────────────┐
-    │   Asama 5: Hizli Bagli │ ← Her zaman basvurulabilir
+    │   Aşama 5: Hızlı Başvuru │ ← Her zaman başvurulabilir
     │   (Komut/Agent rehber) │
     └───────────────────────┘
 ```
 
-**Tahmini toplam ogrenme suresi**: 26-38 saat (yaklasik 2-3 hafta)
+**Tahmini toplam öğrenme süresi**: 26-38 saat (yaklaşık 2-3 hafta)
 
 ---
 
-## Dizin Yapisi
+## Dizin Yapısı
 
 ```
 Learn-ECC/
-├── 1-Baslangic/                         # Asama 1: Baslangic (2-3 saat)
-│   ├── 01-ECC-Tanimi.md                # ECC'ye genel bakis, temel degerler, mimari
-│   ├── 02-Kurulum.md                   # Ortam hazirlama, kurulum, dogrulama
-│   ├── 03-Temel-Komutlar.md            # /plan, /code-review, /build-fix
-│   ├── 04-Ilk-Gorev.md                 # Tam gelistirme is akisi ornegi
+├── 1-Başlangıç/                         # Aşama 1: Başlangıç (2-3 saat)
+│   ├── 01-ECC-Tanıtım.md                # ECC'ye genel bakış, temel değerler, mimari
+│   ├── 02-Kurulum.md                   # Ortam hazırlama, kurulum, doğrulama
+│   ├── 03-TemelKomutlar.md             # /plan, /code-review, /build-fix
+│   ├── 04-İlkGörev.md                  # Tam geliştirme iş akışı örneği
 │   └── exercises/
-│       └── Baslangic-Alistirmalari.md  # 4 baslangic alistirmasi
+│       └── BaşlangıçAlıştırmaları.md   # 4 başlangıç alıştırması
 │
-├── 2-Temel-Yetenekler/                  # Asama 2: Temel Yetenekler (8-12 saat)
-│   ├── 01-Komut-Sistemi-Ustalii/
-│   ├── 02-Agent-Isbirligi/
-│   ├── 03-Hooks-Ozellestirme/
-│   ├── 04-Skills-Gelistirme/
-│   └── 05-Rules-Yazimi/
+├── 2-ÇekirdekYetenekler/                # Aşama 2: Çekirdek Yetenekler (8-12 saat)
+│   ├── 01-KomutSistemi/
+│   ├── 02-Agentİşbirliği/
+│   ├── 03-HooksÖzelleştirme/
+│   ├── 04-SkillsGeliştirme/
+│   └── 05-RulesYazma/
 │
-├── 3-Uzman-Yolu/                        # Asama 3: Uzman Yolu (6-8 saat)
-│   ├── 01-MCP-Gelistirme.md
-│   ├── 02-Ozerk-Ajanlar.md
-│   └── 03-Ileri-Duzey-Kalipalar.md
+├── 3-UzmanYolu/                         # Aşama 3: Uzman Yolu (6-8 saat)
+│   ├── 01-MCPGeliştirme.md
+│   ├── 02-OtonomAcenteler.md
+│   └── 03-İleriDüzeyDesenler.md
 │
-├── 4-Pratik-Projeler/                   # Asama 4: Pratik Projeler (10-15 saat)
-│   ├── project-1-cli.md                # CLI araci gelistirme
-│   ├── project-2-review.md             # Otomatik kod inceleme hatlari
-│   ├── project-3-auto.md               # Is akisi otomasyonu
-│   └── project-4-agent.md              # Ozel Agent gelistirme
+├── 4-PratikProjeler/                    # Aşama 4: Pratik Projeler (10-15 saat)
+│   ├── project-1-cli.md                 # CLI aracı geliştirme
+│   ├── project-2-review.md             # Otomatik kod inceleme hatları
+│   ├── project-3-auto.md               # İş akışı otomasyonu
+│   └── project-4-agent.md              # Özel Agent geliştirme
 │
-├── 5-Hizli-Bagli/                      # Asama 5: Hizli Bagli
-│   ├── cheatsheet-commands.md          # Komut hizli rehberi
-│   ├── cheatsheet-agents.md            # Agent hizli rehberi
-│   └── cheatsheet-workflows.md         # Is akisi hizli rehberi
+├── 5-HızlıBaşvuru/                     # Aşama 5: Hızlı Başvuru
+│   ├── cheatsheet-commands.md          # Komut hızlı rehberi
+│   ├── cheatsheet-agents.md            # Agent hızlı rehberi
+│   └── cheatsheet-workflows.md         # İş akışı hızlı rehberi
 │
-├── assets/                              # Gorsel kaynaklar
-├── progress-tracker.md                  # Ogrenme ilerleme takibi
-├── contributing.md                      # Katki rehberi
-└── README.md                            # Bu dosya
+├── assets/                              # Görsel kaynaklar
+├── progress-tracker.md                  # Öğrenme ilerleme takibi
+├── contributing.md                      # Katkı rehberi
+└── README.md                           # Bu dosya
 ```
 
 ---
 
-## Basari Icin Ipuclari
+## Başarı İçin İpuçları
 
-1. **Adim adim ilerleyin**: Asamalari atlamayin, her Asama bir sonrakinin temelidir
-2. **Pratik yapin**: Her kavram ogrendiginizde hemen uygulayin, sadece okumayin
-3. **Alistirmalari tamamlayin**: Her Asama'nın alistirmalari var, bilgiyi pekistirmek icin tamamlayin
-4. **Hizli rehberleri kullanin**: Gunluk kullanimda ezber yapmak yerine hizli rehberleri kullanin
-5. **Proje odakli olun**: 4. Asama gercek projelerle tum bilgileri birlestirir
-6. **Not tutun**: Ogrenme deneyimlerinizi ve karsilastiginiz sorunlari kaydedin
-7. **Digerlerine ogretin**: Baskalarina ogretmek, bilgiyi gercekten ogrendiginiz anlamina gelir
+1. **Adım adım ilerleyin**: Aşamaları atlamayın, her Aşama bir sonrakinin temelidir
+2. **Pratik yapın**: Her kavram öğrendiğinizde hemen uygulayın, sadece okumayın
+3. **Alıştırmaları tamamlayın**: Her Aşama'nın alıştırmaları var, bilgiyi pekiştirmek için tamamlayın
+4. **Hızlı rehberleri kullanın**: Günlük kullanımda ezber yapmak yerine hızlı rehberleri kullanın
+5. **Proje odaklı olun**: 4. Aşama gerçek projelerle tüm bilgileri birlestirir
+6. **Not tutun**: Öğrenme deneyimlerinizi ve karşılaştığınız sorunları kaydedin
+7. **Diğerlerine öğretin**: Başkalarına öğretmek, bilgiyi gerçekten öğrendiğiniz anlamına gelir
 
 ---
 
-## Sikca Sorulan Sorular (SSS)
+## Sıkça Sorulan Sorular (SSS)
 
 ### S: Programlama temeli gerekli mi?
 
-C: Temel komut satir ve programlama bilgisi gerekli (JavaScript/Node.js temelleri bazi ozellikleri anlamak icin faydali), ancak herhangi bir dilde uzmanlik gerekmez. Baslangic asaması sifir bilgiyle baslayanlar icin tasarlanmistir.
+C: Temel komut satırı ve programlama bilgisi gerekli (JavaScript/Node.js temelleri bazı özellikleri anlamak için faydalı), ancak herhangi bir dilde uzmanlık gerekmez. Başlangıç aşaması sıfır bilgiyle başlayanlar için tasarlanmıştır.
 
-### S: Bazi asamalari atlayabilir miyim?
+### S: Bazı aşamaları atlayabilir miyim?
 
-C: Asama 1-3'un sirayla tamamlanmasi tavsiye edilir, Asama 4 ilgi alanlariniza göre secim yapabilirsiniz, Asama 5 her zaman basvurulabilir.
+C: Aşama 1-3'ün sırayla tamamlanması tavsiye edilir, Aşama 4 ilgi alanlarınıza göre seçim yapabilirsiniz, Aşama 5 her zaman başvurulabilir.
 
-### S: Tamamladiktan sonra ne yapabilirim?
+### S: Tamamladıktan sonra ne yapabilirim?
 
-C: Uretim düzeyinde Claude Code is akislarini kullanabilir, kod gelistirme, inceleme, test ve otomasyonu verimli bir sekilde yapabilir; ozel Agent sistemleri tasarlayabilir ve uygulayabilir; Hooks ve Skills ozellestirebilirsiniz.
+C: Üretim düzeyinde Claude Code iş akışlarını kullanabilir, kod geliştirme, inceleme, test ve otomasyonu verimli bir şekilde yapabilir; özel Agent sistemleri tasarlayabilir ve uygulayabilir; Hooks ve Skills özelleştirebilirsiniz.
 
-### S: Ogrenme sürecinde sorunlarla karsilaisirsam ne yapmaliyim?
+### S: Öğrenme sürecinde sorunlarla karşılaşırsam ne yapmalıyım?
 
-C: 1) [Referans belgelerine](./Referans-belgeleri/) ilgili bolumlere bakin; 2) [Komut hizli rehberine](./5-Hizli-Bagli/cheatsheet-commands.md) bakin; 3) Yardim icin Issue acin.
+C: 1) [Referans belgelerine](./ReferansBelgeleri/) ilgili bölümlere bakın; 2) [Komut hızlı rehberine](./5-HızlıBaşvuru/cheatsheet-commands.md) bakın; 3) Yardım için Issue açın.
 
-### S: Ogrenme etkisini nasil dogrulayabilirim?
+### S: Öğrenme etkisini nasıl doğrulayabilirim?
 
-C: Ilerlemenizi takip etmek icin [progress-tracker.md](./progress-tracker.md) kullanin, her asamanin açik ogrenme hedefleri var, tum alistirmalari tamamlamak o asamadaki bilgiyi edindiginiz anlamina gelir.
+C: İlerlemenizi takip etmek için [progress-tracker.md](./progress-tracker.md) kullanın, her aşamanın açık öğrenme hedefleri var, tüm alıştırmaları tamamlamak o aşamadaki bilgiyi edindiğiniz anlamına gelir.
 
-### S: Kurs iciği guncellenecek mi?
+### S: Kurs içeriği güncellenecek mi?
 
-C: Evet, düzenli guncellemeler olacak, icerik katkida bulunmak icin PR gonderin. Detayli kilavuz icin [contributing.md](./contributing.md) bakin.
-
----
-
-## Katki ve Geri Bildirim
-
-Ogrenme sürecinde bir sorun fark ederseniz veya iyilestirme öneriniz varsa, Issue veya Pull Request gonderebilirsiniz.
+C: Evet, düzenli güncellemeler olacak, içerik katkıda bulunmak için PR gönderin. Detaylı kılavuz için [contributing.md](./contributing.md) bakın.
 
 ---
 
-*Son guncelleme: 2026-05-26*
+## Katkı ve Geri Bildirim
+
+Öğrenme sürecinde bir sorun fark ederseniz veya iyileştirme öneriniz varsa, Issue veya Pull Request gönderebilirsiniz.
+
+---
+
+*Son güncelleme: 2026-05-26*

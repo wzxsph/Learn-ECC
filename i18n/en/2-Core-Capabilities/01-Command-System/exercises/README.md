@@ -182,6 +182,6 @@ Create a development workflow for a hypothetical Flutter project.
 
 ## Deep Learning
 
-- Read complete command documentation: [../../../Reference-Docs/commands/01-核心工作流.md](../../../Reference-Docs/commands/01-核心工作流.md)
+- Read complete command documentation: [../../../Reference-Docs/commands/01-Core-Workflow.md](../../../Reference-Docs/commands/01-Core-Workflow.md)
 - View all available command categories
 - Learn hidden options and parameters for commands

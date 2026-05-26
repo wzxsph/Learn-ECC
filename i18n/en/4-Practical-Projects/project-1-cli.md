@@ -63,7 +63,7 @@ ecc-gen/
 - Interactive input handling
 - Modular architecture
 
-> Reference commands: [/build-fix](../Reference-Docs/commands/04-构建修复.md) | [/test](../Reference-Docs/commands/02-测试相关.md)
+> Reference commands: [/build-fix](../Reference-Docs/commands/04-Build-Fix.md) | [/test](../Reference-Docs/commands/02-Testing.md)
 
 ---
 

@@ -218,5 +218,5 @@
 
 ## 下一步
 
-- 学习[练习题目](./exercises/练习.md)
+- 学习[练习题目](./exercises/연습.md)
 - 阅读 [Hooks 完整文档](../../참조문서/hooks/Hook类型.md)

@@ -1,44 +1,43 @@
-# 第四阶段：实战项目
+# Fase 4: Projetos Práticos
 
-通过真实项目巩固所学知识。
+Consolide o conhecimento aprendido através de projetos reais.
 
-## 学习目标
+## Objetivos de Aprendizado
 
-完成本阶段后，你将能够：
-- 从零构建完整的 CLI 工具
-- 实现自动化代码审查流程
-- 设计端到端自动化工作流
-- 构建多 Agent 协作平台
+Após completar esta fase, você será capaz de:
+- Construir uma ferramenta CLI completa do zero
+- Implementar processo automatizado de code review
+- Projetar workflow de automação end-to-end
+- Construir plataforma de colaboração multi-agent
 
-## 预计时长
+## Tempo Estimado
 
-10-15 小时
+10-15 horas
 
-## 前提要求
+## Pré-requisitos
 
-- 完成 [第二阶段：核心能力](../2-HabilidadesCentrais/README.md)
-- 掌握至少一种脚本语言
-- 有项目开发经验
+- [Fase 2: Habilidades Essenciais](../2-HabilidadesCentrais/README.md) concluída
+- Dominar pelo menos uma linguagem de script
+- Experiência em desenvolvimento de projetos
 
-## 学习内容
+## Conteúdo de Aprendizado
 
-| 项目 | 内容 | 难度 |
-|------|------|------|
-| [项目一：CLI工具](./project-1-cli.md) | 构建命令行工具 | 基础 |
-| [项目二：代码审查](./project-2-review.md) | 自动化审查流程 | 进阶 |
-| [项目三：自动化工作流](./project-3-auto.md) | 端到端自动化 | 进阶 |
-| [项目四：Agent系统](./project-4-agent.md) | 多 Agent 协作平台 | 高级 |
+| Projeto | Conteúdo | Dificuldade |
+|------|--------|------------|
+| [Projeto Um: Ferramenta CLI](./project-1-cli.md) | Construir ferramenta de linha de comando | Básico |
+| [Projeto Dois: Code Review](./project-2-review.md) | Processo automatizado de revisão | Intermediário |
+| [Projeto Três: Automação de Workflow](./project-3-auto.md) | Automação end-to-end | Intermediário |
+| [Projeto Quatro: Sistema de Agent](./project-4-agent.md) | Plataforma de colaboração multi-agent | Avançado |
 
-## 建议
+## Recomendações
 
-选择一个感兴趣的项目深入完成，而非蜻蜓点水式地做所有项目。
-建议按顺序完成：CLI工具 → 代码审查 → 工作流自动化 → Agent系统（难度递增）
+Escolha um projeto que te interesse para completar profundamente, não faça todos os projetos superficialmente.
+É recomendado completar em sequência: Ferramenta CLI → Code Review → Automação de workflow → Sistema de Agent (dificuldade crescente)
 
-## 接下来
+## Próximos Passos
 
-完成实战项目后，进入 [第五阶段：快速参考](../5-ReferênciaRápida/README.md) 查阅常用命令和模式。
+Após completar os projetos práticos, vá para [Fase 5: Referência Rápida](../5-ReferênciaRápida/README.md) para consultar comandos comuns e padrões.
 
 ---
 
-[返回主目录](../README.md)
-
+[Retornar ao diretório principal](../README.md)

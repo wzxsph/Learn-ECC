@@ -50,7 +50,7 @@ After user confirms, ECC will wait for user input to begin each phase.
 
 ### Tips
 
-- Using PRD file mode可以获得更详细的规划
+- Using PRD file mode can obtain more detailed planning
 - Complex features recommend writing PRD first, then planning
 
 ---

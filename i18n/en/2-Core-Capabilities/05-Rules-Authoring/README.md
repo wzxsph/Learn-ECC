@@ -310,9 +310,9 @@ Create `rules.json` configuration for execution order:
 
 ## Reference Materials
 
-Complete Rules documentation is located at: `../../Reference-Docs/rules/Git工作流.md`
+Complete Rules documentation is located at: `../../Reference-Docs/rules/Git-Workflow.md`
 
 ## Next Steps
 
-- Learn [exercises](./exercises/练习.md)
-- Read [complete Rules documentation](../../Reference-Docs/rules/Git工作流.md)
+- Learn [exercises](./exercises/Getting-Started-Exercises.md)
+- Read [complete Rules documentation](../../Reference-Docs/rules/Git-Workflow.md)

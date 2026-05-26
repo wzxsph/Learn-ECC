@@ -1,10 +1,10 @@
 # 03-高级模式
 
-掌握 ECC 的高级设计模式和最佳实践。
+掌握 ECC 的高级设计模式和Melhores-Práticas。
 
 ## 模式分类
 
-> 参考: [最佳实践](../DocumentosDeReferência/skills/最佳实践.md)
+> 参考: [Melhores-Práticas](../DocumentosDeReferência/skills/Melhores-Práticas.md)
 
 ### 1. 工作流模式
 - **管道模式** - 数据流经多个处理阶段
@@ -21,7 +21,7 @@
 - **重试模式** - 指数退避重试
 - **死信队列** - 无法处理的任务暂存
 
-## 性能优化
+## Otimização-de-Desempenho
 
 ### 上下文管理
 - 及时清理无用上下文

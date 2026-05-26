@@ -6,7 +6,7 @@ Tìm hiểu về phát triển扩Mở rộng giao thức Model Context Protocol 
 
 MCP (Model Context Protocol) là một giao thức cho phép Claude tích hợp với các công cụ và dịch vụ bên ngoài. Thông qua MCP, bạn có thể mở rộng khả năng của Claude, kết nối cơ sở dữ liệu, API, các mô hình AI khác, v.v.
 
-> Tham khảo: [Định dạng cấu hình MCP](../TaiLieuThamKhao/mcp/MCP配置格式.md)
+> Tham khảo: [Định dạng cấu hình MCP](../TaiLieuThamKhao/mcp/MCPDinh-Dang-Cau-Hinh.md)
 
 ## Mục tiêu học tập
 

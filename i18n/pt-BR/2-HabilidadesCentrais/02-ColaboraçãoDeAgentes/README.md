@@ -9,7 +9,7 @@
 - 识别 Claude Code 的 6 类 Agent 及各自职责
 - 根据任务类型选择合适的 Agent
 - 组合多个 Agent 完成复杂任务
-- 理解 Agent 协作模式和最佳实践
+- 理解 Agent 协作模式和Melhores-Práticas
 
 ## Agent 分类体系
 
@@ -58,7 +58,7 @@ Claude Code 的 Agent 分为 6 大类：
 - 依赖冲突解决
 - 跨平台构建问题
 
-### 3. 规划类 Agent
+### 03-Planejamento Agent
 
 **职责**: 任务分解、架构设计、实施计划
 
@@ -72,7 +72,7 @@ Claude Code 的 Agent 分为 6 大类：
 - 技术方案评估
 - 复杂任务分解
 
-### 4. 测试类 Agent
+### 04-Testes Agent
 
 **职责**: 测试编写、覆盖率提升、测试策略
 
@@ -86,7 +86,7 @@ Claude Code 的 Agent 分为 6 大类：
 - 提升测试覆盖率
 - E2E 测试场景设计
 
-### 5. 安全类 Agent
+### 05-Segurança Agent
 
 **职责**: 安全审计、漏洞扫描、合规检查
 
@@ -99,7 +99,7 @@ Claude Code 的 Agent 分为 6 大类：
 - 外部数据处理检查
 - 合规性验证
 
-### 6. 架构类 Agent
+### 06-Arquitetura Agent
 
 **职责**: 系统设计、模式选择、技术选型
 
@@ -149,7 +149,7 @@ Claude Code 的 Agent 分为 6 大类：
 1. 使用 /plan 规划功能
 2. 使用 tdd-guide 进行 TDD 开发
 3. 使用 code-reviewer 审查代码
-4. 使用 security-reviewer 检查安全
+4. 使用 security-reviewer 检查Segurança
 5. 使用 verify 验证功能
 ```
 
@@ -176,9 +176,9 @@ Claude Code 的 Agent 分为 6 大类：
 
 ## 配套教材
 
-完整的 Agent 文档位于：`../../DocumentosDeReferência/agents/1. 代码审查类.md`
+完整的 Agent 文档位于：`../../DocumentosDeReferência/agents/01-Revisão-de-Código.md`
 
 ## 下一步
 
-- 学习[练习题目](./exercises/练习.md)
-- 阅读 [Agent 完整文档](../../DocumentosDeReferência/agents/1. 代码审查类.md)
+- 学习[练习题目](./exercises/Exercícios.md)
+- 阅读 [Agent 完整文档](../../DocumentosDeReferência/agents/01-Revisão-de-Código.md)

@@ -63,7 +63,7 @@ ecc-gen/
 - 交互式输入处理
 - 模块化架构
 
-> 参考命令: [/build-fix](../DocumentosDeReferência/commands/04-构建修复.md) | [/test](../DocumentosDeReferência/commands/02-测试相关.md)
+> 参考命令: [/build-fix](../DocumentosDeReferência/commands/04-Reparo-de-Build.md) | [/test](../DocumentosDeReferência/commands/02-Testes.md)
 
 ---
 

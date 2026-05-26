@@ -2,7 +2,7 @@
 
 ## O que é [ECC](../DocumentosDeReferência/README.md)?
 
-[ECC](../DocumentosDeReferência/README.md) (Everything Claude Code) é um sistema de plugin Claude Code que fornece [Agents](../DocumentosDeReferência/agents/1.%20代码审查类.md) de nível de produção, [Skills](../DocumentosDeReferência/skills/最佳实践.md), Hooks, Rules, [Commands](../DocumentosDeReferência/commands/01-核心工作流.md) e configurações MCP. Originário de um projeto derrotado no Anthropic Hackathon, refinado por mais de 10 meses de uso diário.
+[ECC](../DocumentosDeReferência/README.md) (Everything Claude Code) é um sistema de plugin Claude Code que fornece [Agents](../DocumentosDeReferência/agents/1.%20代码审查类.md) de nível de produção, [Skills](../DocumentosDeReferência/skills/Melhores-Práticas.md), Hooks, Rules, [Commands](../DocumentosDeReferência/commands/01-Workflow-Principal.md) e configurações MCP. Originário de um projeto derrotado no Anthropic Hackathon, refinado por mais de 10 meses de uso diário.
 
 ## O que [ECC](../DocumentosDeReferência/README.md) pode fazer?
 
@@ -18,8 +18,8 @@
 | `architect` | Design de arquitetura de sistema |
 | `tdd-guide` | Guia de desenvolvimento orientado a testes |
 
-### 2. Workflows de [Skills](../DocumentosDeReferência/skills/最佳实践.md)
-[Skills](../DocumentosDeReferência/skills/最佳实践.md) são a superfície principal de workflow, [ECC](../DocumentosDeReferência/README.md) oferece 232+ [Skills](../DocumentosDeReferência/skills/最佳实践.md):
+### 2. Workflows de [Skills](../DocumentosDeReferência/skills/Melhores-Práticas.md)
+[Skills](../DocumentosDeReferência/skills/Melhores-Práticas.md) são a superfície principal de workflow, [ECC](../DocumentosDeReferência/README.md) oferece 232+ [Skills](../DocumentosDeReferência/skills/Melhores-Práticas.md):
 
 - `tdd-workflow` - Desenvolvimento orientado a testes
 - `e2e-testing` - Testes end-to-end
@@ -27,7 +27,7 @@
 - `continuous-learning-v2` - Aprendizado contínuo baseado em instinct
 - `eval-harness` - Avaliação de loop de verificação
 
-### 3. [Commands](../DocumentosDeReferência/commands/01-核心工作流.md)
+### 3. [Commands](../DocumentosDeReferência/commands/01-Workflow-Principal.md)
 Mantém compatibilidade com comandos tradicionais com barra (75+ comandos):
 
 | Comando | Função |
@@ -76,7 +76,7 @@ Suporte para 14+ configurações de servidor MCP: GitHub, Supabase, Vercel, Rail
 ### [Agent](../DocumentosDeReferência/agents/1.%20代码审查类.md)
 Subexecutores de tarefas reutilizáveis, cada [Agent](../DocumentosDeReferência/agents/1.%20代码审查类.md) tem responsabilidades claras. Construir workflows complexos combinando múltiplos [Agents](../DocumentosDeReferência/agents/1.%20代码审查类.md).
 
-### [Skill](../DocumentosDeReferência/skills/最佳实践.md)
+### [Skill](../DocumentosDeReferência/skills/Melhores-Práticas.md)
 Define o fluxo de trabalho para completar tarefas específicas, é a superfície principal de workflow do [ECC](../DocumentosDeReferência/README.md).
 
 ### Hook

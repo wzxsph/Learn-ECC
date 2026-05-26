@@ -1,91 +1,91 @@
-# Learn-ECC Katki Rehberi
+# Learn-ECC Katkı Rehberi
 
-Learn-ECC'ye icerik katkısında bulunmaktan memnuniyet duyariz! Bu kilavuz, yeni icerik ekleme, mevcut icerigi iyilestirme veya duzeltme gonderme konusunda yol gosterir.
+Learn-ECC'ye içerik katkısında bulunmaktan memnuniyet duyarız! Bu kılavuz, yeni içerik ekleme, mevcut içeriği iyileştirme veya düzeltme gönderme konusunda yol gösterir.
 
-## Katki Turleri
+## Katkı Türleri
 
-### 1. Yeni Icerik Ekleme
+### 1. Yeni İçerik Ekleme
 
-Katkıda bulunabileceğiniz icerik turleri:
-- Yeni bolumler veya moduller
-- Yeni alistirma sorulari
+Katkıda bulunabileceğiniz içerik türleri:
+- Yeni bölümler veya modüller
+- Yeni alıştırma soruları
 - Yeni pratik projeler
-- Hizli rehber tamamlamalari
-- Ceviri iyilestirmeleri
+- Hızlı rehber tamamlamaları
+- Çeviri iyileştirmeleri
 
-### 2. Mevcut Icerigi Iyilestirme
+### 2. Mevcut İçeriği İyileştirme
 
-- Hatalari duzeltme
-- Aciklamalarin netligini artirma
-- Daha fazla ornek ekleme
-- Alistirma cevaplarini tamamlama
-- Guncel olmayan bilgileri yenileme
+- Hataları düzeltme
+- Açıklamaların netliğini artırma
+- Daha fazla örnek ekleme
+- Alıştırma cevaplarını tamamlama
+- Güncel olmayan bilgileri yenileme
 
 ### 3. Sorun Bildirimi
 
-- Yazim veya dilbilgisi hatalari
-- Calismayan kod ornekleri
+- Yazım veya dilbilgisi hataları
+- Çalışmayan kod örnekleri
 - Bozuk linkler
-- Eksik icerik
+- Eksik içerik
 
-## Icerik Format Standartlari
+## İçerik Format Standartları
 
-### Markdown Formati
+### Markdown Formatı
 
-Tum icerik Markdown formati kullanilarak yazilmalidir ve su bolumleri icermelidir:
+Tüm içerik Markdown formatı kullanılarak yazılmalıdır ve şu bölümleri içermelidir:
 
 ```markdown
-# Baslik
+# Başlık
 
-## Ogrenme Hedefleri
+## Öğrenme Hedefleri
 
-Bu bolumu tamamladiktan sonra su isleri yapabileceksiniz:
+Bu bölümü tamamladıktan sonra şu işleri yapabileceksiniz:
 - Hedef1
 - Hedef2
 
 ---
 
-## Ana Icerik
+## Ana İçerik
 
-### Alt Baslik
+### Alt Başlık
 
-Icerik...
-
----
-
-## Alistirmalar
-
-### Alistirma 1
-
-Gorev açiklamasi...
-
-### Dogrulama Yontemi
-
-1. Dogrulama adimi 1
-2. Dogrulama adimi 2
+İçerik...
 
 ---
 
-## Sonraki Adimlar
+## Alıştırmalar
 
-- Sonraki bolum: [Link](./next.md)
-- Geri: [Icindekiler](../README.md)
+### Alıştırma 1
+
+Görev açıklaması...
+
+### Doğrulama Yöntemi
+
+1. Doğrulama adımı 1
+2. Doğrulama adımı 2
+
+---
+
+## Sonraki Adımlar
+
+- Sonraki bölüm: [Link](./next.md)
+- Geri: [İçindekiler](../README.md)
 ```
 
-### Dosya Adlandirma
+### Dosya Adlandırma
 
-- Türkce dosya adlari kullanilir
-- Kelimeleri ayirmak icin tire `-` kullanilir
-- Bolum dosyasi adlandirmasi: `01-Bolus Adi.md`, `02-Bolus Adi.md`
-- Alistirma dosyasi adlandirmasi: `Alistirma-adi.md`
+- Türkçe dosya adları kullanılır
+- Kelimeleri ayırmak için tire `-` kullanılır
+- Bölüm dosyası adlandırması: `01-BölümAdı.md`, `02-BölümAdı.md`
+- Alıştırma dosyası adlandırması: `Alıştırma-adi.md`
 
-### Link Standartlari
+### Link Standartları
 
-- Ders kitabi linkleri: `./Referans-belgeleri/dosya-adi.md`
-- Kurs ici linkler: `./bolum-adi.md`
-- Göreli yollar: Mevcut dosya konumundan hesaplanir
+- Ders kitabı linkleri: `./ReferansBelgeleri/dosya-adi.md`
+- Kurs içi linkler: `./bolum-adi.md`
+- Göreli yollar: Mevcut dosya konumundan hesaplanır
 
-### Kod Ornekleri
+### Kod Örnekleri
 
 ```javascript
 // Kod dili etiketi
@@ -95,28 +95,28 @@ function example() {
 ```
 
 ```bash
-# Komut satir ornegi
+# Komut satırı örneği
 node tests/run-all.js
 ```
 
-### Tablo Formati
+### Tablo Formatı
 
-| Baslik 1 | Baslik 2 | Baslik 3 |
+| Başlık 1 | Başlık 2 | Başlık 3 |
 |----------|----------|----------|
-| Icerik 1 | Icerik 2 | Icerik 3 |
+| İçerik 1 | İçerik 2 | İçerik 3 |
 
-## Düzeltme Gonderme
+## Düzeltme Gönderme
 
-### Adimlar
+### Adımlar
 
 1. Depoyu Fork edin
-2. Dal olusturun: `git checkout -b feature/yeni-icerik-aciklamasi`
-3. Duzeltmeleri yapin
-4. Commit edin: `git commit -m "feat: yeni icerik ekle"`
-5. Uzaga push edin: `git push origin feature/yeni-icerik-aciklamasi`
-6. Pull Request olusturun
+2. Dal oluşturun: `git checkout -b feature/yeni-icerik-aciklamasi`
+3. Düzeltmeleri yapın
+4. Commit edin: `git commit -m "feat: yeni içerik ekle"`
+5. Uzağa push edin: `git push origin feature/yeni-icerik-aciklamasi`
+6. Pull Request oluşturun
 
-### Commit Mesaji Standartlari
+### Commit Mesajı Standartları
 
 ```
 <type>: <description>
@@ -124,31 +124,31 @@ node tests/run-all.js
 <optional body>
 ```
 
-Type turleri:
-- `feat`: Yeni ozellik
-- `fix`: Hata duzeltme
-- `docs`: Dokuman guncellme
-- `test`: Test guncellme
-- `refactor`: Yeniden yapilandirma
+Type türleri:
+- `feat`: Yeni özellik
+- `fix`: Hata düzeltme
+- `docs`: Doküman güncelleme
+- `test`: Test güncelleme
+- `refactor`: Yeniden yapılandırma
 
 ## Kalite Kontrol
 
-Gondermeden once kontrol edin:
+Göndermeden önce kontrol edin:
 
-- [ ] Markdown formati dogru
-- [ ] Tum linkler calisiyor
-- [ ] Kod ornekleri calisiyor
-- [ ] Alistirmalar icin dogrulama yontemi var
-- [ ] Türkce yazim hatalari yok
-- [ ] Format standartlariya uyumlu
+- [ ] Markdown formatı doğru
+- [ ] Tüm linkler çalışıyor
+- [ ] Kod örnekleri çalışıyor
+- [ ] Alıştırmalar için doğrulama yöntemi var
+- [ ] Türkçe yazım hataları yok
+- [ ] Format standartlarıyla uyumlu
 
 ## Geri Bildirim
 
-Bir sorun veya öneri fark ederseniz, su bilgileri iceren bir Issue olusturun:
-- Sorun açiklamasi
-- Bulundugu dosya konumu
-- Önerilen iyilestirme yontemi
+Bir sorun veya öneri fark ederseniz, şu bilgileri içeren bir Issue oluşturun:
+- Sorun açıklaması
+- Bulunduğu dosya konumu
+- Önerilen iyileştirme yöntemi
 
 ---
 
-Katkiniz icin tesekkürler!
+Katkınız için teşekkürler!

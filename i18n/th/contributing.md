@@ -1,122 +1,122 @@
-# Learn-ECC Beitritts-Leitfaden
+# คู่มือการมีส่วนร่วม Learn-ECC
 
-Willkommen, Learn-ECC-Inhalte beizutragen! Dieser Leitfaden erklärt, wie du neue Inhalte hinzufügen, bestehende verbessern oder Änderungen einreichen kannst.
+ยินดีต้อนรับการมีส่วนร่วมในเนื้อหาของ Learn-ECC! คู่มือนี้อธิบายวิธีเพิ่มเนื้อหาใหม่ ปรับปรุงเนื้อหาที่มีอยู่ หรือส่งการเปลี่ยนแปลง
 
-## Beitragstypen
+## ประเภทการมีส่วนร่วม
 
-### 1. Neue Inhalte hinzufügen
+### 1. เพิ่มเนื้อหาใหม่
 
-Beitragbare Inhaltstypen:
-- Neues Kapitel oder Modul
-- Neue Übungen
-- Neue praktische Projekte
-- Cheatsheet-Ergänzungen
-- Übersetzungsverbesserungen
+ประเภทเนื้อหาที่สามารถมีส่วนร่วมได้:
+- บทหรือโมดูลใหม่
+- แบบฝึกหัดใหม่
+- โครงการปฏิบัติใหม่
+- การเพิ่ม cheatsheet
+- การปรับปรุงการแปล
 
-### 2. Bestehende Inhalte verbessern
+### 2. ปรับปรุงเนื้อหาที่มีอยู่
 
-- Fehler korrigieren
-- Erklärungen klarer machen
-- Mehr Beispiele hinzufügen
-- Übungsantworten vervollständigen
-- Veraltete Informationen aktualisieren
+- แก้ไขข้อผิดพลาด
+- ทำให้คำอธิบายชัดเจนขึ้น
+- เพิ่มตัวอย่าง
+- ทำให้คำตอบแบบฝึกหัดสมบูรณ์
+- อัปเดตข้อมูลที่ล้าสมัย
 
-### 3. Probleme melden
+### 3. รายงานปัญหา
 
-- Tippfehler oder Grammatikfehler
-- Code-Beispiele funktionieren nicht
-- Links funktionieren nicht
-- Inhalt fehlt
+- ข้อผิดพลาดทางการสะกดหรือไวยากรณ์
+- ตัวอย่างโค้ดที่ไม่ทำงาน
+- ลิงก์ที่ไม่ทำงาน
+- เนื้อหาที่ขาดหายไป
 
-## Inhaltsformat-Standards
+## มาตรฐานรูปแบบเนื้อหา
 
-### Markdown-Format
+### รูปแบบ Markdown
 
-Alle Inhalte müssen Markdown-Format verwenden, mit folgenden Abschnitten:
+เนื้อหาทั้งหมดต้องใช้รูปแบบ Markdown พร้อมส่วนต่อไปนี้:
 
 ```markdown
-# Titel
+# หัวข้อ
 
-## Lernziele
+## วัตถุประสงค์การเรียนรู้
 
-Nach diesem Abschnitt wirst du können:
-- Ziel1
-- Ziel2
-
----
-
-## Hauptinhalt
-
-### Unterüberschrift
-
-Inhalt...
+หลังจากส่วนนี้ คุณจะสามารถ:
+- วัตถุประสงค์ 1
+- วัตถุประสงค์ 2
 
 ---
 
-## Übungen
+## เนื้อหาหลัก
 
-### Übung 1
+### หัวข้อย่อย
 
-Aufgabenbeschreibung...
-
-### Verifikationsmethode
-
-1. Verifikationsschritt 1
-2. Verifikationsschritt 2
+เนื้อหา...
 
 ---
 
-## Nächste Schritte
+## แบบฝึกหัด
 
-- Nächstes Kapitel: [Link](./next.md)
-- Zurück: [Inhaltsverzeichnis](../README.md)
+### แบบฝึกหัด 1
+
+คำอธิบายภารกิจ...
+
+### วิธีการตรวจสอบ
+
+1. ขั้นตอนการตรวจสอบ 1
+2. ขั้นตอนการตรวจสอบ 2
+
+---
+
+## ขั้นตอนถัดไป
+
+- บทถัดไป: [ลิงก์](./next.md)
+- กลับ: [สารบัญ](../README.md)
 ```
 
-### Dateibenennung
+### กฎการตั้งชื่อไฟล์
 
-- Chinesische Benennung verwenden
-- Wörter mit Bindestrich `-` trennen
-- Kapiteldateien: `01-Kapitelname.md`, `02-Kapitelname.md`
-- Übungsdateien: `Übung-Name.md`
+- ใช้ภาษาไทยในการตั้งชื่อ
+- ใช้ขีดกลาง `-` ในการแบ่งคำ
+- ไฟล์บท: `01-ชื่อบท.md`, `02-ชื่อบท.md`
+- ไฟล์แบบฝึกหัด: `แบบฝึกหัด-ชื่อ.md`
 
-### Link-Standards
+### มาตรฐานลิงก์
 
-- Referenzdokumentation-Links: `./เอกสารอ้างอิง/Dateiname.md`
-- Kursinterne Links: `./Kapitelname.md`
-- Relative Pfade: Vom aktuellen Dateistandort berechnet
+- ลิงก์เอกสารอ้างอิง: `./เอกสารอ้างอิง/ชื่อไฟล์.md`
+- ลิงก์ภายในหลักสูตร: `./ชื่อบท.md`
+- เส้นทางสัมพัทธ์: คำนวณจากตำแหน่งไฟล์ปัจจุบัน
 
-### Code-Beispiele
+### ตัวอย่างโค้ด
 
 ```javascript
-// Code-Sprachmarkierung
+// ภาษาโค้ด
 function example() {
   return "Hello ECC"
 }
 ```
 
 ```bash
-# Kommandozeilen-Beispiel
+# ตัวอย่างบรรทัดคำสั่ง
 node tests/run-all.js
 ```
 
-### Tabellenformat
+### รูปแบบตาราง
 
-| Überschrift1 | Überschrift2 | Überschrift3 |
-|-------|-------|-------|
-| Inhalt1 | Inhalt2 | Inhalt3 |
+| หัวข้อ 1 | หัวข้อ 2 | หัวข้อ 3 |
+|------|------|------|
+| เนื้อหา 1 | เนื้อหา 2 | เนื้อหา 3 |
 
-## Änderungen einreichen
+## การส่งการเปลี่ยนแปลง
 
-### Schritte
+### ขั้นตอน
 
-1. Repository forken
-2. Branch erstellen: `git checkout -b feature/NeueInhaltsbeschreibung`
-3. Änderungen durchführen
-4. Commit: `git commit -m "feat: Neuen Inhalt hinzufügen"`
-5. zum Remote pushen: `git push origin feature/NeueInhaltsbeschreibung`
-6. Pull Request erstellen
+1. Fork repository
+2. สร้าง branch: `git checkout -b feature/คำอธิบายเนื้อหาใหม่`
+3. ดำเนินการเปลี่ยนแปลง
+4. Commit: `git commit -m "feat: เพิ่มเนื้อหาใหม่"`
+5. Push ไปยัง remote: `git push origin feature/คำอธิบายเนื้อหาใหม่`
+6. สร้าง Pull Request
 
-### Commit-Nachrichten-Standard
+### มาตรฐานข้อความ commit
 
 ```
 <type>: <description>
@@ -124,31 +124,30 @@ node tests/run-all.js
 <optional body>
 ```
 
-Type-Typen:
-- `feat`: Neue Funktion
-- `fix`: Fehlerbehebung
-- `docs`: Dokumentationsaktualisierung
-- `test`: Testaktualisierung
-- `refactor`: Refactoring
+ประเภท Type:
+- `feat`: คุณสมบัติใหม่
+- `fix`: แก้ไขข้อผิดพลาด
+- `docs`: อัปเดตเอกสาร
+- `test`: อัปเดตการทดสอบ
+- `refactor`: ปรับโครงสร้าง
 
-## Qualitätsprüfung
+## การตรวจสอบคุณภาพ
 
-Vor dem Commit bitte prüfen:
+ก่อน commit โปรดตรวจสอบ:
+- [ ] รูปแบบ Markdown ถูกต้อง
+- [ ] ลิงก์ทั้งหมดทำงาน
+- [ ] ตัวอย่างโค้ดสามารถรันได้
+- [ ] แบบฝึกหัดมีวิธีการตรวจสอบ
+- [ ] ไม่มีข้อผิดพลาดการสะกดภาษาไทย
+- [ ] เป็นไปตามมาตรฐานรูปแบบ
 
-- [ ] Markdown-Format korrekt
-- [ ] Alle Links funktionieren
-- [ ] Code-Beispiele ausführbar
-- [ ] Übungen haben Verifikationsmethoden
-- [ ] Chinesisch ohne Tippfehler
-- [ ] Entspricht den Formatstandards
+## การรายงานปัญหา
 
-## Probleme melden
-
-Wenn du Probleme oder Vorschläge hast, erstelle ein Issue mit:
-- Problembeschreibung
-- Dateistandort
-- Vorgeschlagene Verbesserung
+หากพบปัญหาหรือมีข้อเสนอแนะ โปรดสร้าง Issue โดยมี:
+- คำอธิบายปัญหา
+- ตำแหน่งไฟล์
+- การปรับปรุงที่เสนอ
 
 ---
 
-Danke für deinen Beitrag!
+ขอบคุณสำหรับการมีส่วนร่วม!

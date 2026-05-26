@@ -6,11 +6,11 @@
 |------|------|----------|
 | `/tdd` | Quy trình phát triển định hướng kiểm thử | Phát triển tính năng mới |
 | `/plan` | Tạo kế hoạch thực hiện | Lập kế hoạch nhiệm vụ phức tạp |
-| `/code-review` | [Kiểm tra mã](../TaiLieuThamKhao/commands/01-核心工作流.md) | Kiểm tra chất lượng mã |
-| `/build-fix` | [Sửa lỗi build](../TaiLieuThamKhao/commands/04-构建修复.md) | Khi build thất bại |
+| `/code-review` | [Kiểm tra mã](../TaiLieuThamKhao/commands/01-Workflow-Co-Ban.md) | Kiểm tra chất lượng mã |
+| `/build-fix` | [Sửa lỗi build](../TaiLieuThamKhao/commands/04-Sua-Loi-Build.md) | Khi build thất bại |
 | `/learn` | Trích xuất mẫu từ phiên họp | Tích lũy kiến thức |
 | `/skill-create` | Tạo Skill từ Git | Tái sử dụng kinh nghiệm |
-| `/test` | [Lệnh liên quan đến kiểm thử](../TaiLieuThamKhao/commands/02-测试相关.md) | Liên quan đến kiểm thử |
+| `/test` | [Lệnh liên quan đến kiểm thử](../TaiLieuThamKhao/commands/02-Kiem-Thu.md) | Liên quan đến kiểm thử |
 
 ## Lệnh script
 
