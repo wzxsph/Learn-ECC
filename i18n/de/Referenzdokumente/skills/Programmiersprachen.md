@@ -1,32 +1,32 @@
-# 编程语言技能 (Programming Language Skills)
+# Programmiersprachen-Faehigkeiten
 
-本文档介绍ECC项目中用于各种编程语言的开发技能。
+Dieses Dokument stellt die Entwicklungsfaehigkeiten vor, die im ECC-Projekt fuer verschiedene Programmiersprachen verwendet werden.
 
 ---
 
 ## Python Patterns (python-patterns)
 
-### 用途说明
-提供Pythonic惯用模式、PEP 8标准、类型提示和最佳实践，用于构建健壮、高效和可维护的Python应用程序。
+### Verwendungszweck
+Bietet pythonische idiomatische Muster, PEP 8-Standards, Type Hints und Best-Practices fuer den Aufbau robuster, effizienter und wartbarer Python-Anwendungen.
 
-### 使用时机
-- 编写新的Python代码
-- 审查Python代码
-- 重构现有Python代码
-- 设计Python包/模块
+### Verwendung
+- Neuen Python-Code schreiben
+- Python-Code ueberpruefen
+- Bestehenden Python-Code refaktorieren
+- Python-Pakete/-Module entwerfen
 
-### 核心概念
-1. **可读性优先** - 代码应该清晰明显
-2. **显式优于隐式** - 避免魔法操作
-3. **EAFP风格** - 更容易请求原谅而不是许可
-4. **类型提示** - 使用类型注解提高代码安全性
-5. **上下文管理器** - 使用`with`进行资源管理
-6. **列表推导式** - 简单的数据转换
-7. **生成器** - 惰性求值和大数据集
+### Kernkonzepte
+1. **Lesbarkeit zuerst** - Code sollte klar und offensichtlich sein
+2. **Explizit besser als implizit** - Keine Magie vermeiden
+3. **EAFP-Stil** - Leichter um Verzeihung bitten als Erlaubnis
+4. **Type Hints** - Type Annotations zur Verbesserung der Codesicherheit verwenden
+5. **Kontext-Manager** - `with` fuer Ressourcenverwaltung verwenden
+6. **Listenkomprehension** - Einfache Datentransformationen
+7. **Generatoren** - Faules Evaluation und grosse Datensaetze
 
-### 使用示例
+### Verwendungsbeispiel
 
-**类型提示：**
+**Type Hints:**
 ```python
 from typing import Optional, List, Dict, Any
 
@@ -40,7 +40,7 @@ def process_user(
     return User(user_id, data)
 ```
 
-**上下文管理器：**
+**Kontext-Manager:**
 ```python
 from contextlib import contextmanager
 
@@ -55,7 +55,7 @@ with timer("data processing"):
     process_large_dataset()
 ```
 
-**错误处理：**
+**Fehlerbehandlung:**
 ```python
 try:
     parsed = json.loads(data)
@@ -67,27 +67,27 @@ except json.JSONDecodeError as e:
 
 ## Go Patterns (golang-patterns)
 
-### 用途说明
-提供惯用的Go模式、最佳实践和约定，用于构建健壮、高效和可维护的Go应用程序。
+### Verwendungszweck
+Bietet idiomatische Go-Muster, Best-Practices und Konventionen fuer den Aufbau robuster, effizienter und wartbarer Go-Anwendungen.
 
-### 使用时机
-- 编写新的Go代码
-- 审查Go代码
-- 重构现有Go代码
-- 设计Go包/模块
+### Verwendung
+- Neuen Go-Code schreiben
+- Go-Code ueberpruefen
+- Bestehenden Go-Code refaktorieren
+- Go-Pakete/-Module entwerfen
 
-### 核心概念
-1. **简洁和清晰** - Go偏好简洁而不是技巧
-2. **零值有用** - 设计类型使其零值可直接使用
-3. **接受接口，返回结构体** - 函数接受接口参数，返回具体类型
-4. **错误处理** - 错误是值，遵循`error`返回值模式
-5. **并发模式** - 使用goroutine和channel进行并发
-6. **接口设计** - 小而专注的接口
-7. **包组织** - 标准项目布局
+### Kernkonzepte
+1. **Einfachheit und Klarheit** - Go bevorzugt Einfachheit gegenueber Tricks
+2. **Zero-Value ist nuetzlich** - Typen so entwerfen, dass Zero-Value sofort verwendbar ist
+3. **Interfaces annehmen, Structs zurueckgeben** - Funktionen nehmen Interface-Parameter an, geben konkrete Typen zurueck
+4. **Fehlerbehandlung** - Fehler sind Werte, dem `error`-Return-Pattern folgen
+5. **Concurrency-Muster** - Goroutines und Channels fuer Concurrency verwenden
+6. **Interface-Design** - Kleine, fokussierte Interfaces
+7. **Paketorganisation** - Standard-Projekt-Layout
 
-### 使用示例
+### Verwendungsbeispiel
 
-**错误包装：**
+**Fehler-Wrapping:**
 ```go
 func LoadConfig(path string) (*Config, error) {
     data, err := os.ReadFile(path)
@@ -98,7 +98,7 @@ func LoadConfig(path string) (*Config, error) {
 }
 ```
 
-**Worker Pool：**
+**Worker Pool:**
 ```go
 func WorkerPool(jobs <-chan Job, results chan<- Result, numWorkers int) {
     var wg sync.WaitGroup
@@ -115,7 +115,7 @@ func WorkerPool(jobs <-chan Job, results chan<- Result, numWorkers int) {
 }
 ```
 
-**功能选项模式：**
+**Functional Options Pattern:**
 ```go
 type Option func(*Server)
 
@@ -136,26 +136,26 @@ func NewServer(addr string, opts ...Option) *Server {
 
 ## Rust Patterns (rust-patterns)
 
-### 用途说明
-提供惯用的Rust模式、所有权系统、错误处理、trait、并发和最佳实践，用于构建安全、高效的应用程序。
+### Verwendungszweck
+Bietet idiomatische Rust-Muster, Ownership-System, Fehlerbehandlung, Traits, Concurrency und Best-Practices fuer den Aufbau sicherer, effizienter Anwendungen.
 
-### 使用时机
-- 编写新的Rust代码
-- 审查Rust代码
-- 重构现有Rust代码
-- 设计crate结构和模块布局
+### Verwendung
+- Neuen Rust-Code schreiben
+- Rust-Code ueberpruefen
+- Bestehenden Rust-Code refaktorieren
+- Crate-Strukturen und Modullayouts entwerfen
 
-### 核心概念
-1. **所有权和借用** - 编译时防止数据竞争和内存错误
-2. **Result和?操作符** - 使用`?`进行错误传播
-3. **枚举和穷尽匹配** - 使用枚举使不可能的状态无法表示
-4. **Trait和泛型** - 零成本抽象
-5. **安全并发** - 使用`Arc<Mutex<T>>`、channels和async/await
-6. **最小pub表面** - 按领域组织模块
+### Kernkonzepte
+1. **Ownership und Borrowing** - Kompilierzeit verhindert Datenrennen und Speicherfehler
+2. **Result und ?-Operator** - `?` fuer Fehlerpropagation verwenden
+3. **Enums und Exhaustives Matching** - Enums verwenden, damit unmoegliche Zustände nicht dargestellt werden koennen
+4. **Traits und Generics** - Zero-Cost Abstraktionen
+5. **Sichere Concurrency** - `Arc<Mutex<T>>`, Channels und async/await verwenden
+6. **Minimale pub-Oberflaeche** - Module nach Domain organisieren
 
-### 使用示例
+### Verwendungsbeispiel
 
-**错误处理：**
+**Fehlerbehandlung:**
 ```rust
 use anyhow::{Context, Result};
 
@@ -168,7 +168,7 @@ fn load_config(path: &str) -> Result<Config> {
 }
 ```
 
-**使用Cow灵活处理所有权：**
+**Cow fuer flexible Ownership:**
 ```rust
 use std::borrow::Cow;
 
@@ -176,12 +176,12 @@ fn normalize(input: &str) -> Cow<'_, str> {
     if input.contains(' ') {
         Cow::Owned(input.replace(' ', "_"))
     } else {
-        Cow::Borrowed(input) // 无需修改时零成本
+        Cow::Borrowed(input) // Zero-cost wenn keine Aenderung
     }
 }
 ```
 
-**Arc<Mutex<T>>共享可变状态：**
+**Arc<Mutex<T>> fuerShared Mutable State:**
 ```rust
 use std::sync::{Arc, Mutex};
 
@@ -199,28 +199,28 @@ let handles: Vec<_> = (0..10).map(|_| {
 
 ## Kotlin Patterns (kotlin-patterns)
 
-### 用途说明
-提供惯用的Kotlin模式、最佳实践和约定，用于构建健壮、高效和可维护的Kotlin应用程序，包括协程、空安全和DSL构建器。
+### Verwendungszweck
+Bietet idiomatische Kotlin-Muster, Best-Practices und Konventionen fuer den Aufbau robuster, effizienter und wartbarer Kotlin-Anwendungen, einschliesslich Coroutines, Null-Safety und DSL-Builder.
 
-### 使用时机
-- 编写新的Kotlin代码
-- 审查Kotlin代码
-- 重构现有Kotlin代码
-- 设计Kotlin模块或库
-- 配置Gradle Kotlin DSL构建
+### Verwendung
+- Neuen Kotlin-Code schreiben
+- Kotlin-Code ueberpruefen
+- Bestehenden Kotlin-Code refaktorieren
+- Kotlin-Module oder -Bibliotheken entwerfen
+- Gradle Kotlin DSL-Build konfigurieren
 
-### 核心概念
-1. **空安全** - 使用类型系统和安全调用操作符
-2. **默认不可变** - 优先使用`val`而不是`var`
-3. **数据类** - 用于主要持有数据的类型
-4. **密封类** - 穷尽类型层次结构
-5. **协程** - 结构化并发
-6. **扩展函数** - 无需继承添加功能
-7. **DSL构建器** - 使用`@DslMarker`和lambda接收器
+### Kernkonzepte
+1. **Null-Safety** - Typsystem und Safe-Call-Operatoren verwenden
+2. **Standardmaessig immutable** - `val` gegenueber `var` bevorzugen
+3. **Data Classes** - fuer hauptsaechlich datenhaltende Typen
+4. **Sealed Classes** - Exhaustives Typhierarchien
+5. **Coroutines** - Strukturierte Concurrency
+6. **Extension Functions** - Funktionen ohne Vererbung hinzufuegen
+7. **DSL Builder** - `@DslMarker` und Lambda-Receiver verwenden
 
-### 使用示例
+### Verwendungsbeispiel
 
-**空安全：**
+**Null-Safety:**
 ```kotlin
 fun getUserEmail(userId: String): String {
     val user = userRepository.findById(userId)
@@ -228,7 +228,7 @@ fun getUserEmail(userId: String): String {
 }
 ```
 
-**密封类用于穷尽结果：**
+**Sealed Classes fuer exhaustive Results:**
 ```kotlin
 sealed class Result<out T> {
     data class Success<T>(val data: T) : Result<T>()
@@ -237,7 +237,7 @@ sealed class Result<out T> {
 }
 ```
 
-**结构化并发：**
+**Strukturierte Concurrency:**
 ```kotlin
 suspend fun fetchUserWithPosts(userId: String): UserProfile =
     coroutineScope {
@@ -251,46 +251,46 @@ suspend fun fetchUserWithPosts(userId: String): UserProfile =
 
 ## C++ Coding Standards (cpp-coding-standards)
 
-### 用途说明
-基于C++核心指南的现代C++（C++17/20/23）编码标准。强制类型安全、资源安全、不可变性和清晰度。
+### Verwendungszweck
+Modernes C++ (C++17/20/23) Coding-Standards basierend auf den C++ Core Guidelines. Erzwingt Typsicherheit, Ressourcensicherheit, Immutabilitaet und Klarheit.
 
-### 使用时机
-- 编写新的C++代码
-- 审查或重构C++代码
-- 做出架构决策
-- 强制一致的代码风格
-- 选择语言特性
+### Verwendung
+- Neuen C++-Code schreiben
+- C++-Code ueberpruefen oder refaktorieren
+- Architekturentscheidungen treffen
+- Konsistenten Codestil erzwingen
+- Sprachfeatures auswaehlen
 
-### 核心概念
-1. **RAII无处不在** - 绑定资源生命周期到对象生命周期
-2. **默认不可变** - 从`const`/`constexpr`开始
-3. **类型安全** - 使用类型系统防止编译时错误
-4. **表达意图** - 名称、类型和概念应传达目的
-5. **最小化复杂度** - 简单代码是正确的代码
-6. **值语义优先于指针语义** - 优先返回值和作用域对象
+### Kernkonzepte
+1. **RAII ueberall** - Ressourcenlebenszyklus an Objektlebenszyklus binden
+2. **Standardmaessig immutable** - Mit `const`/`constexpr` beginnen
+3. **Typsicherheit** - Typsystem verwenden, um Kompilierzeitfehler zu verhindern
+4. **Absicht ausdruecken** - Namen, Typen und Konzepte sollen Zweck vermitteln
+5. **Komplexitaet minimieren** - Einfacher Code ist korrekter Code
+6. **Wertsemantik bevorzugt gegenueber Zeigersemantik** - Returns und Scoped-Objekte bevorzugen
 
-### 使用示例
+### Verwendungsbeispiel
 
-**智能指针使用：**
+**Smart Pointer-Verwendung:**
 ```cpp
-// R.11 + R.20 + R.21: RAII和智能指针
-auto widget = std::make_unique<Widget>("config");  // 唯一所有权
-auto cache = std::make_shared<Cache>(1024);         // 共享所有权
+// R.11 + R.20 + R.21: RAII und Smart Pointer
+auto widget = std::make_unique<Widget>("config");  // Unique Ownership
+auto cache = std::make_shared<Cache>(1024);         // Shared Ownership
 
-// R.3: 原始指针是非拥有的观察者
-void render(const Widget* w) {  // 不拥有w
+// R.3: Raw Pointer sind nicht-besitzende Observer
+void render(const Widget* w) {  // Besitzt w nicht
     if (w) w->draw();
 }
 ```
 
-**Rule of Zero：**
+**Rule of Zero:**
 ```cpp
-// C.20: 让编译器生成特殊成员
+// C.20: Spezielle Member von Compiler generieren lassen
 struct Employee {
     std::string name;
     std::string department;
     int id;
-    // 无需定义析构函数、复制/移动构造函数或赋值运算符
+    // Keine Destruktor-, Copy/Move-Konstruktoren oder Zuweisungsoperatoren definieren
 };
 ```
 
@@ -298,26 +298,26 @@ struct Employee {
 
 ## Java Coding Standards (java-coding-standards)
 
-### 用途说明
-Spring Boot和Quarkus服务的Java编码标准，包括命名、不可变性、Optional使用、流处理、异常、泛型和项目布局。
+### Verwendungszweck
+Java-Coding-Standards fuer Spring Boot- und Quarkus-Services, einschliesslich Benennung, Immutabilitaet, Optional-Verwendung, Stream-Handling, Exceptions, Generics und Projektlayout.
 
-### 使用时机
-- 在Spring Boot或Quarkus项目中编写或审查Java代码
-- 强制命名、不可变性或异常处理约定
-- 使用records、密封类或模式匹配（Java 17+）
-- 审查Optional、流或泛型的使用
+### Verwendung
+- Java-Code in Spring Boot- oder Quarkus-Projekten schreiben oder ueberpruefen
+- Benennungs-, Immutabilitaets- oder Exception-Handling-Konventionen erzwingen
+- Records, Sealed Classes oder Pattern Matching (Java 17+) verwenden
+- Optional-, Stream- oder Generics-Verwendung ueberpruefen
 
-### 核心概念
-1. **框架检测** - 根据构建文件检测Spring Boot或Quarkus
-2. **命名约定** - 类/Records用PascalCase，方法/字段用camelCase
-3. **不可变性** - 优先使用records和final字段
-4. **Optional使用** - 从find*方法返回Optional
-5. **依赖注入** - 构造函数注入优于字段注入
-6. **响应式模式（Quarkus）** - 返回Uni/Multi
+### Kernkonzepte
+1. **Framework-Erkennung** - Spring Boot oder Quarkus aus Build-Dateien erkennen
+2. **Benennungskonventionen** - Klassen/Records: PascalCase, Methoden/Felder: camelCase
+3. **Immutabilitaet** - Records und final-Felder bevorzugen
+4. **Optional-Verwendung** - Optional von find*-Methoden zurueckgeben
+5. **Dependency Injection** - Konstruktor-Injection gegenueber Field-Injection
+6. **Reaktive Patterns (Quarkus)** - Uni/Multi zurueckgeben
 
-### 使用示例
+### Verwendungsbeispiel
 
-**Spring Boot构造函数注入：**
+**Spring Boot Konstruktor-Injection:**
 ```java
 @Service
 public class MarketService {
@@ -329,7 +329,7 @@ public class MarketService {
 }
 ```
 
-**Optional使用：**
+**Optional-Verwendung:**
 ```java
 return market
     .map(MarketResponse::from)
@@ -340,24 +340,24 @@ return market
 
 ## Swift 6.2 Approachable Concurrency (swift-concurrency-6-2)
 
-### 用途说明
-Swift 6.2的"可接近并发"模式——默认单线程，使用`@concurrent`显式后台卸载，通过隔离一致性为主actor类型提供协议支持。
+### Verwendungszweck
+Swift 6.2 "Approachable Concurrency"-Muster - standardmaessig Single-Threaded, `@concurrent` fuer explizites Background-Offloading, Isolation-Konformity fuer MainActor-Typen mit Protocol-Support.
 
-### 使用时机
-- 将Swift 5.x或6.0/6.1项目迁移到Swift 6.2
-- 解决数据竞争安全编译器错误
-- 设计MainActor-based应用架构
-- 实现协议一致性
+### Verwendung
+- Swift 5.x oder 6.0/6.1-Projekte auf Swift 6.2 migrieren
+- Data-Race-Sicherheits-Compiler-Fehler beheben
+- MainActor-basierte Anwendungsarchitektur entwerfen
+- Protocol-Conformance implementieren
 
-### 核心概念
-1. **单线程默认** - 大多数代码是数据竞争安全的；并发是显式 opt-in
-2. **Async保持在调用actor** - 消除导致数据竞争错误的隐式卸载
-3. **隔离一致性** - MainActor类型可以安全地实现非隔离协议
-4. **@concurrent显式opt-in** - 后台执行是有意的性能选择
+### Kernkonzepte
+1. **Single-Threaded Standard** - Meiste Code ist data-race-safe; Concurrency ist expliziter Opt-in
+2. **Async bleibt im aufrufenden Actor** - Eliminiert implizites Offloading, das Data-Race-Fehler verursacht
+3. **Isolation-Konformity** - MainActor-Typen koennen sicher non-isolated Protocols implementieren
+4. **@concurrent expliziter Opt-in** - Background-Ausfuehrung ist beabsichtigte Performance-Wahl
 
-### 使用示例
+### Verwendungsbeispiel
 
-**隔离一致性：**
+**Isolation-Konformity:**
 ```swift
 extension StickerModel: @MainActor Exportable {
     func export() {
@@ -366,12 +366,12 @@ extension StickerModel: @MainActor Exportable {
 }
 ```
 
-**@concurrent用于后台工作：**
+**@concurrent fuer Background-Arbeit:**
 ```swift
 nonisolated final class PhotoProcessor {
     @concurrent
     static func extractSubject(from data: Data) async -> Sticker {
-        // 后台执行的昂贵工作
+        // Teure Arbeit, die im Hintergrund ausgefuehrt wird
     }
 }
 ```
@@ -380,26 +380,26 @@ nonisolated final class PhotoProcessor {
 
 ## Dart/Flutter Patterns (dart-flutter-patterns)
 
-### 用途说明
-生产就绪的Dart和Flutter模式，涵盖空安全、不可变状态、异步组合、组件架构、流行状态管理框架（BLoC、Riverpod、Provider）、GoRouter导航、Dio网络请求、Freezed代码生成和清洁架构。
+### Verwendungszweck
+Produktionsreife Dart- und Flutter-Muster, einschliesslich Null-Safety, immutable State, async Composition, Komponentenarchitektur, beliebte State-Management-Frameworks (BLoC, Riverpod, Provider), GoRouter-Navigation, Dio-HTTP-Requests, Freezed-Code-Generierung und Clean Architecture.
 
-### 使用时机
-- 启动新的Flutter功能并需要状态管理、导航或数据访问的模式
-- 审查或编写Dart代码并需要空安全、密封类型或异步组合的指导
-- 设置新的Flutter项目并选择BLoC、Riverpod或Provider
-- 实现安全的HTTP客户端、WebView集成或本地存储
-- 编写Flutter组件、Cubit或Riverpod provider的测试
+### Verwendung
+- Neue Flutter-Features starten und State-Management-, Navigations- oder Datenzugriffsmuster benoetigen
+- Dart-Code ueberpruefen oder schreiben und Null-Safety, Sealed-Types oder async Composition Guidance benoetigen
+- Neues Flutter-Projekt einrichten und BLoC, Riverpod oder Provider auswaehlen
+- Sicheren HTTP-Client, WebView-Integration oder lokalen Storage implementieren
+- Tests fuer Flutter-Komponenten, Cubits oder Riverpod-Provider schreiben
 
-### 核心概念
-1. **空安全** - 避免`!`，优先使用`?.`/`??`/模式匹配
-2. **不可变状态** - 密封类、`freezed`、`copyWith`
-3. **异步组合** - 并发`Future.wait`、await后安全使用BuildContext
-4. **组件架构** - 提取为类（不是方法）、`const`传播、作用域重建
-5. **状态管理** - BLoC/Cubit事件、Riverpod notifiers和派生providers
+### Kernkonzepte
+1. **Null-Safety** - `!` vermeiden, `?.`/`??`/Pattern-Matching bevorzugen
+2. **Immutable State** - Sealed Classes, `freezed`, `copyWith`
+3. **Async Composition** - `Future.wait`, nach await sichere BuildContext-Nutzung
+4. **Komponentenarchitektur** - Als Klassen extrahieren (nicht als Methoden), `const` propagieren, Scoping Rebuilds
+5. **State-Management** - BLoC/Cubit Events, Riverpod Notifiers und Derived Providers
 
-### 使用示例
+### Verwendungsbeispiel
 
-**密封状态类：**
+**Sealed State Classes:**
 ```dart
 sealed class AsyncState<T> {}
 final class Loading<T> extends AsyncState<T> {}
@@ -414,7 +414,7 @@ Widget buildFrom(AsyncState<User> state) => switch (state) {
 };
 ```
 
-**Riverpod派生provider：**
+**Riverpod Derived Provider:**
 ```dart
 @riverpod
 double cartTotal(Ref ref) {
@@ -431,24 +431,24 @@ double cartTotal(Ref ref) {
 
 ## F# Testing (fsharp-testing)
 
-### 用途说明
-使用xUnit、FsUnit、Unquote、FsCheck属性测试的F#测试模式，集成测试和测试组织最佳实践。
+### Verwendungszweck
+F#-Testmuster mit xUnit, FsUnit, Unquote, FsCheck Property-Testing, Integrationstests und Testorganisations-Best-Practices.
 
-### 使用时机
-- 为F#代码编写新测试
-- 审查测试质量和覆盖率
-- 为F#项目设置测试基础设施
-- 调试不稳定或慢速测试
+### Verwendung
+- Neue Tests fuer F#-Code schreiben
+- Testqualitaet und -abdeckung ueberpruefen
+- Testinfrastruktur fuer F#-Projekte einrichten
+- Flaky oder langsame Tests debuggen
 
-### 核心概念
-1. **xUnit** - 标准.NET生态系统测试框架
-2. **FsUnit.xUnit** - xUnit的F#友好断言语法
-3. **Unquote** - 使用F#引用的断言库，失败消息清晰
-4. **FsCheck.xUnit** - 集成到xUnit的属性测试
+### Kernkonzepte
+1. **xUnit** - Standard-.NET-Ecosystem-Test-Framework
+2. **FsUnit.xUnit** - F#-freundliche Assertion-Syntax fuer xUnit
+3. **Unquote** - Assertions-Bibliothek mit F#-Quotes, klare Fehlermeldungen
+4. **FsCheck.xUnit** - Property-Testing integriert in xUnit
 
-### 使用示例
+### Verwendungsbeispiel
 
-**Unquote断言：**
+**Unquote Assertions:**
 ```fsharp
 [<Fact>]
 let ``order total sums item prices`` () =
@@ -458,7 +458,7 @@ let ``order total sums item prices`` () =
     test <@ total = 25m @>
 ```
 
-**FsCheck属性测试：**
+**FsCheck Property Testing:**
 ```fsharp
 [<Property>]
 let ``order total is always non-negative`` (items: NonEmptyList<PositiveInt * decimal>) =
@@ -470,7 +470,7 @@ let ``order total is always non-negative`` (items: NonEmptyList<PositiveInt * de
 
 ---
 
-## 其他语言模式
+## Andere Sprachmuster
 
 ### C# Testing (csharp-testing)
 - xUnit + FluentAssertions
@@ -484,16 +484,16 @@ let ``order total is always non-negative`` (items: NonEmptyList<PositiveInt * de
 
 ---
 
-## 快速参考表
+## Schnellreferenz-Tabelle
 
-| 技能 | 主要用途 | 关键模式 |
+| Faehigkeit | Hauptverwendung | Wichtige Muster |
 |------|---------|---------|
-| python-patterns | Python开发 | 类型提示、上下文管理器、列表推导式 |
-| golang-patterns | Go开发 | 错误包装、Worker Pool、接口设计 |
-| rust-patterns | Rust开发 | 所有权、Result、trait、并发 |
-| kotlin-patterns | Kotlin开发 | 空安全、协程、DSL构建器 |
-| cpp-coding-standards | C++开发 | RAII、智能指针、概念 |
-| java-coding-standards | Java开发 | 依赖注入、Optional、流处理 |
-| swift-concurrency-6-2 | Swift并发 | @MainActor、@concurrent、隔离一致性 |
-| dart-flutter-patterns | Flutter开发 | 状态管理、路由、组件架构 |
-| fsharp-testing | F#测试 | xUnit、FsUnit、属性测试 |
+| python-patterns | Python-Entwicklung | Type Hints, Kontext-Manager, Listenkomprehension |
+| golang-patterns | Go-Entwicklung | Fehler-Wrapping, Worker Pool, Interface-Design |
+| rust-patterns | Rust-Entwicklung | Ownership, Result, Traits, Concurrency |
+| kotlin-patterns | Kotlin-Entwicklung | Null-Safety, Coroutines, DSL-Builder |
+| cpp-coding-standards | C++-Entwicklung | RAII, Smart Pointer, Concepts |
+| java-coding-standards | Java-Entwicklung | Dependency Injection, Optional, Stream-Handling |
+| swift-concurrency-6-2 | Swift-Concurrency | @MainActor, @concurrent, Isolation-Konformity |
+| dart-flutter-patterns | Flutter-Entwicklung | State-Management, Routing, Komponentenarchitektur |
+| fsharp-testing | F#-Testing | xUnit, FsUnit, Property-Testing |

@@ -1,273 +1,400 @@
-# 构建修复命令
+# Lệnh Liên Quan Đến Test
 
-本文档介绍 ECC 中用于修复各语言构建错误的专门命令。
+Tài liệu này giới thiệu các lệnh chuyên dụng trong ECC cho testing, hỗ trợ nhiều ngôn ngữ lập trình và test framework.
 
 ---
 
-## /go-build
+## /go-test
 
-**用途说明**: 逐步修复 Go 构建错误、go vet 警告和 linter 问题。
+**Mục đích**: Workflow TDD cho ngôn ngữ Go. Sử dụng table-driven test, viết test trước, rồi implement, xác minh 80%+ coverage.
 
-**使用方法**:
+**Cách sử dụng**:
 ```
-/go-build
+/go-test [mô tả tính năng]
 ```
 
-**使用场景**:
-- `go build ./...` 失败
-- `go vet ./...` 报告问题
-- `golangci-lint run` 显示警告
-- 模块依赖损坏
-- 拉取更改后构建失败
+**Khi nào sử dụng**:
+- Implement hàm Go mới
+- Thêm test coverage cho code Go hiện có
+- Fix bug (viết test thất bại trước)
+- Học phương pháp TDD của Go
 
-**工作流程**:
-1. **运行诊断** - 执行 `go build`、`go vet`、`staticcheck`
-2. **解析错误** - 按文件分组并按严重程度排序
-3. **逐步修复** - 一次一个错误
-4. **验证修复** - 每次更改后重新运行构建
-5. **报告总结** - 显示已修复和剩余问题
+**Ví dụ workflow**:
+```go
+// Step 1: Định nghĩa interface
+func ValidateEmail(email string) error {
+    panic("not implemented")
+}
 
-**常见错误修复**:
+// Step 2: Viết table-driven test (RED)
+tests := []struct {
+    name    string
+    email   string
+    wantErr bool
+}{
+    {"simple email", "user@example.com", false},
+    {"empty string", "", true},
+    {"no at sign", "userexample.com", true},
+}
 
-| 错误 | 典型修复 |
-|------|----------|
-| `undefined: X` | 添加导入或修复拼写 |
-| `cannot use X as Y` | 类型转换或修复赋值 |
-| `missing return` | 添加 return 语句 |
-| `X does not implement Y` | 添加缺失方法 |
-| `import cycle` | 重构包结构 |
-| `declared but not used` | 移除或使用变量 |
-| `cannot find package` | `go get` 或 `go mod tidy` |
+// Step 3: Chạy test - Xác minh FAIL
 
-**诊断命令**:
+// Step 4: Implement code tối thiểu (GREEN)
+func ValidateEmail(email string) error {
+    if email == "" {
+        return ErrEmailEmpty
+    }
+    if !emailRegex.MatchString(email) {
+        return ErrEmailInvalid
+    }
+    return nil
+}
+
+// Step 5: Xác minh PASS
+
+// Step 6: Kiểm tra coverage
+go test -cover ./...
+// coverage: 100.0%
+```
+
+**Lệnh coverage**:
 ```bash
-go build ./...                # 主构建检查
-go vet ./...                  # 静态分析
-staticcheck ./...             # 高级 lint（如果可用）
-golangci-lint run             # Linting
-go mod verify                # 模块验证
-go mod tidy -v               # 整理依赖
+go test -cover ./...                    # Coverage cơ bản
+go test -coverprofile=coverage.out      # Tạo file coverage
+go tool cover -html=coverage.out        # Xem bằng browser
+go test -race -cover ./...              # Phát hiện race
 ```
 
 ---
 
-## /kotlin-build
+## /kotlin-test
 
-**用途说明**: 逐步修复 Kotlin/Gradle 构建错误、编译器警告和依赖问题。
+**Mục đích**: Workflow TDD cho ngôn ngữ Kotlin. Sử dụng Kotest framework và MockK, viết test trước, rồi implement, xác minh 80%+ coverage (Kover).
 
-**使用方法**:
+**Cách sử dụng**:
 ```
-/kotlin-build
+/kotlin-test [mô tả tính năng]
 ```
 
-**使用场景**:
-- `./gradlew build` 失败
-- Kotlin 编译器报告错误
-- `./gradlew detekt` 报告违规
-- Gradle 依赖解析失败
-- 拉取更改后构建失败
+**Khi nào sử dụng**:
+- Implement hàm hoặc class Kotlin mới
+- Thêm test coverage cho Android/KMP project
+- Fix bug (viết test thất bại trước)
+- Học phương pháp TDD của Kotlin
 
-**常见错误修复**:
+**Kotest test style**:
+```kotlin
+// StringSpec (đơn giản nhất)
+class CalculatorTest : StringSpec({
+    "add two positive numbers" {
+        Calculator.add(2, 3) shouldBe 5
+    }
+})
 
-| 错误 | 典型修复 |
-|------|----------|
-| `Unresolved reference: X` | 添加导入或依赖 |
-| `Type mismatch` | 修复类型转换或赋值 |
-| `'when' must be exhaustive` | 添加缺失的密封类分支 |
-| `Suspend function can only be called from coroutine` | 添加 `suspend` 修饰符 |
-| `Smart cast impossible` | 使用局部 `val` 或 `let` |
-| `Could not resolve dependency` | 修复版本或添加仓库 |
+// FunSpec (standard unit test)
+class RegistrationValidatorTest : FunSpec({
+    test("valid registration returns Valid") {
+        val request = RegistrationRequest(
+            name = "Alice",
+            email = "alice@example.com",
+            password = "SecureP@ss1"
+        )
+        val result = validateRegistration(request)
+        result.shouldBeInstanceOf<ValidationResult.Valid>()
+    }
+})
 
-**诊断命令**:
+// BehaviorSpec (BDD style)
+class OrderServiceTest : BehaviorSpec({
+    Given("a valid order") {
+        When("placed") {
+            Then("should be confirmed") { /* ... */ }
+        }
+    }
+})
+```
+
+**Coroutine test**:
+```kotlin
+test("concurrent fetch completes") {
+    runTest {
+        val result = service.fetchAll()
+        result.shouldNotBeEmpty()
+    }
+}
+```
+
+**Lệnh coverage**:
 ```bash
-./gradlew build 2>&1                      # 主构建检查
-./gradlew detekt 2>&1                      # 静态分析（如果配置）
-./gradlew ktlintCheck 2>&1                # 格式检查（如果配置）
-./gradlew dependencies --configuration runtimeClasspath | head -100  # 依赖问题
-./gradlew build --refresh-dependencies     # 深度刷新（缓存或依赖元数据可疑时）
+./gradlew koverHtmlReport     # HTML report
+./gradlew koverVerify         # Xác minh coverage threshold
+./gradlew koverXmlReport      # XML report cho CI
+./gradlew test                # Chạy test
 ```
 
 ---
 
-## /rust-build
+## /rust-test
 
-**用途说明**: 逐步修复 Rust 构建错误、借用检查器问题和依赖问题。
+**Mục đích**: Workflow TDD cho ngôn ngữ Rust. Sử dụng `#[test]`, rstest, proptest và mockall, viết test trước, rồi implement, xác minh 80%+ coverage (cargo-llvm-cov).
 
-**使用方法**:
+**Cách sử dụng**:
 ```
-/rust-build
+/rust-test [mô tả tính năng]
 ```
 
-**使用场景**:
-- `cargo build` 或 `cargo check` 失败
-- `cargo clippy` 报告警告
-- 借用检查器或生命周期错误阻止编译
-- Cargo 依赖解析失败
-- 拉取更改后构建失败
+**Khi nào sử dụng**:
+- Implement hàm, method hoặc trait Rust mới
+- Thêm test coverage cho Rust project
+- Fix bug (viết test thất bại trước)
+- Học phương pháp TDD của Rust
 
-**常见错误修复**:
+**Test pattern**:
+```rust
+// Unit test
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-| 错误 | 典型修复 |
-|------|----------|
-| `cannot borrow as mutable` | 重构以在使用可变访问之前结束不可变借用 |
-| `does not live long enough` | 使用拥有类型或添加生命周期标注 |
-| `cannot move out of` | 重构以获取所有权；仅作为最后手段克隆 |
-| `mismatched types` | 添加 `.into()`、`as` 或显式转换 |
-| `trait X not implemented` | 添加 `#[derive(Trait)]` 或手动实现 |
-| `unresolved import` | 添加到 Cargo.toml 或修复 `use` 路径 |
-| `cannot find value` | 添加导入或修复路径 |
+    #[test]
+    fn adds_two_numbers() {
+        assert_eq!(add(2, 3), 5);
+    }
 
-**诊断命令**:
+    #[test]
+    fn handles_error() -> Result<(), Box<dyn std::error::Error>> {
+        let result = parse_config(r#"port = 8080"#)?;
+        assert_eq!(result.port, 8080);
+        Ok(())
+    }
+}
+
+// Parametric test (rstest)
+#[rstest]
+#[case("hello", 5)]
+#[case("", 0)]
+#[case("rust", 4)]
+fn test_string_length(#[case] input: &str, #[case] expected: usize) {
+    assert_eq!(input.len(), expected);
+}
+
+// Async test
+#[tokio::test]
+async fn fetches_data_successfully() {
+    let client = TestClient::new().await;
+    let result = client.get("/data").await;
+    assert!(result.is_ok());
+}
+
+// Property test (proptest)
+proptest! {
+    #[test]
+    fn encode_decode_roundtrip(input in ".*") {
+        let encoded = encode(&input);
+        let decoded = decode(&encoded).unwrap();
+        assert_eq!(input, decoded);
+    }
+}
+```
+
+**Lệnh coverage**:
 ```bash
-cargo check 2>&1                               # 主构建检查
-cargo clippy -- -D warnings 2>&1               # Lints
-cargo fmt --check 2>&1                         # 格式检查
-cargo tree --duplicates                        # 重复依赖
-cargo audit                                   # 安全审计（如果可用）
+cargo llvm-cov                    # Coverage summary
+cargo llvm-cov --html             # HTML report
+cargo llvm-cov --fail-under-lines 80  # Fail nếu dưới threshold
+cargo test                        # Chạy test
 ```
 
 ---
 
-## /cpp-build
+## /cpp-test
 
-**用途说明**: 逐步修复 C++ 构建错误、CMake 问题和链接器问题。
+**Mục đích**: Workflow TDD cho ngôn ngữ C++. Sử dụng GoogleTest/GoogleMock và CMake/CTest, viết test trước, rồi implement, xác minh coverage (gcov/lcov).
 
-**使用方法**:
+**Cách sử dụng**:
 ```
-/cpp-build
+/cpp-test [mô tả tính năng]
 ```
 
-**使用场景**:
-- `cmake --build build` 失败
-- 链接器错误（未定义引用、多次定义）
-- 模板实例化失败
-- 包含/依赖问题
-- 拉取更改后构建失败
+**Khi nào sử dụng**:
+- Implement class hoặc hàm C++ mới
+- Thêm test coverage
+- Fix bug (viết test thất bại trước)
+- Học phương pháp TDD của C++
 
-**常见错误修复**:
+**GoogleTest pattern**:
+```cpp
+// Basic test
+TEST(SuiteName, TestName) {
+    EXPECT_EQ(add(2, 3), 5);
+    EXPECT_NE(result, nullptr);
+    EXPECT_TRUE(is_valid);
+    EXPECT_THROW(func(), std::invalid_argument);
+}
 
-| 错误 | 典型修复 |
-|------|----------|
-| `undeclared identifier` | 添加 `#include` 或修复拼写 |
-| `no matching function` | 修复参数类型或添加重载 |
-| `undefined reference` | 链接库或添加实现 |
-| `multiple definition` | 使用 `inline` 或移到 .cpp |
-| `incomplete type` | 用 `#include` 替换前向声明 |
-| `no member named X` | 修复成员名称或添加 include |
-| `cannot convert X to Y` | 添加适当转换 |
-| `CMake Error` | 修复 CMakeLists.txt 配置 |
+// Fixture
+class DatabaseTest : public ::testing::Test {
+protected:
+    void SetUp() override { db_ = create_test_db(); }
+    void TearDown() override { db_.reset(); }
+    std::unique_ptr<Database> db_;
+};
 
-**诊断命令**:
+TEST_F(DatabaseTest, InsertsRecord) {
+    db_->insert("key", "value");
+    EXPECT_EQ(db_->get("key"), "value");
+}
+
+// Parametric test
+class PrimeTest : public ::testing::TestWithParam<std::pair<int, bool>> {};
+
+TEST_P(PrimeTest, ChecksPrimality) {
+    auto [input, expected] = GetParam();
+    EXPECT_EQ(is_prime(input), expected);
+}
+
+INSTANTIATE_TEST_SUITE_P(Primes, PrimeTest,
+    ::testing::Values(
+        std::make_pair(2, true),
+        std::make_pair(4, false),
+        std::make_pair(7, true)
+    ));
+```
+
+**Lệnh coverage**:
 ```bash
-cmake -B build -S .                        # CMake 配置
-cmake --build build 2>&1 | head -100       # 构建
-clang-tidy src/*.cpp -- -std=c++17         # 静态分析（如果可用）
-cppcheck --enable=all src/                 # 额外分析（如果可用）
+cmake -DCMAKE_CXX_FLAGS="--coverage" -B build
+cmake --build build
+ctest --test-dir build
+lcov --capture --directory build --output-file coverage.info
+genhtml coverage.info --output-directory coverage_html
 ```
 
 ---
 
-## /gradle-build
+## /flutter-test
 
-**用途说明**: 修复 Android 和 Kotlin Multiplatform (KMP) 项目的 Gradle 构建错误。
+**Mục đích**: Test Flutter/Dart. Báo cáo thất bại và từng bước sửa vấn đề test, bao gồm unit, widget, golden và integration test.
 
-**使用方法**:
+**Cách sử dụng**:
 ```
-/gradle-build
+/flutter-test                # Chạy tất cả test
+/flutter-test --coverage     # Có coverage
+/flutter-test test/file.dart # Chạy file test cụ thể
 ```
 
-**使用场景**:
-- Android 项目构建失败
-- KMP 项目编译错误
-- Gradle 同步失败
-- 依赖冲突
+**Khi nào sử dụng**:
+- Xác minh không break sau khi implement tính năng
+- Kiểm tra test coverage của code mới
+- Sửa file test cụ thể
+- Trước khi commit PR
 
-**项目类型检测**:
+**Test failure thường gặp và cách sửa**:
 
-| 指示器 | 构建命令 |
+| Loại thất bại | Sửa lỗi điển hình |
+|----------|----------|
+| `Expected: <X> Actual: <Y>` | Cập nhật assertion hoặc sửa implementation |
+| `Widget not found` | Sửa finder selector hoặc cập nhật tên widget |
+| `Golden file not found` | Chạy `flutter test --update-goldens` để tạo |
+| `MissingPluginException` | Mock platform channel trong test setup |
+| `pumpAndSettle timed out` | Thay bằng explicit `pump(Duration)` |
+
+---
+
+## /e2e
+
+**Mục đích**: Workflow test end-to-end. Tạo và chạy E2E test cho user flow quan trọng.
+
+**Cách sử dụng**:
+```
+/e2e [mô tả tính năng]
+```
+
+**Khi nào sử dụng**:
+- Test user flow quan trọng
+- Integration test cross-system
+- Acceptance test
+- Regression test
+
+---
+
+## /test-coverage
+
+**Mục đích**: Phân tích test coverage, xác định gaps và tạo test còn thiếu để đạt target threshold (mặc định 80%).
+
+**Cách sử dụng**:
+```
+/test-coverage
+```
+
+**Quy trình làm việc**:
+1. **Phát hiện test framework** - Chọn lệnh coverage phù hợp theo loại project
+2. **Phân tích coverage report** - Liệt kê file dưới 80%
+3. **Tạo test còn thiếu** - Tạo test theo priority
+4. **Xác minh** - Chạy lại coverage để xác nhận cải thiện
+
+**Phát hiện test framework**:
+
+| Indicator | Lệnh coverage |
 |--------|----------|
-| `build.gradle.kts` + `composeApp/` (KMP) | `./gradlew composeApp:compileKotlinMetadata` |
-| `build.gradle.kts` + `app/` (Android) | `./gradlew app:compileDebugKotlin` |
-| `settings.gradle.kts` 带模块 | `./gradlew assemble` |
-| 配置了 detekt | `./gradlew detekt` |
-
-**常见错误修复**:
-
-| 错误 | 修复 |
-|------|------|
-| `commonMain` 中未解析的引用 | 检查依赖是否在 `commonMain.dependencies {}` 中 |
-| Expect 声明无 actual | 在每个平台源集中添加 `actual` 实现 |
-| Compose 编译器版本不匹配 | 在 `libs.versions.toml` 中对齐 Kotlin 和 Compose 编译器版本 |
-| 重复类 | 用 `./gradlew dependencies` 检查冲突依赖 |
-| KSP 错误 | 运行 `./gradlew kspCommonMainKotlinMetadata` 重新生成 |
-| 配置缓存问题 | 检查非可序列化的任务输入 |
+| `jest.config.*` | `npx jest --coverage` |
+| `vitest.config.*` | `npx vitest run --coverage` |
+| `pytest.ini` | `pytest --cov=src --cov-report=json` |
+| `Cargo.toml` | `cargo llvm-cov --json` |
+| `go.mod` | `go test -coverprofile=coverage.out` |
 
 ---
 
-## /flutter-build
+## /python-testing
 
-**用途说明**: 逐步修复 Dart 分析器错误和 Flutter 构建失败。
+**Mục đích**: Workflow test Python. Sử dụng pytest, hỗ trợ phân tích coverage.
 
-**使用方法**:
+**Cách sử dụng**:
 ```
-/flutter-build
+/python-testing [mô tả tính năng]
 ```
 
-**使用场景**:
-- `flutter analyze` 报告错误
-- `flutter build` 任何平台失败
-- `flutter pub get` 版本冲突
-- `build_runner` 生成代码失败
-- 拉取更改后构建失败
+**Khi nào sử dụng**:
+- Implement tính năng Python mới
+- Thêm test coverage
+- Fix bug
+- Test cho FastAPI/Django/Flask project
 
-**常见错误修复**:
+**Pytest features**:
+```python
+# Parametric test
+@pytest.mark.parametrize("input,expected", [
+    ("hello", 5),
+    ("", 0),
+    ("world", 5),
+])
+def test_string_length(input, expected):
+    assert len(input) == expected
 
-| 错误 | 典型修复 |
-|------|----------|
-| `A value of type 'X?' can't be assigned to 'X'` | 添加 `?? default` 或空值保护 |
-| `The name 'X' isn't defined` | 添加导入或修复拼写 |
-| `Non-nullable instance field must be initialized` | 添加初始化器或 `late` |
-| `Version solving failed` | 调整 pubspec.yaml 中的版本约束 |
-| `Missing concrete implementation of 'X'` | 实现缺失的接口方法 |
-| `build_runner: Part of X expected` | 删除过时的 `.g.dart` 并重新构建 |
+# Fixtures
+@pytest.fixture
+def client():
+    with TestClient(app) as c:
+        yield c
 
-**诊断命令**:
-```bash
-flutter analyze 2>&1                  # 分析
-flutter pub get 2>&1                  # 依赖
-dart run build_runner build --delete-conflicting-outputs 2>&1  # 代码生成（如果使用 build_runner）
-flutter build apk 2>&1                # 平台构建
-flutter build web 2>&1                # Web 构建
+# Async test
+@pytest.mark.asyncio
+async def test_async_fetch():
+    result = await fetch_data()
+    assert result is not None
 ```
 
 ---
 
-## 构建修复命令对比表
+## Bảng so sánh lệnh
 
-| 命令 | 语言/平台 | 主要工具 | 常见问题 |
-|------|----------|----------|----------|
-| `/go-build` | Go | go build, go vet | 类型错误、导入循环 |
-| `/kotlin-build` | Kotlin | Gradle, detekt | 类型不匹配、when 非穷举 |
-| `/rust-build` | Rust | cargo check, clippy | 借用错误、生命周期 |
-| `/cpp-build` | C++ | CMake, clang-tidy | 链接器错误、模板问题 |
-| `/gradle-build` | Android/KMP | Gradle | 依赖冲突、配置错误 |
-| `/flutter-build` | Flutter/Dart | Flutter analyze | 空安全、分析错误 |
-
----
-
-## 通用修复策略
-
-所有构建修复命令遵循相同的基本策略：
-
-1. **先修复构建错误** - 代码必须编译
-2. **其次修复 lint 警告** - 修复可疑构造
-3. **然后修复格式警告** - 样式和最佳实践
-4. **一次修复一个** - 验证每次更改
-5. **最小更改** - 不要重构，只是修复
-
-**停止条件**:
-如果发生以下情况，代理将停止并报告：
-- 相同错误在 3 次尝试后仍然存在
-- 修复引入了更多错误
-- 需要架构更改
-- 缺少外部依赖
+| Lệnh | Ngôn ngữ | Test framework | Coverage tool | TDD loop |
+|------|------|----------|------------|----------|
+| `/go-test` | Go | testing built-in | go test -cover | ✓ |
+| `/kotlin-test` | Kotlin | Kotest + MockK | Kover | ✓ |
+| `/rust-test` | Rust | #[test], rstest, proptest | cargo-llvm-cov | ✓ |
+| `/cpp-test` | C++ | GoogleTest | gcov/lcov | ✓ |
+| `/flutter-test` | Dart | Flutter test | coverage | - |
+| `/python-testing` | Python | pytest | pytest-cov | - |
+| `/e2e` | Multi | Project-specific | - | - |
+| `/test-coverage` | Generic | Multi | Multi | - |

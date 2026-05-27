@@ -1,55 +1,55 @@
-# 性能优化
+# Performance-Optimierung
 
-## 模型选择策略
+## Modell-Auswahlstrategie
 
-**Haiku 4.5**（Sonnet 90% 能力，1/3 成本）：
-- 频繁调用的轻量级 agent
-- 结对编程和代码生成
-- 多 agent 系统中的 worker agent
+**Haiku 4.5** (90% von Sonnet-Faehigkeit, 1/3 der Kosten):
+- Leichtgewichtige Agents mit haeufigem Aufruf
+- Pair-Programming und Codegenerierung
+- Worker Agents in Multi-Agent-Systemen
 
-**Sonnet 4.6**（最佳编码模型）：
-- 主要开发工作
-- 编排多 agent 工作流
-- 复杂编码任务
+**Sonnet 4.6** (Bestes Coding-Modell):
+- Hauptentwicklungsarbeit
+- Multi-Agent-Workflows orchestrieren
+- Komplexe Coding-Aufgaben
 
-**Opus 4.5**（最深度推理）：
-- 复杂架构决策
-- 最大推理需求
-- 研究和分析任务
+**Opus 4.5** (Tiefste Reasoning):
+- Komplexe Architekturentscheidungen
+- Maximale Reasoning-Anforderungen
+- Recherche- und Analyseaufgaben
 
-## 上下文窗口管理
+## Kontextfenster-Management
 
-避免使用上下文窗口的最后 20%：
-- 大规模重构
-- 跨多文件的功能实现
-- 调试复杂交互
+Die letzten 20% des Kontextfensters vermeiden fuer:
+- Grossflaechige Refactorings
+- Funktionsimplementierung ueber mehrere Dateien
+- Komplexe Interaktionen debuggen
 
-低上下文敏感度任务：
-- 单文件编辑
-- 独立工具创建
-- 文档更新
-- 简单 bug 修复
+Niedrig kontextsensitive Aufgaben:
+- Einzelfile-Edits
+- Unabhaengige Utility-Erstellung
+- Dokumentationsaktualisierungen
+- Einfache Bug-Fixes
 
-## 扩展思考 + 计划模式
+## Erweitertes Denken + Plan-Modus
 
-扩展思考默认启用，为内部推理保留最多 31,999 tokens。
+Erweitertes Denken ist standardmaessig aktiviert und reserviert bis zu 31.999 Tokens fuer internes Reasoning.
 
-控制扩展思考：
-- **切换**: Option+T (macOS) / Alt+T (Windows/Linux)
-- **配置**: 在 `~/.claude/settings.json` 中设置 `alwaysThinkingEnabled`
-- **预算上限**: `export MAX_THINKING_TOKENS=10000`
-- **详细模式**: Ctrl+O 查看思考输出
+Erweitertes Denken steuern:
+- **Umschalten**: Option+T (macOS) / Alt+T (Windows/Linux)
+- **Konfiguration**: `alwaysThinkingEnabled` in `~/.claude/settings.json` setzen
+- **Budget-Limit**: `export MAX_THINKING_TOKENS=10000`
+- **Verbose-Modus**: Ctrl+O um Thinking-Output anzuzeigen
 
-需要深度推理的复杂任务：
-1. 确保扩展思考已启用（默认）
-2. 启用**计划模式**以获得结构化方法
-3. 使用多轮批评进行彻底分析
-4. 使用分角色 sub-agents 获得不同视角
+Fuer komplexe Aufgaben die tiefes Reasoning erfordern:
+1. Sicherstellen dass erweitertes Denken aktiviert ist (standard)
+2. **Plan-Modus** aktivieren fuer strukturierte Herangehensweise
+3. Mehrere Kritikrunden fuer gruendliche Analyse verwenden
+4. Split-Role Sub-Agents fuer verschiedene Perspektiven verwenden
 
-## 构建故障排除
+## Build-Fehlerbehebung
 
-如果构建失败：
-1. 使用 **build-error-resolver** agent
-2. 分析错误消息
-3. 增量修复
-4. 每次修复后验证
+Wenn Build fehlschlaegt:
+1. **build-error-resolver** Agent verwenden
+2. Fehlermeldungen analysieren
+3. Inkrementell beheben
+4. Nach jeder Reparatur verifizieren

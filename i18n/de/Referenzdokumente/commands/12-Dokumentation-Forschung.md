@@ -1,45 +1,45 @@
-# 文档与研究命令
+# Dokumentations- und Recherche-Befehle
 
-## 概述
+## Ueberblick
 
-文档与研究命令用于更新文档、生成代码地图和研究外部资源。
+Dokumentations- und Recherche-Befehle werden verwendet um Dokumentation zu aktualisieren, Codemaps zu generieren und externe Ressourcen zu recherchieren.
 
-## 命令列表
+## Befehlsliste
 
 ### /update-docs
 
-**用途**: 更新项目文档
+**Zweck**: Projektdokumentation aktualisieren
 
-**描述**: 根据代码变更自动更新项目文档。
+**Beschreibung**: Aktualisiert Projektdokumentation automatisch basierend auf Codeaenderungen.
 
-**更新内容**:
-- README 文件
-- API 文档
-- 代码注释
+**Aktualisiert**:
+- README-Dateien
+- API-Dokumentation
+- Code-Kommentare
 - CHANGELOG
 
 ---
 
 ### /update-codemaps
 
-**用途**: 重新生成 codemaps
+**Zweck**: Codemaps neu generieren
 
-**描述**: 重新生成代码地图，用于代码库导航和理解。
+**Beschreibung**: Generiert Codemaps neu fuer Codebase-Navigation und -Verstaendnis.
 
-**输出到**: `docs/CODEMAPS/`
+**Ausgabe nach**: `docs/CODEMAPS/`
 
 ---
 
 ### /ecc-guide
 
-**用途**: ECC 用户指南
+**Zweck**: ECC-Benutzerhandbuch
 
-**描述**: 显示 ECC 插件的完整用户指南。
+**Beschreibung**: Zeigt das vollstaendige Benutzerhandbuch fuer das ECC-Plugin.
 
 ---
 
-## 相关命令
+## Zugehoerige Befehle
 
-- `/update-docs` - 更新文档
-- `/update-codemaps` - 更新代码地图
-- `/ecc-guide` - 用户指南
+- `/update-docs` - Dokumentation aktualisieren
+- `/update-codemaps` - Codemaps aktualisieren
+- `/ecc-guide` - Benutzerhandbuch

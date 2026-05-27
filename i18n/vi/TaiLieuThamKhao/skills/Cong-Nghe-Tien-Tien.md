@@ -1,6 +1,6 @@
-# 前沿技术技能
+# Kỹ Năng Công Nghệ Tiên Tiến
 
-本部分涵盖前沿技术领域，包括量子计算、边缘 AI、隐私计算等。
+Phần này cover các lĩnh vực công nghệ tiên tiến, bao gồm quantum computing, edge AI, privacy computing, etc.
 
 ---
 
@@ -8,267 +8,267 @@
 
 ### agentic-engineering
 
-**用途**: 代理工程学
+**Mục đích**: Agentic engineering
 
-**核心概念**:
-- 代理架构设计
-- 任务分解与规划
-- 多代理协作
-- 记忆系统
-- 工具使用
+**Core concept**:
+- Agent architecture design
+- Task decomposition và planning
+- Multi-agent collaboration
+- Memory system
+- Tool usage
 
-**使用场景**:
-- 构建自主代理系统
-- 设计代理间通信协议
-- 实现复杂任务自动化
+**Usage scenario**:
+- Build autonomous agent system
+- Design inter-agent communication protocol
+- Implement complex task automation
 
 ### agentic-os
 
-**用途**: 代理操作系统
+**Mục đích**: Agent operating system
 
-**功能**:
-- 代理生命周期管理
-- 资源分配与调度
-- 状态持久化
-- 安全隔离
+**Function**:
+- Agent lifecycle management
+- Resource allocation và scheduling
+- State persistence
+- Security isolation
 
 ### agent-sort
 
-**用途**: 代理排序与优先级
+**Mục đích**: Agent sorting và priority
 
-**核心问题**:
-- 任务队列管理
-- 资源竞争解决
-- 优先级调度
+**Core problem**:
+- Task queue management
+- Resource competition resolution
+- Priority scheduling
 
 ### multi-agent-systems
 
-**用途**: 多代理系统
+**Mục đích**: Multi-agent system
 
-**核心模式**:
-- 代理间通信
-- 集体决策
-- 任务分配
-- 冲突协调
+**Core pattern**:
+- Inter-agent communication
+- Collective decision
+- Task allocation
+- Conflict coordination
 
-**框架**:
+**Framework**:
 - AutoGen
 - CrewAI
 - LangGraph
 
 ---
 
-## 持续学习
+## Continuous Learning
 
 ### continuous-learning-v2
 
-**用途**: 持续学习 v2 系统
+**Mục đích**: Continuous learning v2 system
 
-**核心组件**:
-- Instinct 导入/导出
-- 模式进化
-- 知识图谱
-- 经验复用
+**Core component**:
+- Instinct import/export
+- Pattern evolution
+- Knowledge graph
+- Experience reuse
 
-**使用场景**:
-- 从会话中提取模式
-- 构建个人知识库
-- 跨项目经验迁移
+**Usage scenario**:
+- Extract pattern from session
+- Build personal knowledge base
+- Cross-project experience migration
 
 ### knowledge-ops
 
-**用途**: 知识运营
+**Mục đích**: Knowledge operations
 
-**功能**:
-- 知识获取
-- 知识组织
-- 知识检索
-- 知识更新
+**Function**:
+- Knowledge acquisition
+- Knowledge organization
+- Knowledge retrieval
+- Knowledge update
 
 ---
 
-## 隐私计算
+## Privacy Computing
 
 ### privacy-preserving-ml
 
-**用途**: 隐私保护机器学习
+**Mục đích**: Privacy-preserving machine learning
 
-**技术**:
-- 联邦学习
-- 安全多方计算 (MPC)
-- 同态加密
-- 差分隐私
+**Technology**:
+- Federated learning
+- Secure multi-party computation (MPC)
+- Homomorphic encryption
+- Differential privacy
 
 ### federated-learning
 
-**用途**: 联邦学习
+**Mục đích**: Federated learning
 
-**核心概念**:
-- 分布式训练
-- 模型聚合
-- 隐私保护
-- 通信效率
+**Core concept**:
+- Distributed training
+- Model aggregation
+- Privacy protection
+- Communication efficiency
 
 ---
 
-## 边缘计算
+## Edge Computing
 
 ### edge-computing
 
-**用途**: 边缘计算
+**Mục đích**: Edge computing
 
-**场景**:
-- 边缘 AI 推理
-- 实时处理
-- 离线支持
-- 带宽优化
+**Scenario**:
+- Edge AI inference
+- Real-time processing
+- Offline support
+- Bandwidth optimization
 
 ### on-device-ai
 
-**用途**: 端侧 AI
+**Mục đích**: On-device AI
 
-**技术**:
-- 模型量化
-- 知识蒸馏
-- 硬件加速
-- 模型压缩
+**Technology**:
+- Model quantization
+- Knowledge distillation
+- Hardware acceleration
+- Model compression
 
 ### wasm
 
-**用途**: WebAssembly
+**Mục đích**: WebAssembly
 
-**应用**:
-- 浏览器端高性能计算
-- 边缘计算
-- 插件系统
+**Application**:
+- Browser high-performance computing
+- Edge computing
+- Plugin system
 
 ---
 
-## 云原生 AI
+## Cloud-Native AI
 
 ### mlops
 
-**用途**: ML 运维
+**Mục đích**: ML operations
 
-**核心概念**:
-- 模型版本管理
-- 自动化训练
-- 模型部署
-- 监控与告警
+**Core concept**:
+- Model version management
+- Automated training
+- Model deployment
+- Monitoring và alerting
 
-**工具**:
+**Tool**:
 - MLflow
 - Kubeflow
 - Seldon
 
 ### model-deployment
 
-**用途**: 模型部署
+**Mục đích**: Model deployment
 
-**策略**:
-- 蓝绿部署
-- 金丝雀发布
-- A/B 测试
-- 回滚机制
+**Strategy**:
+- Blue-green deployment
+- Canary release
+- A/B testing
+- Rollback mechanism
 
 ### cost-aware-llm-pipeline
 
-**用途**: LLM 成本感知管道
+**Mục đích**: LLM cost-aware pipeline
 
-**优化方向**:
-- Token 优化
-- 模型选择
-- 缓存策略
-- 批处理
+**Optimization direction**:
+- Token optimization
+- Model selection
+- Cache strategy
+- Batch processing
 
 ---
 
-## 可解释 AI
+## Explainable AI
 
 ### explainability
 
-**用途**: AI 可解释性
+**Mục đích**: AI explainability
 
-**方法**:
+**Method**:
 - SHAP
 - LIME
-- 注意力可视化
-- 概念瓶颈
+- Attention visualization
+- Concept bottleneck
 
 ### interpretability
 
-**用途**: 模型可解释性
+**Mục đích**: Model interpretability
 
-**技术**:
-- 特征重要性
-- 决策路径
-- 原型分析
+**Technology**:
+- Feature importance
+- Decision path
+- Prototype analysis
 
 ---
 
-## 量子计算
+## Quantum Computing
 
 ### quantum-computing
 
-**用途**: 量子计算基础
+**Mục đích**: Quantum computing foundation
 
-**核心概念**:
-- 量子比特
-- 量子门
-- 量子算法
-- 量子纠错
+**Core concept**:
+- Qubit
+- Quantum gate
+- Quantum algorithm
+- Quantum error correction
 
-**应用**:
-- 密码学
-- 优化问题
-- 机器学习加速
+**Application**:
+- Cryptography
+- Optimization problem
+- Machine learning acceleration
 
 ---
 
-## 新型存储
+## New Storage
 
 ### vector-databases
 
-**用途**: 向量数据库
+**Mục đích**: Vector database
 
-**工具**:
+**Tool**:
 - Pinecone
 - Weaviate
 - Milvus
 - Qdrant
 
-**应用**:
-- 语义搜索
-- RAG (检索增强生成)
-- 相似度匹配
+**Application**:
+- Semantic search
+- RAG (Retrieval Augmented Generation)
+- Similarity matching
 
 ### knowledge-graph
 
-**用途**: 知识图谱
+**Mục đích**: Knowledge graph
 
-**核心技术**:
-- 图数据库 (Neo4j)
-- 图神经网络
-- 知识推理
+**Core technology**:
+- Graph database (Neo4j)
+- Graph neural network
+- Knowledge reasoning
 
 ---
 
-## Web3 与去中心化
+## Web3 và Decentralization
 
 ### ipfs
 
-**用途**: IPFS 分布式存储
+**Mục đích**: IPFS distributed storage
 
-**特性**:
-- 内容寻址
-- 去中心化
-- 持久化存储
+**Feature**:
+- Content addressing
+- Decentralization
+- Persistent storage
 
 ### web3-development
 
-**用途**: Web3 开发
+**Mục đích**: Web3 development
 
-**工具**:
+**Tool**:
 - ethers.js
 - web3.js
 - Hardhat
@@ -276,13 +276,13 @@
 
 ---
 
-## 新兴框架
+## Emerging Framework
 
 ### nextjs
 
-**用途**: Next.js 全栈框架
+**Mục đích**: Next.js fullstack framework
 
-**特性**:
+**Feature**:
 - SSR/SSG/ISR
 - API Routes
 - App Router
@@ -290,115 +290,115 @@
 
 ### remix
 
-**用途**: Remix 全栈框架
+**Mục đích**: Remix fullstack framework
 
-**特点**:
-- 嵌套路由
-- 错误边界
-- 渐进增强
+**Feature**:
+- Nested route
+- Error boundary
+- Progressive enhancement
 
 ### nuxt
 
-**用途**: Nuxt.js Vue 框架
+**Mục đích**: Nuxt.js Vue framework
 
-**功能**:
+**Function**:
 - SSR/SSG
-- 文件路由
-- 自动导入
+- File routing
+- Auto import
 
 ### astro
 
-**用途**: Astro 静态框架
+**Mục đích**: Astro static framework
 
-**特点**:
-- Islands 架构
-- 零 JS 默认
-- 内容优先
+**Feature**:
+- Islands architecture
+- Zero JS default
+- Content-first
 
 ---
 
-## 实时技术
+## Real-time Technology
 
 ### websockets
 
-**用途**: WebSocket 开发
+**Mục đích**: WebSocket development
 
-**应用**:
-- 实时聊天
-- 协作编辑
-- 游戏
-- 金融数据
+**Application**:
+- Real-time chat
+- Collaborative editing
+- Game
+- Financial data
 
 ### serverless
 
-**用途**: 无服务器架构
+**Mục đích**: Serverless architecture
 
-**平台**:
+**Platform**:
 - AWS Lambda
 - Vercel Functions
 - Cloudflare Workers
 
-**优势**:
-- 自动扩缩容
-- 按需付费
-- 无服务器管理
+**Advantage**:
+- Auto scaling
+- Pay per use
+- No server management
 
 ---
 
-## 开发者体验
+## Developer Experience
 
 ### codespaces
 
-**用途**: GitHub Codespaces
+**Mục đích**: GitHub Codespaces
 
-**功能**:
-- 云端开发环境
-- 预配置模板
-- 协作开发
+**Function**:
+- Cloud development environment
+- Pre-configured template
+- Collaborative development
 
 ### devcontainers
 
-**用途**: 开发容器
+**Mục đích**: Development container
 
-**用途**:
-- 一致的开发环境
-- 快速环境搭建
-- 隔离依赖
+**Usage**:
+- Consistent development environment
+- Fast environment setup
+- Isolated dependency
 
 ---
 
-## 安全前沿
+## Security Front
 
 ### zero-trust
 
-**用途**: 零信任安全
+**Mục đích**: Zero trust security
 
-**核心原则**:
-- 永不信任，始终验证
-- 最小权限访问
-- 微分段
-- 持续监控
+**Core principle**:
+- Never trust, always verify
+- Least privilege access
+- Micro-segmentation
+- Continuous monitoring
 
 ### threat-intelligence
 
-**用途**: 威胁情报
+**Mục đích**: Threat intelligence
 
-**来源**:
+**Source**:
 - OSINT
-- 商业情报
-- 行业共享
+- Commercial intelligence
+- Industry sharing
 
 ---
 
-## 相关技能
+## Related Skill
 
-| 技能 | 用途 |
+| Skill | Usage |
 |------|------|
-| `agentic-engineering` | 代理工程 |
-| `agentic-os` | 代理操作系统 |
-| `continuous-learning-v2` | 持续学习 |
-| `mlops` | ML 运维 |
-| `on-device-ai` | 端侧 AI |
-| `vector-databases` | 向量数据库 |
-| `quantum-computing` | 量子计算 |
+| `agentic-engineering` | Agent engineering |
+| `agentic-os` | Agent operating system |
+| `continuous-learning-v2` | Continuous learning |
+| `mlops` | ML operations |
+| `on-device-ai` | On-device AI |
+| `vector-databases` | Vector database |
+| `quantum-computing` | Quantum computing |
 | `nextjs` | Next.js |

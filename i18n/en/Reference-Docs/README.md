@@ -211,12 +211,12 @@ Total **60 Agents**, grouped by category:
 
 | Agent Category | File | Description |
 |----------------|------|-------------|
-| [Code Review](agents/01-Code-Review.md) | [1. 代码审查类.md](agents/01-Code-Review.md) | 14 review Agents |
-| [Build & Fix](agents/02-Build-Fix.md) | [2. 构建修复类.md](agents/02-Build-Fix.md) | 14 build fix Agents |
-| [Planning](agents/03-Planning.md) | [3. 规划类.md](agents/03-Planning.md) | 5 planning Agents |
-| [Testing](agents/04-Testing.md) | [4. 测试类.md](agents/04-Testing.md) | 2 testing Agents |
-| [Security](agents/05-Security.md) | [5. 安全类.md](agents/05-Security.md) | 3 security Agents |
-| [Architecture](agents/06-Architecture.md) | [6. 架构类.md](agents/06-Architecture.md) | 3 architecture Agents |
+| [Code Review](agents/01-Code-Review.md) | [1. Code-Review.md](agents/01-Code-Review.md) | 14 review Agents |
+| [Build & Fix](agents/02-Build-Fix.md) | [2. Build-Fix.md](agents/02-Build-Fix.md) | 14 build fix Agents |
+| [Planning](agents/03-Planning.md) | [3. Planning.md](agents/03-Planning.md) | 5 planning Agents |
+| [Testing](agents/04-Testing.md) | [4. Testing.md](agents/04-Testing.md) | 2 testing Agents |
+| [Security](agents/05-Security.md) | [5. Security.md](agents/05-Security.md) | 3 security Agents |
+| [Architecture](agents/06-Architecture.md) | [6. Architecture.md](agents/06-Architecture.md) | 3 architecture Agents |
 
 ---
 
@@ -281,7 +281,7 @@ Total **6 MCP server configurations**:
 
 | Document | File | Description |
 |----------|------|-------------|
-| [MCP Configuration Format](mcp/MCPConfiguration-Format.md) | [MCPConfiguration-Format.md](mcp/MCPConfiguration-Format.md) | MCP configuration file format |
+| [MCP Configuration Format](mcp/MCP-Configuration-Format.md) | [MCP-Configuration-Format.md](mcp/MCP-Configuration-Format.md) | MCP configuration file format |
 | [Built-in Servers](mcp/Built-in-Servers.md) | [Built-in-Servers.md](mcp/Built-in-Servers.md) | Built-in MCP servers |
 | [Custom Development](mcp/Custom-Development.md) | [Custom-Development.md](mcp/Custom-Development.md) | Custom MCP server development |
 

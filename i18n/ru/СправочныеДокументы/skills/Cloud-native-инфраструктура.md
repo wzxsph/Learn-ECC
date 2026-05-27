@@ -1,25 +1,25 @@
-# Cloud Native и инфраструктура技能
+# Cloud Native и инфраструктура
 
-本部分涵盖容器化、 orchestration、基础设施即代码和云原生架构。
+,  orchestration, . 
 
 ---
 
-## 容器化
+## 
 
 ### docker-patterns
 
-**Назначение**: Docker 容器Лучшие практики
+**Назначение**: Docker Лучшие практики
 
 **Основные концепции**:
-- 多阶段构建
-- 最小化镜像大小
-- 健康检查配置
-- 日志Управлять
-- 资源限制 (CPU/内存)
+- 
+- 
+- проверка
+- Управлять
+-  (CPU/память)
 
 **Пример**:
 ```dockerfile
-# 多阶段构建
+# 
 FROM node:18-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
@@ -36,14 +36,14 @@ CMD ["node", "dist/index.js"]
 
 ### container-security
 
-**Назначение**: 容器Безопасность
+**Назначение**: Безопасность
 
-**检查项**:
-- 最小化基础镜像
-- 不使用 root 用户运行
-- 密钥Управлять
-- 镜像扫描
-- 网络隔离
+**проверка**:
+- 
+-  root 
+- Управлять
+- 
+- 
 
 ---
 
@@ -51,15 +51,15 @@ CMD ["node", "dist/index.js"]
 
 ### kubernetes-ai
 
-**Назначение**: Kubernetes AI 工作负载
+**Назначение**: Kubernetes AI 
 
 **Основные концепции**:
-- GPU 调度
-- 分布式训练
-- 模型服务
-- 自动扩缩容
+- GPU 
+- 
+- 
+- 
 
-**工具**:
+****:
 - Kubeflow
 - KServe
 - Argo Workflows
@@ -68,36 +68,36 @@ CMD ["node", "dist/index.js"]
 
 **Назначение**: Kubernetes Безопасность
 
-**Безопасность措施**:
-- RBAC 配置
-- 网络策略
-- Pod Безопасность策略
-- 密钥Управлять
-- 审计日志
+**Безопасность**:
+- RBAC 
+- 
+- Pod Безопасность
+- Управлять
+- 
 
 ### kube-bench
 
-**Назначение**: Kubernetes Безопасность基准Тестирование
+**Назначение**: Kubernetes БезопасностьТестирование
 
-**检查项**:
+**проверка**:
 - CIS Kubernetes Benchmark
-- 自动化Проверка соответствия
-- 修复建议
+- Проверка соответствия
+- 
 
 ---
 
-## 基础设施即代码
+## 
 
 ### terraform
 
-**Назначение**: Terraform 基础设施编排
+**Назначение**: Terraform 
 
 **Основные концепции**:
-- HCL 配置语言
-- Provider 开发
-- 状态Управлять
-- 模块化Спроектировать
-- 远程后端
+- HCL 
+- Provider 
+- управление состоянием
+- Спроектировать
+- 
 
 **Пример**:
 ```hcl
@@ -114,43 +114,43 @@ resource "aws_instance" "web" {
 
 ### ansible
 
-**Назначение**: Ansible 自动化配置
+**Назначение**: Ansible 
 
-**核心功能**:
-- 幂等性配置
-- Роль与 playbook
+**функция**:
+- 
+- Роль playbook
 - Jinja2 Шаблон
-- 库存Управлять
+- Управлять
 
 ### helm
 
-**Назначение**: Helm Kubernetes 包Управлять
+**Назначение**: Helm Kubernetes Управлять
 
 **Основные концепции**:
-- Chart 开发
-- Шаблон渲染
-- 版本Управлять
-- 仓库Управлять
+- Chart 
+- Шаблон
+- Управлять
+- Управлять
 
 ### infrastructure-as-code
 
 **Назначение**: IaC Лучшие практики
 
-**核心原则**:
-- 版本控制
-- 自动化部署
-- 幂等性
-- 文档化
+****:
+- 
+- 
+- 
+- 
 
 ---
 
-## 云平台
+## 
 
 ### aws-solution-architect
 
-**Назначение**: AWS 架构Спроектировать
+**Назначение**: AWS Спроектировать
 
-**核心服务**:
+****:
 - EC2, ECS, EKS
 - S3, RDS, ElastiCache
 - VPC, IAM
@@ -158,9 +158,9 @@ resource "aws_instance" "web" {
 
 ### gcp-cloud-architect
 
-**Назначение**: GCP 架构Спроектировать
+**Назначение**: GCP Спроектировать
 
-**核心服务**:
+****:
 - Compute Engine
 - Kubernetes Engine
 - Cloud Storage
@@ -168,9 +168,9 @@ resource "aws_instance" "web" {
 
 ### azure-cloud-architect
 
-**Назначение**: Azure 架构Спроектировать
+**Назначение**: Azure Спроектировать
 
-**核心服务**:
+****:
 - Azure VMs
 - Azure Kubernetes Service
 - Azure Storage
@@ -182,13 +182,13 @@ resource "aws_instance" "web" {
 
 ### prometheus
 
-**Назначение**: Prometheus 监控
+**Назначение**: Prometheus 
 
 **Основные концепции**:
-- 指标采集
-- PromQL 查询
-- 告警规则
-- 服务发现
+- 
+- PromQL 
+- 
+- 
 
 **Пример**:
 ```yaml
@@ -201,72 +201,72 @@ resource "aws_instance" "web" {
 
 ### observability
 
-**Назначение**: 可观测性架构
+**Назначение**: 
 
-**三大支柱**:
-- 指标 (Metrics)
-- 日志 (Logs)
-- 追踪 (Traces)
+****:
+-  (Metrics)
+-  (Logs)
+-  (Traces)
 
 ### tracing
 
-**Назначение**: 分布式追踪
+**Назначение**: 
 
-**工具**:
+****:
 - Jaeger
 - Zipkin
 - OpenTelemetry
 
 ### logging-best-practices
 
-**Назначение**: 日志Лучшие практики
+**Назначение**: Лучшие практики
 
-**核心原则**:
-- 结构化日志
-- 日志级别
-- 采样策略
-- 集中存储
+****:
+- 
+- 
+- 
+- 
 
 ---
 
-## 网络
+## 
 
 ### nginx
 
-**Назначение**: Nginx 配置与Управлять
+**Назначение**: Nginx Управлять
 
-**核心功能**:
-- 反向代理
+**функция**:
+- 
 - Балансировка нагрузки
-- SSL/TLS 终止
-- 缓存配置
+- SSL/TLS 
+- 
 
 ### network-analysis
 
-**Назначение**: 网络分析
+**Назначение**: 
 
-**工具**:
+****:
 - Wireshark
 - tcpdump
 - netstat
 
 ### ssh-tunneling
 
-**Назначение**: SSH 隧道
+**Назначение**: SSH 
 
-**用例**:
-- 端口转发
-- 跳板机
-- VPN 替代
+****:
+- 
+- 
+- VPN 
 
 ---
 
-## 相关技能
+## 
 
-| 技能 | Назначение |
+|  | Назначение |
 |------|------|
-| `docker-patterns` | Docker 容器化 |
-| `kubernetes-ai` | K8s AI 工作负载 |
+| `docker-patterns` | Docker  |
+| `kubernetes-ai` | K8s AI  |
 | `terraform` | Terraform IaC |
-| `prometheus` | Prometheus 监控 |
-| `observability` | 可观测性 |
+| `prometheus` | Prometheus  |
+| `observability` |  |

@@ -1,23 +1,23 @@
-# 特殊领域技能
+# Kỹ Năng Chuyên Ngành
 
-本部分涵盖特定领域的专业技能，包括区块链、游戏开发、音视频处理等。
+Phần này cover các chuyên ngành đặc thù, bao gồm blockchain, game development, audio/video processing, etc.
 
 ---
 
-## 区块链与 Web3
+## Blockchain và Web3
 
 ### solidity
 
-**用途**: Solidity 智能合约开发
+**Mục đích**: Solidity smart contract development
 
-**核心概念**:
-- 合约结构
-- 数据类型
-- 函数修饰符
-- 事件与日志
-- 继承与库
+**Core concept**:
+- Contract structure
+- Data type
+- Function modifier
+- Event và log
+- Inheritance và library
 
-**示例**:
+**Example**:
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -38,19 +38,19 @@ contract Token {
 
 ### defi-amm-security
 
-**用途**: DeFi AMM 安全
+**Mục đích**: DeFi AMM security
 
-**核心概念**:
-- 无常损失
-- 闪电贷攻击
-- 预言机操纵
-- 合约审计
+**Core concept**:
+- Impermanent loss
+- Flash loan attack
+- Oracle manipulation
+- Contract audit
 
 ### ethereum-development
 
-**用途**: 以太坊开发
+**Mục đích**: Ethereum development
 
-**工具**:
+**Tool**:
 - Hardhat
 - Foundry
 - ethers.js
@@ -58,325 +58,325 @@ contract Token {
 
 ---
 
-## 游戏开发
+## Game Development
 
 ### unity
 
-**用途**: Unity 游戏开发
+**Mục đích**: Unity game development
 
-**核心概念**:
-- 场景管理
-- 物理引擎
-- 粒子系统
-- 动画状态机
-- UI 系统
+**Core concept**:
+- Scene management
+- Physics engine
+- Particle system
+- Animation state machine
+- UI system
 
 ### godot
 
-**用途**: Godot 游戏引擎
+**Mục đích**: Godot game engine
 
-**特点**:
+**Feature**:
 - GDScript
-- 场景系统
-- 信号机制
-- 跨平台导出
+- Scene system
+- Signal mechanism
+- Cross-platform export
 
 ### unreal-engine
 
-**用途**: Unreal Engine 开发
+**Mục đích**: Unreal Engine development
 
-**核心概念**:
+**Core concept**:
 - Blueprint
-- C++ 编程
-- 材质系统
-- 动画蓝图
+- C++ programming
+- Material system
+- Animation blueprint
 
 ### game-ai
 
-**用途**: 游戏 AI
+**Mục đích**: Game AI
 
-**技术**:
-- 状态机
-- 行为树
-- 路径规划
-- 决策树
+**Technology**:
+- State machine
+- Behavior tree
+- Path planning
+- Decision tree
 
 ---
 
-## 音视频处理
+## Audio/Video Processing
 
 ### video-editing
 
-**用途**: 视频编辑
+**Mục đích**: Video editing
 
-**工具**:
+**Tool**:
 - FFmpeg
 - DaVinci Resolve
 - Adobe Premiere
 
 ### audio-processing
 
-**用途**: 音频处理
+**Mục đích**: Audio processing
 
-**技术**:
-- 音频编码
-- 降噪
-- 混音
+**Technology**:
+- Audio encoding
+- Noise reduction
+- Mixing
 
 ### streaming
 
-**用途**: 流媒体处理
+**Mục đích**: Streaming processing
 
-**协议**:
+**Protocol**:
 - HLS
 - DASH
 - RTMP
 
 ### media-processing
 
-**用途**: 媒体处理管道
+**Mục đích**: Media processing pipeline
 
-**工具**:
+**Tool**:
 - GStreamer
 - MediaConvert
 - Transmux
 
 ---
 
-## 物联网
+## IoT
 
 ### bluetooth-low-energy
 
-**用途**: BLE 开发
+**Mục đích**: BLE development
 
-**核心概念**:
-- GATT 协议
-- 广播与扫描
-- 连接管理
-- 功耗优化
+**Core concept**:
+- GATT protocol
+- Broadcast và scan
+- Connection management
+- Power consumption optimization
 
 ### iot-development
 
-**用途**: IoT 开发
+**Mục đích**: IoT development
 
-**平台**:
+**Platform**:
 - Arduino
 - Raspberry Pi
 - ESP32
 
 ### embedded-systems
 
-**用途**: 嵌入式系统
+**Mục đích**: Embedded system
 
-**技能**:
-- C/C++ 编程
-- 裸机开发
+**Skill**:
+- C/C++ programming
+- Bare metal development
 - RTOS
-- 驱动开发
+- Driver development
 
 ---
 
-## 数据库与存储
+## Database và Storage
 
 ### sql-injection
 
-**用途**: SQL 注入防御
+**Mục đích**: SQL injection defense
 
-**防御措施**:
-- 参数化查询
-- ORM 使用
-- 输入验证
-- 最小权限原则
+**Defense measure**:
+- Parameterized query
+- ORM usage
+- Input validation
+- Least privilege principle
 
 ### postgresql
 
-**用途**: PostgreSQL 最佳实践
+**Mục đích**: PostgreSQL best practice
 
-**核心概念**:
-- 索引策略
-- 查询优化
-- 分区表
-- JSONB 操作
-- 复制配置
+**Core concept**:
+- Index strategy
+- Query optimization
+- Partitioned table
+- JSONB operation
+- Replication configuration
 
 ### sqlite
 
-**用途**: SQLite 使用
+**Mục đích**: SQLite usage
 
-**特点**:
-- 轻量级
-- 无服务器
-- ACID 兼容
-- 移动端应用
+**Feature**:
+- Lightweight
+- Serverless
+- ACID compatible
+- Mobile application
 
 ### snowflake
 
-**用途**: Snowflake 数据仓库
+**Mục đích**: Snowflake data warehouse
 
-**核心功能**:
-- 数据分享
-- 时间旅行
-- 克隆
-- 扩展微分区
+**Core function**:
+- Data sharing
+- Time travel
+- Clone
+- Extended micro-partition
 
 ---
 
-## 消息队列
+## Message Queue
 
 ### kafka
 
-**用途**: Apache Kafka
+**Mục đích**: Apache Kafka
 
-**核心概念**:
-- Topic 与 Partition
-- 生产者与消费者
-- 消费者组
-- 复制与一致性
-- 流处理
+**Core concept**:
+- Topic và Partition
+- Producer và consumer
+- Consumer group
+- Replication và consistency
+- Stream processing
 
-**示例**:
+**Example**:
 ```java
-// 生产者
+// Producer
 KafkaProducer<String, String> producer = new KafkaProducer<>(props);
 ProducerRecord<String, String> record = new ProducerRecord<>("topic", "key", "value");
 producer.send(record);
 
-// 消费者
+// Consumer
 KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
 consumer.subscribe(List.of("topic"));
 while (true) {
     ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
     for (ConsumerRecord<String, String> record : records) {
-        // 处理消息
+        // Process message
     }
 }
 ```
 
 ### nats
 
-**用途**: NATS 消息系统
+**Mục đích**: NATS messaging system
 
-**特点**:
-- 轻量级
-- 低延迟
-- 支持多种模式 (发布/订阅、请求/响应)
+**Feature**:
+- Lightweight
+- Low latency
+- Support multiple pattern (pub/sub, request/response)
 
 ### mqtt
 
-**用途**: MQTT 物联网协议
+**Mục đích**: MQTT IoT protocol
 
-**QoS 级别**:
-- QoS 0: 至多一次
-- QoS 1: 至少一次
-- QoS 2: 恰好一次
+**QoS level**:
+- QoS 0: At most once
+- QoS 1: At least once
+- QoS 2: Exactly once
 
 ---
 
-## 前端特定领域
+## Frontend Specific Domain
 
 ### pwa
 
-**用途**: Progressive Web App
+**Mục đích**: Progressive Web App
 
-**核心功能**:
+**Core function**:
 - Service Worker
 - Web App Manifest
-- 离线支持
-- 推送通知
+- Offline support
+- Push notification
 
 ### webgl
 
-**用途**: WebGL 图形编程
+**Mục đích**: WebGL graphics programming
 
-**应用**:
-- 3D 渲染
-- 游戏
-- 数据可视化
+**Application**:
+- 3D rendering
+- Game
+- Data visualization
 
 ### webrtc
 
-**用途**: WebRTC 实时通信
+**Mục đích**: WebRTC real-time communication
 
-**核心 API**:
+**Core API**:
 - getUserMedia
 - RTCPeerConnection
 - RTCDataChannel
 
 ---
 
-## 文档与写作
+## Documentation và Writing
 
 ### markdown
 
-**用途**: Markdown 编写
+**Mục đích**: Markdown writing
 
-**扩展**:
+**Extension**:
 - GFM (GitHub Flavored Markdown)
-- 表格
-- 代码块高亮
-- 任务列表
+- Table
+- Code block highlight
+- Task list
 
 ### latex
 
-**用途**: LaTeX 文档排版
+**Mục đích**: LaTeX document typesetting
 
-**用途**:
-- 学术论文
-- 数学公式
-- 技术文档
+**Usage**:
+- Academic paper
+- Math formula
+- Technical document
 
 ### plantuml
 
-**用途**: PlantUML 图表
+**Mục đích**: PlantUML diagram
 
-**图表类型**:
-- 类图
-- 序列图
-- 用例图
-- 活动图
+**Diagram type**:
+- Class diagram
+- Sequence diagram
+- Use case diagram
+- Activity diagram
 
 ---
 
-## 特殊工具
+## Special Tool
 
 ### vim
 
-**用途**: Vim 编辑器
+**Mục đích**: Vim editor
 
-**核心技能**:
-- 模式切换
-- 移动命令
-- 文本对象
-- 宏与寄存器
-- 插件管理
+**Core skill**:
+- Mode switching
+- Movement command
+- Text object
+- Macro và register
+- Plugin management
 
 ### shell-scripting
 
-**用途**: Shell 脚本编写
+**Mục đích**: Shell script writing
 
-**脚本类型**:
+**Script type**:
 - Bash
 - Zsh
 - POSIX
 
 ### latex
 
-**用途**: LaTeX 排版
+**Mục đích**: LaTeX typesetting
 
-**用途**:
-- 学术论文
-- 数学公式
-- 复杂文档
+**Usage**:
+- Academic paper
+- Math formula
+- Complex document
 
 ---
 
-## 相关技能
+## Related Skill
 
-| 技能 | 用途 |
+| Skill | Usage |
 |------|------|
-| `solidity` | 智能合约开发 |
-| `unity` | Unity 游戏开发 |
-| `video-editing` | 视频编辑 |
-| `kafka` | Kafka 消息队列 |
-| `pwa` | PWA 开发 |
-| `webgl` | WebGL 图形 |
+| `solidity` | Smart contract development |
+| `unity` | Unity game development |
+| `video-editing` | Video editing |
+| `kafka` | Kafka message queue |
+| `pwa` | PWA development |
+| `webgl` | WebGL graphics |

@@ -1,245 +1,245 @@
-# 安全类 Agent
+# Tác tử Bảo mật
 
-安全类 Agent 专门负责安全漏洞检测、合规性审查和敏感信息保护。
+Tác tử Bảo mật chịu trách nhiệm chính về phát hiện lỗ hổng bảo mật, xem xét tuân thủ và bảo vệ thông tin nhạy cảm.
 
-## Agent 列表
+## Danh sách Agent
 
-| Agent 名称 | 用途 | 使用模型 | 核心工具 |
+| Tên Agent | Mục đích | Model sử dụng | Công cụ cốt lõi |
 |------------|------|----------|----------|
-| security-reviewer | 安全漏洞检测和修复专家 | sonnet | Read, Write, Edit, Bash, Grep, Glob |
-| silent-failure-hunter | 静默失败检测专家 | sonnet | Read, Grep, Glob, Bash |
-| healthcare-reviewer | 医疗应用代码审查（PHI/临床安全） | opus | Read, Grep, Glob |
-| opensource-sanitizer | 开源项目泄露检查专家 | sonnet | Read, Grep, Glob, Bash |
+| security-reviewer | Chuyên gia phát hiện và sửa lỗ hổng bảo mật | sonnet | Read, Write, Edit, Bash, Grep, Glob |
+| silent-failure-hunter | Chuyên gia phát hiện lỗi thầm lặng | sonnet | Read, Grep, Glob, Bash |
+| healthcare-reviewer | Xem xét mã ứng dụng y tế (PHI/Bảo mật lâm sàng) | opus | Read, Grep, Glob |
+| opensource-sanitizer | Chuyên gia kiểm tra rò rỉ dự án nguồn mở | sonnet | Read, Grep, Glob, Bash |
 
 ---
 
 ## security-reviewer
 
-### 名称和用途
-安全漏洞检测和修复专家。在编写处理用户输入、认证、API 端点或敏感数据的代码后主动使用。标记 secrets、SSRF、注入、不安全加密和 OWASP Top 10 漏洞。
+### Tên và Mục đích
+Chuyên gia phát hiện và sửa lỗ hổng bảo mật. Được sử dụng chủ động sau khi viết mã xử lý đầu vào người dùng, xác thực, endpoint API hoặc dữ liệu nhạy cảm. Đánh dấu secrets, SSRF, injection, mã hóa không an toàn và lỗ hổng OWASP Top 10.
 
-### 能力说明
-- 漏洞检测 - 识别 OWASP Top 10 和常见安全问题
-- Secrets 检测 - 发现硬编码 API 密钥、密码、tokens
-- 输入验证 - 确保所有用户输入被正确清理
-- 认证/授权 - 验证适当的访问控制
-- 依赖安全 - 检查有漏洞的 npm 包
-- 安全最佳实践 - 强制执行安全编码模式
+### Khả năng
+- Phát hiện lỗ hổng - Nhận diện OWASP Top 10 và vấn đề bảo mật phổ biến
+- Phát hiện Secrets - Phát hiện API keys, passwords, tokens được hardcode
+- Xác thực đầu vào - Đảm bảo tất cả đầu vào người dùng được làm sạch đúng cách
+- Xác thực/Ủy quyền - Xác minh kiểm soát truy cập phù hợp
+- Bảo mật phụ thuộc - Kiểm tra npm packages có lỗ hổng
+- Best practice bảo mật - Thực thi các mẫu mã hóa an toàn
 
-### 适用场景
-- 新 API 端点
-- 认证代码变更
-- 用户输入处理
-- 数据库查询变更
-- 文件上传
-- 支付代码
-- 外部 API 集成
-- 依赖更新
+### Khi nào sử dụng
+- Endpoint API mới
+- Thay đổi mã xác thực
+- Xử lý đầu vào người dùng
+- Thay đổi truy vấn cơ sở dữ liệu
+- Upload file
+- Mã thanh toán
+- Tích hợp API bên ngoài
+- Cập nhật phụ thuộc
 
-### 使用的工具列表
-- Read: 读取代码
-- Write: 写入安全修复
-- Edit: 编辑安全修复
-- Bash: 运行 npm audit, eslint
-- Grep: 搜索敏感模式
-- Glob: 查找文件
+### Danh sách công cụ
+- Read: Đọc mã
+- Write: Ghi sửa bảo mật
+- Edit: Sửa sửa bảo mật
+- Bash: Chạy npm audit, eslint
+- Grep: Tìm kiếm mẫu nhạy cảm
+- Glob: Tìm tệp
 
-### 与其他 Agent 的协作方式
-- code-reviewer 共享代码质量检查
-- healthcare-reviewer 处理医疗特定安全问题
-- opensource-sanitizer 处理开源发布前检查
+### Cách phối hợp với các Agent khác
+- code-reviewer chia sẻ kiểm tra chất lượng mã
+- healthcare-reviewer xử lý vấn đề bảo mật cụ thể của y tế
+- opensource-sanitizer xử lý kiểm tra trước phát hành nguồn mở
 
-### 初始扫描
+### Quét ban đầu
 
 ```bash
 npm audit --audit-level=high
 npx eslint . --plugin security
 ```
 
-搜索硬编码 secrets，审查高风险区域：auth、API 端点、DB 查询、文件上传、支付、webhooks。
+Tìm kiếm secrets được hardcode, xem xét các vùng rủi ro cao: auth, endpoint API, truy vấn DB, upload file, thanh toán, webhooks.
 
-### OWASP Top 10 检查
+### Kiểm tra OWASP Top 10
 
-1. **注入** - 查询是否参数化？用户输入是否清理？ORM 是否安全使用？
-2. **认证破坏** - 密码是否哈希 (bcrypt/argon2)？JWT 是否验证？会话是否安全？
-3. **敏感数据** - HTTPS 是否强制？Secrets 是否在 env vars？PII 是否加密？日志是否清理？
-4. **XXE** - XML 解析器是否安全配置？外部实体是否禁用？
-5. **访问控制破坏** - 每个路由是否检查 auth？CORS 是否正确配置？
-6. **安全配置错误** - 默认凭据是否更改？生产环境 debug 模式是否关闭？安全头是否设置？
-7. **XSS** - 输出是否转义？CSP 是否设置？框架是否自动转义？
-8. **不安全反序列化** - 用户输入是否安全反序列化？
-9. **已知漏洞** - 依赖是否最新？npm audit 是否通过？
-10. **日志和监控不足** - 安全事件是否记录？是否配置警报？
+1. **Injection** - Truy vấn có được parameterize không? Đầu vào người dùng có được làm sạch không? ORM có được sử dụng an toàn không?
+2. **Broken Authentication** - Mật khẩu có được hash (bcrypt/argon2) không? JWT có được xác minh không? Session có an toàn không?
+3. **Sensitive Data** - HTTPS có được enforce không? Secrets có trong env vars không? PII có được mã hóa không? Logs có được làm sạch không?
+4. **XXE** - XML parser có được cấu hình an toàn không? External entities có bị disable không?
+5. **Broken Access Control** - Mỗi route có kiểm tra auth không? CORS có được cấu hình đúng không?
+6. **Security Misconfiguration** - Default credentials có được thay đổi không? Debug mode production có được tắt không? Security headers có được set không?
+7. **XSS** - Output có được escape không? CSP có được set không? Framework có tự động escape không?
+8. **Insecure Deserialization** - Đầu vào người dùng có được deserialize an toàn không?
+9. **Known Vulnerabilities** - Phụ thuộc có được cập nhật không? npm audit có pass không?
+10. **Insufficient Logging** - Sự kiện bảo mật có được ghi lại không? Alerts có được cấu hình không?
 
-### 代码模式审查
+### Xem xét mẫu mã
 
-立即标记这些模式：
+Đánh dấu ngay các mẫu này:
 
-| 模式 | 严重性 | 修复 |
+| Mẫu | Mức độ nghiêm trọng | Sửa |
 |------|--------|------|
-| 硬编码 secrets | CRITICAL | 使用 `process.env` |
-| 用户输入的 shell 命令 | CRITICAL | 使用安全 API 或 execFile |
-| 字符串拼接 SQL | CRITICAL | 参数化查询 |
-| `innerHTML = userInput` | HIGH | 使用 `textContent` 或 DOMPurify |
-| `fetch(userProvidedUrl)` | HIGH | 白名单允许的域名 |
-| 明文密码比较 | CRITICAL | 使用 `bcrypt.compare()` |
-| 路由无 auth 检查 | CRITICAL | 添加认证中间件 |
-| 无锁的余额检查 | CRITICAL | 在事务中使用 `FOR UPDATE` |
-| 无速率限制 | HIGH | 添加 `express-rate-limit` |
-| 记录密码/secrets | MEDIUM | 清理日志输出 |
+| Hardcoded secrets | CRITICAL | Sử dụng `process.env` |
+| Shell commands với đầu vào người dùng | CRITICAL | Sử dụng API an toàn hoặc execFile |
+| String concatenation SQL | CRITICAL | Truy vấn parameterized |
+| `innerHTML = userInput` | HIGH | Sử dụng `textContent` hoặc DOMPurify |
+| `fetch(userProvidedUrl)` | HIGH | Whitelist domains cho phép |
+| Plaintext password comparison | CRITICAL | Sử dụng `bcrypt.compare()` |
+| Route không có auth check | CRITICAL | Thêm auth middleware |
+| Balance check không có lock | CRITICAL | Sử dụng `FOR UPDATE` trong transaction |
+| Không có rate limiting | HIGH | Thêm `express-rate-limit` |
+| Ghi log password/secrets | MEDIUM | Làm sạch log output |
 
-### 关键原则
+### Nguyên tắc chính
 
-1. **纵深防御** - 多层安全
-2. **最小权限** - 所需最小权限
-3. **安全失败** - 错误不应暴露数据
-4. **不信任输入** - 验证和清理一切
-5. **定期更新** - 保持依赖最新
+1. **Phòng thủ theo chiều sâu** - Nhiều lớp bảo mật
+2. **Ít quyền nhất** - Quyền tối thiểu cần thiết
+3. **Thất bại an toàn** - Lỗi không nên expose dữ liệu
+4. **Không tin tưởng đầu vào** - Xác minh và làm sạch mọi thứ
+5. **Cập nhật thường xuyên** - Giữ phụ thuộc cập nhật
 
-### 常见误报
+### False positives phổ biến
 
-- `.env.example` 中的环境变量（不是实际 secrets）
-- 测试文件中的测试凭据（如果明确标记）
-- 实际公开的公钥 API 密钥
-- 用于校验和的 SHA256/MD5（不是密码）
+- Environment variables trong `.env.example` (không phải secrets thực)
+- Test credentials trong file kiểm thử (nếu được đánh dấu rõ ràng)
+- API keys công khai thực sự
+- SHA256/MD5 dùng cho checksum (không phải mật khẩu)
 
-**始终在标记前验证上下文。**
+**Luôn xác minh context trước khi đánh dấu.**
 
-### 紧急响应
+### Ứng phó khẩn cấp
 
-如果发现 CRITICAL 漏洞：
-1. 详细报告记录
-2. 立即通知项目负责人
-3. 提供安全代码示例
-4. 验证修复有效
-5. 如果凭据暴露则轮换 secrets
+Nếu phát hiện lỗ hổng CRITICAL:
+1. Ghi lại báo cáo chi tiết
+2. Thông báo ngay cho project lead
+3. Cung cấp ví dụ mã an toàn
+4. Xác minh sửa có hiệu quả
+5. Nếu credentials bị expose thì rotate secrets
 
 ---
 
 ## silent-failure-hunter
 
-### 名称和用途
-审查代码中的静默失败、被吞掉的错误、错误的回退和缺失的错误传播。
+### Tên và Mục đích
+Xem xét mã để tìm lỗi thầm lặng, errors bị nuốt, fallback sai và thiếu error propagation.
 
-### 能力说明
-- 空 catch 块检测
-- 不充分日志检测
-- 危险回退检测
-- 错误传播问题检测
-- 缺失错误处理检测
+### Khả năng
+- Phát hiện empty catch blocks
+- Phát hiện logging không đủ
+- Phát hiện fallback nguy hiểm
+- Phát hiện vấn đề error propagation
+- Phát hiện thiếu xử lý lỗi
 
-### 适用场景
-- 代码审查时
-- 发现奇怪 bug 时
-- 管道看似绿色但跳过数据时
-- 异常处理审查时
+### Khi nào sử dụng
+- Khi xem xét mã
+- Khi tìm thấy lỗi lạ
+- Khi pipeline có vẻ xanh nhưng skip data
+- Khi xem xét exception handling
 
-### 使用的工具列表
-- Read: 读取代码
-- Grep: 搜索错误处理模式
-- Glob: 查找源文件
-- Bash: 运行测试
+### Danh sách công cụ
+- Read: Đọc mã
+- Grep: Tìm kiếm mẫu xử lý lỗi
+- Glob: Tìm tệp nguồn
+- Bash: Chạy kiểm thử
 
-### 与其他 Agent 的协作方式
-- code-reviewer 共享代码质量检查
-- security-reviewer 处理安全相关问题
-- mle-reviewer 处理 ML 管道问题
+### Cách phối hợp với các Agent khác
+- code-reviewer chia sẻ kiểm tra chất lượng mã
+- security-reviewer xử lý vấn đề liên quan đến bảo mật
+- mle-reviewer xử lý vấn đề ML pipeline
 
-### 狩猎目标
+### Các mục tiêu săn lùng
 
-#### 1. 空 Catch 块
-- `catch {}` 或被忽略的异常
-- 转换为 `null` / 空数组但无上下文的错误
+#### 1. Empty Catch Blocks
+- `catch {}` hoặc exceptions bị bỏ qua
+- Chuyển thành `null` / mảng rỗng nhưng không có context lỗi
 
-#### 2. 不充分日志
-- 日志上下文不足
-- 错误严重性不对
-- log-and-forget 处理
+#### 2. Logging không đủ
+- Log context không đủ
+- Severity lỗi không đúng
+- log-and-forget handling
 
-#### 3. 危险回退
-- 隐藏真实失败的默认值
+#### 3. Fallback nguy hiểm
+- Default values ẩn thất bại thực sự
 - `.catch(() => [])`
-- 优雅但使下游 bug 更难诊断的路径
+- Đường dẫn graceful nhưng làm cho bug downstream khó chẩn đoán hơn
 
-#### 4. 错误传播问题
-- 丢失的堆栈跟踪
-- 泛型 rethrows
-- 缺失 async 处理
+#### 4. Vấn đề Error Propagation
+- Stack trace bị mất
+- Generic rethrows
+- Thiếu async handling
 
-#### 5. 缺失错误处理
-- 网络/文件/数据库路径无超时或错误处理
-- 事务工作无回滚
+#### 5. Thiếu xử lý lỗi
+- Paths không có timeout hoặc xử lý lỗi cho network/file/database
+- Transaction work không có rollback
 
-### 输出格式
+### Định dạng đầu ra
 
-每个发现：
-- 位置
-- 严重性
-- 问题
-- 影响
-- 修复建议
+Mỗi phát hiện:
+- Vị trí
+- Mức độ nghiêm trọng
+- Vấn đề
+- Tác động
+- Đề xuất sửa
 
 ---
 
 ## healthcare-reviewer
 
-### 名称和用途
-审查医疗应用代码的临床安全、CDSS 准确性、PHI 合规性和医疗数据完整性。专为 EMR/EHR、临床决策支持和健康信息系统而设计。
+### Tên và Mục đích
+Xem xét mã ứng dụng y tế cho bảo mật lâm sàng, độ chính xác CDSS, tuân thủ PHI và tính toàn vẹn dữ liệu y tế. Được thiết kế cho EMR/EHR, clinical decision support và health information systems.
 
-### 能力说明
-- CDSS 准确性 - 验证药物相互作用逻辑、剂量验证规则和临床评分实现
-- PHI/PII 保护 - 扫描患者数据在日志、错误、响应、URL 和客户端存储中的暴露
-- 临床数据完整性 - 确保审计跟踪、锁定记录和级联保护
-- 医疗数据正确性 - 验证 ICD-10/SNOMED 映射、实验室参考范围和药物数据库条目
-- 集成合规性 - 验证 HL7/FHIR 消息处理和错误恢复
+### Khả năng
+- Độ chính xác CDSS - Xác minh tương tác thuốc, quy tắc xác thực liều lượng và clinical scoring
+- Bảo vệ PHI/PII - Quét patient data exposure trong logs, errors, responses, URLs và client storage
+- Tính toàn vẹn dữ liệu lâm sàng - Đảm bảo audit trails, khóa records và bảo vệ cascade
+- Độ chính xác dữ liệu y tế - Xác minh ICD-10/SNOMED mappings, laboratory reference ranges và drug database entries
+- Tuân thủ tích hợp - Xác minh xử lý và phục hồi lỗi HL7/FHIR messages
 
-### 适用场景
-- EMR/EHR 系统开发
-- 临床决策支持系统
-- 健康信息系统
-- 医疗数据处理应用
+### Khi nào sử dụng
+- Phát triển hệ thống EMR/EHR
+- Clinical decision support systems
+- Health information systems
+- Ứng dụng xử lý dữ liệu y tế
 
-### 使用的工具列表
-- Read: 读取医疗代码
-- Grep: 搜索 PHI 模式
-- Glob: 查找医疗相关文件
+### Danh sách công cụ
+- Read: Đọc mã y tế
+- Grep: Tìm kiếm mẫu PHI
+- Glob: Tìm tệp liên quan đến y tế
 
-### 与其他 Agent 的协作方式
-- security-reviewer 处理通用安全漏洞
-- code-reviewer 处理代码质量问题
-- silent-failure-hunter 处理静默失败问题
+### Cách phối hợp với các Agent khác
+- security-reviewer xử lý lỗ hổng bảo mật chung
+- code-reviewer xử lý vấn đề chất lượng mã
+- silent-failure-hunter xử lý vấn đề lỗi thầm lặng
 
-### 关键检查
+### Kiểm tra chính
 
-#### CDSS 引擎
-- [ ] 所有药物相互作用对产生正确警报（双向）
-- [ ] 剂量验证规则在超出范围值时触发
-- [ ] 临床评分匹配发布规范
-- [ ] 无假阴性（漏掉的相互作用 = 患者安全事件）
-- [ ] 格式错误的输入产生错误，而非静默通过
+#### CDSS Engine
+- [ ] Tất cả các cặp tương tác thuốc tạo ra alerts đúng (hai chiều)
+- [ ] Quy tắc xác thực liều lượng trigger khi giá trị ngoài phạm vi
+- [ ] Clinical scoring match với spec publish
+- [ ] Không có false negatives (tương tác bị bỏ qua = sự kiện an toàn bệnh nhân)
+- [ ] Input sai định dạng tạo ra lỗi, không pass thầm lặng
 
-#### PHI 保护
-- [ ] 患者数据不在 `console.log`、`console.error` 或错误消息中
-- [ ] PHI 不在 URL 参数或查询字符串中
-- [ ] PHI 不在浏览器 localStorage/sessionStorage 中
-- [ ] 客户端代码中无 `service_role` 密钥
-- [ ] 所有患者数据表启用 RLS
-- [ ] 跨设施数据隔离已验证
+#### Bảo vệ PHI
+- [ ] Patient data không ở trong `console.log`, `console.error` hoặc error messages
+- [ ] PHI không ở trong URL parameters hoặc query strings
+- [ ] PHI không ở trong browser localStorage/sessionStorage
+- [ ] Không có `service_role` keys trong client code
+- [ ] RLS enabled trên tất cả patient data tables
+- [ ] Cross-facility data isolation đã được xác minh
 
-#### 临床工作流
-- [ ] 诊疗锁定防止编辑（仅附录）
-- [ ] 每次临床数据 CRUD 都有审计跟踪条目
-- [ ] 关键警报不可忽略（不是 toast 通知）
-- [ ] 临床医生继续进行关键警报时记录覆盖原因
-- [ ] 红旗症状触发可见警报
+#### Clinical Workflow
+- [ ] Chart lock ngăn chặn edit (chỉ addendum)
+- [ ] Mỗi clinical data CRUD có audit trail entry
+- [ ] Critical alerts không thể bỏ qua (không phải toast notifications)
+- [ ] Ghi lại lý do override khi clinician proceed với critical alert
+- [ ] Red flag symptoms trigger visible alerts
 
-#### 数据完整性
-- [ ] 患者记录无 CASCADE DELETE
-- [ ] 并发编辑检测（乐观锁或冲突解决）
-- [ ] 临床表无孤立记录
-- [ ] 时间戳使用一致的时区
+#### Tính toàn vẹn dữ liệu
+- [ ] Patient records không có CASCADE DELETE
+- [ ] Concurrent edit detection (optimistic locking hoặc conflict resolution)
+- [ ] Không có orphan records trong clinical tables
+- [ ] Timestamps sử dụng timezone nhất quán
 
-### 输出格式
+### Định dạng đầu ra
 
 ```
 ## Healthcare Review: [module/feature]
@@ -247,81 +247,81 @@ npx eslint . --plugin security
 ### Patient Safety Impact: [CRITICAL / HIGH / MEDIUM / LOW / NONE]
 
 ### Clinical Accuracy
-- CDSS: [检查通过/失败]
-- Drug DB: [验证/问题]
-- Scoring: [匹配规范/偏离]
+- CDSS: [kiểm tra pass/fail]
+- Drug DB: [xác minh/vấn đề]
+- Scoring: [match spec/deviation]
 
 ### PHI Compliance
-- 暴露向量检查: [列表]
-- 发现问题: [列表或无]
+- Exposure vectors check: [danh sách]
+- Issues found: [danh sách hoặc không]
 
 ### Issues
-1. [PATIENT SAFETY / CLINICAL / PHI / TECHNICAL] 描述
-   - Impact: [潜在危害或暴露]
-   - Fix: [所需变更]
+1. [PATIENT SAFETY / CLINICAL / PHI / TECHNICAL] Mô tả
+   - Impact: [potential harm hoặc exposure]
+   - Fix: [thay đổi cần thiết]
 
 ### Verdict: [SAFE TO DEPLOY / NEEDS FIXES / BLOCK — PATIENT SAFETY RISK]
 ```
 
-### 规则
+### Quy tắc
 
-- 对临床准确性有疑问时，标记为 NEEDS REVIEW - 绝不批准不确定的临床逻辑
-- 一次漏掉的药物相互作用比一百个假警报更糟糕
-- PHI 暴露始终是 CRITICAL 严重性，无论泄露多小
-- 绝不批准静默捕获 CDSS 错误的代码
+- Khi có nghi vấn về độ chính xác lâm sàng, đánh dấu NEEDS REVIEW - không bao giờ approve clinical logic không chắc chắn
+- Một tương tác thuốc bị bỏ qua tệ hơn một trăm false alerts
+- PHI exposure luôn là CRITICAL severity, bất kể leak nhỏ đến đâu
+- Không bao giờ approve code nuốt thầm CDSS errors
 
 ---
 
 ## opensource-sanitizer
 
-### 名称和用途
-在发布前验证开源 fork 已完全清理。扫描泄露的 secrets、PII、内部引用和危险文件。使用 20+ 正则表达式模式。生成 PASS/FAIL/PASS-WITH-WARNINGS 报告。
+### Tên và Mục đích
+Xác minh open source fork đã được dọn dẹp hoàn toàn trước khi phát hành. Quét secrets rò rỉ, PII, internal references và file nguy hiểm. Sử dụng 20+ regex patterns. Tạo báo cáo PASS/FAIL/PASS-WITH-WARNINGS.
 
-### 能力说明
-- Secrets 扫描 - 扫描 API 密钥、密码、tokens
-- PII 扫描 - 扫描邮箱、IP 地址
-- 内部引用扫描 - 扫描绝对路径、内部域名
-- 危险文件检查 - 检查 .env、credentials.json 等
-- 配置完整性验证 - 验证 .env.example
-- Git 历史审计 - 检查泄露的凭据
+### Khả năng
+- Secrets scanning - Quét API keys, passwords, tokens
+- PII scanning - Quét email, IP addresses
+- Internal references scanning - Quét absolute paths, internal domain names
+- Dangerous files check - Kiểm tra .env, credentials.json, v.v.
+- Config completeness validation - Xác minh .env.example
+- Git history audit - Kiểm tra credentials rò rỉ
 
-### 适用场景
-- 开源 fork 发布前
-- 第三方代码审计前
-- 代码发布前的安全检查
+### Khi nào sử dụng
+- Trước khi phát hành open source fork
+- Trước khi audit code của bên thứ ba
+- Kiểm tra bảo mật trước khi phát hành code
 
-### 使用的工具列表
-- Read: 读取文件
-- Grep: 搜索敏感模式
-- Glob: 查找文件
-- Bash: 运行 git log 等
+### Danh sách công cụ
+- Read: Đọc tệp
+- Grep: Tìm kiếm mẫu nhạy cảm
+- Glob: Tìm tệp
+- Bash: Chạy git log, v.v.
 
-### 与其他 Agent 的协作方式
-- security-reviewer 处理通用安全漏洞
-- code-reviewer 处理代码质量问题
-- doc-updater 更新文档
+### Cách phối hợp với các Agent khác
+- security-reviewer xử lý lỗ hổng bảo mật chung
+- code-reviewer xử lý vấn đề chất lượng mã
+- doc-updater cập nhật tài liệu
 
-### 工作流
+### Workflow
 
-#### 步骤 1: Secrets 扫描 (CRITICAL)
+#### Bước 1: Secrets Scanning (CRITICAL)
 
-扫描每个文本文件（排除 `node_modules`、`.git`、`__pycache__`、`*.min.js`、二进制文件）：
+Quét mỗi tệp văn bản (loại trừ `node_modules`, `.git`, `__pycache__`, `*.min.js`, binary files):
 
 ```
-# API 密钥
+# API keys
 pattern: [A-Za-z0-9_]*(api[_-]?key|apikey|api[_-]?secret)[A-Za-z0-9_]*\s*[=:]\s*['"]?[A-Za-z0-9+/=_-]{16,}
 
 # AWS
 pattern: AKIA[0-9A-Z]{16}
 pattern: (?i)(aws_secret_access_key|aws_secret)\s*[=:]\s*['"]?[A-Za-z0-9+/=]{20,}
 
-# 数据库 URL（带凭据）
+# Database URLs (with credentials)
 pattern: (postgres|mysql|mongodb|redis)://[^:]+:[^@]+@[^\s'"]+
 
 # JWT tokens (3-segment)
 pattern: eyJ[A-Za-z0-9_-]{20,}\.eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]+
 
-# 私钥
+# Private keys
 pattern: -----BEGIN\s+(RSA\s+|EC\s+|DSA\s+|OPENSSH\s+)?PRIVATE KEY-----
 
 # GitHub tokens
@@ -329,61 +329,61 @@ pattern: gh[pousr]_[A-Za-z0-9_]{36,}
 pattern: github_pat_[A-Za-z0-9_]{22,}
 ```
 
-#### 步骤 2: PII 扫描 (CRITICAL)
+#### Bước 2: PII Scanning (CRITICAL)
 
 ```
-# 个人邮箱（不是通用邮箱如 noreply@、info@）
+# Personal emails (không phải generic như noreply@, info@)
 pattern: [a-zA-Z0-9._%+-]+@(gmail|yahoo|hotmail|outlook|protonmail|icloud)\.(com|net|org)
 
-# 私有 IP 地址（表示内部基础设施）
+# Private IP addresses (indicates internal infrastructure)
 pattern: (192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)
 
-# SSH 连接字符串
+# SSH connection strings
 pattern: ssh\s+[a-z]+@[0-9.]+
 ```
 
-#### 步骤 3: 内部引用扫描 (CRITICAL)
+#### Bước 3: Internal References Scanning (CRITICAL)
 
 ```
-# 绝对路径到特定用户主目录
+# Absolute paths to specific user home directories
 pattern: /home/[a-z][a-z0-9_-]*/
 pattern: /Users/[A-Za-z][A-Za-z0-9_-]*/
 pattern: C:\\Users\\[A-Za-z]
 
-# 内部 secret 文件引用
+# Internal secret file references
 pattern: \.secrets/
 pattern: source\s+~/\.secrets/
 ```
 
-#### 步骤 4: 危险文件检查 (CRITICAL)
+#### Bước 4: Dangerous Files Check (CRITICAL)
 
-验证这些**不存在**：
+Xác minh những thứ này **không tồn tại**:
 ```
-.env (任何变体: .env.local, .env.production, .env.*.local)
+.env (any variant: .env.local, .env.production, .env.*.local)
 *.pem, *.key, *.p12, *.pfx, *.jks
 credentials.json, service-account*.json
 .secrets/, secrets/
 .claude/settings.json
 sessions/
-*.map (source maps 暴露原始源结构)
+*.map (source maps expose raw source structure)
 node_modules/, __pycache__/, .venv/, venv/
 ```
 
-#### 步骤 5: Git 历史审计
+#### Bước 5: Git History Audit
 
 ```bash
-# 应该是单一初始提交
+# Nên là single initial commit
 cd PROJECT_DIR
 git log --oneline | wc -l
-# 如果 > 1，历史未清理 — FAIL
+# Nếu > 1, history chưa được dọn — FAIL
 
-# 搜索可能的 secrets
+# Tìm secrets có thể có
 git log -p | grep -iE '(password|secret|api.?key|token)' | head -20
 ```
 
-### 输出格式
+### Định dạng đầu ra
 
-生成项目目录中的 `SANITIZATION_REPORT.md`：
+Tạo `SANITIZATION_REPORT.md` trong thư mục project:
 
 ```markdown
 # Sanitization Report: {project-name}
@@ -423,13 +423,13 @@ git log -p | grep -iE '(password|secret|api.?key|token)' | head -20
 {If WARNINGS: "Project passes critical checks. Review {N} warnings before release."}
 ```
 
-### 规则
+### Quy tắc
 
-- **绝不**显示完整 secret 值 - 截断为前 4 个字符 + "..."
-- **绝不**修改源文件 - 只生成报告 (SANITIZATION_REPORT.md)
-- **始终**扫描每个文本文件，不只是已知扩展名
-- **始终**检查 git 历史，即使是新仓库
-- **保持偏执** - 误报可接受，漏报不可
-- 任何类别的单一 CRITICAL 发现 = 整体 FAIL
-- 单独警告 = PASS WITH WARNINGS（用户决定）
-[返回 Agent 索引](../README.md)
+- **Không bao giờ** hiển thị full secret value - truncate thành 4 ký tự đầu + "..."
+- **Không bao giờ** sửa đổi source files - chỉ tạo báo cáo (SANITIZATION_REPORT.md)
+- **Luôn** quét mỗi tệp văn bản, không chỉ extensions đã biết
+- **Luôn** kiểm tra git history, kể cả repo mới
+- **Giữ sự hoài nghi** - false positive có thể chấp nhận, miss là không thể
+- Single CRITICAL finding trong bất kỳ category nào = overall FAIL
+- Warnings đơn lẻ = PASS WITH WARNINGS (user quyết định)
+[Quay lại Chỉ mục Agent](../README.md)

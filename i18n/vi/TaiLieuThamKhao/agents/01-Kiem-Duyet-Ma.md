@@ -118,7 +118,7 @@ Chuyên gia kiểm tra mã Kotlin và Android/KMP, tập trung vào idiom patter
 - Kiểm tra idiom Kotlin
 - Phát hiện anti-pattern coroutines và Flow
 - Nhận diện vấn đề hiệu suất Compose
--执行 Clean Architecture module boundary
+- Thực thi Clean Architecture module boundary
 - Kiểm tra vấn đề Android-specific
 
 ### Kịch bản sử dụng
@@ -202,7 +202,7 @@ Chuyên gia kiểm tra mã Flutter và Dart, kiểm tra thực hành tốt nhấ
 ### Khả năng
 - Phát hiện anti-pattern quản lý state (setState solution ignoring)
 - Tối ưu hóa hiệu suất widget build
--执行 kiến trúc boundary
+- Thực thi kiến trúc boundary
 - Quản lý resource lifecycle
 - Kiểm tra khả năng tiếp cận
 

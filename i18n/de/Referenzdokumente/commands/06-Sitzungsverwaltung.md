@@ -1,36 +1,36 @@
-# 会话管理命令
+# Sitzungsverwaltungs-Befehle
 
-## 概述
+## Ueberblick
 
-会话管理命令用于保存、恢复和管理 Claude Code 会话状态。这些命令对于在长会话中保持上下文、在会话之间交接工作、以及追踪进度至关重要。
+Sitzungsverwaltungs-Befehle werden verwendet um Claude Code-Sitzungsstaende zu speichern, wiederherzustellen und zu verwalten. Diese Befehle sind entscheidend fuer das Beibehalten von Kontext in langen Sitzungen, fuer Uebergabe von Arbeit zwischen Sitzungen und fuer Fortschrittsverfolgung.
 
-## 命令列表
+## Befehlsliste
 
 ### /save-session
 
-**用途**: 保存会话状态 - 将当前会话的完整上下文写入日期文件
+**Zweck**: Sitzungszustand speichern - Den vollstaendigen Kontext der aktuellen Sitzung in eine Datumsdatei schreiben
 
-**描述**: 将当前会话的所有上下文保存到 `~/.claude/session-data/` 目录下的日期文件中，包括：构建了什么、什么工作了、什么失败了、剩余工作、文件状态、决策记录和待解决 blockers。
+**Beschreibung**: Speichert den gesamten Kontext der aktuellen Sitzung in eine Datumsdatei im Verzeichnis `~/.claude/session-data/`, einschliesslich: was gebaut wurde, was funktioniert hat, was fehlgeschlagen ist, verbleibende Arbeit, Dateizustand, getroffene Entscheidungen und offene Blocker.
 
-**会话文件命名规范**:
-- 格式: `YYYY-MM-DD-<short-id>-session.tmp`
-- 有效字符: 字母 `a-z`/`A-Z`、数字 `0-9`、连字符 `-`、下划线 `_`
-- 最小长度: 1 字符（但不建议过短）
-- 推荐: 8+ 字符的小写字母/数字/连字符组合避免同日冲突
+**Sitzungsdatei-Benennungskonvention**:
+- Format: `YYYY-MM-DD-<short-id>-session.tmp`
+- Gueltige Zeichen: Buchstaben `a-z`/`A-Z`, Ziffern `0-9`, Bindestrich `-`, Unterstrich `_`
+- Minimale Laenge: 1 Zeichen (aber nicht empfehlenswert zu kurz)
+- Empfohlen: 8+ Zeichen mit Kleinbuchstaben/Ziffern/Bindestrich-Kombination um Konflikte am selben Tag zu vermeiden
 
-**使用时机**:
-- 工作结束时（会话结束前）
-- 接近上下文限制前（先保存，再开新会话）
-- 复杂问题解决后（保存成功模式）
-- 需要交接给未来会话时
+**Verwendungszeitpunkte**:
+- Bei Arbeitsende (vor Sitzungsende)
+- Bevor Kontextlimit erreicht wird (zuerst speichern, dann neue Sitzung starten)
+- Nach dem Loesen komplexer Probleme (erfolgreiche Muster speichern)
+- Wenn an zukuenftige Sitzungen uebergeben werden muss
 
-**工作流**:
-1. **收集上下文** - 读取所有修改过的文件，审查讨论内容
-2. **创建目录** - `mkdir -p ~/.claude/session-data`
-3. **写入文件** - 创建带时间戳的会话文件
-4. **展示给用户** - 显示内容并请求确认
+**Workflow**:
+1. **Kontext sammeln** - Alle modifizierten Dateien lesen, Diskussion ueberpruefen
+2. **Verzeichnis erstellen** - `mkdir -p ~/.claude/session-data`
+3. **Datei schreiben** - Sitzungsdatei mit Zeitstempel erstellen
+4. **Dem Benutzer anzeigen** - Inhalt anzeigen und Bestaetigung anfordern
 
-**会话文件格式**:
+**Sitzungsdateiformat**:
 
 ```markdown
 # Session: YYYY-MM-DD
@@ -69,73 +69,73 @@
 [The single most important thing to do when resuming]
 ```
 
-**关键原则**:
-- "What Did NOT Work" 部分是最重要的 - 未来会话会盲目重试失败的方法
-- 每个会话独立文件 - 绝不追加到之前会话
-- 文件供下次会话通过 `/resume-session` 读取
+**Schluesselprinzipien**:
+- Der "What Did NOT Work"-Abschnitt ist der WICHTIGSTE - zukuenftige Sitzungen werden fehlgeschlagene Ansätze blind erneut versuchen
+- Jede Sitzung ist eine eigenständige Datei - niemals an vorherige Sitzungen anhängen
+- Dateien werden fuer die naechste Sitzung via `/resume-session` gelesen
 
-**最佳实践**:
-- 中途保存时（不是结束时），清楚标记进行中项目
-- 包含具体错误信息和失败原因（"threw X error because Y"）
-- 下一具体步骤要足够精确，无需思考就知道从哪开始
+**Best Practices**:
+- Bei Zwischen-Speicherung (nicht bei Ende), laufende Projekte klar markieren
+- Spezifische Fehlerinformationen und Fehlergruende einschliessen ("threw X error because Y")
+- Der naechste konkrete Schritt sollte praezise genug sein um ohne Nachdenken zu wissen wo zu beginnen
 
 ---
 
 ### /resume-session
 
-**用途**: 恢复保存的会话
+**Zweck**: Gespeicherte Sitzung wiederherstellen
 
-**描述**: 从 `~/.claude/session-data/` 加载并恢复之前保存的会话上下文。
+**Beschreibung**: Laedt und stellt einen zuvor gespeicherten Sitzungskontext aus `~/.claude/session-data/` wieder her.
 
-**使用场景**:
-- 开始新会话时
-- 需要继续之前的工作
-- 需要回顾之前的问题解决过程
+**Anwendungsszenarien**:
+- Beim Start einer neuen Sitzung
+- Wenn frühere Arbeit fortgesetzt werden muss
+- Wenn fruehere Problemlösungsprozesse reviewed werden müssen
 
 ---
 
 ### /sessions
 
-**用途**: 浏览+搜索+管理会话历史
+**Zweck**: Durchsuchen+Suchen+Verwalten der Sitzungshistorie
 
-**描述**: 浏览、搜索和管理所有已保存的会话历史。
+**Beschreibung**: Durchsucht, sucht und verwaltet alle gespeicherten Sitzungshistorien.
 
-**功能**:
-- 列出所有会话
-- 按日期搜索
-- 管理会话别名
-- 清理旧会话
+**Funktionen**:
+- Alle Sitzungen auflisten
+- Nach Datum suchen
+- Sitzungsaliasse verwalten
+- Alte Sitzungen bereinigen
 
 ---
 
 ### /checkpoint
 
-**用途**: 创建/验证工作流检查点
+**Zweck**: Workflow-Prüfpunkte erstellen/validieren
 
-**描述**: 在工作流关键节点创建检查点，确保进度可追溯。
+**Beschreibung**: Erstellt Prüfpunkte an kritischen Workflow-Knotenpunkten um Fortschritt nachvollziehbar zu machen.
 
-**使用场景**:
-- 重要步骤完成时
-- 需要验证关键里程碑
-- 多阶段任务中
+**Anwendungsszenarien**:
+- Nach Abschluss wichtiger Schritte
+- Wenn kritische Meilensteine validiert werden müssen
+- Bei mehrstufigen Aufgaben
 
 ---
 
 ### /aside
 
-**用途**: 回答侧问而不丢失上下文
+**Zweck**: Seitenfrage beantworten ohne Kontext zu verlieren
 
-**描述**: 切换到侧向对话模式，处理次要问题后无缝返回主任务。
+**Beschreibung**: Wechselt in einen seitlichen Dialogmodus, bearbeitet Nebenfragen und kehrt nahtlos zur Hauptarbeit zurück.
 
-**使用场景**:
-- 需要问一个快速问题
-- 需要查阅文档
-- 需要执行辅助任务
+**Anwendungsszenarien**:
+- Wenn eine schnelle Frage gestellt werden muss
+- Wenn Dokumentation nachgeschlagen werden muss
+- Wenn Nebenaufgaben ausgeführt werden müssen
 
 ---
 
-## 相关命令
+## Zugehoerige Befehle
 
-- `/save-session` - 保存当前会话
-- `/resume-session` - 恢复会话
-- `/sessions` - 管理会话历史
+- `/save-session` - Aktuelle Sitzung speichern
+- `/resume-session` - Sitzung wiederherstellen
+- `/sessions` - Sitzungshistorie verwalten

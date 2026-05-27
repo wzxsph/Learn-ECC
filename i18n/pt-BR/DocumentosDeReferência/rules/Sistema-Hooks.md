@@ -1,30 +1,30 @@
-# Hooks 系统
+# Sistema de Hooks
 
-## Hook 类型
+## Tipos de Hook
 
-- **PreToolUse**: 工具执行前（验证、参数修改）
-- **PostToolUse**: 工具执行后（自动格式化、检查）
-- **Stop**: 会话结束时（最终验证）
+- **PreToolUse**: Antes da execução da ferramenta (validação, modificação de parâmetros)
+- **PostToolUse**: Após a execução da ferramenta (auto-formatação, verificações)
+- **Stop**: Quando a sessão termina (verificação final)
 
-## 自动接受权限
+## Aceitação Automática de Permissões
 
-谨慎使用：
-- 为可信的、定义明确的计划启用
-- 为探索性工作禁用
-- 切勿使用 dangerously-skip-permissions 标志
-- 在 `~/.claude.json` 中配置 `allowedTools`
+Usar com cautela:
+- Habilitar para planos definidos e confiáveis
+- Desabilitar para trabalho exploratório
+- Nunca usar flag dangerously-skip-permissions
+- Configurar `allowedTools` em `~/.claude.json`
 
-## TodoWrite Melhores-Práticas
+## Melhores Práticas de TodoWrite
 
-使用 TodoWrite 工具：
-- 跟踪多步骤任务的进度
-- 验证对指令的理解
-- 启用实时指导
-- 显示粒度实施步骤
+Usar ferramenta TodoWrite para:
+- Rastrear progresso de tarefas multi-etapa
+- Validar entendimento de instruções
+- Habilitar steering em tempo real
+- Mostrar etapas de implementação granulares
 
-Todo 列表揭示：
-- 乱序步骤
-- 缺失项目
-- 多余的不必要项目
-- 错误的粒度
-- 误解的需求
+Lista de todos revela:
+- Passos fora de ordem
+- Itens faltando
+- Itens extras desnecessários
+- Granularidade incorreta
+- Requisitos mal interpretados

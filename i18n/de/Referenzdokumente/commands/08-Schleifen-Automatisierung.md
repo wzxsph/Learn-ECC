@@ -1,82 +1,82 @@
-# 循环与自动化命令
+# Schleifen- und Automatisierungs-Befehle
 
-## 概述
+## Ueberblick
 
-循环与自动化命令用于启动和管理自主循环工作模式。
+Schleifen- und Automatisierungs-Befehle werden verwendet um autonome Schleifen-Arbeitsmodi zu starten und zu verwalten.
 
-## 命令列表
+## Befehlsliste
 
 ### /loop-start
 
-**用途**: 启动托管自主循环模式，带安全默认设置和明确停止条件
+**Zweck**: Verwalteten autonomen Schleifenmodus mit sicheren Standardwerten und klaren Stoppbedingungen starten
 
-**描述**: 启动带安全默认设置和明确停止条件的托管自主循环模式。
+**Beschreibung**: Startet verwalteten autonomen Schleifenmodus mit sicheren Standardwerten und klaren Stoppbedingungen.
 
-**用法**: `/loop-start [pattern] [--mode safe|fast]`
+**Verwendung**: `/loop-start [pattern] [--mode safe|fast]`
 
-**参数**:
+**Parameter**:
 
-| 参数 | 值 | 说明 |
+| Parameter | Wert | Beschreibung |
 |---|---|---|
-| `pattern` | `sequential` | 顺序执行任务，一个接一个 |
-| | `continuous-pr` | 持续 PR 创建和合并循环 |
-| | `rfc-dag` | 基于 RFC 的有向无环图工作流 |
-| | `infinite` | 无限循环（需明确停止条件） |
-| `--mode` | `safe`（默认） | 严格质量门禁和检查点 |
-| | `fast` | 为速度减少门禁 |
+| `pattern` | `sequential` | Aufgaben sequentiell ausfuehren, eine nach der anderen |
+| | `continuous-pr` | Kontinuierlicher PR-Erstellungs- und Merge-Schleife |
+| | `rfc-dag` | RFC-basierter gerichteterazyklischer Graph-Workflow |
+| | `infinite` | Unendliche Schleife (erfordert klare Stoppbedingung) |
+| `--mode` | `safe` (Standard) | Strikte Qualitaets-Gates und Pruefpunkte |
+| | `fast` | Weniger Gates fuer Geschwindigkeit |
 
-**工作流**:
-1. 确认仓库状态和分支策略
-2. 选择循环模式和相关模型层级策略
-3. 为所选模式启用所需 hooks/profile
-4. 创建循环计划并在 `.claude/plans/` 下写 runbook
-5. 打印启动和监控命令
+**Workflow**:
+1. Repository-Status und Branch-Strategie verifizieren
+2. Schleifenmodus und zugehoerige Modellhierarchie-Strategie auswaehlen
+3. Erforderliche hooks/profile fuer ausgewaehlten Modus aktivieren
+4. Schleifenplan erstellen und Runbook in `.claude/plans/` schreiben
+5. Start- und Ueberwachungsbefehle ausgeben
 
-**必需安全检查**:
-- 验证测试在首次循环前通过
-- 确保 `ECC_HOOK_PROFILE` 未全局禁用
-- 确保循环有明确停止条件
+**Erforderliche Sicherheitspruefungen**:
+- Verifizieren dass Tests vor erster Schleife bestehen
+- Sicherstellen dass `ECC_HOOK_PROFILE` nicht global deaktiviert ist
+- Sicherstellen dass Schleife klare Stoppbedingung hat
 
-**参数传递**:
-- `$ARGUMENTS`: `[pattern]` 和可选的 `[--mode safe|fast]`
-- 模式是可选的（默认为 sequential）
-- mode 标志是可选的（默认为 safe）
+**Parameterweiterleitung**:
+- `$ARGUMENTS`: `[pattern]` und optional `[--mode safe|fast]`
+- pattern ist optional (Standard ist sequential)
+- mode-Flag ist optional (Standard ist safe)
 
-**最佳实践**:
-- 在 infinite 模式之前确保设置明确的停止条件
-- fast 模式仅在充分测试的代码上使用
-- 监控循环进度，使用 `/loop-status` 检查状态
+**Best Practices**:
+- Vor infinite-Modus klare Stoppbedingungen setzen
+- Fast-Modus nur auf ausreichend getestetem Code verwenden
+- Schleifenfortschritt ueberwachen, `/loop-status` zum Pruefen des Status verwenden
 
-**常见陷阱**:
-- 在未验证测试的情况下启动循环
-- 使用 infinite 模式而无明确停止条件
-- 在全局禁用 hooks 时尝试使用安全模式
+**Haeufige Fallstricke**:
+- Schleife starten ohne Tests zu verifizieren
+- infinite-Modus ohne klare Stoppbedingung verwenden
+- Versuchen sichereren Modus zu verwenden wenn hooks global deaktiviert sind
 
-**与其他命令集成**:
-- 使用 `/loop-status` 监控运行中循环
-- 使用 `/santa-loop` 进行 Santa 风格循环
-- 使用 `/checkpoint` 创建关键节点检查点
+**Integration mit anderen Befehlen**:
+- `/loop-status` zum Ueberwachen laufender Schleifen verwenden
+- `/santa-loop` fuer Santa-Style-Schleifen verwenden
+- `/checkpoint` zum Erstellen von Pruefpunkten an kritischen Knotenpunkten verwenden
 
 ---
 
 ### /loop-status
 
-**用途**: 检查运行中循环的状态
+**Zweck**: Status einer laufenden Schleife pruefen
 
-**描述**: 查看当前运行中循环的状态和进度。
+**Beschreibung**: Zeigt Status und Fortschritt der aktuell laufenden Schleife.
 
 ---
 
 ### /santa-loop
 
-**用途**: Santa 风格自主循环
+**Zweck**: Santa-Style autonome Schleife
 
-**描述**: 一种特殊风格的自主循环模式。
+**Beschreibung**: Ein spezieller Stil des autonomen Schleifenmodus.
 
 ---
 
-## 相关命令
+## Zugehoerige Befehle
 
-- `/loop-start` - 启动循环
-- `/loop-status` - 检查状态
-- `/santa-loop` - Santa 风格
+- `/loop-start` - Schleife starten
+- `/loop-status` - Status pruefen
+- `/santa-loop` - Santa-Style

@@ -1,62 +1,62 @@
-# 监控与可观测性技能
+# Monitoring-und-Observability-Faehigkeiten
 
-## 概述
+## Ueberblick
 
-监控与可观测性技能用于系统监控、日志管理、追踪和告警配置。
+Monitoring- und Observability-Faehigkeiten werden fuer Systemmonitoring, Log-Verwaltung, Tracing und Alarm-Konfiguration verwendet.
 
-## 核心技能
+## Kernfaehigkeiten
 
 ### observability-readiness
 
-**用途**: 可观测性就绪检查
+**Zweck**: Observability-Ready-Check
 
-**检查项**:
-- 日志配置
-- 指标暴露
-- 追踪集成
-- 告警规则
+**Pruefpunkte**:
+- Log-Konfiguration
+- Metrik-Exposition
+- Tracing-Integration
+- Alarm-Regeln
 
 ---
 
 ### observability-designer
 
-**用途**: 可观测性架构设计
+**Zweck**: Observability-Architektur-Design
 
-**设计内容**:
-- 指标体系
-- 日志架构
-- 追踪方案
-- 关联分析
+**Design-Inhalt**:
+- Metrik-System
+- Log-Architektur
+- Tracing-Loesung
+- Korrelationsanalyse
 
 ---
 
-## 网络诊断
+## Netzwerkdiagnose
 
 ### network-bgp-diagnostics
 
-**用途**: BGP 诊断
+**Zweck**: BGP-Diagnose
 
-**使用场景**:
-- 路由分析
-- AS 路径检查
-- BGP 对等体状态
+**Verwendungsszenarien**:
+- Routing-Analyse
+- AS-Pfad-Pruefung
+- BGP-Peer-Status
 
 ---
 
 ### netmiko-ssh-automation
 
-**用途**: Netmiko SSH 自动化
+**Zweck**: Netmiko SSH-Automatisierung
 
-**功能**:
-- 批量网络设备配置
-- 命令执行自动化
-- 配置备份
+**Funktionen**:
+- Batch-Netzwerkgeraete-Konfiguration
+- Kommandoausfuehrungs-Automatisierung
+- Konfigurations-Backup
 
 ---
 
-## 相关技能
+## Zugehoerige Faehigkeiten
 
-- `observability-readiness` - 可观测性就绪
-- `observability-designer` - 可观测性设计
-- `network-bgp-diagnostics` - BGP 诊断
-- `netmiko-ssh-automation` - SSH 自动化
+- `observability-readiness` - Observability-Readiness
+- `observability-designer` - Observability-Design
+- `network-bgp-diagnostics` - BGP-Diagnose
+- `netmiko-ssh-automation` - SSH-Automatisierung

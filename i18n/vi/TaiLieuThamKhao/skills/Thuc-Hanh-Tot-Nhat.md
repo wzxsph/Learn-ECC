@@ -1,74 +1,74 @@
-# 最佳实践
+# Thực hành tốt nhất
 
-本部分涵盖编码标准、错误处理和通用开发最佳实践。
+Phần này bao gồm các tiêu chuẩn mã hóa, xử lý lỗi và thực hành phát triển chung.
 
 ---
 
-## 编码标准
+## Tiêu chuẩn mã hóa
 
-### 用途说明
-跨项目适用的基线编码约定，包括命名、可读性、不可变性和代码质量审查。
+### Mô tả sử dụng
+Các quy ước mã hóa cơ sở áp dụng cross-project, bao gồm đặt tên, khả năng đọc, tính bất biến và kiểm tra chất lượng mã.
 
-### 使用时机
-- 启动新项目或模块
-- 审查代码质量和可维护性
-- 重构现有代码遵循约定
-- 强制命名、格式或结构一致性
-- 设置linting、格式化或类型检查规则
-- 纳入新贡献者编码约定
+### Thời điểm sử dụng
+- Khởi tạo dự án hoặc module mới
+- Kiểm tra chất lượng mã và khả năng bảo trì
+- Tái cấu trúc mã hiện có theo quy ước
+- Ép buộc tính nhất quán về đặt tên, format hoặc cấu trúc
+- Thiết lập quy tắc linting, formatting hoặc kiểm tra loại
+- Đưa vào contributor mới các quy ước mã hóa
 
-### 核心原则
+### Nguyên tắc cốt lõi
 
-**1. 可读性优先**
-- 代码阅读次数多于编写次数
-- 清晰的变量和函数名称
-- 优先使用自文档化代码而非注释
-- 一致的格式化
+**1. Khả năng đọc là ưu tiên hàng đầu**
+- Mã được đọc nhiều hơn được viết
+- Tên biến và hàm rõ ràng
+- Ưu tiên self-documenting code hơn comments
+- Format nhất quán
 
-**2. KISS原则**
-- 保持简单，不要过度设计
-- 避免过早优化
-- 容易理解 > 聪明的代码
+**2. Nguyên tắc KISS**
+- Giữ đơn giản, không over-engineering
+- Tránh tối ưu hóa sớm
+- Dễ hiểu > mã thông minh
 
-**3. DRY原则**
-- 提取公共逻辑到函数
-- 创建可复用组件
-- 跨模块共享工具
-- 避免复制粘贴编程
+**3. Nguyên tắc DRY**
+- Trích xuất logic chung thành hàm
+- Tạo component có thể tái sử dụng
+- Chia sẻ utility giữa các module
+- Tránh copy-paste programming
 
-**4. YAGNI原则**
-- 不构建尚未需要的特性
-- 避免 speculative generality
-- 仅在需要时添加复杂性
-- 先简单，必要时重构
+**4. Nguyên tắc YAGNI**
+- Không xây dựng tính năng chưa cần
+- Tránh speculative generality
+- Chỉ thêm độ phức tạp khi cần
+- Bắt đầu đơn giản, tái cấu trúc khi cần
 
-### TypeScript/JavaScript标准
+### Tiêu chuẩn TypeScript/JavaScript
 
 ```typescript
-// 好：描述性名称
+// Tốt: Tên có mô tả
 const marketSearchQuery = 'election'
 const isUserAuthenticated = true
 const totalRevenue = 1000
 
-// 不好：不清晰的名称
+// Không tốt: Tên không rõ ràng
 const q = 'election'
 const flag = true
 const x = 1000
 
-// 好：动词-名词模式
+// Tốt: Mẫu động từ-danh từ
 async function fetchMarketData(marketId: string) { }
 function calculateSimilarity(a: number[], b: number[]) { }
 function isValidEmail(email: string): boolean { }
 
-// 好：使用展开运算符的不可变性
+// Tốt: Tính bất biến với spread operator
 const updatedUser = { ...user, name: 'New Name' }
 const updatedArray = [...items, newItem]
 
-// 不好：永远不要直接修改
-user.name = 'New Name'  // 不好
-items.push(newItem)     // 不好
+// Không tốt: Không bao giờ sửa đổi trực tiếp
+user.name = 'New Name'  // Không tốt
+items.push(newItem)     // Không tốt
 
-// 好：全面的错误处理
+// Tốt: Xử lý lỗi toàn diện
 async function fetchData(url: string) {
   try {
     const response = await fetch(url)
@@ -82,7 +82,7 @@ async function fetchData(url: string) {
   }
 }
 
-// 好：尽可能并行执行
+// Tốt: Thực thi song song khi có thể
 const [users, markets, stats] = await Promise.all([
   fetchUsers(),
   fetchMarkets(),
@@ -90,10 +90,10 @@ const [users, markets, stats] = await Promise.all([
 ])
 ```
 
-### React最佳实践
+### Thực hành tốt nhất React
 
 ```typescript
-// 好：带类型的函数组件
+// Tốt: Function component có loại
 interface ButtonProps {
   children: React.ReactNode
   onClick: () => void
@@ -109,7 +109,7 @@ export function Button({ children, onClick, disabled = false, variant = 'primary
   )
 }
 
-// 好：自定义Hook
+// Tốt: Custom Hook
 export function useDebounce<T>(value: T, delay: number): T {
   const [debouncedValue, setDebouncedValue] = useState<T>(value)
 
@@ -123,24 +123,24 @@ export function useDebounce<T>(value: T, delay: number): T {
   return debouncedValue
 }
 
-// 好：适当的状态更新
+// Tốt: Cập nhật state phù hợp
 const [count, setCount] = useState(0)
-// 状态基于前一个状态时使用函数式更新
+// Sử dụng functional update khi state phụ thuộc vào state trước đó
 setCount(prev => prev + 1)
 ```
 
-### API设计标准
+### Tiêu chuẩn thiết kế API
 
 ```typescript
-// REST API约定
-GET    /api/markets              // 列出所有市场
-GET    /api/markets/:id          // 获取特定市场
-POST   /api/markets              // 创建新市场
-PUT    /api/markets/:id          // 更新市场（完整）
-PATCH  /api/markets/:id          // 更新市场（部分）
-DELETE /api/markets/:id          // 删除市场
+// Quy ước REST API
+GET    /api/markets              // Liệt kê tất cả thị trường
+GET    /api/markets/:id          // Lấy thị trường cụ thể
+POST   /api/markets              // Tạo thị trường mới
+PUT    /api/markets/:id          // Cập nhật thị trường (toàn bộ)
+PATCH  /api/markets/:id          // Cập nhật thị trường (một phần)
+DELETE /api/markets/:id          // Xóa thị trường
 
-// 好：一致的响应结构
+// Tốt: Cấu trúc response nhất quán
 interface ApiResponse<T> {
   success: boolean
   data?: T
@@ -148,7 +148,7 @@ interface ApiResponse<T> {
   meta?: { total: number; page: number; limit: number }
 }
 
-// 好：Schema验证
+// Tốt: Schema validation
 import { z } from 'zod'
 
 const CreateMarketSchema = z.object({
@@ -161,7 +161,7 @@ export async function POST(request: Request) {
   const body = await request.json()
   try {
     const validated = CreateMarketSchema.parse(body)
-    // 使用验证后的数据继续
+    // Tiếp tục với dữ liệu đã validated
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json({ success: false, error: 'Validation failed', details: error.errors }, { status: 400 })
@@ -170,77 +170,77 @@ export async function POST(request: Request) {
 }
 ```
 
-### 代码异味检测
+### Phát hiện mùi mã
 
 ```typescript
-// 不好：长函数（>50行）
+// Không tốt: Hàm dài (>50 dòng)
 function processMarketData() {
-  // 100行代码
+  // 100 dòng code
 }
 
-// 好：拆分为更小的函数
+// Tốt: Tách thành các hàm nhỏ hơn
 function processMarketData() {
   const validated = validateData()
   const transformed = transformData(validated)
   return saveData(transformed)
 }
 
-// 不好：深层嵌套（5+层）
+// Không tốt: Lồng ghép sâu (5+ tầng)
 if (user) {
   if (user.isAdmin) {
     if (market) {
       if (market.isActive) {
         if (hasPermission) {
-          // 做某事
+          // Làm gì đó
         }
       }
     }
   }
 }
 
-// 好：早期返回
+// Tốt: Early return
 if (!user) return
 if (!user.isAdmin) return
 if (!market) return
 if (!market.isActive) return
 if (!hasPermission) return
-// 做某事
+// Làm gì đó
 
-// 不好：魔术数字
+// Không tốt: Số ma thuật
 if (retryCount > 3) { }
 setTimeout(callback, 500)
 
-// 好：命名常量
+// Tốt: Hằng số có tên
 const MAX_RETRIES = 3
 const DEBOUNCE_DELAY_MS = 500
 ```
 
 ---
 
-## 错误处理
+## Xử lý lỗi
 
-### 用途说明
-跨TypeScript、Python和Go的健壮错误处理模式，包括类型化错误、错误边界、重试、断路器和用户友好错误消息。
+### Mô tả sử dụng
+Các pattern xử lý lỗi mạnh mẽ cross-TypeScript, Python và Go, bao gồm lỗi có loại, error boundaries, retry, circuit breaker và thông báo lỗi thân thiện với người dùng.
 
-### 使用时机
-- 为新模块或服务设计错误类型或异常层次结构
-- 为不可靠的外部依赖添加重试逻辑或断路器
-- 审查API端点是否缺少错误处理
-- 实现用户友好错误消息和反馈
-- 调试级联失败或静默错误吞并
+### Thời điểm sử dụng
+- Thiết kế loại lỗi hoặc exception hierarchy cho module hoặc service mới
+- Thêm retry logic hoặc circuit breaker cho external dependencies không đáng tin cậy
+- Kiểm tra endpoint API có xử lý lỗi thiếu
+- Triển khai thông báo lỗi thân thiện với người dùng và feedback
+- Debug cascading failures hoặc lỗi bị nuốt âm thầm
 
-### 核心原则
+### Nguyên tắc cốt lõi
 
-1. **快速失败并大声** - 在边界处暴露错误
-2. **类型化错误优于字符串消息** - 错误是一等公民，有结构
-3. **用户消息 ≠ 开发者消息** - 向用户显示友好文本，服务器端记录完整上下文
-4. **永远不静默吞并错误** - 每个`catch`块必须处理、重新抛出或记录
-5. **错误是API合约的一部分** - 记录客户端可能收到的每个错误码
+1. **Fail nhanh và to tiếng** - Phơi lỗi ở ranh giới
+2. **Lỗi có loại tốt hơn chuỗi thông báo** - Lỗi là công dân hạng nhất, có cấu trúc
+3. **Thông báo người dùng ≠ thông báo developer** - Hiển thị text thân thiện cho người dùng, server-side ghi log context đầy đủ
+4. **Không bao giờ nuốt lỗi âm thầm** - Mỗi `catch` block phải xử lý, re-throw hoặc ghi log
+5. **Lỗi là một phần của hợp đồng API** - Ghi lại mỗi error code client có thể nhận
 
-### TypeScript错误处理
+### Xử lý lỗi TypeScript
 
 ```typescript
-// 类型化错误类
+// Lớp lỗi có loại
 export class AppError extends Error {
   constructor(
     message: string,
@@ -266,7 +266,7 @@ export class ValidationError extends AppError {
   }
 }
 
-// Result模式
+// Mẫu Result
 type Result<T, E = AppError> =
   | { ok: true; value: T }
   | { ok: false; error: E }
@@ -281,7 +281,7 @@ async function fetchUser(id: string): Promise<Result<User>> {
   }
 }
 
-// API错误处理器
+// API error handler
 function handleApiError(error: unknown): NextResponse {
   if (error instanceof AppError) {
     return NextResponse.json(
@@ -297,10 +297,10 @@ function handleApiError(error: unknown): NextResponse {
 }
 ```
 
-### Python错误处理
+### Xử lý lỗi Python
 
 ```python
-# 自定义异常层次结构
+# Exception hierarchy tùy chỉnh
 class AppError(Exception):
     def __init__(self, message: str, code: str, status_code: int = 500):
         super().__init__(message)
@@ -316,7 +316,7 @@ class ValidationError(AppError):
         super().__init__(message, "VALIDATION_ERROR", 422)
         self.details = details or []
 
-# FastAPI全局异常处理器
+# FastAPI global exception handler
 @app.exception_handler(AppError)
 async def app_error_handler(request: Request, exc: AppError) -> JSONResponse:
     return JSONResponse(
@@ -329,21 +329,21 @@ async def generic_error_handler(request: Request, exc: Exception) -> JSONRespons
     logger.exception("Unexpected error")
     return JSONResponse(
         status_code=500,
-        content={"error": {"code": "INTERNAL_ERROR", "message": "An unexpected error occurred"}},
+        content={"error": {"code: "INTERNAL_ERROR", "message": "An unexpected error occurred"}},
     )
 ```
 
-### Go错误处理
+### Xử lý lỗi Go
 
 ```go
-// 哨兵错误
+// Sentinel errors
 var (
     ErrNotFound    = errors.New("not found")
     ErrUnauthorized = errors.New("unauthorized")
     ErrConflict     = errors.New("conflict")
 )
 
-// 用上下文包装错误
+// Wrap error với context
 func (r *UserRepository) FindByID(ctx context.Context, id string) (*User, error) {
     user, err := r.db.QueryRow(ctx, "SELECT * FROM users WHERE id = $1", id)
     if errors.Is(err, sql.ErrNoRows) {
@@ -355,7 +355,7 @@ func (r *UserRepository) FindByID(ctx context.Context, id string) (*User, error)
     return user, nil
 }
 
-// 在处理器级别展开确定响应
+// Unwrap ở handler level để xác định response
 func (h *Handler) GetUser(w http.ResponseWriter, r *http.Request) {
     user, err := h.service.GetUser(r.Context(), chi.URLParam(r, "id"))
     if err != nil {
@@ -374,7 +374,7 @@ func (h *Handler) GetUser(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-### 指数退避重试
+### Retry exponential backoff
 
 ```typescript
 interface RetryOptions {
@@ -385,28 +385,28 @@ interface RetryOptions {
 }
 
 async function withRetry<T>(fn: () => Promise<T>, options: RetryOptions = {}): Promise<T> {
-  const { maxAttempts = 3, baseDelayMs = 500, maxDelayMs = 10_000, retryIf = () => true } = options
+  const { maxAttempts = 3, baseDelayMs = 500, maxDelayMs = 10_000, retryIf = () => true } = options;
 
-  let lastError: unknown
+  let lastError: unknown;
 
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     try {
-      return await fn()
+      return await fn();
     } catch (error) {
-      lastError = error
-      if (attempt === maxAttempts || !retryIf(error)) throw error
+      lastError = error;
+      if (attempt === maxAttempts || !retryIf(error)) throw error;
 
-      const jitter = Math.random() * baseDelayMs
-      const delay = Math.min(baseDelayMs * 2 ** (attempt - 1) + jitter, maxDelayMs)
-      await new Promise(resolve => setTimeout(resolve, delay))
+      const jitter = Math.random() * baseDelayMs;
+      const delay = Math.min(baseDelayMs * 2 ** (attempt - 1) + jitter, maxDelayMs);
+      await new Promise(resolve => setTimeout(resolve, delay));
     }
   }
 
-  throw lastError
+  throw lastError;
 }
 ```
 
-### 用户友好错误消息
+### Thông báo lỗi thân thiện với người dùng
 
 ```typescript
 const USER_ERROR_MESSAGES: Record<string, string> = {
@@ -419,66 +419,66 @@ const USER_ERROR_MESSAGES: Record<string, string> = {
 }
 
 export function getUserMessage(code: string): string {
-  return USER_ERROR_MESSAGES[code] ?? USER_ERROR_MESSAGES.INTERNAL_ERROR
+  return USER_ERROR_MESSAGES[code] ?? USER_ERROR_MESSAGES.INTERNAL_ERROR;
 }
 ```
 
-### 错误处理检查清单
+### Checklist xử lý lỗi
 
-- [ ] 每个`catch`块处理、重新抛出或记录 - 无静默吞并
-- [ ] API错误遵循标准信封`{ error: { code, message } }`
-- [ ] 用户可见消息不包含堆栈跟踪或内部细节
-- [ ] 完整错误上下文在服务器端记录
-- [ ] 自定义错误类扩展带有`code`字段的基`AppError`
-- [ ] 异步函数将错误传递给调用者 - 无fire-and-forget
-- [ ] 重试逻辑仅重试可重试错误（非4xx客户端错误）
-- [ ] React组件包装在`ErrorBoundary`中处理渲染错误
-
----
-
-## 相关技能
-
-| 技能 | 用途 |
-|------|------|
-| `python-patterns` | Python惯用模式和最佳实践 |
-| `golang-patterns` | Go惯用模式和最佳实践 |
-| `rust-patterns` | Rust惯用模式和最佳实践 |
-| `kotlin-patterns` | Kotlin惯用模式和最佳实践 |
-| `cpp-coding-standards` | C++编码标准和最佳实践 |
-| `tdd-workflow` | 测试驱动开发工作流 |
-| `security-review` | 安全审查检查清单 |
+- [ ] Mỗi `catch` block xử lý, re-throw hoặc ghi log - không nuốt âm thầm
+- [ ] Lỗi API tuân theo envelope chuẩn `{ error: { code, message } }`
+- [ ] Thông báo nhìn thấy với người dùng không chứa stack trace hoặc chi tiết nội bộ
+- [ ] Context lỗi đầy đủ được ghi log server-side
+- [ ] Lớp lỗi tùy chỉnh mở rộng `AppError` base với trường `code`
+- [ ] Hàm async chuyển lỗi cho caller - không fire-and-forget
+- [ ] Retry logic chỉ retry các lỗi có thể retry (không phải 4xx client errors)
+- [ ] React component bọc trong `ErrorBoundary` để xử lý lỗi render
 
 ---
 
-## 自主代理与循环系统
+## Skills liên quan
+
+| Skill | Mục đích |
+|------|----------|
+| `python-patterns` | Python idiomatic patterns và thực hành tốt nhất |
+| `golang-patterns` | Go idiomatic patterns và thực hành tốt nhất |
+| `rust-patterns` | Rust idiomatic patterns và thực hành tốt nhất |
+| `kotlin-patterns` | Kotlin idiomatic patterns và thực hành tốt nhất |
+| `cpp-coding-standards` | Tiêu chuẩn mã hóa C++ và thực hành tốt nhất |
+| `tdd-workflow` | Quy trình phát triển test-driven |
+| `security-review` | Checklist kiểm tra bảo mật |
+
+---
+
+## Hệ thống Agent và Loop tự trị
 
 ### autonomous-agent-harness
 
-**用途**: 将 Claude Code 转变为完全自主的代理系统
+**Mục đích**: Biến Claude Code thành hệ thống agent hoàn toàn tự trị
 
-**核心功能**:
-- 持久化内存存储
-- 定时任务调度（类似 cron）
-- 远程代理触发（Dispatch）
-- 计算机控制（Computer Use）
-- 任务队列管理
+**Chức năng chính**:
+- Lưu trữ bộ nhớ persistence
+- Lập lịch tác vụ định kỳ (giống cron)
+- Trigger agent từ xa (Dispatch)
+- Điều khiển máy tính (Computer Use)
+- Quản lý hàng đợi tác vụ
 
-**使用时机**:
-- 用户想要连续自主操作或定时任务
-- 需要构建跨会话记忆的个人 AI 助手
-- 需要复制 Hermes、AutoGPT 等自主代理框架功能
-- 需要计算机控制与定时执行结合
+**Thời điểm sử dụng**:
+- Khi người dùng muốn thao tác tự trị liên tục hoặc định kỳ
+- Khi cần xây dựng AI assistant cá nhân cross-session memory
+- Khi cần tái tạo chức năng autonomous agent framework như Hermes, AutoGPT
+- Khi cần kết hợp điều khiển máy tính với thực thi định kỳ
 
-**架构组件**:
-| 组件 | 说明 |
-|------|------|
-| Crons | 定时任务调度 |
-| Dispatch | 远程触发代理 |
-| Memory | 持久化内存存储 |
-| Computer Use | 浏览器和桌面控制 |
+**Các thành phần kiến trúc**:
+| Thành phần | Mô tả |
+|------|----------|
+| Crons | Lập lịch tác vụ định kỳ |
+| Dispatch | Trigger agent từ xa |
+| Memory | Lưu trữ bộ nhớ persistence |
+| Computer Use | Điều khiển trình duyệt và desktop |
 
-**替代 Hermes 的对应关系**:
-| Hermes | ECC 等价物 |
+**Bảng tương đương thay thế Hermes**:
+| Hermes | Tương đương ECC |
 |--------|-----------|
 | Gateway/Router | Claude Code dispatch + crons |
 | Memory System | Claude memory + MCP memory server |
@@ -490,30 +490,29 @@ export function getUserMessage(code: string): string {
 
 ### autonomous-loops
 
-**用途**: 自主循环模式和架构 - 从简单顺序管道到 RFC 驱动的多代理 DAG 系统
+**Mục đích**: Mẫu loop tự trị và kiến trúc - từ simple sequential pipeline đến hệ thống DAG đa agent RFC-driven
 
-**循环模式谱系**:
-| 模式 | 复杂度 | 适用场景 |
+**Phổ mẫu loop**:
+| Mẫu | Độ phức tạp | Kịch bản sử dụng |
 |------|--------|----------|
-| Sequential Pipeline | 低 | 日常开发步骤、脚本化工作流 |
-| NanoClaw REPL | 低 | 交互式持久会话 |
-| Infinite Agentic Loop | 中 | 并行内容生成、规范驱动工作 |
-| Continuous Claude PR Loop | 中 | 多日迭代项目，CI 门禁 |
-| De-Sloppify Pattern | 附加 | 任何 Implementer 步骤后的质量清理 |
-| Ralphinho / RFC-Driven DAG | 高 | 大型功能、多单元并行工作与合并队列 |
+| Sequential Pipeline | Thấp | Các bước phát triển hàng ngày, workflow script |
+| NanoClaw REPL | Thấp | Phiên persistence tương tác |
+| Infinite Agentic Loop | Trung bình | Tạo nội dung song song, work theo spec |
+| Continuous Claude PR Loop | Trung bình | Dự án multi-ngày, CI gates |
+| De-Sloppify Pattern | Bổ sung | Cleanup/refactor sau bất kỳ bước Implementer nào |
+| Ralphinho / RFC-Driven DAG | Cao | Tính năng lớn, multi-unit parallel work với merge queue |
 
-**使用时机**:
-- 设置自主开发工作流
-- 选择合适的循环架构
-- 构建 CI/CD 风格的持续开发管道
-- 运行带合并协调的并行代理
+**Thời điểm sử dụng**:
+- Thiết lập workflow phát triển tự trị
+- Chọn kiến trúc loop phù hợp
+- Xây dựng CI/CD pipeline phát triển liên tục
+- Chạy parallel agent với điều phối merge
 
-**关键模式**:
+**Các mẫu chính**:
 
-1. **Sequential Pipeline** - 简单的 `claude -p` 管道
-2. **NanoClaw REPL** - 内置持久化循环，session-aware
-3. **Infinite Agentic Loop** - 规范驱动的并行生成
-4. **Continuous Claude PR Loop** - 生产级 shell 脚本，自动创建 PR、等待 CI、自动合并
-5. **De-Sloppify Pattern** - 添加专门的清理/重构步骤
-6. **Ralphinho** - RFC 驱动的多代理 DAG 编排
-
+1. **Sequential Pipeline** - `claude -p` pipeline đơn giản
+2. **NanoClaw REPL** - Loop persistence với session-aware tích hợp
+3. **Infinite Agentic Loop** - Tạo song song theo spec
+4. **Continuous Claude PR Loop** - Script shell production-grade, tự động tạo PR, đợi CI, auto-merge
+5. **De-Sloppify Pattern** - Thêm bước cleanup/refactor chuyên dụng sau Implementer
+6. **Ralphinho** - RFC-driven multi-agent DAG orchestration

@@ -1,22 +1,22 @@
-# 开发工具链技能
+# Entwicklung-Toolchain-Faehigkeiten
 
-本部分涵盖开发工具、测试、监控、日志等工程实践技能。
+Dieser Abschnitt behandelt Entwicklungstools, Testing, Monitoring, Logging und andere Engineering-Praxis-Faehigkeiten.
 
 ---
 
-## 测试工具
+## Test-Tools
 
 ### pytest
 
-**用途**: Python pytest 测试框架
+**Zweck**: Python pytest Test-Framework
 
-**核心功能**:
-- Fixture 系统
-- 参数化测试
-- 标记与跳过
-- 覆盖率集成
+**Kernfunktionen**:
+- Fixture-System
+- Parametrisierte Tests
+- Markierungen und Ueberspringen
+- Abdeckungsintegration
 
-**示例**:
+**Beispiel**:
 ```python
 import pytest
 
@@ -40,48 +40,48 @@ def test_with_db(database):
 
 ### jest
 
-**用途**: JavaScript Jest 测试框架
+**Zweck**: JavaScript Jest Test-Framework
 
-**核心功能**:
-- 快照测试
-- 模拟函数
-- 异步测试
-- 覆盖率
+**Kernfunktionen**:
+- Snapshot-Tests
+- Mock-Funktionen
+- Asynchrone Tests
+- Abdeckung
 
 ### rspec
 
-**用途**: Ruby RSpec 测试框架
+**Zweck**: Ruby RSpec Test-Framework
 
-**核心概念**:
-- 描述上下文
-- 匹配器
-- 模拟与存根
-- 共享示例
+**Kernkonzepte**:
+- Describe-Context
+- Matcher
+- Mocks und Stubs
+- Shared Examples
 
 ### minitest
 
-**用途**: Ruby Minitest
+**Zweck**: Ruby Minitest
 
-**特点**:
-- 轻量级
-- 多种风格支持
-- 基准测试
+**Eigenschaften**:
+- Leichtgewichtig
+- Mehrere Stilunterstuetzung
+- Benchmarking
 
 ---
 
-## 浏览器自动化
+## Browser-Automatisierung
 
 ### playwright
 
-**用途**: Playwright E2E 测试
+**Zweck**: Playwright E2E-Tests
 
-**核心功能**:
-- 多浏览器支持
-- 自动等待
-- 网络拦截
-- 追踪录制
+**Kernfunktionen**:
+- Multi-Browser-Unterstuetzung
+- Automatisches Warten
+- Netzwerk-Intercept
+- Trace-Aufzeichnung
 
-**示例**:
+**Beispiel**:
 ```typescript
 import { test, expect } from '@playwright/test';
 
@@ -96,47 +96,47 @@ test('login flow', async ({ page }) => {
 
 ### puppeteer
 
-**用途**: Puppeteer 浏览器自动化
+**Zweck**: Puppeteer Browser-Automatisierung
 
-**用途**:
-- 网页截图
-- PDF 生成
-- 爬虫
-- UI 测试
+**Verwendung**:
+- Web-Screenshots
+- PDF-Generierung
+- Web-Scraping
+- UI-Tests
 
 ### selenium
 
-**用途**: Selenium WebDriver
+**Zweck**: Selenium WebDriver
 
-**特点**:
-- 多语言支持
-- 多浏览器支持
-- 分布式执行
+**Eigenschaften**:
+- Multi-Sprache-Unterstuetzung
+- Multi-Browser-Unterstuetzung
+- Verteilte Ausfuehrung
 
 ### monkey-testing
 
-**用途**: 猴子测试
+**Zweck**: Monkey-Testing
 
-**工具**:
+**Tools**:
 - Firebase Test Lab
 - Monkey (Android)
 - UI AutoMonkey (iOS)
 
 ---
 
-## 代码质量
+## Code-Qualitaet
 
 ### eslint
 
-**用途**: ESLint 代码检查
+**Zweck**: ESLint Code-Linting
 
-**核心概念**:
-- 规则配置
-- 插件开发
-- 自动修复
-- 配置继承
+**Kernkonzepte**:
+- Regelkonfiguration
+- Plugin-Entwicklung
+- Automatische Korrektur
+- Konfigurationsvererbung
 
-**示例**:
+**Beispiel**:
 ```json
 {
   "rules": {
@@ -149,42 +149,42 @@ test('login flow', async ({ page }) => {
 
 ### prettier
 
-**用途**: Prettier 代码格式化
+**Zweck**: Prettier Code-Formatierung
 
-**特点**:
-- opinionated 格式化
-- 多语言支持
-- 集成 ESLint
+**Eigenschaften**:
+- Opinionated Formatierung
+- Multi-Sprache-Unterstuetzung
+- ESLint-Integration
 
 ### semgrep
 
-**用途**: Semgrep 静态分析
+**Zweck**: Semgrep Statische Analyse
 
-**用途**:
-- 安全漏洞检测
-- 代码味道检测
-- 自定义规则
+**Verwendung**:
+- Sicherheitsluecken-Erkennung
+- Code-Smell-Erkennung
+- Benutzerdefinierte Regeln
 
 ### code-review
 
-**用途**: 代码审查流程
+**Zweck**: Code-Review-Prozess
 
-**审查要点**:
-- 代码可读性
-- 逻辑正确性
-- 安全性
-- 性能
-- 测试覆盖
+**Pruefpunkte**:
+- Code-Lesbarkeit
+- Logik-Korrektheit
+- Sicherheit
+- Performance
+- Testabdeckung
 
 ---
 
-## 调试与追踪
+## Debugging und Tracing
 
 ### debugging
 
-**用途**: 调试技术
+**Zweck**: Debugging-Techniken
 
-**工具**:
+**Tools**:
 - Chrome DevTools
 - VS Code Debugger
 - GDB
@@ -192,19 +192,19 @@ test('login flow', async ({ page }) => {
 
 ### troubleshooting
 
-**用途**: 问题排查
+**Zweck**: Problemloesung
 
-**方法论**:
-- 二分查找
-- 日志分析
-- 指标监控
-- 链路追踪
+**Methodik**:
+- Binaere Suche
+- Log-Analyse
+- Metrik-Monitoring
+- Distributed Tracing
 
 ### profiling
 
-**用途**: 性能分析
+**Zweck**: Performance-Analyse
 
-**工具**:
+**Tools**:
 - Chrome Performance
 - Node Clinic
 - Python cProfile
@@ -212,9 +212,9 @@ test('login flow', async ({ page }) => {
 
 ### benchmarking
 
-**用途**: 基准测试
+**Zweck**: Benchmarking
 
-**工具**:
+**Tools**:
 - k6
 - Apache Bench
 - JMeter
@@ -226,15 +226,15 @@ test('login flow', async ({ page }) => {
 
 ### github-actions
 
-**用途**: GitHub Actions CI/CD
+**Zweck**: GitHub Actions CI/CD
 
-**核心概念**:
-- Workflow 配置
-- Action 市场
-- 矩阵构建
-- 缓存
+**Kernkonzepte**:
+- Workflow-Konfiguration
+- Action-Marktplatz
+- Matrix-Builds
+- Caching
 
-**示例**:
+**Beispiel**:
 ```yaml
 name: CI
 on: [push, pull_request]
@@ -252,38 +252,38 @@ jobs:
 
 ### gitlab-ci
 
-**用途**: GitHub CI/CD
+**Zweck**: GitLab CI/CD
 
-**核心概念**:
-- Pipeline 配置
+**Kernkonzepte**:
+- Pipeline-Konfiguration
 - Runner
-- 缓存与 artifacts
-- 部署策略
+- Caching und Artifacts
+- Deployment-Strategien
 
 ### jenkins
 
-**用途**: Jenkins 持续集成
+**Zweck**: Jenkins Continous Integration
 
-**特性**:
-- 插件生态
-- 分布式构建
-- 流水线即代码
+**Eigenschaften**:
+- Plugin-Oekosystem
+- Verteilte Builds
+- Pipeline-as-Code
 
 ---
 
-## 日志管理
+## Log-Verwaltung
 
 ### logging-best-practices
 
-**用途**: 日志最佳实践
+**Zweck**: Logging-Best-Practices
 
-**核心原则**:
-- 结构化日志 (JSON)
-- 日志级别
-- 上下文信息
-- 采样策略
+**Kernprinzipien**:
+- Strukturiertes Logging (JSON)
+- Log-Level
+- Kontextinformationen
+- Sampling-Strategie
 
-**工具**:
+**Tools**:
 - ELK Stack
 - Loki
 - Splunk
@@ -291,88 +291,88 @@ jobs:
 
 ### centralized-logging
 
-**用途**: 集中式日志
+**Zweck**: Zentralisiertes Logging
 
-**架构**:
-- 日志收集 (Fluentd, Filebeat)
-- 日志存储 (Elasticsearch)
-- 日志可视化 (Kibana, Grafana)
+**Architektur**:
+- Log-Sammlung (Fluentd, Filebeat)
+- Log-Speicherung (Elasticsearch)
+- Log-Visualisierung (Kibana, Grafana)
 
 ---
 
-## 监控告警
+## Monitoring und Alarme
 
 ### prometheus
 
-**用途**: Prometheus 监控
+**Zweck**: Prometheus Monitoring
 
-**核心概念**:
-- 拉取模型
+**Kernkonzepte**:
+- Pull-Modell
 - PromQL
-- 告警规则
-- 服务发现
+- Alarm-Regeln
+- Service-Discovery
 
 ### alertmanager
 
-**用途**: Alertmanager 告警
+**Zweck**: Alertmanager Alarme
 
-**功能**:
-- 告警分组
-- 抑制
-- 静默
-- 路由
+**Funktionen**:
+- Alarm-Gruppierung
+- Inhibition
+- Stille
+- Routing
 
 ### grafana
 
-**用途**: Grafana 可视化
+**Zweck**: Grafana Visualisierung
 
-**用途**:
-- 指标仪表板
-- 告警规则
-- 数据源集成
+**Verwendung**:
+- Metrik-Dashboards
+- Alarm-Regeln
+- Datenquellen-Integration
 
 ---
 
-## 文档工具
+## Dokumentations-Tools
 
 ### swagger
 
-**用途**: Swagger API 文档
+**Zweck**: Swagger API-Dokumentation
 
-**工具**:
+**Tools**:
 - Swagger UI
 - OpenAPI Generator
 - Swagger Editor
 
 ### postman
 
-**用途**: Postman API 测试
+**Zweck**: Postman API-Tests
 
-**功能**:
-- 集合管理
-- 环境变量
-- 自动化测试
-- Mock Server
+**Funktionen**:
+- Sammlungsverwaltung
+- Umgebungsvariablen
+- Automatisierte Tests
+- Mock-Server
 
 ### redoc
 
-**用途**: ReDoc API 文档
+**Zweck**: ReDoc API-Dokumentation
 
-**特点**:
-- OpenAPI 支持
-- 响应式设计
-- 主题定制
+**Eigenschaften**:
+- OpenAPI-Unterstuetzung
+- Responsive Design
+- Theme-Anpassung
 
 ---
 
-## 相关技能
+## Zugehoerige Faehigkeiten
 
-| 技能 | 用途 |
+| Faehigkeit | Verwendungszweck |
 |------|------|
-| `pytest` | Python 测试 |
-| `playwright` | E2E 测试 |
-| `eslint` | 代码检查 |
-| `semgrep` | 静态分析 |
+| `pytest` | Python-Tests |
+| `playwright` | E2E-Tests |
+| `eslint` | Code-Linting |
+| `semgrep` | Statische Analyse |
 | `github-actions` | CI/CD |
-| `prometheus` | 监控 |
-| `grafana` | 可视化 |
+| `prometheus` | Monitoring |
+| `grafana` | Visualisierung |

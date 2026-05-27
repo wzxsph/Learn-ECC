@@ -1,180 +1,87 @@
-# Executor-de-Testes
+# Executor de Testes
 
-本文档介绍 ECC 项目的测试结构和运行方式。
+## Visão Geral
 
-## 测试入口
+O executor de testes ECC é um framework de teste personalizado baseado em Node.js usado para validar funcionalidades do ECC.
 
-**路径**: `tests/run-all.js`
+## Estrutura de Testes
 
-集中式Executor-de-Testes,自动发现并运行所有测试文件。
+### Localização dos Testes
 
-### 使用方法
-
-```bash
-# 运行所有测试
-node tests/run-all.js
-
-# 运行单个测试文件
-node tests/lib/utils.test.js
-node tests/hooks/hooks.test.js
-```
-
-### 测试文件发现
-
-Executor-de-Testes通过 glob 模式 `tests/**/*.test.js` 自动发现测试文件。
-
-规则:
-- 文件必须位于 `tests/` 目录下
-- 文件名必须以 `.test.js` 结尾
-- 目录结构会被保留用于显示
-
-### 输出格式
-
-```
-╔══════════════════════════════════════════════════════════╗
-║           Everything Claude Code - Test Suite             ║
-╚══════════════════════════════════════════════════════════╝
-
-━━━ Running lib/utils.test.js ━━━
-(测试输出...)
-━━━ Running hooks/hooks.test.js ━━━
-(测试输出...)
-
-╔══════════════════════════════════════════════════════════╗
-║                     Final Results                        ║
-╠══════════════════════════════════════════════════════════╣
-║  Total Tests:    42                                      ║
-║  Passed:         42  ✓                                   ║
-║  Failed:         0                                        ║
-╚══════════════════════════════════════════════════════════╝
-```
-
-### 测试统计
-
-Executor-de-Testes会解析每个测试文件的输出来汇总统计:
-- `Passed: <数量>`
-- `Failed: <数量>`
-
----
-
-## 测试结构
-
-### 目录布局
+Os testes estão localizados no diretório `tests/` com a seguinte estrutura:
 
 ```
 tests/
-├── run-all.js              # 主Executor-de-Testes
-├── lib/                    # 库工具测试
-│   ├── utils.test.js
-│   ├── package-manager.test.js
-│   └── ...
-├── hooks/                  # Hook 集成测试
-│   └── hooks.test.js
-├── integration/            # 集成测试
-├── scripts/                # 脚本测试
-├── commands/               # 命令测试
-├── docs/                   # 文档测试
-├── opencode-config.test.js
-├── plugin-manifest.test.js
-├── test_*.py               # Python 测试
-└── conftest.py             # pytest 配置
+├── run-all.js          # Script principal que executa todos os testes
+├── unit/               # Testes unitários
+├── integration/        # Testes de integração
+└── e2e/               # Testes end-to-end
 ```
 
-### 测试类型
-
-1. **单元测试** (`*.test.js`)
-   - 测试独立函数和工具
-   - 使用 Node.js 原生 assert 或 Jest 风格
-
-2. **集成测试** (`tests/integration/`)
-   - 测试多个组件协作
-   - 测试钩子完整流程
-
-3. **Python 测试** (`test_*.py`)
-   - pytest 格式的 Python 测试
-   - 使用 `conftest.py` 配置
-
----
-
-## 测试配置
-
-### Node.js 测试
-
-测试文件使用标准的 Node.js assert 模块:
-
-```javascript
-const assert = require('assert');
-
-test('example test', () => {
-  assert.strictEqual(actual, expected, 'Optional message');
-});
-```
-
-### Python 测试 (pytest)
-
-位置: `tests/conftest.py`
-
-pytest 配置文件,提供共享的 fixtures 和配置。
+### Executar Todos os Testes
 
 ```bash
-# 运行 Python 测试
-python -m pytest tests/
-
-# 运行特定测试
-python -m pytest tests/test_builder.py
+node tests/run-all.js
 ```
 
----
+### Executar Testes Específicos
 
-## 测试Melhores-Práticas
+```bash
+# Testes unitários apenas
+node tests/run-all.js --suite unit
 
-### AAA 模式
+# Testes de integração apenas
+node tests/run-all.js --suite integration
 
-```
-test('测试描述', () => {
-  // Arrange - 准备测试数据
-  const input = 'test data';
-
-  // Act - 执行被测操作
-  const result = myFunction(input);
-
-  // Assert - 验证结果
-  assert.strictEqual(result, expected);
-});
+# Testes E2E apenas
+node tests/run-all.js --suite e2e
 ```
 
-### 测试命名
+## Cobertura
 
-使用描述性名称,清晰说明测试的行为:
+A cobertura de código é medida usando `c8` e relatada em formato HTML.
 
-```javascript
-test('returns empty array when no markets match query', () => {});
-test('throws error when API key is missing', () => {});
-test('falls back to substring search when Redis is unavailable', () => {});
+### Gerar Relatório de Cobertura
+
+```bash
+npm run test:coverage
 ```
 
-### 测试隔离
+### Ver Relatório HTML
 
-每个测试应该:
-- 独立运行,不依赖其他测试
-- 清理自己的测试数据
-- 使用 mock 隔离外部依赖
+Após executar testes com cobertura, abra `coverage/index.html` no navegador.
 
----
+## Métricas de Qualidade
 
-## CI 集成
+### Limites de Cobertura
 
-在 `package.json` 中配置测试脚本:
+| Métrica | Limite Mínimo |
+|---------|---------------|
+| Branch | 80% |
+| Functions | 80% |
+| Lines | 80% |
+| Statements | 80% |
 
-```json
-{
-  "scripts": {
-    "test": "validate-commands.js && tests/run-all.js"
-  }
-}
+### Verificar Cobertura
+
+```bash
+npm run test:coverage -- --fail-under-line 80
 ```
 
-Executor-de-Testes设计为可在 CI 环境中工作:
-- 非零退出码表示失败
-- JSON 输出用于自动化解析
-- 清晰的错误消息用于调试
+## Integração CI/CD
+
+O executor de testes é projetado para integração com pipelines CI/CD.
+
+### Exemplo de Configuração GitHub Actions
+
+```yaml
+- name: Run tests
+  run: |
+    npm install
+    node tests/run-all.js --json | tee test-results.json
+
+- name: Upload coverage
+  uses: codecov/codecov-action@v3
+  with:
+    files: ./coverage/lcov.info
+```

@@ -1,36 +1,36 @@
-# 会话管理命令
+# Lệnh Quản Lý Phiên
 
-## 概述
+## Tổng quan
 
-会话管理命令用于保存、恢复和管理 Claude Code 会话状态。这些命令对于在长会话中保持上下文、在会话之间交接工作、以及追踪进度至关重要。
+Lệnh quản lý phiên dùng để lưu, khôi phục và quản lý trạng thái phiên Claude Code. Các lệnh này thiết yếu để duy trì context trong phiên dài, chuyển giao công việc giữa các phiên, và theo dõi tiến độ.
 
-## 命令列表
+## Danh sách lệnh
 
 ### /save-session
 
-**用途**: 保存会话状态 - 将当前会话的完整上下文写入日期文件
+**Mục đích**: Lưu trạng thái phiên - viết đầy đủ context của phiên hiện tại vào date file
 
-**描述**: 将当前会话的所有上下文保存到 `~/.claude/session-data/` 目录下的日期文件中，包括：构建了什么、什么工作了、什么失败了、剩余工作、文件状态、决策记录和待解决 blockers。
+**Mô tả**: Lưu tất cả context của phiên hiện tại vào file trong thư mục `~/.claude/session-data/`, bao gồm: đã xây dựng gì, cái gì đã hoạt động, cái gì đã thất bại, công việc còn lại, trạng thái file, bản ghi quyết định và blocker cần giải quyết.
 
-**会话文件命名规范**:
-- 格式: `YYYY-MM-DD-<short-id>-session.tmp`
-- 有效字符: 字母 `a-z`/`A-Z`、数字 `0-9`、连字符 `-`、下划线 `_`
-- 最小长度: 1 字符（但不建议过短）
-- 推荐: 8+ 字符的小写字母/数字/连字符组合避免同日冲突
+**Quy ước đặt tên file phiên**:
+- Format: `YYYY-MM-DD-<short-id>-session.tmp`
+- Ký tự hợp lệ: chữ cái `a-z`/`A-Z`, số `0-9`, dấu gạch ngang `-`, dấu gạch dưới `_`
+- Độ dài tối thiểu: 1 ký tự (nhưng không khuyến khích quá ngắn)
+- Khuyến khích: 8+ ký tự chữ thường/số/dấu gạch ngang để tránh trùng lặp trong ngày
 
-**使用时机**:
-- 工作结束时（会话结束前）
-- 接近上下文限制前（先保存，再开新会话）
-- 复杂问题解决后（保存成功模式）
-- 需要交接给未来会话时
+**Khi nào sử dụng**:
+- Khi kết thúc công việc (trước khi kết thúc phiên)
+- Trước khi approaching context limit (lưu trước, rồi mở phiên mới)
+- Sau khi giải quyết vấn đề phức tạp (lưu successful pattern)
+- Khi cần chuyển giao cho phiên tương lai
 
-**工作流**:
-1. **收集上下文** - 读取所有修改过的文件，审查讨论内容
-2. **创建目录** - `mkdir -p ~/.claude/session-data`
-3. **写入文件** - 创建带时间戳的会话文件
-4. **展示给用户** - 显示内容并请求确认
+**Quy trình**:
+1. **Thu thập context** - Đọc tất cả file đã sửa, xem lại discussion
+2. **Tạo thư mục** - `mkdir -p ~/.claude/session-data`
+3. **Viết file** - Tạo session file với timestamp
+4. **Hiển thị cho user** - Hiển thị nội dung và yêu cầu xác nhận
 
-**会话文件格式**:
+**Session file format**:
 
 ```markdown
 # Session: YYYY-MM-DD
@@ -69,73 +69,73 @@
 [The single most important thing to do when resuming]
 ```
 
-**关键原则**:
-- "What Did NOT Work" 部分是最重要的 - 未来会话会盲目重试失败的方法
-- 每个会话独立文件 - 绝不追加到之前会话
-- 文件供下次会话通过 `/resume-session` 读取
+**Nguyên tắc quan trọng**:
+- Phần "What Did NOT Work" là quan trọng nhất - phiên tương lai sẽ blind retry các phương pháp thất bại
+- Mỗi phiên một file - không bao giờ append vào phiên trước
+- File để phiên sau đọc qua `/resume-session`
 
-**最佳实践**:
-- 中途保存时（不是结束时），清楚标记进行中项目
-- 包含具体错误信息和失败原因（"threw X error because Y"）
-- 下一具体步骤要足够精确，无需思考就知道从哪开始
+**Best practice**:
+- Khi lưu giữa chừng (không phải lúc kết thúc), đánh dấu rõ ràng in-progress
+- Include specific error message và reason for failure ("threw X error because Y")
+- Exact next step phải đủ precise để không cần suy nghĩ vẫn biết bắt đầu từ đâu
 
 ---
 
 ### /resume-session
 
-**用途**: 恢复保存的会话
+**Mục đích**: Khôi phục phiên đã lưu
 
-**描述**: 从 `~/.claude/session-data/` 加载并恢复之前保存的会话上下文。
+**Mô tả**: Load và khôi phục context của phiên đã lưu từ `~/.claude/session-data/`.
 
-**使用场景**:
-- 开始新会话时
-- 需要继续之前的工作
-- 需要回顾之前的问题解决过程
+**Khi nào sử dụng**:
+- Khi bắt đầu phiên mới
+- Khi cần tiếp tục công việc trước đó
+- Khi cần xem lại quá trình giải quyết vấn đề trước đó
 
 ---
 
 ### /sessions
 
-**用途**: 浏览+搜索+管理会话历史
+**Mục đích**: Browse + search + quản lý session history
 
-**描述**: 浏览、搜索和管理所有已保存的会话历史。
+**Mô tả**: Browse, search và quản lý tất cả session history đã lưu.
 
-**功能**:
-- 列出所有会话
-- 按日期搜索
-- 管理会话别名
-- 清理旧会话
+**Chức năng**:
+- Liệt kê tất cả phiên
+- Search theo ngày
+- Quản lý session aliases
+- Dọn dẹp phiên cũ
 
 ---
 
 ### /checkpoint
 
-**用途**: 创建/验证工作流检查点
+**Mục đích**: Tạo/xác minh workflow checkpoint
 
-**描述**: 在工作流关键节点创建检查点，确保进度可追溯。
+**Mô tả**: Tạo checkpoint tại các điểm quan trọng của workflow, đảm bảo progress có thể trace được.
 
-**使用场景**:
-- 重要步骤完成时
-- 需要验证关键里程碑
-- 多阶段任务中
+**Khi nào sử dụng**:
+- Khi bước quan trọng hoàn thành
+- Khi cần xác minh milestone quan trọng
+- Trong multi-stage task
 
 ---
 
 ### /aside
 
-**用途**: 回答侧问而不丢失上下文
+**Mục đích**: Trả lời câu hỏi phụ mà không mất context
 
-**描述**: 切换到侧向对话模式，处理次要问题后无缝返回主任务。
+**Mô tả**: Chuyển sang lateral conversation mode, xử lý vấn đề phụ rồi quay lại seamlessly với main task.
 
-**使用场景**:
-- 需要问一个快速问题
-- 需要查阅文档
-- 需要执行辅助任务
+**Khi nào sử dụng**:
+- Khi cần hỏi nhanh một câu
+- Khi cần tra cứu tài liệu
+- Khi cần thực hiện auxiliary task
 
 ---
 
-## 相关命令
+## Các lệnh liên quan
 
-- `/save-session` - 保存当前会话
-- `/resume-session` - 恢复会话
-- `/sessions` - 管理会话历史
+- `/save-session` - Lưu phiên hiện tại
+- `/resume-session` - Khôi phục phiên
+- `/sessions` - Quản lý session history

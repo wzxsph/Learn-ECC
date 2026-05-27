@@ -1,55 +1,55 @@
-# Hookify 系统命令
+# Comandos do Sistema Hookify
 
-## 概述
+## Visão Geral
 
-Hookify 系统用于创建和管理 hooks，防止不良行为和自动化工作流。
+O sistema Hookify é usado para criar e gerenciar hooks, prevenir comportamentos indesejados e automatizar workflows.
 
-## 命令列表
+## Lista de Comandos
 
 ### /hookify
 
-**用途**: 创建 hooks 防止不良行为
+**Propósito**: Criar hooks para prevenir comportamentos indesejados
 
-**描述**: 创建自定义 hooks 来防止不希望发生的行为。
+**Descrição**: Cria hooks personalizados para prevenir comportamentos que não deseja que aconteçam.
 
-**使用场景**:
-- 防止意外删除操作
-- 阻止危险命令
-- 自动格式化
-- 质量检查
+**Cenários de Uso**:
+- Prevenir operações de exclusão acidentais
+- Bloquear comandos perigosos
+- Auto-formatação
+- Verificações de qualidade
 
-**Hook 类型**:
-- **PreToolUse**: 工具执行前
-- **PostToolUse**: 工具执行后
-- **Stop**: 会话结束时
+**Tipos de Hook**:
+- **PreToolUse**: Antes da execução da ferramenta
+- **PostToolUse**: Após a execução da ferramenta
+- **Stop**: Quando a sessão termina
 
 ---
 
 ### /hookify-list
 
-**用途**: 列出所有配置的 hookify 规则
+**Propósito**: Listar todas as regras hookify configuradas
 
-**描述**: 显示当前所有已配置的 hookify 规则。
+**Descrição**: Mostra todas as regras hookify atualmente configuradas.
 
 ---
 
 ### /hookify-configure
 
-**用途**: 交互式启用/禁用 hookify 规则
+**Propósito**: Ativar/desativar regras hookify interativamente
 
-**描述**: 交互式配置 hookify 规则的启用和禁用状态。
+**Descrição**: Configura interativamente o estado de ativação e desativação das regras hookify.
 
 ---
 
 ### /hookify-help
 
-**用途**: Hookify 系统帮助
+**Propósito**: Ajuda do sistema Hookify
 
-**描述**: 获取 Hookify 系统的详细帮助信息。
+**Descrição**: Obtém informação de ajuda detalhada sobre o sistema Hookify.
 
 ---
 
-## Hook 配置示例
+## Exemplo de Configuração de Hook
 
 ```json
 {
@@ -65,9 +65,9 @@ Hookify 系统用于创建和管理 hooks，防止不良行为和自动化工作
 
 ---
 
-## 相关命令
+## Comandos Relacionados
 
-- `/hookify` - 创建 hook
-- `/hookify-list` - 列出规则
-- `/hookify-configure` - 配置规则
-- `/hookify-help` - 获取帮助
+- `/hookify` - Criar hook
+- `/hookify-list` - Listar regras
+- `/hookify-configure` - Configurar regras
+- `/hookify-help` - Obter ajuda

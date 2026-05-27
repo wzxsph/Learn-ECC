@@ -1,45 +1,45 @@
-# 文档与研究命令
+# Lệnh Tài Liệu và Nghiên Cứu
 
-## 概述
+## Tổng quan
 
-文档与研究命令用于更新文档、生成代码地图和研究外部资源。
+Lệnh tài liệu và nghiên cứu dùng để update tài liệu, generate codemap và nghiên cứu external resource.
 
-## 命令列表
+## Danh sách lệnh
 
 ### /update-docs
 
-**用途**: 更新项目文档
+**Mục đích**: Update project documentation
 
-**描述**: 根据代码变更自动更新项目文档。
+**Mô tả**: Automatically update project documentation theo code change.
 
-**更新内容**:
-- README 文件
-- API 文档
-- 代码注释
+**Update nội dung**:
+- README file
+- API documentation
+- Code comment
 - CHANGELOG
 
 ---
 
 ### /update-codemaps
 
-**用途**: 重新生成 codemaps
+**Mục đích**: Regenerate codemaps
 
-**描述**: 重新生成代码地图，用于代码库导航和理解。
+**Mô tả**: Regenerate codemap, dùng cho codebase navigation và understanding.
 
-**输出到**: `docs/CODEMAPS/`
+**Output vào**: `docs/CODEMAPS/`
 
 ---
 
 ### /ecc-guide
 
-**用途**: ECC 用户指南
+**Mục đích**: ECC user guide
 
-**描述**: 显示 ECC 插件的完整用户指南。
+**Mô tả**: Hiển thị complete user guide của ECC plugin.
 
 ---
 
-## 相关命令
+## Các lệnh liên quan
 
-- `/update-docs` - 更新文档
-- `/update-codemaps` - 更新代码地图
-- `/ecc-guide` - 用户指南
+- `/update-docs` - Update tài liệu
+- `/update-codemaps` - Update codemap
+- `/ecc-guide` - User guide

@@ -50,7 +50,7 @@ Plugin version upgrade and release script.
 | `package-lock.json` | version and packages[""].version |
 | `AGENTS.md` | Version line |
 | `docs/tr/AGENTS.md` | Sürüm line |
-| `docs/zh-CN/AGENTS.md` | 版本 line |
+| `docs/zh-CN/AGENTS.md` | version line |
 | `agent.yaml` | version field |
 | `VERSION` | version file |
 | `.claude-plugin/plugin.json` | version field |

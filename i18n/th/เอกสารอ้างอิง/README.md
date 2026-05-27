@@ -1,354 +1,354 @@
-# ECC 文档体系
+# ระบบเอกสาร ECC
 
-ECC (Everything Claude Code) 是一个 Claude Code 插件，提供 75 个命令、60 个 Agent、16 个 Skills、7 个规则文档和完整的 Hook/MCP 配置体系。
+ECC (Everything Claude Code) เป็นปลั๊กอิน Claude Code ที่มี 75 คำสั่ง 60 ตัวแทน 16 ทักษะ 7 เอกสารกฎ และระบบ Hook/MCP ที่สมบูรณ์
 
 ---
 
-## 1. ECC 文档体系概述
+## 1. ภาพรวมระบบเอกสาร ECC
 
-ECC 为 Claude Code 提供生产级开发工作流支持，涵盖多个 AI Agent 框架（Claude Code、Codex、OpenCode、Cursor、Gemini）。
+ECC มอบการสนับสนุนเวิร์กโฟลว์การพัฒนาระดับการผลิตสำหรับ Claude Code ครอบคลุม AI Agent หลายตัว (Claude Code, Codex, OpenCode, Cursor, Gemini)
 
-### 技术栈
+### สแต็คเทคโนโลยี
 
-| 层级 | 技术 | 版本 |
+| ระดับ | เทคโนโลยี | เวอร์ชัน |
 |------|------|------|
-| 主要语言 | JavaScript/Node.js | >=18 |
-| 次要语言 | Python | >=3.11 |
-| 包管理器 | Yarn | 4.9.2 |
-| 测试运行器 | 自定义 Node.js 测试运行器 | - |
-| 覆盖率 | c8 | 11.x |
-| 代码检查 | ESLint + markdownlint-cli | - |
+| ภาษาหลัก | JavaScript/Node.js | >=18 |
+| ภาษารอง | Python | >=3.11 |
+| ตัวจัดการแพ็คเกจ | Yarn | 4.9.2 |
+| ทดสอบการรัน | ทดสอบการรัน Node.js แบบกำหนดเอง | - |
+| ความครอบคลุม | c8 | 11.x |
+| การตรวจสอบโค้ด | ESLint + markdownlint-cli | - |
 
-### 目录结构
+### โครงสร้างไดเรกทอรี
 
 ```
 ECC/
-├── agents/        # 60 个专业 Agent
-├── commands/      # 75 个命令文件
-├── skills/        # 16 个 Skills 目录
-├── rules/         # 7 个规则文档（common + 语言特定）
-├── hooks/         # 3 个 Hook 文档
-├── mcp/           # 6 个 MCP 服务器配置
-├── scripts/       # 54 个工具脚本
+├── agents/        # 60 ตัวแทนเฉพาะทาง
+├── commands/      # 75 ไฟล์คำสั่ง
+├── skills/        # 16 ไดเรกทอรีทักษะ
+├── rules/         # 7 เอกสารกฎ (common + ภาษาเฉพาะ)
+├── hooks/         # 3 เอกสาร Hook
+├── mcp/           # 6 การกำหนดค่า MCP server
+├── scripts/       # 54 สคริปต์เครื่องมือ
 ├── README.md
 ```
 
 ---
 
-## 2. 快速导航
+## 2. การนำทางอย่างรวดเร็ว
 
-| 分类 | 文档 | 说明 |
+| หมวดหมู่ | เอกสาร | คำอธิบาย |
 |------|------|------|
-| [命令总览](./commands/) | [commands/](commands/) | 75 个命令的完整列表 |
-| [Agent 索引](./agents/) | [agents/](agents/) | 60 个专业 Agent |
-| [Skills 索引](./skills/) | [skills/](skills/) | 16 个 Skills 按领域分类 |
-| [规则索引](./rules/) | [rules/](rules/) | 7 个规则文档 (common + 语言特定) |
-| [Hooks 索引](./hooks/) | [hooks/](hooks/) | Hook 系统配置和开发 |
-| [MCP 索引](./mcp/) | [mcp/](mcp/) | MCP 服务器配置和开发 |
-| [Scripts 索引](./scripts/) | [scripts/](scripts/) | 54 个工具脚本 |
+| [ภาพรวมคำสั่ง](./commands/) | [commands/](commands/) | รายการคำสั่งทั้ง 75 คำสั่ง |
+| [ดัชนีตัวแทน](./agents/) | [agents/](agents/) | 60 ตัวแทนเฉพาะทาง |
+| [ดัชนีทักษะ](./skills/) | [skills/](skills/) | 16 ทักษะจัดตามโดเมน |
+| [ดัชนีกฎ](./rules/) | [rules/](rules/) | 7 เอกสารกฎ (common + ภาษาเฉพาะ) |
+| [ดัชนี Hooks](./hooks/) | [hooks/](hooks/) | การกำหนดค่าและการพัฒนาระบบ Hook |
+| [ดัชนี MCP](./mcp/) | [mcp/](mcp/) | การกำหนดค่าและการพัฒนา MCP server |
+| [ดัชนี Scripts](./scripts/) | [scripts/](scripts/) | 54 สคริปต์เครื่องมือ |
 
 ---
 
-## 3. 命令索引
+## 3. ดัชนีคำสั่ง
 
-共 **75 个命令**，按类别分组：
+ทั้งหมด **75 คำสั่ง** จัดตามหมวดหมู่:
 
-### 3.1 核心工作流 (6)
+### 3.1 เวิร์กโฟลว์หลัก (6)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/plan` | [01-Workflowหลัก.md](commands/01-Workflowหลัก.md) | 需求分析+风险评估+分步骤计划 |
-| `/code-review` | [01-Workflowหลัก.md](commands/01-Workflowหลัก.md) | 代码质量/安全/可维护性审查 |
-| `/build-fix` | [01-Workflowหลัก.md](commands/01-Workflowหลัก.md) | 自动检测语言+增量修复构建错误 |
-| `/verify` | [01-Workflowหลัก.md](commands/01-Workflowหลัก.md) | 完整验证循环：构建→lint→测试→类型检查 |
-| `/quality-gate` | [01-Workflowหลัก.md](commands/01-Workflowหลัก.md) | 按需运行 ECC 质量流水线 |
-| `/tdd` | [01-Workflowหลัก.md](commands/01-Workflowหลัก.md) | 通用 TDD 工作流 |
+| `/plan` | [01-Workflowหลัก.md](commands/01-Workflowหลัก.md) | การวิเคราะห์ความต้องการ+การประเมินความเสี่ยง+แผนทีละขั้นตอน |
+| `/code-review` | [01-Workflowหลัก.md](commands/01-Workflowหลัก.md) | การตรวจสอบคุณภาพ/ความปลอดภัย/การบำรุงรักษาโค้ด |
+| `/build-fix` | [01-Workflowหลัก.md](commands/01-Workflowหลัก.md) | ตรวจจับภาษาอัตโนมัติ+การซ่อมแบบเพิ่มหน่วยสำหรับข้อผิดพลาดการสร้าง |
+| `/verify` | [01-Workflowหลัก.md](commands/01-Workflowหลัก.md) | การตรวจสอบแบบเต็ม: การสร้าง→lint→ทดสอบ→ตรวจสอบประเภท |
+| `/quality-gate` | [01-Workflowหลัก.md](commands/01-Workflowหลัก.md) | เรียกใช้ ECC quality pipeline ตามความต้องการ |
+| `/tdd` | [01-Workflowหลัก.md](commands/01-Workflowหลัก.md) | เวิร์กโฟลว์ TDD ทั่วไป |
 
-### 3.2 测试相关 (8)
+### 3.2 การทดสอบ (8)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/go-test` | [02-การทดสอบ.md](commands/02-การทดสอบ.md) | Go TDD (表格驱动，80%+ 覆盖率) |
+| `/go-test` | [02-การทดสอบ.md](commands/02-การทดสอบ.md) | Go TDD (ตาราง-ขับเคลื่อน, ความครอบคลุม 80%+) |
 | `/kotlin-test` | [02-การทดสอบ.md](commands/02-การทดสอบ.md) | Kotlin TDD (Kotest + Kover) |
-| `/rust-test` | [02-การทดสอบ.md](commands/02-การทดสอบ.md) | Rust TDD (cargo test + 集成测试) |
+| `/rust-test` | [02-การทดสอบ.md](commands/02-การทดสอบ.md) | Rust TDD (cargo test + การทดสอบบูรณาการ) |
 | `/cpp-test` | [02-การทดสอบ.md](commands/02-การทดสอบ.md) | C++ TDD (GoogleTest + gcov/lcov) |
 | `/flutter-test` | [02-การทดสอบ.md](commands/02-การทดสอบ.md) | Flutter TDD |
-| `/e2e` | [02-การทดสอบ.md](commands/02-การทดสอบ.md) | 生成 + 运行 Playwright e2e 测试 |
-| `/test-coverage` | [02-การทดสอบ.md](commands/02-การทดสอบ.md) | 测试覆盖率报告+差距分析 |
-| `/python-testing` | [02-การทดสอบ.md](commands/02-การทดสอบ.md) | Python 测试最佳实践 |
+| `/e2e` | [02-การทดสอบ.md](commands/02-การทดสอบ.md) | สร้าง + รันทดสอบ Playwright e2e |
+| `/test-coverage` | [02-การทดสอบ.md](commands/02-การทดสอบ.md) | รายงานความครอบคลุม+การวิเคราะห์ช่องว่าง |
+| `/python-testing` | [02-การทดสอบ.md](commands/02-การทดสอบ.md) | แนวปฏิบัติการทดสอบ Python ที่ดีที่สุด |
 
-### 3.3 语言审查 (7)
+### 3.3 การตรวจสอบภาษา (7)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/python-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | Python PEP 8、类型提示、安全 |
-| `/go-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | Go 惯用法、并发、错误处理 |
-| `/kotlin-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | Kotlin 空安全、协程、架构 |
-| `/rust-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | Rust 所有权、生命周期、unsafe |
-| `/cpp-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | C++ 内存安全、现代 idiom |
-| `/flutter-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | Flutter/Dart 模式 |
-| `/fastapi-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | FastAPI 架构、异步、Pydantic |
+| `/python-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | Python PEP 8, Type hints, ความปลอดภัย |
+| `/go-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | Go idioms, Concurrency, การจัดการข้อผิดพลาด |
+| `/kotlin-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | Kotlin Null safety, Coroutines, สถาปัตยกรรม |
+| `/rust-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | Rust Ownership, Lifetime, unsafe |
+| `/cpp-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | C++ ความปลอดภัยหน่วยความจำ, Modern idiom |
+| `/flutter-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | รูปแบบ Flutter/Dart |
+| `/fastapi-review` | [03-ตรวจสอบภาษา.md](commands/03-ตรวจสอบภาษา.md) | FastAPI สถาปัตยกรรม, Async, Pydantic |
 
-### 3.4 构建修复 (6)
+### 3.4 การซ่อมบูรณะ Build (6)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/go-build` | [04-แก้ไขBuild.md](commands/04-แก้ไขBuild.md) | 修复 Go 构建错误 + go vet 警告 |
-| `/kotlin-build` | [04-แก้ไขBuild.md](commands/04-แก้ไขBuild.md) | 修复 Kotlin/Gradle 编译器错误 |
-| `/rust-build` | [04-แก้ไขBuild.md](commands/04-แก้ไขBuild.md) | 修复 Rust 构建 + 借用检查器问题 |
-| `/cpp-build` | [04-แก้ไขBuild.md](commands/04-แก้ไขBuild.md) | 修复 C++ CMake + 链接器问题 |
-| `/gradle-build` | [04-แก้ไขBuild.md](commands/04-แก้ไขBuild.md) | 修复 Android/KMP Gradle 错误 |
-| `/flutter-build` | [04-แก้ไขBuild.md](commands/04-แก้ไขBuild.md) | Flutter 构建修复 |
+| `/go-build` | [04-แก้ไขBuild.md](commands/04-แก้ไขBuild.md) | ซ่อมข้อผิดพลาดการสร้าง Go + คำเตือน go vet |
+| `/kotlin-build` | [04-แก้ไขBuild.md](commands/04-แก้ไขBuild.md) | ซ่อมข้อผิดพลาด Kotlin/Gradle compiler |
+| `/rust-build` | [04-แก้ไขBuild.md](commands/04-แก้ไขBuild.md) | ซ่อมการสร้าง Rust + ปัญหา Borrow checker |
+| `/cpp-build` | [04-แก้ไขBuild.md](commands/04-แก้ไขBuild.md) | ซ่อมข้อผิดพลาด C++ CMake + Linker |
+| `/gradle-build` | [04-แก้ไขBuild.md](commands/04-แก้ไขBuild.md) | ซ่อมข้อผิดพลาด Android/KMP Gradle |
+| `/flutter-build` | [04-แก้ไขBuild.md](commands/04-แก้ไขBuild.md) | การซ่อมบูรณะ Flutter build |
 
-### 3.5 规划与架构 (7)
+### 3.5 การวางแผนและสถาปัตยกรรม (7)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/plan-prd` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | 交互式 PRD 生成器 |
-| `/prp-plan` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | 全面的功能规划 |
-| `/prp-prd` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | PRP 工作流 PRD 生成器 |
-| `/prp-implement` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | 执行 PRP 计划+验证循环 |
-| `/prp-pr` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | 从 PRP 工作流创建 PR |
-| `/prp-commit` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | PRP 验证提交 |
-| `/multi-plan` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | 多模型协作规划 (Codex + Gemini) |
+| `/plan-prd` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | เครื่องมือสร้าง PRD แบบโต้ตอบ |
+| `/prp-plan` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | การวางแผนคุณสมบัติอย่างครอบคลุม |
+| `/prp-prd` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | เครื่องมือสร้าง PRD สำหรับเวิร์กโฟลว์ PRP |
+| `/prp-implement` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | ดำเนินการตามแผน PRP+วงจรการตรวจสอบ |
+| `/prp-pr` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | สร้าง PR จากเวิร์กโฟลว์ PRP |
+| `/prp-commit` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | การตรวจสอบ commit ของ PRP |
+| `/multi-plan` | [05-วางแผนสถาปัตยกรรม.md](commands/05-วางแผนสถาปัตยกรรม.md) | การวางแผนแบบร่วมมือหลายโมเดล (Codex + Gemini) |
 
-### 3.6 会话管理 (5)
+### 3.6 การจัดการเซสชัน (5)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/save-session` | [06-จัดการเซสชัน.md](commands/06-จัดการเซสชัน.md) | 保存会话状态到 ~/.claude/session-data/ |
-| `/resume-session` | [06-จัดการเซสชัน.md](commands/06-จัดการเซสชัน.md) | 加载并恢复保存的会话 |
-| `/sessions` | [06-จัดการเซสชัน.md](commands/06-จัดการเซสชัน.md) | 浏览+搜索+管理会话历史 |
-| `/checkpoint` | [06-จัดการเซสชัน.md](commands/06-จัดการเซสชัน.md) | 创建/验证工作流检查点 |
-| `/aside` | [06-จัดการเซสชัน.md](commands/06-จัดการเซสชัน.md) | 回答侧问而不丢失上下文 |
+| `/save-session` | [06-จัดการเซสชัน.md](commands/06-จัดการเซสชัน.md) | บันทึกสถานะเซสชันไปยัง ~/.claude/session-data/ |
+| `/resume-session` | [06-จัดการเซสชัน.md](commands/06-จัดการเซสชัน.md) | โหลดและกู้คืนเซสชันที่บันทึกไว้ |
+| `/sessions` | [06-จัดการเซสชัน.md](commands/06-จัดการเซสชัน.md) | เรียกดู+ค้นหา+จัดการประวัติเซสชัน |
+| `/checkpoint` | [06-จัดการเซสชัน.md](commands/06-จัดการเซสชัน.md) | สร้าง/ตรวจสอบจุดตรวจสอบเวิร์กโฟลว์ |
+| `/aside` | [06-จัดการเซสชัน.md](commands/06-จัดการเซสชัน.md) | ตอบคำถามข้างโดยไม่สูญเสียบริบท |
 
-### 3.7 学习与改进 (10)
+### 3.7 การเรียนรู้และการปรับปรุง (10)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/learn` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | 从会话中提取可复用模式 |
-| `/learn-eval` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | 提取模式 + 自我评估质量 |
-| `/evolve` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | 分析 instinct + 建议进化结构 |
-| `/promote` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | 将项目 instinct 提升到全局范围 |
-| `/instinct-status` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | 显示所有学习的 instinct |
-| `/instinct-export` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | 导出 instinct 到文件 |
-| `/instinct-import` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | 从文件/URL 导入 instinct |
-| `/skill-create` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | 分析 git 历史+生成 skill 文件 |
-| `/skill-health` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | Skill 组合健康仪表板 |
-| `/rules-distill` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | 扫描 skills + 提取跨领域原则 |
+| `/learn` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | แยกรูปแบบที่ใช้ซ้ำได้จากเซสชัน |
+| `/learn-eval` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | แยกรูปแบบ + การประเมินตนเอง |
+| `/evolve` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | วิเคราะห์ instinct + เสนอโครงสร้างการ进化 |
+| `/promote` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | ยกระดับ project instinct เป็นระดับโลก |
+| `/instinct-status` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | แสดงทุก instinct ที่เรียนรู้ |
+| `/instinct-export` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | ส่งออก instinct ไปยังไฟล์ |
+| `/instinct-import` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | นำเข้า instinct จากไฟล์/URL |
+| `/skill-create` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | วิเคราะห์ประวัติ git+สร้างไฟล์ทักษะ |
+| `/skill-health` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | แดชบอร์ดสุขภาพองค์ประกอบทักษะ |
+| `/rules-distill` | [07-เรียนรู้และปรับปรุง.md](commands/07-เรียนรู้และปรับปรุง.md) | สแกนทักษะ + แยกหลักการข้ามโดเมน |
 
-### 3.8 循环与自动化 (3)
+### 3.8 วงจรและอัตโนมัติ (3)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/loop-start` | [08-วนซ้ำและอัตโนมัติ.md](commands/08-วนซ้ำและอัตโนมัติ.md) | 启动托管自主循环模式 |
-| `/loop-status` | [08-วนซ้ำและอัตโนมัติ.md](commands/08-วนซ้ำและอัตโนมัติ.md) | 检查运行中循环的状态 |
-| `/santa-loop` | [08-วนซ้ำและอัตโนมัติ.md](commands/08-วนซ้ำและอัตโนมัติ.md) | Santa 风格自主循环 |
+| `/loop-start` | [08-วนซ้ำและอัตโนมัติ.md](commands/08-วนซ้ำและอัตโนมัติ.md) | เริ่มโหมดวงจรอัตโนมัติแบบจัดการ |
+| `/loop-status` | [08-วนซ้ำและอัตโนมัติ.md](commands/08-วนซ้ำและอัตโนมัติ.md) | ตรวจสอบสถานะวงจรที่กำลังทำงาน |
+| `/santa-loop` | [08-วนซ้ำและอัตโนมัติ.md](commands/08-วนซ้ำและอัตโนมัติ.md) | วงจรอัตโนมัติสไตล์ Santa |
 
-### 3.9 项目管理 (6)
+### 3.9 การจัดการโครงการ (6)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/projects` | [09-จัดการโครงการ.md](commands/09-จัดการโครงการ.md) | 列出已知项目 + instinct 统计 |
-| `/harness-audit` | [09-จัดการโครงการ.md](commands/09-จัดการโครงการ.md) | 审计 agent harness 配置 |
-| `/model-route` | [09-จัดการโครงการ.md](commands/09-จัดการโครงการ.md) | 路由任务到合适模型 |
-| `/pm2` | [09-จัดการโครงการ.md](commands/09-จัดการโครงการ.md) | PM2 进程管理器初始化 |
-| `/setup-pm` | [09-จัดการโครงการ.md](commands/09-จัดการโครงการ.md) | 配置包管理器 (npm/pnpm/yarn/bun) |
-| `/project-init` | [09-จัดการโครงการ.md](commands/09-จัดการโครงการ.md) | 项目初始化 |
+| `/projects` | [09-จัดการโครงการ.md](commands/09-จัดการโครงการ.md) | แสดงรายการโครงการที่ทราบ + สถิติ instinct |
+| `/harness-audit` | [09-จัดการโครงการ.md](commands/09-จัดการโครงการ.md) | ตรวจสอบการกำหนดค่า agent harness |
+| `/model-route` | [09-จัดการโครงการ.md](commands/09-จัดการโครงการ.md) | กำหนดเส้นทางงานไปยังโมเดลที่เหมาะสม |
+| `/pm2` | [09-จัดการโครงการ.md](commands/09-จัดการโครงการ.md) | เริ่มต้น PM2 process manager |
+| `/setup-pm` | [09-จัดการโครงการ.md](commands/09-จัดการโครงการ.md) | กำหนดค่าตัวจัดการแพ็คเกจ (npm/pnpm/yarn/bun) |
+| `/project-init` | [09-จัดการโครงการ.md](commands/09-จัดการโครงการ.md) | เริ่มต้นโครงการ |
 
-### 3.10 PR 工作流 (6)
+### 3.10 PR Workflow (6)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/pr` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 从当前分支创建 GitHub PR |
-| `/review-pr` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 审查 GitHub PR |
-| `/multi-workflow` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 多模型协作开发 |
-| `/multi-backend` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 后端多模型开发 |
-| `/multi-frontend` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 前端多模型开发 |
-| `/multi-execute` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 多模型协作执行 |
+| `/pr` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | สร้าง GitHub PR จาก branch ปัจจุบัน |
+| `/review-pr` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | ตรวจสอบ GitHub PR |
+| `/multi-workflow` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | การพัฒนาแบบร่วมมือหลายโมเดล |
+| `/multi-backend` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | การพัฒนา backend หลายโมเดล |
+| `/multi-frontend` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | การพัฒนา frontend หลายโมเดล |
+| `/multi-execute` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | การดำเนินการแบบร่วมมือหลายโมเดล |
 
-### 3.11 Hookify 系统 (4)
+### 3.11 ระบบ Hookify (4)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/hookify` | [11-ระบบHookify.md](commands/11-ระบบHookify.md) | 创建 hooks 防止不良行为 |
-| `/hookify-list` | [11-ระบบHookify.md](commands/11-ระบบHookify.md) | 列出所有配置的 hookify 规则 |
-| `/hookify-configure` | [11-ระบบHookify.md](commands/11-ระบบHookify.md) | 交互式启用/禁用 hookify 规则 |
-| `/hookify-help` | [11-ระบบHookify.md](commands/11-ระบบHookify.md) | Hookify 系统帮助 |
+| `/hookify` | [11-ระบบHookify.md](commands/11-ระบบHookify.md) | สร้าง hooks เพื่อป้องกันพฤติกรรมไม่ดี |
+| `/hookify-list` | [11-ระบบHookify.md](commands/11-ระบบHookify.md) | แสดงรายการกฎ hookify ที่กำหนดค่าทั้งหมด |
+| `/hookify-configure` | [11-ระบบHookify.md](commands/11-ระบบHookify.md) | เปิด/ปิดกฎ hookify แบบโต้ตอบ |
+| `/hookify-help` | [11-ระบบHookify.md](commands/11-ระบบHookify.md) | ความช่วยเหลือระบบ Hookify |
 
-### 3.12 文档与研究 (3)
+### 3.12 เอกสารและการวิจัย (3)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/update-docs` | [12-เอกสารและวิจัย.md](commands/12-เอกสารและวิจัย.md) | 更新项目文档 |
-| `/update-codemaps` | [12-เอกสารและวิจัย.md](commands/12-เอกสารและวิจัย.md) | 重新生成 codemaps |
-| `/ecc-guide` | [12-เอกสารและวิจัย.md](commands/12-เอกสารและวิจัย.md) | ECC 用户指南 |
+| `/update-docs` | [12-เอกสารและวิจัย.md](commands/12-เอกสารและวิจัย.md) | อัปเดตเอกสารโครงการ |
+| `/update-codemaps` | [12-เอกสารและวิจัย.md](commands/12-เอกสารและวิจัย.md) | สร้าง codemaps ใหม่ |
+| `/ecc-guide` | [12-เอกสารและวิจัย.md](commands/12-เอกสารและวิจัย.md) | คู่มือผู้ใช้ ECC |
 
-### 3.13 重构与清理 (2)
+### 3.13 การปรับโครงสร้างและทำความสะอาด (2)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/refactor-clean` | [13-ปรับโครงสร้างและทำความสะอาด.md](commands/13-ปรับโครงสร้างและทำความสะอาด.md) | 删除死代码+合并重复 |
-| `/auto-update` | [13-ปรับโครงสร้างและทำความสะอาด.md](commands/13-ปรับโครงสร้างและทำความสะอาด.md) | 自动更新能力 |
+| `/refactor-clean` | [13-ปรับโครงสร้างและทำความสะอาด.md](commands/13-ปรับโครงสร้างและทำความสะอาด.md) | ลบโค้ดที่ตายแล้ว+รวมซ้ำซ้อน |
+| `/auto-update` | [13-ปรับโครงสร้างและทำความสะอาด.md](commands/13-ปรับโครงสร้างและทำความสะอาด.md) | ความสามารถอัปเดตอัตโนมัติ |
 
-### 3.14 其他命令 (7)
+### 3.14 คำสั่งอื่นๆ (7)
 
-| 命令 | 文件 | 用途 |
+| คำสั่ง | ไฟล์ | การใช้งาน |
 |------|------|------|
-| `/jira` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | Jira 工单交互 |
-| `/gan-build` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | GAN 构建操作 |
-| `/gan-design` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | GAN 设计操作 |
-| `/prune` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | 删除陈旧 instinct (>30天) |
-| `/security-scan` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | 安全扫描 |
-| `/feature-dev` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | 功能开发助手 |
-| `/cost-report` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | 模型成本报告 |
+| `/jira` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | การโต้ตอบกับ Jira ticket |
+| `/gan-build` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | การดำเนินการสร้าง GAN |
+| `/gan-design` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | การดำเนินการออกแบบ GAN |
+| `/prune` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | ลบ instinct ที่ล้าสมัย (>30 วัน) |
+| `/security-scan` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | การสแกนความปลอดภัย |
+| `/feature-dev` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | ผู้ช่วยพัฒนาคุณสมบัติ |
+| `/cost-report` | [14-คำสั่งอื่นๆ.md](commands/14-คำสั่งอื่นๆ.md) | รายงานต้นทุนโมเดล |
 
 ---
 
-## 4. Agent 索引
+## 4. ดัชนีตัวแทน
 
-共 **60 个 Agent**，按类别分组：
+ทั้งหมด **60 ตัวแทน** จัดตามหมวดหมู่:
 
-| Agent 类别 | 文件 | 说明 |
+| หมวดหมู่ตัวแทน | ไฟล์ | คำอธิบาย |
 |------------|------|------|
-| [代码审查类](agents/1.%20代码审查类.md) | [1. 代码审查类.md](agents/1.%20代码审查类.md) | 14 个审查 Agent |
-| [构建修复类](agents/2.%20构建修复类.md) | [2. 构建修复类.md](agents/2.%20构建修复类.md) | 14 个构建修复 Agent |
-| [规划类](agents/3.%20规划类.md) | [3. 规划类.md](agents/3.%20规划类.md) | 5 个规划 Agent |
-| [测试类](agents/4.%20测试类.md) | [4. 测试类.md](agents/4.%20测试类.md) | 2 个测试 Agent |
-| [安全类](agents/5.%20安全类.md) | [5. 安全类.md](agents/5.%20安全类.md) | 3 个安全 Agent |
-| [架构类](agents/6.%20架构类.md) | [6. 架构类.md](agents/6.%20架构类.md) | 3 个架构 Agent |
+| [ตัวแทนตรวจสอบโค้ด](agents/1-ตัวแทนตรวจสอบโค้ด.md) | [1-ตัวแทนตรวจสอบโค้ด.md](agents/1-ตัวแทนตรวจสอบโค้ด.md) | 14 ตัวแทนตรวจสอบ |
+| [ตัวแทนสร้างและแก้ไข](agents/2-ตัวแทนสร้างและแก้ไข.md) | [2-ตัวแทนสร้างและแก้ไข.md](agents/2-ตัวแทนสร้างและแก้ไข.md) | 14 ตัวแทนสร้างและแก้ไข |
+| [ตัวแทนวางแผน](agents/3-ตัวแทนวางแผน.md) | [3-ตัวแทนวางแผน.md](agents/3-ตัวแทนวางแผน.md) | 5 ตัวแทนวางแผน |
+| [ตัวแทนด้านการทดสอบ](agents/4-ตัวแทนด้านการทดสอบ.md) | [4-ตัวแทนด้านการทดสอบ.md](agents/4-ตัวแทนด้านการทดสอบ.md) | 2 ตัวแทนทดสอบ |
+| [ตัวแทนด้านความปลอดภัย](agents/5-ตัวแทนด้านความปลอดภัย.md) | [5-ตัวแทนด้านความปลอดภัย.md](agents/5-ตัวแทนด้านความปลอดภัย.md) | 3 ตัวแทนความปลอดภัย |
+| [ตัวแทนด้านสถาปัตยกรรม](agents/6-ตัวแทนด้านสถาปัตยกรรม.md) | [6-ตัวแทนด้านสถาปัตยกรรม.md](agents/6-ตัวแทนด้านสถาปัตยกรรม.md) | 3 ตัวแทนสถาปัตยกรรม |
 
 ---
 
-## 5. Skills 索引
+## 5. ดัชนีทักษะ
 
-$**16 个 Skills 领域**，按领域分类：
+**16 ด้านทักษะ** จัดตามโดเมน:
 
-| 领域 | 文件 | 说明 |
+| โดเมน | ไฟล์ | คำอธิบาย |
 |------|------|------|
-| [最佳实践](skills/最佳实践.md) | [最佳实践.md](skills/最佳实践.md) | 编码标准、错误处理、自主循环 |
-| [编程语言](skills/编程语言.md) | [编程语言.md](skills/编程语言.md) | Python/Go/Rust/Kotlin/C++ 等 |
-| [框架](skills/框架.md) | [框架.md](skills/框架.md) | Django/Laravel/NestJS/Spring Boot 等 |
-| [测试](skills/测试.md) | [测试.md](skills/测试.md) | TDD/单元测试/集成测试/E2E |
-| [安全](skills/安全.md) | [安全.md](skills/安全.md) | 安全审查、漏洞扫描 |
-| [前端与设计](skills/前端与设计.md) | [前端与设计.md](skills/前端与设计.md) | 前端开发、设计系统 |
-| [后端与API](skills/后端与API.md) | [后端与API.md](skills/后端与API.md) | 后端服务、API 设计、数据库 |
-| [部署与DevOps](skills/部署与DevOps.md) | [部署与DevOps.md](skills/部署与DevOps.md) | Docker/K8s/部署策略 |
-| [监控与可观测性](skills/监控与可观测性.md) | [监控与可观测性.md](skills/监控与可观测性.md) | 可观测性、网络诊断 |
-| [自动化与脚本](skills/自动化与脚本.md) | [自动化与脚本.md](skills/自动化与脚本.md) | 自主循环、持续学习、代理工程 |
-| [搜索与数据获取](skills/搜索与数据获取.md) | [搜索与数据获取.md](skills/搜索与数据获取.md) | Exa 搜索、数据抓取、MCP |
-| [GitHub与协作](skills/GitHub与协作.md) | [GitHub与协作.md](skills/GitHub与协作.md) | GitHub 工作流、代码审查 |
-| [AI与机器学习](skills/AI与机器学习.md) | [AI与机器学习.md](skills/AI与机器学习.md) | 神经网络、PyTorch、MLOps |
-| [云原生与基础设施](skills/云原生与基础设施.md) | [云原生与基础设施.md](skills/云原生与基础设施.md) | Kubernetes、Docker、Terraform |
-| [特殊领域技能](skills/特殊领域技能.md) | [特殊领域技能.md](skills/特殊领域技能.md) | 区块链、游戏开发、音视频、IoT |
-| [开发工具链](skills/开发工具链.md) | [开发工具链.md](skills/开发工具链.md) | 测试框架、CI/CD、代码质量 |
-| [前沿技术](skills/前沿技术.md) | [前沿技术.md](skills/前沿技术.md) | AI Agent、量子计算、边缘计算 |
+| [แนวปฏิบัติที่ดีที่สุด](skills/แนวปฏิบัติที่ดีที่สุด.md) | [แนวปฏิบัติที่ดีที่สุด.md](skills/แนวปฏิบัติที่ดีที่สุด.md) | มาตรฐานการเข้ารหัส, การจัดการข้อผิดพลาด, วงจรอัตโนมัติ |
+| [ภาษาโปรแกรม](skills/ภาษาโปรแกรม.md) | [ภาษาโปรแกรม.md](skills/ภาษาโปรแกรม.md) | Python/Go/Rust/Kotlin/C++ และอื่นๆ |
+| [เฟรมเวิร์ก](skills/เฟรมเวิร์ก.md) | [เฟรมเวิร์ก.md](skills/เฟรมเวิร์ก.md) | Django/Laravel/NestJS/Spring Boot และอื่นๆ |
+| [การทดสอบ](skills/การทดสอบ.md) | [การทดสอบ.md](skills/การทดสอบ.md) | TDD/การทดสอบหน่วย/การทดสอบบูรณาการ/E2E |
+| [ความปลอดภัย](skills/ความปลอดภัย.md) | [ความปลอดภัย.md](skills/ความปลอดภัย.md) | การตรวจสอบความปลอดภัย, การสแกนช่องโหว่ |
+| [ frontend และการออกแบบ](skills/frontendและการออกแบบ.md) | [frontendและการออกแบบ.md](skills/frontendและการออกแบบ.md) | การพัฒนา frontend, ระบบออกแบบ |
+| [Backend และ API](skills/BackendและAPI.md) | [BackendและAPI.md](skills/BackendและAPI.md) | บริการ backend, การออกแบบ API, ฐานข้อมูล |
+| [การใช้งานและ DevOps](skills/การใช้งานและDevOps.md) | [การใช้งานและDevOps.md](skills/การใช้งานและDevOps.md) | Docker/K8s/กลยุทธ์การใช้งาน |
+| [การตรวจสอบและการสังเกต](skills/การตรวจสอบและการสังเกต.md) | [การตรวจสอบและการสังเกต.md](skills/การตรวจสอบและการสังเกต.md) | การสังเกต, การวินิจฉัยเครือข่าย |
+| [อัตโนมัติและสคริปต์](skills/อัตโนมัติและสคริปต์.md) | [อัตโนมัติและสคริปต์.md](skills/อัตโนมัติและสคริปต์.md) | วงจรอัตโนมัติ, การเรียนรู้อย่างต่อเนื่อง, วิศวกรรมตัวแทน |
+| [การค้นหาและการรับข้อมูล](skills/การค้นหาและการรับข้อมูล.md) | [การค้นหาและการรับข้อมูล.md](skills/การค้นหาและการรับข้อมูล.md) | การค้นหา Exa, การดึงข้อมูล, MCP |
+| [GitHub และการทำงานร่วมกัน](skills/GitHubและการทำงานร่วมกัน.md) | [GitHubและการทำงานร่วมกัน.md](skills/GitHubและการทำงานร่วมกัน.md) | เวิร์กโฟลว์ GitHub, การตรวจสอบโค้ด |
+| [AI และการเรียนรู้ของเครื่อง](skills/AIและการเรียนรู้ของเครื่อง.md) | [AIและการเรียนรู้ของเครื่อง.md](skills/AIและการเรียนรู้ของเครื่อง.md) | โครงข่ายประสาทเทียม, PyTorch, MLOps |
+| [Cloud Native และโครงสร้างพื้นฐาน](skills/CloudNativeและโครงสร้างพื้นฐาน.md) | [CloudNativeและโครงสร้างพื้นฐาน.md](skills/CloudNativeและโครงสร้างพื้นฐาน.md) | Kubernetes, Docker, Terraform |
+| [ทักษะเฉพาะทาง](skills/ทักษะเฉพาะทาง.md) | [ทักษะเฉพาะทาง.md](skills/ทักษะเฉพาะทาง.md) | บล็อกเชน, การพัฒนาเกม, เสียง/วิดีโอ, IoT |
+| [เครื่องมือพัฒนา](skills/เครื่องมือพัฒนา.md) | [เครื่องมือพัฒนา.md](skills/เครื่องมือพัฒนา.md) | กรอบการทดสอบ, CI/CD, คุณภาพโค้ด |
+| [เทคโนโลยีล้ำสมัย](skills/เทคโนโลยีล้ำสมัย.md) | [เทคโนโลยีล้ำสมัย.md](skills/เทคโนโลยีล้ำสมัย.md) | AI Agent, การคำนวณควอนตัม, การคำนวณขอบ |
 
 ---
 
-## 6. 规则索引
+## 6. ดัชนีกฎ
 
-共 **7 个规则文档**（common + 语言特定）：
+ทั้งหมด **7 เอกสารกฎ** (common + ภาษาเฉพาะ):
 
-| 规则 | 文件 | 说明 |
+| กฎ | ไฟล์ | คำอธิบาย |
 |------|------|------|
-| [Git 工作流](rules/Git工作流.md) | [Git工作流.md](rules/Git工作流.md) | Git 提交规范和 PR 工作流 |
-| [Hooks 系统](rules/Hooks系统.md) | [Hooks系统.md](rules/Hooks系统.md) | Hook 配置和使用指南 |
-| [代理编排](rules/代理编排.md) | [代理编排.md](rules/代理编排.md) | Agent 编排模式 |
-| [性能优化](rules/性能优化.md) | [性能优化.md](rules/性能优化.md) | 性能优化指南 |
-| [代码风格](rules/代码风格.md) | [代码风格.md](rules/代码风格.md) | 编码风格规范 |
-| [测试规则](rules/测试规则.md) | [测试规则.md](rules/测试规则.md) | 测试要求（80% 覆盖率） |
-| [安全规则](rules/安全规则.md) | [安全规则.md](rules/安全规则.md) | 安全检查清单 |
+| [เวิร์กโฟลว์ Git](rules/เวิร์กโฟลว์Git.md) | [เวิร์กโฟลว์Git.md](rules/เวิร์กโฟลว์Git.md) | มาตรฐาน commit และ PR workflow |
+| [ระบบ Hooks](rules/ระบบHooks.md) | [ระบบHooks.md](rules/ระบบHooks.md) | คู่มือการกำหนดค่าและการใช้ Hook |
+| [การจัดเรียงตัวแทน](rules/การจัดเรียงตัวแทน.md) | [การจัดเรียงตัวแทน.md](rules/การจัดเรียงตัวแทน.md) | รูปแบบการจัดเรียง Agent |
+| [การเพิ่มประสิทธิภาพ](rules/การเพิ่มประสิทธิภาพ.md) | [การเพิ่มประสิทธิภาพ.md](rules/การเพิ่มประสิทธิภาพ.md) | คู่มือการเพิ่มประสิทธิภาพ |
+| [รูปแบบการเข้ารหัส](rules/รูปแบบการเข้ารหัส.md) | [รูปแบบการเข้ารหัส.md](rules/รูปแบบการเข้ารหัส.md) | มาตรฐานรูปแบบการเข้ารหัส |
+| [กฎการทดสอบ](rules/กฎการทดสอบ.md) | [กฎการทดสอบ.md](rules/กฎการทดสอบ.md) | ข้อกำหนดการทดสอบ (ความครอบคลุม 80%) |
+| [กฎความปลอดภัย](rules/กฎความปลอดภัย.md) | [กฎความปลอดภัย.md](rules/กฎความปลอดภัย.md) | รายการตรวจสอบความปลอดภัย |
 
 ---
 
-## 7. Hooks 索引
+## 7. ดัชนี Hooks
 
-共 **4 个文档**：
+ทั้งหมด **4 เอกสาร**:
 
-| 文档 | 文件 | 说明 |
+| เอกสาร | ไฟล์ | คำอธิบาย |
 |------|------|------|
-| [Hook 类型](hooks/Hook类型.md) | [Hook类型.md](hooks/Hook类型.md) | PreToolUse、PostToolUse、Stop 类型 |
-| [内置 Hooks](hooks/内置Hooks.md) | [内置Hooks.md](hooks/内置Hooks.md) | 内置 Hook 列表和使用 |
-| [自定义开发](hooks/自定义开发.md) | [自定义开发.md](hooks/自定义开发.md) | 自定义 Hook 开发指南 |
-| [配置格式](hooks/配置格式.md) | [配置格式.md](hooks/配置格式.md) | hooks.json 配置格式 |
+| [ประเภท Hook](hooks/ประเภทHook.md) | [ประเภทHook.md](hooks/ประเภทHook.md) | ประเภท PreToolUse, PostToolUse, Stop |
+| [Hooks ภายใน](hooks/Hooksภายใน.md) | [Hooksภายใน.md](hooks/Hooksภายใน.md) | รายการ Hook ภายในและการใช้งาน |
+| [การพัฒนาที่กำหนดเอง](hooks/การพัฒนาที่กำหนดเอง.md) | [การพัฒนาที่กำหนดเอง.md](hooks/การพัฒนาที่กำหนดเอง.md) | คู่มือการพัฒนา Hook ที่กำหนดเอง |
+| [รูปแบบการกำหนดค่า](hooks/รูปแบบการกำหนดค่า.md) | [รูปแบบการกำหนดค่า.md](hooks/รูปแบบการกำหนดค่า.md) | รูปแบบการกำหนดค่า hooks.json |
 
 ---
 
-## 8. MCP 索引
+## 8. ดัชนี MCP
 
-共 **6 个 MCP 服务器配置**：
+ทั้งหมด **6 การกำหนดค่า MCP server**:
 
-| 文档 | 文件 | 说明 |
+| เอกสาร | ไฟล์ | คำอธิบาย |
 |------|------|------|
-| [MCP 配置格式](mcp/MCP配置格式.md) | [MCP配置格式.md](mcp/MCP配置格式.md) | MCP 配置文件格式 |
-| [内置服务器](mcp/内置服务器.md) | [内置服务器.md](mcp/内置服务器.md) | 内置 MCP 服务器 |
-| [自定义开发](mcp/自定义开发.md) | [自定义开发.md](mcp/自定义开发.md) | 自定义 MCP 服务器开发 |
+| [รูปแบบการกำหนดค่า MCP](mcp/รูปแบบการกำหนดค่าMCP.md) | [รูปแบบการกำหนดค่าMCP.md](mcp/รูปแบบการกำหนดค่าMCP.md) | รูปแบบไฟล์การกำหนดค่า MCP |
+| [เซิร์ฟเวอร์ภายใน](mcp/เซิร์ฟเวอร์ภายใน.md) | [เซิร์ฟเวอร์ภายใน.md](mcp/เซิร์ฟเวอร์ภายใน.md) | MCP server ภายใน |
+| [การพัฒนาที่กำหนดเอง](mcp/การพัฒนาที่กำหนดเอง.md) | [การพัฒนาที่กำหนดเอง.md](mcp/การพัฒนาที่กำหนดเอง.md) | การพัฒนา MCP server ที่กำหนดเอง |
 
 ---
 
-## 9. Scripts 索引
+## 9. ดัชนี Scripts
 
-共 **54 个工具脚本**：
+ทั้งหมด **54 สคริปต์เครื่องมือ**:
 
-| 文档 | 文件 | 说明 |
+| เอกสาร | ไฟล์ | คำอธิบาย |
 |------|------|------|
-| [工具脚本](scripts/工具脚本.md) | [工具脚本.md](scripts/工具脚本.md) | ecc.js、install-apply.js 等 |
-| [工具函数库](scripts/工具函数库.md) | [工具函数库.md](scripts/工具函数库.md) | 共享函数库 |
-| [测试运行器](scripts/测试运行器.md) | [测试运行器.md](scripts/测试运行器.md) | 测试运行器使用 |
-| [构建脚本](scripts/构建脚本.md) | [构建脚本.md](scripts/构建脚本.md) | 构建脚本 |
+| [สคริปต์เครื่องมือ](scripts/สคริปต์เครื่องมือ.md) | [สคริปต์เครื่องมือ.md](scripts/สคริปต์เครื่องมือ.md) | ecc.js, install-apply.js และอื่นๆ |
+| [ไลบรารีฟังก์ชันเครื่องมือ](scripts/ไลบรารีฟังก์ชันเครื่องมือ.md) | [ไลบรารีฟังก์ชันเครื่องมือ.md](scripts/ไลบรารีฟังก์ชันเครื่องมือ.md) | ไลบรารีฟังก์ชันที่ใช้ร่วมกัน |
+| [ทดสอบการรัน](scripts/ทดสอบการรัน.md) | [ทดสอบการรัน.md](scripts/ทดสอบการรัน.md) | การใช้ทดสอบการรัน |
+| [สคริปต์การสร้าง](scripts/สคริปต์การสร้าง.md) | [สคริปต์การสร้าง.md](scripts/สคริปต์การสร้าง.md) | สคริปต์การสร้าง |
 
 ---
 
-## 10. 贡献指南
+## 10. คู่มือการมีส่วนร่วม
 
-### 文件命名规范
+### มาตรฐานการตั้งชื่อไฟล์
 
-- **命令、Skills、Agents、Hooks**: 小写 + 连字符（如 `code-review.md`）
-- **脚本**: camelCase 或 kebab-case（如 `session-start.js`）
-- **规则**: 按语言/主题组织
+- **คำสั่ง, ทักษะ, ตัวแทน, Hooks**: ตัวพิมพ์เล็ก + ขีดกลาง (เช่น `code-review.md`)
+- **สคริปต์**: camelCase หรือ kebab-case (เช่น `session-start.js`)
+- **กฎ**: จัดตามภาษา/หัวข้อ
 
-### 命令文件格式
+### รูปแบบไฟล์คำสั่ง
 
 ```yaml
 ---
-description: "简短描述"
-argument-hint: "[可选参数]"
+description: "คำอธิบายสั้นๆ"
+argument-hint: "[พารามิเตอร์ทางเลือก]"
 name: command-name
 command: true
 allowed_tools: ["Bash"]
 ---
 ```
 
-### Agent 文件格式
+### รูปแบบไฟล์ตัวแทน
 
 ```yaml
 ---
 name: agent-name
-description: Agent 用途
+description: การใช้งานตัวแทน
 tools: ["Read", "Grep", "Glob", "Bash"]
 model: sonnet
 ---
 ```
 
-### Skill 文件格式
+### รูปแบบไฟล์ทักษะ
 
 ```markdown
-# Skill 名称
+# ชื่อทักษะ
 
 ## When to Use
 ## How It Works
 ## Examples
 ```
 
-### 提交流程
+### กระบวนการส่ง
 
-1. 创建新文件或修改现有文件
-2. 确保遵循命名规范
-3. 运行测试: `node tests/run-all.js`
-4. 运行 markdown lint: `npx markdownlint-cli '**/*.md' --ignore node_modules`
-5. 创建 PR 请求审查
+1. สร้างไฟล์ใหม่หรือแก้ไขไฟล์ที่มีอยู่
+2. ตรวจสอบว่าเป็นไปตามมาตรฐานการตั้งชื่อ
+3. รันการทดสอบ: `node tests/run-all.js`
+4. รัน markdown lint: `npx markdownlint-cli '**/*.md' --ignore node_modules`
+5. สร้าง PR เพื่อขอตรวจสอบ
 
 ---
 
-*ECC 文档体系 - 为 Claude Code 提供生产级开发工作流*
+*ระบบเอกสาร ECC - มอบการสนับสนุนเวิร์กโฟลว์การพัฒนาระดับการผลิตสำหรับ Claude Code*

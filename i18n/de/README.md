@@ -14,6 +14,17 @@ English | Português (Brasil) | 简体中文 | 繁體中文 | 日本語 | 한국
 |:---:|:---:|:---:|:---:|
 | [🇷🇺 Русский](./ru/README.md) | [🇹🇷 Türkçe](./tr/README.md) | [🇧🇷 Português](./pt-BR/README.md) | [🇻🇳 Tiếng Việt](./vi/README.md) |
 | [🇹🇭 ไทย](./th/README.md) | [🇨🇳 简体中文](../README.md) | | | |
+|---
+
+> **⚠️ Hinweis zu mehrsprachigen Versionen**
+> 
+> Übersetzungsdokumente in anderen Sprachen (Englisch, Japanisch, Koreanisch, Russisch, Türkisch, Portugiesisch, Vietnamesisch, Thai) enthalten zahlreiche Übersetzungsfehler und Probleme. Aufgrund persönlicher Einschränkungen kann ich diese Inhalte nicht weiter pflegen und korrigieren.
+> 
+> Wenn Sie helfen möchten, eine bestimmte Sprache zu korrigieren, reichen Sie bitte einen Pull Request ein.
+> 
+> **Derzeit wird nur die chinesische Version aktiv gepflegt.**
+
+---
 
 ---
 

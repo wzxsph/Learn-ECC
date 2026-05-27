@@ -1,63 +1,63 @@
-# GitHub 与协作技能
+# GitHub- und Kollaborations-Faehigkeiten
 
-## 概述
+## Ueberblick
 
-GitHub 与协作技能用于 GitHub 操作、代码审查、PR 管理和团队协作。
+GitHub- und Kollaborations-Faehigkeiten werden fuer GitHub-Operationen, Code-Reviews, PR-Management und Team-Zusammenarbeit verwendet.
 
-## 核心技能
+## Kernfaehigkeiten
 
 ### github-ops
 
-**用途**: GitHub 操作与自动化
+**Zweck**: GitHub-Operationen und Automatisierung
 
-**功能**:
-- Issue 管理
-- PR 创建与审查
-- 代码审查自动化
-- GitHub Actions 工作流
+**Funktionen**:
+- Issue-Management
+- PR-Erstellung und -Review
+- Code-Review-Automatisierung
+- GitHub-Actions-Workflows
 
 ---
 
 ### git-workflow
 
-**用途**: Git 工作流规范
+**Zweck**: Git-Workflow-Standards
 
-**核心概念**:
-- 分支策略
-- Commit 规范
-- Merge 策略
-- 冲突解决
+**Kernkonzepte**:
+- Branching-Strategie
+- Commit-Standards
+- Merge-Strategie
+- Konfliktloesung
 
 ---
 
 ### repo-scan
 
-**用途**: 代码库扫描
+**Zweck**: Repository-Scanning
 
-**检查项**:
-- 依赖漏洞
-- 代码重复
-- 圈复杂度
-- 文档完整性
+**Pruefpunkte**:
+- Abhaengigkeitsluecken
+- Code-Duplikation
+- Zirkulaere Komplexitaet
+- Dokumentationsvollstaendigkeit
 
 ---
 
-## 代码审查
+## Code-Review
 
 ### click-path-audit
 
-**用途**: 点击路径审计
+**Zweck**: Klickpfad-Audit
 
-**使用场景**:
-- 用户行为分析
-- 转化率优化
-- 漏斗分析
+**Verwendungsszenarien**:
+- Benutzerverhaltensanalyse
+- Konversionsraten-Optimierung
+- Trichteranalyse
 
 ---
 
-## 相关技能
+## Zugehoerige Faehigkeiten
 
-- `github-ops` - GitHub 操作
-- `git-workflow` - Git 工作流
-- `repo-scan` - 代码库扫描
-- `click-path-audit` - 点击路径审计
+- `github-ops` - GitHub-Operationen
+- `git-workflow` - Git-Workflow
+- `repo-scan` - Repository-Scanning
+- `click-path-audit` - Klickpfad-Audit

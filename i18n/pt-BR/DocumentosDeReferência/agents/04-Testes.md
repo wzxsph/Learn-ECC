@@ -1,374 +1,375 @@
-# 测试类 Agent
+# Agentes de Testes
 
-测试类 Agent 专门负责测试驱动开发、端到端测试、测试覆盖率分析和质量保证。
+Agentes de testes são especializados em desenvolvimento dirigido por testes, testes end-to-end, análise de cobertura de testes e garantia de qualidade.
 
-## Agent 列表
+## Lista de Agentes
 
-| Agent 名称 | 用途 | 使用模型 | 核心工具 |
-|------------|------|----------|----------|
-| tdd-guide | TDD 测试驱动开发专家 | sonnet | Read, Write, Edit, Bash, Grep |
-| e2e-runner | 端到端测试专家 | sonnet | Read, Write, Edit, Bash, Grep, Glob |
-| mle-reviewer | ML 工程代码审查（训练/推理/监控） | sonnet | Read, Grep, Glob, Bash |
-| pr-test-analyzer | PR 测试覆盖分析 | sonnet | Read, Grep, Glob, Bash |
+| Nome do Agente | Propósito | Modelo | Ferramentas Principais |
+|----------------|-----------|--------|----------------------|
+| tdd-guide | Especialista em TDD | sonnet | Read, Write, Edit, Bash, Grep |
+| e2e-runner | Especialista em testes end-to-end | sonnet | Read, Write, Edit, Bash, Grep, Glob |
+| mle-reviewer | Revisão de código de engenharia ML (training/inference/monitoring) | sonnet | Read, Grep, Glob, Bash |
+| pr-test-analyzer | Análise de cobertura de testes de PR | sonnet | Read, Grep, Glob, Bash |
 
 ---
 
 ## tdd-guide
 
-### 名称和用途
-测试驱动开发专家，强制执行写测试优先的方法论。主动用于编写新功能、修复 bug 或重构代码。确保 80%+ 的测试覆盖率。
+### Nome e Propósito
+Especialista em desenvolvimento dirigido por testes, impondo metodologia de escrita de testes primeiro. Usado proativamente para escrever novas funcionalidades, corrigir bugs ou refatorar código. Garante cobertura de testes de 80%+.
 
-### 能力说明
-- 强制执行测试优先的方法论
-- 指导 Red-Green-Refactor 周期
-- 确保 80%+ 测试覆盖率
-- 编写全面的测试套件（单元、集成、E2E）
-- 在实施前捕获边缘用例
+### Capacidades
+- Imposição de metodologia de testes primeiro
+- Orientação do ciclo Red-Green-Refactor
+- Garantia de cobertura de testes 80%+
+- Escrita de suítes de testes abrangentes (unit, integração, E2E)
+- Captura de casos de borda antes da implementação
 
-### 适用场景
-- 编写新功能时
-- 修复 bug 时
-- 重构代码时
-- 需要 TDD 工作流程时
+### Cenários de Uso
+- Ao escrever nova funcionalidade
+- Ao corrigir bugs
+- Ao refatorar código
+- Quando workflow TDD é necessário
 
-### 使用的工具列表
-- Read: 读取现有代码
-- Write: 编写测试
-- Edit: 修改测试和实现
-- Bash: 运行测试命令
-- Grep: 搜索测试模式
+### Ferramentas Utilizadas
+- Read: Ler código existente
+- Write: Escrever testes
+- Edit: Modificar testes e implementação
+- Bash: Executar comandos de teste
+- Grep: Pesquisar padrões de teste
 
-### 与其他 Agent 的协作方式
-- code-reviewer 在 TDD 周期后审查代码
-- build-error-resolver 修复测试构建错误
-- e2e-runner 进行关键用户流的 E2E 测试
+### Colaboração com Outros Agentes
+- code-reviewer revisa código após ciclo TDD
+- build-error-resolver corrige erros de build de testes
+- e2e-runner executa testes E2E para jornadas de usuário críticas
 
-### TDD 工作流
+### Fluxo de Trabalho TDD
 
-#### 1. 先写测试 (RED)
-编写描述预期行为的失败测试。
+#### 1. Escrever Teste Primeiro (RED)
+Escrever teste que descreve comportamento esperado e falha.
 
-#### 2. 运行测试 - 验证它 FAIL
+#### 2. Executar Teste - Verificar que FALHA
 ```bash
 npm test
 ```
 
-#### 3. 写最小实现 (GREEN)
-只写足够的代码让测试通过。
+#### 3. Escrever Implementação Mínima (GREEN)
+Escrever apenas código suficiente para fazer o teste passar.
 
-#### 4. 运行测试 - 验证它 PASS
+#### 4. Executar Teste - Verificar que PASSA
 
-#### 5. 重构 (IMPROVE)
-移除重复，改进名称，优化 - 测试必须保持绿色。
+#### 5. Refatorar (IMPROVE)
+Remover duplicação, melhorar nomes, otimizar - testes devem permanecer verdes.
 
-#### 6. 验证覆盖率
+#### 6. Verificar Cobertura
 ```bash
 npm run test:coverage
-# 要求: 80%+ 分支、函数、行、语句覆盖率
+# Requer: 80%+ de cobertura de branch, função, linha, declaração
 ```
 
-### 必须测试的边缘用例
+### Casos de Borda que Devem Ser Testados
 
-1. **Null/Undefined** 输入
-2. **空** 数组/字符串
-3. **无效类型** 传递
-4. **边界值** (最小/最大)
-5. **错误路径** (网络失败、数据库错误)
-6. **竞态条件** (并发操作)
-7. **大数据** (10k+ 项的性能)
-8. **特殊字符** (Unicode、表情符号、SQL 字符)
+1. **Input Null/Undefined**
+2. **Array/string vazio**
+3. **Passagem de tipo inválido**
+4. **Valores de borda** (mínimo/máximo)
+5. **Caminhos de erro** (falha de rede, erros de banco de dados)
+6. **Condições de corrida** (operações concorrentes)
+7. **Dados grandes** (performance com 10k+ itens)
+8. **Caracteres especiais** (Unicode, emoji, caracteres SQL)
 
-### 反模式 - 必须避免
+### Anti-padrões - Devem Ser Evitados
 
-- 测试实现细节（内部状态）而非行为
-- 测试相互依赖（共享状态）
-- 断言太少（通过但不验证任何东西）
-- 外部依赖未 mock (Supabase、Redis、OpenAI 等)
+- Testar detalhes de implementação (estado interno) ao invés de comportamento
+- Testes dependentes uns dos outros (estado compartilhado)
+- Asserções poucas (passam mas não verificam nada)
+- Dependências externas não mockadas (Supabase, Redis, OpenAI, etc.)
 
-### 质量检查清单
+### Checklist de Qualidade
 
-- [ ] 所有公共函数都有单元测试
-- [ ] 所有 API 端点都有集成测试
-- [ ] 关键用户流有 E2E 测试
-- [ ] 边缘用例已覆盖 (null、empty、invalid)
-- [ ] 错误路径已测试（不只是 happy path）
-- [ ] 外部依赖已 mock
-- [ ] 测试相互独立（无共享状态）
-- [ ] 断言具体且有意义
-- [ ] 覆盖率 80%+
+- [ ] Todas as funções públicas têm testes unitários
+- [ ] Todos os endpoints de API têm testes de integração
+- [ ] jornadas de usuário críticas têm testes E2E
+- [ ] Casos de borda estão cobertos (null, empty, invalid)
+- [ ] Caminhos de erro estão testados (não apenas happy path)
+- [ ] Dependências externas estão mockadas
+- [ ] Testes são independentes (sem estado compartilhado)
+- [ ] Asserções são específicas e significativas
+- [ ] Cobertura é 80%+
 
-### v1.8 Eval-Driven TDD 附录
+### Apêndice TDD Eval-Driven v1.8
 
-将 eval-driven 开发集成到 TDD 流程：
+Integrar eval-driven development ao fluxo TDD:
 
-1. 在实施前定义能力 + 回归 evals
-2. 运行基线并捕获失败特征
-3. 实现最小通过变更
-4. 重新运行测试和 evals；报告 pass@1 和 pass@3
-5. 发布关键路径应在合并前达到 pass^3 稳定性
+1. Definir capabilities + evals de regressão antes da implementação
+2. Executar baseline e capturar características de falha
+3. Implementar mudança mínima que passa
+4. Re-executar testes e evals; reportar pass@1 e pass@3
+5. Caminhos críticos de release devem alcançar estabilidade pass^3 antes de merge
 
 ---
 
 ## e2e-runner
 
-### 名称和用途
-端到端测试专家，使用 Vercel Agent Browser（首选）和 Playwright 后备。主动用于生成、维护和运行 E2E 测试。
+### Nome e Propósito
+Especialista em testes end-to-end, usando Vercel Agent Browser (preferido) e Playwright fallback. Usado proativamente para gerar, manter e executar testes E2E.
 
-### 能力说明
-- 测试旅程创建 - 为用户流编写测试
-- 测试维护 - 保持测试与 UI 变化同步
-- 不稳定测试管理 - 识别和隔离不稳定测试
-- 测试报告 - 生成 HTML 报告和 JUnit XML
-- CI/CD 集成 - 确保测试在管道中可靠运行
-- 截图/视频/trace 管理
+### Capacidades
+- Criação de jornadas de teste - Escrever testes para jornadas de usuário
+- Manutenção de testes - Manter testes sincronizados com mudanças de UI
+- Gerenciamento de testes instáveis - Identificar e isolar testes instáveis
+- Relatórios de teste - Gerar relatórios HTML e JUnit XML
+- Integração CI/CD - Garantir que testes executam de forma confiável em pipeline
+- Gerenciamento de screenshot/video/trace
 
-### 适用场景
-- 关键用户旅程需要验证时
-- 需要端到端验证时
-- CI/CD 管道中运行 E2E 测试时
-- 发现集成问题时
+### Cenários de Uso
+- Quando jornadas de usuário críticas precisam de verificação
+- Quando verificação end-to-end é necessária
+- Quando testes E2E executam em pipeline CI/CD
+- Quando problemas de integração são descobertos
 
-### 使用的工具列表
-- Read: 读取页面内容
-- Write: 编写测试
-- Edit: 修改测试
-- Bash: 运行 Playwright/Agent Browser 命令
-- Grep: 搜索测试
-- Glob: 查找测试文件
+### Ferramentas Utilizadas
+- Read: Ler conteúdo de página
+- Write: Escrever testes
+- Edit: Modificar testes
+- Bash: Executar comandos Playwright/Agent Browser
+- Grep: Pesquisar testes
+- Glob: Encontrar arquivos de teste
 
-### 与其他 Agent 的协作方式
-- tdd-guide 编写单元/集成测试
-- code-reviewer 审查测试质量
-- mle-reviewer 审查 ML 相关测试
+### Colaboração com Outros Agentes
+- tdd-guide escreve testes unitários/de integração
+- code-reviewer revisa qualidade de teste
+- mle-reviewer revisa testes relacionados a ML
 
-### 主要工具: Agent Browser
+### Ferramenta Principal: Agent Browser
 
-**优先于原始 Playwright 使用 Agent Browser** - 语义选择器、AI 优化、自动等待、基于 Playwright。
+**Preferir Agent Browser sobre Playwright bruto** - seletores semânticos, otimizado por AI, auto-wait, baseado em Playwright.
 
 ```bash
-# 设置
+# Setup
 npm install -g agent-browser && agent-browser install
 
-# 核心工作流
+# Fluxo de trabalho principal
 agent-browser open https://example.com
-agent-browser snapshot -i          # 获取带 refs 的元素 [ref=e1]
-agent-browser click @e1            # 按 ref 点击
-agent-browser fill @e2 "text"     # 按 ref 填充输入
-agent-browser wait visible @e5     # 等待元素可见
+agent-browser snapshot -i          # Obter elementos com refs [ref=e1]
+agent-browser click @e1            # Clicar por ref
+agent-browser fill @e2 "text"     # Preencher input por ref
+agent-browser wait visible @e5     # Esperar elemento visível
 agent-browser screenshot result.png
 ```
 
-### 后备: Playwright
+### Fallback: Playwright
 
-当 Agent Browser 不可用时，直接使用 Playwright。
+Quando Agent Browser não está disponível, usar Playwright diretamente.
 
 ```bash
-npx playwright test                        # 运行所有 E2E 测试
-npx playwright test tests/auth.spec.ts     # 运行特定文件
-npx playwright test --headed               # 可见浏览器
-npx playwright test --debug                # 使用检查器调试
-npx playwright test --trace on             # 带 trace 运行
-npx playwright show-report                 # 查看 HTML 报告
+npx playwright test                        # Executar todos os testes E2E
+npx playwright test tests/auth.spec.ts     # Executar arquivo específico
+npx playwright test --headed               # Navegador visível
+npx playwright test --debug                # Usar inspector para debug
+npx playwright test --trace on             # Executar com trace
+npx playwright show-report                 # Ver relatório HTML
 ```
 
-### 工作流
+### Fluxo de Trabalho
 
-#### 1. 计划
-- 识别关键用户旅程（认证、核心功能、支付、CRUD）
-- 定义场景: happy path、边缘用例、错误用例
-- 按风险排序: HIGH（金融、认证）、MEDIUM（搜索、导航）、LOW（UI 优化）
+#### 1. Planejar
+- Identificar jornadas de usuário críticas (auth, funcionalidade core, pagamento, CRUD)
+- Definir cenários: happy path, casos de borda, casos de erro
+- Ordenar por risco: HIGH (financeiro, auth), MEDIUM (search, navegação), LOW (otimização de UI)
 
-#### 2. 创建
-- 使用页面对象模型 (POM) 模式
-- 优先使用 `data-testid` 选择器
-- 在关键步骤添加断言
-- 在关键时刻捕获截图
-- 使用适当的等待（从不 `waitForTimeout`）
+#### 2. Criar
+- Usar padrão Page Object Model (POM)
+- Preferir seletores `data-testid`
+- Adicionar asserções em passos críticos
+- Capturar screenshot em momentos críticos
+- Usar waits apropriados (nunca `waitForTimeout`)
 
-#### 3. 执行
-- 本地运行 3-5 次检查不稳定性
-- 使用 `test.fixme()` 或 `test.skip()` 隔离不稳定测试
-- 上传 artifact 到 CI
+#### 3. Executar
+- Executar localmente 3-5 vezes para verificar instabilidade
+- Usar `test.fixme()` ou `test.skip()` para isolar testes instáveis
+- Fazer upload de artifact para CI
 
-### 关键原则
+### Princípios Chave
 
-- **使用语义选择器**: `[data-testid="..."]` > CSS 选择器 > XPath
-- **等待条件而非时间**: `waitForResponse()` > `waitForTimeout()`
-- **自动等待内置**: `page.locator().click()` 自动等待；原始 `page.click()` 不等待
-- **隔离测试**: 每个测试应该独立；无共享状态
-- **快速失败**: 在每个关键步骤使用 `expect()` 断言
-- **重试时 trace**: 配置 `trace: 'on-first-retry'` 用于调试失败
+- **Usar seletores semânticos**: `[data-testid="..."]` > seletores CSS > XPath
+- **Esperar condições não tempo**: `waitForResponse()` > `waitForTimeout()`
+- **Auto-wait integrado**: `page.locator().click()` espera automaticamente; `page.click()` bruto não espera
+- **Isolar testes**: Cada teste deve ser independente; sem estado compartilhado
+- **Falhar rápido**: Usar asserções `expect()` em cada passo crítico
+- **Retry com trace**: Configurar `trace: 'on-first-retry'` para debug de falhas
 
-### 不稳定测试处理
+### Tratamento de Testes Instáveis
 
 ```typescript
-// 隔离
+// Isolar
 test('flaky: market search', async ({ page }) => {
   test.fixme(true, 'Flaky - Issue #123')
 })
 
-// 识别不稳定性
+// Identificar instabilidade
 // npx playwright test --repeat-each=10
 ```
 
-常见原因: 竞态条件（使用自动等待选择器）、网络计时（等待响应）、动画计时（等待 `networkidle`）。
+Causas comuns: condições de corrida (usar seletores com auto-wait), timing de rede (esperar resposta), timing de animação (esperar `networkidle`).
 
-### 成功指标
+### Métricas de Sucesso
 
-- 所有关键旅程通过 (100%)
-- 总体通过率 > 95%
-- 不稳定率 < 5%
-- 测试持续时间 < 10 分钟
-- Artifact 上传并可访问
+- Todas as jornadas críticas passam (100%)
+- Taxa de aprovação geral > 95%
+- Taxa de instabilidade < 5%
+- Duração dos testes < 10 minutos
+- Artifact fazer upload e ser acessível
 
 ---
 
 ## mle-reviewer
 
-### 名称和用途
-生产机器学习工程审查专家，专注于数据契约、特征管道、训练可复现性、离线/在线评估、模型服务、监控和回滚。
+### Nome e Propósito
+Especialista em revisão de engenharia de machine learning de produção, focado em contratos de dados, pipelines de features, reprodutibilidade de training, avaliação offline/online, serving de modelo, monitoramento e rollback.
 
-### 能力说明
-- 问题定义和决策质量审查
-- 指标、阈值和错误分析审查
-- 数据契约和泄漏检查
-- 训练可复现性验证
-- 评估和推广流程审查
-- 服务和部署安全审查
-- 监控和事件响应规划
+### Capacidades
+- Revisão de qualidade de definição de problema e decisões
+- Revisão de métricas, limiares e análise de erros
+- Verificação de contratos de dados e detecção de vazamento
+- Verificação de reprodutibilidade de training
+- Revisão de fluxo de avaliação e promotion
+- Verificação de segurança de serving e deploy
+- Planejamento de monitoramento e resposta a eventos
 
-### 适用场景
-- ML、MLOps、模型训练代码变更时
-- 推理、特征存储、评估代码变更时
-- 模型推广决策时
+### Cenários de Uso
+- Quando há mudanças em código de ML, MLOps, training de modelo
+- Quando há mudanças em código de inference, feature store, avaliação
+- Quando há decisões de promotion de modelo
 
-### 使用的工具列表
-- Read: 读取 ML 代码和配置
-- Grep: 搜索模式
-- Glob: 查找文件
-- Bash: 运行 pytest, ruff, mypy
+### Ferramentas Utilizadas
+- Read: Ler código e configuração de ML
+- Grep: Pesquisar padrões
+- Glob: Encontrar arquivos
+- Bash: Executar pytest, ruff, mypy
 
-### 与其他 Agent 的协作方式
-- python-reviewer 处理 Python 风格、类型、错误处理
-- pytorch-build-resolver 处理 tensor/CUDA/训练失败
-- database-reviewer 处理特征表、标签存储
-- security-reviewer 处理 secrets、PII、pickle Segurança
-- performance-optimizer 处理延迟、内存、GPU 利用率
-- build-error-resolver 处理 CI、依赖、原生扩展失败
-- pr-test-analyzer 分析测试覆盖
-- silent-failure-hunter 发现管道静默失败
-- e2e-runner 进行产品流 E2E 测试
-- a11y-architect 审查预测可访问性
-- doc-updater 更新文档
+### Colaboração com Outros Agentes
+- python-reviewer lidar com estilo Python, tipos, tratamento de erros
+- pytorch-build-resolver lidar com falhas de tensor/CUDA/training
+- database-reviewer lidar com tabelas de features, armazenamento de labels
+- security-reviewer lidar com secrets, PII, segurança de pickle
+- performance-optimizer lidar com latência, memória, utilização de GPU
+- build-error-resolver lidar com CI, dependências, falhas de extensões nativas
+- pr-test-analyzer analisar cobertura de testes
+- silent-failure-hunter descobrir falhas silenciosas de pipeline
+- e2e-runner executar testes E2E de fluxo de produto
+- a11y-architect revisar acessibilidade de predição
+- doc-updater atualizar documentação
 
-### 关键审查领域
+### Áreas Chave de Revisão
 
-#### 问题定义和决策质量
-- 变更是否从用户或系统决策开始，而非模型架构偏好
-- 利益相关者和失败成本是否明确
-- 指标选择是否遵循错误预算
+#### Definição de Problema e Qualidade de Decisão
+- Mudança parte de decisões de usuário ou sistema, não preferência de arquitetura de modelo
+- Stakeholders e custo de falha são claros
+- Seleção de métrica segue erro budget
 
-#### 指标、阈值和错误分析
-- 基线和当前生产行为是否比较
-- 阈值和配置是否作为产品决策
-- 假阳性和假阴性是否直接检查
+#### Métricas, Limiares e Análise de Erros
+- Baseline e comportamento atual de produção são comparados
+- Limiares e configuração são decisões de produto
+- Falsos positivos e falsos negativos são verificados diretamente
 
-#### 数据契约和泄漏
-- 实体粒度、主键、时间戳是否明确
-- 分割是否遵守时间、用户/实体分组
-- 特征连接是否时间点正确
-- 敏感属性是否排除或正当处理
+#### Contratos de Dados e Vazamento
+- Granularidade de entidade, chave primária, timestamp são claros
+- Divisão respeita agrupamento temporal, usuário/entidade
+- Conexões de feature são temporalmente corretas
+- Atributos sensíveis são excluídos ou tratados legitimamente
 
-#### 训练可复现性
-- 训练是否可从代码、配置、数据集版本、种子运行
-- 超参数、预处理、依赖版本是否记录
-- 随机性和 GPU 非确定性是否有意处理
+#### Reprodutibilidade de Training
+- Training pode executar de código, configuração, versão de dataset, seed
+- Hyperparâmetros, preprocessamento, versões de dependência estão documentados
+- Aleatoriedade e não-determinismo de GPU são intencionalmente tratados
 
-#### 评估和推广
-- 指标是否与基线和当前生产模型比较
-- 推广门是否在选择前声明
-- 切片指标是否覆盖重要队列
+#### Avaliação e Promotion
+- Métricas são comparadas com baseline e modelo atual de produção
+- Portões de promotion são declarados antes da seleção
+- Métricas de slice cobrem filas importantes
 
-#### 服务和部署
-- 训练和服务转换是否共享或等价测试
-- 输入模式是否拒绝过时、缺失、无效特征
-- 推理路径是否有超时、资源限制、回退逻辑
+#### Serving e Deploy
+- Transformações de training e serving são compartilhadas ou equivalentes testadas
+- Schema de input rejeita features desatualizadas, faltantes, inválidas
+- Caminhos de inference têm timeout, limites de recursos, lógica de fallback
 
-#### 监控和事件响应
-- 监控是否覆盖服务健康、特征漂移、预测漂移
-- 日志是否包含足够标识符
-- 回滚是否命名前一 artifact、配置、数据依赖
+#### Monitoramento e Resposta a Eventos
+- Monitoramento cobre saúde de serviço, drift de feature, drift de predição
+- Logs contêm identificadores suficientes
+- Rollback nomeia artifact, configuração, dependências de dados anteriores
 
-### 常见阻塞器
+### Bloqueadores Comuns
 
-- 在时间相关或用户相关数据上随机 train/test 分割
-- 特征生成使用预测时不可用的字段
-- 离线指标改进而关键切片回归
-- 训练预处理被手动复制到服务代码
-- 模型版本不在预测日志中
+- Divisão aleatória de train/test em dados temporais ou relacionados a usuário
+- Geração de feature usando campos não disponíveis no tempo de prediction
+- Melhorias de métricas offline mas regressão de slices críticas
+- Preprocessamento de training manualmente copiado para código de serving
+- Versão de modelo não em logs de prediction
+- Labels atrasadas sistematicamente ou leakage irreversível
 
-### 批准标准
+### Critérios de Aprovação
 
-- **APPROVE**: 无关键/高 MLE 风险，相关测试或评估门通过
-- **APPROVE WITH WARNINGS**: 只有中等问题，有明确的后续行动
-- **BLOCK**: 任何可能的泄漏、不可复现的推广、不安全的服务行为、缺少生产部署回滚、敏感数据暴露、或关键评估差距
+- **APPROVE**: Sem riscos MLE críticos/altos, testes ou portões de avaliação relacionados passam
+- **APPROVE WITH WARNINGS**: Apenas problemas médios, com ação clara de follow-up
+- **BLOCK**: Qualquer vazamento possível, promotion irreprodutível, comportamento de serving inseguro, falta de rollback de deploy de produção, exposição de dados sensíveis, ou gaps críticos de avaliação
 
 ---
 
 ## pr-test-analyzer
 
-### 名称和用途
-审查 Pull Request 测试覆盖质量和完整性，强调行为覆盖和真实 bug 预防。
+### Nome e Propósito
+Revisar qualidade e completude de cobertura de testes de Pull Request, enfatizando cobertura de comportamento e prevenção de bugs reais.
 
-### 能力说明
-- 识别变更代码映射
-- 验证行为覆盖
-- 评估测试质量
-- 发现覆盖差距
+### Capacidades
+- Identificar mapeamento de código de mudança
+- Verificar cobertura de comportamento
+- Avaliar qualidade de teste
+- Descobrir gaps de cobertura
 
-### 适用场景
-- PR 审查时
-- 评估测试覆盖率时
-- 验证测试充分性时
+### Cenários de Uso
+- Durante revisão de PR
+- Ao avaliar cobertura de testes
+- Ao verificar suficiência de testes
 
-### 使用的工具列表
-- Read: 读取变更代码和测试
-- Grep: 搜索测试
-- Glob: 查找测试文件
-- Bash: 运行测试命令
+### Ferramentas Utilizadas
+- Read: Ler código de mudança e testes
+- Grep: Pesquisar testes
+- Glob: Encontrar arquivos de teste
+- Bash: Executar comandos de teste
 
-### 与其他 Agent 的协作方式
-- tdd-guide 改进测试
-- e2e-runner 进行端到端覆盖
-- code-reviewer 进行代码质量审查
+### Colaboração com Outros Agentes
+- tdd-guide melhorar testes
+- e2e-runner executar cobertura end-to-end
+- code-reviewer fazer revisão de qualidade de código
 
-### 分析流程
+### Fluxo de Análise
 
-#### 1. 识别变更代码
-- 映射变更的函数、类和模块
-- 定位对应测试
-- 识别新的未测试代码路径
+#### 1. Identificar Código de Mudança
+- Mapear funções, classes e módulos alterados
+- Localizar testes correspondentes
+- Identificar novos caminhos de código não testados
 
-#### 2. 行为覆盖
-- 检查每个功能是否有测试
-- 验证边缘用例和错误路径
-- 确保重要集成被覆盖
+#### 2. Cobertura de Comportamento
+- Verificar se cada funcionalidade tem teste
+- Verificar casos de borda e caminhos de erro
+- Garantir que integrações importantes estão cobertas
 
-#### 3. 测试质量
-- 优先选择有意义的断言而非无抛出检查
-- 标记不稳定的模式
-- 检查隔离性和测试名称清晰度
+#### 3. Qualidade de Teste
+- Preferir asserções significativas ao invés de verificações sem throws
+- Marcar padrões instáveis
+- Verificar isolamento e clareza de nomes de teste
 
-#### 4. 覆盖差距
-按影响评级：
-- critical（关键）
-- important（重要）
-- nice-to-have（锦上添花）
+#### 4. Gaps de Cobertura
+Classificar por impacto:
+- critical (crítico)
+- important (importante)
+- nice-to-have (bom ter)
 
-### 输出格式
+### Formato de Saída
 
-1. 覆盖总结
-2. 关键差距
-3. 改进建议
-4. 积极观察
-[返回 Agent 索引](../README.md)
+1. Resumo de cobertura
+2. Gaps críticos
+3. Sugestões de melhoria
+4. Observações positivas
+[Voltar ao Índice de Agentes](../README.md)

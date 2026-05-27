@@ -1,153 +1,153 @@
-# 代码风格规则
+# Codestil-Regeln
 
-## 规则概述
+## Regeluebersicht
 
-ECC Rules 代码风格规则定义了代码组织的核心原则和最佳实践。这些规则确保代码保持可读性、可维护性和一致性，涵盖从不可变性到命名约定的所有方面。
+Die ECC Rules Codestil-Regeln definieren Kernprinzipien und Best Practices fuer Codeorganisation. Diese Regeln stellen sicher dass Code lesbar, wartbar und konsistent bleibt, von Immutabilitaet bis zu Namenskonventionen.
 
-## 核心要求
+## Kernanforderungen
 
-### 不可变性（关键原则）
+### Immutabilitaet (Schluesselprinzip)
 
-**必须**：始终创建新对象，绝不修改现有对象。
+**MUST**: Immer neue Objekte erstellen, niemals existierende veraendern.
 
 ```typescript
-// 错误示例 - 修改原对象
+// FALSCH - Original veraendern
 function modify(user, name) {
-  user.name = name;  // 改变了原对象
+  user.name = name;  // veraendert das Original
   return user;
 }
 
-// 正确示例 - 返回新对象
+// RICHTIG - Neues Objekt zurueckgeben
 function update(user, name) {
-  return { ...user, name };  // 创建新副本
+  return { ...user, name };  // Erstellt neue Kopie
 }
 ```
 
-**理由**：不可变数据防止隐藏副作用，使调试更容易，并支持安全并发。
+**Begruendung**: Immutable Daten verhindern versteckte Nebenwirkungen, machen Debugging einfacher und unterstuetzen sichere Concurrency.
 
-### 核心设计原则
+### Kern-Designprinzipien
 
-| 原则 | 说明 | 实践 |
-|------|------|------|
-| **KISS** | Keep It Simple | 首选最简单的可行方案，避免过早优化，优先考虑清晰而非巧妙 |
-| **DRY** | Don't Repeat Yourself | 将重复逻辑提取到共享函数或工具类，避免复制粘贴导致的实现漂移 |
-| **YAGNI** | You Aren't Gonna Need It | 不构建未来可能需要的特性或抽象，简单开始，在真正需要时重构 |
-### 文件组织
+| Prinzip | Beschreibung | Praxis |
+|---------|--------------|--------|
+| **KISS** | Keep It Simple | Einfachste funktionierende Loesung bevorzugen, fruehe Optimierung vermeiden, Klarheit vor Cleverness |
+| **DRY** | Don't Repeat Yourself | Wiederholte Logik in geteilte Funktionen oder Utilities extrahieren, Copy-Paste-Drift vermeiden |
+| **YAGNI** | You Aren't Gonna Need It | Keine Features oder Abstraktionen bauen die vielleicht spaeter gebraucht werden, einfach starten und bei echtem Bedarf refaktorieren |
+### Dateiorganisation
 
-| 要求 | 说明 |
-|------|------|
-| 多小文件 > 少大文件 | 高内聚、低耦合 |
-| 典型行数 | 200-400行，最多800行 |
-| 大模块拆分 | 从大模块中提取工具函数 |
-| 组织方式 | 按功能/领域组织，而非按类型 |
+| Anforderung | Beschreibung |
+|-------------|--------------|
+| Viele kleine Dateien > wenige grosse Dateien | Hohe Kohaesion, niedrige Kopplung |
+| Typische Zeilenanzahl | 200-400 Zeilen, maximal 800 |
+| Grosse Module aufteilen | Utilities aus grossen Modulen extrahieren |
+| Organisiert nach | Funktions-/Domänenbereich, nicht nach Typ |
 
-### 错误处理
+### Fehlerbehandlung
 
-| 要求 | 说明 |
-|------|------|
-| 显式处理 | 每个层级都要显式处理错误 |
-| UI代码 | 提供用户友好的错误消息 |
-| 服务端 | 记录详细的错误上下文 |
-| 禁止行为 | 不得静默吞掉错误 |
+| Anforderung | Beschreibung |
+|-------------|--------------|
+| Explizit behandeln | Auf jeder Ebene Fehler explizit behandeln |
+| UI-Code | Benutzerfreundliche Fehlermeldungen bereitstellen |
+| Server-seitig | Detaillierten Fehlerkontext loggen |
+| Verboten | Fehler nicht stillschweigend schlucken |
 
-### 输入验证
+### Eingabevalidierung
 
-| 要求 | 说明 |
-|------|------|
-| 边界验证 | 在系统边界验证所有输入 |
-| Schema验证 | 尽可能使用基于Schema的验证 |
-| 快速失败 | 用清晰的错误消息快速失败 |
-| 外部数据 | 永远不信任外部数据（API响应、用户输入、文件内容） |
-## 实施细节
+| Anforderung | Beschreibung |
+|-------------|--------------|
+| Grenzen validieren | Alle Eingaben an Systemgrenzen validieren |
+| Schema-Validierung | Wo moeglich Schema-basierte Validierung verwenden |
+| Schnelles Scheitern | Mit klaren Fehlermeldungen schnell scheitern |
+| Externe Daten | Niemals externen Daten vertrauen (API-Antworten, Benutzereingaben, Dateiinhalt) |
+## Implementierungsdetails
 
-### 命名约定
+### Namenskonventionen
 
-| 类型 | 约定 | 示例 |
-|------|------|------|
-| 变量和函数 | camelCase + 描述性名称 | `calculateTotal`, `userName` |
-| 布尔值 | is/has/should/can 前缀 | `isActive`, `hasPermission` |
-| 接口、类型、组件 | PascalCase | `UserProfile`, `ButtonComponent` |
-| 常量 | UPPER_SNAKE_CASE | `MAX_RETRY_COUNT`, `API_TIMEOUT` |
-| 自定义Hooks | camelCase + use前缀 | `useUserData`, `useFetch` |
+| Typ | Konvention | Beispiel |
+|-----|-------------|----------|
+| Variablen und Funktionen | camelCase + beschreibende Namen | `calculateTotal`, `userName` |
+| Booleans | is/has/should/can Praefix | `isActive`, `hasPermission` |
+| Interfaces, Typen, Komponenten | PascalCase | `UserProfile`, `ButtonComponent` |
+| Konstanten | UPPER_SNAKE_CASE | `MAX_RETRY_COUNT`, `API_TIMEOUT` |
+| Custom Hooks | camelCase + use Praefix | `useUserData`, `useFetch` |
 
-### 代码异味
+### Code-Smells
 
-#### 深层嵌套
+#### Tiefe Verschachtelung
 
-超过4层嵌套应使用早期返回重构：
+Mehr als 4 Ebenen Verschachtelung mit fruehen Returns refaktorieren:
 
 ```typescript
-// 避免
+// Vermeiden
 function processOrder(order) {
   if (order) {
     if (order.items) {
       if (order.items.length > 0) {
-        // 处理逻辑
+        // Verarbeitungslogik
       }
     }
   }
 }
 
-// 推荐
+// Empfohlen
 function processOrder(order) {
   if (!order || !order.items || order.items.length === 0) {
     return;
   }
-  // 处理逻辑
+  // Verarbeitungslogik
 }
 ```
 
-#### 魔法数字
+#### Magische Zahlen
 
-使用命名常量代替魔法数字：
+Bennant-Konstanten statt magischer Zahlen verwenden:
 
 ```typescript
-// 避免
+// Vermeiden
 setTimeout(callback, 300000);
 
-// 推荐
-const SESSION_TIMEOUT_MS = 5 * 60 * 1000; // 5分钟
+// Empfohlen
+const SESSION_TIMEOUT_MS = 5 * 60 * 1000; // 5 Minuten
 setTimeout(callback, SESSION_TIMEOUT_MS);
 ```
 
-#### 长函数
+#### Lange Funktionen
 
-拆分大型函数为具有清晰职责的小型函数：
+Grosse Funktionen in kleine mit klaren Verantwortlichkeiten aufteilen:
 
-| 函数长度 | 建议 |
-|----------|------|
-| <50行 | 理想 |
-| 50-100行 | 可接受，考虑拆分 |
-| >100行 | 必须拆分 |
+| Funktionslaenge | Empfehlung |
+|-----------------|------------|
+| <50 Zeilen | Ideal |
+| 50-100 Zeilen | Akzeptabel, Aufteilung in Betracht ziehen |
+| >100 Zeilen | MUSS aufgeteilt werden |
 
-## 违规处理
+## Verstossshandhabung
 
-### 代码质量检查清单
+### Codequalitaets-Pruefliste
 
-完成工作前必须检查：
+Vor dem Markieren der Arbeit als abgeschlossen pruefen:
 
-- [ ] 代码可读且命名良好
-- [ ] 函数短小（<50行）
-- [ ] 文件专注（<800行）
-- [ ] 无深层嵌套（>4层）
-- [ ] 适当的错误处理
-- [ ] 无硬编码值（使用常量或配置）
-- [ ] 使用不可变模式（无mutation）
+- [ ] Code ist lesbar und gut benannt
+- [ ] Funktionen sind klein (<50 Zeilen)
+- [ ] Dateien sind fokussiert (<800 Zeilen)
+- [ ] Keine tiefe Verschachtelung (>4 Ebenen)
+- [ ] Angemessene Fehlerbehandlung
+- [ ] Keine hartcodierten Werte (Konstanten oder Konfiguration verwenden)
+- [ ] Immutable Muster verwendet (keine Mutation)
 
-### 严重程度分级
+### Schweregrad-Stufen
 
-| 级别 | 含义 | 操作 |
-|------|------|------|
-| CRITICAL | 安全漏洞或数据丢失风险 | **阻止** - 合并前必须修复 |
-| HIGH | Bug或重大质量问题 | **警告** - 合并前应修复 |
-| MEDIUM | 可维护性问题 | **提示** - 建议修复 |
-| LOW | 样式或小建议 | **备注** - 可选 |
+| Stufe | Bedeutung | Aktion |
+|-------|-----------|--------|
+| CRITICAL | Sicherheitsluecke oder Datenverlustrisiko | **BLOCK** - Muss vor dem Merge behoben werden |
+| HIGH | Bug oder signifikantes Qualitaetsproblem | **WARN** - Sollte vor dem Merge behoben werden |
+| MEDIUM | Wartbarkeitsproblem | **INFO** - Empfohlen zu beheben |
+| LOW | Stil oder kleine Anmerkung | **NOTE** - Optional |
 
-## 相关规则
+## Zugehoerige Regeln
 
-| 关联规则 | 说明 |
-|----------|------|
-| 测试规则 | 测试覆盖率要求 |
-| 安全规则 | 安全检查项 |
-| 代码审查规则 | 详细审查标准 |
-| 开发工作流 | TDD和代码审查流程 |
+| Zugehoerige Regel | Beschreibung |
+|------------------|--------------|
+| Testregeln | Testabdeckungsanforderungen |
+| Sicherheitsregeln | Sicherheitspruefpunkte |
+| Code-Review-Regeln | Detaillierte Review-Standards |
+| Entwicklungsworkflow | TDD- und Code-Review-Prozess |

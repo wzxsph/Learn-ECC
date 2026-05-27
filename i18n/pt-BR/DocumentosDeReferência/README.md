@@ -57,151 +57,151 @@ Total de **75 comandos**, agrupados por categoria:
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/plan` | [01-FluxosDeTrabalhoPrincipais.md](commands/01-FluxosDeTrabalhoPrincipais.md) | Análise de requisitos + avaliação de risco + plano passo a passo |
-| `/code-review` | [01-FluxosDeTrabalhoPrincipais.md](commands/01-FluxosDeTrabalhoPrincipais.md) | Revisão de qualidade / segurança / manutenibilidade do código |
-| `/build-fix` | [01-FluxosDeTrabalhoPrincipais.md](commands/01-FluxosDeTrabalhoPrincipais.md) | Detecção automática de linguagem + correção incremental de erros de build |
-| `/verify` | [01-FluxosDeTrabalhoPrincipais.md](commands/01-FluxosDeTrabalhoPrincipais.md) | Loop de verificação completo: build → lint → teste → verificação de tipo |
-| `/quality-gate` | [01-FluxosDeTrabalhoPrincipais.md](commands/01-FluxosDeTrabalhoPrincipais.md) | Executar pipeline de qualidade ECC sob demanda |
-| `/tdd` | [01-FluxosDeTrabalhoPrincipais.md](commands/01-FluxosDeTrabalhoPrincipais.md) | Fluxo de trabalho TDD geral |
+| `/plan` | [01-Workflow-Principal.md](commands/01-Workflow-Principal.md) | Análise de requisitos + avaliação de risco + plano passo a passo |
+| `/code-review` | [01-Workflow-Principal.md](commands/01-Workflow-Principal.md) | Revisão de qualidade / segurança / manutenibilidade do código |
+| `/build-fix` | [01-Workflow-Principal.md](commands/01-Workflow-Principal.md) | Detecção automática de linguagem + correção incremental de erros de build |
+| `/verify` | [01-Workflow-Principal.md](commands/01-Workflow-Principal.md) | Loop de verificação completo: build → lint → teste → verificação de tipo |
+| `/quality-gate` | [01-Workflow-Principal.md](commands/01-Workflow-Principal.md) | Executar pipeline de qualidade ECC sob demanda |
+| `/tdd` | [01-Workflow-Principal.md](commands/01-Workflow-Principal.md) | Fluxo de trabalho TDD geral |
 
 ### 3.2 Testes Relacionados (8)
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/go-test` | [02-TestesRelacionados.md](commands/02-TestesRelacionados.md) | TDD Go (orientado por tabela, 80%+ cobertura) |
-| `/kotlin-test` | [02-TestesRelacionados.md](commands/02-TestesRelacionados.md) | TDD Kotlin (Kotest + Kover) |
-| `/rust-test` | [02-TestesRelacionados.md](commands/02-TestesRelacionados.md) | TDD Rust (cargo test + testes de integração) |
-| `/cpp-test` | [02-TestesRelacionados.md](commands/02-TestesRelacionados.md) | TDD C++ (GoogleTest + gcov/lcov) |
-| `/flutter-test` | [02-TestesRelacionados.md](commands/02-TestesRelacionados.md) | TDD Flutter |
-| `/e2e` | [02-TestesRelacionados.md](commands/02-TestesRelacionados.md) | Gerar + executar testes e2e Playwright |
-| `/test-coverage` | [02-TestesRelacionados.md](commands/02-TestesRelacionados.md) | Relatório de cobertura de teste + análise de lacunas |
-| `/python-testing` | [02-TestesRelacionados.md](commands/02-TestesRelacionados.md) | Melhores práticas de teste Python |
+| `/go-test` | [02-Testes.md](commands/02-Testes.md) | TDD Go (orientado por tabela, 80%+ cobertura) |
+| `/kotlin-test` | [02-Testes.md](commands/02-Testes.md) | TDD Kotlin (Kotest + Kover) |
+| `/rust-test` | [02-Testes.md](commands/02-Testes.md) | TDD Rust (cargo test + testes de integração) |
+| `/cpp-test` | [02-Testes.md](commands/02-Testes.md) | TDD C++ (GoogleTest + gcov/lcov) |
+| `/flutter-test` | [02-Testes.md](commands/02-Testes.md) | TDD Flutter |
+| `/e2e` | [02-Testes.md](commands/02-Testes.md) | Gerar + executar testes e2e Playwright |
+| `/test-coverage` | [02-Testes.md](commands/02-Testes.md) | Relatório de cobertura de teste + análise de lacunas |
+| `/python-testing` | [02-Testes.md](commands/02-Testes.md) | Melhores práticas de teste Python |
 
 ### 3.3 Revisão de Linguagem (7)
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/python-review` | [03-RevisãoDeLinguagem.md](commands/03-RevisãoDeLinguagem.md) | Python PEP 8, dicas de tipo, segurança |
-| `/go-review` | [03-RevisãoDeLinguagem.md](commands/03-RevisãoDeLinguagem.md) | Idiomas Go, concorrência, tratamento de erros |
-| `/kotlin-review` | [03-RevisãoDeLinguagem.md](commands/03-RevisãoDeLinguagem.md) | Segurança nula Kotlin, corrotinas, arquitetura |
-| `/rust-review` | [03-RevisãoDeLinguagem.md](commands/03-RevisãoDeLinguagem.md) | Propriedade Rust, tempos de vida, unsafe |
-| `/cpp-review` | [03-RevisãoDeLinguagem.md](commands/03-RevisãoDeLinguagem.md) | Segurança de memória C++, idiomas modernos |
-| `/flutter-review` | [03-RevisãoDeLinguagem.md](commands/03-RevisãoDeLinguagem.md) | Padrões Flutter/Dart |
-| `/fastapi-review` | [03-RevisãoDeLinguagem.md](commands/03-RevisãoDeLinguagem.md) | Arquitetura FastAPI, async, Pydantic |
+| `/python-review` | [03-Revisão-de-Idioma.md](commands/03-Revisão-de-Idioma.md) | Python PEP 8, dicas de tipo, segurança |
+| `/go-review` | [03-Revisão-de-Idioma.md](commands/03-Revisão-de-Idioma.md) | Idiomas Go, concorrência, tratamento de erros |
+| `/kotlin-review` | [03-Revisão-de-Idioma.md](commands/03-Revisão-de-Idioma.md) | Segurança nula Kotlin, corrotinas, arquitetura |
+| `/rust-review` | [03-Revisão-de-Idioma.md](commands/03-Revisão-de-Idioma.md) | Propriedade Rust, tempos de vida, unsafe |
+| `/cpp-review` | [03-Revisão-de-Idioma.md](commands/03-Revisão-de-Idioma.md) | Segurança de memória C++, idiomas modernos |
+| `/flutter-review` | [03-Revisão-de-Idioma.md](commands/03-Revisão-de-Idioma.md) | Padrões Flutter/Dart |
+| `/fastapi-review` | [03-Revisão-de-Idioma.md](commands/03-Revisão-de-Idioma.md) | Arquitetura FastAPI, async, Pydantic |
 
 ### 3.4 Build e Correção (6)
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/go-build` | [04-BuildECorreção.md](commands/04-BuildECorreção.md) | Corrigir erros de build Go + avisos go vet |
-| `/kotlin-build` | [04-BuildECorreção.md](commands/04-BuildECorreção.md) | Corrigir erros do compilador Kotlin/Gradle |
-| `/rust-build` | [04-BuildECorreção.md](commands/04-BuildECorreção.md) | Corrigir build Rust + problemas do verificador de empréstimo |
-| `/cpp-build` | [04-BuildECorreção.md](commands/04-BuildECorreção.md) | Corrigir problemas de CMake + linker C++ |
-| `/gradle-build` | [04-BuildECorreção.md](commands/04-BuildECorreção.md) | Corrigir erros Android/KMP Gradle |
-| `/flutter-build` | [04-BuildECorreção.md](commands/04-BuildECorreção.md) | Correções de build Flutter |
+| `/go-build` | [04-Reparo-de-Build.md](commands/04-Reparo-de-Build.md) | Corrigir erros de build Go + avisos go vet |
+| `/kotlin-build` | [04-Reparo-de-Build.md](commands/04-Reparo-de-Build.md) | Corrigir erros do compilador Kotlin/Gradle |
+| `/rust-build` | [04-Reparo-de-Build.md](commands/04-Reparo-de-Build.md) | Corrigir build Rust + problemas do verificador de empréstimo |
+| `/cpp-build` | [04-Reparo-de-Build.md](commands/04-Reparo-de-Build.md) | Corrigir problemas de CMake + linker C++ |
+| `/gradle-build` | [04-Reparo-de-Build.md](commands/04-Reparo-de-Build.md) | Corrigir erros Android/KMP Gradle |
+| `/flutter-build` | [04-Reparo-de-Build.md](commands/04-Reparo-de-Build.md) | Correções de build Flutter |
 
 ### 3.5 Planejamento e Arquitetura (7)
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/plan-prd` | [05-PlanejamentoEArquitetura.md](commands/05-PlanejamentoEArquitetura.md) | Gerador de PRD interativo |
-| `/prp-plan` | [05-PlanejamentoEArquitetura.md](commands/05-PlanejamentoEArquitetura.md) | Planejamento abrangente de features |
-| `/prp-prd` | [05-PlanejamentoEArquitetura.md](commands/05-PlanejamentoEArquitetura.md) | Gerador de PRD de fluxo de trabalho PRP |
-| `/prp-implement` | [05-PlanejamentoEArquitetura.md](commands/05-PlanejamentoEArquitetura.md) | Executar plano PRP + loop de verificação |
-| `/prp-pr` | [05-PlanejamentoEArquitetura.md](commands/05-PlanejamentoEArquitetura.md) | Criar PR do fluxo de trabalho PRP |
-| `/prp-commit` | [05-PlanejamentoEArquitetura.md](commands/05-PlanejamentoEArquitetura.md) | Commit verificado PRP |
-| `/multi-plan` | [05-PlanejamentoEArquitetura.md](commands/05-PlanejamentoEArquitetura.md) | Planejamento colaborativo multi-modelo (Codex + Gemini) |
+| `/plan-prd` | [05-Planejamento-Arquitetura.md](commands/05-Planejamento-Arquitetura.md) | Gerador de PRD interativo |
+| `/prp-plan` | [05-Planejamento-Arquitetura.md](commands/05-Planejamento-Arquitetura.md) | Planejamento abrangente de features |
+| `/prp-prd` | [05-Planejamento-Arquitetura.md](commands/05-Planejamento-Arquitetura.md) | Gerador de PRD de fluxo de trabalho PRP |
+| `/prp-implement` | [05-Planejamento-Arquitetura.md](commands/05-Planejamento-Arquitetura.md) | Executar plano PRP + loop de verificação |
+| `/prp-pr` | [05-Planejamento-Arquitetura.md](commands/05-Planejamento-Arquitetura.md) | Criar PR do fluxo de trabalho PRP |
+| `/prp-commit` | [05-Planejamento-Arquitetura.md](commands/05-Planejamento-Arquitetura.md) | Commit verificado PRP |
+| `/multi-plan` | [05-Planejamento-Arquitetura.md](commands/05-Planejamento-Arquitetura.md) | Planejamento colaborativo multi-modelo (Codex + Gemini) |
 
 ### 3.6 Gerenciamento de Sessão (5)
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/save-session` | [06-GerenciamentoDeSessão.md](commands/06-GerenciamentoDeSessão.md) | Salvar estado da sessão |
-| `/resume-session` | [06-GerenciamentoDeSessão.md](commands/06-GerenciamentoDeSessão.md) | Carregar e restaurar sessão salva |
-| `/sessions` | [06-GerenciamentoDeSessão.md](commands/06-GerenciamentoDeSessão.md) | Navegar + buscar + gerenciar histórico de sessões |
-| `/checkpoint` | [06-GerenciamentoDeSessão.md](commands/06-GerenciamentoDeSessão.md) | Criar / verificar checkpoint de workflow |
-| `/aside` | [06-GerenciamentoDeSessão.md](commands/06-GerenciamentoDeSessão.md) | Responder perguntas secundárias sem perder contexto |
+| `/save-session` | [06-Gerenciamento-de-Sessão.md](commands/06-Gerenciamento-de-Sessão.md) | Salvar estado da sessão |
+| `/resume-session` | [06-Gerenciamento-de-Sessão.md](commands/06-Gerenciamento-de-Sessão.md) | Carregar e restaurar sessão salva |
+| `/sessions` | [06-Gerenciamento-de-Sessão.md](commands/06-Gerenciamento-de-Sessão.md) | Navegar + buscar + gerenciar histórico de sessões |
+| `/checkpoint` | [06-Gerenciamento-de-Sessão.md](commands/06-Gerenciamento-de-Sessão.md) | Criar / verificar checkpoint de workflow |
+| `/aside` | [06-Gerenciamento-de-Sessão.md](commands/06-Gerenciamento-de-Sessão.md) | Responder perguntas secundárias sem perder contexto |
 
 ### 3.7 Aprendizado e Melhoria (10)
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/learn` | [07-AprendizadoEMelhoria.md](commands/07-AprendizadoEMelhoria.md) | Extrair padrões reutilizáveis da sessão |
-| `/learn-eval` | [07-AprendizadoEMelhoria.md](commands/07-AprendizadoEMelhoria.md) | Extrair padrões + auto-avaliação de qualidade |
-| `/evolve` | [07-AprendizadoEMelhoria.md](commands/07-AprendizadoEMelhoria.md) | Analisar instinct + sugerir estrutura de evolução |
-| `/promote` | [07-AprendizadoEMelhoria.md](commands/07-AprendizadoEMelhoria.md) | Promover instinct de projeto para escopo global |
-| `/instinct-status` | [07-AprendizadoEMelhoria.md](commands/07-AprendizadoEMelhoria.md) | Mostrar todos os instincts aprendidos |
-| `/instinct-export` | [07-AprendizadoEMelhoria.md](commands/07-AprendizadoEMelhoria.md) | Exportar instinct para arquivo |
-| `/instinct-import` | [07-AprendizadoEMelhoria.md](commands/07-AprendizadoEMelhoria.md) | Importar instinct de arquivo / URL |
-| `/skill-create` | [07-AprendizadoEMelhoria.md](commands/07-AprendizadoEMelhoria.md) | Analisar histórico git + gerar arquivo skill |
-| `/skill-health` | [07-AprendizadoEMelhoria.md](commands/07-AprendizadoEMelhoria.md) | Painel de saúde de composição de Skills |
-| `/rules-distill` | [07-AprendizadoEMelhoria.md](commands/07-AprendizadoEMelhoria.md) | Escanear skills + extrair princípios entre domínios |
+| `/learn` | [07-Aprendizado-Melhoria.md](commands/07-Aprendizado-Melhoria.md) | Extrair padrões reutilizáveis da sessão |
+| `/learn-eval` | [07-Aprendizado-Melhoria.md](commands/07-Aprendizado-Melhoria.md) | Extrair padrões + auto-avaliação de qualidade |
+| `/evolve` | [07-Aprendizado-Melhoria.md](commands/07-Aprendizado-Melhoria.md) | Analisar instinct + sugerir estrutura de evolução |
+| `/promote` | [07-Aprendizado-Melhoria.md](commands/07-Aprendizado-Melhoria.md) | Promover instinct de projeto para escopo global |
+| `/instinct-status` | [07-Aprendizado-Melhoria.md](commands/07-Aprendizado-Melhoria.md) | Mostrar todos os instincts aprendidos |
+| `/instinct-export` | [07-Aprendizado-Melhoria.md](commands/07-Aprendizado-Melhoria.md) | Exportar instinct para arquivo |
+| `/instinct-import` | [07-Aprendizado-Melhoria.md](commands/07-Aprendizado-Melhoria.md) | Importar instinct de arquivo / URL |
+| `/skill-create` | [07-Aprendizado-Melhoria.md](commands/07-Aprendizado-Melhoria.md) | Analisar histórico git + gerar arquivo skill |
+| `/skill-health` | [07-Aprendizado-Melhoria.md](commands/07-Aprendizado-Melhoria.md) | Painel de saúde de composição de Skills |
+| `/rules-distill` | [07-Aprendizado-Melhoria.md](commands/07-Aprendizado-Melhoria.md) | Escanear skills + extrair princípios entre domínios |
 
 ### 3.8 Loops e Automação (3)
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/loop-start` | [08-LoopsEAutomação.md](commands/08-LoopsEAutomação.md) | Iniciar modo de loop autônomo gerenciado |
-| `/loop-status` | [08-LoopsEAutomação.md](commands/08-LoopsEAutomação.md) | Verificar status do loop em execução |
-| `/santa-loop` | [08-LoopsEAutomação.md](commands/08-LoopsEAutomação.md) | Loop autônomo estilo Santa |
+| `/loop-start` | [08-Loop-Automação.md](commands/08-Loop-Automação.md) | Iniciar modo de loop autônomo gerenciado |
+| `/loop-status` | [08-Loop-Automação.md](commands/08-Loop-Automação.md) | Verificar status do loop em execução |
+| `/santa-loop` | [08-Loop-Automação.md](commands/08-Loop-Automação.md) | Loop autônomo estilo Santa |
 
 ### 3.9 Gerenciamento de Projetos (6)
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/projects` | [09-GerenciamentoDeProjetos.md](commands/09-GerenciamentoDeProjetos.md) | Listar projetos conhecidos + estatísticas de instinct |
-| `/harness-audit` | [09-GerenciamentoDeProjetos.md](commands/09-GerenciamentoDeProjetos.md) | Auditar configuração do agent harness |
-| `/model-route` | [09-GerenciamentoDeProjetos.md](commands/09-GerenciamentoDeProjetos.md) | Rotear tarefas para modelo apropriado |
-| `/pm2` | [09-GerenciamentoDeProjetos.md](commands/09-GerenciamentoDeProjetos.md) | Inicialização do gerenciador de processos PM2 |
-| `/setup-pm` | [09-GerenciamentoDeProjetos.md](commands/09-GerenciamentoDeProjetos.md) | Configurar gerenciador de pacotes |
-| `/project-init` | [09-GerenciamentoDeProjetos.md](commands/09-GerenciamentoDeProjetos.md) | Inicialização de projeto |
+| `/projects` | [09-Gerenciamento-de-Projeto.md](commands/09-Gerenciamento-de-Projeto.md) | Listar projetos conhecidos + estatísticas de instinct |
+| `/harness-audit` | [09-Gerenciamento-de-Projeto.md](commands/09-Gerenciamento-de-Projeto.md) | Auditar configuração do agent harness |
+| `/model-route` | [09-Gerenciamento-de-Projeto.md](commands/09-Gerenciamento-de-Projeto.md) | Rotear tarefas para modelo apropriado |
+| `/pm2` | [09-Gerenciamento-de-Projeto.md](commands/09-Gerenciamento-de-Projeto.md) | Inicialização do gerenciador de processos PM2 |
+| `/setup-pm` | [09-Gerenciamento-de-Projeto.md](commands/09-Gerenciamento-de-Projeto.md) | Configurar gerenciador de pacotes |
+| `/project-init` | [09-Gerenciamento-de-Projeto.md](commands/09-Gerenciamento-de-Projeto.md) | Inicialização de projeto |
 
 ### 3.10 Fluxo de Trabalho PR (6)
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/pr` | [10-FluxoDeTrabalhoPR.md](commands/10-FluxoDeTrabalhoPR.md) | Criar PR do GitHub do branch atual |
-| `/review-pr` | [10-FluxoDeTrabalhoPR.md](commands/10-FluxoDeTrabalhoPR.md) | Revisar PR do GitHub |
-| `/multi-workflow` | [10-FluxoDeTrabalhoPR.md](commands/10-FluxoDeTrabalhoPR.md) | Desenvolvimento colaborativo multi-modelo |
-| `/multi-backend` | [10-FluxoDeTrabalhoPR.md](commands/10-FluxoDeTrabalhoPR.md) | Desenvolvimento backend multi-modelo |
-| `/multi-frontend` | [10-FluxoDeTrabalhoPR.md](commands/10-FluxoDeTrabalhoPR.md) | Desenvolvimento frontend multi-modelo |
-| `/multi-execute` | [10-FluxoDeTrabalhoPR.md](commands/10-FluxoDeTrabalhoPR.md) | Execução colaborativa multi-modelo |
+| `/pr` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | Criar PR do GitHub do branch atual |
+| `/review-pr` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | Revisar PR do GitHub |
+| `/multi-workflow` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | Desenvolvimento colaborativo multi-modelo |
+| `/multi-backend` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | Desenvolvimento backend multi-modelo |
+| `/multi-frontend` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | Desenvolvimento frontend multi-modelo |
+| `/multi-execute` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | Execução colaborativa multi-modelo |
 
 ### 3.11 Sistema Hookify (4)
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/hookify` | [11-SistemaHookify.md](commands/11-SistemaHookify.md) | Criar hooks para prevenir maus comportamentos |
-| `/hookify-list` | [11-SistemaHookify.md](commands/11-SistemaHookify.md) | Listar todas as regras hookify configuradas |
-| `/hookify-configure` | [11-SistemaHookify.md](commands/11-SistemaHookify.md) | Ativar / desativar regras hookify interativamente |
-| `/hookify-help` | [11-SistemaHookify.md](commands/11-SistemaHookify.md) | Ajuda do sistema Hookify |
+| `/hookify` | [11-Sistema-Hookify.md](commands/11-Sistema-Hookify.md) | Criar hooks para prevenir maus comportamentos |
+| `/hookify-list` | [11-Sistema-Hookify.md](commands/11-Sistema-Hookify.md) | Listar todas as regras hookify configuradas |
+| `/hookify-configure` | [11-Sistema-Hookify.md](commands/11-Sistema-Hookify.md) | Ativar / desativar regras hookify interativamente |
+| `/hookify-help` | [11-Sistema-Hookify.md](commands/11-Sistema-Hookify.md) | Ajuda do sistema Hookify |
 
 ### 3.12 Documentação e Pesquisa (3)
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/update-docs` | [12-DocumentaçãoEPesquisa.md](commands/12-DocumentaçãoEPesquisa.md) | Atualizar documentação do projeto |
-| `/update-codemaps` | [12-DocumentaçãoEPesquisa.md](commands/12-DocumentaçãoEPesquisa.md) | Regenerar codemaps |
-| `/ecc-guide` | [12-DocumentaçãoEPesquisa.md](commands/12-DocumentaçãoEPesquisa.md) | Guia do usuário ECC |
+| `/update-docs` | [12-Documentação-Pesquisa.md](commands/12-Documentação-Pesquisa.md) | Atualizar documentação do projeto |
+| `/update-codemaps` | [12-Documentação-Pesquisa.md](commands/12-Documentação-Pesquisa.md) | Regenerar codemaps |
+| `/ecc-guide` | [12-Documentação-Pesquisa.md](commands/12-Documentação-Pesquisa.md) | Guia do usuário ECC |
 
 ### 3.13 Refatoração e Limpeza (2)
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/refactor-clean` | [13-RefatoraçãoELimpeza.md](commands/13-RefatoraçãoELimpeza.md) | Excluir código morto + mesclar duplicatas |
-| `/auto-update` | [13-RefatoraçãoELimpeza.md](commands/13-RefatoraçãoELimpeza.md) | Capacidades de auto-atualização |
+| `/refactor-clean` | [13-Refatoração-Limpeza.md](commands/13-Refatoração-Limpeza.md) | Excluir código morto + mesclar duplicatas |
+| `/auto-update` | [13-Refatoração-Limpeza.md](commands/13-Refatoração-Limpeza.md) | Capacidades de auto-atualização |
 
 ### 3.14 Outros Comandos (7)
 
 | Comando | Arquivo | Finalidade |
 |--------|------|-------|
-| `/jira` | [14-OutrosComandos.md](commands/14-OutrosComandos.md) | Interação com ticket Jira |
-| `/gan-build` | [14-OutrosComandos.md](commands/14-OutrosComandos.md) | Operações de build GAN |
-| `/gan-design` | [14-OutrosComandos.md](commands/14-OutrosComandos.md) | Operações de design GAN |
-| `/prune` | [14-OutrosComandos.md](commands/14-OutrosComandos.md) | Excluir instincts obsoletos (>30 dias) |
-| `/security-scan` | [14-OutrosComandos.md](commands/14-OutrosComandos.md) | Varredura de segurança |
-| `/feature-dev` | [14-OutrosComandos.md](commands/14-OutrosComandos.md) | Assistente de desenvolvimento de features |
-| `/cost-report` | [14-OutrosComandos.md](commands/14-OutrosComandos.md) | Relatório de custos do modelo |
+| `/jira` | [14-Outros-Comandos.md](commands/14-Outros-Comandos.md) | Interação com ticket Jira |
+| `/gan-build` | [14-Outros-Comandos.md](commands/14-Outros-Comandos.md) | Operações de build GAN |
+| `/gan-design` | [14-Outros-Comandos.md](commands/14-Outros-Comandos.md) | Operações de design GAN |
+| `/prune` | [14-Outros-Comandos.md](commands/14-Outros-Comandos.md) | Excluir instincts obsoletos (>30 dias) |
+| `/security-scan` | [14-Outros-Comandos.md](commands/14-Outros-Comandos.md) | Varredura de segurança |
+| `/feature-dev` | [14-Outros-Comandos.md](commands/14-Outros-Comandos.md) | Assistente de desenvolvimento de features |
+| `/cost-report` | [14-Outros-Comandos.md](commands/14-Outros-Comandos.md) | Relatório de custos do modelo |
 
 ---
 
@@ -211,12 +211,12 @@ Total de **60 Agents**, agrupados por categoria:
 
 | Categoria de Agent | Arquivo | Descrição |
 |----------------|------|-------------|
-| [Revisão de Código](agents/1.%20RevisãoDeCódigo.md) | [1. RevisãoDeCódigo.md](agents/1.%20RevisãoDeCódigo.md) | 14 Agents de revisão |
-| [Build e Correção](agents/2.%20BuildECorreção.md) | [2. BuildECorreção.md](agents/2.%20BuildECorreção.md) | 14 Agents de correção de build |
-| [Planejamento](agents/3.%20Planejamento.md) | [3. Planejamento.md](agents/3.%20Planejamento.md) | 5 Agents de planejamento |
-| [Testes](agents/4.%20Testes.md) | [4. Testes.md](agents/4.%20Testes.md) | 2 Agents de teste |
-| [Segurança](agents/5.%20Segurança.md) | [5. Segurança.md](agents/5.%20Segurança.md) | 3 Agents de segurança |
-| [Arquitetura](agents/6.%20Arquitetura.md) | [6. Arquitetura.md](agents/6.%20Arquitetura.md) | 3 Agents de arquitetura |
+| [Revisão de Código](agents/01-Revisão-de-Código.md) | [01-Revisão-de-Código.md](agents/01-Revisão-de-Código.md) | 14 Agents de revisão |
+| [Build e Correção](agents/02-Correção-de-Build.md) | [02-Correção-de-Build.md](agents/02-Correção-de-Build.md) | 14 Agents de correção de build |
+| [Planejamento](agents/03-Planejamento.md) | [03-Planejamento.md](agents/03-Planejamento.md) | 5 Agents de planejamento |
+| [Testes](agents/04-Testes.md) | [04-Testes.md](agents/04-Testes.md) | 2 Agents de teste |
+| [Segurança](agents/05-Segurança.md) | [05-Segurança.md](agents/05-Segurança.md) | 3 Agents de segurança |
+| [Arquitetura](agents/06-Arquitetura.md) | [06-Arquitetura.md](agents/06-Arquitetura.md) | 3 Agents de arquitetura |
 
 ---
 
@@ -226,22 +226,22 @@ Total de **60 Agents**, agrupados por categoria:
 
 | Domínio | Arquivo | Descrição |
 |--------|------|-------------|
-| [Melhores Práticas](skills/MelhoresPráticas.md) | [MelhoresPráticas.md](skills/MelhoresPráticas.md) | Padrões de codificação, tratamento de erros, loops autônomos |
-| [Linguagens de Programação](skills/LinguagensdeProgramação.md) | [LinguagensdeProgramação.md](skills/LinguagensdeProgramação.md) | Python/Go/Rust/Kotlin/C++ etc. |
+| [Melhores Práticas](skills/MelhoresPráticas.md) | [Melhores-Práticas.md](skills/Melhores-Práticas.md) | Padrões de codificação, tratamento de erros, loops autônomos |
+| [Linguagens de Programação](skills/LinguagensdeProgramação.md) | [Linguagens-de-Programação.md](skills/Linguagens-de-Programação.md) | Python/Go/Rust/Kotlin/C++ etc. |
 | [Frameworks](skills/Frameworks.md) | [Frameworks.md](skills/Frameworks.md) | Django/Laravel/NestJS/Spring Boot etc. |
 | [Testes](skills/Testes.md) | [Testes.md](skills/Testes.md) | TDD/Teste Unitário/Teste de Integração/E2E |
 | [Segurança](skills/Segurança.md) | [Segurança.md](skills/Segurança.md) | Revisão de segurança, scanning de vulnerabilidades |
-| [Frontend e Design](skills/FrontendeDesign.md) | [FrontendeDesign.md](skills/FrontendeDesign.md) | Desenvolvimento frontend, sistemas de design |
-| [Backend e API](skills/BackendeAPI.md) | [BackendeAPI.md](skills/BackendeAPI.md) | Serviços backend, design de API, bancos de dados |
-| [Deployment e DevOps](skills/DeploymenteDevOps.md) | [DeploymenteDevOps.md](skills/DeploymenteDevOps.md) | Docker/K8s/estratégias de deploy |
-| [Monitoramento e Observabilidade](skills/MonitoramentoeObservabilidade.md) | [MonitoramentoeObservabilidade.md](skills/MonitoramentoeObservabilidade.md) | Observabilidade, diagnóstico de rede |
-| [Automação e Scripting](skills/AutomaçãoeScripting.md) | [AutomaçãoeScripting.md](skills/AutomaçãoeScripting.md) | Loops autônomos, aprendizado contínuo, engenharia de agentes |
-| [Busca e Recuperação de Dados](skills/BuscaeRecuperaçãodeDados.md) | [BuscaeRecuperaçãodeDados.md](skills/BuscaeRecuperaçãodeDados.md) | Busca Exa, web scraping, MCP |
-| [GitHub e Colaboração](skills/GitHubeColaboração.md) | [GitHubeColaboração.md](skills/GitHubeColaboração.md) | Fluxos de trabalho GitHub, revisão de código |
-| [AI e Machine Learning](skills/AIeMachineLearning.md) | [AIeMachineLearning.md](skills/AIeMachineLearning.md) | Redes neurais, PyTorch, MLOps |
-| [Cloud Native e Infraestrutura](skills/CloudNativeeInfraestrutura.md) | [CloudNativeeInfraestrutura.md](skills/CloudNativeeInfraestrutura.md) | Kubernetes, Docker, Terraform |
-| [Skills Especializados](skills/SkillsEspecializados.md) | [SkillsEspecializados.md](skills/SkillsEspecializados.md) | Blockchain, desenvolvimento de jogos, áudio/vídeo, IoT |
-| [Toolchain de Desenvolvimento](skills/ToolchandeDesenvolvimento.md) | [ToolchandeDesenvolvimento.md](skills/ToolchandeDesenvolvimento.md) | Frameworks de teste, CI/CD, qualidade de código |
+| [Frontend e Design](skills/FrontendeDesign.md) | [Frontend-e-Design.md](skills/Frontend-e-Design.md) | Desenvolvimento frontend, sistemas de design |
+| [Backend e API](skills/BackendeAPI.md) | [Backend-e-API.md](skills/Backend-e-API.md) | Serviços backend, design de API, bancos de dados |
+| [Deployment e DevOps](skills/DeploymenteDevOps.md) | [Implantação-e-DevOps.md](skills/Implantação-e-DevOps.md) | Docker/K8s/estratégias de deploy |
+| [Monitoramento e Observabilidade](skills/MonitoramentoeObservabilidade.md) | [Monitoramento-e-Observabilidade.md](skills/Monitoramento-e-Observabilidade.md) | Observabilidade, diagnóstico de rede |
+| [Automação e Scripting](skills/AutomaçãoeScripting.md) | [Automação-e-Scripts.md](skills/Automação-e-Scripts.md) | Loops autônomos, aprendizado contínuo, engenharia de agentes |
+| [Busca e Recuperação de Dados](skills/BuscaeRecuperaçãodeDados.md) | [Busca-e-Aquisição-de-Dados.md](skills/Busca-e-Aquisição-de-Dados.md) | Busca Exa, web scraping, MCP |
+| [GitHub e Colaboração](skills/GitHubeColaboração.md) | [GitHub-e-Colaboração.md](skills/GitHub-e-Colaboração.md) | Fluxos de trabalho GitHub, revisão de código |
+| [AI e Machine Learning](skills/AIeMachineLearning.md) | [IA-e-Aprendizado-de-Máquina.md](skills/IA-e-Aprendizado-de-Máquina.md) | Redes neurais, PyTorch, MLOps |
+| [Cloud Native e Infraestrutura](skills/CloudNativeeInfraestrutura.md) | [Nativo-de-Nuvem-e-Infraestrutura.md](skills/Nativo-de-Nuvem-e-Infraestrutura.md) | Kubernetes, Docker, Terraform |
+| [Skills Especializados](skills/SkillsEspecializados.md) | [Habilidades-de-Domínio-Especializado.md](skills/Habilidades-de-Domínio-Especializado.md) | Blockchain, desenvolvimento de jogos, áudio/vídeo, IoT |
+| [Toolchain de Desenvolvimento](skills/ToolchandeDesenvolvimento.md) | [Cadeia-de-Ferramentas-de-Desenvolvimento.md](skills/Cadeia-de-Ferramentas-de-Desenvolvimento.md) | Frameworks de teste, CI/CD, qualidade de código |
 | [Tecnologia de Ponta](skills/TecnologiadePonta.md) | [TecnologiadePonta.md](skills/TecnologiadePonta.md) | AI Agent, computação quântica, edge computing |
 
 ---
@@ -252,13 +252,13 @@ Total de **7 documentos de regras** (common + específico por linguagem):
 
 | Regras | Arquivo | Descrição |
 |-------|------|-------------|
-| [Fluxo de Trabalho Git](rules/FluxodeTrabalhoGit.md) | [FluxodeTrabalhoGit.md](rules/FluxodeTrabalhoGit.md) | Padrões de commit Git e fluxo de trabalho PR |
-| [Sistema de Hooks](rules/SistemadeHooks.md) | [SistemadeHooks.md](rules/SistemadeHooks.md) | Guia de configuração e uso de hooks |
-| [Orquestração de Agents](rules/OrquestraçãodeAgents.md) | [OrquestraçãodeAgents.md](rules/OrquestraçãodeAgents.md) | Padrões de orquestração de agents |
-| [Otimização de Performance](rules/OtimizaçãodePerformance.md) | [OtimizaçãodePerformance.md](rules/OtimizaçãodePerformance.md) | Guia de otimização de performance |
-| [Estilo de Código](rules/EstilodeCódigo.md) | [EstilodeCódigo.md](rules/EstilodeCódigo.md) | Padrões de estilo de codificação |
-| [Regras de Teste](rules/RegrasdeTeste.md) | [RegrasdeTeste.md](rules/RegrasdeTeste.md) | Requisitos de teste (80% cobertura) |
-| [Regras de Segurança](rules/RegrasdeSegurança.md) | [RegrasdeSegurança.md](rules/RegrasdeSegurança.md) | Lista de verificação de segurança |
+| [Fluxo de Trabalho Git](rules/FluxodeTrabalhoGit.md) | [Git-Workflow.md](rules/Git-Workflow.md) | Padrões de commit Git e fluxo de trabalho PR |
+| [Sistema de Hooks](rules/SistemadeHooks.md) | [Sistema-Hooks.md](rules/Sistema-Hooks.md) | Guia de configuração e uso de hooks |
+| [Orquestração de Agents](rules/OrquestraçãodeAgents.md) | [Orquestração-de-Agentes.md](rules/Orquestração-de-Agentes.md) | Padrões de orquestração de agents |
+| [Otimização de Performance](rules/OtimizaçãodePerformance.md) | [Otimização-de-Desempenho.md](rules/Otimização-de-Desempenho.md) | Guia de otimização de performance |
+| [Estilo de Código](rules/EstilodeCódigo.md) | [Estilo-de-Código.md](rules/Estilo-de-Código.md) | Padrões de estilo de codificação |
+| [Regras de Teste](rules/RegrasdeTeste.md) | [Regras-de-Teste.md](rules/Regras-de-Teste.md) | Requisitos de teste (80% cobertura) |
+| [Regras de Segurança](rules/RegrasdeSegurança.md) | [Regras-de-Segurança.md](rules/Regras-de-Segurança.md) | Lista de verificação de segurança |
 
 ---
 
@@ -268,10 +268,10 @@ Total de **4 documentos**:
 
 | Documento | Arquivo | Descrição |
 |----------|------|-------------|
-| [Tipos de Hook](hooks/TiposdeHook.md) | [TiposdeHook.md](hooks/TiposdeHook.md) | Tipos PreToolUse, PostToolUse, Stop |
-| [Hooks Embutidos](hooks/HooksEmbutidos.md) | [HooksEmbutidos.md](hooks/HooksEmbutidos.md) | Lista de hooks embutidos e uso |
-| [Desenvolvimento Personalizado](hooks/DesenvolvimentoPersonalizado.md) | [DesenvolvimentoPersonalizado.md](hooks/DesenvolvimentoPersonalizado.md) | Guia de desenvolvimento de hooks personalizados |
-| [Formato de Configuração](hooks/FormadeConfiguração.md) | [FormadeConfiguração.md](hooks/FormadeConfiguração.md) | Formato de configuração hooks.json |
+| [Tipos de Hook](hooks/TiposdeHook.md) | [Tipos-de-Hook.md](hooks/Tipos-de-Hook.md) | Tipos PreToolUse, PostToolUse, Stop |
+| [Hooks Embutidos](hooks/HooksEmbutidos.md) | [Hooks-Incorporados.md](hooks/Hooks-Incorporados.md) | Lista de hooks embutidos e uso |
+| [Desenvolvimento Personalizado](hooks/DesenvolvimentoPersonalizado.md) | [Desenvolvimento-Customizado.md](hooks/Desenvolvimento-Customizado.md) | Guia de desenvolvimento de hooks personalizados |
+| [Formato de Configuração](hooks/FormadeConfiguração.md) | [Formato-de-Configuração.md](hooks/Formato-de-Configuração.md) | Formato de configuração hooks.json |
 
 ---
 
@@ -281,9 +281,9 @@ Total de **6 configurações de servidor MCP**:
 
 | Documento | Arquivo | Descrição |
 |----------|------|-------------|
-| [Formato de Configuração MCP](mcp/FormadeConfiguraçãoMCP.md) | [FormadeConfiguraçãoMCP.md](mcp/FormadeConfiguraçãoMCP.md) | Formato de arquivo de configuração MCP |
-| [Servidores Embutidos](mcp/ServidoresEmbutidos.md) | [ServidoresEmbutidos.md](mcp/ServidoresEmbutidos.md) | Servidores MCP embutidos |
-| [Desenvolvimento Personalizado](mcp/DesenvolvimentoPersonalizado.md) | [DesenvolvimentoPersonalizado.md](mcp/DesenvolvimentoPersonalizado.md) | Desenvolvimento de servidor MCP personalizado |
+| [Formato de Configuração MCP](mcp/FormadeConfiguraçãoMCP.md) | [Formato-de-Configuração-MCP.md](mcp/Formato-de-Configuração-MCP.md) | Formato de arquivo de configuração MCP |
+| [Servidores Embutidos](mcp/ServidoresEmbutidos.md) | [Servidores-Incorporados.md](mcp/Servidores-Incorporados.md) | Servidores MCP embutidos |
+| [Desenvolvimento Personalizado](mcp/DesenvolvimentoPersonalizado.md) | [Desenvolvimento-Customizado-MCP.md](mcp/Desenvolvimento-Customizado-MCP.md) | Desenvolvimento de servidor MCP personalizado |
 
 ---
 
@@ -293,10 +293,10 @@ Total de **54 scripts de utilitário**:
 
 | Documento | Arquivo | Descrição |
 |----------|------|-------------|
-| [Scripts de Utilitário](scripts/ScriptsdeUtilitário.md) | [ScriptsdeUtilitário.md](scripts/ScriptsdeUtilitário.md) | ecc.js, install-apply.js etc. |
-| [Biblioteca de Funções de Utilitário](scripts/BibliotecadeFunçõesdeUtilitário.md) | [BibliotecadeFunçõesdeUtilitário.md](scripts/BibliotecadeFunçõesdeUtilitário.md) | Biblioteca de funções compartilhadas |
-| [Executor de Testes](scripts/ExecutordeTestes.md) | [ExecutordeTestes.md](scripts/ExecutordeTestes.md) | Uso do executor de testes |
-| [Scripts de Build](scripts/ScriptsdeBuild.md) | [ScriptsdeBuild.md](scripts/ScriptsdeBuild.md) | Scripts de build |
+| [Scripts de Utilitário](scripts/ScriptsdeUtilitário.md) | [Scripts-de-Utilitários.md](scripts/Scripts-de-Utilitários.md) | ecc.js, install-apply.js etc. |
+| [Biblioteca de Funções de Utilitário](scripts/BibliotecadeFunçõesdeUtilitário.md) | [Biblioteca-de-Funções-de-Utilitários.md](scripts/Biblioteca-de-Funções-de-Utilitários.md) | Biblioteca de funções compartilhadas |
+| [Executor de Testes](scripts/ExecutordeTestes.md) | [Executor-de-Testes.md](scripts/Executor-de-Testes.md) | Uso do executor de testes |
+| [Scripts de Build](scripts/ScriptsdeBuild.md) | [Scripts-de-Build.md](scripts/Scripts-de-Build.md) | Scripts de build |
 
 ---
 

@@ -1,138 +1,138 @@
-# 其他命令
+# Các Lệnh Khác
 
-## 概述
+## Tổng quan
 
-其他杂项命令，包括 Jira 集成、GAN 操作、安全扫描等功能。
+Các lệnh miscellaneous khác, bao gồm Jira integration, GAN operation, security scan và các chức năng khác.
 
-## 命令列表
+## Danh sách lệnh
 
 ### /jira
 
-**用途**: 与 Jira 工单交互 - 获取、分析、评论、转换状态、搜索
+**Mục đích**: Tương tác với Jira ticket - get, analyze, comment, transition status, search
 
-**描述**: 与 Jira 项目管理工具集成，支持直接工作流中使用 Jira tickets。
+**Mô tả**: Tích hợp với Jira project management tool, hỗ trợ làm việc với Jira ticket trực tiếp trong workflow.
 
-**用法**:
+**Cách dùng**:
 
-| 命令 | 说明 |
+| Lệnh | Mô tả |
 |---|---|
-| `/jira get <TICKET-KEY>` | 获取并分析 Jira 工单 |
-| `/jira comment <TICKET-KEY>` | 添加进度评论 |
-| `/jira transition <TICKET-KEY>` | 更改工单状态 |
-| `/jira search <JQL>` | 使用 JQL 搜索问题 |
+| `/jira get <TICKET-KEY>` | Get và analyze Jira ticket |
+| `/jira comment <TICKET-KEY>` | Thêm progress comment |
+| `/jira transition <TICKET-KEY>` | Thay đổi ticket status |
+| `/jira search <JQL>` | Search issue dùng JQL |
 
-**`/jira get` 工作流**:
-1. 从 Jira 获取工单（通过 MCP 或 REST API）
-2. 提取所有字段：摘要、描述、验收标准、优先级、标签、关联问题
-3. 可选获取评论以获取额外上下文
-4. 生成结构化分析
+**`/jira get` workflow**:
+1. Get ticket từ Jira (qua MCP hoặc REST API)
+2. Extract all field: summary, description, acceptance criteria, priority, label, linked issue
+3. Optional get comment để lấy additional context
+4. Generate structured analysis
 
-**先决条件** - Jira 凭证配置（二选一）:
+**Prerequisite** - Jira credential configuration (chọn một):
 
-**选项 A — MCP Server（推荐）**:
-将 `jira` 添加到 `mcpServers` 配置。
+**Option A — MCP Server (Khuyến khích)**:
+Thêm `jira` vào `mcpServers` configuration.
 
-**选项 B — 环境变量**:
+**Option B — Environment variable**:
 ```bash
 export JIRA_URL="https://yourorg.atlassian.net"
 export JIRA_EMAIL="your.email@example.com"
 export JIRA_API_TOKEN="your-api-token"
 ```
 
-**与其他命令集成**:
-- 分析工单后使用 `/plan` 创建实施计划
-- 使用 `tdd-workflow` skill 进行测试驱动开发
-- 使用 `/code-review` 审查实现
-- 使用 `/jira comment` 或 `/jira transition` 更新工单状态
+**Tích hợp với các lệnh khác**:
+- Sau khi analyze ticket, dùng `/plan` để tạo implementation plan
+- Dùng `tdd-workflow` skill cho test-driven development
+- Dùng `/code-review` để review implementation
+- Dùng `/jira comment` hoặc `/jira transition` để update ticket status
 
 ---
 
-### /gan-build（待完善）
+### /gan-build (Cần hoàn thiện)
 
-**用途**: GAN 构建操作
+**Mục đích**: GAN build operation
 
-**描述**: GAN（Generative Agent Network）构建操作。
+**Mô tả**: GAN (Generative Agent Network) build operation.
 
 ---
 
-### /gan-design（待完善）
+### /gan-design (Cần hoàn thiện)
 
-**用途**: GAN 设计操作
+**Mục đích**: GAN design operation
 
-**描述**: GAN 设计相关的操作。
+**Mô tả**: GAN design related operation.
 
 ---
 
 ### /prune
 
-**用途**: 删除超过 30 天未提升的陈旧 pending instinct
+**Mục đích**: Xóa stale pending instinct quá 30 ngày chưa promote
 
-**描述**: 清理超过 30 天的陈旧 instinct，这些 instinct 是自动生成但从未被审查或提升的。
+**Mô tả**: Cleanup stale instinct quá 30 ngày, những instinct này được auto-generate nhưng chưa bao giờ được review hoặc promote.
 
-**用法**:
+**Cách dùng**:
 ```
-/prune                    # 删除超过 30 天的 instinct
-/prune --max-age 60      # 自定义天数阈值
-/prune --dry-run         # 预览而不删除
+/prune                    # Xóa instinct quá 30 ngày
+/prune --max-age 60      # Tùy chỉnh ngày threshold
+/prune --dry-run         # Preview mà không xóa
 ```
 
-**实现**:
+**Implementation**:
 ```bash
 python3 "${CLAUDE_PLUGIN_ROOT}/skills/continuous-learning-v2/scripts/instinct-cli.py" prune
 ```
 
-或手动安装时（`CLAUDE_PLUGIN_ROOT` 未设置）:
+Hoặc khi manual install (`CLAUDE_PLUGIN_ROOT` not set):
 ```bash
 python3 ~/.claude/skills/continuous-learning-v2/scripts/instinct-cli.py prune
 ```
 
-**参数**:
+**Tham số**:
 
-| 参数 | 说明 |
+| Tham số | Mô tả |
 |---|---|
-| 无 | 删除超过 30 天的 instinct |
-| `--max-age <days>` | 自定义时间阈值（天） |
-| `--dry-run` | 预览将删除的内容，不实际删除 |
+| (không có) | Xóa instinct quá 30 ngày |
+| `--max-age <days>` | Tùy chỉnh threshold (ngày) |
+| `--dry-run` | Preview nội dung sẽ xóa, không thực sự xóa |
 
-**最佳实践**:
-- 使用 `--dry-run` 先预览要删除的内容
-- 定期运行 prune 保持 instinct 库存整洁
-- 注意：只会删除 pending 状态的 instinct，不会删除已提升的
+**Best practice**:
+- Dùng `--dry-run` trước để preview nội dung sẽ xóa
+- Chạy prune định kỳ để giữ instinct inventory sạch
+- Lưu ý: chỉ xóa instinct ở pending status, không xóa instinct đã promote
 
 ---
 
 ### /security-scan
 
-**用途**: 安全扫描
+**Mục đích**: Security scan
 
-**描述**: 对代码库进行安全漏洞扫描。
+**Mô tả**: Security vulnerability scan cho codebase.
 
-**扫描内容**:
-- 硬编码凭证
-- SQL 注入风险
-- XSS 漏洞
-- 依赖漏洞
+**Scan nội dung**:
+- Hardcoded credential
+- SQL injection risk
+- XSS vulnerability
+- Dependency vulnerability
 
 ---
 
-### /feature-dev（待完善）
+### /feature-dev (Cần hoàn thiện)
 
-**用途**: 功能开发助手
+**Mục đích**: Feature development assistant
 
-**描述**: 提供功能开发的辅助工作流。
+**Mô tả**: Cung cấp workflow hỗ trợ cho feature development.
 
 ---
 
 ### /cost-report
 
-**用途**: 模型成本报告
+**Mục đích**: Model cost report
 
-**描述**: 生成 AI 模型使用成本报告。
+**Mô tả**: Generate AI model usage cost report.
 
 ---
 
-## 相关命令
+## Các lệnh liên quan
 
-- `/security-scan` - 安全扫描
-- `/jira` - Jira 集成
-- `/prune` - 清理 instinct
+- `/security-scan` - Security scan
+- `/jira` - Jira integration
+- `/prune` - Cleanup instinct

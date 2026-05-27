@@ -1,142 +1,142 @@
-# 学习与改进命令
+# Comandos de Aprendizado e Melhoria
 
-## 概述
+## Visão Geral
 
-学习与改进命令用于从会话中提取模式、追踪 instinct 和管理组织知识。
+Comandos de aprendizado e melhoria são usados para extrair padrões de sessões, gerenciar instinct e knowledge organizacional.
 
-## 命令列表
+## Lista de Comandos
 
 ### /learn
 
-**用途**: 从当前会话中提取可复用模式并保存为候选 skills
+**Propósito**: Extrair padrões reutilizáveis da sessão atual e salvar como skills candidatas
 
-**描述**: 分析当前会话，提取任何值得保存为 skills 的模式。运行 `/learn` 可在会话期间任何时候使用。
+**Descrição**: Analisa a sessão atual, extraindo quaisquer padrões que valham a pena salvar como skills. Executar `/learn` pode ser feito a qualquer momento durante a sessão.
 
-**提取内容类型**:
+**Tipos de Conteúdo Extraído**:
 
-| 类型 | 描述 |
+| Tipo | Descrição |
 |---|---|
-| **错误解决方案模式** | 什么错误？根本原因是什么？什么修复了？类似错误可复用吗？ |
-| **调试技术** | 非显而易见的调试步骤、有效的工具组合、诊断模式 |
-| **变通方法** | 库怪癖、API 限制、特定版本修复 |
-| **项目特定模式** | 发现的代码库约定、架构决策、集成模式 |
+| **Padrões de Solução de Erro** | Qual erro? Qual a causa raiz? O que corrigiu? O padrão é reutilizável para erros similares? |
+| **Técnicas de Debug** | Passos de debug não óbvios, combinações de ferramentas eficazes, padrões de diagnóstico |
+| **Workarounds** | Quirks de biblioteca, limitações de API, correções específicas de versão |
+| **Padrões Específicos de Projeto** | Convenções descobertas de codebase, decisões de arquitetura, padrões de integração |
 
-**输出格式**: 保存到 `~/.claude/skills/learned/[pattern-name].md`
+**Formato de Saída**: Salvo em `~/.claude/skills/learned/[pattern-name].md`
 
 ```markdown
-# [Descriptive Pattern Name]
+# [Nome Descritivo do Padrão]
 
-**Extracted:** [Date]
-**Context:** [Brief description of when this applies]
+**Extraído:** [Data]
+**Contexto:** [Breve descrição de quando isso se aplica]
 
-## Problem
-[What problem this solves - be specific]
+## Problema
+[O que esse padrão resolve - seja específico]
 
-## Solution
-[The pattern/technique/workaround]
+## Solução
+[O padrão/técnica/workaround]
 
-## Example
-[Code example if applicable]
+## Exemplo
+[Exemplo de código se aplicável]
 
-## When to Use
-[Trigger conditions - what should activate this skill]
+## Quando Usar
+[Condições de gatilho - o que deveria ativar esse skill]
 ```
 
-**工作流**:
-1. 审查会话中可提取的模式
-2. 识别最有价值/可复用的见解
-3. 起草 skill 文件
-4. 请求用户确认后再保存
-5. 保存到 `~/.claude/skills/learned/`
+**Fluxo de Trabalho**:
+1. Revisar padrões na sessão que podem ser extraídos
+2. Identificar os aprendizados mais valiosos/reutilizáveis
+3. Draft de arquivo skill
+4. Pedir confirmação do usuário antes de salvar
+5. Salvar em `~/.claude/skills/learned/`
 
-**Melhores-Práticas**:
-- 不要提取trivial修复（拼写错误、简单语法错误）
-- 不要提取一次性问题（特定 API 中断等）
-- 关注未来会话可节省时间的模式
-- 保持 skills 专注 - 一个模式一个 skill
+**Melhores Práticas**:
+- Não extrair correções triviais (erros de digitação, erros de sintaxe simples)
+- Não extrair problemas únicos (ex: interrupção de API específica)
+- Focar em padrões que economizam tempo em sessões futuras
+- Manter skills focados - um padrão por skill
 
 ---
 
 ### /learn-eval
 
-**用途**: 提取模式 + 自我评估质量
+**Propósito**: Extrair padrões + auto-avaliação de qualidade
 
-**描述**: 在提取模式的同时进行质量评估。
+**Descrição**: Extrai padrões enquanto faz avaliação de qualidade simultaneamente.
 
 ---
 
 ### /evolve
 
-**用途**: 分析 instinct + 建议进化结构
+**Propósito**: Analisar instinct + sugerir estrutura de evolução
 
-**描述**: 分析已学习的 instinct，提供结构演进建议。
+**Descrição**: Analisa instinct aprendidos, fornecendo sugestões de evolução estrutural.
 
 ---
 
 ### /promote
 
-**用途**: 将项目 instinct 提升到全局范围
+**Propósito**: Promover instinct de projeto para escopo global
 
-**描述**: 将项目特定的 instinct 提升为全局可用的知识。
+**Descrição**: Promove instinct específico de projeto para conhecimento globalmente disponível.
 
 ---
 
 ### /instinct-status
 
-**用途**: 显示所有学习的 instinct
+**Propósito**: Mostrar todos os instincts aprendidos
 
-**描述**: 显示当前所有 instinct 的状态和置信度。
+**Descrição**: Mostra status e confiança de todos os instincts atuais.
 
 ---
 
 ### /instinct-export
 
-**用途**: 导出 instinct 到文件
+**Propósito**: Exportar instinct para arquivo
 
-**描述**: 将 instinct 导出为可分享的文件格式。
+**Descrição**: Exporta instinct para formato compartilhável.
 
 ---
 
 ### /instinct-import
 
-**用途**: 从文件/URL 导入 instinct
+**Propósito**: Importar instinct de arquivo/URL
 
-**描述**: 从文件或 URL 导入 instinct 到系统中。
+**Descrição**: Importa instinct de arquivo ou URL para o sistema.
 
 ---
 
 ### /skill-create
 
-**用途**: 分析 git 历史+生成 skill 文件
+**Propósito**: Analisar histórico git + gerar arquivo skill
 
-**描述**: 分析项目 git 历史，提取可复用的模式生成 skill 文件。
+**Descrição**: Analisa histórico git do projeto, extrai padrões reutilizáveis e gera arquivos skill.
 
-**工作流**:
-1. 分析 git 提交历史
-2. 识别重复模式
-3. 生成 skill 文件
-4. 验证并保存
+**Fluxo de Trabalho**:
+1. Analisar histórico de commits
+2. Identificar padrões repetitivos
+3. Gerar arquivo skill
+4. Verificar e salvar
 
 ---
 
 ### /skill-health
 
-**用途**: Skill 组合健康仪表板
+**Propósito**: Painel de saúde de composição de Skills
 
-**描述**: 显示 skill 组合的健康状态和使用统计。
+**Descrição**: Mostra status de saúde e estatísticas de uso da composição de skills.
 
 ---
 
 ### /rules-distill
 
-**用途**: 扫描 skills + 提取跨领域原则
+**Propósito**: Escanear skills + extrair princípios entre domínios
 
-**描述**: 扫描所有 skills，提取跨领域的通用原则。
+**Descrição**: Escaneia todos os skills, extraindo princípios universais entre domínios.
 
 ---
 
-## 相关命令
+## Comandos Relacionados
 
-- `/learn` - 提取模式
-- `/skill-create` - 从 git 历史生成 skill
-- `/instinct-status` - 查看 instinct 状态
+- `/learn` - Extrair padrões
+- `/skill-create` - Gerar skill do histórico git
+- `/instinct-status` - Ver status do instinct

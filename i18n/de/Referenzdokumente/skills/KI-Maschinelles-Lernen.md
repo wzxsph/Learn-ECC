@@ -1,281 +1,281 @@
-# AI 与机器学习技能
+# KI- und Maschinelles-Lernen-Faehigkeiten
 
-本部分涵盖机器学习、深度学习、模型训练与部署的技能。
+Dieser Abschnitt behandelt Faehigkeiten fuer Maschinelles Lernen, Deep Learning, Modelltraining und -deployment.
 
 ---
 
-## 机器学习基础
+## Maschinelles Lernen Grundlagen
 
 ### neural-network
 
-**用途**: 神经网络设计与实现
+**Zweck**: Neuronales Netzwerk-Design und -Implementierung
 
-**核心概念**:
-- 前馈神经网络
-- 卷积神经网络 (CNN)
-- 循环神经网络 (RNN)
-- 激活函数与损失函数
-- 反向传播算法
+**Kernkonzepte**:
+- Feedforward-Neuronale Netze
+- Convolutional Neural Networks (CNN)
+- Recurrent Neural Networks (RNN)
+- Aktivierungsfunktionen und Verlustfunktionen
+- Backpropagation-Algorithmus
 
 ### deep-learning
 
-**用途**: 深度学习模型开发
+**Zweck**: Deep Learning-Modellentwicklung
 
-**核心框架**:
+**Kern-Frameworks**:
 - PyTorch
 - TensorFlow
 - JAX
 
-**应用场景**:
-- 图像识别
-- 自然语言处理
-- 语音识别
-- 推荐系统
+**Anwendungsszenarien**:
+- Bilderkennung
+- Naturliche Sprachverarbeitung
+- Spracherkennung
+- Empfehlungssysteme
 
 ### gradient-descent
 
-**用途**: 梯度下降优化算法
+**Zweck**: Gradient-Descent-Optimierungsalgorithmen
 
-**核心概念**:
-- 批量梯度下降
-- 随机梯度下降 (SGD)
-- Adam、RMSprop 等优化器
-- 学习率调度
-- 梯度裁剪
+**Kernkonzepte**:
+- Batch Gradient Descent
+- Stochastic Gradient Descent (SGD)
+- Adam, RMSprop und andere Optimierer
+- Lernraten-Scheduling
+- Gradient-Clipping
 
 ### normalization
 
-**用途**: 数据归一化技术
+**Zweck**: Daten-Normalisierungstechniken
 
-**核心方法**:
-- Min-Max 归一化
-- Z-score 标准化
-- L2 归一化
-- 批归一化 (Batch Normalization)
-- 层归一化 (Layer Normalization)
+**Kernmethoden**:
+- Min-Max-Normalisierung
+- Z-score-Standardisierung
+- L2-Normalisierung
+- Batch-Normalisierung
+- Layer-Normalisierung
 
 ---
 
-## PyTorch 生态
+## PyTorch-Oekosystem
 
 ### pytorch-training
 
-**用途**: PyTorch 模型训练
+**Zweck**: PyTorch-Modelltraining
 
-**核心技能**:
-- 数据集与 DataLoader
-- 模型定义与初始化
-- 训练循环编写
-- 验证与评估
-- 检查点保存与恢复
+**Kernfaehigkeiten**:
+- Dataset und DataLoader
+- Modelldefinition und -initialisierung
+- Trainingsschleife-Schreibung
+- Validierung und Evaluierung
+- Checkpoint-Speicherung und -Wiederherstellung
 
 ### pytorch-optimization
 
-**用途**: PyTorch 模型优化
+**Zweck**: PyTorch-Modelloptimierung
 
-**优化技术**:
-- 混合精度训练 (AMP)
-- 梯度累积
-- 分布式训练 (DDP)
-- 模型剪枝
-- 量化
+**Optimierungstechniken**:
+- Mixed-Precision-Training (AMP)
+- Gradient-Akkumulation
+- Verteiltes Training (DDP)
+- Modell-Pruning
+- Quantisierung
 
 ### pytorch-deployment
 
-**用途**: PyTorch 模型部署
+**Zweck**: PyTorch-Modelldeployment
 
-**部署方式**:
-- TorchScript 导出
-- ONNX 导出
+**Deployments**:
+- TorchScript-Export
+- ONNX-Export
 - LibTorch C++ API
 - TorchServe
-- mobile/iOS 部署
+- Mobile/iOS-Deployment
 
 ### pytorch-patterns
 
-**用途**: PyTorch 惯用模式
+**Zweck**: PyTorch-idiomatische Muster
 
-**核心模式**:
-- Module 子类化
-- 损失函数自定义
-- 回调系统
-- 训练辅助工具
+**Kernmuster**:
+- Module-Subklassing
+- Benutzerdefinierte Verlustfunktionen
+- Callback-System
+- Training-Utilities
 
 ---
 
-## 机器学习框架
+## Machine-Learning-Frameworks
 
 ### mxnet
 
-**用途**: Apache MXNet 深度学习框架
+**Zweck**: Apache MXNet Deep Learning-Framework
 
-**特点**:
-- 自动微分
+**Eigenschaften**:
+- Automatische Differenzierung
 - Gluon API
-- 多 GPU 支持
-- 分布式训练
+- Multi-GPU-Unterstuetzung
+- Verteiltes Training
 
 ### transformers
 
-**用途**: Hugging Face Transformers 库
+**Zweck**: Hugging Face Transformers-Bibliothek
 
-**核心功能**:
-- 预训练模型加载
-- 模型微调 (Fine-tuning)
-- 文本分类与生成
-- 问答系统
-- 翻译与摘要
+**Kernfunktionen**:
+- Vortrainierte Modellladung
+- Modell-Fine-Tuning
+- Textklassifikation und -generierung
+- Frage-Antwort-Systeme
+- Uebersetzung und Zusammenfassung
 
 ### spacy
 
-**用途**: spaCy 自然语言处理
+**Zweck**: spaCy Naturale Sprachverarbeitung
 
-**功能**:
-- 词性标注
-- 命名实体识别 (NER)
-- 依存分析
-- 句子分割
+**Funktionen**:
+- Part-of-Speech-Tagging
+- Named Entity Recognition (NER)
+- Dependency-Parsing
+- Satzsegmentierung
 
 ### object-detection
 
-**用途**: 目标检测模型
+**Zweck**: Objekterkennungsmodelle
 
-**经典模型**:
+**Klassische Modelle**:
 - YOLO
 - Faster R-CNN
 - SSD
 - CenterNet
 
-**应用场景**:
-- 自动驾驶
-- 视频监控
-- 医学影像
+**Anwendungsszenarien**:
+- Autonomes Fahren
+- Videoueberwachung
+- Medizinische Bildgebung
 
 ---
 
-## 模型与服务
+## Modell und Service
 
 ### model-route
 
-**用途**: 模型路由与负载均衡
+**Zweck**: Modell-Routing und Load-Balancing
 
-**核心概念**:
-- 模型版本管理
-- 流量分配策略
-- A/B 测试
-- 灰度发布
+**Kernkonzepte**:
+- Modellversionsverwaltung
+- Traffic-Verteilungsstrategien
+- A/B-Tests
+- Canary-Releases
 
 ### on-device-ai
 
-**用途**: 端侧 AI 部署
+**Zweck**: Edge AI Deployment
 
-**部署平台**:
-- 移动设备 (iOS/Android)
-- 嵌入式系统
+**Deployments**:
+- Mobile Geraete (iOS/Android)
+- Eingebettete Systeme
 - WebGL/WebAssembly
 
-**优化技术**:
-- 模型剪枝
-- 量化
-- 知识蒸馏
-- 推理优化
+**Optimierungstechniken**:
+- Modell-Pruning
+- Quantisierung
+- Wissensdistillation
+- Inference-Optimierung
 
 ### onnx
 
-**用途**: ONNX 模型格式
+**Zweck**: ONNX Modellformat
 
-**核心功能**:
-- 模型格式转换
-- 跨框架互操作
-- 推理加速
+**Kernfunktionen**:
+- Modellformatkonvertierung
+- Cross-Framework-Interoperabilitaet
+- Inference-Beschleunigung
 
 ### seldon
 
-**用途**: Seldon 模型服务框架
+**Zweck**: Seldon Modell-Service-Framework
 
-**功能**:
-- Kubernetes 原生部署
-- A/B 测试与金丝雀
-- 异常检测
-- 模型解释
+**Funktionen**:
+- Kubernetes-natives Deployment
+- A/B-Tests und Canary
+- Anomalieerkennung
+- Modellerklaerung
 
 ---
 
-## 特定任务
+## Spezifische Aufgaben
 
 ### named-entity-recognition
 
-**用途**: 命名实体识别
+**Zweck**: Named Entity Recognition
 
-**技术方案**:
+**Technische Ansaetze**:
 - BiLSTM-CRF
-- Transformer-based
-- 预训练语言模型微调
+- Transformer-basiert
+- Vortrainierte Sprachmodell-Fine-Tuning
 
-**应用场景**:
-- 信息抽取
-- 知识图谱构建
-- 问答系统
+**Anwendungsszenarien**:
+- Informationsgewinnung
+- Wissensgraph-Construction
+- Frage-Antwort-Systeme
 
 ### text-classification
 
-**用途**: 文本分类
+**Zweck**: Textklassifikation
 
-**方法**:
-- 传统机器学习 (TF-IDF + SVM)
-- 深度学习 (CNN/RNN)
-- 预训练模型 (BERT)
+**Methoden**:
+- Traditionelles Maschinelles Lernen (TF-IDF + SVM)
+- Deep Learning (CNN/RNN)
+- Vortrainierte Modelle (BERT)
 
 ### text-generation
 
-**用途**: 文本生成
+**Zweck**: Textgenerierung
 
-**模型**:
-- GPT 系列
+**Modelle**:
+- GPT-Serie
 - T5
 - BART
 
-**应用**:
-- 对话系统
-- 内容创作
-- 代码生成
+**Anwendungen**:
+- Dialogsysteme
+- Inhaltserstellung
+- Codegenerierung
 
 ### text-to-sql
 
-**用途**: 文本转 SQL
+**Zweck**: Text-to-SQL
 
-**技术**:
-- Seq2Seq 模型
-- 预训练语言模型
-- 强化学习微调
+**Techniken**:
+- Seq2Seq-Modelle
+- Vortrainierte Sprachmodelle
+- Reinforcement-Learning-Fine-Tuning
 
 ### speech-to-text
 
-**用途**: 语音转文本
+**Zweck**: Sprach-zu-Text
 
-**技术**:
+**Techniken**:
 - Whisper
 - Wav2Vec
-- 端到端模型
+- End-to-End-Modelle
 
 ### sentiment-analysis
 
-**用途**: 情感分析
+**Zweck**: Sentimentanalyse
 
-**方法**:
-- 基于词典
-- 传统机器学习
-- 深度学习
+**Methoden**:
+- Lexikon-basiert
+- Traditionelles Maschinelles Lernen
+- Deep Learning
 
 ---
 
-## 科学计算
+## Wissenschaftliches Rechnen
 
 ### scientific-computing
 
-**用途**: 科学计算
+**Zweck**: Wissenschaftliches Rechnen
 
-**核心库**:
+**Kern-Bibliotheken**:
 - NumPy
 - SciPy
 - Pandas
@@ -283,40 +283,40 @@
 
 ### linear-algebra
 
-**用途**: 线性代数
+**Zweck**: Lineare Algebra
 
-**核心概念**:
-- 矩阵运算
-- 特征值分解
-- 奇异值分解 (SVD)
-- 线性方程组求解
+**Kernkonzepte**:
+- Matrix-Operationen
+- Eigenwert-Zerlegung
+- Singular-Value Decomposition (SVD)
+- Loesen linearer Gleichungssysteme
 
 ### signal-processing
 
-**用途**: 信号处理
+**Zweck**: Signalverarbeitung
 
-**应用**:
-- 音频处理
-- 图像处理
-- 时间序列分析
+**Anwendungen**:
+- Audioverarbeitung
+- Bildverarbeitung
+- Zeitreihenanalyse
 
 ### optimization
 
-**用途**: 优化理论
+**Zweck**: Optimierungstheorie
 
-**方法**:
-- 凸优化
-- 约束优化
-- 组合优化
+**Methoden**:
+- Konvexe Optimierung
+- Beschraenkte Optimierung
+- Kombinatorische Optimierung
 
 ---
 
-## 相关技能
+## Zugehoerige Faehigkeiten
 
-| 技能 | 用途 |
+| Faehigkeit | Verwendungszweck |
 |------|------|
-| `pytorch-training` | PyTorch 模型训练 |
+| `pytorch-training` | PyTorch-Modelltraining |
 | `transformers` | Hugging Face Transformers |
-| `onnx` | ONNX 模型格式 |
-| `mlops` | ML 运维 |
-| `inferencing` | 模型推理优化 |
+| `onnx` | ONNX-Modellformat |
+| `mlops` | ML-Operations |
+| `inferencing` | Modell-Inference-Optimierung |

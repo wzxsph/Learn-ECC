@@ -1,23 +1,23 @@
-# 特殊领域技能
+# Spezialgebiete-Faehigkeiten
 
-本部分涵盖特定领域的专业技能，包括区块链、游戏开发、音视频处理等。
+Dieser Abschnitt behandelt spezialisierte Faehigkeiten fuer bestimmte Bereiche, einschliesslich Blockchain, Spielentwicklung, Audio/Video-Verarbeitung und mehr.
 
 ---
 
-## 区块链与 Web3
+## Blockchain und Web3
 
 ### solidity
 
-**用途**: Solidity 智能合约开发
+**Zweck**: Solidity Smart-Contract-Entwicklung
 
-**核心概念**:
-- 合约结构
-- 数据类型
-- 函数修饰符
-- 事件与日志
-- 继承与库
+**Kernkonzepte**:
+- Vertragsstruktur
+- Datentypen
+- Funktionsmodifikatoren
+- Events und Logs
+- Vererbung und Bibliotheken
 
-**示例**:
+**Beispiel**:
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -38,19 +38,19 @@ contract Token {
 
 ### defi-amm-security
 
-**用途**: DeFi AMM 安全
+**Zweck**: DeFi AMM-Sicherheit
 
-**核心概念**:
-- 无常损失
-- 闪电贷攻击
-- 预言机操纵
-- 合约审计
+**Kernkonzepte**:
+- Impermanent Loss
+- Flash-Loan-Angriffe
+- Oracle-Manipulation
+- Vertrags-Audits
 
 ### ethereum-development
 
-**用途**: 以太坊开发
+**Zweck**: Ethereum-Entwicklung
 
-**工具**:
+**Tools**:
 - Hardhat
 - Foundry
 - ethers.js
@@ -58,325 +58,325 @@ contract Token {
 
 ---
 
-## 游戏开发
+## Spielentwicklung
 
 ### unity
 
-**用途**: Unity 游戏开发
+**Zweck**: Unity-Spielentwicklung
 
-**核心概念**:
-- 场景管理
-- 物理引擎
-- 粒子系统
-- 动画状态机
-- UI 系统
+**Kernkonzepte**:
+- Szenenverwaltung
+- Physik-Engine
+- Partikelsysteme
+- Animations-Zustandsmaschinen
+- UI-System
 
 ### godot
 
-**用途**: Godot 游戏引擎
+**Zweck**: Godot-Spiel-Engine
 
-**特点**:
+**Eigenschaften**:
 - GDScript
-- 场景系统
-- 信号机制
-- 跨平台导出
+- Szenensystem
+- Signal-Mechanismus
+- Cross-Platform-Export
 
 ### unreal-engine
 
-**用途**: Unreal Engine 开发
+**Zweck**: Unreal-Engine-Entwicklung
 
-**核心概念**:
+**Kernkonzepte**:
 - Blueprint
-- C++ 编程
-- 材质系统
-- 动画蓝图
+- C++-Programmierung
+- Material-System
+- Animations-Blueprint
 
 ### game-ai
 
-**用途**: 游戏 AI
+**Zweck**: Spiel-KI
 
-**技术**:
-- 状态机
-- 行为树
-- 路径规划
-- 决策树
+**Techniken**:
+- Zustandsmaschinen
+- Verhaltensbaeume
+- Pfadplanung
+- Entscheidungsbaeume
 
 ---
 
-## 音视频处理
+## Audio/Video-Verarbeitung
 
 ### video-editing
 
-**用途**: 视频编辑
+**Zweck**: Video-Bearbeitung
 
-**工具**:
+**Tools**:
 - FFmpeg
 - DaVinci Resolve
 - Adobe Premiere
 
 ### audio-processing
 
-**用途**: 音频处理
+**Zweck**: Audio-Verarbeitung
 
-**技术**:
-- 音频编码
-- 降噪
-- 混音
+**Techniken**:
+- Audio-Kodierung
+- Geraeuschunterdrueckung
+- Audio-Mixing
 
 ### streaming
 
-**用途**: 流媒体处理
+**Zweck**: Streaming-Verarbeitung
 
-**协议**:
+**Protokolle**:
 - HLS
 - DASH
 - RTMP
 
 ### media-processing
 
-**用途**: 媒体处理管道
+**Zweck**: Medienverarbeitungs-Pipeline
 
-**工具**:
+**Tools**:
 - GStreamer
 - MediaConvert
 - Transmux
 
 ---
 
-## 物联网
+## Internet der Dinge
 
 ### bluetooth-low-energy
 
-**用途**: BLE 开发
+**Zweck**: BLE-Entwicklung
 
-**核心概念**:
-- GATT 协议
-- 广播与扫描
-- 连接管理
-- 功耗优化
+**Kernkonzepte**:
+- GATT-Protokoll
+- Advertising und Scanning
+- Verbindungsverwaltung
+- Stromverbrauchsoptimierung
 
 ### iot-development
 
-**用途**: IoT 开发
+**Zweck**: IoT-Entwicklung
 
-**平台**:
+**Plattformen**:
 - Arduino
 - Raspberry Pi
 - ESP32
 
 ### embedded-systems
 
-**用途**: 嵌入式系统
+**Zweck**: Eingebettete Systeme
 
-**技能**:
-- C/C++ 编程
-- 裸机开发
+**Faehigkeiten**:
+- C/C++-Programmierung
+- Bare-Metal-Entwicklung
 - RTOS
-- 驱动开发
+- Treiberentwicklung
 
 ---
 
-## 数据库与存储
+## Datenbank und Speicher
 
 ### sql-injection
 
-**用途**: SQL 注入防御
+**Zweck**: SQL-Injection-Abwehr
 
-**防御措施**:
-- 参数化查询
-- ORM 使用
-- 输入验证
-- 最小权限原则
+**Abwehrmassnahmen**:
+- Parametrisierte Abfragen
+- ORM-Verwendung
+- Eingabevalidierung
+- Least-Privilege-Prinzip
 
 ### postgresql
 
-**用途**: PostgreSQL 最佳实践
+**Zweck**: PostgreSQL-Best-Practices
 
-**核心概念**:
-- 索引策略
-- 查询优化
-- 分区表
-- JSONB 操作
-- 复制配置
+**Kernkonzepte**:
+- Indexstrategien
+- Abfrageoptimierung
+- Partitionierte Tabellen
+- JSONB-Operationen
+- Replikationskonfiguration
 
 ### sqlite
 
-**用途**: SQLite 使用
+**Zweck**: SQLite-Verwendung
 
-**特点**:
-- 轻量级
-- 无服务器
-- ACID 兼容
-- 移动端应用
+**Eigenschaften**:
+- Leichtgewichtig
+- Serverlos
+- ACID-kompatibel
+- Mobile Anwendungen
 
 ### snowflake
 
-**用途**: Snowflake 数据仓库
+**Zweck**: Snowflake Data Warehouse
 
-**核心功能**:
-- 数据分享
-- 时间旅行
-- 克隆
-- 扩展微分区
+**Kernfunktionen**:
+- Datenfreigabe
+- Time Travel
+- Klonen
+- Erweiterte Mikropartitionierung
 
 ---
 
-## 消息队列
+## Message-Queues
 
 ### kafka
 
-**用途**: Apache Kafka
+**Zweck**: Apache Kafka
 
-**核心概念**:
-- Topic 与 Partition
-- 生产者与消费者
-- 消费者组
-- 复制与一致性
-- 流处理
+**Kernkonzepte**:
+- Topic und Partition
+- Producer und Consumer
+- Consumer-Gruppen
+- Replikation und Konsistenz
+- Stream-Verarbeitung
 
-**示例**:
+**Beispiel**:
 ```java
-// 生产者
+// Producer
 KafkaProducer<String, String> producer = new KafkaProducer<>(props);
 ProducerRecord<String, String> record = new ProducerRecord<>("topic", "key", "value");
 producer.send(record);
 
-// 消费者
+// Consumer
 KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
 consumer.subscribe(List.of("topic"));
 while (true) {
     ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
     for (ConsumerRecord<String, String> record : records) {
-        // 处理消息
+        // Nachricht verarbeiten
     }
 }
 ```
 
 ### nats
 
-**用途**: NATS 消息系统
+**Zweck**: NATS-Messaging-System
 
-**特点**:
-- 轻量级
-- 低延迟
-- 支持多种模式 (发布/订阅、请求/响应)
+**Eigenschaften**:
+- Leichtgewichtig
+- Niedrige Latenz
+- Multi-Mode-Unterstuetzung (Publish/Subscribe, Request/Response)
 
 ### mqtt
 
-**用途**: MQTT 物联网协议
+**Zweck**: MQTT IoT-Protokoll
 
-**QoS 级别**:
-- QoS 0: 至多一次
-- QoS 1: 至少一次
-- QoS 2: 恰好一次
+**QoS-Stufen**:
+- QoS 0: Hoechstens einmal
+- QoS 1: Mindestens einmal
+- QoS 2: Genau einmal
 
 ---
 
-## 前端特定领域
+## Frontend-Spezifische Bereiche
 
 ### pwa
 
-**用途**: Progressive Web App
+**Zweck**: Progressive Web App
 
-**核心功能**:
+**Kernfunktionen**:
 - Service Worker
 - Web App Manifest
-- 离线支持
-- 推送通知
+- Offline-Unterstuetzung
+- Push-Benachrichtigungen
 
 ### webgl
 
-**用途**: WebGL 图形编程
+**Zweck**: WebGL-Grafikprogrammierung
 
-**应用**:
-- 3D 渲染
-- 游戏
-- 数据可视化
+**Anwendungen**:
+- 3D-Rendering
+- Spiele
+- Datenvisualisierung
 
 ### webrtc
 
-**用途**: WebRTC 实时通信
+**Zweck**: WebRTC-Echtzeitkommunikation
 
-**核心 API**:
+**Kern-APIs**:
 - getUserMedia
 - RTCPeerConnection
 - RTCDataChannel
 
 ---
 
-## 文档与写作
+## Dokumentation und Schreiben
 
 ### markdown
 
-**用途**: Markdown 编写
+**Zweck**: Markdown-Schreiben
 
-**扩展**:
+**Erweiterungen**:
 - GFM (GitHub Flavored Markdown)
-- 表格
-- 代码块高亮
-- 任务列表
+- Tabellen
+- Code-Block-Hervorhebung
+- Task-Listen
 
 ### latex
 
-**用途**: LaTeX 文档排版
+**Zweck**: LaTeX-Dokument-Satz
 
-**用途**:
-- 学术论文
-- 数学公式
-- 技术文档
+**Verwendung**:
+- Akademische Arbeiten
+- Mathematische Formeln
+- Technische Dokumentation
 
 ### plantuml
 
-**用途**: PlantUML 图表
+**Zweck**: PlantUML-Diagramme
 
-**图表类型**:
-- 类图
-- 序列图
-- 用例图
-- 活动图
+**Diagrammtypen**:
+- Klassendiagramme
+- Sequenzdiagramme
+- Anwendungsfalldiagramme
+- Aktivittsdiagramme
 
 ---
 
-## 特殊工具
+## Spezial-Tools
 
 ### vim
 
-**用途**: Vim 编辑器
+**Zweck**: Vim-Editor
 
-**核心技能**:
-- 模式切换
-- 移动命令
-- 文本对象
-- 宏与寄存器
-- 插件管理
+**Kernfaehigkeiten**:
+- Moduswechsel
+- Bewegungsbefehle
+- Textobjekte
+- Makros und Register
+- Plugin-Verwaltung
 
 ### shell-scripting
 
-**用途**: Shell 脚本编写
+**Zweck**: Shell-Script-Schreiben
 
-**脚本类型**:
+**Script-Typen**:
 - Bash
 - Zsh
 - POSIX
 
 ### latex
 
-**用途**: LaTeX 排版
+**Zweck**: LaTeX-Satz
 
-**用途**:
-- 学术论文
-- 数学公式
-- 复杂文档
+**Verwendung**:
+- Akademische Arbeiten
+- Mathematische Formeln
+- Komplexe Dokumente
 
 ---
 
-## 相关技能
+## Zugehoerige Faehigkeiten
 
-| 技能 | 用途 |
+| Faehigkeit | Verwendungszweck |
 |------|------|
-| `solidity` | 智能合约开发 |
-| `unity` | Unity 游戏开发 |
-| `video-editing` | 视频编辑 |
-| `kafka` | Kafka 消息队列 |
-| `pwa` | PWA 开发 |
-| `webgl` | WebGL 图形 |
+| `solidity` | Smart-Contract-Entwicklung |
+| `unity` | Unity-Spielentwicklung |
+| `video-editing` | Video-Bearbeitung |
+| `kafka` | Kafka-Message-Queue |
+| `pwa` | PWA-Entwicklung |
+| `webgl` | WebGL-Grafik |

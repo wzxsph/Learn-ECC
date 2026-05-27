@@ -1,200 +1,200 @@
-# 核心工作流命令
+# Comandos de Workflow Principal
 
-本文档介绍 ECC 中用于核心开发工作流的命令。
+Este documento apresenta os comandos no ECC para workflows de desenvolvimento principais.
 
 ---
 
 ## /plan
 
-**用途说明**: 重述需求、评估风险，并创建分步实施计划。在触碰任何代码之前**等待用户确认**。
+**Propósito**: Resumir requisitos, avaliar riscos e criar plano de implementação passo a passo. **Aguardar confirmação do usuário** antes de tocar qualquer código.
 
-**使用方法**:
+**Como Usar**:
 ```
-/plan [功能描述 | PRD文件路径]
+/plan [descrição de feature | caminho do arquivo PRD]
 ```
 
-**使用场景**:
-- 开始新功能开发
-- 进行重大架构变更
-- 复杂的重构工作
-- 需求不明确或模糊时
+**Cenários de Uso**:
+- Iniciar novo desenvolvimento de feature
+- Fazer mudanças de arquitetura significativas
+- Trabalho de refatoração complexo
+- Quando requisitos são incertos ou vagos
 
-**详细说明**:
-该命令会：
-1. **重述需求** - 清晰表达需要构建的内容
-2. **识别风险** - 揭示潜在问题和阻碍
-3. **创建分步计划** - 将实施分解为阶段
-4. **等待确认** - 必须获得用户明确批准后才能继续
+**Descrição Detalhada**:
+Este comando irá:
+1. **Resumir requisitos** - Expressar claramente o que precisa ser construído
+2. **Identificar riscos** - Revelar problemas e obstáculos potenciais
+3. **Criar plano passo a passo** - Decompor a implementação em fases
+4. **Aguardar confirmação** - Deve obter aprovação explícita do usuário antes de continuar
 
-支持多种输入模式：
-| 输入 | 模式 | 行为 |
-|------|------|------|
-| `path/to/name.prd.md` | PRD 模式 | 读取 PRD，选择下一个待处理的交付里程碑 |
-| 其他 markdown 路径 | 引用模式 | 读取文件作为上下文并生成内联计划 |
-| 自由格式文本 | 对话模式 | 生成内联计划 |
-| 空输入 | 澄清模式 | 询问应该规划什么 |
+Suporta vários modos de entrada:
+| Entrada | Modo | Comportamento |
+|---------|------|---------------|
+| `path/to/name.prd.md` | Modo PRD | Ler PRD, selecionar próximo milestone de entrega a trabalhar |
+| Outro caminho markdown | Modo de Referência | Ler arquivo como contexto e gerar plano inline |
+| Texto livre | Modo Conversa | Gerar plano inline |
+| Entrada vazia | Modo Esclarecimento | Perguntar o que deve ser planejado |
 
 ---
 
 ## /code-review
 
-**用途说明**: 本地未提交变更或 GitHub PR 的全面代码审查。
+**Propósito**: Revisão completa de código de mudanças não commitadas localmente ou PRs do GitHub.
 
-**使用方法**:
+**Como Usar**:
 ```
-/code-review                 # 本地审查模式
-/code-review [PR号 | PR链接]  # PR 审查模式
+/code-review                 # Modo de revisão local
+/code-review [número PR | link PR]  # Modo de revisão de PR
 ```
 
-**使用场景**:
-- 提交代码之前进行全面审查
-- PR 审查以发现潜在问题
-- 学习代码库中的Melhores-Práticas
+**Cenários de Uso**:
+- Revisão completa antes de fazer commit
+- Revisão de PR para descobrir problemas potenciais
+- Aprender melhores práticas do codebase
 
-**本地审查模式**:
-1. 收集变更文件（`git diff --name-only HEAD`）
-2. 检查安全问题（硬编码凭证、SQL注入、XSS等）
-3. 检查代码质量问题（函数>50行、文件>800行等）
-4. 生成带严重级别标注的报告
+**Modo de Revisão Local**:
+1. Coletar arquivos alterados (`git diff --name-only HEAD`)
+2. Verificar problemas de segurança (credenciais hardcoded, SQL injection, XSS, etc.)
+3. Verificar problemas de qualidade de código (funções >50 linhas, arquivos >800 linhas, etc.)
+4. Gerar relatório com anotações de nível de severidade
 
-**PR 审查模式**:
-1. 获取 PR 元数据和差异
-2. 检查相关项目规范和规划文档
-3. 读取完整变更文件
-4. 应用 7 个审查类别（正确性、类型安全、模式合规、安全、性能、完整性、可维护性）
-5. 运行验证命令（类型检查、lint、测试、构建）
-6. 发布审查意见到 GitHub
+**Modo de Revisão de PR**:
+1. Obter metadados e diff do PR
+2. Verificar padrões e documentos de planejamento relevantes do projeto
+3. Ler arquivos de mudança completos
+4. Aplicar 7 categorias de revisão (correção, type safety, conformidade de padrão, segurança, performance, completude, manutenibilidade)
+5. Executar comandos de verificação (type check, lint, test, build)
+6. Publicar comentários de revisão no GitHub
 
 ---
 
 ## /build-fix
 
-**用途说明**: 检测项目构建系统并逐步修复构建/类型错误。
+**Propósito**: Detectar sistema de build e corrigir erros de build/tipo incrementalmente.
 
-**使用方法**:
+**Como Usar**:
 ```
 /build-fix
 ```
 
-**使用场景**:
-- 构建失败时
-- TypeScript/JavaScript 类型错误
-- 编译错误
-- 依赖问题
+**Cenários de Uso**:
+- Quando o build falha
+- Erros de tipo TypeScript/JavaScript
+- Erros de compilação
+- Problemas de dependência
 
-**工作流程**:
-1. **检测构建系统** - 根据文件类型选择合适的构建命令
-2. **解析错误** - 按文件和依赖顺序分组
-3. **逐步修复** - 一次修复一个错误
-4. **验证** - 每次修复后重新运行构建
+**Fluxo de Trabalho**:
+1. **Detectar sistema de build** - Selecionar comando de build apropriado baseado no tipo de arquivo
+2. **Analisar erros** - Agrupar por arquivo e ordem de dependência
+3. **Corrigir incrementalmente** - Corrigir um erro por vez
+4. **Verificar** - Executar build novamente após cada correção
 
-支持的构建系统：
+Sistemas de build suportados:
 
-| 指示器 | 构建命令 |
-|--------|----------|
-| `package.json` + `build` 脚本 | `npm run build` |
+| Indicador | Comando de Build |
+|-----------|-----------------|
+| `package.json` + script `build` | `npm run build` |
 | `tsconfig.json` (TypeScript) | `npx tsc --noEmit` |
 | `Cargo.toml` | `cargo build` |
 | `pom.xml` | `mvn compile` |
 | `build.gradle` | `./gradlew compileJava` |
 | `go.mod` | `go build ./...` |
-| `pyproject.toml` | `python -m compileall` 或 `mypy` |
+| `pyproject.toml` | `python -m compileall` ou `mypy` |
 
 ---
 
 ## /verify
 
-**用途说明**: 验证代码变更是否按预期工作。用于验证 PR、确认修复或测试变更。
+**Propósito**: Verificar se mudanças de código funcionam conforme esperado. Usado para verificar PRs, confirmar correções ou testar mudanças.
 
-**使用方法**:
+**Como Usar**:
 ```
-/verify [quick]           # 快速验证（推荐）
-/verify full             # 完整验证
+/verify [quick]           # Verificação rápida (recomendado)
+/verify full             # Verificação completa
 ```
 
-**使用场景**:
-- 验证 PR 更改
-- 确认修复有效
-- 手动测试变更
-- 本地验证后再推送
+**Cenários de Uso**:
+- Verificar mudanças de PR
+- Confirmar que a correção funciona
+- Testar mudanças manualmente
+- Verificação local antes de fazer push
 
-**验证步骤**:
-1. 运行相关测试
-2. 检查类型安全性
-3. 验证构建成功
-4. 检查 linting
+**Passos de Verificação**:
+1. Executar testes relevantes
+2. Verificar type safety
+3. Verificar se o build é bem-sucedido
+4. Verificar linting
 
 ---
 
 ## /quality-gate
 
-**用途说明**: 为文件或项目范围运行 ECC 质量管道并报告修复步骤。
+**Propósito**: Executar pipeline de qualidade ECC para um arquivo ou escopo de projeto e relatar passos de correção.
 
-**使用方法**:
+**Como Usar**:
 ```
 /quality-gate [path|.] [--fix] [--strict]
 ```
 
-**使用场景**:
-- 按需运行质量检查
-- 在 CI 管道中集成
-- 确保代码符合项目标准
+**Cenários de Uso**:
+- Executar verificação de qualidade sob demanda
+- Integrar em pipeline CI
+- Garantir que código está em conformidade com padrões do projeto
 
-**管道步骤**:
-1. 检测目标语言/工具
-2. 运行格式化程序检查
-3. 运行 lint/类型检查
-4. 生成简洁的修复列表
+**Passos do Pipeline**:
+1. Detectar linguagem/ferramenta alvo
+2. Executar verificação de formatter
+3. Executar verificação de lint/type
+4. Gerar lista de correções concisa
 
 ---
 
 ## /tdd
 
-**用途说明**: 测试驱动开发工作流。遵循红-绿-重构循环。
+**Propósito**: Workflow de desenvolvimento dirigido por testes. Segue o ciclo vermelho-verde-refatorar.
 
-**使用方法**:
+**Como Usar**:
 ```
-/tdd                      # 启动 TDD 工作流
-```
-
-**使用场景**:
-- 实现新功能
-- 修复 bug（先写失败的测试）
-- 添加测试覆盖
-- 学习 TDD 方法论
-
-**TDD 循环**:
-```
-RED    → 写一个失败的测试
-GREEN  → 编写最少的代码使测试通过
-REFACTOR → 改进代码，测试保持绿色
-REPEAT → 下一个测试用例
+/tdd                      # Iniciar workflow TDD
 ```
 
-**Melhores-Práticas**:
-- **先写测试** - 在任何实现之前
-- **每次修改后运行测试** - 验证进度
-- **测试行为，而非实现** - 关注接口而非细节
-- **包含边界情况** - 空值、null、最大值等
+**Cenários de Uso**:
+- Implementar nova feature
+- Corrigir bug (escrever teste que falha primeiro)
+- Adicionar cobertura de teste
+- Aprender metodologia TDD
+
+**Ciclo TDD**:
+```
+RED    → Escrever um teste que falha
+GREEN  → Escrever código mínimo para fazer o teste passar
+REFACTOR → Melhorar código, testes permanecem verdes
+REPEAT → Próximo caso de teste
+```
+
+**Melhores Práticas**:
+- **Escreva testes primeiro** - Antes de qualquer implementação
+- **Execute testes após cada mudança** - Verificar progresso
+- **Teste comportamento, não implementação** - Focar em interface não detalhes
+- **Inclua casos de borda** - Null, vazio, máximo, etc.
 
 ---
 
-## 命令集成关系
+## Integração de Comandos
 
 ```
-需求不明 → /plan-prd (创建 PRD)
+Requisitos não claros → /plan-prd (criar PRD)
      ↓
-需求明确 → /plan (创建实施计划)
+Requisitos claros → /plan (criar plano de implementação)
      ↓
-/tdd (或 /feature-dev) 实现
+Implementar com /tdd (ou /feature-dev)
      ↓
-/build-fix 修复构建错误
+/build-fix para corrigir erros de build
      ↓
-/code-review 代码审查
+/code-review para revisão de código
      ↓
-/quality-gate 质量门禁
+/quality-gate para quality gate
      ↓
-/verify 验证
+/verify para verificar
      ↓
-/pr 创建 PR
+/pr para criar PR
 ```

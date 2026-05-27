@@ -1,141 +1,141 @@
-# 构建脚本
+# Build-Skripte
 
-本文档介绍 ECC 项目的构建和发布脚本。
+Dieses Dokument beschreibt die Build- und Release-Skripte des ECC-Projekts.
 
 ---
 
 ## release.sh
 
-**路径**: `scripts/release.sh`
+**Pfad**: `scripts/release.sh`
 
-插件版本升级和发布脚本。
+Plugin-Versions-Upgrade und Release-Skript.
 
-### 功能
+### Funktionen
 
-1. **版本验证**
-   - 确认提供了 semver 格式版本号 (X.Y.Z 或 X.Y.Z-prerelease)
-   - 确认当前分支是 main
-   - 确认工作区干净
+1. **Versionsvalidierung**
+   - Bestaetigt dass semver-Format Versionsnummer angegeben (X.Y.Z oder X.Y.Z-prerelease)
+   - Bestaetigt dass aktueller Branch main ist
+   - Bestaetigt dass Arbeitsbereich sauber ist
 
-2. **文件更新**
-   - 更新所有包/插件清单中的版本号
-   - 更新文档中的版本引用
-   - 更新 agent 配置
+2. **Dateien aktualisieren**
+   - Versionsnummern in allen Paket-/Plugin-Manifesten aktualisieren
+   - Versionsreferenzen in Dokumentation aktualisieren
+   - Agent-Konfiguration aktualisieren
 
-3. **验证构建**
-   - 运行 OpenCode 构建
-   - 运行构建测试
-   - 运行插件清单测试
+3. **Build-Verifizierung**
+   - OpenCode-Build ausfuehren
+   - Build-Tests ausfuehren
+   - Plugin-Manifest-Tests ausfuehren
 
-4. **Git 操作**
-   - 暂存所有更改
-   - 创建提交
-   - 创建并推送标签
+4. **Git-Operationen**
+   - Alle Aenderungen stagen
+   - Commit erstellen
+   - Tag erstellen und pushen
 
-### 使用方法
+### Verwendung
 
 ```bash
-# 发布新版本
+# Neue Version veroeffentlichen
 ./scripts/release.sh 1.5.0
 
-# 预发布版本
+# Vorabveroentlichung
 ./scripts/release.sh 2.0.0-rc.1
 ```
 
-### 更新的文件
+### Aktualisierte Dateien
 
-| 文件 | 更新内容 |
+| Datei | Aktualisierung |
 |------|----------|
-| `package.json` | version 字段 |
-| `package-lock.json` | version 和 packages[""].version |
-| `AGENTS.md` | Version 行 |
-| `docs/tr/AGENTS.md` | Sürüm 行 |
-| `docs/zh-CN/AGENTS.md` | 版本 行 |
-| `agent.yaml` | version 字段 |
-| `VERSION` | 版本文件 |
-| `.claude-plugin/plugin.json` | version 字段 |
-| `.claude-plugin/marketplace.json` | version 字段 |
-| `.agents/plugins/marketplace.json` | ecc 插件版本 |
-| `.codex-plugin/plugin.json` | version 字段 |
-| `.opencode/package.json` | version 字段 |
-| `.opencode/package-lock.json` | version 和 packages[""].version |
-| `.opencode/plugins/ecc-hooks.ts` | 横幅版本 |
-| `README.md` | 版本表格行 |
-| `README.zh-CN.md` | 版本表格行 |
-| `docs/tr/README.md` | 最新发布标题 |
-| `docs/pt-BR/README.md` | 最新发布标题 |
-| `docs/zh-CN/README.md` | 最新发布标题 |
-| `docs/SELECTIVE-INSTALL-ARCHITECTURE.md` | repoVersion 示例 |
+| `package.json` | version-Feld |
+| `package-lock.json` | version und packages[""].version |
+| `AGENTS.md` | Versionszeile |
+| `docs/tr/AGENTS.md` | Sürüm-Zeile |
+| `docs/zh-CN/AGENTS.md` | Versions-Zeile |
+| `agent.yaml` | version-Feld |
+| `VERSION` | Versionsdatei |
+| `.claude-plugin/plugin.json` | version-Feld |
+| `.claude-plugin/marketplace.json` | version-Feld |
+| `.agents/plugins/marketplace.json` | ecc-Plugin-Version |
+| `.codex-plugin/plugin.json` | version-Feld |
+| `.opencode/package.json` | version-Feld |
+| `.opencode/package-lock.json` | version und packages[""].version |
+| `.opencode/plugins/ecc-hooks.ts` | Banner-Version |
+| `README.md` | Versions-Tabellenzeile |
+| `README.zh-CN.md` | Versions-Tabellenzeile |
+| `docs/tr/README.md` | Neueste Veroeffentlichungstitel |
+| `docs/pt-BR/README.md` | Neueste Veroeffentlichungstitel |
+| `docs/zh-CN/README.md` | Neueste Veroeffentlichungstitel |
+| `docs/SELECTIVE-INSTALL-ARCHITECTURE.md` | repoVersion-Beispiel |
 
-### 前提条件
+### Voraussetzungen
 
-- Git 工作区必须干净
-- 必须位于 main 分支
-- 所有清单文件必须存在
+- Git-Arbeitsbereich muss sauber sein
+- Muss auf main-Branch sein
+- Alle Manifestdateien müssen vorhanden sein
 
 ---
 
 ## build-opencode.js
 
-**路径**: `scripts/build-opencode.js`
+**Pfad**: `scripts/build-opencode.js`
 
-构建 OpenCode 插件的 TypeScript 代码。
+Baut TypeScript-Code des OpenCode-Plugins.
 
-### 构建流程
+### Build-Prozess
 
-1. 清理 `dist` 目录
-2. 查找 TypeScript 编译器 (`typescript/bin/tsc`)
-3. 使用项目根目录的 tsconfig.json 编译 `.opencode` 目录
+1. `dist`-Verzeichnis bereinigen
+2. TypeScript-Compiler finden (`typescript/bin/tsc`)
+3. `.opencode`-Verzeichnis mit tsconfig.json im Projektroot kompilieren
 
-### 使用方法
+### Verwendung
 
 ```bash
-# 构建 OpenCode
+# OpenCode bauen
 node scripts/build-opencode.js
 
-# 作为 release 的一部分自动运行
+# Automatisch als Teil des Releases ausgefuehrt
 ./scripts/release.sh 1.5.0
 ```
 
-### 前提条件
+### Voraussetzungen
 
-需要已安装根目录的开发依赖,确保 TypeScript 编译器可用。
+Erfordert installierte Development-Abhaengigkeiten im Root, TypeScript-Compiler muss verfuegbar sein.
 
 ---
 
-## 其他脚本
+## Sonstige Skripte
 
 ### gan-harness.sh
 
-**路径**: `scripts/gan-harness.sh`
+**Pfad**: `scripts/gan-harness.sh`
 
-GAN (General Agent Network) 测试工具相关。
+GAN (General Agent Network) Testtool-bezogen.
 
 ### orchestrate-codex-worker.sh
 
-**路径**: `scripts/orchestrate-codex-worker.sh`
+**Pfad**: `scripts/orchestrate-codex-worker.sh`
 
-编排 Codex worker 进程。
+Orchestriert Codex-Worker-Prozesse.
 
 ### sync-ecc-to-codex.sh
 
-**路径**: `scripts/sync-ecc-to-codex.sh`
+**Pfad**: `scripts/sync-ecc-to-codex.sh`
 
-同步 ECC 到 Codex。
+Synchronisiert ECC zu Codex.
 
 ---
 
-## 发布工作流程
+## Veroeffentlichungs-Workflow
 
 ```
-1. 确保在 main 分支且工作区干净
-2. 运行发布脚本并提供版本号
-3. 脚本自动完成:
-   ├── 验证前提条件
-   ├── 更新所有版本引用
-   ├── 构建 OpenCode
-   ├── 运行测试验证
-   ├── 创建 Git 提交
-   └── 推送标签
-4. GitHub Actions 检测到标签自动发布
+1. Sicherstellen dass auf main-Branch und Arbeitsbereich sauber
+2. Release-Skript mit Versionsnummer ausfuehren
+3. Skript automatisch:
+   ├── Voraussetzungen validieren
+   ├── Alle Versionsreferenzen aktualisieren
+   ├── OpenCode bauen
+   ├── Tests zur Validierung ausfuehren
+   ├── Git-Commit erstellen
+   └── Tag pushen
+4. GitHub Actions erkennt Tag und veroeffentlicht automatisch
 ```

@@ -1,102 +1,102 @@
-# 测试
+# Kiểm Thử
 
-本部分涵盖各编程语言的测试策略、TDD工作流和E2E测试模式。
+Phần này cover testing strategy, TDD workflow và E2E testing pattern cho các ngôn ngữ lập trình.
 
 ---
 
-## TDD工作流
+## TDD Workflow
 
-### 用途说明
-TDD工作流确保所有代码开发遵循测试驱动开发原则，具有全面的测试覆盖率。
+### Mục đích
+TDD workflow đảm bảo tất cả code development tuân theo test-driven development principle, có comprehensive test coverage.
 
-### 使用时机
-- 编写新功能或功能
-- 修复bug或问题
-- 重构现有代码
-- 添加API端点
-- 创建新组件
+### Khi nào sử dụng
+- Viết new feature hoặc function
+- Fix bug hoặc issue
+- Refactor existing code
+- Thêm API endpoint
+- Tạo new component
 
-### 核心概念
+### Core concept
 
-**1. 测试先行**
-总是先写测试，然后实现代码使测试通过。
+**1. Test First**
+Luôn viết test trước, sau đó implement code để test pass.
 
-**2. 覆盖率要求**
-最低80%覆盖率（单元测试 + 集成测试 + E2E测试）
+**2. Coverage Requirement**
+Tối thiểu 80% coverage (unit test + integration test + E2E test)
 
-**3. 测试类型**
-- 单元测试：独立函数和组件
-- 集成测试：API端点和数据库操作
-- E2E测试：关键用户流和浏览器自动化
+**3. Test Type**
+- Unit test: Independent function và component
+- Integration test: API endpoint và database operation
+- E2E test: Critical user flow và browser automation
 
-**4. RED-GREEN-REFACTOR循环**
-- RED: 先写失败的测试
-- GREEN: 写最简代码使测试通过
-- REFACTOR: 保持测试绿色的情况下改进代码
+**4. RED-GREEN-REFACTOR Loop**
+- RED: Viết test fail trước
+- GREEN: Viết minimal code để test pass
+- REFACTOR: Cải thiện code quality trong khi giữ test xanh
 
-### TDD流程步骤
+### TDD Process Steps
 
 ```bash
-# 1. 写测试（RED）
-npm test  # 测试应该失败
+# 1. Viết test (RED)
+npm test  # Test should fail
 
-# 2. 实现代码（GREEN）
-# 写最简代码使测试通过
+# 2. Implement code (GREEN)
+# Viết minimal code để test pass
 
-# 3. 重构（REFACTOR）
-# 改进代码质量，保持测试绿色
+# 3. Refactor (REFACTOR)
+# Cải thiện code quality, giữ test xanh
 
-# 4. 验证覆盖率
-npm run test:coverage  # 验证80%+覆盖率
+# 4. Verify coverage
+npm run test:coverage  # Verify 80%+ coverage
 ```
 
-### 测试隔离原则
+### Test Isolation Principle
 
 ```typescript
-// 错误：测试相互依赖
+// Wrong: Test phụ thuộc lẫn nhau
 test('creates user', () => { /* ... */ })
-test('updates same user', () => { /* 依赖前一个测试 */ })
+test('updates same user', () => { /* Depends on previous test */ })
 
-// 正确：每个测试独立设置
+// Correct: Mỗi test independent setup
 test('creates user', () => {
   const user = createTestUser()
-  // 测试逻辑
+  // Test logic
 })
 
 test('updates user', () => {
   const user = createTestUser()
-  // 更新逻辑
+  // Update logic
 })
 ```
 
 ---
 
-## Python测试
+## Python Testing
 
-### 用途说明
-Python测试策略使用pytest、TDD方法论、fixtures、mocking、参数化和覆盖率要求。
+### Mục đích
+Python testing strategy sử dụng pytest, TDD methodology, fixture, mocking, parametrize và coverage requirement.
 
-### 使用时机
-- 遵循TDD方法论编写新Python代码
-- 设计Python项目测试套件
-- 审查Python测试覆盖率
-- 设置测试基础设施
+### Khi nào sử dụng
+- Viết new Python code theo TDD methodology
+- Design Python project test suite
+- Review Python test coverage
+- Setup test infrastructure
 
-### 核心概念
+### Core concept
 
 **1. pytest Fixtures**
-使用`@pytest.fixture`创建可复用测试数据。
+Sử dụng `@pytest.fixture` tạo reusable test data.
 
-**2. 参数化测试**
-使用`@pytest.mark.parametrize`用不同输入运行测试。
+**2. Parametrize Test**
+Sử dụng `@pytest.mark.parametrize` run test với different input.
 
 **3. Mocking**
-使用`unittest.mock`的`@patch`模拟外部依赖。
+Sử dụng `@patch` từ `unittest.mock` mock external dependency.
 
-**4. 覆盖率**
-使用`--cov`测量覆盖率，目标80%+。
+**4. Coverage**
+Sử dụng `--cov` measure coverage, target 80%+.
 
-### 使用示例
+### Usage Example
 
 ```python
 import pytest
@@ -110,7 +110,7 @@ def database():
     yield db
     db.close()
 
-# 参数化测试
+# Parametrize Test
 @pytest.mark.parametrize("input,expected", [
     ("hello", "HELLO"),
     ("world", "WORLD"),
@@ -126,49 +126,49 @@ def test_with_mock(api_call_mock):
     result = my_function()
     assert result["status"] == "success"
 
-# 异常测试
+# Exception Test
 with pytest.raises(ValueError, match="invalid input"):
     raise ValueError("invalid input provided")
 
-# 运行命令
+# Run command
 pytest --cov=mypackage --cov-report=html
 ```
 
 ---
 
-## Go测试
+## Go Testing
 
-### 用途说明
-Go测试模式包括表驱动测试、子测试、基准测试、模糊测试和测试覆盖率，遵循TDD方法和惯用Go实践。
+### Mục đích
+Go testing pattern bao gồm table-driven test, subtest, benchmark, fuzz test và coverage, follow TDD method và idiomatic Go practice.
 
-### 使用时机
-- 编写新的Go函数或方法
-- 为现有代码添加测试覆盖率
-- 为性能关键代码创建基准测试
-- 实现模糊测试进行输入验证
-- 在Go项目中遵循TDD工作流
+### Khi nào sử dụng
+- Viết new Go function hoặc method
+- Thêm test coverage cho existing code
+- Tạo benchmark cho performance-critical code
+- Implement fuzz test cho input validation
+- Follow TDD workflow trong Go project
 
-### 核心概念
+### Core concept
 
-**1. 表驱动测试**
-使用表驱动模式实现全面覆盖。
+**1. Table-Driven Test**
+Sử dụng table-driven pattern implement comprehensive coverage.
 
-**2. 子测试**
-使用`t.Run`组织相关测试。
+**2. Subtest**
+Sử dụng `t.Run` organize related test.
 
-**3. 测试辅助函数**
-使用`t.Helper()`标记辅助函数。
+**3. Test Helper**
+Sử dụng `t.Helper()` mark helper function.
 
-**4. 接口Mocking**
-使用接口进行依赖解耦和测试。
+**4. Interface Mocking**
+Sử dụng interface để decouple dependency và test.
 
-**5. 基准测试和模糊测试**
-性能测试和随机输入测试。
+**5. Benchmark và Fuzz Test**
+Performance test và random input test.
 
-### 使用示例
+### Usage Example
 
 ```go
-// 表驱动测试
+// Table-Driven Test
 func TestAdd(t *testing.T) {
     tests := []struct {
         name     string
@@ -190,7 +190,7 @@ func TestAdd(t *testing.T) {
     }
 }
 
-// 测试辅助函数
+// Test Helper
 func setupTestDB(t *testing.T) *sql.DB {
     t.Helper()
     db, err := sql.Open("sqlite3", ":memory:")
@@ -201,7 +201,7 @@ func setupTestDB(t *testing.T) *sql.DB {
     return db
 }
 
-// 接口Mocking
+// Interface Mocking
 type UserRepository interface {
     GetUser(id string) (*User, error)
     SaveUser(user *User) error
@@ -216,7 +216,7 @@ func (m *MockUserRepository) GetUser(id string) (*User, error) {
     return m.GetUserFunc(id)
 }
 
-// 基准测试
+// Benchmark
 func BenchmarkProcess(b *testing.B) {
     data := generateTestData(1000)
     b.ResetTimer()
@@ -225,7 +225,7 @@ func BenchmarkProcess(b *testing.B) {
     }
 }
 
-// 运行命令
+// Run command
 go test -cover ./...
 go test -bench=. -benchmem
 go test -fuzz=FuzzParse -fuzztime=30s
@@ -233,39 +233,39 @@ go test -fuzz=FuzzParse -fuzztime=30s
 
 ---
 
-## Rust测试
+## Rust Testing
 
-### 用途说明
-Rust测试模式包括单元测试、集成测试、异步测试、属性测试、mocking和覆盖率，遵循TDD方法论。
+### Mục đích
+Rust testing pattern bao gồm unit test, integration test, async test, property test, mocking và coverage, follow TDD methodology.
 
-### 使用时机
-- 编写新的Rust函数、方法或trait
-- 为现有代码添加测试覆盖率
-- 为性能关键代码创建基准测试
-- 实现属性测试进行输入验证
-- 在Rust项目中遵循TDD工作流
+### Khi nào sử dụng
+- Viết new Rust function, method hoặc trait
+- Thêm test coverage cho existing code
+- Tạo benchmark cho performance-critical code
+- Implement property test cho input validation
+- Follow TDD workflow trong Rust project
 
-### 核心概念
+### Core concept
 
-**1. 模块级测试**
-在`#[cfg(test)]`模块中编写单元测试。
+**1. Module-Level Test**
+Viết unit test trong `#[cfg(test)]` module.
 
-**2. 集成测试**
-在`tests/`目录中编写集成测试。
+**2. Integration Test**
+Viết integration test trong `tests/` directory.
 
-**3. 异步测试**
-使用`#[tokio::test]`进行异步测试。
+**3. Async Test**
+Sử dụng `#[tokio::test]` cho async test.
 
-**4. 属性测试**
-使用`proptest`进行基于属性的测试。
+**4. Property Test**
+Sử dụng `proptest` cho property-based testing.
 
 **5. Mocking**
-使用`mockall`模拟trait。
+Sử dụng `mockall` mock trait.
 
-### 使用示例
+### Usage Example
 
 ```rust
-// 模块级测试
+// Module-Level Test
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -283,7 +283,7 @@ mod tests {
     }
 }
 
-// 异步测试
+// Async Test
 #[tokio::test]
 async fn fetches_data_successfully() {
     let client = TestClient::new().await;
@@ -291,7 +291,7 @@ async fn fetches_data_successfully() {
     assert!(result.is_ok());
 }
 
-// 属性测试
+// Property Test
 proptest! {
     #[test]
     fn encode_decode_roundtrip(input in ".*") {
@@ -323,7 +323,7 @@ fn service_returns_user_when_found() {
     assert_eq!(user.name, "Alice");
 }
 
-// 运行命令
+// Run command
 cargo test
 cargo llvm-cov --fail-under-lines 80
 cargo bench
@@ -331,40 +331,40 @@ cargo bench
 
 ---
 
-## E2E测试
+## E2E Testing
 
-### 用途说明
-Playwright E2E测试模式提供了构建稳定、快速、可维护E2E测试套件的全面模式，包括页面对象模型、配置、CI/CD集成和防抖测试策略。
+### Mục đích
+Playwright E2E testing pattern cung cấp comprehensive pattern để build stable, fast, maintainable E2E test suite, bao gồm page object model, configuration, CI/CD integration và flaky test strategy.
 
-### 使用时机
-- 创建端到端测试验证完整用户流
-- 使用Playwright进行浏览器自动化
-- 设置CI/CD中的E2E测试
-- 处理不稳定测试
+### Khi nào sử dụng
+- Tạo end-to-end test verify complete user flow
+- Sử dụng Playwright cho browser automation
+- Setup E2E test trong CI/CD
+- Handle flaky test
 
-### 核心概念
+### Core concept
 
-**1. 页面对象模型(POM)**
-将页面交互封装在页面对象类中。
+**1. Page Object Model (POM)**
+Encapsulate page interaction trong page object class.
 
-**2. 测试隔离**
-每个测试独立设置数据。
+**2. Test Isolation**
+Mỗi test independent data setup.
 
-**3. 定位器策略**
-使用语义定位器而非CSS类名。
+**3. Locator Strategy**
+Sử dụng semantic locator thay vì CSS class name.
 
-**4. 防抖测试**
-识别和处理不稳定测试。
+**4. Flaky Test Handling**
+Identify và handle flaky test.
 
-**5. Artifacts管理**
-截图、视频、跟踪记录用于调试。
+**5. Artifacts Management**
+Screenshot, video, trace recording cho debugging.
 
-### 使用示例
+### Usage Example
 
 ```typescript
 import { test, expect } from '@playwright/test'
 
-// 页面对象模型
+// Page Object Model
 export class ItemsPage {
   readonly page: Page
   readonly searchInput: Locator
@@ -387,7 +387,7 @@ export class ItemsPage {
   }
 }
 
-// 测试结构
+// Test Structure
 test.describe('Item Search', () => {
   let itemsPage: ItemsPage
 
@@ -404,7 +404,7 @@ test.describe('Item Search', () => {
   })
 })
 
-// Playwright配置
+// Playwright Configuration
 export default defineConfig({
   testDir: './tests/e2e',
   retries: process.env.CI ? 2 : 0,
@@ -419,7 +419,7 @@ export default defineConfig({
   ],
 })
 
-// 防抖测试
+// Flaky Test Handling
 test('conditional skip', async ({ page }) => {
   test.skip(process.env.CI, 'Flaky in CI - Issue #123')
 })
@@ -431,10 +431,10 @@ test('flaky: complex search', async ({ page }) => {
 
 ---
 
-## 相关技能
+## Related Skill
 
-| 技能 | 用途 |
+| Skill | Usage |
 |------|------|
-| `coding-standards` | 编码标准和最佳实践 |
-| `error-handling` | 错误处理模式 |
-| `security-review` | 安全审查检查清单 |
+| `coding-standards` | Coding standard và best practice |
+| `error-handling` | Error handling pattern |
+| `security-review` | Security review checklist |

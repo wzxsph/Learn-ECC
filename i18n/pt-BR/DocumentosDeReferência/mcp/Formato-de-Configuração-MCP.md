@@ -1,49 +1,49 @@
-# MCP Formato-de-Configuração
+# Formato de Configuração MCP
 
-## 概述
+## Visão Geral
 
-MCP (Model Context Protocol) 服务器通过 `~/.claude.json` 文件中的 `mcpServers` 节进行配置。Claude Code 支持两种类型的 MCP 服务器：
+Os servidores MCP (Model Context Protocol) são configurados através da seção `mcpServers` no arquivo `~/.claude.json`. O Claude Code suporta dois tipos de servidores MCP:
 
-- **进程模式 (process)**：通过本地命令启动的服务器
-- **HTTP 模式 (http)**：通过 HTTP/HTTPS 访问的远程服务器
+- **Modo processo (process)**: Servidores iniciados via comando local
+- **Modo HTTP (http)**: Servidores remotos acessados via HTTP/HTTPS
 
-## JSON 配置结构
+## Estrutura de Configuração JSON
 
 ```json
 {
   "mcpServers": {
-    "服务器名称": {
-      "type": "http",           // 可选，默认 process
-      "command": "npx",        // 进程模式必需
-      "url": "https://...",    // HTTP 模式必需
-      "args": ["参数1", "参数2"],  // 可选
-      "env": {                 // 可选，环境变量
+    "nome-do-servidor": {
+      "type": "http",           // Opcional, padrão é process
+      "command": "npx",        // Necessário para modo process
+      "url": "https://...",    // Necessário para modo http
+      "args": ["param1", "param2"],  // Opcional
+      "env": {                 // Opcional, variáveis de ambiente
         "KEY": "value"
       },
-      "headers": {             // 可选，HTTP 请求头
+      "headers": {             // Opcional, headers de requisição HTTP
         "Header-Name": "value"
       },
-      "description": "服务器描述"  // 可选
+      "description": "Descrição do servidor"  // Opcional
     }
   }
 }
 ```
 
-## 字段说明
+## Descrição de Campos
 
-| 字段 | 类型 | 必需 | 说明 |
-|------|------|------|------|
-| `type` | string | 否 | 连接类型：`process`（默认）或 `http` |
-| `command` | string | type=process 时必需 | 启动命令（如 `npx`, `uvx`, `python3`） |
-| `url` | string | type=http 时必需 | MCP 服务器的 HTTP/HTTPS URL |
-| `args` | array | 否 | 传递给命令的参数数组 |
-| `env` | object | 否 | 环境变量键值对 |
-| `headers` | object | 否 | HTTP 请求头（仅 http 模式） |
-| `description` | string | 否 | 服务器功能描述 |
+| Campo | Tipo | Obrigatório | Descrição |
+|------|------|-------------|----------|
+| `type` | string | Não | Tipo de conexão: `process` (padrão) ou `http` |
+| `command` | string | Sim, quando type=process | Comando de inicialização (como `npx`, `uvx`, `python3`) |
+| `url` | string | Sim, quando type=http | URL HTTP/HTTPS do servidor MCP |
+| `args` | array | Não | Array de argumentos passados ao comando |
+| `env` | object | Não | Pares de variáveis de ambiente |
+| `headers` | object | Não | Headers de requisição HTTP (apenas modo http) |
+| `description` | string | Não | Descrição da funcionalidade do servidor |
 
-## 配置示例
+## Exemplos de Configuração
 
-### 进程模式示例
+### Exemplo de Modo Processo
 
 ```json
 {
@@ -54,13 +54,13 @@ MCP (Model Context Protocol) 服务器通过 `~/.claude.json` 文件中的 `mcpS
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_xxxx"
       },
-      "description": "GitHub 操作 - PRs, issues, repos"
+      "description": "Operações GitHub - PRs, issues, repos"
     }
   }
 }
 ```
 
-### HTTP 模式示例
+### Exemplo de Modo HTTP
 
 ```json
 {
@@ -68,13 +68,13 @@ MCP (Model Context Protocol) 服务器通过 `~/.claude.json` 文件中的 `mcpS
     "vercel": {
       "type": "http",
       "url": "https://mcp.vercel.com",
-      "description": "Vercel 部署和项目"
+      "description": "Deploy e projetos Vercel"
     }
   }
 }
 ```
 
-### 带认证头的 HTTP 模式
+### Exemplo de Modo HTTP com Headers de Autenticação
 
 ```json
 {
@@ -85,20 +85,20 @@ MCP (Model Context Protocol) 服务器通过 `~/.claude.json` 文件中的 `mcpS
       "headers": {
         "x-browser-use-api-key": "YOUR_KEY_HERE"
       },
-      "description": "AI 浏览器代理"
+      "description": "Proxy de navegador AI"
     }
   }
 }
 ```
 
-## Melhores-Práticas
+## Melhores Práticas
 
-1. **环境变量管理**：敏感信息（API keys, tokens）必须使用环境变量，不要硬编码
-2. **上下文窗口**：建议保持启用不超过 10 个 MCP 服务器，以保留上下文窗口
-3. **禁用服务器**：使用 `ECC_DISABLED_MCPS=server1,server2` 环境变量可禁用打包的 MCP 服务器
+1. **Gerenciamento de Variáveis de Ambiente**: Informações sensíveis (API keys, tokens) devem usar variáveis de ambiente, não hardcode
+2. **Janela de Contexto**: Recomenda-se manter habilitados no máximo 10 servidores MCP, para preservar janela de contexto
+3. **Desabilitar Servidores**: Usar variável de ambiente `ECC_DISABLED_MCPS=server1,server2` pode desabilitar servidores MCP empacotados
 
-## 故障排除
+## Troubleshooting
 
-- 确保命令可执行（npx, uvx 等已安装）
-- 检查环境变量是否正确设置
-- 查看 Claude Code 日志中的服务器连接错误
+- Garantir que comando é executável (npx, uvx etc. instalados)
+- Verificar se variáveis de ambiente estão configuradas corretamente
+- Verificar erros de conexão de servidor nos logs do Claude Code

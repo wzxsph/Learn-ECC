@@ -1,354 +1,354 @@
-# ECC 文档体系
+# Hệ Thống Tài Liệu ECC
 
-ECC (Everything Claude Code) 是一个 Claude Code 插件，提供 75 个命令、60 个 Agent、16 个 Skills、7 个规则文档和完整的 Hook/MCP 配置体系。
+ECC (Everything Claude Code) là plugin Claude Code cung cấp 75 lệnh, 60 Agent, 16 Skills, 7 tài liệu quy tắc và hệ thống cấu hình Hook/MCP hoàn chỉnh.
 
 ---
 
-## 1. ECC 文档体系概述
+## 1. Tổng Quan Hệ Thống Tài Liệu ECC
 
-ECC 为 Claude Code 提供生产级开发工作流支持，涵盖多个 AI Agent 框架（Claude Code、Codex、OpenCode、Cursor、Gemini）。
+ECC cung cấp hỗ trợ workflow phát triển production cho Claude Code, bao gồm nhiều AI Agent framework (Claude Code, Codex, OpenCode, Cursor, Gemini).
 
-### 技术栈
+### Tech Stack
 
-| 层级 | 技术 | 版本 |
+| Tầng | Công nghệ | Phiên bản |
 |------|------|------|
-| 主要语言 | JavaScript/Node.js | >=18 |
-| 次要语言 | Python | >=3.11 |
-| 包管理器 | Yarn | 4.9.2 |
-| 测试运行器 | 自定义 Node.js 测试运行器 | - |
-| 覆盖率 | c8 | 11.x |
-| 代码检查 | ESLint + markdownlint-cli | - |
+| Ngôn ngữ chính | JavaScript/Node.js | >=18 |
+| Ngôn ngữ phụ | Python | >=3.11 |
+| Package manager | Yarn | 4.9.2 |
+| Test runner | Custom Node.js test runner | - |
+| Coverage | c8 | 11.x |
+| Code linting | ESLint + markdownlint-cli | - |
 
-### 目录结构
+### Cấu Trúc Thư Mục
 
 ```
 ECC/
-├── agents/        # 60 个专业 Agent
-├── commands/      # 75 个命令文件
-├── skills/        # 16 个 Skills 目录
-├── rules/         # 7 个规则文档（common + 语言特定）
-├── hooks/         # 3 个 Hook 文档
-├── mcp/           # 6 个 MCP 服务器配置
-├── scripts/       # 54 个工具脚本
+├── agents/        # 60 Agent chuyên môn
+├── commands/      # 75 file lệnh
+├── skills/        # 16 thư mục Skills
+├── rules/         # 7 tài liệu quy tắc (common + ngôn ngữ)
+├── hooks/         # 3 tài liệu Hook
+├── mcp/           # 6 cấu hình MCP server
+├── scripts/       # 54 script tiện ích
 ├── README.md
 ```
 
 ---
 
-## 2. 快速导航
+## 2. Điều Hướng Nhanh
 
-| 分类 | 文档 | 说明 |
+| Phân loại | Tài liệu | Mô tả |
 |------|------|------|
-| [命令总览](./commands/) | [commands/](commands/) | 75 个命令的完整列表 |
-| [Agent 索引](./agents/) | [agents/](agents/) | 60 个专业 Agent |
-| [Skills 索引](./skills/) | [skills/](skills/) | 16 个 Skills 按领域分类 |
-| [规则索引](./rules/) | [rules/](rules/) | 7 个规则文档 (common + 语言特定) |
-| [Hooks 索引](./hooks/) | [hooks/](hooks/) | Hook 系统配置和开发 |
-| [MCP 索引](./mcp/) | [mcp/](mcp/) | MCP 服务器配置和开发 |
-| [Scripts 索引](./scripts/) | [scripts/](scripts/) | 54 个工具脚本 |
+| [Tổng quan lệnh](./commands/) | [commands/](commands/) | Danh sách đầy đủ 75 lệnh |
+| [Chỉ mục Agent](./agents/) | [agents/](agents/) | 60 Agent chuyên môn |
+| [Chỉ mục Skills](./skills/) | [skills/](skills/) | 16 Skills phân theo domain |
+| [Chỉ mục Rules](./rules/) | [rules/](rules/) | 7 tài liệu quy tắc (common + ngôn ngữ) |
+| [Chỉ mục Hooks](./hooks/) | [hooks/](hooks/) | Cấu hình và phát triển Hook system |
+| [Chỉ mục MCP](./mcp/) | [mcp/](mcp/) | Cấu hình và phát triển MCP server |
+| [Chỉ mục Scripts](./scripts/) | [scripts/](scripts/) | 54 script tiện ích |
 
 ---
 
-## 3. 命令索引
+## 3. Chỉ Mục Lệnh
 
-共 **75 个命令**，按类别分组：
+Tổng cộng **75 lệnh**, phân theo nhóm:
 
-### 3.1 核心工作流 (6)
+### 3.1 Core Workflow (6)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/plan` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | 需求分析+风险评估+分步骤计划 |
-| `/code-review` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | 代码质量/安全/可维护性审查 |
-| `/build-fix` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | 自动检测语言+增量修复构建错误 |
-| `/verify` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | 完整验证循环：构建→lint→测试→类型检查 |
-| `/quality-gate` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | 按需运行 ECC 质量流水线 |
-| `/tdd` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | 通用 TDD 工作流 |
+| `/plan` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | Phân tích yêu cầu + đánh giá rủi ro + kế hoạch từng bước |
+| `/code-review` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | Review chất lượng/bảo mật/bảo trì mã |
+| `/build-fix` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | Tự động phát hiện ngôn ngữ + sửa lỗi build tăng dần |
+| `/verify` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | Xác minh đầy đủ: build → lint → test → type check |
+| `/quality-gate` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | Chạy ECC quality pipeline theo yêu cầu |
+| `/tdd` | [01-Workflow-Co-Ban.md](commands/01-Workflow-Co-Ban.md) | Workflow TDD tổng quát |
 
-### 3.2 测试相关 (8)
+### 3.2 Kiểm Thử (8)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/go-test` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Go TDD (表格驱动，80%+ 覆盖率) |
+| `/go-test` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Go TDD (table-driven, 80%+ coverage) |
 | `/kotlin-test` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Kotlin TDD (Kotest + Kover) |
-| `/rust-test` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Rust TDD (cargo test + 集成测试) |
+| `/rust-test` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Rust TDD (cargo test + integration test) |
 | `/cpp-test` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | C++ TDD (GoogleTest + gcov/lcov) |
 | `/flutter-test` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Flutter TDD |
-| `/e2e` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | 生成 + 运行 Playwright e2e 测试 |
-| `/test-coverage` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | 测试覆盖率报告+差距分析 |
-| `/python-testing` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Python 测试最佳实践 |
+| `/e2e` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Tạo + chạy Playwright e2e test |
+| `/test-coverage` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Báo cáo coverage test + phân tích khoảng trống |
+| `/python-testing` | [02-Kiem-Thu.md](commands/02-Kiem-Thu.md) | Best practice Python testing |
 
-### 3.3 语言审查 (7)
+### 3.3 Review Ngôn Ngữ (7)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/python-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Python PEP 8、类型提示、安全 |
-| `/go-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Go 惯用法、并发、错误处理 |
-| `/kotlin-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Kotlin 空安全、协程、架构 |
-| `/rust-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Rust 所有权、生命周期、unsafe |
-| `/cpp-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | C++ 内存安全、现代 idiom |
-| `/flutter-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Flutter/Dart 模式 |
-| `/fastapi-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | FastAPI 架构、异步、Pydantic |
+| `/python-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Python PEP 8, type hints, bảo mật |
+| `/go-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Go idioms, concurrency, xử lý lỗi |
+| `/kotlin-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Kotlin null safety, coroutines, architecture |
+| `/rust-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Rust ownership, lifecycle, unsafe |
+| `/cpp-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | C++ memory safety, idiom hiện đại |
+| `/flutter-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | Flutter/Dart pattern |
+| `/fastapi-review` | [03-Xem-Xet-Ngon-Ngu.md](commands/03-Xem-Xet-Ngon-Ngu.md) | FastAPI architecture, async, Pydantic |
 
-### 3.4 构建修复 (6)
+### 3.4 Sửa Lỗi Build (6)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/go-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | 修复 Go 构建错误 + go vet 警告 |
-| `/kotlin-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | 修复 Kotlin/Gradle 编译器错误 |
-| `/rust-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | 修复 Rust 构建 + 借用检查器问题 |
-| `/cpp-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | 修复 C++ CMake + 链接器问题 |
-| `/gradle-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | 修复 Android/KMP Gradle 错误 |
-| `/flutter-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | Flutter 构建修复 |
+| `/go-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | Sửa lỗi Go build + cảnh báo go vet |
+| `/kotlin-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | Sửa lỗi Kotlin/Gradle compiler |
+| `/rust-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | Sửa Rust build + vấn đề borrow checker |
+| `/cpp-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | Sửa C++ CMake + vấn đề linker |
+| `/gradle-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | Sửa Android/KMP Gradle errors |
+| `/flutter-build` | [04-Sua-Loi-Build.md](commands/04-Sua-Loi-Build.md) | Flutter build fix |
 
-### 3.5 规划与架构 (7)
+### 3.5 Quy Hoạch và Kiến Trúc (7)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/plan-prd` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | 交互式 PRD 生成器 |
-| `/prp-plan` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | 全面的功能规划 |
-| `/prp-prd` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | PRP 工作流 PRD 生成器 |
-| `/prp-implement` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | 执行 PRP 计划+验证循环 |
-| `/prp-pr` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | 从 PRP 工作流创建 PR |
-| `/prp-commit` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | PRP 验证提交 |
-| `/multi-plan` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | 多模型协作规划 (Codex + Gemini) |
+| `/plan-prd` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | Interactive PRD generator |
+| `/prp-plan` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | Lập kế hoạch feature toàn diện |
+| `/prp-prd` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | PRP workflow PRD generator |
+| `/prp-implement` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | Thực thi PRP plan + vòng xác minh |
+| `/prp-pr` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | Tạo PR từ PRP workflow |
+| `/prp-commit` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | PRP verified commit |
+| `/multi-plan` | [05-Quy-Hoach-Kien-Truc.md](commands/05-Quy-Hoach-Kien-Truc.md) | Lập kế hoạch đa mô hình (Codex + Gemini) |
 
-### 3.6 会话管理 (5)
+### 3.6 Quản Lý Phiên (5)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/save-session` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | 保存会话状态到 ~/.claude/session-data/ |
-| `/resume-session` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | 加载并恢复保存的会话 |
-| `/sessions` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | 浏览+搜索+管理会话历史 |
-| `/checkpoint` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | 创建/验证工作流检查点 |
-| `/aside` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | 回答侧问而不丢失上下文 |
+| `/save-session` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | Lưu trạng thái phiên vào ~/.claude/session-data/ |
+| `/resume-session` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | Load và khôi phục phiên đã lưu |
+| `/sessions` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | Duyệt + tìm kiếm + quản lý lịch sử phiên |
+| `/checkpoint` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | Tạo/xác minh workflow checkpoint |
+| `/aside` | [06-Quan-Ly-Phien.md](commands/06-Quan-Ly-Phien.md) | Trả lời câu hỏi phụ mà không mất context |
 
-### 3.7 学习与改进 (10)
+### 3.7 Học Hỏi và Cải Tiến (10)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/learn` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 从会话中提取可复用模式 |
-| `/learn-eval` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 提取模式 + 自我评估质量 |
-| `/evolve` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 分析 instinct + 建议进化结构 |
-| `/promote` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 将项目 instinct 提升到全局范围 |
-| `/instinct-status` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 显示所有学习的 instinct |
-| `/instinct-export` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 导出 instinct 到文件 |
-| `/instinct-import` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 从文件/URL 导入 instinct |
-| `/skill-create` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 分析 git 历史+生成 skill 文件 |
-| `/skill-health` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | Skill 组合健康仪表板 |
-| `/rules-distill` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | 扫描 skills + 提取跨领域原则 |
+| `/learn` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | Trích xuất pattern tái sử dụng từ phiên |
+| `/learn-eval` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | Trích xuất pattern + tự đánh giá chất lượng |
+| `/evolve` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | Phân tích instinct + đề xuất cấu trúc tiến hóa |
+| `/promote` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | Nâng cấp project instinct lên phạm vi global |
+| `/instinct-status` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | Hiển thị tất cả instinct đã học |
+| `/instinct-export` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | Export instinct ra file |
+| `/instinct-import` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | Import instinct từ file/URL |
+| `/skill-create` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | Phân tích git history + tạo skill file |
+| `/skill-health` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | Skill composition health dashboard |
+| `/rules-distill` | [07-Hoc-Hoi-Cai-Tien.md](commands/07-Hoc-Hoi-Cai-Tien.md) | Quét skills + trích xuất nguyên tắc cross-domain |
 
-### 3.8 循环与自动化 (3)
+### 3.8 Vòng Lặp và Tự Động Hóa (3)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/loop-start` | [08-Vong-Lap-Tu-Dong.md](commands/08-Vong-Lap-Tu-Dong.md) | 启动托管自主循环模式 |
-| `/loop-status` | [08-Vong-Lap-Tu-Dong.md](commands/08-Vong-Lap-Tu-Dong.md) | 检查运行中循环的状态 |
-| `/santa-loop` | [08-Vong-Lap-Tu-Dong.md](commands/08-Vong-Lap-Tu-Dong.md) | Santa 风格自主循环 |
+| `/loop-start` | [08-Vong-Lap-Tu-Dong.md](commands/08-Vong-Lap-Tu-Dong.md) | Khởi động chế độ autonomous loop được quản lý |
+| `/loop-status` | [08-Vong-Lap-Tu-Dong.md](commands/08-Vong-Lap-Tu-Dong.md) | Kiểm tra trạng thái loop đang chạy |
+| `/santa-loop` | [08-Vong-Lap-Tu-Dong.md](commands/08-Vong-Lap-Tu-Dong.md) | Autonomous loop kiểu Santa |
 
-### 3.9 项目管理 (6)
+### 3.9 Quản Lý Dự Án (6)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/projects` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | 列出已知项目 + instinct 统计 |
-| `/harness-audit` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | 审计 agent harness 配置 |
-| `/model-route` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | 路由任务到合适模型 |
-| `/pm2` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | PM2 进程管理器初始化 |
-| `/setup-pm` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | 配置包管理器 (npm/pnpm/yarn/bun) |
-| `/project-init` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | 项目初始化 |
+| `/projects` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | Liệt kê dự án đã biết + thống kê instinct |
+| `/harness-audit` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | Audit agent harness configuration |
+| `/model-route` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | Route task đến model phù hợp |
+| `/pm2` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | PM2 process manager initialization |
+| `/setup-pm` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | Cấu hình package manager (npm/pnpm/yarn/bun) |
+| `/project-init` | [09-Quan-Ly-Du-An.md](commands/09-Quan-Ly-Du-An.md) | Khởi tạo dự án |
 
-### 3.10 PR 工作流 (6)
+### 3.10 PR Workflow (6)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/pr` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 从当前分支创建 GitHub PR |
-| `/review-pr` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 审查 GitHub PR |
-| `/multi-workflow` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 多模型协作开发 |
-| `/multi-backend` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 后端多模型开发 |
-| `/multi-frontend` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 前端多模型开发 |
-| `/multi-execute` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | 多模型协作执行 |
+| `/pr` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | Tạo GitHub PR từ nhánh hiện tại |
+| `/review-pr` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | Review GitHub PR |
+| `/multi-workflow` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | Phát triển đa mô hình cộng tác |
+| `/multi-backend` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | Phát triển backend đa mô hình |
+| `/multi-frontend` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | Phát triển frontend đa mô hình |
+| `/multi-execute` | [10-Workflow-PR.md](commands/10-Workflow-PR.md) | Thực thi cộng tác đa mô hình |
 
-### 3.11 Hookify 系统 (4)
+### 3.11 Hookify System (4)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/hookify` | [11-He-Thong-Hookify.md](commands/11-He-Thong-Hookify.md) | 创建 hooks 防止不良行为 |
-| `/hookify-list` | [11-He-Thong-Hookify.md](commands/11-He-Thong-Hookify.md) | 列出所有配置的 hookify 规则 |
-| `/hookify-configure` | [11-He-Thong-Hookify.md](commands/11-He-Thong-Hookify.md) | 交互式启用/禁用 hookify 规则 |
-| `/hookify-help` | [11-He-Thong-Hookify.md](commands/11-He-Thong-Hookify.md) | Hookify 系统帮助 |
+| `/hookify` | [11-He-Thong-Hookify.md](commands/11-He-Thong-Hookify.md) | Tạo hooks ngăn chặn hành vi xấu |
+| `/hookify-list` | [11-He-Thong-Hookify.md](commands/11-He-Thong-Hookify.md) | Liệt kê tất cả quy tắc hookify đã cấu hình |
+| `/hookify-configure` | [11-He-Thong-Hookify.md](commands/11-He-Thong-Hookify.md) | Tương tác enable/disable quy tắc hookify |
+| `/hookify-help` | [11-He-Thong-Hookify.md](commands/11-He-Thong-Hookify.md) | Trợ giúp hệ thống Hookify |
 
-### 3.12 文档与研究 (3)
+### 3.12 Tài Liệu và Nghiên Cứu (3)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/update-docs` | [12-Tai-Lieu-Nghien-Cuu.md](commands/12-Tai-Lieu-Nghien-Cuu.md) | 更新项目文档 |
-| `/update-codemaps` | [12-Tai-Lieu-Nghien-Cuu.md](commands/12-Tai-Lieu-Nghien-Cuu.md) | 重新生成 codemaps |
-| `/ecc-guide` | [12-Tai-Lieu-Nghien-Cuu.md](commands/12-Tai-Lieu-Nghien-Cuu.md) | ECC 用户指南 |
+| `/update-docs` | [12-Tai-Lieu-Nghien-Cuu.md](commands/12-Tai-Lieu-Nghien-Cuu.md) | Cập nhật tài liệu dự án |
+| `/update-codemaps` | [12-Tai-Lieu-Nghien-Cuu.md](commands/12-Tai-Lieu-Nghien-Cuu.md) | Tái tạo codemaps |
+| `/ecc-guide` | [12-Tai-Lieu-Nghien-Cuu.md](commands/12-Tai-Lieu-Nghien-Cuu.md) | Hướng dẫn sử dụng ECC |
 
-### 3.13 重构与清理 (2)
+### 3.13 Refactor và Dọn Dẹp (2)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/refactor-clean` | [13-Tai-Cau-Don-Dep.md](commands/13-Tai-Cau-Don-Dep.md) | 删除死代码+合并重复 |
-| `/auto-update` | [13-Tai-Cau-Don-Dep.md](commands/13-Tai-Cau-Don-Dep.md) | 自动更新能力 |
+| `/refactor-clean` | [13-Tai-Cau-Don-Dep.md](commands/13-Tai-Cau-Don-Dep.md) | Xóa dead code + gộp trùng lặp |
+| `/auto-update` | [13-Tai-Cau-Don-Dep.md](commands/13-Tai-Cau-Don-Dep.md) | Khả năng cập nhật tự động |
 
-### 3.14 其他命令 (7)
+### 3.14 Các Lệnh Khác (7)
 
-| 命令 | 文件 | 用途 |
+| Lệnh | File | Mục đích |
 |------|------|------|
-| `/jira` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | Jira 工单交互 |
-| `/gan-build` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | GAN 构建操作 |
-| `/gan-design` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | GAN 设计操作 |
-| `/prune` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | 删除陈旧 instinct (>30天) |
-| `/security-scan` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | 安全扫描 |
-| `/feature-dev` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | 功能开发助手 |
-| `/cost-report` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | 模型成本报告 |
+| `/jira` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | Tương tác Jira ticket |
+| `/gan-build` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | Thao tác GAN build |
+| `/gan-design` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | Thao tác GAN design |
+| `/prune` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | Xóa instinct cũ (>30 ngày) |
+| `/security-scan` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | Security scan |
+| `/feature-dev` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | Trợ lý phát triển feature |
+| `/cost-report` | [14-Cac-Lenh-Khac.md](commands/14-Cac-Lenh-Khac.md) | Báo cáo chi phí model |
 
 ---
 
-## 4. Agent 索引
+## 4. Chỉ Mục Agent
 
-共 **60 个 Agent**，按类别分组：
+Tổng cộng **60 Agent**, phân theo nhóm:
 
-| Agent 类别 | 文件 | 说明 |
+| Agent Category | File | Mô tả |
 |------------|------|------|
-| [代码审查类](agents/01-Kiem-Duyet-Ma.md) | [01-Kiem-Duyet-Ma.md](agents/01-Kiem-Duyet-Ma.md) | 14 个审查 Agent |
-| [构建修复类](agents/02-Sua-Loi-Build.md) | [02-Sua-Loi-Build.md](agents/02-Sua-Loi-Build.md) | 14 个构建修复 Agent |
-| [规划类](agents/03-Lap-Trinh.md) | [03-Lap-Trinh.md](agents/03-Lap-Trinh.md) | 5 个规划 Agent |
-| [测试类](agents/04-Kiem-Thu.md) | [04-Kiem-Thu.md](agents/04-Kiem-Thu.md) | 2 个测试 Agent |
-| [安全类](agents/05-Bao-Mat.md) | [05-Bao-Mat.md](agents/05-Bao-Mat.md) | 3 个安全 Agent |
-| [架构类](agents/06-Kien-Truc.md) | [06-Kien-Truc.md](agents/06-Kien-Truc.md) | 3 个架构 Agent |
+| [Code Review](agents/01-Kiem-Duyet-Ma.md) | [01-Kiem-Duyet-Ma.md](agents/01-Kiem-Duyet-Ma.md) | 14 Agent review |
+| [Build Fix](agents/02-Sua-Loi-Build.md) | [02-Sua-Loi-Build.md](agents/02-Sua-Loi-Build.md) | 14 Agent sửa build |
+| [Planning](agents/03-Lap-Trinh.md) | [03-Lap-Trinh.md](agents/03-Lap-Trinh.md) | 5 Agent lập kế hoạch |
+| [Testing](agents/04-Kiem-Thu.md) | [04-Kiem-Thu.md](agents/04-Kiem-Thu.md) | 2 Agent kiểm thử |
+| [Security](agents/05-Bao-Mat.md) | [05-Bao-Mat.md](agents/05-Bao-Mat.md) | 3 Agent bảo mật |
+| [Architecture](agents/06-Kien-Truc.md) | [06-Kien-Truc.md](agents/06-Kien-Truc.md) | 3 Agent kiến trúc |
 
 ---
 
-## 5. Skills 索引
+## 5. Chỉ Mục Skills
 
-$**16 个 Skills 领域**，按领域分类：
+**16 Skills domain**, phân theo domain:
 
-| 领域 | 文件 | 说明 |
+| Domain | File | Mô tả |
 |------|------|------|
-| [最佳实践](skills/最佳实践.md) | [最佳实践.md](skills/最佳实践.md) | 编码标准、错误处理、自主循环 |
-| [编程语言](skills/编程语言.md) | [编程语言.md](skills/编程语言.md) | Python/Go/Rust/Kotlin/C++ 等 |
-| [框架](skills/框架.md) | [框架.md](skills/框架.md) | Django/Laravel/NestJS/Spring Boot 等 |
-| [测试](skills/测试.md) | [测试.md](skills/测试.md) | TDD/单元测试/集成测试/E2E |
-| [安全](skills/安全.md) | [安全.md](skills/安全.md) | 安全审查、漏洞扫描 |
-| [前端与设计](skills/前端与设计.md) | [前端与设计.md](skills/前端与设计.md) | 前端开发、设计系统 |
-| [后端与API](skills/后端与API.md) | [后端与API.md](skills/后端与API.md) | 后端服务、API 设计、数据库 |
-| [部署与DevOps](skills/部署与DevOps.md) | [部署与DevOps.md](skills/部署与DevOps.md) | Docker/K8s/部署策略 |
-| [监控与可观测性](skills/监控与可观测性.md) | [监控与可观测性.md](skills/监控与可观测性.md) | 可观测性、网络诊断 |
-| [自动化与脚本](skills/自动化与脚本.md) | [自动化与脚本.md](skills/自动化与脚本.md) | 自主循环、持续学习、代理工程 |
-| [搜索与数据获取](skills/搜索与数据获取.md) | [搜索与数据获取.md](skills/搜索与数据获取.md) | Exa 搜索、数据抓取、MCP |
-| [GitHub与协作](skills/GitHub与协作.md) | [GitHub与协作.md](skills/GitHub与协作.md) | GitHub 工作流、代码审查 |
-| [AI与机器学习](skills/AI与机器学习.md) | [AI与机器学习.md](skills/AI与机器学习.md) | 神经网络、PyTorch、MLOps |
-| [云原生与基础设施](skills/云原生与基础设施.md) | [云原生与基础设施.md](skills/云原生与基础设施.md) | Kubernetes、Docker、Terraform |
-| [特殊领域技能](skills/特殊领域技能.md) | [特殊领域技能.md](skills/特殊领域技能.md) | 区块链、游戏开发、音视频、IoT |
-| [开发工具链](skills/开发工具链.md) | [开发工具链.md](skills/开发工具链.md) | 测试框架、CI/CD、代码质量 |
-| [前沿技术](skills/前沿技术.md) | [前沿技术.md](skills/前沿技术.md) | AI Agent、量子计算、边缘计算 |
+| [Best Practices](skills/Thuc-Hanh-Tot-Nhat.md) | [Thuc-Hanh-Tot-Nhat.md](skills/Thuc-Hanh-Tot-Nhat.md) | Coding standard, xử lý lỗi, autonomous loop |
+| [Programming Languages](skills/Ngon-Ngu-Lap-Trinh.md) | [Ngon-Ngu-Lap-Trinh.md](skills/Ngon-Ngu-Lap-Trinh.md) | Python/Go/Rust/Kotlin/C++ v.v |
+| [Framework](skills/Framework.md) | [Framework.md](skills/Framework.md) | Django/Laravel/NestJS/Spring Boot v.v |
+| [Testing](skills/Kiem-Thu.md) | [Kiem-Thu.md](skills/Kiem-Thu.md) | TDD/Unit test/Integration test/E2E |
+| [Security](skills/Bao-Mat.md) | [Bao-Mat.md](skills/Bao-Mat.md) | Security review, vulnerability scanning |
+| [Frontend & Design](skills/Frontend-va-Thiet-Ke.md) | [Frontend-va-Thiet-Ke.md](skills/Frontend-va-Thiet-Ke.md) | Frontend development, design system |
+| [Backend & API](skills/Backend-va-API.md) | [Backend-va-API.md](skills/Backend-va-API.md) | Backend service, API design, database |
+| [Deployment & DevOps](skills/Trien-Khai-va-DevOps.md) | [Trien-Khai-va-DevOps.md](skills/Trien-Khai-va-DevOps.md) | Docker/K8s/deployment strategy |
+| [Monitoring & Observability](skills/Giam-Sat-va-Quan-Sat.md) | [Giam-Sat-va-Quan-Sat.md](skills/Giam-Sat-va-Quan-Sat.md) | Observability, network diagnostics |
+| [Automation & Scripting](skills/Tu-Dong-Hoa-va-Script.md) | [Tu-Dong-Hoa-va-Script.md](skills/Tu-Dong-Hoa-va-Script.md) | Autonomous loop, continuous learning, agent engineering |
+| [Search & Data Retrieval](skills/Tim-Kiem-va-Lay-Du-Lieu.md) | [Tim-Kiem-va-Lay-Du-Lieu.md](skills/Tim-Kiem-va-Lay-Du-Lieu.md) | Exa search, data scraping, MCP |
+| [GitHub & Collaboration](skills/GitHub-va-Cong-Tac.md) | [GitHub-va-Cong-Tac.md](skills/GitHub-va-Cong-Tac.md) | GitHub workflow, code review |
+| [AI & Machine Learning](skills/AI-va-Hoc-May.md) | [AI-va-Hoc-May.md](skills/AI-va-Hoc-May.md) | Neural network, PyTorch, MLOps |
+| [Cloud Native & Infrastructure](skills/Cloud-Native-va-Ha-Tang.md) | [Cloud-Native-va-Ha-Tang.md](skills/Cloud-Native-va-Ha-Tang.md) | Kubernetes, Docker, Terraform |
+| [Specialized Domain Skills](skills/Ky-Nang-Chuyen-Mon.md) | [Ky-Nang-Chuyen-Mon.md](skills/Ky-Nang-Chuyen-Mon.md) | Blockchain, game dev, audio/video, IoT |
+| [Development Toolchain](skills/Bo-Cong-Cu-Phat-Trien.md) | [Bo-Cong-Cu-Phat-Trien.md](skills/Bo-Cong-Cu-Phat-Trien.md) | Testing framework, CI/CD, code quality |
+| [Cutting Edge Technology](skills/Cong-Nghe-Tien-Tien.md) | [Cong-Nghe-Tien-Tien.md](skills/Cong-Nghe-Tien-Tien.md) | AI Agent, quantum computing, edge computing |
 
 ---
 
-## 6. 规则索引
+## 6. Chỉ Mục Rules
 
-共 **7 个规则文档**（common + 语言特定）：
+Tổng cộng **7 tài liệu quy tắc** (common + ngôn ngữ):
 
-| 规则 | 文件 | 说明 |
+| Rule | File | Mô tả |
 |------|------|------|
-| [Git 工作流](rules/Git-Workflow.md) | [Git-Workflow.md](rules/Git-Workflow.md) | Git 提交规范和 PR 工作流 |
-| [Hooks 系统](rules/He-Thong-Hooks.md) | [He-Thong-Hooks.md](rules/He-Thong-Hooks.md) | Hook 配置和使用指南 |
-| [代理编排](rules/Dien-Tro-Agent.md) | [Dien-Tro-Agent.md](rules/Dien-Tro-Agent.md) | Agent 编排模式 |
-| [性能优化](rules/Toi-Uu-Hieu-Suat.md) | [Toi-Uu-Hieu-Suat.md](rules/Toi-Uu-Hieu-Suat.md) | 性能优化指南 |
-| [代码风格](rules/Phong-Cach-Lap-Trinh.md) | [Phong-Cach-Lap-Trinh.md](rules/Phong-Cach-Lap-Trinh.md) | 编码风格规范 |
-| [测试规则](rules/Quy-Tac-Kiem-Thu.md) | [Quy-Tac-Kiem-Thu.md](rules/Quy-Tac-Kiem-Thu.md) | 测试要求（80% 覆盖率） |
-| [安全规则](rules/Quy-Tac-Bao-Mat.md) | [Quy-Tac-Bao-Mat.md](rules/Quy-Tac-Bao-Mat.md) | 安全检查清单 |
+| [Git Workflow](rules/Git-Workflow.md) | [Git-Workflow.md](rules/Git-Workflow.md) | Git commit convention và PR workflow |
+| [Hooks System](rules/He-Thong-Hooks.md) | [He-Thong-Hooks.md](rules/He-Thong-Hooks.md) | Hook configuration và usage guide |
+| [Agent Orchestration](rules/Dien-Tro-Agent.md) | [Dien-Tro-Agent.md](rules/Dien-Tro-Agent.md) | Agent orchestration pattern |
+| [Performance Optimization](rules/Toi-Uu-Hieu-Suat.md) | [Toi-Uu-Hieu-Suat.md](rules/Toi-Uu-Hieu-Suat.md) | Performance optimization guide |
+| [Coding Style](rules/Phong-Cach-Lap-Trinh.md) | [Phong-Cach-Lap-Trinh.md](rules/Phong-Cach-Lap-Trinh.md) | Coding style convention |
+| [Testing Rules](rules/Quy-Tac-Kiem-Thu.md) | [Quy-Tac-Kiem-Thu.md](rules/Quy-Tac-Kiem-Thu.md) | Testing requirement (80% coverage) |
+| [Security Rules](rules/Quy-Tac-Bao-Mat.md) | [Quy-Tac-Bao-Mat.md](rules/Quy-Tac-Bao-Mat.md) | Security checklist |
 
 ---
 
-## 7. Hooks 索引
+## 7. Chỉ Mục Hooks
 
-共 **4 个文档**：
+Tổng cộng **4 tài liệu**:
 
-| 文档 | 文件 | 说明 |
+| Tài liệu | File | Mô tả |
 |------|------|------|
-| [Hook 类型](hooks/Loai-Hook.md) | [Loai-Hook.md](hooks/Loai-Hook.md) | PreToolUse、PostToolUse、Stop 类型 |
-| [内置 Hooks](hooks/Hooks-Dung-San.md) | [Hooks-Dung-San.md](hooks/Hooks-Dung-San.md) | 内置 Hook 列表和使用 |
-| [自定义开发](hooks/Phat-Trien-Tuy-Chinh.md) | [Phat-Trien-Tuy-Chinh.md](hooks/Phat-Trien-Tuy-Chinh.md) | 自定义 Hook 开发指南 |
-| [配置格式](hooks/Dinh-Dang-Cau-Hinh.md) | [Dinh-Dang-Cau-Hinh.md](hooks/Dinh-Dang-Cau-Hinh.md) | hooks.json 配置格式 |
+| [Hook Types](hooks/Loai-Hook.md) | [Loai-Hook.md](hooks/Loai-Hook.md) | PreToolUse, PostToolUse, Stop types |
+| [Built-in Hooks](hooks/Hooks-Dung-San.md) | [Hooks-Dung-San.md](hooks/Hooks-Dung-San.md) | Danh sách và sử dụng Hook built-in |
+| [Custom Development](hooks/Phat-Trien-Tuy-Chinh.md) | [Phat-Trien-Tuy-Chinh.md](hooks/Phat-Trien-Tuy-Chinh.md) | Custom Hook development guide |
+| [Configuration Format](hooks/Dinh-Dang-Cau-Hinh.md) | [Dinh-Dang-Cau-Hinh.md](hooks/Dinh-Dang-Cau-Hinh.md) | hooks.json configuration format |
 
 ---
 
-## 8. MCP 索引
+## 8. Chỉ Mục MCP
 
-共 **6 个 MCP 服务器配置**：
+Tổng cộng **6 MCP server configuration**:
 
-| 文档 | 文件 | 说明 |
+| Tài liệu | File | Mô tả |
 |------|------|------|
-| [MCP 配置格式](mcp/MCPDinh-Dang-Cau-Hinh.md) | [MCPDinh-Dang-Cau-Hinh.md](mcp/MCPDinh-Dang-Cau-Hinh.md) | MCP 配置文件格式 |
-| [内置服务器](mcp/May-Chu-Dung-San.md) | [May-Chu-Dung-San.md](mcp/May-Chu-Dung-San.md) | 内置 MCP 服务器 |
-| [自定义开发](mcp/Phat-Trien-Tuy-Chinh.md) | [Phat-Trien-Tuy-Chinh.md](mcp/Phat-Trien-Tuy-Chinh.md) | 自定义 MCP 服务器开发 |
+| [MCP Configuration Format](mcp/Dinh-Dang-Cau-Hinh-MCP.md) | [Dinh-Dang-Cau-Hinh-MCP.md](mcp/Dinh-Dang-Cau-Hinh-MCP.md) | MCP configuration file format |
+| [Built-in Servers](mcp/May-Chu-Dung-San.md) | [May-Chu-Dung-San.md](mcp/May-Chu-Dung-San.md) | MCP server built-in |
+| [Custom Development](mcp/Phat-Trien-Tuy-Chinh.md) | [Phat-Trien-Tuy-Chinh.md](mcp/Phat-Trien-Tuy-Chinh.md) | Custom MCP server development |
 
 ---
 
-## 9. Scripts 索引
+## 9. Chỉ Mục Scripts
 
-共 **54 个工具脚本**：
+Tổng cộng **54 tool script**:
 
-| 文档 | 文件 | 说明 |
+| Tài liệu | File | Mô tả |
 |------|------|------|
-| [工具脚本](scripts/工具脚本.md) | [工具脚本.md](scripts/工具脚本.md) | ecc.js、install-apply.js 等 |
-| [工具函数库](scripts/工具函数库.md) | [工具函数库.md](scripts/工具函数库.md) | 共享函数库 |
-| [测试运行器](scripts/测试运行器.md) | [测试运行器.md](scripts/测试运行器.md) | 测试运行器使用 |
-| [构建脚本](scripts/构建脚本.md) | [构建脚本.md](scripts/构建脚本.md) | 构建脚本 |
+| [Tool Scripts](scripts/Trinh-Chay-Tien-Ich.md) | [Trinh-Chay-Tien-Ich.md](scripts/Trinh-Chay-Tien-Ich.md) | ecc.js, install-apply.js v.v |
+| [Tool Function Library](scripts/Thu-Vien-Ham-Tien-Ich.md) | [Thu-Vien-Ham-Tien-Ich.md](scripts/Thu-Vien-Ham-Tien-Ich.md) | Shared function library |
+| [Test Runner](scripts/Trinh-Chay-Kiem-Thu.md) | [Trinh-Chay-Kiem-Thu.md](scripts/Trinh-Chay-Kiem-Thu.md) | Test runner usage |
+| [Build Scripts](scripts/Cac-Script-Build.md) | [Cac-Script-Build.md](scripts/Cac-Script-Build.md) | Build scripts |
 
 ---
 
-## 10. 贡献指南
+## 10. Hướng Dẫn Đóng Góp
 
-### 文件命名规范
+### Quy Tắc Đặt Tên File
 
-- **命令、Skills、Agents、Hooks**: 小写 + 连字符（如 `code-review.md`）
-- **脚本**: camelCase 或 kebab-case（如 `session-start.js`）
-- **规则**: 按语言/主题组织
+- **Commands, Skills, Agents, Hooks**: lowercase + hyphen (ví dụ `code-review.md`)
+- **Scripts**: camelCase hoặc kebab-case (ví dụ `session-start.js`)
+- **Rules**: tổ chức theo ngôn ngữ/topic
 
-### 命令文件格式
+### Command File Format
 
 ```yaml
 ---
-description: "简短描述"
-argument-hint: "[可选参数]"
+description: "Mô tả ngắn"
+argument-hint: "[Tham số tùy chọn]"
 name: command-name
 command: true
 allowed_tools: ["Bash"]
 ---
 ```
 
-### Agent 文件格式
+### Agent File Format
 
 ```yaml
 ---
 name: agent-name
-description: Agent 用途
+description: Agent purpose
 tools: ["Read", "Grep", "Glob", "Bash"]
 model: sonnet
 ---
 ```
 
-### Skill 文件格式
+### Skill File Format
 
 ```markdown
-# Skill 名称
+# Skill Name
 
 ## When to Use
 ## How It Works
 ## Examples
 ```
 
-### 提交流程
+### Quy Trình Submit
 
-1. 创建新文件或修改现有文件
-2. 确保遵循命名规范
-3. 运行测试: `node tests/run-all.js`
-4. 运行 markdown lint: `npx markdownlint-cli '**/*.md' --ignore node_modules`
-5. 创建 PR 请求审查
+1. Tạo file mới hoặc sửa file hiện có
+2. Đảm bảo tuân thủ quy tắc đặt tên
+3. Chạy test: `node tests/run-all.js`
+4. Chạy markdown lint: `npx markdownlint-cli '**/*.md' --ignore node_modules`
+5. Tạo PR yêu cầu review
 
 ---
 
-*ECC 文档体系 - 为 Claude Code 提供生产级开发工作流*
+*Hệ Thống Tài Liệu ECC - Cung cấp workflow phát triển production cho Claude Code*

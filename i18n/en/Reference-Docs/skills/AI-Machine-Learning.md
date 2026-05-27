@@ -65,7 +65,7 @@ This section covers machine learning, deep learning, model training and deployme
 **Core skills**:
 - Dataset and DataLoader
 - Model definition and initialization
-- Training loop编写
+- Training loop writing
 - Validation and evaluation
 - Checkpoint save and restore
 

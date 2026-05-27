@@ -1,118 +1,118 @@
-# 测试规则
+# Quy tắc kiểm thử
 
-## 规则概述
+## Tổng quan quy tắc
 
-ECC Rules 测试规则定义了确保代码质量的强制性测试标准。该规则涵盖测试驱动开发(TDD)、最低覆盖率要求和测试结构规范，确保所有代码都经过充分验证。
+ECC Rules quy tắc kiểm thử định nghĩa các tiêu chuẩn kiểm thử bắt buộc để đảm bảo chất lượng mã. Quy tắc này bao gồm phát triển theo test (TDD), yêu cầu coverage tối thiểu và tiêu chuẩn cấu trúc kiểm thử, đảm bảo tất cả mã được kiểm thử đầy đủ.
 
-## 核心要求
+## Yêu cầu cốt lõi
 
-### 最低测试覆盖率：80%
+### Coverage kiểm thử tối thiểu: 80%
 
-必须包含以下三种测试类型：
+Phải bao gồm ba loại kiểm thử sau:
 
-| 测试类型 | 说明 | 覆盖范围 |
+| Loại kiểm thử | Mô tả | Phạm vi |
 |----------|------|----------|
-| 单元测试 | 独立函数、工具类、组件 | Individual units |
-| 集成测试 | API端点、数据库操作 | Integration points |
-| 端到端测试 | 关键用户流程 | Critical user flows |
+| Kiểm thử đơn vị | Hàm độc lập, utility, component | Individual units |
+| Kiểm thử tích hợp | API endpoint, thao tác database | Integration points |
+| Kiểm thử đầu cuối | Luồng người dùng quan trọng | Critical user flows |
 
-### 测试驱动开发（TDD）
+### Phát triển theo test (TDD)
 
-**强制工作流**：
+**Quy trình bắt buộc**:
 
 ```
-1. 编写测试 (RED)   - 先写一个会失败的测试
-2. 运行测试          - 验证测试失败
-3. 编写最小实现 (GREEN) - 编写通过测试的最小代码
-4. 运行测试          - 验证测试通过
-5. 重构 (IMPROVE)    - 改进代码结构
-6. 验证覆盖率        - 确保达到80%+
+1. Viết kiểm thử (RED)   - Viết kiểm thử fail trước
+2. Chạy kiểm thử          - Xác nhận kiểm thử fail
+3. Viết triển khai tối thiểu (GREEN) - Viết code ít nhất để kiểm thử pass
+4. Chạy kiểm thử          - Xác nhận kiểm thử pass
+5. Tái cấu trúc (IMPROVE)    - Cải thiện cấu trúc mã, giữ kiểm thử xanh
+6. Xác minh coverage        - Đảm bảo đạt 80%+
 ```
 
-## 实施细节
+## Chi tiết triển khai
 
-### AAA模式（Arrange-Act-Assert）
+### Mẫu AAA (Arrange-Act-Assert)
 
-所有测试必须遵循AAA结构：
+Tất cả kiểm thử phải tuân theo cấu trúc AAA:
 
 ```typescript
-test('正确计算余弦相似度', () => {
-  // Arrange - 准备测试数据
+test('tính cosine similarity đúng', () => {
+  // Arrange - Chuẩn bị dữ liệu kiểm thử
   const vector1 = [1, 0, 0];
   const vector2 = [0, 1, 0];
 
-  // Act - 执行被测试的操作
+  // Act - Thực hiện thao tác được kiểm thử
   const similarity = calculateCosineSimilarity(vector1, vector2);
 
-  // Assert - 验证结果
+  // Assert - Xác minh kết quả
   expect(similarity).toBe(0);
 });
 ```
 
-### 测试命名规范
+### Tiêu chuẩn đặt tên kiểm thử
 
-使用描述性名称说明被测试的行为：
+Sử dụng tên mô tả giải thích hành vi được kiểm thử:
 
 ```typescript
-// 推荐 - 描述预期行为
-test('当没有市场匹配查询时返回空数组', () => {});
-test('当API密钥缺失时抛出错误', () => {});
-test('当Redis不可用时回退到子字符串搜索', () => {});
+// Khuyến nghị - Mô tả hành vi mong đợi
+test('trả về mảng rỗng khi không có thị trường nào khớp query', () => {});
+test('ném lỗi khi thiếu API key', () => {});
+test('fallback về tìm kiếm substring khi Redis không khả dụng', () => {});
 
-// 避免 - 模糊命名
+// Tránh - Đặt tên mơ hồ
 test('test1', () => {});
 test('edge case', () => {});
 ```
 
-### 测试故障排除
+### Xử lý lỗi kiểm thử
 
-当测试失败时：
+Khi kiểm thử fail:
 
-| 步骤 | 操作 |
-|------|------|
-| 1 | 使用 **tdd-guide** agent |
-| 2 | 检查测试隔离 |
-| 3 | 验证Mock正确性 |
-| 4 | 修复实现，而非测试（除非测试本身有误） |
+| Bước | Hành động |
+|------|----------|
+| 1 | Sử dụng agent **tdd-guide** |
+| 2 | Kiểm tra cô lập kiểm thử |
+| 3 | Xác minh Mock đúng |
+| 4 | Sửa triển khai, không phải kiểm thử (trừ khi kiểm thử sai) |
 
-### Agent支持
+### Hỗ trợ Agent
 
-| Agent | 用途 | 使用时机 |
+| Agent | Mục đích | Thời điểm sử dụng |
 |-------|------|----------|
-| **tdd-guide** | 测试驱动开发指导 | 新功能开发、错误修复时强制使用 |
-| **code-reviewer** | 代码审查 | 代码编写完成后 |
+| **tdd-guide** | Hướng dẫn phát triển theo test | Bắt buộc khi phát triển tính năng mới, sửa lỗi |
+| **code-reviewer** | Kiểm tra mã | Sau khi viết mã |
 
-## 违规处理
+## Xử lý vi phạm
 
-### 覆盖率不足
+### Coverage không đủ
 
-- 覆盖率低于80%的代码不得合并
-- CI/CD流水线应阻止低覆盖率代码提交
-- 使用 `c8` 或类似工具生成覆盖率报告
+- Mã có coverage dưới 80% không được merge
+- CI/CD pipeline phải ngăn commit có coverage thấp
+- Sử dụng `c8` hoặc công cụ tương tự tạo báo cáo coverage
 
-### 测试失败处理
+### Xử lý kiểm thử fail
 
 ```
-1. 分析失败原因
-2. 诊断是实现问题还是测试问题
-3. 如果是实现问题 - 修复实现代码
-4. 如果是测试问题 - 修复测试代码
-5. 确保所有测试通过后再提交
+1. Phân tích nguyên nhân fail
+2. Chẩn đoán là vấn đề triển khai hay vấn đề kiểm thử
+3. Nếu là vấn đề triển khai - Sửa mã triển khai
+4. Nếu là vấn đề kiểm thử - Sửa mã kiểm thử
+5. Đảm bảo tất cả kiểm thử pass trước khi commit
 ```
 
-### 常见问题
+### Vấn đề thường gặp
 
-| 问题 | 原因 | 解决方案 |
+| Vấn đề | Nguyên nhân | Giải pháp |
 |------|------|----------|
-| Flaky测试 | 异步操作、竞态条件 | 增加等待时间、使用mock |
-| 测试隔离失败 | 共享状态污染 | 每个测试前重置状态 |
-| Mock不正确 | 期望值与实际不符 | 验证mock设置是否正确 |
+| Kiểm thử không ổn định | Thao tác bất đồng bộ, race condition | Tăng thời gian chờ, sử dụng mock |
+| Cô lập kiểm thử thất bại | Chia sẻ state gây ô nhiễm | Reset state trước mỗi kiểm thử |
+| Mock không đúng | Giá trị mong đợi không khớp thực tế | Xác minh thiết lập mock đúng |
 
-## 相关规则
+## Quy tắc liên quan
 
-| 关联规则 | 说明 |
-|----------|------|
-| 代码风格规则 | 代码可读性和可维护性 |
-| 安全规则 | 安全测试要求 |
-| 代码审查规则 | 测试覆盖率检查 |
-| 开发工作流 | TDD流程集成 |
+| Quy tắc liên quan | Mô tả |
+|----------|----------|
+| Quy tắc phong cách mã | Khả năng đọc và khả năng bảo trì mã |
+| Quy tắc bảo mật | Yêu cầu kiểm thử bảo mật |
+| Quy tắc kiểm tra mã | Kiểm tra coverage kiểm thử |
+| Quy trình phát triển | Tích hợp quy trình TDD |

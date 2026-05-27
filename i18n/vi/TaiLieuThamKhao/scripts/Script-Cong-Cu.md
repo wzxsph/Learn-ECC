@@ -1,100 +1,100 @@
-# 工具脚本
+# Script công cụ
 
-本文档介绍 ECC (Everything Claude Code) 项目中的主要工具脚本。
+Tài liệu này giới thiệu các script công cụ chính trong dự án ECC (Everything Claude Code).
 
-## 目录
+## Mục lục
 
-- [ecc.js](#eccjs) - 主命令行入口
-- [install-apply.js](#install-applyjs) - 安装执行器
+- [ecc.js](#eccjs) - Điểm vào CLI chính
+- [install-apply.js](#install-applyjs) - Trình thực thi cài đặt
 - [claw.js](#clawjs) - NanoClaw REPL
-- [harness-audit.js](#harness-auditjs) - 工具链审计
-- [catalog.js](#catalogjs) - 组件目录查看器
-- [build-opencode.js](#build-opencodejs) - OpenCode 构建
+- [harness-audit.js](#harness-auditjs) - Kiểm toán toolchain
+- [catalog.js](#catalogjs) - Trình xem catalog component
+- [build-opencode.js](#build-opencodejs) - Xây dựng OpenCode
 
 ---
 
 ## ecc.js
 
-**路径**: `scripts/ecc.js`
+**Đường dẫn**: `scripts/ecc.js`
 
-ECC 选择性安装的 CLI 主入口点,统一调度所有子命令。
+Điểm vào CLI chính để cài đặt có chọn lọc ECC, điều phối tất cả subcommand.
 
-### 命令列表
+### Danh sách lệnh
 
-| 命令 | 脚本 | 说明 |
-|------|------|------|
-| `install` | install-apply.js | 安装 ECC 内容到目标 |
-| `plan` | install-plan.js | 检查安装清单和解析计划 |
-| `catalog` | catalog.js | 发现安装配置文件和组件 ID |
-| `consult` | consult.js | 根据自然语言查询推荐组件 |
-| `list-installed` | list-installed.js | 检查当前上下文的安装状态 |
-| `doctor` | doctor.js | 诊断缺失或漂移的 ECC 管理文件 |
-| `repair` | repair.js | 恢复漂移或缺失的 ECC 管理文件 |
-| `auto-update` | auto-update.js | 拉取最新 ECC 更改并重新安装 |
-| `status` | status.js | 查询 SQLite 状态存储摘要 |
-| `platform-audit` | platform-audit.js | 审计 GitHub 队列、讨论、路线图等 |
-| `security-ioc-scan` | ci/scan-supply-chain-iocs.js | 扫描依赖和 AI 工具持久化面的供应链 IOC |
-| `sessions` | sessions-cli.js | 列出或检查 SQLite 状态存储中的会话 |
-| `work-items` | work-items.js | 跟踪链接的 Linear、GitHub 工作项 |
-| `session-inspect` | session-inspect.js | 从 dmux 或 Claude 历史目标发出规范会话快照 |
-| `loop-status` | loop-status.js | 检查 Claude 脚本中的过时循环唤醒和待处理工具结果 |
-| `uninstall` | uninstall.js | 删除记录在 install-state 中的 ECC 管理文件 |
+| Lệnh | Script | Mô tả |
+|------|------|----------|
+| `install` | install-apply.js | Cài đặt nội dung ECC vào target |
+| `plan` | install-plan.js | Kiểm tra manifest và phân tích kế hoạch cài đặt |
+| `catalog` | catalog.js | Khám phá file cấu hình và component ID đã cài đặt |
+| `consult` | consult.js | Đề xuất component dựa trên truy vấn ngôn ngữ tự nhiên |
+| `list-installed` | list-installed.js | Kiểm tra trạng thái cài đặt trong context hiện tại |
+| `doctor` | doctor.js | Chẩn đoán file quản lý ECC bị thiếu hoặc drift |
+| `repair` | repair.js | Khôi phục file quản lý ECC bị drift hoặc thiếu |
+| `auto-update` | auto-update.js | Kéo các thay đổi ECC mới nhất và cài đặt lại |
+| `status` | status.js | Truy vấn tóm tắt lưu trữ SQLite |
+| `platform-audit` | platform-audit.js | Kiểm toán GitHub queue, thảo luận, roadmap |
+| `security-ioc-scan` | ci/scan-supply-chain-iocs.js | Quét IOC chuỗi cung ứng cho dependencies và AI tools |
+| `sessions` | sessions-cli.js | Liệt kê hoặc kiểm tra phiên trong lưu trữ SQLite |
+| `work-items` | work-items.js | Theo dõi Linear, GitHub work items |
+| `session-inspect` | session-inspect.js | Snapshot phiên chuẩn từ dmux hoặc Claude history target |
+| `loop-status` | loop-status.js | Kiểm tra loop wake và pending tool results cũ trong Claude scripts |
+| `uninstall` | uninstall.js | Xóa file quản lý ECC khỏi install-state |
 
-### 使用示例
+### Ví dụ sử dụng
 
 ```bash
-# 直接安装语言
+# Cài đặt ngôn ngữ trực tiếp
 ecc typescript
 
-# 带配置文件的安装
+# Cài đặt với file cấu hình
 ecc install --profile developer --target claude
 
-# 查看安装计划
+# Xem kế hoạch cài đặt
 ecc plan --profile core --target cursor
 
-# 列出可用组件
+# Liệt kê các component khả dụng
 ecc catalog profiles
 ecc catalog components --family language
 
-# 显示组件详情
+# Hiển thị chi tiết component
 ecc catalog show framework:nextjs
 
-# 咨询推荐
+# Tư vấn đề xuất
 ecc consult "security reviews"
 
-# 检查已安装
+# Kiểm tra đã cài đặt
 ecc list-installed --json
 
-# 诊断问题
+# Chẩn đoán vấn đề
 ecc doctor --target cursor
 ecc repair --dry-run
 
-# 自动更新
+# Tự động cập nhật
 ecc auto-update --dry-run
 
-# 状态查询
+# Truy vấn trạng thái
 ecc status --json
 ecc status --exit-code
 ecc status --markdown --write status.md
 
-# 平台审计
+# Kiểm toán platform
 ecc platform-audit --json --allow-untracked docs/drafts/
 
-# 安全扫描
+# Quét bảo mật
 ecc security-ioc-scan --home
 
-# 会话管理
+# Quản lý phiên
 ecc sessions
 ecc sessions session-active --json
 
-# 工作项跟踪
+# Theo dõi work items
 ecc work-items upsert linear-ecc-20 --source linear --source-id ECC-20 --title "Review control-plane contract" --status blocked
 ecc work-items sync-github --repo affaan-m/ECC
 
-# 检查循环状态
+# Kiểm tra trạng thái loop
 ecc loop-status --json
 
-# 卸载
+# Gỡ cài đặt
 ecc uninstall --target antigravity --dry-run
 ```
 
@@ -102,91 +102,91 @@ ecc uninstall --target antigravity --dry-run
 
 ## install-apply.js
 
-**路径**: `scripts/install-apply.js`
+**Đường dẫn**: `scripts/install-apply.js`
 
-ECC 安装运行时,保持传统语言安装入口点完整,同时将目标特定的变更逻辑移入可测试的 Node 代码。
+Runtime cài đặt ECC, duy trì các entry point cài đặt ngôn ngữ legacy đồng thời di chuyển logic thay đổi target-specific vào Node code có thể kiểm thử.
 
-### 支持的目标
+### Các target được hỗ trợ
 
-| 目标 | 说明 |
-|------|------|
-| `claude` | 安装到 ~/.claude/,规则/技能放在 rules/ecc 和 skills/ecc |
-| `claude-project` | 安装到 ./.claude/ (项目级) |
-| `cursor` | 安装规则、钩子、光标配置到 ./.cursor/ |
-| `antigravity` | 安装规则、工作流、技能、代理到 ./.agent/ |
-| `codex` | 安装共享代理/配置到 ~/.codex/ |
-| `gemini` | 安装项目级 Gemini 配置到 ./.gemini/ |
-| `opencode` | 安装共享命令/钩子/配置到 ~/.opencode/ |
-| `codebuddy` | 安装命令、代理、技能到 ./.codebuddy/ |
-| `joycode` | 安装命令、代理、技能到 ./.joycode/ |
-| `qwen` | 安装到 ~/.qwen/ |
-| `zed` | 安装到 ./.zed/ |
+| Target | Mô tả |
+|------|----------|
+| `claude` | Cài đặt vào ~/.claude/, rules/skills vào rules/ecc và skills/ecc |
+| `claude-project` | Cài đặt vào ./.claude/ (project-level) |
+| `cursor` | Cài đặt rules, hooks, cursor config vào ./.cursor/ |
+| `antigravity` | Cài đặt rules, workflow, skills, agents vào ./.agent/ |
+| `codex` | Cài đặt shared agents/config vào ~/.codex/ |
+| `gemini` | Cài đặt project-level Gemini config vào ./.gemini/ |
+| `opencode` | Cài đặt shared commands/hooks/config vào ~/.opencode/ |
+| `codebuddy` | Cài đặt commands, agents, skills vào ./.codebuddy/ |
+| `joycode` | Cài đặt commands, agents, skills vào ./.joycode/ |
+| `qwen` | Cài đặt vào ~/.qwen/ |
+| `zed` | Cài đặt vào ./.zed/ |
 
-### 安装方式
+### Các phương thức cài đặt
 
-1. **传统语言模式**: `install.sh <language>` (如 `ecc-install typescript`)
-2. **Profile 模式**: `install.sh --profile <name> [--with <component>]... [--without <component>]...`
-3. **模块模式**: `install.sh --modules <id,id,...>`
-4. **技能模式**: `install.sh --skills <skill-id[,skill-id...]>`
-5. **本地化模式**: `install.sh --target claude|claude-project --locale <locale-code>`
+1. **Legacy Language Mode**: `install.sh <language>` (ví dụ `ecc-install typescript`)
+2. **Profile Mode**: `install.sh --profile <name> [--with <component>]... [--without <component>]...`
+3. **Module Mode**: `install.sh --modules <id,id,...>`
+4. **Skill Mode**: `install.sh --skills <skill-id[,skill-id...]>`
+5. **Localization Mode**: `install.sh --target claude|claude-project --locale <locale-code>`
 
-### 选项
+### Tùy chọn
 
-- `--dry-run` - 显示安装计划但不复制文件
-- `--json` - 发出机器可读的 JSON 格式
-- `--config <path>` - 从文件加载安装意图
+- `--dry-run` - Hiển thị kế hoạch cài đặt nhưng không sao chép file
+- `--json` - Xuất định dạng JSON có thể đọc bằng máy
+- `--config <path>` - Tải ý định cài đặt từ file
 
 ---
 
 ## claw.js
 
-**路径**: `scripts/claw.js`
+**Đường dẫn**: `scripts/claw.js`
 
-NanoClaw v2 - 面向 Everything Claude Code 的零外部依赖、会话感知的 REPL,基于 `claude -p` 构建。
+NanoClaw v2 - REPL không dependencies bên ngoài, có nhận thức phiên cho Everything Claude Code, được xây dựng trên `claude -p`.
 
-### 功能
+### Chức năng
 
-- 会话历史持久化存储在 `~/.claude/claw/`
-- 支持动态加载技能作为上下文
-- 会话压缩以管理上下文长度
-- 会话分支和导出
-- 跨会话搜索
+- Persistence lưu trữ lịch sử phiên trong `~/.claude/claw/`
+- Hỗ trợ dynamic loading skills như context
+- Compact phiên để quản lý độ dài context
+- Branch và export phiên
+- Tìm kiếm cross-session
 
-### REPL 命令
+### Lệnh REPL
 
-| 命令 | 说明 |
-|------|------|
-| `/help` | 显示帮助 |
-| `/clear` | 清除当前会话历史 |
-| `/history` | 打印完整对话历史 |
-| `/sessions` | 列出已保存的会话 |
-| `/model [name]` | 显示/设置模型 |
-| `/load <skill-name>` | 加载技能到活动上下文 |
-| `/branch <session-name>` | 将当前会话分支到新会话 |
-| `/search <query>` | 跨会话搜索 |
-| `/compact` | 保留最近的轮次,压缩旧上下文 |
-| `/export <md\|json\|txt> [path]` | 导出会话 |
-| `/metrics` | 显示会话指标 |
-| `exit` | 退出 REPL |
+| Lệnh | Mô tả |
+|------|----------|
+| `/help` | Hiển thị trợ giúp |
+| `/clear` | Xóa lịch sử phiên hiện tại |
+| `/history` | In toàn bộ lịch sử hội thoại |
+| `/sessions` | Liệt kê các phiên đã lưu |
+| `/model [name]` | Hiển thị/đặt model |
+| `/load <skill-name>` | Load skill vào context hiện tại |
+| `/branch <session-name>` | Branch phiên hiện tại sang phiên mới |
+| `/search <query>` | Tìm kiếm cross-session |
+| `/compact` | Giữ lại các vòng gần đây, compact context cũ |
+| `/export <md\|json\|txt> [path]` | Export phiên |
+| `/metrics` | Hiển thị metrics phiên |
+| `exit` | Thoát REPL |
 
-### 环境变量
+### Biến môi trường
 
-| 变量 | 默认值 | 说明 |
-|------|--------|------|
-| `CLAW_SESSION` | `default` | 初始会话名称 |
-| `CLAW_MODEL` | `sonnet` | 默认模型 |
-| `CLAW_SKILLS` | 空 | 加载的技能列表 (逗号分隔) |
+| Biến | Mặc định | Mô tả |
+|------|---------|----------|
+| `CLAW_SESSION` | `default` | Tên phiên ban đầu |
+| `CLAW_MODEL` | `sonnet` | Model mặc định |
+| `CLAW_SKILLS` | rỗng | Danh sách skills được load (phân cách bằng dấu phẩy) |
 
-### 使用示例
+### Ví dụ sử dụng
 
 ```bash
-# 使用默认会话启动
+# Khởi động với phiên mặc định
 node scripts/claw.js
 
-# 使用指定会话启动
+# Khởi động với phiên được chỉ định
 CLAW_SESSION=my-session node scripts/claw.js
 
-# 加载技能启动
+# Khởi động với skills
 CLAW_SKILLS="javascript-patterns,python-testing" node scripts/claw.js
 ```
 
@@ -194,42 +194,42 @@ CLAW_SKILLS="javascript-patterns,python-testing" node scripts/claw.js
 
 ## harness-audit.js
 
-**路径**: `scripts/harness-audit.js`
+**Đường dẫn**: `scripts/harness-audit.js`
 
-确定性工具链审计工具,基于显式文件/规则检查。自动检测 ECC 仓库模式 vs 消费者项目模式。
+Công cụ kiểm toán toolchain deterministic, dựa trên kiểm tra file/rule rõ ràng. Tự động phát hiện ECC repo mode vs consumer project mode.
 
-### 审计类别
+### Các danh mục kiểm toán
 
-| 类别 | 说明 |
-|------|------|
-| Tool Coverage | 工具覆盖完整性 |
-| Context Efficiency | 上下文效率 |
-| Quality Gates | 质量门禁 |
-| Memory Persistence | 记忆持久化 |
-| Eval Coverage | 评估覆盖 |
-| Security Guardrails | 安全护栏 |
-| Cost Efficiency | 成本效率 |
-| GitHub Integration | GitHub 集成 |
-| Vercel/Netlify/Cloudflare/Fly Integration | 各平台集成 |
+| Danh mục | Mô tả |
+|------|----------|
+| Tool Coverage | Hoàn thiện tool coverage |
+| Context Efficiency | Hiệu quả context |
+| Quality Gates | Quality gates |
+| Memory Persistence | Persistence bộ nhớ |
+| Eval Coverage | Eval coverage |
+| Security Guardrails | Security guardrails |
+| Cost Efficiency | Hiệu quả chi phí |
+| GitHub Integration | Tích hợp GitHub |
+| Vercel/Netlify/Cloudflare/Fly Integration | Tích hợp các platform |
 
-### 使用示例
+### Ví dụ sử dụng
 
 ```bash
-# 审计当前目录
+# Kiểm toán thư mục hiện tại
 node scripts/harness-audit.js
 
-# 指定作用域
+# Chỉ định scope
 node scripts/harness-audit.js --scope repo
 node scripts/harness-audit.js --scope hooks
 node scripts/harness-audit.js --scope skills
 
-# 指定根目录
+# Chỉ định root directory
 node scripts/harness-audit.js --root /path/to/project
 
-# JSON 格式输出
+# Định dạng JSON output
 node scripts/harness-audit.js --format json
 
-# 组合使用
+# Kết hợp sử dụng
 node scripts/harness-audit.js repo --format json --root .
 ```
 
@@ -237,15 +237,15 @@ node scripts/harness-audit.js repo --format json --root .
 
 ## catalog.js
 
-**路径**: `scripts/catalog.js`
+**Đường dẫn**: `scripts/catalog.js`
 
-发现 ECC 安装组件和配置文件的工具。
+Công cụ khám phá các component và file cấu hình đã cài đặt của ECC.
 
-### 命令
+### Lệnh
 
 #### profiles
 
-列出所有安装配置文件。
+Liệt kê tất cả file cấu hình cài đặt.
 
 ```bash
 node scripts/catalog.js profiles
@@ -254,7 +254,7 @@ node scripts/catalog.js profiles --json
 
 #### components
 
-列出安装组件,可按家族和目标筛选。
+Liệt kê các component đã cài đặt, có thể lọc theo family và target.
 
 ```bash
 node scripts/catalog.js components
@@ -266,41 +266,40 @@ node scripts/catalog.js components --json
 
 #### show
 
-显示特定组件的详细信息。
+Hiển thị chi tiết của một component cụ thể.
 
 ```bash
 node scripts/catalog.js show <component-id>
 node scripts/catalog.js show framework:nextjs --json
 ```
 
-### 组件家族
+### Component families
 
-- `baseline` - 基础组件
-- `language` - 语言组件 (javascript, typescript, python, etc.)
-- `framework` - 框架组件 (nextjs, react, vue, etc.)
-- `capability` - 能力组件
-- `agent` - 代理组件
-- `skill` - 技能组件
+- `baseline` - Component cơ sở
+- `language` - Component ngôn ngữ (javascript, typescript, python, etc.)
+- `framework` - Component framework (nextjs, react, vue, etc.)
+- `capability` - Component capability
+- `agent` - Component agent
+- `skill` - Component skill
 
 ---
 
 ## build-opencode.js
 
-**路径**: `scripts/build-opencode.js`
+**Đường dẫn**: `scripts/build-opencode.js`
 
-构建 OpenCode 插件的 TypeScript 代码。
+Xây dựng mã TypeScript cho plugin OpenCode.
 
-### 功能
+### Chức năng
 
-1. 清理 `dist` 目录
-2. 使用 TypeScript 编译器编译 `.opencode` 目录下的代码
-3. 输出到 `.opencode/dist`
+1. Dọn dẹp thư mục `dist`
+2. Biên dịch mã `.opencode` sang `.opencode/dist`
 
-### 前提条件
+### Điều kiện tiên quyết
 
-需要已安装根目录的开发依赖,确保 TypeScript 编译器可用。
+Yêu cầu dev dependencies đã được cài đặt từ root, đảm bảo trình biên dịch TypeScript khả dụng.
 
-### 使用
+### Cách sử dụng
 
 ```bash
 node scripts/build-opencode.js

@@ -1,50 +1,50 @@
-# 自动化与脚本技能
+# Automatisierung- und Skripting-Faehigkeiten
 
-## 概述
+## Ueberblick
 
-自动化与脚本技能用于任务自动化、脚本编写和工作流编排。
+Automatisierungs- und Skripting-Faehigkeiten werden fuer Aufgabenautomatisierung, Skripterstellung und Workflow-Orchestrierung verwendet.
 
-## 核心技能
+## Kernfaehigkeiten
 
 ### automation-audit-ops
 
-**用途**: 自动化审计操作
+**Zweck**: Automatisierungs-Audit-Operationen
 
-**检查项**:
-- 自动化覆盖率
-- 故障转移验证
-- 恢复时间目标
-- 审计日志
+**Pruefpunkte**:
+- Automatisierungsabdeckung
+- Failover-Verifizierung
+- Wiederherstellungszeit-Ziel
+- Audit-Logs
 
 ---
 
 ### continuous-learning
 
-**用途**: 持续学习系统
+**Zweck**: Kontinuierliches Lernsystem
 
-**功能**:
-- 模式提取
-- 知识积累
-- 经验复用
+**Funktionen**:
+- Musterextraktion
+- Wissensansammlung
+- Erfahrungswiederverwendung
 
 ---
 
 ### continuous-learning-v2
 
-**用途**: 持续学习 v2
+**Zweck**: Kontinuierliches Lernen v2
 
-**核心组件**:
-- Instinct 系统
-- 模式进化
-- 知识图谱
+**Kernkomponenten**:
+- Instinct-System
+- Muster-Evolution
+- Wissensgraph
 
 ---
 
 ### autonomous-loops
 
-**用途**: 自主循环模式
+**Zweck**: Autonome Loop-Modi
 
-**循环类型**:
+**Loop-Typen**:
 - Sequential Pipeline
 - NanoClaw REPL
 - Continuous Claude PR Loop
@@ -54,80 +54,80 @@
 
 ### autonomous-agent-harness
 
-**用途**: 自主代理架构
+**Zweck**: Autonome Agent-Architektur
 
-**组件**:
-- 持久内存
-- 定时调度
-- 远程代理
-- 计算机控制
+**Komponenten**:
+- Persistenter Speicher
+- Zeitgesteverte Planung
+- Remote-Agent
+- Computer-Nutzung
 
 ---
 
-## 代理与评估
+## Agenten und Evaluation
 
 ### agent-eval
 
-**用途**: 代理评估框架
+**Zweck**: Agent-Evaluations-Framework
 
-**功能**:
-- 性能指标
-- 质量评估
-- 对比分析
+**Funktionen**:
+- Leistungsmetriken
+- Qualitaetsbewertung
+- Vergleichsanalyse
 
 ---
 
 ### eval-harness
 
-**用途**: 评估工具链
+**Zweck**: Evaluations-Toolchain
 
-**用途**:
-- 测试框架
-- 基准测试
-- 回归检测
+**Verwendungszweck**:
+- Test-Frameworks
+- Benchmarking
+- Regressionserkennung
 
 ---
 
 ### agent-harness-construction
 
-**用途**: 代理工具链构建
+**Zweck**: Agent-Toolchain-Konstruktion
 
-**内容**:
-- 工具定义
-- 代理配置
-- 集成模式
+**Inhalt**:
+- Werkzeugdefinitionen
+- Agent-Konfiguration
+- Integrationsmuster
 
 ---
 
 ### agentic-engineering
 
-**用途**: 代理工程学
+**Zweck**: Agentic Engineering
 
-**核心概念**:
-- 代理架构
-- 任务分解
-- 协作模式
+**Kernkonzepte**:
+- Agent-Architektur
+- Aufgabenzerlegung
+- Kollaborationsmuster
 
 ---
 
 ### agentic-os
 
-**用途**: 代理操作系统
+**Zweck**: Agentic Operating System
 
-**功能**:
-- 资源管理
-- 任务调度
-- 状态持久化
+**Funktionen**:
+- Ressourcenverwaltung
+- Aufgabenplanung
+- Status-Persistenz
 
 ---
 
-## 相关技能
+## Zugehoerige Faehigkeiten
 
-- `automation-audit-ops` - 自动化审计
-- `continuous-learning` - 持续学习
-- `autonomous-loops` - 自主循环
-- `autonomous-agent-harness` - 自主代理架构
-- `agent-eval` - 代理评估
-- `eval-harness` - 评估工具链
-- `agent-harness-construction` - 代理工具链构建
-- `agentic-engineering` - 代理工程学
+- `automation-audit-ops` - Automatisierungsaudit
+- `continuous-learning` - Kontinuierliches Lernen
+- `autonomous-loops` - Autonome Loops
+- `autonomous-agent-harness` - Autonome Agent-Architektur
+- `agent-eval` - Agent-Evaluation
+- `eval-harness` - Evaluations-Toolchain
+- `agent-harness-construction` - Agent-Toolchain-Konstruktion
+- `agentic-engineering` - Agentic Engineering

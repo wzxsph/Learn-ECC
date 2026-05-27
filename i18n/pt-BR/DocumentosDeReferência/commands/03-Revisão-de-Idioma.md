@@ -1,92 +1,92 @@
-# 语言审查命令
+# Comandos de Revisão de Linguagem
 
-本文档介绍 ECC 中用于各Linguagens-de-Programação代码审查的专门命令。
+Este documento apresenta comandos especializados no ECC para revisão de código em várias linguagens de programação.
 
 ---
 
 ## /python-review
 
-**用途说明**: Python 代码全面审查。检查 PEP 8 合规性、类型提示、安全性和 Python 习惯用法。
+**Propósito**: Revisão completa de código Python. Verifica conformidade PEP 8, type hints, segurança e idiomaticidade Python.
 
-**使用方法**:
+**Como Usar**:
 ```
 /python-review
 ```
 
-**使用场景**:
-- 编写或修改 Python 代码之后
-- 提交 Python 变更之前
-- 审查包含 Python 代码的 PR
-- 学习 Python 习惯用法和Melhores-Práticas
+**Cenários de Uso**:
+- Após escrever ou modificar código Python
+- Antes de fazer commit de mudanças Python
+- Revisar PR que contém código Python
+- Aprender idiomática Python e melhores práticas
 
-**审查类别**:
+**Categorias de Revisão**:
 
-### CRITICAL (必须修复)
-- SQL/命令注入漏洞
-- 不安全的 eval/exec 使用
-- Pickle 不安全反序列化
-- 硬编码凭证
-- YAML 不安全加载
-- 隐藏错误的裸 except 子句
+### CRITICAL (Deve corrigir)
+- Vulnerabilidades de SQL/command injection
+- Uso inseguro de eval/exec
+- Desserialização insegura de Pickle
+- Credenciais hardcoded
+- Carregamento inseguro de YAML
+- Cláusulas except nuas que escondem erros
 
-### HIGH (应该修复)
-- 公共函数缺少类型提示
-- 可变默认参数
-- 静默吞没异常
-- 资源管理未使用上下文管理器
-- C 风格循环而非推导式
-- 使用 type() 而非 isinstance()
+### HIGH (Deveria corrigir)
+- Funções públicas sem type hints
+- Argumentos padrão mutáveis
+- Engolir exceções silenciosamente
+- Gerenciamento de recursos sem context manager
+- Loops estilo C ao invés de list comprehensions
+- Uso de type() ao invés de isinstance()
 
-### MEDIUM (建议考虑)
-- PEP 8 格式违规
-- 公共函数缺少文档字符串
-- Print 语句而非日志
-- 低效的字符串操作
-- 魔术数字未使用命名常量
-- 未使用 f-strings
+### MEDIUM (Sugere considerar)
+- Violações de formatação PEP 8
+- Funções públicas sem docstrings
+- Instruções print ao invés de logging
+- Operações de string ineficientes
+- Números mágicos sem constantes nomeadas
+- Não usar f-strings
 
-**自动检查命令**:
+**Comandos de Verificação Automática**:
 ```bash
-mypy .                              # 类型检查
+mypy .                              # Verificação de tipo
 ruff check .                        # Linting
-black --check .                     # 格式化检查
-isort --check-only .                # 导入排序
-bandit -r .                         # 安全扫描
-pip-audit                           # 依赖审计
-pytest --cov=app --cov-report=term-missing  # 测试覆盖
+black --check .                     # Verificação de formatação
+isort ---check-only .                # Ordenação de imports
+bandit -r .                         # Varredura de segurança
+pip-audit                           # Auditoria de dependências
+pytest --cov=app --cov-report=term-missing  # Cobertura de teste
 ```
 
-**常见问题修复**:
+**Correção de Problemas Comuns**:
 
 ```python
-# SQL 注入修复
-# 错误
+# Correção de SQL injection
+# Errado
 query = f"SELECT * FROM users WHERE id = {user_id}"
 
-# 正确 - 使用参数化查询
+# Correto - usar query parametrizada
 query = "SELECT * FROM users WHERE id = %s"
 cursor.execute(query, (user_id,))
 
-# 可变默认参数修复
-# 错误
+# Correção de argumentos padrão mutáveis
+# Errado
 def process_items(items=[]):
     items.append("new")
     return items
 
-# 正确
+# Correto
 def process_items(items=None):
     if items is None:
         items = []
     items.append("new")
     return items
 
-# 使用上下文管理器
-# 错误
+# Usar context manager
+# Errado
 f = open("config.json")
 data = f.read()
 f.close()
 
-# 正确
+# Correto
 with open("config.json") as f:
     data = f.read()
 ```
@@ -95,196 +95,196 @@ with open("config.json") as f:
 
 ## /go-review
 
-**用途说明**: Go 代码全面审查。检查惯用模式、并发安全性、错误处理和安全性。
+**Propósito**: Revisão completa de código Go. Verifica padrões idiomáticos, segurança de concorrência, tratamento de erros e segurança.
 
-**使用方法**:
+**Como Usar**:
 ```
 /go-review
 ```
 
-**使用场景**:
-- 编写或修改 Go 代码之后
-- 提交 Go 变更之前
-- 审查包含 Go 代码的 PR
-- 学习 Go 惯用模式
+**Cenários de Uso**:
+- Após escrever ou modificar código Go
+- Antes de fazer commit de mudanças Go
+- Revisar PR que contém código Go
+- Aprender padrões Go idiomáticos
 
-**审查类别**:
+**Categorias de Revisão**:
 
-### CRITICAL (必须修复)
-- SQL/命令注入漏洞
-- 无同步的竞态条件
-- Goroutine 泄漏
-- 硬编码凭证
-- 不安全的指针使用
-- 关键路径忽略错误
+### CRITICAL (Deve corrigir)
+- Vulnerabilidades de SQL/command injection
+- Condições de corrida sem sincronização
+- Vazamento de Goroutine
+- Credenciais hardcoded
+- Uso inseguro de ponteiros
+- Ignorar erros em caminhos críticos
 
-### HIGH (应该修复)
-- 缺少错误的上下文包装
-- Panic 而非错误返回
-- Context 未传播
-- 未缓冲通道导致死锁
-- 接口未实现错误
-- 缺少互斥锁保护
+### HIGH (Deveria corrigir)
+- Falta wrapper de contexto de erro
+- Panic ao invés de retorno de erro
+- Context não propagado
+- Canais não bufferizados causando deadlock
+- Interface não implementada corretamente
+- Falta proteção de mutex
 
-### MEDIUM (建议考虑)
-- 非惯用代码模式
-- 导出函数缺少 godoc 注释
-- 低效的字符串拼接
-- Slice 未预分配
-- 未使用表驱动测试
+### MEDIUM (Sugere considerar)
+- Padrões de código não idiomáticos
+- Funções exportadas sem comentários godoc
+- Concatenação de string ineficiente
+- Slice não pre-alocado
+- Não usar testes table-driven
 
-**自动检查命令**:
+**Comandos de Verificação Automática**:
 ```bash
-go vet ./...                         # 静态分析
-staticcheck ./...                    # 高级检查（如果安装）
+go vet ./...                         # Análise estática
+staticcheck ./...                    # Verificações avançadas (se instalado)
 golangci-lint run                   # Linting
-go build -race ./...                # 竞态检测
-govulncheck ./...                   # 安全漏洞
+go build -race ./...                # Detecção de corrida
+govulncheck ./...                   # Vulnerabilidades de segurança
 ```
 
 ---
 
 ## /kotlin-review
 
-**用途说明**: Kotlin 代码全面审查。检查惯用模式、空安全、协程安全性和安全性。
+**Propósito**: Revisão completa de código Kotlin. Verifica padrões idiomáticos, null safety, segurança de coroutines e segurança.
 
-**使用方法**:
+**Como Usar**:
 ```
 /kotlin-review
 ```
 
-**使用场景**:
-- 编写或修改 Kotlin 代码之后
-- 提交 Kotlin 变更之前
-- 审查 Android/KMP 项目的 PR
-- 学习 Kotlin 惯用模式
+**Cenários de Uso**:
+- Após escrever ou modificar código Kotlin
+- Antes de fazer commit de mudanças Kotlin
+- Revisar PR de projetos Android/KMP
+- Aprender padrões Kotlin idiomáticos
 
-**审查类别**:
+**Categorias de Revisão**:
 
-### CRITICAL (必须修复)
-- SQL/命令注入漏洞
-- 无充分理由的强制解包 `!!`
-- 平台类型空安全违规
-- GlobalScope 使用（结构化并发违规）
-- 硬编码凭证
-- 不安全反序列化
+### CRITICAL (Deve corrigir)
+- Vulnerabilidades de SQL/command injection
+- Desembrulhar forçado `!!` sem razão suficiente
+- Violações de null safety de tipo de plataforma
+- Uso de GlobalScope (violação de concorrência estrutural)
+- Credenciais hardcoded
+- Desserialização insegura
 
-### HIGH (应该修复)
-- 可变状态（可用不可变时）
-- 协程上下文内的阻塞调用
-- 长循环中缺少取消检查
-- 密封类 `when` 非穷举
-- 大函数（>50行）
-- 深嵌套（>4层）
+### HIGH (Deveria corrigir)
+- Estado mutável (quando imutável é possível)
+- Chamadas bloqueantes dentro de contexto de coroutine
+- Falta verificação de cancelamento em loops longos
+- Expressão `when` de sealed class não exaustiva
+- Funções grandes (>50 linhas)
+- Aninhamento profundo (>4 níveis)
 
-### MEDIUM (建议考虑)
-- 非惯用 Kotlin（Java 风格模式）
-- 缺少尾随逗号
-- Scope 函数误用或嵌套
-- 大集合链缺少 Sequence
-- 冗余显式类型
+### MEDIUM (Sugere considerar)
+- Kotlin não idiomático (padrões estilo Java)
+- Falta de vírgulas à direita
+- Uso incorreto ou aninhamento de scope functions
+- Falta de Sequence em chains de collections grandes
+- Tipos explícitos redundantes
 
-**自动检查命令**:
+**Comandos de Verificação Automática**:
 ```bash
-./gradlew build                      # 构建检查
-./gradlew detekt                     # 静态分析
-./gradlew ktlintCheck                # 格式检查
-./gradlew test                       # 测试
+./gradlew build                      # Verificação de build
+./gradlew detekt                     # Análise estática
+./gradlew ktlintCheck                # Verificação de formatação
+./gradlew test                       # Testes
 ```
 
 ---
 
 ## /rust-review
 
-**用途说明**: Rust 代码全面审查。检查所有权生命周期、错误处理、不安全使用和惯用模式。
+**Propósito**: Revisão completa de código Rust. Verifica ownership, lifetime, tratamento de erros, uso de unsafe e padrões idiomáticos.
 
-**使用方法**:
+**Como Usar**:
 ```
 /rust-review
 ```
 
-**使用场景**:
-- 编写或修改 Rust 代码之后
-- 提交 Rust 变更之前
-- 审查 Rust 项目的 PR
-- 学习 Rust 惯用模式
+**Cenários de Uso**:
+- Após escrever ou modificar código Rust
+- Antes de fazer commit de mudanças Rust
+- Revisar PR de projetos Rust
+- Aprender padrões Rust idiomáticos
 
-**审查类别**:
+**Categorias de Revisão**:
 
-### CRITICAL (必须修复)
-- 生产代码路径中未检查的 `unwrap()`/`expect()`
-- 不带 `// SAFETY:` 注释的 `unsafe`
-- 字符串插值的 SQL 注入
-- 未验证输入的命令注入
-- 硬编码凭证
-- 原始指针的释放后使用
+### CRITICAL (Deve corrigir)
+- `unwrap()`/`expect()` sem checagem em caminho de produção
+- `unsafe` sem comentário `// SAFETY:`
+- SQL injection com interpolação de string
+- Input de comando não validado
+- Credenciais hardcoded
+- Use-after-free de ponteiros crus
 
-### HIGH (应该修复)
-- 不必要的 `.clone()` 以满足借用检查器
-- `String` 参数应用 `&str` 或 `impl AsRef<str>`
-- 异步上下文中的阻塞（`std::thread::sleep`）
-- 共享类型缺少 `Send`/`Sync` 约束
-- 关键枚举上的通配符 `_ =>` 匹配
-- 大函数（>50行）
+### HIGH (Deveria corrigir)
+- `.clone()` desnecessário para satisfazer borrow checker
+- Parâmetros `String` deveriam usar `&str` ou `impl AsRef<str>`
+- Bloqueio em contexto assíncrono (`std::thread::sleep`)
+- Tipos compartilhados sem constraints `Send`/`Sync`
+- Match com curinga `_ =>` em enums críticos
+- Funções grandes (>50 linhas)
 
-### MEDIUM (建议考虑)
-- 热路径中的不必要分配
-- 已知大小时缺少 `with_capacity`
-- 无充分理由抑制 clippy 警告
-- 公共 API 缺少 `///` 文档
-- 考虑对可能忽略值的非 `must_use` 返回类型使用 `#[must_use]`
+### MEDIUM (Sugere considerar)
+- Alocações desnecessárias em hot paths
+- Falta `with_capacity` quando tamanho é conhecido
+- Suprimir avisos clippy sem razão suficiente
+- APIs públicas sem documentação `///`
+- Considerar usar `#[must_use]` em tipos de retorno que podem ser ignorados
 
-**自动检查命令**:
+**Comandos de Verificação Automática**:
 ```bash
-cargo check                           # 构建检查
+cargo check                           # Verificação de build
 cargo clippy -- -D warnings            # Lints
-cargo fmt --check                      # 格式检查
-cargo test                            # 测试
-cargo audit                           # 安全审计（如果可用）
+cargo fmt --check                      # Verificação de formatação
+cargo test                            # Testes
+cargo audit                           # Auditoria de segurança (se disponível)
 ```
 
 ---
 
 ## /cpp-review
 
-**用途说明**: C++ 代码全面审查。检查内存安全、现代 C++ 习惯用法、并发和安全性。
+**Propósito**: Revisão completa de código C++. Verifica segurança de memória, idiomática C++ moderna, concorrência e segurança.
 
-**使用方法**:
+**Como Usar**:
 ```
 /cpp-review
 ```
 
-**使用场景**:
-- 编写或修改 C++ 代码之后
-- 提交 C++ 变更之前
-- 审查 C++ 项目的 PR
-- 检查内存安全问题
+**Cenários de Uso**:
+- Após escrever ou modificar código C++
+- Antes de fazer commit de mudanças C++
+- Revisar PR de projetos C++
+- Verificar problemas de segurança de memória
 
-**审查类别**:
+**Categorias de Revisão**:
 
-### CRITICAL (必须修复)
-- 无 RAII 的裸 `new`/`delete`
-- 缓冲区溢出和释放后使用
-- 无同步的数据竞态
-- 通过 `system()` 的命令注入
-- 未初始化变量读取
-- 空指针解引用
+### CRITICAL (Deve corrigir)
+- `new`/`delete` crus sem RAII
+- Buffer overflow e use-after-free
+- Condições de corrida de dados sem sincronização
+- Command injection através de `system()`
+- Variáveis não inicializadas lidas
+- Dereferência de ponteiro nulo
 
-### HIGH (应该修复)
-- 五法则违规
-- 缺少 `std::lock_guard` / `std::scoped_lock`
-- detach 线程的寿命管理不当
-- C 风格强制转换而非 `static_cast`/`dynamic_cast`
-- 缺少 `const` 正确性
+### HIGH (Deveria corrigir)
+- Violação da Regra dos Cinco
+- Falta `std::lock_guard` / `std::scoped_lock`
+- Gerenciamento incorreto de tempo de vida de threads detach
+- Casts estilo C ao invés de `static_cast`/`dynamic_cast`
+- Falta de `const` correctness
 
-### MEDIUM (建议考虑)
-- 不必要的拷贝（传值而非 `const&`）
-- 已知大小时缺少 `reserve()`
-- 头文件中 `using namespace std;`
-- 重要返回值缺少 `[[nodiscard]]`
-- 过于复杂的模板元编程
+### MEDIUM (Sugere considerar)
+- Cópias desnecessárias (passar `const&` ao invés de valor)
+- Falta `reserve()` quando tamanho é conhecido
+- `using namespace std;` em arquivos de cabeçalho
+- Retorno de valor importante sem `[[nodiscard]]`
+- Metaprogramação de template excessivamente complexa
 
-**自动检查命令**:
+**Comandos de Verificação Automática**:
 ```bash
 clang-tidy --checks='*,-llvmlibc-*' src/*.cpp -- -std=c++17
 cppcheck --enable=all --suppress=missingIncludeSystem src/
@@ -295,65 +295,65 @@ cmake --build build -- -Wall -Wextra -Wpedantic
 
 ## /flutter-review
 
-**用途说明**: Flutter/Dart 代码审查。检查惯用模式、组件Melhores-Práticas、状态管理、性能、可访问性和安全性。
+**Propósito**: Revisão de código Flutter/Dart. Verifica padrões idiomáticos, melhores práticas de componentes, estado, performance, acessibilidade e segurança.
 
-**使用方法**:
+**Como Usar**:
 ```
 /flutter-review
 ```
 
-**使用场景**:
-- 提交包含 Flutter/Dart 变更的 PR 之前（构建和测试通过后）
-- 实现新功能后早期发现问题
-- 审查他人的 Flutter 代码
-- 审核组件、状态管理组件或服务类
-- 生产发布之前
+**Cenários de Uso**:
+- Antes de fazer commit de PR com mudanças Flutter/Dart (após build e testes passarem)
+- Descobrir problemas cedo após implementar nova feature
+- Revisar código Flutter de outros
+- Auditar componentes, gerenciadores de estado ou classes de serviço
+- Antes de release de produção
 
-**审查区域**:
+**Áreas de Revisão**:
 
-| 区域 | 严重级别 |
-|------|----------|
-| 硬编码密钥、明文 HTTP | CRITICAL |
-| 架构违规、状态管理反模式 | CRITICAL |
-| 组件重建问题、资源泄漏 | HIGH |
-| 缺少 `dispose()`、`await` 后的 BuildContext | HIGH |
-| Dart 空安全、缺少错误/加载状态 | HIGH |
-| Const 传播、组件组合 | HIGH |
-| `build()` 中的昂贵工作 | HIGH |
-| 可访问性、语义标签 | MEDIUM |
-| 状态转换缺少测试 | HIGH |
-| 硬编码字符串（l10n） | MEDIUM |
+| Área | Nível de Severidade |
+|------|-------------------|
+| Chaves hardcoded, HTTP plain text | CRITICAL |
+| Violações de arquitetura, anti-patterns de estado | CRITICAL |
+| Problemas de rebuild de widget, vazamento de recursos | HIGH |
+| Falta `dispose()`, BuildContext após `await` | HIGH |
+| Null safety Dart, falta estados de erro/carregamento | HIGH |
+| Propagação de const, composição de widget | HIGH |
+| Trabalho caro em `build()` | HIGH |
+| Acessibilidade, labels semânticos | MEDIUM |
+| Transições de estado sem testes | HIGH |
+| Strings hardcoded (l10n) | MEDIUM |
 
 ---
 
 ## /fastapi-review
 
-**用途说明**: FastAPI 应用审查。检查架构、异步正确性、依赖注入、Pydantic 模式、安全性、性能和可测试性。
+**Propósito**: Revisão de aplicações FastAPI. Verifica arquitetura, correção assíncrona, injeção de dependência, esquemas Pydantic, segurança, performance e testabilidade.
 
-**使用方法**:
+**Como Usar**:
 ```
-/fastapi-review [文件或目录]
+/fastapi-review [arquivo ou diretório]
 ```
 
-**审查区域**:
-- App factory、路由边界、中间件和异常处理器
-- Pydantic 请求和响应模式分离
-- 数据库会话、认证、分页和设置的依赖注入
-- 异步数据库和外部 HTTP 模式
-- CORS、认证、限流、日志和密钥处理
-- OpenAPI 元数据和文档化响应模型
-- 测试客户端设置和依赖覆盖
+**Áreas de Revisão**:
+- App factory, limites de rota, middleware e exception handlers
+- Separação de esquemas Pydantic de request e response
+- Injeção de dependência de sessão de banco, auth, paginação e configurações
+- Padrões assíncronos de banco e HTTP externo
+- CORS, auth, rate limiting, logging e tratamento de chaves
+- Metadados OpenAPI e modelos de resposta documentados
+- Configuração de test client e overrides de dependência
 
 ---
 
-## 语言审查命令对比表
+## Tabela Comparativa de Comandos de Revisão de Linguagem
 
-| 命令 | 语言 | 关键检查 | 严重级别 |
-|------|------|----------|----------|
-| `/python-review` | Python | PEP 8、类型提示、SQL注入 | CRITICAL/HIGH/MEDIUM |
-| `/go-review` | Go | 并发安全、错误处理、goroutine | CRITICAL/HIGH/MEDIUM |
-| `/kotlin-review` | Kotlin | 空安全、协程、GlobalScope | CRITICAL/HIGH/MEDIUM |
-| `/rust-review` | Rust | 所有权、生命周期、不安全 | CRITICAL/HIGH/MEDIUM |
-| `/cpp-review` | C++ | 内存安全、RAII、并发 | CRITICAL/HIGH/MEDIUM |
-| `/flutter-review` | Flutter | 状态管理、可访问性、性能 | CRITICAL/HIGH/MEDIUM |
-| `/fastapi-review` | Python | Pydantic、DI、异步、安全 | CRITICAL/HIGH/MEDIUM |
+| Comando | Linguagem | Verificações Principais | Níveis de Severidade |
+|---------|-----------|-------------------------|---------------------|
+| `/python-review` | Python | PEP 8, type hints, SQL injection | CRITICAL/HIGH/MEDIUM |
+| `/go-review` | Go | Concorrência segura, tratamento de erros, goroutine | CRITICAL/HIGH/MEDIUM |
+| `/kotlin-review` | Kotlin | Null safety, coroutines, GlobalScope | CRITICAL/HIGH/MEDIUM |
+| `/rust-review` | Rust | Ownership, lifetimes, unsafe | CRITICAL/HIGH/MEDIUM |
+| `/cpp-review` | C++ | Segurança de memória, RAII, concorrência | CRITICAL/HIGH/MEDIUM |
+| `/flutter-review` | Flutter | Estado, acessibilidade, performance | CRITICAL/HIGH/MEDIUM |
+| `/fastapi-review` | Python | Pydantic, DI, async, segurança | CRITICAL/HIGH/MEDIUM |

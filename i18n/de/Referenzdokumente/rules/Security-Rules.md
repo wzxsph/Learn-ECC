@@ -1,22 +1,22 @@
-# 安全规则
+# Sicherheitsregeln
 
-## 规则概述
+## Regeluebersicht
 
-ECC Rules 安全规则是强制性的安全检查体系，旨在确保代码在提交前符合最高安全标准。该规则覆盖了从Secrets管理到MCP服务器安全的各个方面，是所有代码变更必须遵守的底线。
+ECC Rules Sicherheitsregeln sind obligatorische Sicherheitspruefungen die sicherstellen dass Code vor dem Commit den hoechsten Sicherheitsstandards entspricht. Diese Regeln decken alles von Secrets-Management bis MCP-Server-Sicherheit ab und sind der Mindeststandard den alle Codeaenderungen einhalten müssen.
 
-## 核心要求
+## Kernanforderungen
 
-### 提交前强制检查清单
+### Obligatorische Pruefliste vor dem Commit
 
-在提交任何代码前，必须完成以下安全检查：
+Vor dem Committen von Code müssen folgende Sicherheitspruefungen abgeschlossen werden:
 
-| 检查项 | 说明 |
-|--------|------|
-| 无硬编码Secrets | API密钥、密码、令牌等不得硬编码在源代码中 |
-| 用户输入验证 | 所有用户输入必须经过验证 |
-| SQL注入防护 | 使用参数化查询防止SQL注入 |
-| XSS防护 | 对用户输入进行HTML转义 |
-| CSRF保护 | 确保CSRF保护已启用 |
-| 认证授权验证 | 确认身份验证和授权逻辑正确 |
-| 限流机制 | 所有端点必须有速率限制 |
-| 错误消息安全 | 错误消息不得泄露敏感数据 |
+| Pruefpunkt | Beschreibung |
+|------------|--------------|
+| Keine hartcodierten Secrets | API-Schluessel, Passwoerter, Tokens usw. duerfen nicht in Quellcode hartcodiert sein |
+| Benutzereingabe-Validierung | Alle Benutzereingaben müssen validiert werden |
+| SQL-Injection-Schutz | Parameterisierte Abfragen verwenden um SQL-Injection zu verhindern |
+| XSS-Schutz | Benutzereingaben HTML-escapen |
+| CSRF-Schutz | Sicherstellen dass CSRF-Schutz aktiviert ist |
+| Authentifizierung/Autorisierung verifizieren | Authentifizierungs- und Autorisierungslogik korrekt bestaetigen |
+| Rate-Limiting | Alle Endpoints müssen Rate-Limiting haben |
+| Sicherere Fehlermeldungen | Fehlermeldungen duerfen keine sensiblen Daten exponieren |

@@ -1,32 +1,32 @@
-# 测试相关命令
+# Testbefehle
 
-本文档介绍 ECC 中用于测试的专门命令，支持多种编程语言和测试框架。
+Dieses Dokument beschreibt die ECC-Befehle fuer Tests, die mehrere Programmiersprachen und Test-Frameworks unterstuetzen.
 
 ---
 
 ## /go-test
 
-**用途说明**: Go 语言的 TDD 工作流。使用表驱动测试，先写测试再实现，验证 80%+ 覆盖率。
+**Zweck**: TDD-Workflow fuer Go. Table-driven Tests verwenden, Tests zuerst schreiben, dann implementieren, 80%+ Abdeckung verifizieren.
 
-**使用方法**:
+**Verwendung**:
 ```
-/go-test [功能描述]
+/go-test [Funktionsbeschreibung]
 ```
 
-**使用场景**:
-- 实现新的 Go 函数
-- 为现有 Go 代码添加测试覆盖
-- 修复 bug（先写失败的测试）
-- 学习 Go TDD 方法论
+**Anwendungsszenarien**:
+- Neue Go-Funktionen implementieren
+- Testabdeckung fuer bestehenden Go-Code hinzufuegen
+- Bugs beheben (erst fehlschlagenden Test schreiben)
+- Go-TDD-Methodik lernen
 
-**示例工作流**:
+**Beispiel-Workflow**:
 ```go
-// Step 1: 定义接口
+// Schritt 1: Interface definieren
 func ValidateEmail(email string) error {
     panic("not implemented")
 }
 
-// Step 2: 写表驱动测试 (RED)
+// Schritt 2: Table-driven Tests schreiben (ROT)
 tests := []struct {
     name    string
     email   string
@@ -37,9 +37,9 @@ tests := []struct {
     {"no at sign", "userexample.com", true},
 }
 
-// Step 3: 运行测试 - 验证 FAIL
+// Schritt 3: Tests ausfuehren - FAIL verifizieren
 
-// Step 4: 实现最小代码 (GREEN)
+// Schritt 4: Minimalen Code implementieren (GRUEN)
 func ValidateEmail(email string) error {
     if email == "" {
         return ErrEmailEmpty
@@ -50,48 +50,48 @@ func ValidateEmail(email string) error {
     return nil
 }
 
-// Step 5: 验证 PASS
+// Schritt 5: PASS verifizieren
 
-// Step 6: 检查覆盖率
+// Schritt 6: Abdeckung pruefen
 go test -cover ./...
 // coverage: 100.0%
 ```
 
-**覆盖率命令**:
+**Abdeckungsbefehle**:
 ```bash
-go test -cover ./...                    # 基础覆盖率
-go test -coverprofile=coverage.out      # 生成覆盖率文件
-go tool cover -html=coverage.out        # 浏览器查看
-go test -race -cover ./...              # 竞态检测
+go test -cover ./...                    # Basisabdeckung
+go test -coverprofile=coverage.out      # Abdeckungsdatei generieren
+go tool cover -html=coverage.out        # Im Browser anzeigen
+go test -race -cover ./...              # Race-Detektion
 ```
 
 ---
 
 ## /kotlin-test
 
-**用途说明**: Kotlin 语言的 TDD 工作流。使用 Kotest 框架和 MockK，先写测试再实现，验证 80%+ 覆盖率（Kover）。
+**Zweck**: TDD-Workflow fuer Kotlin. Kotest-Framework und MockK verwenden, Tests zuerst schreiben, dann implementieren, 80%+ Abdeckung verifizieren (Kover).
 
-**使用方法**:
+**Verwendung**:
 ```
-/kotlin-test [功能描述]
+/kotlin-test [Funktionsbeschreibung]
 ```
 
-**使用场景**:
-- 实现新的 Kotlin 函数或类
-- 为 Android/KMP 项目添加测试覆盖
-- 修复 bug（先写失败的测试）
-- 学习 Kotlin TDD 方法论
+**Anwendungsszenarien**:
+- Neue Kotlin-Funktionen oder -Klassen implementieren
+- Testabdeckung fuer Android/KMP-Projekte hinzufuegen
+- Bugs beheben (erst fehlschlagenden Test schreiben)
+- Kotlin-TDD-Methodik lernen
 
-**Kotest 测试风格**:
+**Kotest-Teststile**:
 ```kotlin
-// StringSpec (最简单)
+// StringSpec (einfachster Stil)
 class CalculatorTest : StringSpec({
     "add two positive numbers" {
         Calculator.add(2, 3) shouldBe 5
     }
 })
 
-// FunSpec (标准单元测试)
+// FunSpec (standardmaessige Unit-Tests)
 class RegistrationValidatorTest : FunSpec({
     test("valid registration returns Valid") {
         val request = RegistrationRequest(
@@ -104,7 +104,7 @@ class RegistrationValidatorTest : FunSpec({
     }
 })
 
-// BehaviorSpec (BDD 风格)
+// BehaviorSpec (BDD-Stil)
 class OrderServiceTest : BehaviorSpec({
     Given("a valid order") {
         When("placed") {
@@ -114,7 +114,7 @@ class OrderServiceTest : BehaviorSpec({
 })
 ```
 
-**协程测试**:
+**Koroutinen-Tests**:
 ```kotlin
 test("concurrent fetch completes") {
     runTest {
@@ -124,34 +124,34 @@ test("concurrent fetch completes") {
 }
 ```
 
-**覆盖率命令**:
+**Abdeckungsbefehle**:
 ```bash
-./gradlew koverHtmlReport     # HTML 报告
-./gradlew koverVerify         # 验证覆盖率阈值
-./gradlew koverXmlReport      # CI 用 XML 报告
-./gradlew test                # 运行测试
+./gradlew koverHtmlReport     # HTML-Bericht
+./gradlew koverVerify         # Abdeckungsschwelle verifizieren
+./gradlew koverXmlReport      # CI-XML-Bericht
+./gradlew test                # Tests ausfuehren
 ```
 
 ---
 
 ## /rust-test
 
-**用途说明**: Rust 语言的 TDD 工作流。使用 `#[test]`、rstest、proptest 和 mockall，先写测试再实现，验证 80%+ 覆盖率（cargo-llvm-cov）。
+**Zweck**: TDD-Workflow fuer Rust. `#[test]`, rstest, proptest und mockall verwenden, Tests zuerst schreiben, dann implementieren, 80%+ Abdeckung verifizieren (cargo-llvm-cov).
 
-**使用方法**:
+**Verwendung**:
 ```
-/rust-test [功能描述]
+/rust-test [Funktionsbeschreibung]
 ```
 
-**使用场景**:
-- 实现新的 Rust 函数、方法或 trait
-- 为 Rust 项目添加测试覆盖
-- 修复 bug（先写失败的测试）
-- 学习 Rust TDD 方法论
+**Anwendungsszenarien**:
+- Neue Rust-Funktionen, -Methoden oder -Traits implementieren
+- Testabdeckung fuer Rust-Projekte hinzufuegen
+- Bugs beheben (erst fehlschlagenden Test schreiben)
+- Rust-TDD-Methodik lernen
 
-**测试模式**:
+**Testmuster**:
 ```rust
-// 单元测试
+// Unit-Tests
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -169,7 +169,7 @@ mod tests {
     }
 }
 
-// 参数化测试 (rstest)
+// Parameterisierte Tests (rstest)
 #[rstest]
 #[case("hello", 5)]
 #[case("", 0)]
@@ -178,7 +178,7 @@ fn test_string_length(#[case] input: &str, #[case] expected: usize) {
     assert_eq!(input.len(), expected);
 }
 
-// 异步测试
+// Asynchrone Tests
 #[tokio::test]
 async fn fetches_data_successfully() {
     let client = TestClient::new().await;
@@ -186,7 +186,7 @@ async fn fetches_data_successfully() {
     assert!(result.is_ok());
 }
 
-// 属性测试 (proptest)
+// Property-Tests (proptest)
 proptest! {
     #[test]
     fn encode_decode_roundtrip(input in ".*") {
@@ -197,34 +197,34 @@ proptest! {
 }
 ```
 
-**覆盖率命令**:
+**Abdeckungsbefehle**:
 ```bash
-cargo llvm-cov                    # 覆盖率摘要
-cargo llvm-cov --html             # HTML 报告
-cargo llvm-cov --fail-under-lines 80  # 低于阈值则失败
-cargo test                        # 运行测试
+cargo llvm-cov                    # Abdeckungszusammenfassung
+cargo llvm-cov --html             # HTML-Bericht
+cargo llvm-cov --fail-under-lines 80  # Bei Unterschreitung fehlschlagen
+cargo test                        # Tests ausfuehren
 ```
 
 ---
 
 ## /cpp-test
 
-**用途说明**: C++ 语言的 TDD 工作流。使用 GoogleTest/GoogleMock 和 CMake/CTest，先写测试再实现，验证覆盖率（gcov/lcov）。
+**Zweck**: TDD-Workflow fuer C++. GoogleTest/GoogleMock und CMake/CTest verwenden, Tests zuerst schreiben, dann implementieren, Abdeckung verifizieren (gcov/lcov).
 
-**使用方法**:
+**Verwendung**:
 ```
-/cpp-test [功能描述]
+/cpp-test [Funktionsbeschreibung]
 ```
 
-**使用场景**:
-- 实现新的 C++ 类或函数
-- 添加测试覆盖
-- 修复 bug（先写失败的测试）
-- 学习 C++ TDD 方法论
+**Anwendungsszenarien**:
+- Neue C++-Klassen oder -Funktionen implementieren
+- Testabdeckung hinzufuegen
+- Bugs beheben (erst fehlschlagenden Test schreiben)
+- C++-TDD-Methodik lernen
 
-**GoogleTest 模式**:
+**GoogleTest-Muster**:
 ```cpp
-// 基本测试
+// Basis-Tests
 TEST(SuiteName, TestName) {
     EXPECT_EQ(add(2, 3), 5);
     EXPECT_NE(result, nullptr);
@@ -245,7 +245,7 @@ TEST_F(DatabaseTest, InsertsRecord) {
     EXPECT_EQ(db_->get("key"), "value");
 }
 
-// 参数化测试
+// Parameterisierte Tests
 class PrimeTest : public ::testing::TestWithParam<std::pair<int, bool>> {};
 
 TEST_P(PrimeTest, ChecksPrimality) {
@@ -261,7 +261,7 @@ INSTANTIATE_TEST_SUITE_P(Primes, PrimeTest,
     ));
 ```
 
-**覆盖率命令**:
+**Abdeckungsbefehle**:
 ```bash
 cmake -DCMAKE_CXX_FLAGS="--coverage" -B build
 cmake --build build
@@ -274,69 +274,69 @@ genhtml coverage.info --output-directory coverage_html
 
 ## /flutter-test
 
-**用途说明**: Flutter/Dart 测试。报告失败并逐步修复测试问题，涵盖单元、组件、金色和集成测试。
+**Zweck**: Flutter/Dart-Tests. Fehlschlaege melden und schrittweise Testprobleme beheben, deckt Unit-, Widget-, Golden- und Integrationstests ab.
 
-**使用方法**:
+**Verwendung**:
 ```
-/flutter-test                # 运行所有测试
-/flutter-test --coverage     # 带覆盖率
-/flutter-test test/file.dart # 运行特定测试文件
+/flutter-test                # Alle Tests ausfuehren
+/flutter-test --coverage     # Mit Abdeckung
+/flutter-test test/file.dart # Bestimmte Testdatei ausfuehren
 ```
 
-**使用场景**:
-- 验证功能实现后没有破坏
-- 检查新代码的测试覆盖率
-- 修复特定测试文件
-- 提交 PR 之前
+**Anwendungsszenarien**:
+- Verifizieren dass nichts nach Funktionsimplementierung kaputt ist
+- Testabdeckung fuer neuen Code pruefen
+- Bestimmte Testdatei reparieren
+- Vor dem Committen eines PRs
 
-**常见测试失败和修复**:
+**Haeufige Testfehler und -reparaturen**:
 
-| 失败类型 | 典型修复 |
-|----------|----------|
-| `Expected: <X> Actual: <Y>` | 更新断言或修复实现 |
-| `Widget not found` | 修复 finder 选择器或更新 widget 名称 |
-| `Golden file not found` | 运行 `flutter test --update-goldens` 生成 |
-| `MissingPluginException` | 在测试设置中 mock 平台通道 |
-| `pumpAndSettle timed out` | 用显式 `pump(Duration)` 替换 |
+| Fehlertyp | Typische Reparatur |
+|----------|-------------------|
+| `Expected: <X> Actual: <Y>` | Assertion oder Implementierung aktualisieren |
+| `Widget not found` | Finder-Selektor oder Widget-Namen reparieren |
+| `Golden file not found` | `flutter test --update-goldens` ausfuehren um zu generieren |
+| `MissingPluginException` | Plattform-Kanäle im Test-Setup mocken |
+| `pumpAndSettle timed out` | Durch explizites `pump(Duration)` ersetzen |
 
 ---
 
 ## /e2e
 
-**用途说明**: 端到端测试工作流。生成和运行关键用户流程的 E2E 测试。
+**Zweck**: End-to-End-Testing-Workflow. E2E-Tests fuer kritische Benutzerflows generieren und ausfuehren.
 
-**使用方法**:
+**Verwendung**:
 ```
-/e2e [功能描述]
+/e2e [Funktionsbeschreibung]
 ```
 
-**使用场景**:
-- 测试关键用户流程
-- 跨系统集成测试
-- 验收测试
-- 回归测试
+**Anwendungsszenarien**:
+- Kritische Benutzerflows testen
+- Systemuebergreifende Integrationstests
+- Abnahmetests
+- Regressionstests
 
 ---
 
 ## /test-coverage
 
-**用途说明**: 分析测试覆盖率，识别差距，并生成缺失测试以达到目标阈值（默认 80%）。
+**Zweck**: Testabdeckung analysieren, Luecken identifizieren und fehlende Tests generieren um Zielschwelle zu erreichen (standardmaessig 80%).
 
-**使用方法**:
+**Verwendung**:
 ```
 /test-coverage
 ```
 
-**工作流程**:
-1. **检测测试框架** - 根据项目类型选择覆盖命令
-2. **分析覆盖率报告** - 列出低于 80% 的文件
-3. **生成缺失测试** - 按优先级生成测试
-4. **验证** - 重新运行覆盖率确认改进
+**Workflow**:
+1. **Test-Framework erkennen** - Passenden Abdeckungsbefehl basierend auf Projekttyp auswaehlen
+2. **Abdeckungsbericht analysieren** - Dateien unter 80% auflisten
+3. **Fehlende Tests generieren** - Tests nach Prioritaet generieren
+4. **Verifizieren** - Abdeckung erneut ausfuehren um Verbesserung zu bestaetigen
 
-**测试框架检测**:
+**Test-Framework-Erkennung**:
 
-| 指示器 | 覆盖命令 |
-|--------|----------|
+| Indikator | Abdeckungsbefehl |
+|-----------|-----------------|
 | `jest.config.*` | `npx jest --coverage` |
 | `vitest.config.*` | `npx vitest run --coverage` |
 | `pytest.ini` | `pytest --cov=src --cov-report=json` |
@@ -347,22 +347,22 @@ genhtml coverage.info --output-directory coverage_html
 
 ## /python-testing
 
-**用途说明**: Python 测试工作流。使用 pytest，支持覆盖率分析。
+**Zweck**: Python-Testing-Workflow. Pytest mit Abdeckungsanalyse verwenden.
 
-**使用方法**:
+**Verwendung**:
 ```
-/python-testing [功能描述]
+/python-testing [Funktionsbeschreibung]
 ```
 
-**使用场景**:
-- 实现新的 Python 功能
-- 添加测试覆盖
-- 修复 bug
-- FastAPI/Django/Flask 项目测试
+**Anwendungsszenarien**:
+- Neue Python-Funktionen implementieren
+- Testabdeckung hinzufuegen
+- Bugs beheben
+- FastAPI/Django/Flask-Projekt-Tests
 
-**Pytest 特性**:
+**Pytest-Features**:
 ```python
-# 参数化测试
+# Parameterisierte Tests
 @pytest.mark.parametrize("input,expected", [
     ("hello", 5),
     ("", 0),
@@ -377,7 +377,7 @@ def client():
     with TestClient(app) as c:
         yield c
 
-# 异步测试
+# Asynchrone Tests
 @pytest.mark.asyncio
 async def test_async_fetch():
     result = await fetch_data()
@@ -386,15 +386,15 @@ async def test_async_fetch():
 
 ---
 
-## 命令对比表
+## Befehlsvergleichstabelle
 
-| 命令 | 语言 | 测试框架 | 覆盖率工具 | TDD 循环 |
-|------|------|----------|------------|----------|
-| `/go-test` | Go | 内置 testing | go test -cover | ✓ |
+| Befehl | Sprache | Test-Framework | Abdeckungstool | TDD-Zyklus |
+|--------|---------|-----------------|-----------------|------------|
+| `/go-test` | Go | Standard testing | go test -cover | ✓ |
 | `/kotlin-test` | Kotlin | Kotest + MockK | Kover | ✓ |
 | `/rust-test` | Rust | #[test], rstest, proptest | cargo-llvm-cov | ✓ |
 | `/cpp-test` | C++ | GoogleTest | gcov/lcov | ✓ |
 | `/flutter-test` | Dart | Flutter test | coverage | - |
 | `/python-testing` | Python | pytest | pytest-cov | - |
-| `/e2e` | 多语言 | 项目特定 | - | - |
-| `/test-coverage` | 通用 | 多种 | 多种 | - |
+| `/e2e` | Mehrere | Projektspezifisch | - | - |
+| `/test-coverage` | Allgemein | Mehrere | Mehrere | - |

@@ -1,25 +1,25 @@
-# Nativo-de-Nuvem-e-Infraestrutura技能
+# Nativo-de-Nuvem-e-Infraestrutura
 
-本部分涵盖容器化、 orchestration、基础设施即代码和云原生架构。
+Esta seção abrange containerização, orquestração, infraestrutura como código e arquitetura nativo de nuvem.
 
 ---
 
-## 容器化
+## Containerização
 
 ### docker-patterns
 
-**用途**: Docker 容器Melhores-Práticas
+**Propósito**: Melhores-Práticas de containers Docker
 
-**核心概念**:
-- 多阶段构建
-- 最小化镜像大小
-- 健康检查配置
-- 日志管理
-- 资源限制 (CPU/内存)
+**Conceitos Centrais**:
+- Builds multi-stage
+- Minimização de tamanho de imagem
+- Configuração de health checks
+- Gerenciamento de logs
+- Limites de recursos (CPU/memória)
 
-**示例**:
+**Exemplo**:
 ```dockerfile
-# 多阶段构建
+# Multi-stage build
 FROM node:18-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
@@ -36,14 +36,14 @@ CMD ["node", "dist/index.js"]
 
 ### container-security
 
-**用途**: 容器Segurança
+**Propósito**: Segurança de containers
 
-**检查项**:
-- 最小化基础镜像
-- 不使用 root 用户运行
-- 密钥管理
-- 镜像扫描
-- 网络隔离
+**Itens de Verificação**:
+- Minimizar imagem base
+- Não executar como root
+- Gerenciamento de chaves
+- Scan de imagens
+- Isolamento de rede
 
 ---
 
@@ -51,55 +51,55 @@ CMD ["node", "dist/index.js"]
 
 ### kubernetes-ai
 
-**用途**: Kubernetes AI 工作负载
+**Propósito**: Cargas de trabalho AI no Kubernetes
 
-**核心概念**:
-- GPU 调度
-- 分布式训练
-- 模型服务
-- 自动扩缩容
+**Conceitos Centrais**:
+- Agendamento de GPU
+- Treinamento distribuído
+- Servindo de modelos
+- Auto scaling
 
-**工具**:
+**Ferramentas**:
 - Kubeflow
 - KServe
 - Argo Workflows
 
 ### k8s-security
 
-**用途**: Kubernetes Segurança
+**Propósito**: Segurança Kubernetes
 
-**安全措施**:
-- RBAC 配置
-- 网络策略
-- Pod 安全策略
-- 密钥管理
-- 审计日志
+**Medidas de Segurança**:
+- Configuração RBAC
+- Políticas de rede
+- Pod Security Policies
+- Gerenciamento de chaves
+- Logs de auditoria
 
 ### kube-bench
 
-**用途**: Kubernetes 安全基准测试
+**Propósito**: Benchmark de segurança Kubernetes
 
-**检查项**:
+**Itens de Verificação**:
 - CIS Kubernetes Benchmark
-- 自动化合规检查
-- 修复建议
+- Verificações de conformidade automatizadas
+- Recomendações de correção
 
 ---
 
-## 基础设施即代码
+## Infraestrutura como Código
 
 ### terraform
 
-**用途**: Terraform 基础设施编排
+**Propósito**: Orquestração de infraestrutura Terraform
 
-**核心概念**:
-- HCL 配置语言
-- Provider 开发
-- 状态管理
-- 模块化设计
-- 远程后端
+**Conceitos Centrais**:
+- Linguagem de configuração HCL
+- Desenvolvimento de providers
+- Gerenciamento de estado
+- Design modular
+- Backends remotos
 
-**示例**:
+**Exemplo**:
 ```hcl
 resource "aws_instance" "web" {
   ami           = "ami-0c55b159cbfafe1f0"
@@ -114,43 +114,43 @@ resource "aws_instance" "web" {
 
 ### ansible
 
-**用途**: Ansible 自动化配置
+**Propósito**: Automação de configuração Ansible
 
-**核心功能**:
-- 幂等性配置
-- 角色与 playbook
-- Jinja2 模板
-- 库存管理
+**Funcionalidades Centrais**:
+- Configuração idempotente
+- Roles e playbooks
+- Templates Jinja2
+- Gerenciamento de inventário
 
 ### helm
 
-**用途**: Helm Kubernetes 包管理
+**Propósito**: Gerenciamento de pacotes Helm Kubernetes
 
-**核心概念**:
-- Chart 开发
-- 模板渲染
-- 版本管理
-- 仓库管理
+**Conceitos Centrais**:
+- Desenvolvimento de Charts
+- Renderização de templates
+- Gerenciamento de versões
+- Gerenciamento de repositórios
 
 ### infrastructure-as-code
 
-**用途**: IaC Melhores-Práticas
+**Propósito**: Melhores-Práticas de IaC
 
-**核心原则**:
-- 版本控制
-- 自动化部署
-- 幂等性
-- 文档化
+**Princípios Centrais**:
+- Versionamento
+- Deploy automatizado
+- Idempotência
+- Documentação
 
 ---
 
-## 云平台
+## Plataformas de Nuvem
 
 ### aws-solution-architect
 
-**用途**: AWS 架构设计
+**Propósito**: Design de arquitetura AWS
 
-**核心服务**:
+**Serviços Centrais**:
 - EC2, ECS, EKS
 - S3, RDS, ElastiCache
 - VPC, IAM
@@ -158,9 +158,9 @@ resource "aws_instance" "web" {
 
 ### gcp-cloud-architect
 
-**用途**: GCP 架构设计
+**Propósito**: Design de arquitetura GCP
 
-**核心服务**:
+**Serviços Centrais**:
 - Compute Engine
 - Kubernetes Engine
 - Cloud Storage
@@ -168,9 +168,9 @@ resource "aws_instance" "web" {
 
 ### azure-cloud-architect
 
-**用途**: Azure 架构设计
+**Propósito**: Design de arquitetura Azure
 
-**核心服务**:
+**Serviços Centrais**:
 - Azure VMs
 - Azure Kubernetes Service
 - Azure Storage
@@ -182,15 +182,15 @@ resource "aws_instance" "web" {
 
 ### prometheus
 
-**用途**: Prometheus 监控
+**Propósito**: Monitoramento Prometheus
 
-**核心概念**:
-- 指标采集
-- PromQL 查询
-- 告警规则
-- 服务发现
+**Conceitos Centrais**:
+- Coleta de métricas
+- Consultas PromQL
+- Regras de alertas
+- Descoberta de serviços
 
-**示例**:
+**Exemplo**:
 ```yaml
 - alert: HighErrorRate
   expr: rate(http_errors_total[5m]) > 0.05
@@ -201,72 +201,73 @@ resource "aws_instance" "web" {
 
 ### observability
 
-**用途**: 可观测性架构
+**Propósito**: Arquitetura de observabilidade
 
-**三大支柱**:
-- 指标 (Metrics)
-- 日志 (Logs)
-- 追踪 (Traces)
+**Três Pilares**:
+- Métricas (Metrics)
+- Logs (Logs)
+- Rastreamento (Traces)
 
 ### tracing
 
-**用途**: 分布式追踪
+**Propósito**: Rastreamento distribuído
 
-**工具**:
+**Ferramentas**:
 - Jaeger
 - Zipkin
 - OpenTelemetry
 
 ### logging-best-practices
 
-**用途**: 日志Melhores-Práticas
+**Propósito**: Melhores-Práticas de logs
 
-**核心原则**:
-- 结构化日志
-- 日志级别
-- 采样策略
-- 集中存储
+**Princípios Centrais**:
+- Logs estruturados (JSON)
+- Níveis de log
+- Informações de contexto
+- Estratégias de amostragem
+- Armazenamento centralizado
 
 ---
 
-## 网络
+## Rede
 
 ### nginx
 
-**用途**: Nginx 配置与管理
+**Propósito**: Configuração e gerenciamento do Nginx
 
-**核心功能**:
-- 反向代理
-- 负载均衡
-- SSL/TLS 终止
-- 缓存配置
+**Funcionalidades Centrais**:
+- Proxy reverso
+- Load balancing
+- Terminção SSL/TLS
+- Configuração de cache
 
 ### network-analysis
 
-**用途**: 网络分析
+**Propósito**: Análise de rede
 
-**工具**:
+**Ferramentas**:
 - Wireshark
 - tcpdump
 - netstat
 
 ### ssh-tunneling
 
-**用途**: SSH 隧道
+**Propósito**: Túneis SSH
 
-**用例**:
-- 端口转发
-- 跳板机
-- VPN 替代
+**Casos de Uso**:
+- Port forwarding
+- Bastion hosts
+- Alternativa VPN
 
 ---
 
-## 相关技能
+## Habilidades Relacionadas
 
-| 技能 | 用途 |
+| Habilidade | Propósito |
 |------|------|
-| `docker-patterns` | Docker 容器化 |
-| `kubernetes-ai` | K8s AI 工作负载 |
-| `terraform` | Terraform IaC |
-| `prometheus` | Prometheus 监控 |
-| `observability` | 可观测性 |
+| `docker-patterns` | Containerização Docker |
+| `kubernetes-ai` | Cargas de trabalho K8s AI |
+| `terraform` | IaC Terraform |
+| `prometheus` | Monitoramento Prometheus |
+| `observability` | Observabilidade |

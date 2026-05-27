@@ -1,106 +1,106 @@
-# 工具函数库
+# Thư viện hàm công cụ
 
-本文档介绍 `scripts/lib/` 目录下的核心工具函数库。
+Tài liệu này giới thiệu các thư viện hàm công cụ cốt lõi trong thư mục `scripts/lib/`.
 
 ---
 
 ## utils.js
 
-**路径**: `scripts/lib/utils.js`
+**Đường dẫn**: `scripts/lib/utils.js`
 
-跨平台的工具函数库,适用于 Windows、macOS 和 Linux。
+Thư viện hàm công cụ cross-platform, hoạt động trên Windows, macOS và Linux.
 
-### 平台检测
+### Phát hiện platform
 
 ```javascript
 const { isWindows, isMacOS, isLinux } = require('./utils');
 
-// isWindows: true on Windows
-// isMacOS: true on macOS
-// isLinux: true on Linux
+// isWindows: true trên Windows
+// isMacOS: true trên macOS
+// isLinux: true trên Linux
 ```
 
-### 目录操作
+### Thao tác thư mục
 
 ```javascript
 const {
-  getHomeDir,      // 获取用户主目录
-  getClaudeDir,    // 获取 ~/.claude 目录
-  getSessionsDir,  // 获取 ~/.claude/session-data 目录
-  getTempDir,      // 获取临时目录
-  ensureDir,       // 确保目录存在,不存在则创建
-  findFiles        // 查找匹配模式的文件
+  getHomeDir,      // Lấy thư mục home người dùng
+  getClaudeDir,    // Lấy thư mục ~/.claude
+  getSessionsDir,  // Lấy thư mục ~/.claude/session-data
+  getTempDir,      // Lấy thư mục tạm
+  ensureDir,       // Đảm bảo thư mục tồn tại, tạo nếu không
+  findFiles        // Tìm file theo pattern
 } = require('./utils');
 
-// 创建目录(如果不存在)
+// Tạo thư mục nếu không tồn tại
 ensureDir('/path/to/dir');
 
-// 查找文件
+// Tìm file
 const files = findFiles('/path', '*.js', { recursive: true });
 ```
 
-### 日期时间
+### Ngày giờ
 
 ```javascript
 const {
-  getDateString,      // 返回 YYYY-MM-DD 格式
-  getTimeString,      // 返回 HH:MM 格式
-  getDateTimeString   // 返回 YYYY-MM-DD HH:MM:SS 格式
+  getDateString,      // Trả về định dạng YYYY-MM-DD
+  getTimeString,      // Trả về định dạng HH:MM
+  getDateTimeString   // Trả về định dạng YYYY-MM-DD HH:MM:SS
 } = require('./utils');
 ```
 
-### 会话和项目
+### Phiên và dự án
 
 ```javascript
 const {
-  sanitizeSessionId,    // 清理会话 ID,去除无效字符
-  getSessionIdShort,    // 获取短会话 ID
-  getGitRepoName,       // 获取 git 仓库名称
-  getProjectName        // 获取项目名称
+  sanitizeSessionId,    // Làm sạch session ID, loại bỏ ký tự không hợp lệ
+  getSessionIdShort,    // Lấy short session ID
+  getGitRepoName,       // Lấy tên git repo
+  getProjectName        // Lấy tên dự án
 } = require('./utils');
 
-// 清理会话 ID
+// Làm sạch session ID
 const cleanId = sanitizeSessionId('my-session@123'); // 'my-session-123'
 
-// 获取项目名
+// Lấy tên dự án
 const project = getProjectName();
 ```
 
-### 文件操作
+### Thao tác file
 
 ```javascript
 const {
-  readFile,        // 安全读取文件,失败返回 null
-  writeFile,       // 写入文件
-  appendFile,      // 追加到文件
-  replaceInFile,   // 替换文件内容
-  countInFile,     // 统计模式出现次数
-  grepFile         // 搜索文件中的模式
+  readFile,        // Đọc file an toàn, trả về null nếu fail
+  writeFile,       // Ghi file
+  appendFile,      // Nối vào file
+  replaceInFile,   // Thay thế nội dung file
+  countInFile,     // Đếm số lần pattern xuất hiện
+  grepFile         // Tìm kiếm pattern trong file
 } = require('./utils');
 
-// 读取文件
+// Đọc file
 const content = readFile('/path/to/file.txt');
 
-// 替换文件内容(首次匹配)
+// Thay thế nội dung (thay thế lần xuất hiện đầu tiên)
 replaceInFile('/path', 'old', 'new');
 
-// 替换所有匹配
+// Thay thế tất cả lần xuất hiện
 replaceInFile('/path', 'old', 'new', { all: true });
 
-// 统计出现次数
+// Đếm số lần xuất hiện
 const count = countInFile('/path', /pattern/g);
 
-// 搜索并返回匹配行
+// Tìm và trả về các dòng khớp
 const matches = grepFile('/path', /regex/);
-// 返回: [{ lineNumber: 1, content: '...' }]
+// Trả về: [{ lineNumber: 1, content: '...' }]
 ```
 
-### 字符串处理
+### Xử lý chuỗi
 
 ```javascript
 const { stripAnsi } = require('./utils');
 
-// 移除 ANSI 转义序列(颜色等)
+// Loại bỏ escape sequence ANSI (màu sắc, etc.)
 const clean = stripAnsi('\x1b[32mHello\x1b[0m'); // 'Hello'
 ```
 
@@ -109,34 +109,34 @@ const clean = stripAnsi('\x1b[32mHello\x1b[0m'); // 'Hello'
 ```javascript
 const { readStdinJson, log, output } = require('./utils');
 
-// 从 stdin 读取 JSON(用于 hooks)
+// Đọc JSON từ stdin (cho hooks)
 const input = await readStdinJson({ timeoutMs: 5000 });
 
-// 输出到 stderr(对用户可见)
+// Output ra stderr (hiển thị cho người dùng)
 log('Debug message');
 
-// 输出到 stdout(返回给 Claude)
+// Output ra stdout (trả về cho Claude)
 output({ result: 'data' });
 ```
 
-### 系统命令
+### Lệnh hệ thống
 
 ```javascript
 const { commandExists, runCommand, isGitRepo, getGitModifiedFiles } = require('./utils');
 
-// 检查命令是否存在
+// Kiểm tra lệnh có tồn tại không
 if (commandExists('git')) { /* ... */ }
 
-// 运行命令(仅限白名单命令)
+// Chạy lệnh (chỉ lệnh whitelist)
 const result = runCommand('git rev-parse --show-toplevel');
 if (result.success) {
   console.log(result.output);
 }
 
-// 检查是否是 git 仓库
+// Kiểm tra có phải git repo không
 if (isGitRepo()) { /* ... */ }
 
-// 获取修改的文件
+// Lấy các file đã sửa
 const files = getGitModifiedFiles(['\\.js$', '\\.md$']);
 ```
 
@@ -144,101 +144,101 @@ const files = getGitModifiedFiles(['\\.js$', '\\.md$']);
 
 ## package-manager.js
 
-**路径**: `scripts/lib/package-manager.js`
+**Đường dẫn**: `scripts/lib/package-manager.js`
 
-包管理器检测和选择工具。
+Công cụ phát hiện và lựa chọn package manager.
 
-### 支持的包管理器
+### Các package manager được hỗ trợ
 
 - npm
 - pnpm
 - yarn
 - bun
 
-### 检测优先级
+### Ưu tiên phát hiện
 
-1. 环境变量 `CLAUDE_PACKAGE_MANAGER`
-2. 项目配置 `.claude/package-manager.json`
-3. `package.json` 的 `packageManager` 字段
-4. lock 文件检测
-5. 全局用户偏好 `~/.claude/package-manager.json`
-6. 默认值 npm
+1. Biến môi trường `CLAUDE_PACKAGE_MANAGER`
+2. File cấu hình dự án `.claude/package-manager.json`
+3. Trường `packageManager` trong `package.json`
+4. Phát hiện từ lock file
+5. preference toàn cục `~/.claude/package-manager.json`
+6. Mặc định npm
 
-### 核心 API
+### API cốt lõi
 
 ```javascript
 const {
-  getPackageManager,           // 获取当前项目的包管理器
-  setPreferredPackageManager,  // 设置全局偏好
-  setProjectPackageManager,    // 设置项目偏好
-  getAvailablePackageManagers, // 获取系统上可用的包管理器
-  detectFromLockFile,          // 从 lock 文件检测
-  detectFromPackageJson,       // 从 package.json 检测
-  getRunCommand,               // 获取运行脚本的命令
-  getExecCommand,              // 获取执行二进制文件的命令
-  getSelectionPrompt,          // 获取交互式选择提示
-  getCommandPattern            // 生成命令匹配正则
+  getPackageManager,           // Lấy package manager của dự án hiện tại
+  setPreferredPackageManager,  // Đặt preference toàn cục
+  setProjectPackageManager,    // Đặt preference dự án
+  getAvailablePackageManagers, // Lấy các package manager khả dụng trên hệ thống
+  detectFromLockFile,          // Phát hiện từ lock file
+  detectFromPackageJson,       // Phát hiện từ package.json
+  getRunCommand,               // Lấy lệnh chạy script
+  getExecCommand,              // Lấy lệnh thực thi binary
+  getSelectionPrompt,          // Lấy prompt chọn tương tác
+  getCommandPattern            // Tạo regex cho pattern lệnh
 } = require('./package-manager');
 
-// 获取当前包管理器
+// Lấy package manager hiện tại
 const { name, config, source } = getPackageManager();
-// name: 'pnpm', 'npm', 'yarn', 或 'bun'
+// name: 'pnpm', 'npm', 'yarn', hoặc 'bun'
 // config: { installCmd, runCmd, execCmd, testCmd, ... }
 // source: 'environment', 'project-config', 'lock-file', ...
 
-// 设置全局偏好
+// Đặt preference toàn cục
 setPreferredPackageManager('pnpm');
 
-// 设置项目偏好
+// Đặt preference dự án
 setProjectPackageManager('yarn', '/path/to/project');
 
-// 获取运行命令
-const testCmd = getRunCommand('test'); // 'pnpm test' 或 'npm test' 等
+// Lấy lệnh chạy
+const testCmd = getRunCommand('test'); // 'pnpm test' hoặc 'npm test' etc.
 const buildCmd = getRunCommand('build');
 
-// 获取执行命令
+// Lấy lệnh thực thi
 const eslintCmd = getExecCommand('eslint', '--fix .');
 ```
 
-### 安全检查
+### Kiểm tra an toàn
 
-`getRunCommand` 和 `getExecCommand` 会验证输入:
-- 脚本名只允许字母、数字、dash、underscore、dot、slash、@
-- 参数只允许字母、数字、空白、dash、dots、slashes、equals、colons、commas、quotes、@
+`getRunCommand` và `getExecCommand` xác minh input:
+- Script name chỉ cho phép chữ cái, số, dash, underscore, dot, slash, @
+- Arguments chỉ cho phép chữ cái, số, khoảng trắng, dash, dots, slashes, equals, colons, commas, quotes, @
 
 ---
 
 ## session-manager.js
 
-**路径**: `scripts/lib/session-manager.js`
+**Đường dẫn**: `scripts/lib/session-manager.js`
 
-会话管理库,提供会话的 CRUD 操作。
+Thư viện quản lý phiên, cung cấp CRUD operations cho phiên.
 
-### 会话存储
+### Lưu trữ phiên
 
-- 新格式: `~/.claude/session-data/YYYY-MM-DD-[session-id]-session.tmp`
-- 旧格式兼容: `~/.claude/sessions/YYYY-MM-DD-session.tmp`
+- Format mới: `~/.claude/session-data/YYYY-MM-DD-[session-id]-session.tmp`
+- Tương thích format cũ: `~/.claude/sessions/YYYY-MM-DD-session.tmp`
 
-### 核心 API
+### API cốt lõi
 
 ```javascript
 const {
-  parseSessionFilename,      // 解析会话文件名
-  getSessionPath,            // 获取会话文件完整路径
-  getSessionContent,         // 读取会话内容
-  parseSessionMetadata,      // 解析会话元数据
-  getSessionStats,           // 获取会话统计
-  getSessionTitle,           // 获取会话标题
-  getSessionSize,            // 获取会话大小(人类可读格式)
-  getAllSessions,            // 获取所有会话(支持分页和筛选)
-  getSessionById,            // 按 ID 获取单个会话
-  writeSessionContent,       // 写入会话内容
-  appendSessionContent,      // 追加会话内容
-  deleteSession,             // 删除会话
-  sessionExists              // 检查会话是否存在
+  parseSessionFilename,      // Parse tên file phiên
+  getSessionPath,            // Lấy đường dẫn đầy đủ của phiên
+  getSessionContent,         // Đọc nội dung phiên
+  parseSessionMetadata,      // Parse metadata phiên
+  getSessionStats,           // Lấy thống kê phiên
+  getSessionTitle,           // Lấy tiêu đề phiên
+  getSessionSize,            // Lấy kích thước phiên (format human readable)
+  getAllSessions,            // Lấy tất cả phiên (hỗ trợ phân trang và lọc)
+  getSessionById,            // Lấy một phiên theo ID
+  writeSessionContent,       // Ghi nội dung phiên
+  appendSessionContent,      // Nối nội dung phiên
+  deleteSession,             // Xóa phiên
+  sessionExists              // Kiểm tra phiên tồn tại
 } = require('./session-manager');
 
-// 获取所有会话
+// Lấy tất cả phiên
 const { sessions, total, offset, limit, hasMore } = getAllSessions({
   limit: 50,
   offset: 0,
@@ -246,31 +246,31 @@ const { sessions, total, offset, limit, hasMore } = getAllSessions({
   search: 'abc123'
 });
 
-// 获取单个会话
+// Lấy một phiên
 const session = getSessionById('abc123', true);
 // session: { filename, shortId, date, sessionPath, content, metadata, stats, ... }
 
-// 解析会话元数据
+// Parse metadata phiên
 const metadata = parseSessionMetadata(content);
 // metadata: { title, date, started, lastUpdated, project, branch, worktree, completed, inProgress, notes, context }
 
-// 获取会话统计
+// Lấy thống kê phiên
 const stats = getSessionStats(sessionPathOrContent);
 // stats: { totalItems, completedItems, inProgressItems, lineCount, hasNotes, hasContext }
 
-// 写入会话
+// Ghi phiên
 writeSessionContent(sessionPath, '# New Session\n\nContent...');
 
-// 追加内容
+// Nối nội dung
 appendSessionContent(sessionPath, '\n\nMore content...');
 
-// 删除会话
+// Xóa phiên
 deleteSession(sessionPath);
 ```
 
-### 会话元数据格式
+### Định dạng metadata phiên
 
-会话内容中的元数据:
+Metadata trong nội dung phiên:
 
 ```markdown
 # Session Title
@@ -302,25 +302,25 @@ previous-context-content
 
 ## install-executor.js
 
-**路径**: `scripts/lib/install-executor.js`
+**Đường dẫn**: `scripts/lib/install-executor.js`
 
-ECC 安装执行器,负责实际执行安装操作。
+Trình thực thi cài đặt ECC, chịu trách nhiệm thực hiện các thao tác cài đặt thực tế.
 
-### 主要功能
+### Chức năng chính
 
-- 创建安装计划
-- 执行文件复制操作
-- 处理安装状态记录
+- Tạo kế hoạch cài đặt
+- Thực hiện thao tác sao chép file
+- Xử lý ghi trạng thái cài đặt
 
-### 核心 API
+### API cốt lõi
 
 ```javascript
 const {
-  applyInstallPlan,       // 应用安装计划
-  listAvailableLanguages  // 列出可用语言
+  applyInstallPlan,       // Áp dụng kế hoạch cài đặt
+  listAvailableLanguages  // Liệt kê các ngôn ngữ khả dụng
 } = require('./install-executor');
 
-// 列出可用语言
+// Liệt kê các ngôn ngữ khả dụng
 const languages = listAvailableLanguages();
 // ['typescript', 'javascript', 'python', ...]
 ```
@@ -329,87 +329,87 @@ const languages = listAvailableLanguages();
 
 ## install-lifecycle.js
 
-**路径**: `scripts/lib/install-lifecycle.js`
+**Đường dẫn**: `scripts/lib/install-lifecycle.js`
 
-安装生命周期管理,处理安装的各个阶段。
+Quản lý vòng đời cài đặt, xử lý các giai đoạn cài đặt.
 
 ---
 
 ## install-manifests.js
 
-**路径**: `scripts/lib/install-manifests.js`
+**Đường dẫn**: `scripts/lib/install-manifests.js`
 
-安装清单定义,包括:
-- 支持的安装目标
-- 可用语言列表
-- 支持的本地化列表
+Định nghĩa manifest cài đặt, bao gồm:
+- Các target cài đặt được hỗ trợ
+- Danh sách ngôn ngữ khả dụng
+- Các localization được hỗ trợ
 
 ---
 
 ## install-state.js
 
-**路径**: `scripts/lib/install-state.js`
+**Đường dẫn**: `scripts/lib/install-state.js`
 
-安装状态管理,记录哪些文件被安装到哪里。
+Quản lý trạng thái cài đặt, ghi lại các file được cài đặt ở đâu.
 
 ---
 
 ## project-detect.js
 
-**路径**: `scripts/lib/project-detect.js`
+**Đường dẫn**: `scripts/lib/project-detect.js`
 
-项目类型检测,检测当前目录的项目类型。
+Phát hiện loại dự án trong thư mục hiện tại.
 
 ---
 
 ## observer-sessions.js
 
-**路径**: `scripts/lib/observer-sessions.js`
+**Đường dẫn**: `scripts/lib/observer-sessions.js`
 
-会话观察器,用于监控会话活动。
+Session observer, giám sát hoạt động phiên.
 
 ---
 
 ## shell-substitution.js
 
-**路径**: `scripts/lib/shell-substitution.js`
+**Đường dẫn**: `scripts/lib/shell-substitution.js`
 
-Shell 变量替换工具,处理环境变量和 shell 表达式。
+Công cụ thay thế biến shell, xử lý biến môi trường và biểu thức shell.
 
 ---
 
 ## tmux-worktree-orchestrator.js
 
-**路径**: `scripts/lib/tmux-worktree-orchestrator.js`
+**Đường dẫn**: `scripts/lib/tmux-worktree-orchestrator.js`
 
-Tmux + Git Worktree 编排器,管理复杂的开发环境。
+Tmux + Git Worktree orchestrator, quản lý môi trường phát triển phức tạp.
 
 ---
 
 ## mcp-config.js
 
-**路径**: `scripts/lib/mcp-config.js`
+**Đường dẫn**: `scripts/lib/mcp-config.js`
 
-MCP (Model Context Protocol) 配置管理。
+Quản lý cấu hình MCP (Model Context Protocol).
 
 ---
 
-## 其他工具
+## Các công cụ khác
 
-| 文件 | 说明 |
-|------|------|
-| `agent-compress.js` | Agent 上下文压缩 |
-| `cost-estimate.js` | 成本估算 |
-| `github-discussions.js` | GitHub 讨论集成 |
-| `hook-flags.js` | Hook 标志管理 |
-| `inspection.js` | 检查工具 |
-| `orchestration-session.js` | 编排会话管理 |
-| `resolve-ecc-root.js` | ECC 根目录解析 |
-| `resolve-formatter.js` | 格式化器解析 |
-| `session-aliases.js` | 会话别名管理 |
-| `session-bridge.js` | 会话桥接 |
-| `shell-split.js` | Shell 命令分割 |
-| `state-store/` | 状态存储子模块 |
-| `install/` | 安装相关子模块 |
-| `skill-evolution/` | 技能演进子模块 |
-| `skill-improvement/` | 技能改进子模块 |
+| File | Mô tả |
+|------|----------|
+| `agent-compress.js` | Nén context agent |
+| `cost-estimate.js` | Ước tính chi phí |
+| `github-discussions.js` | Tích hợp GitHub discussions |
+| `hook-flags.js` | Quản lý hook flags |
+| `inspection.js` | Công cụ kiểm tra |
+| `orchestration-session.js` | Quản lý orchestration session |
+| `resolve-ecc-root.js` | Resolve ECC root directory |
+| `resolve-formatter.js` | Resolve formatter |
+| `session-aliases.js` | Quản lý session aliases |
+| `session-bridge.js` | Session bridge |
+| `shell-split.js` | Shell command split |
+| `state-store/` | Submodule lưu trữ trạng thái |
+| `install/` | Submodule liên quan đến cài đặt |
+| `skill-evolution/` | Submodule tiến hóa skill |
+| `skill-improvement/` | Submodule cải thiện skill |

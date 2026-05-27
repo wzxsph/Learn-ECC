@@ -1,89 +1,89 @@
-# 搜索与数据获取技能
+# Suche-und-Datenerhebung-Faehigkeiten
 
-## 概述
+## Ueberblick
 
-搜索与数据获取技能用于网络搜索、数据抓取、API 查询和信息检索。
+Such- und Datenerhebungs-Faehigkeiten werden fuer Websuche, Datenscraping, API-Abfragen und Information-Retrieval verwendet.
 
-## 核心技能
+## Kernfaehigkeiten
 
 ### exa-search
 
-**用途**: Exa 语义搜索
+**Zweck**: Exa Semantische Suche
 
-**功能**:
-- 语义网页搜索
-- 内容提取
-- 过滤和排序
-- 实时更新
+**Funktionen**:
+- Semantische Websuche
+- Inhaltsextraktion
+- Filterung und Sortierung
+- Echtzeit-Updates
 
 ---
 
 ### search-first
 
-**用途**: 搜索优先方法论
+**Zweck**: Search-First-Methodik
 
-**核心原则**:
-- 先搜索后实现
-- 利用现有解决方案
-- 避免重复造轮子
+**Kernprinzipien**:
+- Erst suchen, dann implementieren
+- Bestehende Loesungen nutzen
+- Wiederholtes Rad nicht neu erfinden
 
 ---
 
 ### data-scraper-agent
 
-**用途**: 数据抓取代理
+**Zweck**: Datascraping-Agent
 
-**使用场景**:
-- 网页数据提取
-- 结构化数据转换
-- 批量采集
-- 反爬虫策略
+**Verwendungsszenarien**:
+- Web-Datenextraktion
+- Strukturierte Datentransformation
+- Batch-Erfassung
+- Anti-Scraping-Strategien
 
 ---
 
 ### iterative-retrieval
 
-**用途**: 迭代检索模式
+**Zweck**: Iteratives Retrieval-Muster
 
-**方法**:
-- 分层检索
-- 相关性反馈
-- 结果优化
-- 上下文丰富
+**Methoden**:
+- Schichtweise Retrieval
+- Relevanz-Feedback
+- Ergebnisoptimierung
+- Kontext-Anreicherung
 
 ---
 
-## MCP 服务器
+## MCP-Server
 
 ### mcp-server-patterns
 
-**用途**: MCP 服务器开发模式
+**Zweck**: MCP-Server-Entwicklungsmuster
 
-**核心概念**:
-- 工具定义
-- 资源管理
-- 提示模板
-- 错误处理
+**Kernkonzepte**:
+- Tool-Definition
+- Ressourcenverwaltung
+- Prompt-Templates
+- Fehlerbehandlung
 
 ---
 
 ### context7
 
-**用途**: Context7 文档检索
+**Zweck**: Context7-Dokumentationsabruf
 
-**功能**:
-- 库文档查询
-- 代码示例获取
-- API 引用
-- 版本特定文档
+**Funktionen**:
+- Bibliotheks-Dokumentationsabfrage
+- Code-Beispiele abrufen
+- API-Referenzen
+- Versionsspezifische Dokumentation
 
 ---
 
-## 相关技能
+## Zugehoerige Faehigkeiten
 
-- `exa-search` - Exa 搜索
-- `search-first` - 搜索优先
-- `data-scraper-agent` - 数据抓取
-- `iterative-retrieval` - 迭代检索
-- `mcp-server-patterns` - MCP 服务器模式
-- `context7` - Context7 文档
+- `exa-search` - Exa-Suche
+- `search-first` - Search-First
+- `data-scraper-agent` - Datascraping
+- `iterative-retrieval` - Iteratives Retrieval
+- `mcp-server-patterns` - MCP-Server-Muster
+- `context7` - Context7-Dokumentation

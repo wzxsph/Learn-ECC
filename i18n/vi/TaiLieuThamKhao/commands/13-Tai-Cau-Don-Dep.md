@@ -1,45 +1,45 @@
-# 重构与清理命令
+# Lệnh Tái Cấu Trúc và Dọn Dẹp
 
-## 概述
+## Tổng quan
 
-重构与清理命令用于代码重构、死代码清理和自动更新。
+Lệnh tái cấu trúc và dọn dẹp dùng để refactor code, xóa dead code và tự động update.
 
-## 命令列表
+## Danh sách lệnh
 
 ### /refactor-clean
 
-**用途**: 删除死代码+合并重复
+**Mục đích**: Xóa dead code + merge duplicate
 
-**描述**: 识别并删除未使用的代码，合并重复的代码片段。
+**Mô tả**: Identify và delete unused code, merge duplicate code fragment.
 
-**分析内容**:
-- 未使用的函数和变量
-- 重复代码块
-- 过时的注释
-- 未使用的导入
+**Analysis nội dung**:
+- Unused function và variable
+- Duplicate code block
+- Obsolete comment
+- Unused import
 
-**工具支持**:
-- `knip` - 检测死代码
-- `depcheck` - 检测未使用依赖
-- `ts-prune` - TypeScript 死代码检测
+**Tool support**:
+- `knip` - Dead code detection
+- `depcheck` - Unused dependency detection
+- `ts-prune` - TypeScript dead code detection
 
 ---
 
 ### /auto-update
 
-**用途**: 自动更新能力
+**Mục đích**: Auto update capability
 
-**描述**: 自动更新项目依赖和配置到最新版本。
+**Mô tả**: Automatically update project dependency và configuration lên version mới nhất.
 
-**更新内容**:
-- npm/pip 包更新
-- 配置文件迁移
-- 代码迁移
-- 版本兼容性检查
+**Update nội dung**:
+- npm/pip package update
+- Configuration file migration
+- Code migration
+- Version compatibility check
 
 ---
 
-## 相关命令
+## Các lệnh liên quan
 
-- `/refactor-clean` - 重构清理
-- `/auto-update` - 自动更新
+- `/refactor-clean` - Refactor cleanup
+- `/auto-update` - Auto update

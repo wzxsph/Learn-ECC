@@ -1,364 +1,364 @@
-# 代码审查类 Agent
+# Code-Review-Agenten
 
-代码审查类 Agent 专门负责代码质量、安全性和可维护性的审查工作。
+Code-Review-Agenten sind spezialisiert auf die Pruefung von Codequalitaet, Sicherheit und Wartbarkeit.
 
-## Agent 列表
+## Agent-Liste
 
-| Agent 名称 | 用途 | 使用模型 | 核心工具 |
-|------------|------|----------|----------|
-| code-reviewer | 通用代码审查专家 | sonnet | Read, Grep, Glob, Bash |
-| python-reviewer | Python 代码审查（PEP 8、类型提示、安全） | sonnet | Read, Grep, Glob, Bash |
-| go-reviewer | Go 代码审查（并发、错误处理、性能） | sonnet | Read, Grep, Glob, Bash |
-| kotlin-reviewer | Kotlin/Android 代码审查（协程、Compose） | sonnet | Read, Grep, Glob, Bash |
-| rust-reviewer | Rust 代码审查（所有权、生命周期的安全） | sonnet | Read, Grep, Glob, Bash |
-| cpp-reviewer | C++ 代码审查（内存安全、现代 C++ 惯用法） | sonnet | Read, Grep, Glob, Bash |
-| flutter-reviewer | Flutter/Dart 代码审查（状态管理、性能） | sonnet | Read, Grep, Glob, Bash |
-| typescript-reviewer | TypeScript/JavaScript 代码审查（类型安全） | sonnet | Read, Grep, Glob, Bash |
-| swift-reviewer | Swift 代码审查（协议、并发、ARC 内存管理） | sonnet | Read, Grep, Glob, Bash |
-| csharp-reviewer | C# 代码审查（.NET 约定、异步模式） | sonnet | Read, Grep, Glob, Bash |
-| fsharp-reviewer | F# 代码审查（函数式惯用语、模式匹配） | sonnet | Read, Grep, Glob, Bash |
-| java-reviewer | Java 代码审查（Spring Boot/Quarkus 框架） | sonnet | Read, Grep, Glob, Bash |
+| Agent-Name | Verwendung | Verwendetes Modell | Kerntools |
+|------------|------------|---------------------|------------|
+| code-reviewer | Allgemeiner Code-Review-Experte | sonnet | Read, Grep, Glob, Bash |
+| python-reviewer | Python Code-Review (PEP 8, Typhinweise, Sicherheit) | sonnet | Read, Grep, Glob, Bash |
+| go-reviewer | Go Code-Review (Nebenlaeufigkeit, Fehlerbehandlung, Leistung) | sonnet | Read, Grep, Glob, Bash |
+| kotlin-reviewer | Kotlin/Android Code-Review (Koroutinen, Compose) | sonnet | Read, Grep, Glob, Bash |
+| rust-reviewer | Rust Code-Review (Eigentum, Lebensdauer, Sicherheit) | sonnet | Read, Grep, Glob, Bash |
+| cpp-reviewer | C++ Code-Review (Speichersicherheit, moderne C++-Idiome) | sonnet | Read, Grep, Glob, Bash |
+| flutter-reviewer | Flutter/Dart Code-Review (Zustandsverwaltung, Leistung) | sonnet | Read, Grep, Glob, Bash |
+| typescript-reviewer | TypeScript/JavaScript Code-Review (Typsicherheit) | sonnet | Read, Grep, Glob, Bash |
+| swift-reviewer | Swift Code-Review (Protokolle, Nebenlaeufigkeit, ARC-Speicherverwaltung) | sonnet | Read, Grep, Glob, Bash |
+| csharp-reviewer | C# Code-Review (.NET-Konventionen, asynchrone Muster) | sonnet | Read, Grep, Glob, Bash |
+| fsharp-reviewer | F# Code-Review (Funktionale Idiome, Pattern Matching) | sonnet | Read, Grep, Glob, Bash |
+| java-reviewer | Java Code-Review (Spring Boot/Quarkus-Frameworks) | sonnet | Read, Grep, Glob, Bash |
 
 ---
 
 ## code-reviewer
 
-### 名称和用途
-通用代码审查专家，主动审查代码的质量、安全性和可维护性。所有代码变更后必须使用。
+### Name und Verwendung
+Allgemeiner Code-Review-Experte, der proaktiv die Codequalitaet, Sicherheit und Wartbarkeit prueft. Muss nach allen Codeaenderungen verwendet werden.
 
-### 能力说明
-- 代码质量检查（函数大小、嵌套深度、代码重复）
-- 安全漏洞检测（SQL 注入、XSS、硬编码凭证）
-- React/Next.js 模式检查
-- Node.js/后端模式检查
-- 性能问题识别
-- 最佳实践建议
+### Faehigkeiten
+- Codequalitaetspruefung (Funktionsgroesse, Verschachtelungstiefe, Codeduplikation)
+- Sicherheitsluecken erkennung (SQL-Injection, XSS, hartcodierte Anmeldedaten)
+- React/Next.js-Pattern-Pruefung
+- Node.js/Backend-Pattern-Pruefung
+- Leistungsprobleme identifizieren
+- Best-Practice-Empfehlungen
 
-### 适用场景
-- 代码写入或修改后
-- Pull Request 审查
-- 合并到共享分支前
+### Anwendungsgebiete
+- Nach dem Schreiben oder Aendern von Code
+- Pull-Request-Reviews
+- Vor dem Zusammenfuehren auf gemeinsame Branches
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Grep: 搜索代码模式
-- Glob: 查找文件
-- Bash: 运行 git diff 和 lint 命令
+### Verwendete Tools
+- Read: Dateiinhalt lesen
+- Grep: Codemuster suchen
+- Glob: Dateien finden
+- Bash: git diff und Lint-Befehle ausfuehren
 
-### 与其他 Agent 的协作方式
-- 发现安全问题时 Escalation 到 security-reviewer
-- 发现构建错误时使用 build-error-resolver
-- 发现需要重构时使用 refactor-cleaner
+### Zusammenarbeit mit anderen Agenten
+- Bei Sicherheitsproblemen Escalation an security-reviewer
+- Bei Build-Fehlern Verwendung von build-error-resolver
+- Bei Refactoring-Bedarf Verwendung von refactor-cleaner
 
 ---
 
 ## python-reviewer
 
-### 名称和用途
-Python 代码审查专家，专注于 PEP 8 合规、Pythonic 惯用语、类型提示、安全和性能。
+### Name und Verwendung
+Python Code-Review-Experte, spezialisiert auf PEP-8-Compliance, Pythonische Idiome, Typhinweise, Sicherheit und Leistung.
 
-### 能力说明
-- PEP 8 风格检查
-- Pythonic 惯用语推广（列表推导、枚举、with 语句）
-- 类型提示验证
-- SQL 注入检测
-- 协程与异步模式检查
-- 框架特定检查（Django、FastAPI、Flask）
+### Faehigkeiten
+- PEP-8-Stilpruefung
+- Pythonische Idiome foerdern (Listenkomprehension, Enums, with-Anweisungen)
+- Typhinweis-Validierung
+- SQL-Injection-Erkennung
+- Koroutinen- und Async-Pattern-Pruefung
+- Frameworkspezifische Pruefungen (Django, FastAPI, Flask)
 
-### 适用场景
-- Python 项目中的所有代码变更
-- Django/FastAPI/Flask 特定项目
+### Anwendungsgebiete
+- Alle Codeaenderungen in Python-Projekten
+- Django/FastAPI/Flask-spezifische Projekte
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Grep: 搜索代码模式
-- Glob: 查找 Python 文件
-- Bash: 运行 mypy, ruff, black, bandit, pytest
+### Verwendete Tools
+- Read: Dateiinhalt lesen
+- Grep: Codemuster suchen
+- Glob: Python-Dateien finden
+- Bash: mypy, ruff, black, bandit, pytest ausfuehren
 
-### 与其他 Agent 的协作方式
-- 与 security-reviewer 共享安全检查规则
-- 使用 tdd-guide 确保测试覆盖率
+### Zusammenarbeit mit anderen Agenten
+- Sicherheitspruefungsregeln werden mit security-reviewer geteilt
+- tdd-guide wird verwendet, um Testabdeckung sicherzustellen
 
 ---
 
 ## go-reviewer
 
-### 名称和用途
-Go 代码审查专家，专注于 idiomatic Go、并发模式、错误处理和性能。
+### Name und Verwendung
+Go Code-Review-Experte, spezialisiert auf idiomatic Go, Nebenlaeufigkeitspattern, Fehlerbehandlung und Leistung.
 
-### 能力说明
-- Go 惯用语检查（早期返回、错误包装）
-- 并发安全检查（goroutine 泄漏、通道死锁）
-- 错误处理最佳实践
-- 性能模式识别
-- 安全漏洞检测
+### Faehigkeiten
+- Go-Idiom-Pruefung (fruehe Rueckgaben, Fehlerverpackung)
+- Nebenlaeufigkeitssicherheitspruefung (Goroutine-Leaks, Channel-Deadlocks)
+- Best Practices fuer Fehlerbehandlung
+- Leistungspattern-Erkennung
+- Sicherheitsluecken-Erkennung
 
-### 适用场景
-- Go 项目中的所有代码变更
-- 需要遵守 Go 代码规范的项目
+### Anwendungsgebiete
+- Alle Codeaenderungen in Go-Projekten
+- Projekte, die Go-Codierungsstandards einhalten muessen
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Grep: 搜索代码模式
-- Glob: 查找 Go 文件
-- Bash: 运行 go vet, staticcheck, golangci-lint
+### Verwendete Tools
+- Read: Dateiinhalt lesen
+- Grep: Codemuster suchen
+- Glob: Go-Dateien finden
+- Bash: go vet, staticcheck, golangci-lint ausfuehren
 
-### 与其他 Agent 的协作方式
-- go-build-resolver 处理构建错误
-- security-reviewer 处理安全相关问题
+### Zusammenarbeit mit anderen Agenten
+- go-build-resolver behandelt Build-Fehler
+- security-reviewer behandelt sicherheitsrelevante Probleme
 
 ---
 
 ## kotlin-reviewer
 
-### 名称和用途
-Kotlin 和 Android/KMP 代码审查专家，专注于惯用语模式、协程安全、Compose 最佳实践和 Clean Architecture 违规。
+### Name und Verwendung
+Kotlin- und Android/KMP-Code-Review-Experte, spezialisiert auf idiomati Pattern, Koroutinensicherheit, Compose-Best-Practices und Clean-Architecture-Verstösse.
 
-### 能力说明
-- Kotlin 惯用语检查
-- 协程和 Flow 反模式检测
-- Compose 性能问题识别
-- Clean Architecture 模块边界强制
-- Android 特定问题检查
+### Faehigkeiten
+- Kotlin-Idiom-Pruefung
+- Koroutinen- und Flow-Anti-Pattern-Erkennung
+- Compose-Leistungsprobleme-Identifizierung
+- Clean-Architecture-Modulgrenzen-Durchsetzung
+- Android-spezifische Pruefungen
 
-### 适用场景
-- Android 原生开发
-- Kotlin Multiplatform (KMP) 项目
-- Jetpack Compose 项目
+### Anwendungsgebiete
+- Android Native Entwicklung
+- Kotlin Multiplatform (KMP) Projekte
+- Jetpack-Compose-Projekte
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Grep: 搜索代码模式
-- Glob: 查找 Kotlin/KTS 文件
-- Bash: 运行 Gradle 检查
+### Verwendete Tools
+- Read: Dateiinhalt lesen
+- Grep: Codemuster suchen
+- Glob: Kotlin/KTS-Dateien finden
+- Bash: Gradle-Checks ausfuehren
 
-### 与其他 Agent 的协作方式
-- kotlin-build-resolver 处理构建问题
-- security-reviewer 处理安全关键问题
+### Zusammenarbeit mit anderen Agenten
+- kotlin-build-resolver behandelt Build-Probleme
+- security-reviewer behandelt sicherheitskritische Probleme
 
 ---
 
 ## rust-reviewer
 
-### 名称和用途
-Rust 代码审查专家，专注于所有权、生命周期的安全性、错误处理、unsafe 使用和惯用语模式。
+### Name und Verwendung
+Rust Code-Review-Experte, spezialisiert auf Eigentum, Lebensdauersicherheit, Fehlerbehandlung, unsafe-Nutzung und idiomati Pattern.
 
-### 能力说明
-- 所有权和生命周期检查
-- 借用检查器错误诊断
-- unsafe 代码安全审查
-- 错误处理模式验证
-- 并发安全检查
+### Faehigkeiten
+- Eigentum und Lebensdauerpruefung
+- Borrow-Checker-Fehlerdiagnose
+- Unsafe-Code-Sicherheitsreview
+- Fehlerbehandlungspattern-Validierung
+- Nebenlaeufigkeitssicherheitspruefung
 
-### 适用场景
-- Rust 项目中的所有代码变更
-- 需要内存安全保证的项目
+### Anwendungsgebiete
+- Alle Codeaenderungen in Rust-Projekten
+- Projekte, die Speichersicherheitsgarantien benoetigen
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Grep: 搜索代码模式
-- Glob: 查找 Rust 文件
-- Bash: 运行 cargo check, clippy, fmt, test, audit
+### Verwendete Tools
+- Read: Dateiinhalt lesen
+- Grep: Codemuster suchen
+- Glob: Rust-Dateien finden
+- Bash: cargo check, clippy, fmt, test, audit ausfuehren
 
-### 与其他 Agent 的协作方式
-- rust-build-resolver 处理构建错误
-- 与 security-reviewer 共享安全审查规则
+### Zusammenarbeit mit anderen Agenten
+- rust-build-resolver behandelt Build-Fehler
+- Sicherheitsreviewregeln werden mit security-reviewer geteilt
 
 ---
 
 ## cpp-reviewer
 
-### 名称和用途
-C++ 代码审查专家，专注于内存安全、现代 C++ 惯用语、并发和性能。
+### Name und Verwendung
+C++ Code-Review-Experte, spezialisiert auf Speichersicherheit, moderne C++-Idiome, Nebenlaeufigkeit und Leistung.
 
-### 能力说明
-- 内存安全检查（raw new/delete、缓冲区溢出）
-- 现代 C++ 模式推广（智能指针、RAII）
-- 并发安全检查
-- 性能模式识别
-- 安全漏洞检测
+### Faehigkeiten
+- Speichersicherheitspruefung (raw new/delete, Buffer Overflows)
+- Foerderung moderner C++-Pattern (Smart Pointer, RAII)
+- Nebenlaeufigkeitssicherheitspruefung
+- Leistungspattern-Erkennung
+- Sicherheitsluecken-Erkennung
 
-### 适用场景
-- C++ 项目中的所有代码变更
-- 需要现代 C++ 最佳实践的项目
+### Anwendungsgebiete
+- Alle Codeaenderungen in C++-Projekten
+- Projekte, die moderne C++-Best-Practices benoetigen
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Grep: 搜索代码模式
-- Glob: 查找 C++ 文件
-- Bash: 运行 clang-tidy, cppcheck, cmake
+### Verwendete Tools
+- Read: Dateiinhalt lesen
+- Grep: Codemuster suchen
+- Glob: C++-Dateien finden
+- Bash: clang-tidy, cppcheck, cmake ausfuehren
 
-### 与其他 Agent 的协作方式
-- cpp-build-resolver 处理构建问题
-- security-reviewer 处理安全关键问题
+### Zusammenarbeit mit anderen Agenten
+- cpp-build-resolver behandelt Build-Probleme
+- security-reviewer behandelt sicherheitskritische Probleme
 
 ---
 
 ## flutter-reviewer
 
-### 名称和用途
-Flutter 和 Dart 代码审查专家，审查 Flutter 代码的 widget 最佳实践、状态管理模式、Dart 惯用语、性能陷阱、可访问性和 Clean Architecture 违规。
+### Name und Verwendung
+Flutter- und Dart-Code-Review-Experte, der Widget-Best-Practices, Zustaandsveraltungsmuster, Dart-Idiome, Leistungsfallen, Barrierefreiheit und Clean-Architecture-Verstösse in Flutter-Code prueft.
 
-### 能力说明
-- 状态管理反模式检测（无视解决方案）
-- Widget 构建性能优化
-- 架构边界强制
-- 资源生命周期管理
-- 可访问性检查
+### Faehigkeiten
+- Zustaandsveraltungs-Anti-Pattern-Erkennung (Ignorieren von SetState)
+- Widget-Build-Leistungsoptimierung
+- Architekturgrenzen-Durchsetzung
+- Ressourcenlebenszyklusverwaltung
+- Barrierefreiheitspruefung
 
-### 适用场景
-- Flutter 项目中的所有代码变更
-- 跨平台移动应用开发
+### Anwendungsgebiete
+- Alle Codeaenderungen in Flutter-Projekten
+- Cross-Platform-Mobile-App-Entwicklung
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Grep: 搜索代码模式
-- Glob: 查找 Dart 文件
-- Bash: 运行 flutter analyze
+### Verwendete Tools
+- Read: Dateiinhalt lesen
+- Grep: Codemuster suchen
+- Glob: Dart-Dateien finden
+- Bash: flutter analyze ausfuehren
 
-### 与其他 Agent 的协作方式
-- dart-build-resolver 处理构建问题
-- security-reviewer 处理安全关键问题
-- e2e-runner 进行端到端测试
+### Zusammenarbeit mit anderen Agenten
+- dart-build-resolver behandelt Build-Probleme
+- security-reviewer behandelt sicherheitskritische Probleme
+- e2e-runner fuehrt End-to-End-Tests durch
 
 ---
 
 ## typescript-reviewer
 
-### 名称和用途
-TypeScript/JavaScript 代码审查专家，专注于类型安全、异步正确性、Node/web 安全和惯用语模式。
+### Name und Verwendung
+TypeScript/JavaScript Code-Review-Experte, spezialisiert auf Typsicherheit, Async-Korrektheit, Node/Web-Sicherheit und idiomati Pattern.
 
-### 能力说明
-- 类型安全检查（any 滥用、非空断言）
-- 异步正确性验证
-- 安全漏洞检测
-- React/Next.js 特定检查
-- Node.js 特定检查
+### Faehigkeiten
+- Typsicherheitspruefung (any-Missbrauch, Non-Null-Assertion)
+- Async-Korrektheitsvalidierung
+- Sicherheitsluecken-Erkennung
+- React/Next.js-spezifische Pruefungen
+- Node.js-spezifische Pruefungen
 
-### 适用场景
-- TypeScript/JavaScript 项目中的所有代码变更
-- Next.js 和 React 项目
+### Anwendungsgebiete
+- Alle Codeaenderungen in TypeScript/JavaScript-Projekten
+- Next.js- und React-Projekte
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Grep: 搜索代码模式
-- Glob: 查找 TS/TSX/JS/JSX 文件
-- Bash: 运行 tsc, eslint, prettier, npm audit
+### Verwendete Tools
+- Read: Dateiinhalt lesen
+- Grep: Codemuster suchen
+- Glob: TS/TSX/JS/JSX-Dateien finden
+- Bash: tsc, eslint, prettier, npm audit ausfuehren
 
-### 与其他 Agent 的协作方式
-- build-error-resolver 处理构建错误
-- security-reviewer 处理安全关键问题
+### Zusammenarbeit mit anderen Agenten
+- build-error-resolver behandelt Build-Fehler
+- security-reviewer behandelt sicherheitskritische Probleme
 
 ---
 
 ## swift-reviewer
 
-### 名称和用途
-Swift 代码审查专家，专注于协议导向设计、值语义、ARC 内存管理、Swift Concurrency 和惯用语模式。
+### Name und Verwendung
+Swift Code-Review-Experte, spezialisiert auf protokollorientiertes Design, Wertsemantik, ARC-Speicherverwaltung, Swift-Nebenlaeufigkeit und idiomati Pattern.
 
-### 能力说明
-- Swift Concurrency 安全检查
-- 内存管理检查（强引用循环、代理引用）
-- 协议导向设计验证
-- 错误处理最佳实践
-- 性能模式识别
+### Faehigkeiten
+- Swift-Nebenlaeufigkeits-Sicherheitspruefung
+- Speicherverwaltungspruefung (Strong-Reference-Cycles, Delegate-Referenzen)
+- Protokollorientiertes Design-Validierung
+- Best-Practices fuer Fehlerbehandlung
+- Leistungspattern-Erkennung
 
-### 适用场景
-- Swift 项目中的所有代码变更
-- iOS/macOS 应用开发
+### Anwendungsgebiete
+- Alle Codeaenderungen in Swift-Projekten
+- iOS/macOS-Anwendungsentwicklung
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Grep: 搜索代码模式
-- Glob: 查找 Swift 文件
-- Bash: 运行 swift build, swiftlint, swift test
+### Verwendete Tools
+- Read: Dateiinhalt lesen
+- Grep: Codemuster suchen
+- Glob: Swift-Dateien finden
+- Bash: swift build, swiftlint, swift test ausfuehren
 
-### 与其他 Agent 的协作方式
-- swift-build-resolver 处理构建问题
-- security-reviewer 处理安全关键问题
+### Zusammenarbeit mit anderen Agenten
+- swift-build-resolver behandelt Build-Probleme
+- security-reviewer behandelt sicherheitskritische Probleme
 
 ---
 
 ## csharp-reviewer
 
-### 名称和用途
-C# 代码审查专家，专注于 .NET 约定、异步模式、安全、可空引用类型和性能。
+### Name und Verwendung
+C# Code-Review-Experte, spezialisiert auf .NET-Konventionen, asynchrone Muster, Sicherheit, Nullable-Referenztypen und Leistung.
 
-### 能力说明
-- .NET 惯用语检查
-- 异步模式验证
-- 可空类型安全
-- 安全漏洞检测
-- EF Core 特定检查
+### Faehigkeiten
+- .NET-Idiom-Pruefung
+- Asynchrones Pattern-Validierung
+- Nullable-Typsicherheit
+- Sicherheitsluecken-Erkennung
+- EF-Core-spezifische Pruefungen
 
-### 适用场景
-- C# 项目中的所有代码变更
-- .NET/.NET Core 应用开发
+### Anwendungsgebiete
+- Alle Codeaenderungen in C#-Projekten
+- .NET/.NET-Core-Anwendungsentwicklung
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Grep: 搜索代码模式
-- Glob: 查找 C# 文件
-- Bash: 运行 dotnet build, dotnet format, dotnet test
+### Verwendete Tools
+- Read: Dateiinhalt lesen
+- Grep: Codemuster suchen
+- Glob: C#-Dateien finden
+- Bash: dotnet build, dotnet format, dotnet test ausfuehren
 
-### 与其他 Agent 的协作方式
-- build-error-resolver 处理 .NET 构建问题
-- security-reviewer 处理安全关键问题
+### Zusammenarbeit mit anderen Agenten
+- build-error-resolver behandelt .NET-Build-Probleme
+- security-reviewer behandelt sicherheitskritische Probleme
 
 ---
 
 ## java-reviewer
 
-### 名称和用途
-Java 代码审查专家，用于 Spring Boot 和 Quarkus 项目。自动检测框架并应用适当的审查规则。
+### Name und Verwendung
+Java Code-Review-Experte fuer Spring-Boot- und Quarkus-Projekte. Automatische Frameworkerkennung und Anwendung geeigneter Review-Regeln.
 
-### 能力说明
-- 框架自动检测（Spring Boot/Quarkus）
-- 分层架构检查
-- JPA/Panache/MongoDB 检查
-- 并发安全检查
-- 安全漏洞检测
+### Faehigkeiten
+- Automatische Frameworkerkennung (Spring Boot/Quarkus)
+- Schichtenarchitekturpruefung
+- JPA/Panache/MongoDB-Pruefungen
+- Nebenlaeufigkeitssicherheitspruefung
+- Sicherheitsluecken-Erkennung
 
-### 适用场景
-- Spring Boot 项目
-- Quarkus 项目
-- Java 11+ 项目
+### Anwendungsgebiete
+- Spring-Boot-Projekte
+- Quarkus-Projekte
+- Java-11+-Projekte
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Grep: 搜索代码模式
-- Glob: 查找 Java 文件
-- Bash: 运行 Maven/Gradle 检查
+### Verwendete Tools
+- Read: Dateiinhalt lesen
+- Grep: Codemuster suchen
+- Glob: Java-Dateien finden
+- Bash: Maven/Gradle-Checks ausfuehren
 
-### 与其他 Agent 的协作方式
-- java-build-resolver 处理构建问题
-- security-reviewer 处理安全关键问题
+### Zusammenarbeit mit anderen Agenten
+- java-build-resolver behandelt Build-Probleme
+- security-reviewer behandelt sicherheitskritische Probleme
 
 ---
 
 ## fsharp-reviewer
 
-### 名称和用途
-F# 代码审查专家，专注于函数式惯用语、类型安全、模式匹配、计算表达式和性能。
+### Name und Verwendung
+F# Code-Review-Experte, spezialisiert auf funktionale Idiome, Typsicherheit, Pattern Matching, Calculation Expressions und Leistung.
 
-### 能力说明
-- 函数式惯用语检查
-- 模式匹配完整性验证
-- 类型安全检查
-- 计算表达式最佳实践
-- 性能模式识别
+### Faehigkeiten
+- Funktionale Idiom-Pruefung
+- Pattern-Matching-Vollstaendigkeitsvalidierung
+- Typsicherheitspruefung
+- Best-Practices fuer Calculation Expressions
+- Leistungspattern-Erkennung
 
-### 适用场景
-- F# 项目中的所有代码变更
-- 函数式编程项目
+### Anwendungsgebiete
+- Alle Codeaenderungen in F#-Projekten
+- Funktionale Programmierungsprojekte
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Grep: 搜索代码模式
-- Glob: 查找 F# 文件
-- Bash: 运行 dotnet build, fantomas, dotnet test
+### Verwendete Tools
+- Read: Dateiinhalt lesen
+- Grep: Codemuster suchen
+- Glob: F#-Dateien finden
+- Bash: dotnet build, fantomas, dotnet test ausfuehren
 
-### 与其他 Agent 的协作方式
-- 与 security-reviewer 共享安全审查规则
-- 使用 tdd-guide 确保测试覆盖率
-[返回 Agent 索引](../README.md)
+### Zusammenarbeit mit anderen Agenten
+- Sicherheitsreviewregeln werden mit security-reviewer geteilt
+- tdd-guide wird verwendet, um Testabdeckung sicherzustellen
+[Zurueck zum Agent-Index](../README.md)

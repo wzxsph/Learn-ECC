@@ -1,80 +1,80 @@
-# 项目管理命令
+# Projektmanagement-Befehle
 
-## 概述
+## Ueberblick
 
-项目管理命令用于项目配置、基础设施设置和工具链管理。
+Projektmanagement-Befehle werden fuer Projektkonfiguration, Infrastruktureinrichtung und Toolchain-Management verwendet.
 
-## 命令列表
+## Befehlsliste
 
 ### /projects
 
-**用途**: 列出已知项目 + instinct 统计
+**Zweck**: Bekannte Projekte auflisten + Instinct-Statistiken
 
-**描述**: 列出用户所有已知项目及其相关的 instinct 统计信息。
+**Beschreibung**: Listet alle bekannten Projekte des Benutzers mit zugehoerigen Instinct-Statistiken auf.
 
 ---
 
 ### /harness-audit
 
-**用途**: 审计 agent harness 配置
+**Zweck**: Agent harness-Konfiguration auditieren
 
-**描述**: 检查和审计 Claude Code 的 harness 配置。
+**Beschreibung**: Prueft und auditiert die Claude Code harness-Konfiguration.
 
-**检查内容**:
-- 工具链配置
-- 代理设置
-- MCP 服务器状态
-- 规则配置
+**Prueft**:
+- Toolchain-Konfiguration
+- Agent-Einstellungen
+- MCP-Server-Status
+- Regelkonfiguration
 
 ---
 
 ### /model-route
 
-**用途**: 路由任务到合适模型
+**Zweck**: Aufgaben an geeignetes Modell weiterleiten
 
-**描述**: 根据任务类型选择最合适的模型（Haiku/Sonnet/Opus）。
+**Beschreibung**: Waehlt das am besten geeignete Modell basierend auf Aufgabentyp (Haiku/Sonnet/Opus).
 
-**模型选择指南**:
-- **Haiku**: 轻量级任务、代码生成、频繁调用
-- **Sonnet**: 主要开发工作、复杂编码任务
-- **Opus**: 架构决策、深度推理、研究分析
+**Modellauswahl-Leitfaden**:
+- **Haiku**: Leichtgewichtige Aufgaben, Codegenerierung, haeufige Aufrufe
+- **Sonnet**: Hauptentwicklungsarbeit, komplexe Coding-Aufgaben
+- **Opus**: Architekturentscheidungen, tiefes Reasoning, Recherche und Analyse
 
 ---
 
 ### /pm2
 
-**用途**: PM2 进程管理器初始化
+**Zweck**: PM2-Prozessmanager-Initialisierung
 
-**描述**: 初始化 PM2 进程管理器配置。
+**Beschreibung**: Initialisiert PM2-Prozessmanager-Konfiguration.
 
 ---
 
 ### /setup-pm
 
-**用途**: 配置包管理器
+**Zweck**: Paketmanager konfigurieren
 
-**描述**: 配置项目使用的包管理器。
+**Beschreibung**: Konfiguriert den vom Projekt verwendeten Paketmanager.
 
-**支持的包管理器**:
+**Unterstuetzte Paketmanager**:
 - npm
 - pnpm
 - yarn
 - bun
 
-**可通过** `CLAUDE_PACKAGE_MANAGER` **环境变量配置**
+**Kann ueber** `CLAUDE_PACKAGE_MANAGER` **Umgebungsvariable konfiguriert werden**
 
 ---
 
 ### /project-init
 
-**用途**: 项目初始化
+**Zweck**: Projektinitialisierung
 
-**描述**: 初始化新项目的标准结构和配置。
+**Beschreibung**: Initialisiert Standardstruktur und -konfiguration fuer ein neues Projekt.
 
 ---
 
-## 相关命令
+## Zugehoerige Befehle
 
-- `/projects` - 列出项目
-- `/harness-audit` - 审计配置
-- `/model-route` - 模型路由
+- `/projects` - Projekte auflisten
+- `/harness-audit` - Konfiguration auditieren
+- `/model-route` - Modell-Routing

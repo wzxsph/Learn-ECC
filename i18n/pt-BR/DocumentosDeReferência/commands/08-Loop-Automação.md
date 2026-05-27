@@ -1,82 +1,82 @@
-# 循环与自动化命令
+# Comandos de Loop e Automação
 
-## 概述
+## Visão Geral
 
-循环与自动化命令用于启动和管理自主循环工作模式。
+Comandos de loop e automação são usados para iniciar e gerenciar modos de trabalho de loop autônomo.
 
-## 命令列表
+## Lista de Comandos
 
 ### /loop-start
 
-**用途**: 启动托管自主循环模式，带安全默认设置和明确停止条件
+**Propósito**: Iniciar modo de loop autônomo gerenciado com padrões seguros e condições de parada claras
 
-**描述**: 启动带安全默认设置和明确停止条件的托管自主循环模式。
+**Descrição**: Inicia um modo de loop autônomo gerenciado com padrões seguros default e condições de parada claras.
 
-**用法**: `/loop-start [pattern] [--mode safe|fast]`
+**Uso**: `/loop-start [pattern] [--mode safe|fast]`
 
-**参数**:
+**Parâmetros**:
 
-| 参数 | 值 | 说明 |
+| Parâmetro | Valor | Descrição |
 |---|---|---|
-| `pattern` | `sequential` | 顺序执行任务，一个接一个 |
-| | `continuous-pr` | 持续 PR 创建和合并循环 |
-| | `rfc-dag` | 基于 RFC 的有向无环图工作流 |
-| | `infinite` | 无限循环（需明确停止条件） |
-| `--mode` | `safe`（默认） | 严格质量门禁和检查点 |
-| | `fast` | 为速度减少门禁 |
+| `pattern` | `sequential` | Executar tarefas sequencialmente, uma após a outra |
+| | `continuous-pr` | Loop contínuo de criação e merge de PR |
+| | `rfc-dag` | Workflow DAG direcionado baseado em RFC |
+| | `infinite` | Loop infinito (requer condições de parada claras) |
+| `--mode` | `safe` (default) | Quality gates e checkpoints rigorosos |
+| | `fast` | Reduzir gates para velocidade |
 
-**工作流**:
-1. 确认仓库状态和分支策略
-2. 选择循环模式和相关模型层级策略
-3. 为所选模式启用所需 hooks/profile
-4. 创建循环计划并在 `.claude/plans/` 下写 runbook
-5. 打印启动和监控命令
+**Fluxo de Trabalho**:
+1. Confirmar estado do repositório e estratégia de branch
+2. Selecionar modo de loop e estratégia de nível de modelo relacionada
+3. Habilitar hooks/profile necessários para o modo selecionado
+4. Criar plano de loop e escrever runbook em `.claude/plans/`
+5. Imprimir comandos de início e monitoramento
 
-**必需安全检查**:
-- 验证测试在首次循环前通过
-- 确保 `ECC_HOOK_PROFILE` 未全局禁用
-- 确保循环有明确停止条件
+**Verificações de Segurança Obrigatórias**:
+- Verificar que testes passam antes do primeiro loop
+- Garantir que `ECC_HOOK_PROFILE` não está desabilitado globalmente
+- Garantir que loop tem condições de parada claras
 
-**参数传递**:
-- `$ARGUMENTS`: `[pattern]` 和可选的 `[--mode safe|fast]`
-- 模式是可选的（默认为 sequential）
-- mode 标志是可选的（默认为 safe）
+**Passagem de Parâmetros**:
+- `$ARGUMENTS`: `[pattern]` e opcional `[--mode safe|fast]`
+- Pattern é opcional (default é sequential)
+- Flag mode é opcional (default é safe)
 
-**Melhores-Práticas**:
-- 在 infinite 模式之前确保设置明确的停止条件
-- fast 模式仅在充分测试的代码上使用
-- 监控循环进度，使用 `/loop-status` 检查状态
+**Melhores Práticas**:
+- Garantir condições de parada claras antes de usar modo infinite
+- Usar modo fast apenas em código bem testado
+- Monitorar progresso do loop com `/loop-status`
 
-**常见陷阱**:
-- 在未验证测试的情况下启动循环
-- 使用 infinite 模式而无明确停止条件
-- 在全局禁用 hooks 时尝试使用安全模式
+**Armadilhas Comuns**:
+- Iniciar loop sem verificar testes
+- Usar modo infinite sem condições de parada claras
+- Tentar usar modo safe com hooks globalmente desabilitados
 
-**与其他命令集成**:
-- 使用 `/loop-status` 监控运行中循环
-- 使用 `/santa-loop` 进行 Santa 风格循环
-- 使用 `/checkpoint` 创建关键节点检查点
+**Integração com Outros Comandos**:
+- Usar `/loop-status` para monitorar loops em execução
+- Usar `/santa-loop` para loops estilo Santa
+- Usar `/checkpoint` para criar checkpoints em nós críticos
 
 ---
 
 ### /loop-status
 
-**用途**: 检查运行中循环的状态
+**Propósito**: Verificar status do loop em execução
 
-**描述**: 查看当前运行中循环的状态和进度。
+**Descrição**: Ver o status e progresso do loop autônomo em execução.
 
 ---
 
 ### /santa-loop
 
-**用途**: Santa 风格自主循环
+**Propósito**: Loop autônomo estilo Santa
 
-**描述**: 一种特殊风格的自主循环模式。
+**Descrição**: Um modo especial de loop autônomo estilo Santa.
 
 ---
 
-## 相关命令
+## Comandos Relacionados
 
-- `/loop-start` - 启动循环
-- `/loop-status` - 检查状态
-- `/santa-loop` - Santa 风格
+- `/loop-start` - Iniciar loop
+- `/loop-status` - Verificar status
+- `/santa-loop` - Estilo Santa

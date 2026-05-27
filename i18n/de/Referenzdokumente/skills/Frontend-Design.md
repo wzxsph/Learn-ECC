@@ -1,99 +1,99 @@
-# 前端与设计技能
+# Frontend- und Design-Faehigkeiten
 
-## 概述
+## Ueberblick
 
-前端与设计技能用于构建现代 Web 应用、UI/UX 设计和前端架构。
+Frontend- und Design-Faehigkeiten werden fuer den Aufbau moderner Web-Anwendungen, UI/UX-Design und Frontend-Architektur verwendet.
 
-## 核心技能
+## Kernfaehigkeiten
 
 ### frontend-patterns
 
-**用途**: 前端开发最佳实践
+**Zweck**: Frontend-Entwicklung Best-Practices
 
-**核心概念**:
-- 组件架构
-- 状态管理
-- 性能优化
-- 响应式设计
-- 无障碍访问
+**Kernkonzepte**:
+- Komponenten-Architektur
+- Zustandsverwaltung
+- Performance-Optimierung
+- Responsives Design
+- Barrierefreiheit
 
 ---
 
 ### frontend-design-direction
 
-**用途**: 前端设计方向指导
+**Zweck**: Frontend-Design-Richtungsberatung
 
-**涵盖内容**:
-- 设计系统
-- 设计令牌
-- 主题化
-- 品牌一致性
+**Umfasst**:
+- Design-Systeme
+- Design-Tokens
+- Theming
+- Markenkonsistenz
 
 ---
 
 ### frontend-slides
 
-**用途**: 演示文稿制作
+**Zweck**: Praesentationserstellung
 
-**使用场景**:
-- 技术演讲
-- 产品演示
-- 架构图绘制
+**Verwendungsszenarien**:
+- Technische Vortraege
+- Produktdemos
+- Architekturdiagramm-Erstellung
 
 ---
 
 ### design-system
 
-**用途**: 设计系统构建
+**Zweck**: Design-System-Aufbau
 
-**核心组件**:
-- 色彩系统
-- 字体规范
-- 组件库
-- 文档站点
+**Kernkomponenten**:
+- Farbsystem
+- Typografie-Richtlinien
+- Komponentenbibliothek
+- Dokumentationsseite
 
 ---
 
 ### canvas-design
 
-**用途**: Canvas 画布设计
+**Zweck**: Canvas-Leinwand-Design
 
-**使用场景**:
-- 数据可视化
-- 图表绘制
-- 交互式图形
+**Verwendungsszenarien**:
+- Datenvisualisierung
+- Diagramm-Erstellung
+- Interaktive Grafiken
 
 ---
 
 ### ui-demo
 
-**用途**: UI 演示制作
+**Zweck**: UI-Demo-Erstellung
 
-**用途**:
-- 组件演示
-- 交互原型
-- 视觉验证
+**Verwendung**:
+- Komponenten-Demos
+- Interaktive Prototypen
+- Visuelle Verifikation
 
 ---
 
-## Web 技术
+## Web-Technologien
 
 ### web-artifacts-builder
 
-**用途**: Web 产物构建器
+**Zweck**: Web-Artifacts-Builder
 
-**功能**:
-- HTML/CSS/JS 生成
-- 原型构建
-- 静态站点生成
+**Funktionen**:
+- HTML/CSS/JS-Generierung
+- Prototyp-Building
+- Statische Seiten-Generierung
 
 ---
 
-## 相关技能
+## Zugehoerige Faehigkeiten
 
-- `frontend-patterns` - 前端模式
-- `frontend-design-direction` - 前端设计方向
-- `frontend-slides` - 前端幻灯片
-- `design-system` - 设计系统
-- `canvas-design` - Canvas 设计
-- `ui-demo` - UI 演示
+- `frontend-patterns` - Frontend-Muster
+- `frontend-design-direction` - Frontend-Design-Richtung
+- `frontend-slides` - Frontend-Folien
+- `design-system` - Design-System
+- `canvas-design` - Canvas-Design
+- `ui-demo` - UI-Demo

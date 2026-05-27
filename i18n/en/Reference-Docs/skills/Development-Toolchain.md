@@ -198,7 +198,7 @@ test('login flow', async ({ page }) => {
 - Binary search
 - Log analysis
 - Metric monitoring
--链路追踪
+- Link tracing
 
 ### profiling
 

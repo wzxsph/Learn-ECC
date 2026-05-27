@@ -205,7 +205,7 @@ Design feature architecture based on deep understanding of existing codebase. Pr
 ---
 
 ## pr-test-analyzer
-(See [4. Testing Agents](./4.%20Testing%20Agents.md) for details)
+(See [4. Testing Agents](./04-Testing.md) for details)
 ---
 
 ## type-design-analyzer

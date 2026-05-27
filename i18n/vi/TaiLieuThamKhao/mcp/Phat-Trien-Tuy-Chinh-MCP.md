@@ -1,14 +1,14 @@
-# 自定义 MCP 服务器开发
+# Custom MCP Server Development
 
-## 概述
+## Tổng quan
 
-MCP 服务器基于 Model Context Protocol 实现，用于扩展 Claude Code 的能力。本指南介绍如何开发和集成自定义 MCP 服务器。
+MCP server dựa trên Model Context Protocol implementation, dùng để mở rộng capability của Claude Code. Hướng dẫn này giới thiệu cách develop và integrate custom MCP server.
 
-## 服务器类型
+## Server Type
 
-### 进程模式服务器
+### Process Mode Server
 
-通过本地进程启动，适合需要本地执行或访问本地资源的服务。
+Start qua local process, phù hợp với service cần local execution hoặc access local resource.
 
 ```json
 {
@@ -20,9 +20,9 @@ MCP 服务器基于 Model Context Protocol 实现，用于扩展 Claude Code 的
 }
 ```
 
-### HTTP 模式服务器
+### HTTP Mode Server
 
-通过 HTTP/HTTPS 访问远程服务器，适合微服务架构或云服务。
+Access remote server qua HTTP/HTTPS, phù hợp với microservice architecture hoặc cloud service.
 
 ```json
 {
@@ -34,11 +34,11 @@ MCP 服务器基于 Model Context Protocol 实现，用于扩展 Claude Code 的
 }
 ```
 
-## 开发流程
+## Development Process
 
-### 1. 使用 MCP SDK
+### 1. Sử dụng MCP SDK
 
-官方提供多种语言的 SDK：
+Official cung cấp multi-language SDK:
 
 ```bash
 # Node.js
@@ -48,9 +48,9 @@ npm install @modelcontextprotocol/sdk
 pip install mcp
 ```
 
-### 2. 实现服务器
+### 2. Implement Server
 
-**Node.js 示例：**
+**Node.js Example:**
 
 ```javascript
 const { Server } = require('@modelcontextprotocol/sdk');
@@ -69,13 +69,13 @@ const server = new Server(
   }
 );
 
-// 注册工具
+// Register tool
 server.setRequestHandler('tools/list', async () => {
   return {
     tools: [
       {
         name: "my_tool",
-        description: "执行自定义操作",
+        description: "Execute custom operation",
         inputSchema: {
           type: "object",
           properties: {
@@ -87,17 +87,17 @@ server.setRequestHandler('tools/list', async () => {
   };
 });
 
-// 处理工具调用
+// Handle tool call
 server.setRequestHandler('tools/call', async (request) => {
   const { name, arguments: args } = request.params;
 
   if (name === "my_tool") {
-    // 执行操作
-    return { content: [{ type: "text", text: "结果" }] };
+    // Execute operation
+    return { content: [{ type: "text", text: "result" }] };
   }
 });
 
-// 启动服务器
+// Start server
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
@@ -106,7 +106,7 @@ async function main() {
 main();
 ```
 
-**Python 示例：**
+**Python Example:**
 
 ```python
 from mcp.server import Server
@@ -119,7 +119,7 @@ async def list_tools():
     return [
         Tool(
             name="my_tool",
-            description="执行自定义操作",
+            description="Execute custom operation",
             inputSchema={
                 "type": "object",
                 "properties": {
@@ -132,17 +132,17 @@ async def list_tools():
 @server.call_tool()
 async def call_tool(name, arguments):
     if name == "my_tool":
-        # 执行操作
-        return [TextContent(type="text", text="结果")]
+        # Execute operation
+        return [TextContent(type="text", text="result")]
 
 async def main():
     async with stdio_server() as (read_stream, write_stream):
         await server.run(read_stream, write_stream, server.create_initialization_options())
 ```
 
-## 配置与集成
+## Configuration và Integration
 
-### 1. 本地测试
+### 1. Local Test
 
 ```json
 {
@@ -158,9 +158,9 @@ async def main():
 }
 ```
 
-### 2. 添加到 ECC
+### 2. Thêm vào ECC
 
-将配置添加到 `mcp-configs/mcp-servers.json`：
+Thêm configuration vào `mcp-configs/mcp-servers.json`:
 
 ```json
 {
@@ -171,35 +171,35 @@ async def main():
       "env": {
         "YOUR_API_KEY": "YOUR_KEY_HERE"
       },
-      "description": "你的自定义服务器描述"
+      "description": "Your custom server description"
     }
   }
 }
 ```
 
-## 最佳实践
+## Best Practice
 
-1. **错误处理**：始终返回结构化的错误响应
-2. **输入验证**：验证所有输入参数，拒绝无效请求
-3. **超时控制**：设置合理的超时时间
-4. **日志记录**：记录关键操作便于调试
-5. **资源清理**：确保连接和资源正确释放
-6. **版本管理**：遵循语义化版本
+1. **Error Handling**: Luôn return structured error response
+2. **Input Validation**: Validate tất cả input parameter, reject invalid request
+3. **Timeout Control**: Set reasonable timeout
+4. **Logging**: Log key operation cho debugging
+5. **Resource Cleanup**: Ensure connection và resource được release đúng cách
+6. **Version Management**: Follow semantic versioning
 
-## 常用工具类型
+## Common Tool Type
 
-| 类型 | 用途 |
+| Loại | Mục đích |
 |------|------|
-| `tools/list` | 列出可用工具 |
-| `tools/call` | 调用工具 |
-| `resources/list` | 列出资源 |
-| `resources/read` | 读取资源 |
-| `prompts/list` | 列出提示模板 |
-| `prompts/get` | 获取提示 |
+| `tools/list` | List available tools |
+| `tools/call` | Call tool |
+| `resources/list` | List resources |
+| `resources/read` | Read resource |
+| `prompts/list` | List prompt template |
+| `prompts/get` | Get prompt |
 
-## 参考资源
+## Reference Resource
 
-- [MCP 官方文档](https://modelcontextprotocol.io/)
+- [MCP Official Documentation](https://modelcontextprotocol.io/)
 - [MCP SDK (Node.js)](https://github.com/modelcontextprotocol/typescript-sdk)
 - [MCP SDK (Python)](https://github.com/modelcontextprotocol/python-sdk)
-- [MCP 规范](https://modelcontextprotocol.io/specification)
+- [MCP Specification](https://modelcontextprotocol.io/specification)

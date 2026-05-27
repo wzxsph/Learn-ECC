@@ -1,351 +1,447 @@
-# Hook类型
+# Custom Development
 
-## 概述
+## Tổng quan
 
-ECC Hooks系统是事件驱动的自动化机制，在Claude Code工具执行的前后触发，用于强制代码质量、早期发现错误和自动化重复检查。
+Hướng dẫn này giới thiệu cách phát triển custom hook cho hệ thống ECC Hooks, bao gồm basic structure, best practice và exit 0 requirement.
 
+## Basic Structure
+
+### Minimum Hook Template
+
+```javascript
+// my-custom-hook.js
+let data = '';
+process.stdin.on('data', chunk => data += chunk);
+process.stdin.on('end', () => {
+  const input = JSON.parse(data);
+
+  // Access tool info
+  const toolName = input.tool_name;        // "Edit", "Bash", "Write", etc.
+  const toolInput = input.tool_input;      // Tool-specific parameter
+  const toolOutput = input.tool_output;    // Chỉ available trong PostToolUse
+
+  // Warning (non-blocking): write to stderr
+  console.error('[Hook] Warning message');
+
+  // Block (chỉ PreToolUse): exit code 2
+  // process.exit(2);
+
+  // Always output raw data to stdout
+  console.log(data);
+});
 ```
-用户请求 → Claude选择工具 → PreToolUse钩子运行 → 工具执行 → PostToolUse钩子运行
+
+---
+
+## Exit Code Requirement
+
+### Key rule: exit 0 on non-critical error
+
+**Important**: Tất cả hook phải exit 0 khi có non-critical error, tránh blocking tool execution.
+
+| Exit code | Ý nghĩa | Use case |
+|--------|------|----------|
+| 0 | Thành công | Tiếp tục thực thi, hoặc non-critical warning |
+| 2 | Block | Chỉ dùng cho PreToolUse critical blocking |
+| Khác 0 | Error | Chỉ ghi log, **không nên dùng** |
+
+### Tại sao non-zero exit code không tốt?
+
+Nếu hook exit với non-zero exit code (ngoài 2), Claude Code sẽ đánh dấu entire tool call là failed, điều này có thể gây ra:
+- Tool execution bị interrupt
+- User experience bị ảnh hưởng
+- Problem khó debug
+
+### Xử lý lỗi đúng cách
+
+```javascript
+// Sai - Đừng làm thế này
+process.stdin.on('end', () => {
+  try {
+    const input = JSON.parse(data);
+    // Processing logic
+  } catch (e) {
+    console.error('[Hook] Error:', e.message);
+    process.exit(1);  // Sai: sẽ block tool
+  }
+  console.log(data);
+});
+
+// Đúng - Làm thế này
+process.stdin.on('end', () => {
+  try {
+    const input = JSON.parse(data);
+    // Processing logic
+  } catch (e) {
+    console.error('[Hook] Error:', e.message);
+    // Non-critical error, exit 0 continue
+    console.log(data);
+    return;
+  }
+  console.log(data);
+});
 ```
 
-## 钩子类型详解
+---
 
-### 1. PreToolUse 钩子
+## Hook Input Pattern
 
-#### 类型说明
-PreToolUse钩子在工具执行**之前**运行，可以阻止（exit code 2）或警告（stderr输出但不阻止）。
+### HookInput Interface
 
-#### 触发时机
-- 在任何工具（Edit、Write、Bash、Read等）执行之前
-- 适用于所有工具操作的前置检查
-
-#### 参数说明
 ```typescript
 interface HookInput {
-  tool_name: string;          // 工具名称: "Bash", "Edit", "Write", "Read"等
-  tool_input: {
-    command?: string;         // Bash: 要执行的命令
-    file_path?: string;        // Edit/Write/Read: 目标文件路径
-    old_string?: string;       // Edit: 被替换的文本
-    new_string?: string;       // Edit: 替换文本
-    content?: string;          // Write: 文件内容
+  tool_name: string;          // Tool name
+  tool_input: {               // Tool input parameter
+    command?: string;         // Bash: command
+    file_path?: string;        // Edit/Write/Read: file path
+    old_string?: string;       // Edit: text bị replace
+    new_string?: string;       // Edit: replacement text
+    content?: string;          // Write: file content
+  };
+  tool_output?: {             // Chỉ PostToolUse
+    output?: string;          // Command/tool output
   };
 }
 ```
 
-#### 退出码
-| 退出码 | 含义 | 行为 |
-|--------|------|------|
-| 0 | 成功 | 继续执行，不输出警告 |
-| 2 | 阻止 | 阻止工具执行 |
-| 其他非零 | 错误 | 记录日志但不阻止 |
+### Access Tool Info
 
-#### 使用示例
+```javascript
+process.stdin.on('end', () => {
+  const input = JSON.parse(data);
 
-**开发服务器阻止器（阻止在tmux外运行npm run dev）：**
+  // Get tool name
+  console.log('Tool:', input.tool_name);
+
+  // Handle theo tool type
+  if (input.tool_name === 'Bash') {
+    console.log('Command:', input.tool_input.command);
+  }
+
+  if (input.tool_name === 'Edit' || input.tool_name === 'Write') {
+    console.log('File:', input.tool_input.file_path);
+  }
+
+  // PostToolUse có thể access output
+  if (input.tool_output) {
+    console.log('Output:', input.tool_output.output);
+  }
+});
+```
+
+---
+
+## Common Hook Recipe
+
+### Warn TODO/FIXME Comment
+
 ```json
 {
-  "matcher": "Bash",
+  "matcher": "Edit",
   "hooks": [{
     "type": "command",
-    "command": "node scripts/hooks/dev-server-check.js"
+    "command": "node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const i=JSON.parse(d);const ns=i.tool_input?.new_string||'';if(/TODO|FIXME|HACK/.test(ns)){console.error('[Hook] New TODO/FIXME added - consider creating an issue')}console.log(d)})\""
   }],
-  "description": "阻止在tmux外运行开发服务器"
+  "description": "Warn when adding TODO/FIXME comment"
 }
 ```
 
-**文档文件警告（阻止非标准.md文件）：**
+### Block Creating Too Large File
+
 ```json
 {
   "matcher": "Write",
   "hooks": [{
     "type": "command",
-    "command": "node scripts/hooks/doc-file-warning.js"
+    "command": "node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const i=JSON.parse(d);const c=i.tool_input?.content||'';const lines=c.split('\\n').length;if(lines>800){console.error('[Hook] BLOCKED: File exceeds 800 lines ('+lines+' lines)');console.error('[Hook] Split into smaller, focused modules');process.exit(2)}console.log(d)})\""
   }],
-  "description": "警告非标准文档文件的创建"
+  "description": "Block creating file over 800 lines"
 }
 ```
 
-#### 注意事项
-- PreToolUse是**阻塞型**钩子，必须快速执行（<200ms）
-- 不要在PreToolUse钩子中进行网络调用
-- 阻止操作（exit 2）应谨慎使用，仅用于关键安全检查
+### Auto-format Python File with ruff
+
+```json
+{
+  "matcher": "Edit",
+  "hooks": [{
+    "type": "command",
+    "command": "node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const i=JSON.parse(d);const p=i.tool_input?.file_path||'';if(/\\.py$/.test(p)){const{execFileSync}=require('child_process');try{execFileSync('ruff',['format',p],{stdio:'pipe'})}catch(e){}}console.log(d)})\""
+  }],
+  "description": "Auto-format Python file with ruff after edit"
+}
+```
+
+### Require Test When Adding New Source File
+
+```json
+{
+  "matcher": "Write",
+  "hooks": [{
+    "type": "command",
+    "command": "node -e \"const fs=require('fs');let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const i=JSON.parse(d);const p=i.tool_input?.file_path||'';if(/src\\/.*\\.(ts|js)$/.test(p)&&!/\\.test\\.|\\.spec\\./.test(p)){const testPath=p.replace(/\\.(ts|js)$/,'.test.$1');if(!fs.existsSync(testPath)){console.error('[Hook] No test file found for: '+p);console.error('[Hook] Expected: '+testPath);console.error('[Hook] Consider writing tests first (/tdd)')}}console.log(d)})\""
+  }],
+  "description": "Remind to create test when adding new source file"
+}
+```
 
 ---
 
-### 2. PostToolUse 钩子
+## Async Hook
 
-#### 类型说明
-PostToolUse钩子在工具执行**之后**运行，可以分析输出但无法阻止工具执行。
+Với hook không nên block main flow (như background analysis):
 
-#### 触发时机
-- 在任何工具完成之后运行
-- 可以访问工具的输出结果
-
-#### 参数说明
-```typescript
-interface HookInput {
-  tool_name: string;          // 工具名称
-  tool_input: {               // 与PreToolUse相同
-    command?: string;
-    file_path?: string;
-    old_string?: string;
-    new_string?: string;
-    content?: string;
-  };
-  tool_output?: {             // 仅在PostToolUse中可用
-    output?: string;          // 命令/工具的输出
-  };
-}
-```
-
-#### 退出码
-| 退出码 | 含义 |
-|--------|------|
-| 0 | 成功，继续执行 |
-| 非零 | 错误，记录日志但不阻止工具执行 |
-
-#### 使用示例
-
-**PR日志记录（gh pr create后记录PR URL）：**
-```json
-{
-  "matcher": "Bash",
-  "hooks": [{
-    "type": "command",
-    "command": "node scripts/hooks/pr-logger.js",
-    "async": true,
-    "timeout": 30
-  }],
-  "description": "PR创建后记录URL和审查命令"
-}
-```
-
-**质量门检查（编辑后运行质量检查）：**
 ```json
 {
   "matcher": "Edit|Write|MultiEdit",
   "hooks": [{
     "type": "command",
-    "command": "node scripts/hooks/quality-gate.js",
+    "command": "node my-slow-hook.js",
     "async": true,
     "timeout": 30
-  }],
-  "description": "文件编辑后运行质量门检查"
+  }]
 }
 ```
 
-#### 注意事项
-- PostToolUse钩子**无法阻止**工具执行
-- 可以设置为异步（async: true）以避免阻塞
-- 异步钩子应在30秒内完成
+### Async Hook Lưu ý
+
+- Async hook chạy ở background
+- Không thể block tool execution
+- Nên hoàn thành trong 30 giây
+- Phù hợp cho: logging, analysis, telemetry
 
 ---
 
-### 3. Stop 钩子
+## Blocking Hook
 
-#### 类型说明
-Stop钩子在每次Claude响应后运行，用于批量处理、最终检查和会话状态持久化。
+Với trường hợp phải block tool execution (PreToolUse only):
 
-#### 触发时机
-- 在每个用户请求处理完成、Claude生成响应后
-- 发生在会话的最后一个响应之后
+```javascript
+// Block trong PreToolUse
+process.exit(2);  // Exit code 2 means block
+```
 
-#### 参数说明
-Stop钩子接收与PostToolUse相同的输入，包含完整的工具调用历史。
+### Khi nào dùng Block
 
-#### 使用示例
+- Security check fail (như detect secret)
+- Hard policy violation
+- Operation có thể cause data loss
 
-**控制台日志检查（响应后检查修改文件中的console.log）：**
+### Khi nào không dùng Block
+
+- Code style issue (dùng warning thay thế)
+- Non-critical check
+- Suggestion-type check
+
+---
+
+## Runtime Configuration
+
+### Sử dụng run-with-flags.js
+
 ```json
 {
-  "matcher": "*",
+  "matcher": "Edit",
   "hooks": [{
     "type": "command",
-    "command": "node scripts/hooks/check-console-log.js"
-  }],
-  "description": "检查修改文件中是否有console.log"
+    "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [['ecc'],['ecc@ecc'],['marketplaces','ecc'],['everything-claude-code'],['everything-claude-code@everything-claude-code'],['marketplaces','everything-claude-code']]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of ['ecc','everything-claude-code']){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js my-hook scripts/hooks/my-hook.js standard,strict"
+  }]
 }
 ```
 
-**批量格式化和类型检查：**
+### Simplified Version
+
+Sử dụng trực tiếp script path (nếu plugin root known):
+
 ```json
 {
-  "matcher": "*",
+  "matcher": "Bash",
   "hooks": [{
     "type": "command",
-    "command": "node scripts/hooks/stop-format-typecheck.js",
-    "timeout": 300
-  }],
-  "description": "批量格式化所有编辑的JS/TS文件并进行类型检查"
+    "command": "node scripts/hooks/my-hook.js"
+  }]
 }
 ```
 
-**会话摘要持久化：**
-```json
-{
-  "matcher": "*",
-  "hooks": [{
-    "type": "command",
-    "command": "node scripts/hooks/session-end.js",
-    "async": true,
-    "timeout": 10
-  }],
-  "description": "保存会话状态"
+---
+
+## Cross-Platform Note
+
+### Path Handling
+
+```javascript
+const path = require('path');
+const os = require('os');
+
+// Dùng path.join thay vì hard-code path separator
+const configPath = path.join(os.homedir(), '.claude', 'config.json');
+
+// Detect platform
+if (process.platform === 'win32') {
+  // Windows-specific handling
 }
 ```
 
-#### 注意事项
-- Stop钩子在每次响应后运行，适合做批量操作
-- 可以使用async模式进行非阻塞操作
-- 格式化/类型检查等适合在Stop时批量执行
+### Process Output
+
+```javascript
+// Dùng console.error output warning (hiển thị cho user)
+console.error('[Hook] Warning: some issue detected');
+
+// Dùng console.log output raw data (bắt buộc)
+console.log(data);
+
+// Không bao giờ dùng console.log output message text (sẽ interfere stdout data flow)
+```
 
 ---
 
-### 4. SessionStart 钩子
+## Performance Best Practice
 
-#### 类型说明
-SessionStart钩子在会话生命周期开始时触发，用于加载先前上下文和检测项目状态。
+### Keep Fast
 
-#### 触发时机
-- 新会话开始时
-- Claude Code启动或创建新会话时
+- PreToolUse hook: <200ms
+- PostToolUse sync hook: <1 second
+- Async hook: <30 seconds
 
-#### 使用示例
+### Avoid Blocking Operation
 
-**加载先前上下文并检测包管理器：**
-```json
-{
-  "event": "SessionStart",
-  "id": "session:start",
-  "script": "scripts/hooks/session-start-bootstrap.js",
-  "purpose": "在会话开始时加载有界限的先前上下文并检测项目状态",
-  "blocking": false
+```javascript
+// Bad: Sync file read
+const content = fs.readFileSync('large-file.txt', 'utf8');
+
+// Good: Async hoặc lazy load
+fs.readFile('large-file.txt', 'utf8', (err, content) => {
+  // Process
+});
+```
+
+### Cache Result
+
+```javascript
+// Cache expensive operation
+let cachedResult = null;
+let cacheTime = 0;
+const CACHE_TTL = 60000; // 1 minute
+
+function getCachedResult() {
+  const now = Date.now();
+  if (!cachedResult || now - cacheTime > CACHE_TTL) {
+    cachedResult = expensiveOperation();
+    cacheTime = now;
+  }
+  return cachedResult;
 }
 ```
 
-#### 注意事项
-- 生命周期钩子，必须快速完成（<30秒）
-- 可以通过`ECC_SESSION_START_MAX_CHARS`环境变量控制额外上下文大小
-- 可以用`ECC_SESSION_START_CONTEXT=off`完全禁用
-
 ---
 
-### 5. SessionEnd 钩子
+## Testing Hook
 
-#### 类型说明
-SessionEnd钩子在会话结束时触发，用于持久化会话结束摘要和清理。
-
-#### 触发时机
-- 会话结束时
-- 当会话 transcript 元数据可用时
-
-#### 使用示例
-
-**会话结束标记：**
-```json
-{
-  "event": "SessionEnd",
-  "id": "session:end",
-  "script": "scripts/hooks/session-end.js",
-  "purpose": "当transcript元数据可用时持久化会话结束摘要",
-  "blocking": false
-}
-```
-
-#### 注意事项
-- 异步执行为主，不应阻塞会话结束
-- 生命周期标记用于指标收集和清理
-
----
-
-### 6. PreCompact 钩子
-
-#### 类型说明
-PreCompact钩子在上下文压缩前触发，用于保存状态。
-
-#### 触发时机
-- 在上下文压缩/精简之前
-- 当上下文窗口接近满时
-
-#### 使用示例
-
-**上下文压缩前保存状态：**
-```json
-{
-  "event": "PreCompact",
-  "id": "pre:compact",
-  "script": "scripts/hooks/pre-compact.js",
-  "purpose": "在上下文压缩前持久化会话状态",
-  "blocking": false
-}
-```
-
-#### 注意事项
-- 适合保存长任务的状态
-- 非阻塞，不影响压缩流程
-
----
-
-### 7. PostToolUseFailure 钩子
-
-#### 类型说明
-PostToolUseFailure钩子在工具执行失败后触发。
-
-#### 触发时机
-- 任何工具调用失败后
-
-#### 使用示例
-
-**MCP健康检查（追踪失败的MCP调用）：**
-```json
-{
-  "matcher": "*",
-  "hooks": [{
-    "type": "command",
-    "command": "node scripts/hooks/mcp-health-check.js"
-  }],
-  "description": "追踪失败的MCP工具调用，标记不健康的服务器并尝试重连"
-}
-```
-
-#### 注意事项
-- 可用于重试逻辑或健康状态追踪
-- 不会改变工具失败的状态
-
----
-
-## 钩子类型对比表
-
-| 类型 | 触发时机 | 能否阻止 | 能否阻塞 | 典型用途 |
-|------|----------|----------|----------|----------|
-| PreToolUse | 工具执行前 | 是（exit 2） | 是（同步） | 质量检查、安全验证 |
-| PostToolUse | 工具执行后 | 否 | 可选（async） | 日志记录、分析 |
-| Stop | 每次响应后 | 否 | 可选（async） | 批量格式化、会话摘要 |
-| SessionStart | 会话开始 | 否 | 否 | 加载上下文、检测项目 |
-| SessionEnd | 会话结束 | 否 | 否 | 持久化摘要、清理 |
-| PreCompact | 压缩前 | 否 | 否 | 状态保存 |
-| PostToolUseFailure | 工具失败后 | 否 | 否 | 健康检查、重试 |
-
----
-
-## 环境变量控制
-
-可以通过环境变量控制钩子行为：
+### Manual Testing
 
 ```bash
-# minimal | standard | strict (默认: standard)
-export ECC_HOOK_PROFILE=standard
+# Test PreToolUse hook
+echo '{"tool_name":"Bash","tool_input":{"command":"echo test"}}' | node scripts/hooks/my-hook.js
 
-# 禁用特定钩子ID（逗号分隔）
-export ECC_DISABLED_HOOKS="pre:bash:tmux-reminder,post:edit:typecheck"
-
-# 禁用GateGuard
-export ECC_GATEGUARD=off
-
-# 控制SessionStart额外上下文大小（默认: 8000字符）
-export ECC_SESSION_START_MAX_CHARS=4000
-
-# 完全禁用SessionStart额外上下文
-export ECC_SESSION_START_CONTEXT=off
+# Test PostToolUse hook
+echo '{"tool_name":"Bash","tool_input":{"command":"echo test"},"tool_output":{"output":"test\n"}}' | node scripts/hooks/my-hook.js
 ```
+
+### Test Output Format
+
+```javascript
+// Correct stdout output (JSON)
+console.log(data);  // Raw input data
+
+// Correct stderr output (warning)
+console.error('[Hook] Warning message');
+
+// Incorrect - Không output other content to stdout
+console.log('Some message');  // This will corrupt data flow
+```
+
+---
+
+## Debugging Hook
+
+### Add Debug Output
+
+```javascript
+const DEBUG = process.env.DEBUG_HOOKS === '1';
+
+process.stdin.on('end', () => {
+  if (DEBUG) {
+    console.error('[DEBUG] Received input:', data);
+  }
+  // Processing logic
+  if (DEBUG) {
+    console.error('[DEBUG] Sending output');
+  }
+  console.log(data);
+});
+```
+
+### Common Problem
+
+| Problem | Reason | Solution |
+|------|------|----------|
+| Tool bị block | Hook exit non-zero (ngoài 2) | Đổi thành exit 0 và stderr warning |
+| Hang | Hook không end | Ensure luôn output to stdout |
+| Data corruption | Output non-JSON to stdout | Chỉ output raw data |
+| Performance issue | Hook quá chậm | Optimize hoặc đổi thành async |
+
+---
+
+## Integration vào hooks.json
+
+### Add New Hook
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/hooks/my-new-hook.js"
+          }
+        ],
+        "description": "My new hook description",
+        "id": "pre:custom:my-new-hook"
+      }
+    ]
+  }
+}
+```
+
+### Disable Built-in Hook
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [],
+        "description": "Disable doc file warning"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Best Practice Summary
+
+1. **Luôn exit 0 on non-critical error** - Không dùng non-zero exit code (ngoài 2)
+2. **Dùng console.error output warning** - Không dùng console.log
+3. **Giữ nhanh** - PreToolUse <200ms
+4. **Luôn output raw data to stdout** - Không thay đổi data flow
+5. **Dùng async xử lý long operation** - Set async: true
+6. **Cross-platform path handling** - Dùng path.join
+7. **Test output format** - Ensure stdout là raw JSON
+8. **Document hook của bạn** - Thêm clear description

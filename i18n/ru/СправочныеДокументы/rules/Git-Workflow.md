@@ -1,6 +1,6 @@
-# Git 工作流
+# Git 
 
-## Commit 消息格式
+## Commit 
 
 ```
 <type>: <description>
@@ -9,40 +9,40 @@
 ```
 
 **Тип (type)**:
-- `feat`: 新功能
-- `fix`: 修复 bug
-- `refactor`: 重构
-- `docs`: 文档
+- `feat`: функция
+- `fix`:  bug
+- `refactor`: 
+- `docs`: 
 - `test`: Тестирование
-- `chore`: 杂项
+- `chore`: 
 - `perf`: Оптимизация производительности
 - `ci`: CI/CD
 
-> Примечание：Через `~/.claude/settings.json` 全局禁用归属（attribution）
+> Примечание：Через `~/.claude/settings.json`  (attribution)
 
-## Pull Request 工作流
+## Pull Request 
 
-创建 PR 时：
-1. 分析完整提交历史（不仅是最新提交）
-2. 使用 `git diff [base-branch]...HEAD` 查看所有变更
-3. 起草全面的 PR 总结
-4. 包含Тестирование计划的 TODOs
-5. 如果是新分支，使用 `-u` 标志推送
+ PR ：
+1.  ()
+2.  `git diff [base-branch]...HEAD` 
+3.  PR 
+4. Тестирование TODOs
+5. ,  `-u` 
 
 
-## 分支命名
+## 
 
-使用标准的 git flow 分支命名：
-- `feature/`: 新功能
-- `fix/`: 修复
-- `refactor/`: 重构
-- `docs/`: 文档
+ git flow ：
+- `feature/`: функция
+- `fix/`: 
+- `refactor/`: 
+- `docs/`: 
 
-## 开发流程
+## 
 
-完整开发流程：
-1. **研究 & 重用** - GitHub 搜索、库文档、包注册表
-2. **计划** - Используйте агент planner для создания плана реализации
-3. **TDD 方式** - 先写Тестирование，再Реализовать
-4. **Код-ревью** - 使用 code-reviewer agent
-5. **提交 & 推送** - 详细提交消息，遵循 conventional commits
+：
+1. ** & ** - GitHub , , 
+2. **** - Используйте агент planner для создания плана реализации
+3. **TDD ** - Тестирование, Реализовать
+4. **Код-ревью** -  code-reviewer agent
+5. ** & ** - ,  conventional commits

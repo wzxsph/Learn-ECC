@@ -1,22 +1,22 @@
-# 开发工具链技能
+# Kỹ Năng Bộ Công Cụ Phát Triển
 
-本部分涵盖开发工具、测试、监控、日志等工程实践技能。
+Phần này cover development tool, testing, monitoring, logging và các engineering practice skill khác.
 
 ---
 
-## 测试工具
+## Testing Tool
 
 ### pytest
 
-**用途**: Python pytest 测试框架
+**Mục đích**: Python pytest testing framework
 
-**核心功能**:
-- Fixture 系统
-- 参数化测试
-- 标记与跳过
-- 覆盖率集成
+**Core function**:
+- Fixture system
+- Parametric test
+- Marker và skip
+- Coverage integration
 
-**示例**:
+**Example**:
 ```python
 import pytest
 
@@ -40,48 +40,48 @@ def test_with_db(database):
 
 ### jest
 
-**用途**: JavaScript Jest 测试框架
+**Mục đích**: JavaScript Jest testing framework
 
-**核心功能**:
-- 快照测试
-- 模拟函数
-- 异步测试
-- 覆盖率
+**Core function**:
+- Snapshot testing
+- Mock function
+- Async testing
+- Coverage
 
 ### rspec
 
-**用途**: Ruby RSpec 测试框架
+**Mục đích**: Ruby RSpec testing framework
 
-**核心概念**:
-- 描述上下文
-- 匹配器
-- 模拟与存根
-- 共享示例
+**Core concept**:
+- Describe context
+- Matcher
+- Mock và stub
+- Shared example
 
 ### minitest
 
-**用途**: Ruby Minitest
+**Mục đích**: Ruby Minitest
 
-**特点**:
-- 轻量级
-- 多种风格支持
-- 基准测试
+**Feature**:
+- Lightweight
+- Multiple style support
+- Benchmark
 
 ---
 
-## 浏览器自动化
+## Browser Automation
 
 ### playwright
 
-**用途**: Playwright E2E 测试
+**Mục đích**: Playwright E2E testing
 
-**核心功能**:
-- 多浏览器支持
-- 自动等待
-- 网络拦截
-- 追踪录制
+**Core function**:
+- Multi-browser support
+- Auto wait
+- Network intercept
+- Trace recording
 
-**示例**:
+**Example**:
 ```typescript
 import { test, expect } from '@playwright/test';
 
@@ -96,47 +96,47 @@ test('login flow', async ({ page }) => {
 
 ### puppeteer
 
-**用途**: Puppeteer 浏览器自动化
+**Mục đích**: Puppeteer browser automation
 
-**用途**:
-- 网页截图
-- PDF 生成
-- 爬虫
-- UI 测试
+**Usage**:
+- Webpage screenshot
+- PDF generation
+- Crawler
+- UI testing
 
 ### selenium
 
-**用途**: Selenium WebDriver
+**Mục đích**: Selenium WebDriver
 
-**特点**:
-- 多语言支持
-- 多浏览器支持
-- 分布式执行
+**Feature**:
+- Multi-language support
+- Multi-browser support
+- Distributed execution
 
 ### monkey-testing
 
-**用途**: 猴子测试
+**Mục đích**: Monkey testing
 
-**工具**:
+**Tool**:
 - Firebase Test Lab
 - Monkey (Android)
 - UI AutoMonkey (iOS)
 
 ---
 
-## 代码质量
+## Code Quality
 
 ### eslint
 
-**用途**: ESLint 代码检查
+**Mục đích**: ESLint code linting
 
-**核心概念**:
-- 规则配置
-- 插件开发
-- 自动修复
-- 配置继承
+**Core concept**:
+- Rule configuration
+- Plugin development
+- Auto fix
+- Config inheritance
 
-**示例**:
+**Example**:
 ```json
 {
   "rules": {
@@ -149,42 +149,42 @@ test('login flow', async ({ page }) => {
 
 ### prettier
 
-**用途**: Prettier 代码格式化
+**Mục đích**: Prettier code formatting
 
-**特点**:
-- opinionated 格式化
-- 多语言支持
-- 集成 ESLint
+**Feature**:
+- Opinionated formatting
+- Multi-language support
+- ESLint integration
 
 ### semgrep
 
-**用途**: Semgrep 静态分析
+**Mục đích**: Semgrep static analysis
 
-**用途**:
-- 安全漏洞检测
-- 代码味道检测
-- 自定义规则
+**Usage**:
+- Security vulnerability detection
+- Code smell detection
+- Custom rule
 
 ### code-review
 
-**用途**: 代码审查流程
+**Mục đích**: Code review process
 
-**审查要点**:
-- 代码可读性
-- 逻辑正确性
-- 安全性
-- 性能
-- 测试覆盖
+**Review point**:
+- Code readability
+- Logic correctness
+- Security
+- Performance
+- Test coverage
 
 ---
 
-## 调试与追踪
+## Debugging và Tracing
 
 ### debugging
 
-**用途**: 调试技术
+**Mục đích**: Debugging technique
 
-**工具**:
+**Tool**:
 - Chrome DevTools
 - VS Code Debugger
 - GDB
@@ -192,19 +192,19 @@ test('login flow', async ({ page }) => {
 
 ### troubleshooting
 
-**用途**: 问题排查
+**Mục đích**: Troubleshooting
 
-**方法论**:
-- 二分查找
-- 日志分析
-- 指标监控
-- 链路追踪
+**Methodology**:
+- Binary search
+- Log analysis
+- Metrics monitoring
+- Trace chaining
 
 ### profiling
 
-**用途**: 性能分析
+**Mục đích**: Performance analysis
 
-**工具**:
+**Tool**:
 - Chrome Performance
 - Node Clinic
 - Python cProfile
@@ -212,9 +212,9 @@ test('login flow', async ({ page }) => {
 
 ### benchmarking
 
-**用途**: 基准测试
+**Mục đích**: Benchmarking
 
-**工具**:
+**Tool**:
 - k6
 - Apache Bench
 - JMeter
@@ -226,15 +226,15 @@ test('login flow', async ({ page }) => {
 
 ### github-actions
 
-**用途**: GitHub Actions CI/CD
+**Mục đích**: GitHub Actions CI/CD
 
-**核心概念**:
-- Workflow 配置
-- Action 市场
-- 矩阵构建
-- 缓存
+**Core concept**:
+- Workflow configuration
+- Action marketplace
+- Matrix build
+- Cache
 
-**示例**:
+**Example**:
 ```yaml
 name: CI
 on: [push, pull_request]
@@ -252,38 +252,38 @@ jobs:
 
 ### gitlab-ci
 
-**用途**: GitHub CI/CD
+**Mục đích**: GitLab CI/CD
 
-**核心概念**:
-- Pipeline 配置
+**Core concept**:
+- Pipeline configuration
 - Runner
-- 缓存与 artifacts
-- 部署策略
+- Cache và artifact
+- Deployment strategy
 
 ### jenkins
 
-**用途**: Jenkins 持续集成
+**Mục đích**: Jenkins continuous integration
 
-**特性**:
-- 插件生态
-- 分布式构建
-- 流水线即代码
+**Feature**:
+- Plugin ecosystem
+- Distributed build
+- Pipeline as code
 
 ---
 
-## 日志管理
+## Log Management
 
 ### logging-best-practices
 
-**用途**: 日志最佳实践
+**Mục đích**: Log best practice
 
-**核心原则**:
-- 结构化日志 (JSON)
-- 日志级别
-- 上下文信息
-- 采样策略
+**Core principle**:
+- Structured log (JSON)
+- Log level
+- Context information
+- Sampling strategy
 
-**工具**:
+**Tool**:
 - ELK Stack
 - Loki
 - Splunk
@@ -291,88 +291,88 @@ jobs:
 
 ### centralized-logging
 
-**用途**: 集中式日志
+**Mục đích**: Centralized logging
 
-**架构**:
-- 日志收集 (Fluentd, Filebeat)
-- 日志存储 (Elasticsearch)
-- 日志可视化 (Kibana, Grafana)
+**Architecture**:
+- Log collection (Fluentd, Filebeat)
+- Log storage (Elasticsearch)
+- Log visualization (Kibana, Grafana)
 
 ---
 
-## 监控告警
+## Monitoring Alert
 
 ### prometheus
 
-**用途**: Prometheus 监控
+**Mục đích**: Prometheus monitoring
 
-**核心概念**:
-- 拉取模型
+**Core concept**:
+- Pull model
 - PromQL
-- 告警规则
-- 服务发现
+- Alert rule
+- Service discovery
 
 ### alertmanager
 
-**用途**: Alertmanager 告警
+**Mục đích**: Alertmanager alerting
 
-**功能**:
-- 告警分组
-- 抑制
-- 静默
-- 路由
+**Function**:
+- Alert grouping
+- Inhibition
+- Silencing
+- Routing
 
 ### grafana
 
-**用途**: Grafana 可视化
+**Mục đích**: Grafana visualization
 
-**用途**:
-- 指标仪表板
-- 告警规则
-- 数据源集成
+**Usage**:
+- Metrics dashboard
+- Alert rule
+- Data source integration
 
 ---
 
-## 文档工具
+## Documentation Tool
 
 ### swagger
 
-**用途**: Swagger API 文档
+**Mục đích**: Swagger API documentation
 
-**工具**:
+**Tool**:
 - Swagger UI
 - OpenAPI Generator
 - Swagger Editor
 
 ### postman
 
-**用途**: Postman API 测试
+**Mục đích**: Postman API testing
 
-**功能**:
-- 集合管理
-- 环境变量
-- 自动化测试
+**Function**:
+- Collection management
+- Environment variable
+- Automated testing
 - Mock Server
 
 ### redoc
 
-**用途**: ReDoc API 文档
+**Mục đích**: ReDoc API documentation
 
-**特点**:
-- OpenAPI 支持
-- 响应式设计
-- 主题定制
+**Feature**:
+- OpenAPI support
+- Responsive design
+- Theme customization
 
 ---
 
-## 相关技能
+## Related Skill
 
-| 技能 | 用途 |
+| Skill | Usage |
 |------|------|
-| `pytest` | Python 测试 |
-| `playwright` | E2E 测试 |
-| `eslint` | 代码检查 |
-| `semgrep` | 静态分析 |
+| `pytest` | Python testing |
+| `playwright` | E2E testing |
+| `eslint` | Code linting |
+| `semgrep` | Static analysis |
 | `github-actions` | CI/CD |
-| `prometheus` | 监控 |
-| `grafana` | 可视化 |
+| `prometheus` | Monitoring |
+| `grafana` | Visualization |

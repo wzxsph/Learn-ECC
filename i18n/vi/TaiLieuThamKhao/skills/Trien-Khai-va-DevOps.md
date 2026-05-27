@@ -1,104 +1,104 @@
-# 部署与 DevOps 技能
+# Kỹ Năng Triển Khai và DevOps
 
-## 概述
+## Tổng quan
 
-部署与 DevOps 技能用于容器化、基础设施即代码、持续集成和部署自动化。
+Triển khai và DevOps skill dùng để containerization, infrastructure as code, continuous integration và deployment automation.
 
-## 核心技能
+## Core Skill
 
 ### docker-patterns
 
-**用途**: Docker 容器最佳实践
+**Mục đích**: Docker container best practice
 
-**核心概念**:
-- 多阶段构建
-- 最小化镜像大小
-- 健康检查
-- 日志管理
-- 资源限制
+**Core concept**:
+- Multi-stage build
+- Minimize image size
+- Health check
+- Log management
+- Resource limit
 
 ---
 
 ### deployment-patterns
 
-**用途**: 部署策略与模式
+**Mục đích**: Deployment strategy và pattern
 
-**核心概念**:
-- 蓝绿部署
-- 金丝雀发布
+**Core concept**:
+- Blue-green deployment
+- Canary release
 - Rolling Update
-- 回滚策略
-- 零停机部署
+- Rollback strategy
+- Zero-downtime deployment
 
 ---
 
 ### production-audit
 
-**用途**: 生产环境审计
+**Mục đích**: Production environment audit
 
-**检查项**:
-- 安全性配置
-- 性能指标
-- 可用性检查
-- 监控告警验证
+**Check item**:
+- Security configuration
+- Performance metric
+- Availability check
+- Monitoring alerting verification
 
 ---
 
 ### production-scheduling
 
-**用途**: 生产调度管理
+**Mục đích**: Production scheduling management
 
-**使用场景**:
-- 定时任务管理
-- 批处理作业
-- 维护窗口规划
+**Usage scenario**:
+- Cron job management
+- Batch job processing
+- Maintenance window planning
 
 ---
 
 ### canary-watch
 
-**用途**: 金丝雀发布监控
+**Mục đích**: Canary release monitoring
 
-**功能**:
-- 流量分割监控
-- 错误率追踪
-- 性能对比
-- 自动回滚触发
+**Function**:
+- Traffic splitting monitoring
+- Error rate tracking
+- Performance comparison
+- Auto rollback trigger
 
 ---
 
-## 基础设施
+## Infrastructure
 
 ### network-config-validation
 
-**用途**: 网络配置验证
+**Mục đích**: Network configuration validation
 
-**检查项**:
-- 防火墙规则
-- 负载均衡配置
-- DNS 设置
-- SSL/TLS 证书
+**Check item**:
+- Firewall rule
+- Load balancer configuration
+- DNS setting
+- SSL/TLS certificate
 
 ---
 
 ### network-interface-health
 
-**用途**: 网络接口健康检查
+**Mục đích**: Network interface health check
 
-**监控指标**:
-- 带宽使用
-- 延迟
-- 丢包率
-- 连接数
+**Monitoring metric**:
+- Bandwidth usage
+- Latency
+- Packet loss rate
+- Connection count
 
 ---
 
-## 相关技能
+## Related Skill
 
-- `docker-patterns` - Docker 模式
-- `deployment-patterns` - 部署模式
-- `production-audit` - 生产审计
-- `production-scheduling` - 生产调度
-- `canary-watch` - 金丝雀监控
-- `network-config-validation` - 网络配置验证
-- `network-interface-health` - 网络接口健康
+- `docker-patterns` - Docker pattern
+- `deployment-patterns` - Deployment pattern
+- `production-audit` - Production audit
+- `production-scheduling` - Production scheduling
+- `canary-watch` - Canary monitoring
+- `network-config-validation` - Network config validation
+- `network-interface-health` - Network interface health

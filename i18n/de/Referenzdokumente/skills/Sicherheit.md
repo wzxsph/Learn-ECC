@@ -1,74 +1,74 @@
-# 安全
+# Sicherheit
 
-本部分涵盖安全审查、漏洞扫描和各框架的安全最佳实践。
+Dieser Abschnitt behandelt Sicherheitsreviews, Schwachstellen-Scanning und Sicherheits-Best-Practices fuer verschiedene Frameworks.
 
 ---
 
-## 安全审查
+## Sicherheits-Review
 
-### 用途说明
-安全审查技能确保所有代码遵循安全最佳实践，识别潜在漏洞。
+### Verwendungszweck
+Sicherheits-Review-Faehigkeiten stellen sicher, dass aller Code Sicherheits-Best-Practices folgt und potenzielle Schwachstellen identifiziert werden.
 
-### 使用时机
-- 实现身份验证或授权
-- 处理用户输入或文件上传
-- 创建新API端点
-- 使用密钥或凭证
-- 实现支付功能
-- 存储或传输敏感数据
-- 集成第三方API
+### Verwendung
+- Authentifizierung oder Autorisierung implementieren
+- Benutzereingaben oder Datei-Uploads verarbeiten
+- Neue API-Endpunkte erstellen
+- Schluessel oder Anmeldedaten verwenden
+- Zahlungsfunktionen implementieren
+- Sensible Daten speichern oder uebertragen
+- Drittanbieter-APIs integrieren
 
-### 核心概念
+### Kernkonzepte
 
-**1. 密钥管理**
-永远不在源代码中硬编码密钥。
+**1. Schluesselverwaltung**
+Niemals Schluessel in den Quellcode hardcodieren.
 
-**2. 输入验证**
-所有用户输入必须验证。
+**2. Eingabevalidierung**
+Alle Benutzereingaben muessen validiert werden.
 
-**3. SQL注入防护**
-使用参数化查询。
+**3. SQL-Injection-Schutz**
+Parametrisierte Abfragen verwenden.
 
-**4. XSS防护**
-清理用户提供的HTML。
+**4. XSS-Schutz**
+Benutzer-bereitgestelltes HTML bereinigen.
 
-**5. CSRF保护**
-在状态改变操作上使用CSRF令牌。
+**5. CSRF-Schutz**
+CSRF-Token bei zustandsaendernden Operationen verwenden.
 
-**6. 速率限制**
-在所有API端点上启用速率限制。
+**6. Rate-Limiting**
+Rate-Limiting auf allen API-Endpunkten aktivieren.
 
-### 安全检查清单
+### Sicherheits-Checkliste
 
-| 检查项 | 描述 |
+| Pruefpunkt | Beschreibung |
 |--------|------|
-| 密钥 | 无硬编码密钥，所有密钥在环境变量中 |
-| 输入验证 | 所有用户输入使用schema验证 |
-| SQL注入 | 所有查询使用参数化查询 |
-| XSS | 用户内容被清理 |
-| CSRF | 启用保护 |
-| 身份验证 | 正确的令牌处理 |
-| 授权 | 角色检查到位 |
-| 速率限制 | 所有端点启用 |
-| HTTPS | 生产环境强制使用 |
-| 安全头 | CSP、X-Frame-Options配置 |
-| 错误处理 | 错误消息不暴露敏感数据 |
-| 日志 | 不记录敏感数据 |
-| 依赖 | 更新，无漏洞 |
+| Schluessel | Keine hardcodierten Schluessel, alle Schluessel in Umgebungsvariablen |
+| Eingabevalidierung | Alle Benutzereingaben mit Schema validieren |
+| SQL-Injection | Alle Abfragen verwenden parametrisierte Abfragen |
+| XSS | Benutzerinhalte werden bereinigt |
+| CSRF | Schutz aktiviert |
+| Authentifizierung | Korrekte Token-Verarbeitung |
+| Autorisierung | Rollenpruefungen vorhanden |
+| Rate-Limiting | Alle Endpunkte aktiviert |
+| HTTPS | Produktionsumgebung erzwingt HTTPS |
+| Sicherheitsheader | CSP, X-Frame-Options konfiguriert |
+| Fehlerbehandlung | Fehlermeldungen geben keine sensiblen Daten preis |
+| Logging | Keine sensiblen Daten aufzeichnen |
+| Abhaengigkeiten | Aktuell, keine Schwachstellen |
 
-### 使用示例
+### Verwendungsbeispiel
 
 ```typescript
-// 密钥管理 - 错误做法
-const apiKey = "sk-proj-xxxxx"  // 绝对不要这样做
+// Schluesselverwaltung - Falsche Methode
+const apiKey = "sk-proj-xxxxx"  // Das niemals tun
 
-// 密钥管理 - 正确做法
+// Schluesselverwaltung - Richtige Methode
 const apiKey = process.env.OPENAI_API_KEY
 if (!apiKey) {
   throw new Error('OPENAI_API_KEY not configured')
 }
 
-// 输入验证
+// Eingabevalidierung
 import { z } from 'zod'
 
 const CreateUserSchema = z.object({
@@ -76,16 +76,16 @@ const CreateUserSchema = z.object({
   name: z.string().min(1).max(100),
 })
 
-// SQL注入防护 - 错误做法
-const query = `SELECT * FROM users WHERE email = '${userEmail}'`  // 危险！
+// SQL-Injection-Schutz - Falsche Methode
+const query = `SELECT * FROM users WHERE email = '${userEmail}'`  // Gefaehrlich!
 
-// SQL注入防护 - 正确做法
+// SQL-Injection-Schutz - Richtige Methode
 const { data } = await supabase
   .from('users')
   .select('*')
   .eq('email', userEmail)
 
-// XSS防护
+// XSS-Schutz
 import DOMPurify from 'isomorphic-dompurify'
 
 function renderUserContent(html: string) {
@@ -99,146 +99,146 @@ function renderUserContent(html: string) {
 
 ---
 
-## 安全扫描
+## Sicherheits-Scanning
 
-### 用途说明
-使用AgentShield扫描Claude Code配置（`.claude/`目录）中的安全漏洞、配置错误和注入风险。
+### Verwendungszweck
+AgentShield verwenden, um Sicherheitsluecken, Fehlkonfigurationen und Injection-Risiken in Claude Code-Konfiguration (`.claude/`-Verzeichnis) zu scannen.
 
-### 使用时机
-- 设置新的Claude Code项目
-- 修改`.claude/settings.json`、`CLAUDE.md`或MCP配置后
-- 提交配置更改前
-- 加入已有Claude Code配置的新仓库
-- 定期安全检查
+### Verwendung
+- Neues Claude Code-Projekt einrichten
+- Nach dem Aendern von `.claude/settings.json`, `CLAUDE.md` oder MCP-Konfiguration
+- Vor dem Committen von Konfigurationsaenderungen
+- Beim Hinzufuegen eines neuen Repositorys zu einer bestehenden Claude Code-Konfiguration
+- Regelmaessige Sicherheitspruefungen
 
-### 扫描内容
+### Scan-Inhalt
 
-| 文件 | 检查项 |
+| Datei | Pruefpunkte |
 |------|--------|
-| `CLAUDE.md` | 硬编码密钥、自动运行指令、提示注入模式 |
-| `settings.json` | 过度宽松的允许列表、缺少拒绝列表、危险绕过标志 |
-| `mcp.json` | 风险MCP服务器、硬编码env密钥、npx供应链风险 |
-| `hooks/` | 通过插值的命令注入、数据泄露、静默错误抑制 |
-| `agents/*.md` | 不受限的工具访问、提示注入表面、缺少模型规格 |
+| `CLAUDE.md` | Hardcodierte Schluessel, Auto-Run-Anweisungen, Prompt-Injection-Muster |
+| `settings.json` | Ueberrmaessig lockere allowance list, fehlende Ablehnungsliste, gefaehrliche Umgehungsflags |
+| `mcp.json` | Riskante MCP-Server, hardcodierte env-Schluessel, npx Supply-Chain-Risiken |
+| `hooks/` | Command-Injection durch Interpolation, Datenleck, silencie Fehlerunterdrueckung |
+| `agents/*.md` | Uneingeschraenkte Tool-Zugriffe, Prompt-Injection-Flaechen, fehlende Modellspezifikationen |
 
-### 使用示例
+### Verwendungsbeispiel
 
 ```bash
-# 基本扫描
+# Basis-Scan
 npx ecc-agentshield scan
 
-# 指定路径扫描
+# Scan mit Pfad
 npx ecc-agentshield scan --path /path/to/.claude
 
-# 最低严重性过滤
+# Minimaler Schweregrad filtern
 npx ecc-agentshield scan --min-severity medium
 
-# JSON格式（用于CI/CD）
+# JSON-Format ( fuer CI/CD)
 npx ecc-agentshield scan --format json
 
-# 自动修复
+# Automatische Reparatur
 npx ecc-agentshield scan --fix
 
-# Opus深度分析（需要ANTHROPIC_API_KEY）
+# Opus-Tiefenanalyse (ANTHROPIC_API_KEY erforderlich)
 export ANTHROPIC_API_KEY=your-key
 npx ecc-agentshield scan --opus --stream
 ```
 
-### 严重性级别
+### Schweregrad-Stufen
 
-| 等级 | 分数 | 含义 |
+| Note | Punkte | Bedeutung |
 |------|------|------|
-| A | 90-100 | 安全配置 |
-| B | 75-89 | 小问题 |
-| C | 60-74 | 需要关注 |
-| D | 40-59 | 重大风险 |
-| F | 0-39 | 严重漏洞 |
+| A | 90-100 | Sichere Konfiguration |
+| B | 75-89 | Kleinere Probleme |
+| C | 60-74 | Aufmerksamkeit erforderlich |
+| D | 40-59 | Erhebliches Risiko |
+| F | 0-39 | Kritische Schwachstelle |
 
 ---
 
-## Django安全
+## Django-Sicherheit
 
-### 用途说明
-Django安全最佳实践，保护应用程序免受常见漏洞攻击。
+### Verwendungszweck
+Django-Sicherheits-Best-Practices zum Schutz von Anwendungen vor haeufigen Schwachstellen.
 
-### 使用时机
-- 设置Django身份验证和授权
-- 实现用户权限和角色
-- 配置生产安全设置
-- 审查Django应用程序安全问题
-- 部署Django应用程序到生产环境
+### Verwendung
+- Django-Authentifizierung und -Autorisierung einrichten
+- Benutzerberechtigungen und -rollen implementieren
+- Produktionssicherheitseinstellungen konfigurieren
+- Django-Anwendungssicherheitsprobleme ueberpruefen
+- Django-Anwendungen in Produktion bereitstellen
 
-### 核心安全设置
+### Kernsicherheitseinstellungen
 
 ```python
 # settings/production.py
-DEBUG = False  # 关键：生产环境绝不使用True
+DEBUG = False  # Wichtig: Niemals True in Produktion
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
 
-# 安全头
+# Sicherheitsheader
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-SECURE_HSTS_SECONDS = 31536000  # 1年
+SECURE_HSTS_SECONDS = 31536000  # 1 Jahr
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 
-# Cookie安全
+# Cookie-Sicherheit
 SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = 'Lax'
 
-# 密码验证
+# Passwortvalidierung
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', 'OPTIONS': {'min_length': 12}},
     {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
 ]
 ```
 
-### SQL注入防护
+### SQL-Injection-Schutz
 
 ```python
-# 安全：Django ORM自动转义参数
+# Sicher: Django ORM escaped automatisch
 def get_user(username):
-    return User.objects.get(username=username)  # 安全
+    return User.objects.get(username=username)  # Sicher
 
-# 安全：使用参数的raw()
+# Sicher: raw() mit Parametern
 def search_users(query):
     return User.objects.raw('SELECT * FROM users WHERE username = %s', [query])
 
-# 危险：永远不要直接插值
+# Gefaehrlich: Niemals direkt interpolieren
 def get_user_bad(username):
-    return User.objects.raw(f'SELECT * FROM users WHERE username = {username}')  # 漏洞！
+    return User.objects.raw(f'SELECT * FROM users WHERE username = {username}')  # Schwachstelle!
 ```
 
-### XSS防护
+### XSS-Schutz
 
 ```django
-{# Django默认自动转义变量 - 安全 #}
-{{ user_input }}  {# HTML会被转义 #}
+{# Django-escaped Variablen standardmaessig automatisch - Sicher #}
+{{ user_input }}  {# HTML wird escaped #}
 
-{# 显式标记为安全仅用于可信内容 #}
-{{ trusted_html|safe }}  {# 不转义 #}
+{# Als sicher markieren nur fuer vertrauenswuerdige Inhalte #}
+{{ trusted_html|safe }}  {# Kein Escaping #}
 
-{# 使用模板过滤器安全处理HTML #}
-{{ user_input|striptags }}  {# 移除所有HTML标签 #}
+{# Sichere HTML-Verarbeitung mit Template-Filter #}
+{{ user_input|striptags }}  {# Alle HTML-Tags entfernen #}
 ```
 
-### CSRF保护
+### CSRF-Schutz
 
 ```django
-{# 模板中使用 #}
+{# Im Template verwenden #}
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">提交</button>
+    <button type="submit">Absenden</button>
 </form>
 
-{# AJAX请求 #}
+{# AJAX-Anfrage #}
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -264,7 +264,7 @@ fetch('/api/endpoint/', {
 });
 ```
 
-### 速率限制
+### Rate-Limiting
 
 ```python
 # settings.py
@@ -280,30 +280,30 @@ REST_FRAMEWORK = {
 }
 ```
 
-### 快速安全检查清单
+### Schnelle Sicherheits-Checkliste
 
-| 检查项 | 描述 |
+| Pruefpunkt | Beschreibung |
 |--------|------|
-| `DEBUG = False` | 生产环境绝不使用DEBUG运行 |
-| 仅HTTPS | 强制SSL，安全cookie |
-| 强密钥 | 使用环境变量的SECRET_KEY |
-| 密码验证 | 启用所有密码验证器 |
-| CSRF保护 | 默认启用，不要禁用 |
-| XSS防护 | Django默认转义，不要对用户输入使用`\|safe` |
-| SQL注入 | 使用ORM，永远不要在查询中拼接字符串 |
-| 文件上传 | 验证文件类型和大小 |
-| 速率限制 | API端点限流 |
-| 安全头 | CSP、X-Frame-Options、HSTS |
-| 日志 | 记录安全事件 |
-| 更新 | 保持Django和依赖更新 |
+| `DEBUG = False` | Niemals mit DEBUG in Produktion ausfuehren |
+| Nur HTTPS | SSL erzwingen, sichere Cookies |
+| Starke Schluessel | SECRET_KEY aus Umgebungsvariablen verwenden |
+| Passwortvalidierung | Alle Passwortvalidatoren aktivieren |
+| CSRF-Schutz | Standardmaessig aktiviert, nicht deaktivieren |
+| XSS-Schutz | Django escaped standardmaessig, kein `|safe` fuer Benutzereingaben verwenden |
+| SQL-Injection | ORM verwenden, niemals Strings in Abfragen konkatenieren |
+| Dateiuploads | Dateitypen und -groessen validieren |
+| Rate-Limiting | API-Endpunkte begrenzen |
+| Sicherheitsheader | CSP, X-Frame-Options, HSTS |
+| Logging | Sicherheitsereignisse aufzeichnen |
+| Updates | Django und Abhaengigkeiten aktuell halten |
 
 ---
 
-## 相关技能
+## Zugehoerige Faehigkeiten
 
-| 技能 | 用途 |
+| Faehigkeit | Verwendungszweck |
 |------|------|
-| `security-review` | 综合安全检查清单 |
-| `security-scan` | Claude Code配置扫描 |
-| `django-security` | Django安全最佳实践 |
-| `coding-standards` | 编码标准和安全基础 |
+| `security-review` | Umfassende Sicherheits-Checkliste |
+| `security-scan` | Claude Code-Konfigurationsscan |
+| `django-security` | Django-Sicherheits-Best-Practices |
+| `coding-standards` | Coding-Standards und Sicherheitsgrundlagen |

@@ -1,318 +1,318 @@
-# 规划类 Agent
+# Tác tử Lập kế hoạch
 
-规划类 Agent 专门负责功能规划、技术架构设计和实施步骤分解。
+Tác tử Lập kế hoạch chịu trách nhiệm chính về lập kế hoạch tính năng, thiết kế kiến trúc kỹ thuật và phân rã các bước thực hiện.
 
-## Agent 列表
+## Danh sách Agent
 
-| Agent 名称 | 用途 | 使用模型 | 核心工具 |
+| Tên Agent | Mục đích | Model sử dụng | Công cụ cốt lõi |
 |------------|------|----------|----------|
-| planner | 复杂功能实施规划专家 | opus | Read, Grep, Glob |
-| code-architect | 功能架构设计专家 | sonnet | Read, Grep, Glob, Bash |
-| pr-test-analyzer | PR 测试覆盖分析 | sonnet | Read, Grep, Glob, Bash |
-| type-design-analyzer | 类型设计分析 | sonnet | Read, Grep, Glob |
-| comment-analyzer | 代码注释分析 | sonnet | Read, Grep, Glob |
+| planner | Chuyên gia lập kế hoạch triển khai tính năng phức tạp | opus | Read, Grep, Glob |
+| code-architect | Chuyên gia thiết kế kiến trúc tính năng | sonnet | Read, Grep, Glob, Bash |
+| pr-test-analyzer | Phân tích bao phủ kiểm thử PR | sonnet | Read, Grep, Glob, Bash |
+| type-design-analyzer | Phân tích thiết kế kiểu | sonnet | Read, Grep, Glob |
+| comment-analyzer | Phân tích bình luận mã | sonnet | Read, Grep, Glob |
 
 ---
 
 ## planner
 
-### 名称和用途
-复杂功能实施和重构的规划专家。在用户请求功能实施、架构变更或复杂重构时主动使用。
+### Tên và Mục đích
+Chuyên gia lập kế hoạch triển khai tính năng và tái cấu trúc phức tạp. Được sử dụng chủ động khi người dùng yêu cầu triển khai tính năng, thay đổi kiến trúc hoặc tái cấu trúc phức tạp.
 
-### 能力说明
-- 需求分析和详细实施计划创建
-- 将复杂功能分解为可管理的步骤
-- 识别依赖关系和潜在风险
-- 建议最优实施顺序
-- 考虑边缘情况和错误场景
+### Khả năng
+- Phân tích yêu cầu và tạo kế hoạch triển khai chi tiết
+- Phân rã tính năng phức tạp thành các bước có thể quản lý
+- Xác định phụ thuộc và rủi ro tiềm ẩn
+- Đề xuất thứ tự triển khai tối ưu
+- Xem xét các trường hợp cạnh và kịch bản lỗi
 
-### 适用场景
-- 新功能实施规划
-- 架构变更规划
-- 复杂重构规划
-- 技术债务清理规划
+### Khi nào sử dụng
+- Lập kế hoạch triển khai tính năng mới
+- Lập kế hoạch thay đổi kiến trúc
+- Lập kế hoạch tái cấu trúc phức tạp
+- Lập kế hoạch dọn dẹp nợ kỹ thuật
 
-### 使用的工具列表
-- Read: 读取现有代码和文档
-- Grep: 搜索相关模式和现有实现
-- Glob: 查找相关文件
+### Danh sách công cụ
+- Read: Đọc mã và tài liệu hiện có
+- Grep: Tìm kiếm các mẫu và triển khai hiện có liên quan
+- Glob: Tìm các tệp liên quan
 
-### 与其他 Agent 的协作方式
-- 生成的计划供 code-architect 进一步细化
-- 生成的计划供 tdd-guide 编写测试
-- 生成的计划供 code-reviewer 审查
+### Cách phối hợp với các Agent khác
+- Kế hoạch tạo ra để code-architect tinh chỉnh thêm
+- Kế hoạch tạo ra để tdd-guide viết bài kiểm tra
+- Kế hoạch tạo ra để code-reviewer xem xét
 
-### 规划流程
+### Quy trình lập kế hoạch
 
-1. **需求分析**
-   - 完全理解功能请求
-   - 如有需要提出澄清问题
-   - 识别成功标准
-   - 列出假设和约束
+1. **Phân tích yêu cầu**
+   - Hiểu hoàn toàn yêu cầu tính năng
+   - Đặt câu hỏi làm rõ nếu cần
+   - Xác định tiêu chí thành công
+   - Liệt kê các giả định và ràng buộc
 
-2. **架构审查**
-   - 分析现有代码库结构
-   - 识别受影响的组件
-   - 审查类似实现
-   - 考虑可复用模式
+2. **Xem xét kiến trúc**
+   - Phân tích cấu trúc codebase hiện có
+   - Xác định các thành phần bị ảnh hưởng
+   - Xem xét triển khai tương tự
+   - Xem xét các mẫu có thể tái sử dụng
 
-3. **步骤分解**
-   - 创建详细步骤，包含：
-     - 清晰、具体的操作
-     - 文件路径和位置
-     - 步骤之间的依赖关系
-     - 预估复杂度
-     - 潜在风险
+3. **Phân rã bước**
+   - Tạo các bước chi tiết, bao gồm:
+     - Hành động rõ ràng, cụ thể
+     - Đường dẫn tệp và vị trí
+     - Phụ thuộc giữa các bước
+     - Độ phức tạp ước tính
+     - Rủi ro tiềm ẩn
 
-4. **实施顺序**
-   - 按依赖关系排序
-   - 将相关变更分组
-   - 最小化上下文切换
-   - 支持增量测试
+4. **Thứ tự triển khai**
+   - Sắp xếp theo phụ thuộc
+   - Nhóm các thay đổi liên quan
+   - Giảm thiểu chuyển đổi ngữ cảnh
+   - Hỗ trợ kiểm tra tăng dần
 
-### 规划输出格式
+### Định dạng đầu ra kế hoạch
 
 ```markdown
-# 实施计划: [功能名称]
+# Kế hoạch triển khai: [Tên tính năng]
 
-## 概述
-[2-3 句话总结]
+## Tổng quan
+[2-3 câu tóm tắt]
 
-## 需求
-- [需求 1]
-- [需求 2]
+## Yêu cầu
+- [Yêu cầu 1]
+- [Yêu cầu 2]
 
-## 架构变更
-- [变更 1: 文件路径和描述]
-- [变更 2: 文件路径和描述]
+## Thay đổi kiến trúc
+- [Thay đổi 1: Đường dẫn tệp và mô tả]
+- [Thay đổi 2: Đường dẫn tệp và mô tả]
 
-## 实施步骤
+## Các bước triển khai
 
-### 阶段 1: [阶段名称]
-1. **[步骤名称]** (文件: path/to/file.ts)
-   - 操作: 要采取的具体操作
-   - 原因: 此步骤的原因
-   - 依赖: 无 / 需要步骤 X
-   - 风险: 低/中/高
+### Giai đoạn 1: [Tên giai đoạn]
+1. **[Tên bước]** (Tệp: path/to/file.ts)
+   - Thao tác: Hành động cụ thể cần thực hiện
+   - Lý do: Lý do cho bước này
+   - Phụ thuộc: Không / Cần bước X
+   - Rủi ro: Thấp/Trung bình/Cao
 
-2. **[步骤名称]** (文件: path/to/file.ts)
+2. **[Tên bước]** (Tệp: path/to/file.ts)
    ...
 
-### 阶段 2: [阶段名称]
+### Giai đoạn 2: [Tên giai đoạn]
 ...
 
-## 测试策略
-- 单元测试: [要测试的文件]
-- 集成测试: [要测试的流程]
-- E2E 测试: [用户旅程要测试]
+## Chiến lược kiểm thử
+- Kiểm thử đơn vị: [Các tệp cần kiểm tra]
+- Kiểm thử tích hợp: [Các luồng cần kiểm tra]
+- Kiểm thử E2E: [Hành trình người dùng cần kiểm tra]
 
-## 风险与缓解
-- **风险**: [描述]
-  - 缓解: [如何处理]
+## Rủi ro và giảm thiểu
+- **Rủi ro**: [Mô tả]
+  - Giảm thiểu: [Cách xử lý]
 
-## 成功标准
-- [ ] 标准 1
-- [ ] 标准 2
+## Tiêu chí thành công
+- [ ] Tiêu chí 1
+- [ ] Tiêu chí 2
 ```
 
 ---
 
 ## code-architect
 
-### 名称和用途
-基于对现有代码库的深入理解设计功能架构。提供具体文件、接口、数据流和构建顺序的实施蓝图。
+### Tên và Mục đích
+Thiết kế kiến trúc tính năng dựa trên hiểu biết sâu sắc về codebase hiện có. Cung cấp bản thiết kế triển khai với các tệp cụ thể, giao diện, luồng dữ liệu và thứ tự xây dựng.
 
-### 能力说明
-- 研究现有代码组织和命名约定
-- 识别已有的架构模式
-- 记录测试模式和现有边界
-- 理解依赖关系图后再提出新抽象
-- 设计适合当前模式的功能架构
+### Khả năng
+- Nghiên cứu tổ chức mã và quy ước đặt tên hiện có
+- Xác định các mẫu kiến trúc đã có
+- Ghi lại mẫu kiểm thử và ranh giới hiện có
+- Hiểu biểu đồ phụ thuộc trước khi đề xuất trừu tượng mới
+- Thiết kế kiến trúc phù hợp với các mẫu hiện tại
 
-### 适用场景
-- 新功能架构设计
-- 现有功能重构设计
-- 代码组织优化
+### Khi nào sử dụng
+- Thiết kế kiến trúc tính năng mới
+- Thiết kế tái cấu trúc tính năng hiện có
+- Tối ưu hóa tổ chức mã
 
-### 使用的工具列表
-- Read: 读取现有代码
-- Grep: 搜索模式和约定
-- Glob: 查找相关文件
-- Bash: 运行诊断命令
+### Danh sách công cụ
+- Read: Đọc mã hiện có
+- Grep: Tìm kiếm mẫu và quy ước
+- Glob: Tìm các tệp liên quan
+- Bash: Chạy các lệnh chẩn đoán
 
-### 与其他 Agent 的协作方式
-- 基于 planner 的计划进行架构设计
-- 为代码实现提供蓝图
-- 与 build-error-resolver 协作修复构建问题
+### Cách phối hợp với các Agent khác
+- Thiết kế kiến trúc dựa trên kế hoạch của planner
+- Cung cấp bản thiết kế cho triển khai mã
+- Phối hợp với build-error-resolver để sửa lỗi xây dựng
 
-### 设计流程
+### Quy trình thiết kế
 
-1. **模式分析**
-   - 研究现有代码组织和命名约定
-   - 识别已有的架构模式
-   - 注意测试模式和现有边界
-   - 在提出新抽象前理解依赖关系
+1. **Phân tích mẫu**
+   - Nghiên cứu tổ chức mã và quy ước đặt tên hiện có
+   - Xác định các mẫu kiến trúc đã có
+   - Lưu ý mẫu kiểm thử và ranh giới hiện có
+   - Hiểu phụ thuộc trước khi đề xuất trừu tượng mới
 
-2. **架构设计**
-   - 设计功能以自然契合当前模式
-   - 选择满足需求的最简单架构
-   - 避免投机性抽象（除非代码库已使用）
+2. **Thiết kế kiến trúc**
+   - Thiết kế tính năng để phù hợp tự nhiên với các mẫu hiện tại
+   - Chọn kiến trúc đơn giản nhất đáp ứng nhu cầu
+   - Tránh trừu tượng suy đoán (trừ khi codebase đã sử dụng)
 
-3. **实施蓝图**
-   为每个重要组件提供：
-   - 文件路径
-   - 目的
-   - 关键接口
-   - 依赖关系
-   - 数据流角色
+3. **Bản thiết kế triển khai**
+   Cho mỗi thành phần quan trọng cung cấp:
+   - Đường dẫn tệp
+   - Mục đích
+   - Giao diện chính
+   - Phụ thuộc
+   - Vai trò luồng dữ liệu
 
-4. **构建顺序**
-   按依赖关系排序实施：
-   1. 类型和接口
-   2. 核心逻辑
-   3. 集成层
+4. **Thứ tự xây dựng**
+   Sắp xếp triển khai theo phụ thuộc:
+   1. Kiểu và giao diện
+   2. Logic cốt lõi
+   3. Tầng tích hợp
    4. UI
-   5. 测试
-   6. 文档
+   5. Kiểm thử
+   6. Tài liệu
 
-### 输出格式
+### Định dạng đầu ra
 
 ```markdown
-## 架构: [功能名称]
+## Kiến trúc: [Tên tính năng]
 
-### 设计决策
-- 决策 1: [理由]
-- 决策 2: [理由]
+### Quyết định thiết kế
+- Quyết định 1: [Lý do]
+- Quyết định 2: [Lý do]
 
-### 要创建的文件
-| 文件 | 目的 | 优先级 |
+### Các tệp cần tạo
+| Tệp | Mục đích | Ưu tiên |
 |------|------|--------|
 | | | |
 
-### 要修改的文件
-| 文件 | 变更 | 优先级 |
+### Các tệp cần sửa đổi
+| Tệp | Thay đổi | Ưu tiên |
 |------|------|--------|
 | | | |
 
-### 数据流
-[描述]
+### Luồng dữ liệu
+[Mô tả]
 
-### 构建顺序
-1. 步骤 1
-2. 步骤 2
+### Thứ tự xây dựng
+1. Bước 1
+2. Bước 2
 ```
 
 ---
 
 ## pr-test-analyzer
-（详见 [04-Kiem-Thu.md](./04-Kiem-Thu.md)）
+(Xem chi tiết [04-Kiem-Thu.md](./04-Kiem-Thu.md))
 ---
 
 ## type-design-analyzer
 
-### 名称和用途
-分析类型设计是否使非法状态难以或不可能表示。
+### Tên và Mục đích
+Phân tích thiết kế kiểu xem có khiến trạng thái bất hợp pháp khó hoặc không thể biểu diễn hay không.
 
-### 能力说明
-- 封装评估
-- 不变性表达分析
-- 不变性有用性评估
-- 强制执行验证
+### Khả năng
+- Đánh giá đóng gói
+- Phân tích biểu hiện bất biến
+- Đánh giá tính hữu ích của bất biến
+- Thực thi xác minh
 
-### 适用场景
-- 类型系统设计审查
-- API 设计审查
-- 领域建模审查
+### Khi nào sử dụng
+- Xem xét thiết kế hệ thống kiểu
+- Xem xét thiết kế API
+- Xem xét mô hình hóa miền
 
-### 使用的工具列表
-- Read: 读取类型定义
-- Grep: 搜索类型使用
-- Glob: 查找类型文件
+### Danh sách công cụ
+- Read: Đọc định nghĩa kiểu
+- Grep: Tìm kiếm việc sử dụng kiểu
+- Glob: Tìm các tệp kiểu
 
-### 与其他 Agent 的协作方式
-- 与 code-reviewer 协作进行代码审查
-- 与 code-architect 协作进行架构设计
+### Cách phối hợp với các Agent khác
+- Phối hợp với code-reviewer để xem xét mã
+- Phối hợp với code-architect để thiết kế kiến trúc
 
-### 评估标准
+### Tiêu chí đánh giá
 
-1. **封装**
-   - 内部细节是否隐藏
-   - 不变量是否可以从外部违反
+1. **Đóng gói**
+   - Chi tiết nội bộ có được ẩn không
+   - Bất biến có thể bị vi phạm từ bên ngoài không
 
-2. **不变性表达**
-   - 类型是否编码业务规则
-   - 不可能状态是否在类型级别被阻止
+2. **Biểu hiện bất biến**
+   - Kiểu có mã hóa quy tắc nghiệp vụ không
+   - Trạng thái không thể có có bị ngăn chặn ở cấp kiểu không
 
-3. **不变性有用性**
-   - 这些不变量是否防止真实 bug
-   - 是否与领域对齐
+3. **Tính hữu ích của bất biến**
+   - Những bất biến này có ngăn ngừa lỗi thực sự không
+   - Có align với miền không
 
-4. **强制执行**
-   - 不变量是否由类型系统强制执行
-   - 是否有简单的逃逸舱
+4. **Thực thi**
+   - Bất biến có được thực thi bởi hệ thống kiểu không
+   - Có lối thoát đơn giản không
 
-### 输出格式
+### Định dạng đầu ra
 
-对每个审查的类型：
-- 类型名和位置
-- 四个维度的评分
-- 整体评估
-- 具体改进建议
+Với mỗi kiểu được xem xét:
+- Tên kiểu và vị trí
+- Điểm số bốn chiều
+- Đánh giá tổng thể
+- Đề xuất cải thiện cụ thể
 
 ---
 
 ## comment-analyzer
 
-### 名称和用途
-分析代码注释的准确性、完整性、可维护性和注释腐坏风险。
+### Tên và Mục đích
+Phân tích tính chính xác, đầy đủ, khả năng bảo trì và rủi ro hư hỏng bình luận mã.
 
-### 能力说明
-- 事实准确性验证
-- 完整性检查
-- 长期价值评估
-- 误导性元素识别
+### Khả năng
+- Xác minh tính chính xác thực tế
+- Kiểm tra tính đầy đủ
+- Đánh giá giá trị dài hạn
+- Xác định yếu tố gây hiểu lầm
 
-### 适用场景
-- 代码审查时
-- 文档质量评估时
-- 识别注释技术债务时
+### Khi nào sử dụng
+- Khi xem xét mã
+- Khi đánh giá chất lượng tài liệu
+- Khi xác định nợ kỹ thuật bình luận
 
-### 使用的工具列表
-- Read: 读取代码和注释
-- Grep: 搜索注释和代码
-- Glob: 查找源文件
+### Danh sách công cụ
+- Read: Đọc mã và bình luận
+- Grep: Tìm kiếm bình luận và mã
+- Glob: Tìm các tệp nguồn
 
-### 与其他 Agent 的协作方式
-- 与 code-reviewer 协作进行代码审查
-- 与 doc-updater 协作更新文档
+### Cách phối hợp với các Agent khác
+- Phối hợp với code-reviewer để xem xét mã
+- Phối hợp với doc-updater để cập nhật tài liệu
 
-### 分析框架
+### Khung phân tích
 
-1. **事实准确性**
-   - 验证声明与代码对比
-   - 检查参数和返回描述与实现对比
-   - 标记过时引用
+1. **Tính chính xác thực tế**
+   - Xác minh các tuyên bố so với mã
+   - Kiểm tra mô tả tham số và trả về so với triển khai
+   - Đánh dấu tham chiếu lỗi thời
 
-2. **完整性**
-   - 检查复杂逻辑是否有足够解释
-   - 验证重要副作用和边缘用例是否已记录
-   - 确保公共 API 有足够注释
+2. **Tính đầy đủ**
+   - Kiểm tra logic phức tạp có giải thích đủ không
+   - Xác minh tác dụng phụ quan trọng và trường hợp cạnh đã được ghi lại
+   - Đảm bảo API công cộng có bình luận đủ
 
-3. **长期价值**
-   - 标记只重述代码的注释
-   - 识别会快速腐坏的脆弱注释
-   - 发现 TODO / FIXME / HACK 债务
+3. **Giá trị dài hạn**
+   - Đánh dấu bình luận chỉ lặp lại mã
+   - Xác định bình luận dễ hư hỏng nhanh chóng
+   - Tìm nợ TODO / FIXME / HACK
 
-4. **误导性元素**
-   - 与代码矛盾的注释
-   - 对已移除行为的过时引用
-   - 过度承诺或描述不足的行为
+4. **Yếu tố gây hiểu lầm**
+   - Bình luận mâu thuẫn với mã
+   - Tham chiếu hành vi đã loại bỏ lỗi thời
+   - Hành vi hứa hẹn quá mức hoặc mô tả không đủ
 
-### 输出格式
+### Định dạng đầu ra
 
-按严重性分组的咨询发现：
-- Inaccurate（不准确）
-- Stale（过时）
-- Incomplete（不完整）
-- Low-value（低价值）
-[返回 Agent 索引](../README.md)
+Các phát hiện được nhóm theo mức độ nghiêm trọng:
+- Inaccurate (Không chính xác)
+- Stale (Lỗi thời)
+- Incomplete (Không đầy đủ)
+- Low-value (Giá trị thấp)
+[Quay lại Chỉ mục Agent](../README.md)

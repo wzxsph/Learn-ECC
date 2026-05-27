@@ -1,34 +1,34 @@
-# 测试运行器
+# Test-Runner
 
-本文档介绍 ECC 项目的测试结构和运行方式。
+Dieses Dokument beschreibt die Teststruktur und -ausfuehrung des ECC-Projekts.
 
-## 测试入口
+## Test-Eingang
 
-**路径**: `tests/run-all.js`
+**Pfad**: `tests/run-all.js`
 
-集中式测试运行器,自动发现并运行所有测试文件。
+Zentralisierter Test-Runner, automatisch Testdateien entdecken und ausfuehren.
 
-### 使用方法
+### Verwendung
 
 ```bash
-# 运行所有测试
+# Alle Tests ausfuehren
 node tests/run-all.js
 
-# 运行单个测试文件
+# Einzelne Testdatei ausfuehren
 node tests/lib/utils.test.js
 node tests/hooks/hooks.test.js
 ```
 
-### 测试文件发现
+### Testdateientdeckung
 
-测试运行器通过 glob 模式 `tests/**/*.test.js` 自动发现测试文件。
+Test-Runner entdeckt Testdateien automatisch ueber Glob-Muster `tests/**/*.test.js`.
 
-规则:
-- 文件必须位于 `tests/` 目录下
-- 文件名必须以 `.test.js` 结尾
-- 目录结构会被保留用于显示
+Regeln:
+- Dateien müssen sich im `tests/`-Verzeichnis befinden
+- Dateinamen müssen auf `.test.js` enden
+- Verzeichnisstruktur bleibt fuer Anzeige erhalten
 
-### 输出格式
+### Ausgabeformat
 
 ```
 ╔══════════════════════════════════════════════════════════╗
@@ -36,9 +36,9 @@ node tests/hooks/hooks.test.js
 ╚══════════════════════════════════════════════════════════╝
 
 ━━━ Running lib/utils.test.js ━━━
-(测试输出...)
+(Testausgabe...)
 ━━━ Running hooks/hooks.test.js ━━━
-(测试输出...)
+(Testausgabe...)
 
 ╔══════════════════════════════════════════════════════════╗
 ║                     Final Results                        ║
@@ -49,58 +49,58 @@ node tests/hooks/hooks.test.js
 ╚══════════════════════════════════════════════════════════╝
 ```
 
-### 测试统计
+### Teststatistiken
 
-测试运行器会解析每个测试文件的输出来汇总统计:
-- `Passed: <数量>`
-- `Failed: <数量>`
+Test-Runner parst Ausgabe jeder Testdatei um Statistiken zusammenzufassen:
+- `Passed: <Anzahl>`
+- `Failed: <Anzahl>`
 
 ---
 
-## 测试结构
+## Teststruktur
 
-### 目录布局
+### Verzeichnislayout
 
 ```
 tests/
-├── run-all.js              # 主测试运行器
-├── lib/                    # 库工具测试
+├── run-all.js              # Haupt-Test-Runner
+├── lib/                    # Bibliotheks-Utils-Tests
 │   ├── utils.test.js
 │   ├── package-manager.test.js
 │   └── ...
-├── hooks/                  # Hook 集成测试
+├── hooks/                  # Hook-Integrationstests
 │   └── hooks.test.js
-├── integration/            # 集成测试
-├── scripts/                # 脚本测试
-├── commands/               # 命令测试
-├── docs/                   # 文档测试
+├── integration/            # Integrationstests
+├── scripts/                # Skript-Tests
+├── commands/               # Befehls-Tests
+├── docs/                   # Dokumentations-Tests
 ├── opencode-config.test.js
 ├── plugin-manifest.test.js
-├── test_*.py               # Python 测试
-└── conftest.py             # pytest 配置
+├── test_*.py               # Python-Tests
+└── conftest.py             # pytest-Konfiguration
 ```
 
-### 测试类型
+### Testtypen
 
-1. **单元测试** (`*.test.js`)
-   - 测试独立函数和工具
-   - 使用 Node.js 原生 assert 或 Jest 风格
+1. **Unit-Tests** (`*.test.js`)
+   - Testen eigenstaendige Funktionen und Utils
+   - Verwenden Node.js natives assert oder Jest-Style
 
-2. **集成测试** (`tests/integration/`)
-   - 测试多个组件协作
-   - 测试钩子完整流程
+2. **Integrationstests** (`tests/integration/`)
+   - Testen Zusammenarbeit mehrerer Komponenten
+   - Testen vollstaendige Hook-Workflows
 
-3. **Python 测试** (`test_*.py`)
-   - pytest 格式的 Python 测试
-   - 使用 `conftest.py` 配置
+3. **Python-Tests** (`test_*.py`)
+   - pytest-Format fuer Python-Tests
+   - Verwenden `conftest.py` fuer Konfiguration
 
 ---
 
-## 测试配置
+## Testkonfiguration
 
-### Node.js 测试
+### Node.js-Tests
 
-测试文件使用标准的 Node.js assert 模块:
+Testdateien verwenden standardmaessiges Node.js assert-Modul:
 
 ```javascript
 const assert = require('assert');
@@ -110,61 +110,61 @@ test('example test', () => {
 });
 ```
 
-### Python 测试 (pytest)
+### Python-Tests (pytest)
 
-位置: `tests/conftest.py`
+Position: `tests/conftest.py`
 
-pytest 配置文件,提供共享的 fixtures 和配置。
+pytest-Konfigurationsdatei, bietet geteilte Fixtures und Konfiguration.
 
 ```bash
-# 运行 Python 测试
+# Python-Tests ausfuehren
 python -m pytest tests/
 
-# 运行特定测试
+# Bestimmten Test ausfuehren
 python -m pytest tests/test_builder.py
 ```
 
 ---
 
-## 测试最佳实践
+## Test-Best-Practices
 
-### AAA 模式
+### AAA-Muster
 
 ```
-test('测试描述', () => {
-  // Arrange - 准备测试数据
+test('Testbeschreibung', () => {
+  // Arrange - Testdaten vorbereiten
   const input = 'test data';
 
-  // Act - 执行被测操作
+  // Act - Zu testende Operation ausfuehren
   const result = myFunction(input);
 
-  // Assert - 验证结果
+  // Assert - Ergebnis verifizieren
   assert.strictEqual(result, expected);
 });
 ```
 
-### 测试命名
+### Testbenennung
 
-使用描述性名称,清晰说明测试的行为:
+Beschreibende Namen verwenden die das Testverhalten klar erklaeren:
 
 ```javascript
-test('returns empty array when no markets match query', () => {});
-test('throws error when API key is missing', () => {});
-test('falls back to substring search when Redis is unavailable', () => {});
+test('gibt leeres Array zurueck wenn keine Maerkte Abfrage entsprechen', () => {});
+test('wirft Fehler wenn API-Schluessel fehlt', () => {});
+test('fallt auf Substring-Suche zurueck wenn Redis nicht verfuegbar ist', () => {});
 ```
 
-### 测试隔离
+### Testisolation
 
-每个测试应该:
-- 独立运行,不依赖其他测试
-- 清理自己的测试数据
-- 使用 mock 隔离外部依赖
+Jeder Test sollte:
+- Unabhaengig ausgefuehrt werden, ohne von anderen Tests abzuhängen
+- Eigene Testdaten bereinigen
+- Externe Abhaengigkeiten mit Mocks isolieren
 
 ---
 
-## CI 集成
+## CI-Integration
 
-在 `package.json` 中配置测试脚本:
+Testskripte in `package.json` konfigurieren:
 
 ```json
 {
@@ -174,7 +174,7 @@ test('falls back to substring search when Redis is unavailable', () => {});
 }
 ```
 
-测试运行器设计为可在 CI 环境中工作:
-- 非零退出码表示失败
-- JSON 输出用于自动化解析
-- 清晰的错误消息用于调试
+Test-Runner ist fuer CI-Umgebungen ausgelegt:
+- Non-zero Exit-Code zeigt Fehler an
+- JSON-Ausgabe fuer Automatisierungsparsing
+- Klare Fehlermeldungen fuer Debugging

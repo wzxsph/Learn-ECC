@@ -1,89 +1,89 @@
-# Busca-e-Aquisição-de-Dados技能
+# Busca-e-Aquisição-de-Dados
 
-## 概述
+## Visão Geral
 
-Busca-e-Aquisição-de-Dados技能用于网络搜索、数据抓取、API 查询和信息检索。
+Habilidades de busca-e-aquisição de dados são usadas para pesquisa na web, scraping de dados, queries de API e recuperação de informações.
 
-## 核心技能
+## Habilidades Principais
 
 ### exa-search
 
-**用途**: Exa 语义搜索
+**Propósito**: Busca semântica Exa
 
-**功能**:
-- 语义网页搜索
-- 内容提取
-- 过滤和排序
-- 实时更新
+**Funcionalidades**:
+- Busca semântica na web
+- Extração de conteúdo
+- Filtragem e ordenação
+- Atualizações em tempo real
 
 ---
 
 ### search-first
 
-**用途**: 搜索优先方法论
+**Propósito**: Metodologia search-first
 
-**核心原则**:
-- 先搜索后实现
-- 利用现有解决方案
-- 避免重复造轮子
+**Princípios Centrais**:
+- Pesquisar antes de implementar
+- Utilizar soluções existentes
+- Evitar reinventar a roda
 
 ---
 
 ### data-scraper-agent
 
-**用途**: 数据抓取代理
+**Propósito**: Agente de scraping de dados
 
-**使用场景**:
-- 网页数据提取
-- 结构化数据转换
-- 批量采集
-- 反爬虫策略
+**Cenários de Uso**:
+- Extração de dados web
+- Transformação de dados estruturados
+- Coleta em lote
+- Estratégias anti-scraping
 
 ---
 
 ### iterative-retrieval
 
-**用途**: 迭代检索模式
+**Propósito**: Padrão de recuperação iterativa
 
-**方法**:
-- 分层检索
-- 相关性反馈
-- 结果优化
-- 上下文丰富
+**Métodos**:
+- Recuperação em camadas
+- Feedback de relevância
+- Otimização de resultados
+- Enriquecimento de contexto
 
 ---
 
-## MCP 服务器
+## Servidores MCP
 
 ### mcp-server-patterns
 
-**用途**: MCP 服务器开发模式
+**Propósito**: Padrões de desenvolvimento de servidores MCP
 
-**核心概念**:
-- 工具定义
-- 资源管理
-- 提示模板
-- 错误处理
+**Conceitos Centrais**:
+- Definição de ferramentas
+- Gerenciamento de recursos
+- Templates de prompts
+- Tratamento de erros
 
 ---
 
 ### context7
 
-**用途**: Context7 文档检索
+**Propósito**: Recuperação de documentação Context7
 
-**功能**:
-- 库文档查询
-- 代码示例获取
-- API 引用
-- 版本特定文档
+**Funcionalidades**:
+- Queries de documentação de bibliotecas
+- Obtenção de exemplos de código
+- Referências de API
+- Documentação específica de versões
 
 ---
 
-## 相关技能
+## Habilidades Relacionadas
 
-- `exa-search` - Exa 搜索
-- `search-first` - 搜索优先
-- `data-scraper-agent` - 数据抓取
-- `iterative-retrieval` - 迭代检索
-- `mcp-server-patterns` - MCP 服务器模式
-- `context7` - Context7 文档
+- `exa-search` - Busca Exa
+- `search-first` - Search first
+- `data-scraper-agent` - Scraping de dados
+- `iterative-retrieval` - Recuperação iterativa
+- `mcp-server-patterns` - Padrões de servidor MCP
+- `context7` - Documentação Context7

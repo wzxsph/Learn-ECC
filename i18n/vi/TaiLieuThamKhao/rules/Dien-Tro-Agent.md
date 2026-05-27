@@ -1,51 +1,51 @@
-# 代理编排
+# Điều phối Agent
 
-## 可用 Agent
+## Agent khả dụng
 
-位于 `~/.claude/agents/`:
+Nằm trong `~/.claude/agents/`:
 
-| Agent | 用途 | 使用时机 |
+| Agent | Mục đích | Thời điểm sử dụng |
 |-------|------|----------|
-| planner | 实施规划 | 复杂功能、重构 |
-| architect | 系统设计 | 架构决策 |
-| tdd-guide | 测试驱动开发 | 新功能、bug 修复 |
-| code-reviewer | 代码审查 | 编写代码后 |
-| security-reviewer | 安全分析 | 提交前 |
-| build-error-resolver | 修复构建错误 | 构建失败时 |
-| e2e-runner | 端到端测试 | 关键用户流程 |
-| refactor-cleaner | 死代码清理 | 代码维护 |
-| doc-updater | 文档更新 | 更新文档时 |
-| rust-reviewer | Rust 代码审查 | Rust 项目 |
-| harmonyos-app-resolver | HarmonyOS 应用开发 | HarmonyOS/ArkTS 项目 |
+| planner | Lập kế hoạch triển khai | Tính năng phức tạp, tái cấu trúc |
+| architect | Thiết kế hệ thống | Quyết định kiến trúc |
+| tdd-guide | Phát triển theo test | Tính năng mới, sửa lỗi |
+| code-reviewer | Kiểm tra mã | Sau khi viết mã |
+| security-reviewer | Phân tích bảo mật | Trước khi commit |
+| build-error-resolver | Sửa lỗi build | Build thất bại |
+| e2e-runner | Kiểm thử đầu cuối | Luồng người dùng quan trọng |
+| refactor-cleaner | Dọn mã chết | Bảo trì mã |
+| doc-updater | Cập nhật tài liệu | Cập nhật tài liệu |
+| rust-reviewer | Kiểm tra mã Rust | Dự án Rust |
+| harmonyos-app-resolver | Phát triển ứng dụng HarmonyOS | Dự án HarmonyOS/ArkTS |
 
-## 立即使用 Agent
+## Sử dụng Agent ngay
 
-无需用户提示：
-1. 复杂功能请求 → 使用 **planner** agent
-2. 代码刚编写/修改 → 使用 **code-reviewer** agent
-3. Bug 修复或新功能 → 使用 **tdd-guide** agent
-4. 架构决策 → 使用 **architect** agent
+Không cần nhắc người dùng:
+1. Yêu cầu tính năng phức tạp → Sử dụng agent **planner**
+2. Mã vừa viết/xửa → Sử dụng agent **code-reviewer**
+3. Sửa lỗi hoặc tính năng mới → Sử dụng agent **tdd-guide**
+4. Quyết định kiến trúc → Sử dụng agent **architect**
 
-## 并行任务执行
+## Thực thi tác vụ song song
 
-对于独立操作，始终使用并行 Task 执行：
+Với các thao tác độc lập, luôn sử dụng thực thi Task song song:
 
 ```markdown
-# 好：并行执行
-启动 3 个 agent 并行：
-1. Agent 1: 认证模块安全分析
-2. Agent 2: 缓存系统性能审查
-3. Agent 3: 工具类型检查
+# TỐT: Thực thi song song
+Khởi chạy 3 agent song song:
+1. Agent 1: Phân tích bảo mật module auth
+2. Agent 2: Kiểm tra hiệu suất hệ thống cache
+3. Agent 3: Kiểm tra loại công cụ
 
-# 坏：不必要的顺序执行
-先 agent 1，然后 agent 2，然后 agent 3
+# XẤU: Thực thi tuần tự không cần thiết
+Trước agent 1, sau đó agent 2, sau đó agent 3
 ```
 
-## 多视角分析
+## Phân tích đa góc nhìn
 
-对于复杂问题，使用分角色 sub-agents：
-- 事实审查员
-- 高级工程师
-- 安全专家
-- 一致性审查员
-- 冗余检查员
+Với các vấn đề phức tạp, sử dụng sub-agents theo vai trò:
+- Người kiểm tra thực tế
+- Kỹ sư cao cấp
+- Chuyên gia bảo mật
+- Người kiểm tra tính nhất quán
+- Người kiểm tra trùng lặp

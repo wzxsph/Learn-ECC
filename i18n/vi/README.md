@@ -14,6 +14,17 @@ English | Português (Brasil) | 简体中文 | 繁體中文 | 日本語 | 한국
 |:---:|:---:|:---:|:---:|
 | [🇷🇺 Русский](./ru/README.md) | [🇹🇷 Türkçe](./tr/README.md) | [🇧🇷 Português](./pt-BR/README.md) | [🇻🇳 Tiếng Việt](./vi/README.md) |
 | [🇹🇭 ไทย](./th/README.md) | [🇨🇳 简体中文](../README.md) | | | |
+|---
+
+> **⚠️ Thông báo về phiên bản đa ngôn ngữ**
+> 
+> Các tài liệu dịch sang ngôn ngữ khác (Tiếng Anh, Tiếng Nhật, Tiếng Hàn, Tiếng Đức, Tiếng Nga, Tiếng Thổ Nhĩ Kỳ, Tiếng Bồ Đào Nha, Tiếng Việt, Tiếng Thái) chứa nhiều lỗi dịch thuật. Do hạn chế cá nhân, tôi không thể tiếp tục duy trì và sửa chữa những nội dung này.
+> 
+> Nếu bạn sẵn lòng giúp sửa hoặc cải thiện bản dịch của một ngôn ngữ cụ thể, vui lòng gửi Pull Request.
+> 
+> **Hiện tại, chỉ phiên bản tiếng Trung được tích cực bảo trì.**
+
+---
 
 ---
 

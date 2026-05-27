@@ -1,36 +1,36 @@
-# 规划与架构命令
+# Comandos de Planejamento e Arquitetura
 
-## 概述
+## Visão Geral
 
-规划与架构命令用于产品规划、功能设计和系统架构决策。这些命令确保在写代码之前有清晰的计划，减少返工和提高代码质量。
+Comandos de planejamento e arquitetura são usados para planejamento de produtos, design de funcionalidades e decisões de arquitetura de sistemas. Estes comandos garantem que haja um plano claro antes de escrever código, reduzindo retrabalho e melhorando qualidade de código.
 
-## 命令列表
+## Lista de Comandos
 
 ### /plan
 
-**用途**: 通用实施规划 - 复述需求、评估风险、创建分步骤实施计划
+**Propósito**: Planejamento de implementação geral - reformular requisitos, avaliar riscos, criar plano de implementação passo a passo
 
-**描述**: 在触碰任何代码之前，等待用户确认后创建全面的实施计划。接受自由形式需求或 PRD markdown 文件。
+**Descrição**: Criar plano de implementação abrangente antes de tocar qualquer código, após confirmação do usuário. Aceita requisitos em formato livre ou arquivo PRD markdown.
 
-**输入模式**:
+**Modo de Entrada**:
 
-| 输入 | 模式 | 行为 |
+| Entrada | Modo | Comportamento |
 |---|---|---|
-| `path/to/name.prd.md` | PRD artifact 模式 | 读取 PRD，选择下一个待交付里程碑，生成 `.claude/plans/{name}.plan.md` |
-| 其他 markdown 路径 | 引用模式 | 读取文件作为上下文，产生内联计划 |
-| 自由形式文本 | 对话模式 | 产生内联计划 |
-| 空输入 | 澄清模式 | 询问要规划什么 |
+| `path/to/name.prd.md` | Modo artifact PRD | Ler PRD, selecionar próximo milestone pendente, gerar `.claude/plans/{name}.plan.md` |
+| Outro caminho markdown | Modo de referência | Ler arquivo como contexto, gerar plano inline |
+| Texto em formato livre | Modo conversa | Gerar plano inline |
+| Entrada vazia | Modo esclarecimento | Perguntar o que planejar |
 
-**关键参数**:
-- `$ARGUMENTS`: `[feature description | path/to/*.prd.md]` - 功能描述或 PRD 文件路径
+**Parâmetros Chave**:
+- `$ARGUMENTS`: `[descrição da funcionalidade | path/to/*.prd.md]` - Descrição da funcionalidade ou caminho do arquivo PRD
 
-**工作流**:
-1. **复述需求** - 澄清需要构建什么
-2. **识别风险** - 列出潜在问题和阻碍
-3. **创建步骤计划** - 分解为阶段性实施
-4. **等待确认** - 必须收到用户批准后才能继续
+**Fluxo de Trabalho**:
+1. **Reformular Requisitos** - Esclarecer o que construir
+2. **Identificar Riscos** - Listar problemas potenciais e obstáculos
+3. **Criar Plano de Passos** - Decompor em fases de implementação
+4. **Aguardar Confirmação** - Deve receber aprovação do usuário antes de continuar
 
-**输出格式** (PRD artifact 模式):
+**Formato de Saída** (modo artifact PRD):
 ```markdown
 # Plan: {Feature Name}
 
@@ -70,102 +70,102 @@
 ```
 
 **Melhores-Práticas**:
-- 使用前先研究代码库中的现有模式
-- 在 PRD artifact 模式中创建 `.claude/plans/` 目录（如不存在）
-- 如果 PRD 包含 `Delivery Milestones` 表格，只更新所选行状态
+- Pesquisar padrões existentes no codebase antes de usar
+- No modo artifact PRD, criar diretório `.claude/plans/` se não existir
+- Se PRD contém tabela `Delivery Milestones`, atualizar apenas status da linha selecionada
 
-**常见陷阱**:
-- 空输入时不询问澄清就尝试规划
-- 不等待用户确认就开始写代码
-- 跳过 Pattern Grounding 步骤
+**Armadilhas Comuns**:
+- Não perguntar esclarecimento quando entrada vazia
+- Não aguardarusuário confirmar antes de começar a escrever código
+- Pular etapa de Pattern Grounding
 
-**与其他命令集成**:
-- 规划后使用 `tdd-workflow` skill 进行测试驱动开发
-- 使用 `/build-fix` 修复构建错误
-- 使用 `/code-review` 审查完成实现
-- 使用 `/pr` 或 `/prp-pr` 打开 Pull Request
+**Integração com Outros Comandos**:
+- Após planejar, usar skill `tdd-workflow` para desenvolvimento orientado a testes
+- Usar `/build-fix` para corrigir erros de build
+- Usar `/code-review` para revisar implementação completa
+- Usar `/pr` ou `/prp-pr` para abrir Pull Request
 
 ---
 
 ### /plan-prd
 
-**用途**: 交互式 PRD 生成器
+**Propósito**: Gerador interativo de PRD
 
-**描述**: 生成以问题为中心的产品需求文档，包含问题定义、用户画像、成功指标和 MVP 范围。
+**Descrição**: Gerar PRD centrado em problemas, incluindo definição de problemas, personas de usuário, métricas de sucesso e escopo MVP.
 
-**使用场景**: 
-- 确定要构建的功能
-- 需要明确产品需求
-- 从零开始新功能规划
+**Cenários de Uso**: 
+- Determinar funcionalidades a construir
+- Quando necessidades de requisitos de produto serem claras
+- Planejar nova funcionalidade do zero
 
-**工作流**:
-1. FRAME - 了解用户和问题
-2. GROUND - 收集证据
-3. DECIDE - 确定范围和假设
-4. GENERATE - 生成 PRD 文件
+**Fluxo de Trabalho**:
+1. FRAME - Entender usuário e problema
+2. GROUND - Coletar evidências
+3. DECIDE - Determinar escopo e hipóteses
+4. GENERATE - Gerar arquivo PRD
 
 ---
 
 ### /prp-plan
 
-**用途**: 全面的功能规划
+**Propósito**: Planejamento abrangente de funcionalidades
 
-**描述**: 完整的项目规划，涵盖代码库分析、风险评估和分步骤实施计划。
+**Descrição**: Planejamento de projetos completo, cobrindo análise de codebase, avaliação de riscos e plano de implementação passo a passo.
 
-**使用场景**:
-- 复杂功能的详细规划
-- 需要代码库上下文分析
-- 多阶段实施项目
+**Cenários de Uso**:
+- Planejamento detalhado de funcionalidades complexas
+- Quando necessidade de análise de contexto de codebase
+- Projetos de implementação multi-fase
 
 ---
 
 ### /prp-prd
 
-**用途**: PRP 工作流 PRD 生成器
+**Propósito**: Gerador PRP workflow PRD
 
-**描述**: 使用 PRP（Plan-Record-Produce）工作流生成产品需求文档。
+**Descrição**: Gerar documento de requisitos de produto usando fluxo de trabalho PRP (Plan-Record-Produce).
 
 ---
 
 ### /prp-implement
 
-**用途**: 执行 PRP 计划+验证循环
+**Propósito**: Executar loop de plano+verificação PRP
 
-**描述**: 按照 PRP 工作流执行计划，包含持续的验证和检查。
+**Descrição**: Executar plano seguindo fluxo de trabalho PRP, incluindo verificação e checagens contínuas.
 
 ---
 
 ### /prp-pr
 
-**用途**: 从 PRP 工作流创建 PR
+**Propósito**: Criar PR do workflow PRP
 
-**描述**: 从 PRP 工作流的结果创建 GitHub Pull Request。
+**Descrição**: Criar GitHub Pull Request dos resultados do workflow PRP.
 
 ---
 
 ### /prp-commit
 
-**用途**: PRP 验证提交
+**Propósito**: Verificação de commit PRP
 
-**描述**: 在 PRP 工作流中执行验证并提交代码。
+**Descrição**: Executar verificação e fazer commit de código no workflow PRP.
 
 ---
 
 ### /multi-plan
 
-**用途**: 多模型协作规划
+**Propósito**: Planejamento colaborativo multi-modelo
 
-**描述**: 结合 Codex 和 Gemini 的双模型分析，生成综合实施计划。
+**Descrição**: Combinar análise de dois modelos (Codex e Gemini), gerar plano de implementação abrangente.
 
-**使用场景**:
-- 需要多角度分析
-- 复杂跨领域项目
-- 需要平衡前端和后端考量
+**Cenários de Uso**:
+- Quando necessidade de múltiplas perspectivas
+- Projetos complexos cross-domínio
+- Quando necessidade de equilibrar considerações frontend e backend
 
 ---
 
-## 相关命令
+## Comandos Relacionados
 
-- `/plan` - 通用实施规划
-- `/code-review` - 代码审查
-- `/build-fix` - 构建修复
+- `/plan` - Planejamento de implementação geral
+- `/code-review` - Revisão de código
+- `/build-fix` - Correção de build

@@ -1,51 +1,51 @@
-# Pull Request 工作流命令
+# Comandos de Workflow de Pull Request
 
-## 概述
+## Visão Geral
 
-PR 工作流命令用于创建、管理和审查 GitHub Pull Requests。
+Comandos de workflow de PR são usados para criar, gerenciar e revisar GitHub Pull Requests.
 
-## 命令列表
+## Lista de Comandos
 
 ### /pr
 
-**用途**: 从当前分支创建 GitHub PR，带 unpushed 提交
+**Propósito**: Criar GitHub PR do branch atual, com commits não pushados
 
-**描述**: 发现模板、分析变更、推送分支并创建 PR。分析完整提交历史，使用 `git diff [base-branch]...HEAD` 查看所有变更。
+**Descrição**: Descobre template, analisa mudanças, faz push do branch e cria PR. Analisa histórico completo de commits, usa `git diff [base-branch]...HEAD` para ver todas as mudanças.
 
-**输入**: `$ARGUMENTS` - 可选，可包含基础分支名和/或标志（如 `--draft`）
+**Entrada**: `$ARGUMENTS` - Opcional, pode conter nome do branch base e/ou flags (como `--draft`)
 
-**解析规则**:
-- 提取任何识别的标志（如 `--draft`）
-- 将剩余的非标志文本作为基础分支名
-- 如果未指定，默认为 `main`
+**Regras de Parsing**:
+- Extrai quaisquer flags identificadas (como `--draft`)
+- Texto restante não-flag é usado como nome do branch base
+- Default para `main` se não especificado
 
-**工作流**:
+**Fluxo de Trabalho**:
 
-| 阶段 | 说明 |
+| Fase | Descrição |
 |---|---|
-| **Phase 1: VALIDATE** | 检查前置条件（不在base分支、无未提交变更、有ahead提交、无已有PR） |
-| **Phase 2: DISCOVER** | 搜索PR模板、分析提交、分析文件变更、检查相关规划产物 |
-| **Phase 3: PUSH** | 推送分支（如果需要则先rebase） |
-| **Phase 4: CREATE** | 使用模板或默认格式创建PR |
-| **Phase 5: VERIFY** | 验证PR创建成功 |
-| **Phase 6: OUTPUT** | 报告PR URL和下一步 |
+| **Phase 1: VALIDATE** | Verificar pré-condições (não estar no branch base, sem mudanças não commitadas, commits ahead, sem PR existente) |
+| **Phase 2: DISCOVER** | Buscar template PR, analisar commits, analisar mudanças de arquivo, verificar artefatos de planejamento relacionados |
+| **Phase 3: PUSH** | Fazer push do branch (rebasing primeiro se necessário) |
+| **Phase 4: CREATE** | Criar PR usando template ou formato default |
+| **Phase 5: VERIFY** | Verificar criação bem-sucedida do PR |
+| **Phase 6: OUTPUT** | Reportar URL do PR e próximos passos |
 
-**PR 创建验证检查**:
+**Verificações de Validação de Criação de PR**:
 
-| 检查 | 条件 | 失败时动作 |
+| Verificação | Condição | Ação se Falhar |
 |---|---|---|
-| 不在base分支 | 当前分支 ≠ base | 停止："先切换到功能分支" |
-| 工作区干净 | 无未提交变更 | 警告："先提交或stash" |
-| 有ahead提交 | `git log origin/<base>..HEAD` 非空 | 停止："没有ahead提交" |
-| 无已有PR | `gh pr list` 为空 | 停止："PR已存在" |
+| Não está no branch base | Branch atual ≠ base | Parar: "Mude para branch de feature primeiro" |
+| Workspace limpo | Sem mudanças não commitadas | Alerta: "Commit ou stash primeiro" |
+| Commits ahead | `git log origin/<base>..HEAD` não vazio | Parar: "Sem commits ahead" |
+| Sem PR existente | `gh pr list` vazio | Parar: "PR já existe" |
 
-**模板搜索顺序**:
-1. `.github/PULL_REQUEST_TEMPLATE/` 目录（如存在）
+**Ordem de Busca de Template**:
+1. Diretório `.github/PULL_REQUEST_TEMPLATE/` (se existir)
 2. `.github/PULL_REQUEST_TEMPLATE.md`
 3. `.github/pull_request_template.md`
 4. `docs/pull_request_template.md`
 
-**默认 PR 格式**（无模板时）:
+**Formato Default de PR** (sem template):
 ```markdown
 ## Summary
 <1-2 sentence description>
@@ -63,108 +63,108 @@ PR 工作流命令用于创建、管理和审查 GitHub Pull Requests。
 <linked issues or "None">
 ```
 
-**边缘情况处理**:
-- **无 `gh` CLI**: 停止并提示安装
-- **未认证**: 提示运行 `gh auth login`
-- **分支分叉**: 使用 `git fetch && git rebase` 然后推送
-- **大型 PR (>20 文件)**: 警告并建议拆分
+**Tratamento de Casos de Borda**:
+- **Sem `gh` CLI**: Parar e instruir instalação
+- **Não autenticado**: Instruir executar `gh auth login`
+- **Branch desactualizado**: Usar `git fetch && git rebase` então fazer push
+- **PR grande (>20 arquivos)**: Alerta e sugerir divisão
 
-**与其他命令集成**:
-- 使用 `/code-review <number>` 审查 PR
-- 使用 `gh pr merge <number>` 合并就绪的 PR
-- 使用 `/plan-prd` 或 `/plan` 创建相关规划产物
+**Integração com Outros Comandos**:
+- Usar `/code-review <number>` para revisar PR
+- Usar `gh pr merge <number>` para fazer merge de PR pronto
+- Usar `/plan-prd` ou `/plan` para criar artefatos de planejamento relacionados
 
 ---
 
 ### /review-pr
 
-**用途**: 审查 GitHub PR 或本地未提交变更
+**Propósito**: Revisar GitHub PR ou mudanças locais não commitadas
 
-**描述**: 审查 GitHub 上的 Pull Request 或本地未提交变更。PR 审查模式适配自 PRPs-agentic-eng。
+**Descrição**: Revisa Pull Request no GitHub ou mudanças locais não commitadas. Modo de revisão de PR adaptado de PRPs-agentic-eng.
 
-**输入**: `$ARGUMENTS` - 可为 PR 编号、PR URL 或空白（本地审查）
-
----
-
-#### 模式选择
-
-| 输入 | 动作 |
-|---|---|
-| PR 编号（如 `42`） | 作为 PR 编号使用 |
-| URL（如 `github.com/.../pull/42`） | 提取 PR 编号 |
-| 分支名 | 通过 `gh pr list --head <branch>` 查找 PR |
-| 空白 | 使用本地审查模式 |
+**Entrada**: `$ARGUMENTS` - Pode ser número do PR, URL do PR, ou vazio (revisão local)
 
 ---
 
-#### 本地审查模式
+#### Seleção de Modo
 
-**工作流**:
-1. **GATHER** - 收集变更: `git diff --name-only HEAD`
-2. **REVIEW** - 审查每个文件（安全问题、质量问题、Melhores-Práticas）
-3. **REPORT** - 生成带严重级别和修复建议的报告
-
-**审查清单**:
-
-| 类别 | 检查项 |
+| Entrada | Ação |
 |---|---|
-| **安全问题 (CRITICAL)** | 硬编码凭证、SQL注入、XSS、缺少输入验证、不安全依赖、路径遍历 |
-| **代码质量 (HIGH)** | 函数>50行、文件>800行、嵌套>4层、缺少错误处理、console.log、TODO/FIXME |
-| **Melhores-Práticas (MEDIUM)** | 变更模式、emoji使用、新代码缺少测试、可访问性问题 |
-
-**决策**:
-
-| 条件 | 决策 |
-|---|---|
-| 存在 CRITICAL 或 HIGH 问题 | **BLOCK** - 阻止提交 |
-| 仅 MEDIUM/LOW 问题 | 通过但带评论 |
-| 无问题且验证通过 | **APPROVE** |
+| Número do PR (ex: `42`) | Usar como número do PR |
+| URL (ex: `github.com/.../pull/42`) | Extrair número do PR |
+| Nome do branch | Encontrar PR via `gh pr list --head <branch>` |
+| Vazio | Usar modo de revisão local |
 
 ---
 
-#### PR 审查模式
+#### Modo de Revisão Local
 
-**工作流**:
-1. **FETCH** - 获取 PR 元数据和 diff
-2. **CONTEXT** - 构建审查上下文（项目规则、规划产物、变更文件）
-3. **REVIEW** - 读取完整文件，应用 7 类审查清单
-4. **VALIDATE** - 运行项目类型的验证命令
-5. **DECIDE** - 根据发现形成建议
-6. **REPORT** - 创建审查产物
-7. **PUBLISH** - 发布审查到 GitHub
-8. **OUTPUT** - 报告给用户
+**Fluxo de Trabalho**:
+1. **GATHER** - Coletar mudanças: `git diff --name-only HEAD`
+2. **REVIEW** - Revisar cada arquivo (problemas de segurança, qualidade, melhores práticas)
+3. **REPORT** - Gerar relatório com níveis de severidade e sugestões de correção
 
-**7 类审查清单**:
+**Checklist de Revisão**:
 
-| 类别 | 检查项 |
+| Categoria | Itens de Verificação |
 |---|---|
-| **Correctness** | 逻辑错误、边界情况、空处理、竞态条件 |
-| **Type Safety** | 类型不匹配、不安全类型转换、`any` 使用、缺少泛型 |
-| **Pattern Compliance** | 符合项目约定（命名、文件结构、错误处理、导入） |
-| **Security** | 注入、认证缺口、secret暴露、SSRF、路径遍历、XSS |
-| **Performance** | N+1查询、缺少索引、无界循环、内存泄漏、大payload |
-| **Completeness** | 缺少测试、缺少错误处理、不完整迁移、缺少文档 |
-| **Maintainability** | 死代码、魔法数字、深嵌套、命名不清、缺少类型 |
+| **Problemas de Segurança (CRITICAL)** | Credenciais hardcoded, SQL injection, XSS, validação de input faltando, dependências inseguras, path traversal |
+| **Qualidade de Código (HIGH)** | Funções>50 linhas, arquivos>800 linhas, aninhamento>4 níveis, tratamento de erros faltando, console.log, TODO/FIXME |
+| **Melhores Práticas (MEDIUM)** | Padrões de mudança, uso de emoji, código novo sem testes, problemas de acessibilidade |
 
-**验证命令检测**:
+**Decisões**:
 
-| 项目类型 | 检测文件 | 验证命令 |
+| Condição | Decisão |
+|---|---|
+| Existe problema CRITICAL ou HIGH | **BLOCK** - Prevenir commit |
+| Apenas problemas MEDIUM/LOW | Aprovar com comentários |
+| Sem problemas e verificação passa | **APPROVE** |
+
+---
+
+#### Modo de Revisão de PR
+
+**Fluxo de Trabalho**:
+1. **FETCH** - Obter metadados e diff do PR
+2. **CONTEXT** - Construir contexto de revisão (regras do projeto, artefatos de planejamento, arquivos de mudança)
+3. **REVIEW** - Ler arquivos completos, aplicar checklist de 7 categorias
+4. **VALIDATE** - Executar comandos de verificação do projeto
+5. **DECIDE** - Formar sugestões baseadas em descobertas
+6. **REPORT** - Criar artefato de revisão
+7. **PUBLISH** - Publicar revisão no GitHub
+8. **OUTPUT** - Reportar ao usuário
+
+**Checklist de 7 Categorias**:
+
+| Categoria | Itens de Verificação |
+|---|---|
+| **Correctness** | Erros de lógica, casos de borda, tratamento null, condições de corrida |
+| **Type Safety** | Tipos incompatíveis, casts de tipo inseguros, uso de `any`, generics faltando |
+| **Pattern Compliance** | Conformidade com convenções do projeto (nomenclatura, estrutura de arquivo, tratamento de erros, imports) |
+| **Security** | Injection, gaps de auth, exposição de secrets, SSRF, path traversal, XSS |
+| **Performance** | Queries N+1, índices faltando, loops não limitados, vazamentos de memória, payloads grandes |
+| **Completeness** | Testes faltando, tratamento de erros faltando, migrações incompletas, documentação faltando |
+| **Maintainability** | Código morto, números mágicos, aninhamento profundo, nomenclatura unclear, tipos faltando |
+
+**Detecção de Comandos de Verificação**:
+
+| Tipo de Projeto | Arquivos Detectados | Comandos de Verificação |
 |---|---|---|
 | Node.js/TypeScript | `package.json` | `npm run typecheck`, `npm run lint`, `npm test`, `npm run build` |
 | Rust | `Cargo.toml` | `cargo clippy`, `cargo test`, `cargo build` |
 | Go | `go.mod` | `go vet ./...`, `go test ./...`, `go build ./...` |
 | Python | `pyproject.toml` | `pytest` |
 
-**决策级别**:
+**Níveis de Decisão**:
 
-| 级别 | 含义 | 动作 |
+| Nível | Significado | Ação |
 |---|---|---|
-| CRITICAL | 安全漏洞或数据丢失风险 | 必须修复才能合并 |
-| HIGH | 可能导致问题的 bug 或逻辑错误 | 合并前应修复 |
-| MEDIUM | 代码质量或Melhores-Práticas缺失 | 建议修复 |
-| LOW | 样式问题或小建议 | 可选 |
+| CRITICAL | Vulnerabilidade de segurança ou risco de perda de dados | Deve ser corrigido antes de fazer merge |
+| HIGH | Bug ou erro lógico que pode causar problemas | Deve ser corrigido antes de fazer merge |
+| MEDIUM | Falta de qualidade de código ou melhores práticas | Sugere correção |
+| LOW | Problema de estilo ou sugestão pequena | Opcional |
 
-**发布审查到 GitHub**:
+**Publicar Revisão no GitHub**:
 ```bash
 # APPROVE
 gh pr review <NUMBER> --approve --body "<summary>"
@@ -172,54 +172,54 @@ gh pr review <NUMBER> --approve --body "<summary>"
 # REQUEST_CHANGES
 gh pr review <NUMBER> --request-changes --body "<summary with required fixes>"
 
-# COMMENT only (draft PR 或信息性)
+# COMMENT only (draft PR ou informativo)
 gh pr review <NUMBER> --comment --body "<summary>"
 ```
 
 ---
 
-### /multi-workflow（待完善）
+### /multi-workflow (Em desenvolvimento)
 
-> （待完善）命令详情待补充
+> (Em desenvolvimento) Detalhes do comando a serem adicionados
 
-**用途**: 多模型协作开发
+**Propósito**: Desenvolvimento colaborativo multi-modelo
 
-**描述**: 协调多个 AI 模型进行协作开发。
-
----
-
-### /multi-backend（待完善）
-
-> （待完善）命令详情待补充
-
-**用途**: 后端多模型开发
-
-**描述**: 以后端开发为中心的多模型协作。
+**Descrição**: Coordena múltiplos modelos de AI para desenvolvimento colaborativo.
 
 ---
 
-### /multi-frontend（待完善）
+### /multi-backend (Em desenvolvimento)
 
-> （待完善）命令详情待补充
+> (Em desenvolvimento) Detalhes do comando a serem adicionados
 
-**用途**: 前端多模型开发
+**Propósito**: Desenvolvimento backend multi-modelo
 
-**描述**: 以前端开发为中心的多模型协作。
-
----
-
-### /multi-execute（待完善）
-
-> （待完善）命令详情待补充
-
-**用途**: 多模型协作执行
-
-**描述**: 协调多个模型并行执行任务。
+**Descrição**: Desenvolvimento centrado em backend com múltiplos modelos.
 
 ---
 
-## 相关命令
+### /multi-frontend (Em desenvolvimento)
 
-- `/pr` - 创建 PR
-- `/review-pr` - 审查 PR
-- `/multi-workflow` - 多模型协作
+> (Em desenvolvimento) Detalhes do comando a serem adicionados
+
+**Propósito**: Desenvolvimento frontend multi-modelo
+
+**Descrição**: Desenvolvimento centrado em frontend com múltiplos modelos.
+
+---
+
+### /multi-execute (Em desenvolvimento)
+
+> (Em desenvolvimento) Detalhes do comando a serem adicionados
+
+**Propósito**: Execução colaborativa multi-modelo
+
+**Descrição**: Coordena múltiplos modelos para executar tarefas em paralelo.
+
+---
+
+## Comandos Relacionados
+
+- `/pr` - Criar PR
+- `/review-pr` - Revisar PR
+- `/multi-workflow` - Colaboração multi-modelo

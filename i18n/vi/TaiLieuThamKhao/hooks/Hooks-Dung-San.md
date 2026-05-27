@@ -1,488 +1,488 @@
-# 内置Hooks
+# Built-in Hooks
 
-## 概述
+## Tổng quan
 
-ECC插件提供了丰富的内置Hook实现，位于`ECC/scripts/hooks/`目录中。
+ECC plugin cung cấp rich built-in Hook implementation, nằm trong `ECC/scripts/hooks/` directory.
 
-## PreToolUse 内置钩子
+## PreToolUse Built-in Hooks
 
 ### pre:bash:dispatcher
 
-**类型**: PreToolUse
+**Loại**: PreToolUse
 **matcher**: Bash
-**描述**: Bash预检分发器，整合了质量检查、tmux提醒、git推送提醒和GateGuard检查
+**Mô tả**: Bash pre-check dispatcher, tích hợp quality check, tmux reminder, git push reminder và GateGuard check
 
-**功能**:
-- 开发服务器阻止器 - 阻止在tmux外运行`npm run dev`等命令
-- Tmux提醒 - 建议对长时间运行的命令（npm test、cargo build、docker）使用tmux
-- Git推送提醒 - 提醒在`git push`前审查更改
-- Pre-commit质量检查 - 运行质量检查：lint暂存文件、验证提交信息格式、检测console.log/debugger/密钥
+**Chức năng**:
+- Dev server blocker - Block chạy `npm run dev` bên ngoài tmux
+- Tmux reminder - Suggest dùng tmux cho long-running command (npm test, cargo build, docker)
+- Git push reminder - Remind review changes trước `git push`
+- Pre-commit quality check - Chạy quality check: lint staged file, verify commit message format, detect console.log/debugger/secret
 
-**退出码**:
-- 0: 警告但继续
-- 2: 阻止执行
+**Exit code**:
+- 0: Warning nhưng tiếp tục
+- 2: Block execution
 
 ---
 
 ### pre:write:doc-file-warning
 
-**类型**: PreToolUse
+**Loại**: PreToolUse
 **matcher**: Write
-**描述**: 警告创建非标准文档文件
+**Mô tả**: Warning khi tạo non-standard doc file
 
-**功能**:
-- 允许标准文件: README, CLAUDE, CONTRIBUTING, CHANGELOG, LICENSE, SKILL
-- 允许目录: docs/, skills/
-- 警告其他.md/.txt文件
-- 跨平台路径处理
+**Chức năng**:
+- Allow standard file: README, CLAUDE, CONTRIBUTING, CHANGELOG, LICENSE, SKILL
+- Allow directory: docs/, skills/
+- Warning other .md/.txt file
+- Cross-platform path handling
 
-**退出码**: 0（仅警告）
+**Exit code**: 0 (chỉ warning)
 
 ---
 
 ### pre:edit-write:suggest-compact
 
-**类型**: PreToolUse
+**Loại**: PreToolUse
 **matcher**: Edit|Write
-**描述**: 在逻辑间隔（约每50次工具调用）建议手动`/compact`
+**Mô tả**: Suggest manual `/compact` tại interval logic (khoảng mỗi 50 tool call)
 
-**功能**:
-- 追踪工具调用次数
-- 在适当间隔提醒上下文压缩
-- 非阻塞，仅提供建议
+**Chức năng**:
+- Track số lần tool call
+- Remind context compress ở appropriate interval
+- Non-blocking, chỉ provide suggestion
 
-**退出码**: 0（建议）
+**Exit code**: 0 (suggestion)
 
 ---
 
 ### pre:observe:continuous-learning
 
-**类型**: PreToolUse
+**Loại**: PreToolUse
 **matcher**: *
-**描述**: 记录工具意图以支持持续学习信号
+**Mô tả**: Record tool intent để support continuous learning signal
 
-**功能**:
-- 捕获工具使用观察
-- 用于模式提取和分析
-- 异步执行，不阻塞
+**Chức năng**:
+- Capture tool usage observation
+- Dùng cho pattern extraction và analysis
+- Async execution, không block
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### pre:governance-capture
 
-**类型**: PreToolUse
+**Loại**: PreToolUse
 **matcher**: Bash|Write|Edit|MultiEdit
-**描述**: 捕获治理事件（密钥、策略违规、审批请求）
+**Mô tả**: Capture governance event (secret, policy violation, approval request)
 
-**功能**:
-- 检测秘密/密钥泄露
-- 捕获策略违规
-- 记录审批请求
+**Chức năng**:
+- Detect secret/key leak
+- Capture policy violation
+- Record approval request
 
-**启用条件**: `ECC_GOVERNANCE_CAPTURE=1`
+**Enable condition**: `ECC_GOVERNANCE_CAPTURE=1`
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### pre:config-protection
 
-**类型**: PreToolUse
+**Loại**: PreToolUse
 **matcher**: Write|Edit|MultiEdit
-**描述**: 阻止修改linter/formatter配置文件
+**Mô tả**: Block modify linter/formatter config file
 
-**功能**:
-- 阻止.eslintrc、.prettierrc等修改
-- 引导修复代码而非削弱配置
+**Chức năng**:
+- Block .eslintrc, .prettierrc, etc. modification
+- Guide fix code thay vì weaken config
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### pre:mcp-health-check
 
-**类型**: PreToolUse
+**Loại**: PreToolUse
 **matcher**: *
-**描述**: MCP工具执行前检查MCP服务器健康状态
+**Mô tả**: Check MCP server health status trước MCP tool execution
 
-**功能**:
-- 检查MCP服务器状态
-- 阻止对不健康MCP服务器的调用
+**Chức năng**:
+- Check MCP server status
+- Block call đến unhealthy MCP server
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### pre:edit-write:gateguard-fact-force
 
-**类型**: PreToolUse
+**Loại**: PreToolUse
 **matcher**: Edit|Write|MultiEdit
-**描述**: 事实强制GateGuard：阻止每个文件的首次编辑/写入，要求在允许前进行调查
+**Mô tả**: Fact-force GateGuard: block first edit/write của mỗi file, yêu cầu investigation trước khi allow
 
-**功能**:
-- 阻止首次编辑
-- 要求确认：导入、数据模式、用户指令
-- 确保有充分的理由再修改
+**Chức năng**:
+- Block first edit
+- Require confirmation: import, data pattern, user instruction
+- Ensure có đủ lý do trước khi modify
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
-## PostToolUse 内置钩子
+## PostToolUse Built-in Hooks
 
 ### post:bash:dispatcher
 
-**类型**: PostToolUse
+**Loại**: PostToolUse
 **matcher**: Bash
-**描述**: Bash后检分发器，用于日志记录、PR和构建通知
+**Mô tả**: Bash post-check dispatcher, cho logging, PR và build notification
 
-**功能**:
-- PR日志 - `gh pr create`后记录PR URL和审查命令
-- 构建分析 - 构建命令后的后台分析（异步，非阻塞）
+**Chức năng**:
+- PR logging - Log PR URL và review command sau `gh pr create`
+- Build analysis - Background analysis sau build command (async, non-blocking)
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### post:quality-gate
 
-**类型**: PostToolUse
+**Loại**: PostToolUse
 **matcher**: Edit|Write|MultiEdit
-**描述**: 文件编辑后运行快速质量检查
+**Mô tả**: Run fast quality check sau khi file edit
 
-**功能**:
-- 代码质量检查
-- 异步执行
-- 不阻塞编辑操作
+**Chức năng**:
+- Code quality check
+- Async execution
+- Không block edit operation
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### post:edit:design-quality-check
 
-**类型**: PostToolUse
+**Loại**: PostToolUse
 **matcher**: Edit|Write|MultiEdit
-**描述**: 警告前端编辑偏离为通用模板外观的UI
+**Mô tả**: Warning khi frontend edit deviate về generic template-looking UI
 
-**功能**:
-- 检测UI设计质量
-- 防止过于通用的模板外观
+**Chức năng**:
+- Detect UI design quality
+- Prevent quá generic template-looking appearance
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### post:edit:accumulator
 
-**类型**: PostToolUse
+**Loại**: PostToolUse
 **matcher**: Edit|Write|MultiEdit
-**描述**: 记录编辑的JS/TS文件路径，以便在Stop时批量格式化和类型检查
+**Mô tả**: Record JS/TS file path đã edit để batch format và type check ở Stop
 
-**功能**:
-- 累积编辑的文件列表
-- 供stop:format-typecheck使用
+**Chức năng**:
+- Accumulate edited file list
+- Dùng cho stop:format-typecheck
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### post:edit:console-warn
 
-**类型**: PostToolUse
+**Loại**: PostToolUse
 **matcher**: Edit
-**描述**: 编辑后警告console.log语句
+**Mô tả**: Warning console.log statement sau edit
 
-**功能**:
-- 检测代码中的console.log
-- 警告开发者清理调试代码
+**Chức năng**:
+- Detect console.log trong code
+- Warning developer clean up debug code
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### post:governance-capture
 
-**类型**: PostToolUse
+**Loại**: PostToolUse
 **matcher**: Bash|Write|Edit|MultiEdit
-**描述**: 从工具输出捕获治理事件
+**Mô tả**: Capture governance event từ tool output
 
-**功能**:
-- 分析工具输出
-- 检测潜在问题
+**Chức năng**:
+- Analyze tool output
+- Detect potential issue
 
-**启用条件**: `ECC_GOVERNANCE_CAPTURE=1`
+**Enable condition**: `ECC_GOVERNANCE_CAPTURE=1`
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### post:session-activity-tracker
 
-**类型**: PostToolUse
+**Loại**: PostToolUse
 **matcher**: *
-**描述**: 记录每个会话的工具调用和文件活动
+**Mô tả**: Record tool call và file activity mỗi session
 
-**功能**:
-- 追踪工具使用统计
-- 文件活动记录
-- 用于ECC2指标
+**Chức năng**:
+- Track tool usage statistics
+- File activity recording
+- Dùng cho ECC2 metrics
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### post:observe:continuous-learning
 
-**类型**: PostToolUse
+**Loại**: PostToolUse
 **matcher**: *
-**描述**: 记录工具结果以支持持续学习信号
+**Mô tả**: Record tool result để support continuous learning signal
 
-**功能**:
-- 捕获工具执行结果
-- 支持模式分析
+**Chức năng**:
+- Capture tool execution result
+- Support pattern analysis
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### post:ecc-metrics-bridge
 
-**类型**: PostToolUse
+**Loại**: PostToolUse
 **matcher**: *
-**描述**: 维护运行中的会话指标聚合
+**Mô tả**: Maintain running session metrics aggregation
 
-**功能**:
-- 追踪token和成本指标
-- 供状态栏和上下文监视器使用
+**Chức năng**:
+- Track token và cost metrics
+- Dùng cho status bar và context monitor
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### post:ecc-context-monitor
 
-**类型**: PostToolUse
+**Loại**: PostToolUse
 **matcher**: *
-**描述**: 在上下文耗尽、高成本、范围 creep 或工具循环时注入代理警告
+**Mô tả**: Inject proxy warning khi context exhausted, high cost, scope creep hoặc tool loop
 
-**功能**:
-- 上下文使用监控
-- 成本警告
-- 范围 creep 检测
-- 工具循环检测
+**Chức năng**:
+- Context usage monitoring
+- Cost warning
+- Scope creep detection
+- Tool loop detection
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### post:mcp-health-check
 
-**类型**: PostToolUseFailure
+**Loại**: PostToolUseFailure
 **matcher**: *
-**描述**: 追踪失败的MCP工具调用，标记不健康的服务器并尝试重连
+**Mô tả**: Track failed MCP tool call, mark unhealthy server và attempt reconnect
 
-**功能**:
-- 失败追踪
-- 健康状态标记
-- 自动重连尝试
+**Chức năng**:
+- Failure tracking
+- Health state marking
+- Auto reconnect attempt
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
-## Stop 内置钩子
+## Stop Built-in Hooks
 
 ### stop:format-typecheck
 
-**类型**: Stop
+**Loại**: Stop
 **matcher**: *
-**描述**: 批量格式化（Biome/Prettier）和类型检查（tsc）本次响应中编辑的所有JS/TS文件
+**Mô tả**: Batch format (Biome/Prettier) và type check (tsc) tất cả JS/TS file đã edit trong response này
 
-**功能**:
-- Prettier/Biome格式化
-- TypeScript类型检查
-- 在Stop时运行一次，而非每次编辑后
+**Chức năng**:
+- Prettier/Biome formatting
+- TypeScript type check
+- Run một lần ở Stop thay vì sau mỗi edit
 
-**退出码**: 0
+**Exit code**: 0
 
-**超时**: 300秒
+**Timeout**: 300 giây
 
 ---
 
 ### stop:check-console-log
 
-**类型**: Stop
+**Loại**: Stop
 **matcher**: *
-**描述**: 每次响应后检查修改文件中的console.log
+**Mô tả**: Check console.log trong modified file sau mỗi response
 
-**功能**:
-- 扫描修改的文件
-- 报告console.log使用情况
+**Chức năng**:
+- Scan modified file
+- Report console.log usage
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### stop:session-end
 
-**类型**: Stop
+**Loại**: Stop
 **matcher**: *
-**描述**: 每次响应后持久化会话状态（Stop携带transcript_path）
+**Mô tả**: Persist session state sau mỗi response (Stop mang transcript_path)
 
-**功能**:
-- 会话状态保存
-- 上下文持久化
+**Chức năng**:
+- Session state saving
+- Context persistence
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### stop:evaluate-session
 
-**类型**: Stop
+**Loại**: Stop
 **matcher**: *
-**描述**: 评估会话以提取可学习的模式
+**Mô tả**: Evaluate session để extract learnable pattern
 
-**功能**:
-- 模式识别
-- 持续学习支持
-- 异步执行
+**Chức năng**:
+- Pattern recognition
+- Continuous learning support
+- Async execution
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### stop:cost-tracker
 
-**类型**: Stop
+**Loại**: Stop
 **matcher**: *
-**描述**: 追踪每个会话的token和成本指标
+**Mô tả**: Track token và cost metrics mỗi session
 
-**功能**:
-- Token使用统计
-- 成本估算
-- 轻量级运行成本遥测标记
+**Chức năng**:
+- Token usage statistics
+- Cost estimation
+- Lightweight running cost telemetry tagging
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
 ### stop:desktop-notify
 
-**类型**: Stop
+**Loại**: Stop
 **matcher**: *
-**描述**: 在Claude响应时发送macOS/WSL桌面通知，包含任务摘要
+**Mô tả**: Gửi macOS/WSL desktop notification khi Claude respond, chứa task summary
 
-**功能**:
-- 桌面通知
-- 任务摘要显示
+**Chức năng**:
+- Desktop notification
+- Task summary display
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
-## SessionStart 内置钩子
+## SessionStart Built-in Hooks
 
 ### session:start
 
-**类型**: SessionStart
+**Loại**: SessionStart
 **matcher**: *
-**描述**: 加载先前上下文并检测新会话的包管理器
+**Mô tả**: Load previous context và detect package manager cho session mới
 
-**功能**:
-- 加载有界限的先前上下文
-- 项目状态检测
-- 包管理器检测（npm/pnpm/yarn/bun）
+**Chức năng**:
+- Load bounded previous context
+- Project state detection
+- Package manager detection (npm/pnpm/yarn/bun)
 
-**环境变量**:
-- `ECC_SESSION_START_MAX_CHARS`: 控制额外上下文大小（默认8000字符）
-- `ECC_SESSION_START_CONTEXT=off`: 完全禁用额外上下文
+**Environment variable**:
+- `ECC_SESSION_START_MAX_CHARS`: Control extra context size (default 8000 chars)
+- `ECC_SESSION_START_CONTEXT=off`: Disable extra context hoàn toàn
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
-## PreCompact 内置钩子
+## PreCompact Built-in Hooks
 
 ### pre:compact
 
-**类型**: PreCompact
+**Loại**: PreCompact
 **matcher**: *
-**描述**: 在上下文压缩前保存状态
+**Mô tả**: Save state trước khi context compact
 
-**功能**:
-- 会话状态持久化
-- 为压缩准备上下文
+**Chức năng**:
+- Session state persistence
+- Prepare context cho compact
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
-## SessionEnd 内置钩子
+## SessionEnd Built-in Hooks
 
 ### session:end:marker
 
-**类型**: SessionEnd
+**Loại**: SessionEnd
 **matcher**: *
-**描述**: 会话结束生命周期标记
+**Mô tả**: Session end lifecycle marker
 
-**功能**:
-- 生命周期事件标记
-- 清理日志
+**Chức năng**:
+- Lifecycle event marking
+- Cleanup log
 
-**退出码**: 0
+**Exit code**: 0
 
 ---
 
-## 内置钩子速查表
+## Built-in Hook Quick Reference
 
-### PreToolUse 钩子
+### PreToolUse Hooks
 
-| ID | Matcher | 功能 | 阻塞 |
+| ID | Matcher | Chức năng | Blocking |
 |----|---------|------|------|
-| pre:bash:dispatcher | Bash | 质量/tmux/推送/GateGuard检查 | 可阻塞 |
-| pre:write:doc-file-warning | Write | 文档文件警告 | 否 |
-| pre:edit-write:suggest-compact | Edit\|Write | 建议压缩 | 否 |
-| pre:observe:continuous-learning | * | 持续学习观察 | 否 |
-| pre:governance-capture | Bash\|Write\|Edit\|MultiEdit | 治理事件捕获 | 否 |
-| pre:config-protection | Write\|Edit\|MultiEdit | 配置保护 | 否 |
-| pre:mcp-health-check | * | MCP健康检查 | 可阻塞 |
-| pre:edit-write:gateguard-fact-force | Edit\|Write\|MultiEdit | 首次编辑GateGuard | 可阻塞 |
+| pre:bash:dispatcher | Bash | Quality/tmux/push/GateGuard check | Có thể blocking |
+| pre:write:doc-file-warning | Write | Doc file warning | Không |
+| pre:edit-write:suggest-compact | Edit\|Write | Suggest compact | Không |
+| pre:observe:continuous-learning | * | Continuous learning observation | Không |
+| pre:governance-capture | Bash\|Write\|Edit\|MultiEdit | Governance event capture | Không |
+| pre:config-protection | Write\|Edit\|MultiEdit | Config protection | Không |
+| pre:mcp-health-check | * | MCP health check | Có thể blocking |
+| pre:edit-write:gateguard-fact-force | Edit\|Write\|MultiEdit | First edit GateGuard | Có thể blocking |
 
-### PostToolUse 钩子
+### PostToolUse Hooks
 
-| ID | Matcher | 功能 | 异步 |
+| ID | Matcher | Chức năng | Async |
 |----|---------|------|------|
-| post:bash:dispatcher | Bash | PR日志/构建通知 | 是 |
-| post:quality-gate | Edit\|Write\|MultiEdit | 质量门检查 | 是 |
-| post:edit:design-quality-check | Edit\|Write\|MultiEdit | 设计质量检查 | 否 |
-| post:edit:accumulator | Edit\|Write\|MultiEdit | 编辑累积器 | 否 |
-| post:edit:console-warn | Edit | console.log警告 | 否 |
-| post:governance-capture | Bash\|Write\|Edit\|MultiEdit | 治理事件捕获 | 否 |
-| post:session-activity-tracker | * | 会话活动追踪 | 否 |
-| post:observe:continuous-learning | * | 持续学习观察 | 是 |
-| post:ecc-metrics-bridge | * | 指标桥接 | 否 |
-| post:ecc-context-monitor | * | 上下文监控 | 否 |
-| post:mcp-health-check | * (PostToolUseFailure) | MCP健康检查 | 否 |
+| post:bash:dispatcher | Bash | PR logging/build notification | Có |
+| post:quality-gate | Edit\|Write\|MultiEdit | Quality gate check | Có |
+| post:edit:design-quality-check | Edit\|Write\|MultiEdit | Design quality check | Không |
+| post:edit:accumulator | Edit\|Write\|MultiEdit | Edit accumulator | Không |
+| post:edit:console-warn | Edit | console.log warning | Không |
+| post:governance-capture | Bash\|Write\|Edit\|MultiEdit | Governance event capture | Không |
+| post:session-activity-tracker | * | Session activity tracking | Không |
+| post:observe:continuous-learning | * | Continuous learning observation | Có |
+| post:ecc-metrics-bridge | * | Metrics bridge | Không |
+| post:ecc-context-monitor | * | Context monitor | Không |
+| post:mcp-health-check | * (PostToolUseFailure) | MCP health check | Không |
 
-### Stop 钩子
+### Stop Hooks
 
-| ID | Matcher | 功能 | 超时 |
+| ID | Matcher | Chức năng | Timeout |
 |----|---------|------|------|
-| stop:format-typecheck | * | 批量格式化和类型检查 | 300s |
-| stop:check-console-log | * | console.log检查 | 30s |
-| stop:session-end | * | 会话状态持久化 | 10s |
-| stop:evaluate-session | * | 会话评估 | 10s |
-| stop:cost-tracker | * | 成本追踪 | 10s |
-| stop:desktop-notify | * | 桌面通知 | 10s |
+| stop:format-typecheck | * | Batch format và type check | 300s |
+| stop:check-console-log | * | console.log check | 30s |
+| stop:session-end | * | Session state persistence | 10s |
+| stop:evaluate-session | * | Session evaluation | 10s |
+| stop:cost-tracker | * | Cost tracking | 10s |
+| stop:desktop-notify | * | Desktop notification | 10s |
 
-### 生命周期钩子
+### Lifecycle Hooks
 
-| ID | Event | 功能 |
+| ID | Event | Chức năng |
 |----|-------|------|
-| session:start | SessionStart | 加载上下文和检测包管理器 |
-| pre:compact | PreCompact | 压缩前状态保存 |
-| session:end:marker | SessionEnd | 会话结束标记 |
+| session:start | SessionStart | Load context và detect package manager |
+| pre:compact | PreCompact | Pre-compact state save |
+| session:end:marker | SessionEnd | Session end marker |

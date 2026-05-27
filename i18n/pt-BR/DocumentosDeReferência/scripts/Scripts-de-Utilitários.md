@@ -1,100 +1,100 @@
-# Scripts-de-Utilitários
+# Scripts de Utilitários
 
-本文档介绍 ECC (Everything Claude Code) 项目中的主要Scripts-de-Utilitários。
+Este documento apresenta os principais Scripts de Utilitários no projeto ECC (Everything Claude Code).
 
-## 目录
+## Índice
 
-- [ecc.js](#eccjs) - 主命令行入口
-- [install-apply.js](#install-applyjs) - 安装执行器
+- [ecc.js](#eccjs) - Ponto de entrada principal de CLI
+- [install-apply.js](#install-applyjs) - Executor de instalação
 - [claw.js](#clawjs) - NanoClaw REPL
-- [harness-audit.js](#harness-auditjs) - 工具链审计
-- [catalog.js](#catalogjs) - 组件目录查看器
-- [build-opencode.js](#build-opencodejs) - OpenCode 构建
+- [harness-audit.js](#harness-auditjs) - Auditoria de toolchain
+- [catalog.js](#catalogjs) - Visualizador de catálogo de componentes
+- [build-opencode.js](#build-opencodejs) - Build OpenCode
 
 ---
 
 ## ecc.js
 
-**路径**: `scripts/ecc.js`
+**Caminho**: `scripts/ecc.js`
 
-ECC 选择性安装的 CLI 主入口点,统一调度所有子命令。
+Ponto de entrada CLI para instalação seletiva do ECC, escalona todos os subcomandos de forma unificada.
 
-### 命令列表
+### Lista de Comandos
 
-| 命令 | 脚本 | 说明 |
-|------|------|------|
-| `install` | install-apply.js | 安装 ECC 内容到目标 |
-| `plan` | install-plan.js | 检查安装清单和解析计划 |
-| `catalog` | catalog.js | 发现安装配置文件和组件 ID |
-| `consult` | consult.js | 根据自然语言查询推荐组件 |
-| `list-installed` | list-installed.js | 检查当前上下文的安装状态 |
-| `doctor` | doctor.js | 诊断缺失或漂移的 ECC 管理文件 |
-| `repair` | repair.js | 恢复漂移或缺失的 ECC 管理文件 |
-| `auto-update` | auto-update.js | 拉取最新 ECC 更改并重新安装 |
-| `status` | status.js | 查询 SQLite 状态存储摘要 |
-| `platform-audit` | platform-audit.js | 审计 GitHub 队列、讨论、路线图等 |
-| `security-ioc-scan` | ci/scan-supply-chain-iocs.js | 扫描依赖和 AI 工具持久化面的供应链 IOC |
-| `sessions` | sessions-cli.js | 列出或检查 SQLite 状态存储中的会话 |
-| `work-items` | work-items.js | 跟踪链接的 Linear、GitHub 工作项 |
-| `session-inspect` | session-inspect.js | 从 dmux 或 Claude 历史目标发出规范会话快照 |
-| `loop-status` | loop-status.js | 检查 Claude 脚本中的过时循环唤醒和待处理工具结果 |
-| `uninstall` | uninstall.js | 删除记录在 install-state 中的 ECC 管理文件 |
+| Comando | Script | Descrição |
+|---------|--------|----------|
+| `install` | install-apply.js | Instalar conteúdo ECC no alvo |
+| `plan` | install-plan.js | Verificar lista de instalação e plano de parsing |
+| `catalog` | catalog.js | Descobrir arquivos de configuração de instalação e IDs de componentes |
+| `consult` | consult.js | Recomendar componentes baseado em consulta em linguagem natural |
+| `list-installed` | list-installed.js | Verificar status de instalação do contexto atual |
+| `doctor` | doctor.js | Diagnosticar arquivos de gerenciamento ECC faltantes ou drift |
+| `repair` | repair.js | Restaurar arquivos de gerenciamento ECC drift ou faltantes |
+| `auto-update` | auto-update.js | Pull das últimas mudanças ECC e reinstalar |
+| `status` | status.js | Consultar resumo de armazenamento de estado SQLite |
+| `platform-audit` | platform-audit.js | Auditar fila GitHub, discussões, roadmap etc. |
+| `security-ioc-scan` | ci/scan-supply-chain-iocs.js | Escanear dependências e persistência de ferramentas AI para IOC de supply chain |
+| `sessions` | sessions-cli.js | Listar ou verificar sessões no armazenamento de estado SQLite |
+| `work-items` | work-items.js | Rastrear Linked Linear, itens de trabalho GitHub |
+| `session-inspect` | session-inspect.js | Emitir snapshot de sessão especificada de dmux ou histórico Claude target |
+| `loop-status` | loop-status.js | Verificar loops de wake-up antigos e resultados de ferramenta pendentes em scripts Claude |
+| `uninstall` | uninstall.js | Excluir arquivos de gerenciamento ECC registrados em install-state |
 
-### 使用示例
+### Exemplos de Uso
 
 ```bash
-# 直接安装语言
+# Instalação direta de linguagem
 ecc typescript
 
-# 带配置文件的安装
+# Instalação com arquivo de configuração
 ecc install --profile developer --target claude
 
-# 查看安装计划
+# Ver plano de instalação
 ecc plan --profile core --target cursor
 
-# 列出可用组件
+# Listar componentes disponíveis
 ecc catalog profiles
 ecc catalog components --family language
 
-# 显示组件详情
+# Mostrar detalhes do componente
 ecc catalog show framework:nextjs
 
-# 咨询推荐
+# Consultar recomendações
 ecc consult "security reviews"
 
-# 检查已安装
+# Verificar instalado
 ecc list-installed --json
 
-# 诊断问题
+# Diagnosticar problemas
 ecc doctor --target cursor
 ecc repair --dry-run
 
-# 自动更新
+# Auto atualização
 ecc auto-update --dry-run
 
-# 状态查询
+# Consultar status
 ecc status --json
 ecc status --exit-code
 ecc status --markdown --write status.md
 
-# 平台审计
+# Auditoria de plataforma
 ecc platform-audit --json --allow-untracked docs/drafts/
 
-# 安全扫描
+# Varredura de segurança
 ecc security-ioc-scan --home
 
-# 会话管理
+# Gerenciamento de sessão
 ecc sessions
 ecc sessions session-active --json
 
-# 工作项跟踪
+# Rastreamento de itens de trabalho
 ecc work-items upsert linear-ecc-20 --source linear --source-id ECC-20 --title "Review control-plane contract" --status blocked
 ecc work-items sync-github --repo affaan-m/ECC
 
-# 检查循环状态
+# Ver status de loop
 ecc loop-status --json
 
-# 卸载
+# Desinstalar
 ecc uninstall --target antigravity --dry-run
 ```
 
@@ -102,91 +102,91 @@ ecc uninstall --target antigravity --dry-run
 
 ## install-apply.js
 
-**路径**: `scripts/install-apply.js`
+**Caminho**: `scripts/install-apply.js`
 
-ECC 安装运行时,保持传统语言安装入口点完整,同时将目标特定的变更逻辑移入可测试的 Node 代码。
+Runtime de instalação ECC, mantém pontos de entrada de instalação de linguagem tradicionais intactos enquanto move lógica de mudança específica de alvo para código Node testável.
 
-### 支持的目标
+### Alvos Suportados
 
-| 目标 | 说明 |
-|------|------|
-| `claude` | 安装到 ~/.claude/,规则/技能放在 rules/ecc 和 skills/ecc |
-| `claude-project` | 安装到 ./.claude/ (项目级) |
-| `cursor` | 安装规则、钩子、光标配置到 ./.cursor/ |
-| `antigravity` | 安装规则、工作流、技能、代理到 ./.agent/ |
-| `codex` | 安装共享代理/配置到 ~/.codex/ |
-| `gemini` | 安装项目级 Gemini 配置到 ./.gemini/ |
-| `opencode` | 安装共享命令/钩子/配置到 ~/.opencode/ |
-| `codebuddy` | 安装命令、代理、技能到 ./.codebuddy/ |
-| `joycode` | 安装命令、代理、技能到 ./.joycode/ |
-| `qwen` | 安装到 ~/.qwen/ |
-| `zed` | 安装到 ./.zed/ |
+| Alvo | Descrição |
+|------|----------|
+| `claude` | Instalar em ~/.claude/, regras/skills em rules/ecc e skills/ecc |
+| `claude-project` | Instalar em ./.claude/ (nível de projeto) |
+| `cursor` | Instalar regras, hooks, configuração cursor em ./.cursor/ |
+| `antigravity` | Instalar regras, workflows, skills, agents em ./.agent/ |
+| `codex` | Instalar agents/configuração compartilhados em ~/.codex/ |
+| `gemini` | Instalar configuração Gemini nível de projeto em ./.gemini/ |
+| `opencode` | Instalar comandos/hooks/configuração compartilhados em ~/.opencode/ |
+| `codebuddy` | Instalar comandos, agents, skills em ./.codebuddy/ |
+| `joycode` | Instalar comandos, agents, skills em ./.joycode/ |
+| `qwen` | Instalar em ~/.qwen/ |
+| `zed` | Instalar em ./.zed/ |
 
-### 安装方式
+### Modos de Instalação
 
-1. **传统语言模式**: `install.sh <language>` (如 `ecc-install typescript`)
-2. **Profile 模式**: `install.sh --profile <name> [--with <component>]... [--without <component>]...`
-3. **模块模式**: `install.sh --modules <id,id,...>`
-4. **技能模式**: `install.sh --skills <skill-id[,skill-id...]>`
-5. **本地化模式**: `install.sh --target claude|claude-project --locale <locale-code>`
+1. **Modo linguagem tradicional**: `install.sh <language>` (ex: `ecc-install typescript`)
+2. **Modo Profile**: `install.sh --profile <name> [--with <component>]... [--without <component>]...`
+3. **Modo módulo**: `install.sh --modules <id,id,...>`
+4. **Modo skill**: `install.sh --skills <skill-id[,skill-id...]>`
+5. **Modo localização**: `install.sh --target claude|claude-project --locale <locale-code>`
 
-### 选项
+### Opções
 
-- `--dry-run` - 显示安装计划但不复制文件
-- `--json` - 发出机器可读的 JSON 格式
-- `--config <path>` - 从文件加载安装意图
+- `--dry-run` - Mostrar plano de instalação sem copiar arquivos
+- `--json` - Emitir formato JSON legível por máquina
+- `--config <path>` - Carregar intenção de instalação de arquivo
 
 ---
 
 ## claw.js
 
-**路径**: `scripts/claw.js`
+**Caminho**: `scripts/claw.js`
 
-NanoClaw v2 - 面向 Everything Claude Code 的零外部依赖、会话感知的 REPL,基于 `claude -p` 构建。
+NanoClaw v2 - REPL zero-dependency, com suporte a sessão, baseado em `claude -p` para Everything Claude Code.
 
-### 功能
+### Funcionalidades
 
-- 会话历史持久化存储在 `~/.claude/claw/`
-- 支持动态加载技能作为上下文
-- 会话压缩以管理上下文长度
-- 会话分支和导出
-- 跨会话搜索
+- Persistência de histórico de sessão armazenado em `~/.claude/claw/`
+- Suporte a carregamento dinâmico de skills como contexto
+- Compressão de sessão para gerenciar comprimento de contexto
+- Branch e exportação de sessão
+- Busca cross-sessão
 
-### REPL 命令
+### Comandos REPL
 
-| 命令 | 说明 |
-|------|------|
-| `/help` | 显示帮助 |
-| `/clear` | 清除当前会话历史 |
-| `/history` | 打印完整对话历史 |
-| `/sessions` | 列出已保存的会话 |
-| `/model [name]` | 显示/设置模型 |
-| `/load <skill-name>` | 加载技能到活动上下文 |
-| `/branch <session-name>` | 将当前会话分支到新会话 |
-| `/search <query>` | 跨会话搜索 |
-| `/compact` | 保留最近的轮次,压缩旧上下文 |
-| `/export <md\|json\|txt> [path]` | 导出会话 |
-| `/metrics` | 显示会话指标 |
-| `exit` | 退出 REPL |
+| Comando | Descrição |
+|---------|----------|
+| `/help` | Mostrar ajuda |
+| `/clear` | Limpar histórico de sessão atual |
+| `/history` | Imprimir histórico de conversa completo |
+| `/sessions` | Listar sessões salvas |
+| `/model [name]` | Mostrar/configurar modelo |
+| `/load <skill-name>` | Carregar skill no contexto ativo |
+| `/branch <session-name>` | Branch de sessão atual para nova sessão |
+| `/search <query>` | Busca cross-sessão |
+| `/compact` | Manter rodadas recentes, comprimir contexto antigo |
+| `/export <md\|json\|txt> [path]` | Exportar sessão |
+| `/metrics` | Mostrar métricas de sessão |
+| `exit` | Sair do REPL |
 
-### 环境变量
+### Variáveis de Ambiente
 
-| 变量 | 默认值 | 说明 |
-|------|--------|------|
-| `CLAW_SESSION` | `default` | 初始会话名称 |
-| `CLAW_MODEL` | `sonnet` | 默认模型 |
-| `CLAW_SKILLS` | 空 | 加载的技能列表 (逗号分隔) |
+| Variável | Padrão | Descrição |
+|---------|--------|----------|
+| `CLAW_SESSION` | `default` | Nome da sessão inicial |
+| `CLAW_MODEL` | `sonnet` | Modelo padrão |
+| `CLAW_SKILLS` | vazio | Lista de skills a carregar (separados por vírgula) |
 
-### 使用示例
+### Exemplos de Uso
 
 ```bash
-# 使用默认会话启动
+# Iniciar com sessão padrão
 node scripts/claw.js
 
-# 使用指定会话启动
+# Iniciar com sessão especificada
 CLAW_SESSION=my-session node scripts/claw.js
 
-# 加载技能启动
+# Iniciar com skills carregados
 CLAW_SKILLS="javascript-patterns,python-testing" node scripts/claw.js
 ```
 
@@ -194,42 +194,42 @@ CLAW_SKILLS="javascript-patterns,python-testing" node scripts/claw.js
 
 ## harness-audit.js
 
-**路径**: `scripts/harness-audit.js`
+**Caminho**: `scripts/harness-audit.js`
 
-确定性工具链审计工具,基于显式文件/规则检查。自动检测 ECC 仓库模式 vs 消费者项目模式。
+Ferramenta de auditoria de toolchain determinística, baseada em verificação explícita de arquivo/regras. Detecta automaticamente padrão ECC repo vs padrão projeto consumidor.
 
-### 审计类别
+### Categorias de Auditoria
 
-| 类别 | 说明 |
-|------|------|
-| Tool Coverage | 工具覆盖完整性 |
-| Context Efficiency | 上下文效率 |
-| Quality Gates | 质量门禁 |
-| Memory Persistence | 记忆持久化 |
-| Eval Coverage | 评估覆盖 |
-| Security Guardrails | 安全护栏 |
-| Cost Efficiency | 成本效率 |
-| GitHub Integration | GitHub 集成 |
-| Vercel/Netlify/Cloudflare/Fly Integration | 各平台集成 |
+| Categoria | Descrição |
+|-----------|-----------|
+| Tool Coverage | Completude de cobertura de ferramenta |
+| Context Efficiency | Eficiência de contexto |
+| Quality Gates | Quality gates |
+| Memory Persistence | Persistência de memória |
+| Eval Coverage | Cobertura de avaliação |
+| Security Guardrails | Rails de segurança |
+| Cost Efficiency | Eficiência de custo |
+| GitHub Integration | Integração GitHub |
+| Vercel/Netlify/Cloudflare/Fly Integration | Integração de várias plataformas |
 
-### 使用示例
+### Exemplos de Uso
 
 ```bash
-# 审计当前目录
+# Auditar diretório atual
 node scripts/harness-audit.js
 
-# 指定作用域
+# Especificar escopo
 node scripts/harness-audit.js --scope repo
 node scripts/harness-audit.js --scope hooks
 node scripts/harness-audit.js --scope skills
 
-# 指定根目录
+# Especificar diretório raiz
 node scripts/harness-audit.js --root /path/to/project
 
-# JSON 格式输出
+# Formato de saída JSON
 node scripts/harness-audit.js --format json
 
-# 组合使用
+# Combinar uso
 node scripts/harness-audit.js repo --format json --root .
 ```
 
@@ -237,15 +237,15 @@ node scripts/harness-audit.js repo --format json --root .
 
 ## catalog.js
 
-**路径**: `scripts/catalog.js`
+**Caminho**: `scripts/catalog.js`
 
-发现 ECC 安装组件和配置文件的工具。
+Ferramenta para descobrir componentes e arquivos de configuração instalados do ECC.
 
-### 命令
+### Comandos
 
 #### profiles
 
-列出所有安装配置文件。
+Listar todos os perfis de instalação.
 
 ```bash
 node scripts/catalog.js profiles
@@ -254,7 +254,7 @@ node scripts/catalog.js profiles --json
 
 #### components
 
-列出安装组件,可按家族和目标筛选。
+Listar componentes instalados, pode filtrar por família e alvo.
 
 ```bash
 node scripts/catalog.js components
@@ -266,41 +266,41 @@ node scripts/catalog.js components --json
 
 #### show
 
-显示特定组件的详细信息。
+Mostrar detalhes de componente específico.
 
 ```bash
 node scripts/catalog.js show <component-id>
 node scripts/catalog.js show framework:nextjs --json
 ```
 
-### 组件家族
+### Famílias de Componentes
 
-- `baseline` - 基础组件
-- `language` - 语言组件 (javascript, typescript, python, etc.)
-- `framework` - 框架组件 (nextjs, react, vue, etc.)
-- `capability` - 能力组件
-- `agent` - 代理组件
-- `skill` - 技能组件
+- `baseline` - Componentes baseline
+- `language` - Componentes de linguagem (javascript, typescript, python, etc.)
+- `framework` - Componentes de framework (nextjs, react, vue, etc.)
+- `capability` - Componentes de capability
+- `agent` - Componentes de agent
+- `skill` - Componentes de skill
 
 ---
 
 ## build-opencode.js
 
-**路径**: `scripts/build-opencode.js`
+**Caminho**: `scripts/build-opencode.js`
 
-构建 OpenCode 插件的 TypeScript 代码。
+Compila código TypeScript do plugin OpenCode.
 
-### 功能
+### Funcionalidades
 
-1. 清理 `dist` 目录
-2. 使用 TypeScript 编译器编译 `.opencode` 目录下的代码
-3. 输出到 `.opencode/dist`
+1. Limpa diretório `dist`
+2. Compila código no diretório `.opencode` usando compilador TypeScript
+3. Saída para `.opencode/dist`
 
-### 前提条件
+### Pré-requisitos
 
-需要已安装根目录的开发依赖,确保 TypeScript 编译器可用。
+Requer dependências de desenvolvimento do diretório raiz instaladas, garantir que compilador TypeScript está disponível.
 
-### 使用
+### Uso
 
 ```bash
 node scripts/build-opencode.js

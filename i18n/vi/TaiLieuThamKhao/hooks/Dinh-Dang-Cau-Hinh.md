@@ -1,8 +1,8 @@
-# 配置格式
+# Định dạng Cấu hình
 
-## hooks.json 结构概述
+## Tổng quan cấu trúc hooks.json
 
-ECC Hooks系统的配置文件采用JSON格式，主要结构如下：
+File cấu hình hệ thống ECC Hooks sử dụng định dạng JSON, với cấu trúc chính như sau:
 
 ```json
 {
@@ -19,18 +19,18 @@ ECC Hooks系统的配置文件采用JSON格式，主要结构如下：
 }
 ```
 
-## 顶层结构
+## Cấu trúc cấp cao nhất
 
-| 字段 | 类型 | 说明 |
+| Trường | Loại | Mô tả |
 |------|------|------|
-| `$schema` | string | JSON Schema URL，用于验证配置 |
-| `hooks` | object | 包含所有钩子类型的对象 |
+| `$schema` | string | JSON Schema URL, dùng để xác minh cấu hình |
+| `hooks` | object | Object chứa tất cả các loại hook |
 
 ---
 
-## 钩子数组结构
+## Cấu trúc mảng hook
 
-每个事件类型（PreToolUse、PostToolUse等）包含一个钩子数组，每个钩子对象具有以下结构：
+Mỗi loại sự kiện (PreToolUse, PostToolUse, v.v.) chứa một mảng hooks, mỗi object hook có cấu trúc sau:
 
 ```json
 {
@@ -43,80 +43,80 @@ ECC Hooks系统的配置文件采用JSON格式，主要结构如下：
       "timeout": 30
     }
   ],
-  "description": "钩子描述",
+  "description": "Mô tả hook",
   "id": "unique-hook-id"
 }
 ```
 
-### matcher 字段
+### Trường matcher
 
-#### 类型说明
-matcher字段用于指定触发钩子的工具类型，支持单个工具或多个工具（用`|`分隔）。
+#### Mô tả loại
+Trường matcher dùng để chỉ định loại tool kích hoạt hook, hỗ trợ một tool hoặc nhiều tool (phân cách bằng `|`).
 
-#### 可用值
-| matcher值 | 匹配的工具有哪些 |
+#### Giá trị khả dụng
+| Giá trị matcher | Tool được match |
 |-----------|-----------------|
-| `*` | 所有工具 |
-| `Bash` | Bash工具 |
-| `Edit` | Edit工具 |
-| `Write` | Write工具 |
-| `Read` | Read工具 |
-| `MultiEdit` | MultiEdit工具 |
-| `Bash\|Edit\|Write` | Bash、Edit或Write |
-| `Edit\|Write\|MultiEdit` | Edit、Write或MultiEdit |
+| `*` | Tất cả tools |
+| `Bash` | Tool Bash |
+| `Edit` | Tool Edit |
+| `Write` | Tool Write |
+| `Read` | Tool Read |
+| `MultiEdit` | Tool MultiEdit |
+| `Bash\|Edit\|Write` | Bash, Edit hoặc Write |
+| `Edit\|Write\|MultiEdit` | Edit, Write hoặc MultiEdit |
 
-#### 使用示例
+#### Ví dụ sử dụng
 ```json
-// 匹配所有工具
+// Match tất cả tools
 "matcher": "*"
 
-// 仅匹配Bash工具
+// Chỉ match tool Bash
 "matcher": "Bash"
 
-// 匹配多个工具
+// Match nhiều tools
 "matcher": "Edit|Write|MultiEdit"
 ```
 
 ---
 
-## hooks 数组结构
+## Cấu trúc mảng hooks
 
-hooks数组包含一个或多个钩子命令对象：
+Mảng hooks chứa một hoặc nhiều object lệnh hook:
 
-### type 字段
+### Trường type
 
-| type值 | 说明 |
+| Giá trị type | Mô tả |
 |--------|------|
-| `command` | 执行Node.js命令 |
+| `command` | Thực thi lệnh Node.js |
 
-### command 字段
+### Trường command
 
-要执行的命令，通常是Node.js脚本路径。
+Đường dẫn script Node.js cần thực thi.
 
-### async 字段（可选）
+### Trường async (tùy chọn)
 
 ```json
 "async": true
 ```
 
-- `true`: 异步执行，不阻塞工具执行
-- `false`或省略: 同步执行，阻塞工具执行
+- `true`: Thực thi không đồng bộ, không blocking tool execution
+- `false` hoặc không có: Thực thi đồng bộ, blocking tool execution
 
-### timeout 字段（可选）
+### Trường timeout (tùy chọn)
 
 ```json
 "timeout": 30
 ```
 
-最大执行时间（秒）。建议：
-- 同步钩子: <200ms
-- 异步钩子: ≤30秒
+Thời gian thực thi tối đa (giây). Khuyến nghị:
+- Hooks đồng bộ: <200ms
+- Hooks không đồng bộ: ≤30 giây
 
 ---
 
-## 完整配置示例
+## Ví dụ cấu hình đầy đủ
 
-### PreToolUse 钩子示例
+### Ví dụ PreToolUse Hook
 
 ```json
 {
@@ -127,12 +127,12 @@ hooks数组包含一个或多个钩子命令对象：
       "command": "node scripts/hooks/pre-bash-dispatcher.js"
     }
   ],
-  "description": "Bash预检分发器，用于质量、tmux、推送和GateGuard检查",
+  "description": "Bash pre-check dispatcher cho quality, tmux, push và GateGuard checks",
   "id": "pre:bash:dispatcher"
 }
 ```
 
-### PostToolUse 钩子示例
+### Ví dụ PostToolUse Hook
 
 ```json
 {
@@ -145,12 +145,12 @@ hooks数组包含一个或多个钩子命令对象：
       "timeout": 30
     }
   ],
-  "description": "文件编辑后运行质量门检查",
+  "description": "Chạy quality gate checks sau khi chỉnh sửa file",
   "id": "post:quality-gate"
 }
 ```
 
-### Stop 钩子示例
+### Ví dụ Stop Hook
 
 ```json
 {
@@ -163,12 +163,12 @@ hooks数组包含一个或多个钩子命令对象：
       "timeout": 10
     }
   ],
-  "description": "每次响应后保存会话状态",
+  "description": "Lưu session state sau mỗi response",
   "id": "stop:session-end"
 }
 ```
 
-### SessionStart 钩子示例
+### Ví dụ SessionStart Hook
 
 ```json
 {
@@ -179,54 +179,54 @@ hooks数组包含一个或多个钩子命令对象：
       "command": "node scripts/hooks/session-start-bootstrap.js"
     }
   ],
-  "description": "加载先前上下文并检测新会话的包管理器",
+  "description": "Tải previous context có giới hạn và phát hiện package manager khi session mới",
   "id": "session:start"
 }
 ```
 
 ---
 
-## 生命周期事件配置格式
+## Định dạng cấu hình lifecycle events
 
-对于SessionStart、SessionEnd、PreCompact等生命周期事件，使用不同的配置结构：
+Đối với các lifecycle events như SessionStart, SessionEnd, PreCompact, sử dụng cấu trúc cấu hình khác:
 
 ```json
 {
-  "description": "内存持久化的生命周期钩子定义",
+  "description": "Định nghĩa lifecycle hooks cho memory persistence",
   "events": [
     {
       "event": "SessionStart",
       "id": "session:start",
       "script": "scripts/hooks/session-start-bootstrap.js",
-      "purpose": "在会话开始时加载有界限的先前上下文并检测项目状态",
+      "purpose": "Tải previous context có giới hạn và phát hiện trạng thái project khi session bắt đầu",
       "blocking": false
     },
     {
       "event": "PreCompact",
       "id": "pre:compact",
       "script": "scripts/hooks/pre-compact.js",
-      "purpose": "在上下文压缩前持久化会话状态",
+      "purpose": "Persist session state trước khi context compact",
       "blocking": false
     }
   ]
 }
 ```
 
-### 生命周期事件字段
+### Trường lifecycle event
 
-| 字段 | 说明 |
+| Trường | Mô tả |
 |------|------|
-| `event` | 事件类型（SessionStart、PreCompact、SessionEnd等） |
-| `id` | 唯一标识符 |
-| `script` | 脚本路径 |
-| `purpose` | 用途描述 |
-| `blocking` | 是否阻塞（通常为false） |
+| `event` | Loại sự kiện (SessionStart, PreCompact, SessionEnd, v.v.) |
+| `id` | Identifier duy nhất |
+| `script` | Đường dẫn script |
+| `purpose` | Mô tả mục đích |
+| `blocking` | Có blocking không (thường là false) |
 
 ---
 
-## 禁用钩子
+## Vô hiệu hóa Hooks
 
-### 通过编辑配置禁用
+### Vô hiệu hóa qua chỉnh sửa cấu hình
 
 ```json
 {
@@ -235,78 +235,78 @@ hooks数组包含一个或多个钩子命令对象：
       {
         "matcher": "Write",
         "hooks": [],
-        "description": "覆盖：允许所有.md文件创建"
+        "description": "Override: Cho phép tạo tất cả file .md"
       }
     ]
   }
 }
 ```
 
-### 通过环境变量禁用
+### Vô hiệu hóa qua biến môi trường
 
 ```bash
-# 禁用特定钩子（逗号分隔）
+# Vô hiệu hóa hooks cụ thể (phân cách bằng dấu phẩy)
 export ECC_DISABLED_HOOKS="pre:bash:tmux-reminder,post:edit:typecheck"
 
-# 禁用GateGuard
+# Vô hiệu hóa GateGuard
 export ECC_GATEGUARD=off
 ```
 
 ---
 
-## 钩子ID命名规范
+## Quy ước đặt tên Hook ID
 
-ECC使用冒号分隔的命名约定：
+ECC sử dụng quy ước đặt tên phân cách bằng dấu hai chấm:
 
-| 前缀 | 用途 | 示例 |
+| Prefix | Mục đích | Ví dụ |
 |------|------|------|
-| `pre:` | PreToolUse钩子 | `pre:bash:dispatcher` |
-| `post:` | PostToolUse钩子 | `post:quality-gate` |
-| `stop:` | Stop钩子 | `stop:session-end` |
-| `session:` | 会话生命周期钩子 | `session:start` |
+| `pre:` | PreToolUse hooks | `pre:bash:dispatcher` |
+| `post:` | PostToolUse hooks | `post:quality-gate` |
+| `stop:` | Stop hooks | `stop:session-end` |
+| `session:` | Session lifecycle hooks | `session:start` |
 
 ---
 
-## run-with-flags.js 封装器
+## Wrapper run-with-flags.js
 
-ECC使用`run-with-flags.js`封装器来运行钩子，支持配置文件的运行时门控：
+ECC sử dụng wrapper `run-with-flags.js` để chạy hooks, hỗ trợ runtime gating từ cấu hình:
 
 ```
 node scripts/hooks/run-with-flags.js <hook-id> <script-path> <profiles>
 ```
 
-### 参数说明
-| 参数 | 说明 |
+### Mô tả tham số
+| Tham số | Mô tả |
 |------|------|
-| `hook-id` | 钩子的唯一标识符 |
-| `script-path` | 实际要运行的脚本路径 |
-| `profiles` | 逗号分隔的配置文件列表（minimal, standard, strict） |
+| `hook-id` | Identifier duy nhất của hook |
+| `script-path` | Đường dẫn script thực tế cần chạy |
+| `profiles` | Danh sách cấu hình phân cách bằng dấu phẩy (minimal, standard, strict) |
 
-### 工作原理
-1. 读取`ECC_HOOK_PROFILE`环境变量（默认: standard）
-2. 检查钩子ID是否在`ECC_DISABLED_HOOKS`中
-3. 如果允许，则运行脚本
+### Cách hoạt động
+1. Đọc biến môi trường `ECC_HOOK_PROFILE` (mặc định: standard)
+2. Kiểm tra hook ID có trong `ECC_DISABLED_HOOKS` không
+3. Nếu được phép, chạy script
 
 ---
 
-## 跨平台路径处理
+## Xử lý đường dẫn đa nền tảng
 
-ECC的hook命令使用Node.js脚本实现跨平台行为：
+Lệnh hook ECC sử dụng script Node.js để implement hành vi đa nền tảng:
 
 ```javascript
 const path = require('path');
 const homedir = require('os').homedir();
 
-// 跨平台路径解析
+// Cross-platform path resolution
 const configDir = path.join(homedir, '.claude');
 const hookScript = path.join(configDir, 'scripts', 'hooks', 'my-hook.js');
 ```
 
 ---
 
-## 配置验证
+## Xác minh cấu hình
 
-建议使用JSON Schema验证配置：
+Khuyến nghị sử dụng JSON Schema để xác minh cấu hình:
 ```json
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json"

@@ -1,80 +1,80 @@
-# 项目管理命令
+# Lệnh Quản Lý Dự Án
 
-## 概述
+## Tổng quan
 
-项目管理命令用于项目配置、基础设施设置和工具链管理。
+Lệnh quản lý dự án dùng để cấu hình project, thiết lập infrastructure và quản lý toolchain.
 
-## 命令列表
+## Danh sách lệnh
 
 ### /projects
 
-**用途**: 列出已知项目 + instinct 统计
+**Mục đích**: Liệt kê các project đã biết + instinct statistics
 
-**描述**: 列出用户所有已知项目及其相关的 instinct 统计信息。
+**Mô tả**: Liệt kê tất cả project của user cùng với instinct statistics liên quan.
 
 ---
 
 ### /harness-audit
 
-**用途**: 审计 agent harness 配置
+**Mục đích**: Audit agent harness configuration
 
-**描述**: 检查和审计 Claude Code 的 harness 配置。
+**Mô tả**: Kiểm tra và audit Claude Code harness configuration.
 
-**检查内容**:
-- 工具链配置
-- 代理设置
-- MCP 服务器状态
-- 规则配置
+**Kiểm tra nội dung**:
+- Toolchain configuration
+- Agent settings
+- MCP server status
+- Rules configuration
 
 ---
 
 ### /model-route
 
-**用途**: 路由任务到合适模型
+**Mục đích**: Route task đến model phù hợp
 
-**描述**: 根据任务类型选择最合适的模型（Haiku/Sonnet/Opus）。
+**Mô tả**: Chọn model phù hợp nhất theo task type (Haiku/Sonnet/Opus).
 
-**模型选择指南**:
-- **Haiku**: 轻量级任务、代码生成、频繁调用
-- **Sonnet**: 主要开发工作、复杂编码任务
-- **Opus**: 架构决策、深度推理、研究分析
+**Model selection guide**:
+- **Haiku**: Task nhẹ, code generation, frequent invocation
+- **Sonnet**: Main development work, complex coding task
+- **Opus**: Architectural decision, deep reasoning, research analysis
 
 ---
 
 ### /pm2
 
-**用途**: PM2 进程管理器初始化
+**Mục đích**: PM2 process manager initialization
 
-**描述**: 初始化 PM2 进程管理器配置。
+**Mô tả**: Initialize PM2 process manager configuration.
 
 ---
 
 ### /setup-pm
 
-**用途**: 配置包管理器
+**Mục đích**: Configure package manager
 
-**描述**: 配置项目使用的包管理器。
+**Mô tả**: Configure package manager mà project sử dụng.
 
-**支持的包管理器**:
+**Supported package manager**:
 - npm
 - pnpm
 - yarn
 - bun
 
-**可通过** `CLAUDE_PACKAGE_MANAGER` **环境变量配置**
+**Có thể configure qua** `CLAUDE_PACKAGE_MANAGER` **environment variable**
 
 ---
 
 ### /project-init
 
-**用途**: 项目初始化
+**Mục đích**: Project initialization
 
-**描述**: 初始化新项目的标准结构和配置。
+**Mô tả**: Initialize standard structure và configuration cho project mới.
 
 ---
 
-## 相关命令
+## Các lệnh liên quan
 
-- `/projects` - 列出项目
-- `/harness-audit` - 审计配置
-- `/model-route` - 模型路由
+- `/projects` - Liệt kê project
+- `/harness-audit` - Audit configuration
+- `/model-route` - Model routing

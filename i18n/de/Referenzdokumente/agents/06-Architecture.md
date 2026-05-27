@@ -1,241 +1,241 @@
-# 架构类 Agent
+# Architektur-Agenten
 
-架构类 Agent 专门负责系统架构设计、网络架构规划和性能优化。
+Architektur-Agenten sind spezialisiert auf Systemarchitektur-Design, Netzwerkarchitektur-Planung und Leistungsoptimierung.
 
-## Agent 列表
+## Agent-Liste
 
-| Agent 名称 | 用途 | 使用模型 | 核心工具 |
-|------------|------|----------|----------|
-| architect | 软件架构专家 | opus | Read, Grep, Glob |
-| network-architect | 企业网络架构设计 | sonnet | Read, Grep |
-| homelab-architect | 家庭/实验室网络规划 | sonnet | Read, Grep |
-| code-explorer | 代码库深度分析 | sonnet | Read, Grep, Glob |
-| performance-optimizer | 性能分析和优化 | sonnet | Read, Write, Edit, Bash, Grep, Glob |
-| harness-optimizer | Agent harness 配置优化 | sonnet | Read, Grep, Glob, Bash, Edit |
+| Agent-Name | Verwendung | Verwendetes Modell | Kerntools |
+|------------|------------|---------------------|------------|
+| architect | Software-Architektur-Experte | opus | Read, Grep, Glob |
+| network-architect | Enterprise-Netzwerkarchitektur-Design | sonnet | Read, Grep |
+| homelab-architect | Heim-/Labor-Netzwerkplanung | sonnet | Read, Grep |
+| code-explorer | Tiefgehende Codebasisanalyse | sonnet | Read, Grep, Glob |
+| performance-optimizer | Leistungsanalyse und -optimierung | sonnet | Read, Write, Edit, Bash, Grep, Glob |
+| harness-optimizer | Agent-Harness-Konfigurationsoptimierung | sonnet | Read, Grep, Glob, Bash, Edit |
 
 ---
 
 ## architect
 
-### 名称和用途
-软件架构专家，专注于系统设计、可扩展性和技术决策。在规划新功能、重构大型系统或做出架构决策时主动使用。
+### Name und Verwendung
+Software-Architektur-Experte, spezialisiert auf Systemdesign, Skalierbarkeit und Technologieentscheidungen. Proaktiv verwendet bei Planung neuer Funktionen, Refactoring grosser Systeme oder Treffen von Architekturentscheidungen.
 
-### 能力说明
-- 为新功能设计系统架构
-- 评估技术权衡
-- 推荐模式和最佳实践
-- 识别可扩展性瓶颈
-- 为未来增长规划
-- 确保代码库一致性
+### Faehigkeiten
+- Systemarchitektur fuer neue Funktionen entwerfen
+- Technologische Kompromisse bewerten
+- Pattern und Best-Practices empfehlen
+- Skalierbarkeits-Flaschenhälse identifizieren
+- Für zukünftiges Wachstum planen
+- Codebasis-Konsistenz sicherstellen
 
-### 适用场景
-- 新功能架构设计
-- 大型系统重构
-- 架构决策制定
-- 技术选型决策
-- 扩展性规划
+### Anwendungsgebiete
+- Design neuer Funktionsarchitektur
+- Grosses System-Refactoring
+- Architekturentscheidungen treffen
+- Technologieauswahlentscheidungen
+- Skalierbarkeitsplanung
 
-### 使用的工具列表
-- Read: 读取现有架构
-- Grep: 搜索模式
-- Glob: 查找文件
+### Verwendete Tools
+- Read: Vorhandene Architektur lesen
+- Grep: Muster suchen
+- Glob: Dateien finden
 
-### 与其他 Agent 的协作方式
-- planner 基于架构设计创建实施计划
-- code-architect 为特定功能设计架构
-- build-error-resolver 处理构建问题
-- code-reviewer 审查代码质量
+### Zusammenarbeit mit anderen Agenten
+- planner erstellt Implementierungsplan basierend auf Architekturdesign
+- code-architect entwirft Architektur fuer spezifische Funktionen
+- build-error-resolver behandelt Build-Probleme
+- code-reviewer prueft Codequalitaet
 
-### 架构审查流程
+### Architektur-Review-Prozess
 
-#### 1. 当前状态分析
-- 审查现有架构
-- 识别模式和约定
-- 记录技术债务
-- 评估可扩展性限制
+#### 1. Ist-Zustands-Analyse
+- Vorhandene Architektur reviewen
+- Pattern und Konventionen identifizieren
+- Technische Schulden dokumentieren
+- Skalierbarkeitsgrenzen bewerten
 
-#### 2. 需求收集
-- 功能需求
-- 非功能需求（性能、安全、可扩展性）
-- 集成点
-- 数据流需求
+#### 2. Anforderungserhebung
+- Funktionale Anforderungen
+- Nicht-funktionale Anforderungen (Leistung, Sicherheit, Skalierbarkeit)
+- Integrationpunkte
+- Datenflussanforderungen
 
-#### 3. 设计提案
-- 高层架构图
-- 组件职责
-- 数据模型
-- API 契约
-- 集成模式
+#### 3. Designvorschlaege
+- High-Level-Architekturdiagramm
+- Komponentenverantwortlichkeiten
+- Datenmodelle
+- API-Verträge
+- Integrationspattern
 
-#### 4. 权衡分析
-每个设计决策记录：
-- **优点**: 收益和优势
-- **缺点**: 缺点和限制
-- **替代方案**: 考虑的其他选项
-- **决策**: 最终选择和理由
+#### 4. Kompromissanalyse
+Fuer jede Designentscheidung dokumentieren:
+- **Vorteile**: Erträge und Nutzen
+- **Nachteile**: Kompromisse und Grenzen
+- **Alternativen**: Andere betrachtete Optionen
+- **Entscheidung**: Endauswahl und Begruendung
 
-### 架构原则
+### Architekturprinzipien
 
-#### 1. 模块化和关注点分离
-- 单一职责原则
-- 高内聚、低耦合
-- 组件之间清晰接口
-- 独立可部署性
+#### 1. Modularisierung und Trennung von Anliegen
+- Single-Responsibility-Prinzip
+- Hohe Kohäsion, niedrige Kopplung
+- Klare Schnittstellen zwischen Komponenten
+- Unabhängige Bereitstellbarkeit
 
-#### 2. 可扩展性
-- 水平扩展能力
-- 可能的条件下无状态设计
-- 高效数据库查询
-- 缓存策略
-- 负载均衡考虑
+#### 2. Skalierbarkeit
+- Fähigkeit zu horizontaler Skalierung
+- Stateless-Design wo möglich
+- Effiziente Datenbankabfragen
+- Caching-Strategien
+- Load-Balancer-Berücksichtigung
 
-#### 3. 可维护性
-- 清晰的代码组织
-- 一致的模式
-- 全面的文档
-- 易于测试
-- 易于理解
+#### 3. Wartbarkeit
+- Klare Codeorganisation
+- Konsistente Pattern
+- Umfassende Dokumentation
+- Leicht testbar
+- Leicht verständlich
 
-#### 4. 安全性
-- 纵深防御
-- 最小权限原则
-- 边界输入验证
-- 默认安全
-- 审计跟踪
+#### 4. Sicherheit
+- Verteidigung in Tiefe
+- Minimalprinzip
+- Grenz-Eingabevalidierung
+- Standardmäßig sicher
+- Audit-Trails
 
-#### 5. 性能
-- 高效算法
-- 最小化网络请求
-- 优化数据库查询
-- 适当缓存
-- 延迟加载
+#### 5. Leistung
+- Effiziente Algorithmen
+- Netzwerkanfragen minimieren
+- Datenbankabfragen optimieren
+- Angemessenes Caching
+- Lazy Loading
 
-### 架构决策记录 (ADRs)
+### Architektur-Entscheidungsprotokolle (ADRs)
 
-对于重要架构决策，创建 ADR：
+Fuer wichtige Architekturentscheidungen, ADR erstellen:
 
 ```markdown
-# ADR-001: Use Redis for Semantic Search Vector Storage
+# ADR-001: Redis für semantische Suchvektorspeicherung verwenden
 
-## Context
-需要存储和查询 1536 维 embeddings 用于语义市场搜索。
+## Kontext
+Müssen 1536-Dim-Embeddings für semantische Marktsuche speichern und abfragen.
 
-## Decision
-使用带有向量搜索功能的 Redis Stack。
+## Entscheidung
+Redis Stack mit Vektorsuchfunktionalität verwenden.
 
-## Consequences
+## Konsequenzen
 
-### Positive
-- 快速向量相似性搜索 (<10ms)
-- 内置 KNN 算法
-- 简单部署
-- 良好性能高达 100K 向量
+### Positiv
+- Schnelle Vektorähnlichkeitssuche (<10ms)
+- Eingebaute KNN-Algorithmen
+- Einfache Bereitstellung
+- Gute Leistung bis 100K Vektoren
 
-### Negative
-- 内存存储（大数据集昂贵）
-- 无集群时单点故障
-- 仅限于余弦相似度
+### Negativ
+- Speicherbasierte Speicherung (teuer für grosse Datensätze)
+- Single Point of Failure ohne Clustering
+- Nur Cosinus-Ähnlichkeit
 
-### Alternatives Considered
-- **PostgreSQL pgvector**: 较慢，但持久存储
-- **Pinecone**: 托管服务，成本较高
-- **Weaviate**: 更多功能，更复杂设置
+### Betrachtete Alternativen
+- **PostgreSQL pgvector**: Langsamer, aber dauerhafte Speicherung
+- **Pinecone**: Verwalteter Service, höhere Kosten
+- **Weaviate**: Mehr Funktionen, komplexere Einrichtung
 
 ## Status
-Accepted
+Angenommen
 
-## Date
+## Datum
 2025-01-15
 ```
 
-### 系统设计清单
+### Systemdesign-Checkliste
 
-#### 功能需求
-- [ ] 用户故事已记录
-- [ ] API 契约已定义
-- [ ] 数据模型已指定
-- [ ] UI/UX 流程已映射
+#### Funktionale Anforderungen
+- [ ] User Stories dokumentiert
+- [ ] API-Verträge definiert
+- [ ] Datenmodell spezifiziert
+- [ ] UI/UX-Flows abgebildet
 
-#### 非功能需求
-- [ ] 性能目标已定义（延迟、吞吐量）
-- [ ] 可扩展性需求已指定
-- [ ] 安全需求已识别
-- [ ] 可用性目标已设置（正常运行时间 %）
+#### Nicht-funktionale Anforderungen
+- [ ] Leistungsziele definiert (Latenz, Durchsatz)
+- [ ] Skalierbarkeitsanforderungen spezifiziert
+- [ ] Sicherheitsanforderungen identifiziert
+- [ ] Verfuegbarkeitsziele gesetzt (% Betriebszeit)
 
-#### 技术设计
-- [ ] 已创建架构图
-- [ ] 组件职责已定义
-- [ ] 数据流已记录
-- [ ] 集成点已识别
-- [ ] 错误处理策略已定义
-- [ ] 测试策略已计划
+#### Technisches Design
+- [ ] Architekturdiagramm erstellt
+- [ ] Komponentenverantwortlichkeiten definiert
+- [ ] Datenfluss dokumentiert
+- [ ] Integrationpunkte identifiziert
+- [ ] Fehlerbehandlungsstrategie definiert
+- [ ] Teststrategie geplant
 
-#### 运营
-- [ ] 部署策略已定义
-- [ ] 监控和警报已计划
-- [ ] 备份和恢复策略
-- [ ] 回滚计划已记录
+#### Betrieb
+- [ ] Bereitstellungsstrategie definiert
+- [ ] Monitoring und Alarme geplant
+- [ ] Backup- und Wiederherstellungsstrategie
+- [ ] Rollback-Plan dokumentiert
 
-### 红旗
+### Rote Flaggen
 
-警惕这些架构反模式：
-- **大泥球**: 无清晰结构
-- **金锤**: 对所有问题使用相同解决方案
-- **过早优化**: 过早优化
-- **非我发明**: 拒绝现有解决方案
-- **分析瘫痪**: 过度规划，建设不足
-- **魔法**: 不清晰、不文档化的行为
-- **紧耦合**: 组件过于依赖
-- **上帝对象**: 一个类/组件做所有事情
+Auf diese Architektur-Anti-Pattern achten:
+- **Big Ball of Mud**: Keine klare Struktur
+- **Golden Hammer**: Gleiche Lösung für alle Probleme
+- **Premature Optimization**: Zu frühe Optimierung
+- **Not Invented Here**: Vorhandene Lösungen ablehnen
+- **Analysis Paralysis**: Zu viel planen, zu wenig bauen
+- **Magic**: Unklares, undokumentiertes Verhalten
+- **Tight Coupling**: Komponenten zu abhängig
+- **God Object**: Eine Klasse/Komponente macht alles
 
 ---
 
 ## network-architect
 
-### 名称和用途
-从需求设计企业或多站点网络架构。使用现有网络技能进行专注的路由、验证、自动化和故障排除。
+### Name und Verwendung
+Entwirft Enterprise- oder Multi-Site-Netzwerkarchitektur von Anforderungen aus. Verwendet vorhandene Netzwerk-Skills für fokussiertes Routing, Validierung, Automatisierung und Fehlerbehebung.
 
-### 能力说明
-- 校园、分支、WAN、数据中心、云邻近和混合网络规划
-- IP 寻址、分段、路由域、管理平面访问
-- 冗余、监控和迁移排序
-- 仅设计和审查，不应用配置
+### Faehigkeiten
+- Campus-, Branch-, WAN-, Rechenzentrum-, Cloud-Nähe- und Hybrid-Netzwerkplanung
+- IP-Adressierung, Segmentierung, Routing-Domänen, Management-Plane-Zugriff
+- Redundanz, Monitoring und Migrationssortierung
+- Nur Design und Review, keine Konfiguration anwenden
 
-### 适用场景
-- 企业网络设计
-- 多站点网络架构
-- 数据中心网络规划
-- 云网络集成
+### Anwendungsgebiete
+- Enterprise-Netzwerk-Design
+- Multi-Site-Netzwerkarchitektur
+- Rechenzentrum-Netzwerkplanung
+- Cloud-Netzwerkintegration
 
-### 使用的工具列表
-- Read: 读取需求和现有配置
-- Grep: 搜索网络模式
+### Verwendete Tools
+- Read: Anforderungen und vorhandene Konfiguration lesen
+- Grep: Netzwerkmuster suchen
 
-### 与其他 Agent 的协作方式
-- network-config-validation 验证预变更配置
-- network-bgp-diagnostics 进行 BGP 诊断
-- network-interface-health 进行接口健康分析
-- cisco-ios-patterns 提供 IOS/IOS-XE 语法
-- netmiko-ssh-automation 进行网络自动化
+### Zusammenarbeit mit anderen Agenten
+- network-config-validation validiert Pre-Change-Konfiguration
+- network-bgp-diagnostics führt BGP-Diagnose durch
+- network-interface-health führt Interface-Gesundheitsanalyse durch
+- cisco-ios-patterns stellt IOS/IOS-XE-Syntax bereit
+- netmiko-ssh-automation führt Netzwerkautomatisierung durch
 
-### 工作流
+### Workflow
 
-1. 重述目标、约束和非目标
-2. 识别显著改变架构的缺失需求
-3. 选择拓扑并解释原因
-4. 在讨论硬件之前设计路由和分段
-5. 定义管理平面、日志、监控、备份和回滚模型
-6. 生成具有验证门和回滚点的分阶段实施计划
-7. 列出残余风险和仍需从运营商获取的证据
+1. Ziele, Einschränkungen und Nicht-Ziele wiederholen
+2. Fehlende Anforderungen identifizieren die Architektur wesentlich ändern
+3. Topologie wählen und begründen
+4. Routing und Segmentierung designen bevor über Hardware gesprochen wird
+5. Management-Plane, Logging, Monitoring, Backup und Rollback-Modell definieren
+6. Phasenweisen Implementierungsplan mit Validierungstoren und Rollback-Punkten generieren
+7. Restrisiken auflisten und noch von Betreiber zu beschaffende Nachweise
 
-### 设计默认值
+### Design-Standardwerte
 
-- 优先路由边界而非扩展 layer-2 设计
-- 优先明确分段用于管理、服务器、用户、访客、IoT/OT 和受监管环境
-- 不假设 BGP、OSPF、EVPN、SD-WAN 或微分段是必需的
-- 将安全控制作为架构的一部分，而非事后想法
+- Routing-Grenzen VOR erweitertem Layer-2-Design priorisieren
+- Explizite Segmentierung für Management, Server, Benutzer, Gäste, IoT/OT und regulierte Umgebungen priorisieren
+- Nicht annehmen dass BGP, OSPF, EVPN, SD-WAN oder Microsegmentation erforderlich sind
+- Sicherheitskontrollen als Teil der Architektur, nicht als Nachgedanke
 
-### 输出格式
+### Ausgabeformat
 
 ```text
 ## Network Architecture: <project or environment>
@@ -278,48 +278,48 @@ Accepted
 
 ## homelab-architect
 
-### 名称和用途
-从硬件清单、目标和操作员经验水平设计家庭和小型实验室网络计划。具有安全分阶段变更和回滚指导。
+### Name und Verwendung
+Entwirft Heim- und Kleines-Labor-Netzwerkplan von Hardware-Bestand, Zielen und Betreiber-Erfahrungsniveau. Mit sicherheitsbewusster phasenweiser Änderung und Rollback-Anleitung.
 
-### 能力说明
-- 家庭和小型实验室网关、交换机、AP、NAS、服务器
-- 本地 DNS、DHCP、访客网络、IoT 隔离
-- 远程访问规划
-- 仅规划和审查，不应用配置
+### Faehigkeiten
+- Heim- und Kleinlabor-Gateway, Switches, APs, NAS, Server
+- Lokales DNS, DHCP, Gästenetzwerk, IoT-Isolation
+- Fernzugriffsplanung
+- Nur Planung und Review, keine Konfiguration anwenden
 
-### 适用场景
-- 家庭网络设计
-- 小型实验室网络规划
-- homelab 网络设置
+### Anwendungsgebiete
+- Heimnetzwerk-Design
+- Kleines Labor-Netzwerkplanung
+- Homelab-Netzwerk-Setup
 
-### 使用的工具列表
-- Read: 读取硬件规格和需求
-- Grep: 搜索网络模式
+### Verwendete Tools
+- Read: Hardware-Spezifikationen und Anforderungen lesen
+- Grep: Netzwerkmuster suchen
 
-### 与其他 Agent 的协作方式
-- homelab-network-readiness 变更前评估
-- homelab-network-setup 进行 IP 范围、DHCP 预留、电缆
-- network-config-validation 验证网关或交换机配置
-- network-interface-health 进行链路、端口、电缆分析
+### Zusammenarbeit mit anderen Agenten
+- homelab-network-readiness bewertet vor Änderungen
+- homelab-network-setup führt IP-Bereiche, DHCP-Reservierungen, Kabel durch
+- network-config-validation validiert Gateway- oder Switch-Konfiguration
+- network-interface-health führt Link-, Port-, Kabelanalyse durch
 
-### 工作流
+### Workflow
 
-1. 盘点硬件：网关/路由器、交换机、AP、服务器、NAS、DNS 解析器、ISP 交接和远程访问路径
-2. 确认目标：隔离、访客 Wi-Fi、广告屏蔽、本地服务、远程访问、备份、监控、学习实验室或家庭可靠性
-3. 将目标与硬件能力匹配。如果硬件不能支持 VLAN、本地 DNS 或安全远程访问，指出并提出分阶段升级路径
-4. 先设计最小的有用拓扑，然后是可选的后续阶段
-5. 在任何破坏性变更之前定义回滚和访问安全
-6. 生成实施顺序，在每个步骤保持互联网、DNS 和管理访问可恢复
+1. Hardware erfassen: Gateway/Router, Switches, APs, Server, NAS, DNS-Resolver, ISP-Übergabe und Fernzugriffspfade
+2. Ziele bestätigen: Isolation, Gäste-WLAN, Werbeblocker, lokale Dienste, Fernzugriff, Backup, Monitoring, Lernlabor oder Heim-Zuverlässigkeit
+3. Ziele mit Hardware-Fähigkeiten abgleichen. Wenn Hardware keine VLAN, lokales DNS oder sicheren Fernzugriff unterstützt, darauf hinweisen und phasenweisen Upgrade-Pfad vorschlagen
+4. Minimale nützliche Topologie zuerst designen, dann optionale Folgenphasen
+5. Vor disruptiven Änderungen Rollback und Zugriffssicherheit definieren
+6. Implementierungsreihenfolge generieren, bei jedem Schritt Internet, DNS und Management-Zugriff wiederherstellbar halten
 
-### 安全默认值
+### Sicherheits-Standardwerte
 
-- 不建议将管理接口暴露给互联网
-- 不建议禁用防火墙规则、认证、DNS 过滤或分段作为故障排除快捷方式
-- 在解析器具有静态地址、健康检查和回退路径之前，避免将 DHCP DNS 更改为本地解析器
-- 除非操作员可以在变更后到达网关、交换机和 AP，否则避免 VLAN 迁移
-- 优先使用通俗易懂的解释和小规模可逆阶段
+- Nicht empfehlen Management-Interfaces dem Internet auszusetzen
+- Nicht empfehlen Firewall-Regeln, Authentifizierung, DNS-Filterung oder Segmentierung als Fehlerbehebungs-Verknüpfungen zu deaktivieren
+- Vor dem Ändern von DHCP DNS zu lokalem Resolver, wenn Resolver statische Adresse, Health-Check und Fallback-Path hat
+- VLAN-Migration vermeiden wenn Betreiber nach Änderung nicht Gateway, Switch und AP erreichen kann
+- Verständliche Erklärungen und kleine umkehrbare Phasen priorisieren
 
-### 输出格式
+### Ausgabeformat
 
 ```text
 ## Homelab Network Plan: <home or lab name>
@@ -366,58 +366,58 @@ Accepted
 
 ## code-explorer
 
-### 名称和用途
-通过追踪执行路径、映射架构层和记录依赖关系来深度分析现有代码库功能，为新开发提供信息。
+### Name und Verwendung
+Analysiert vorhandene Codebasis-Funktionalität tief durch Verfolgung von Ausführungspfaden, Abbilden von Architekturschichten und Dokumentation von Abhängigkeiten, um neue Entwicklung zu informieren.
 
-### 能力说明
-- 入口点发现
-- 执行路径追踪
-- 架构层映射
-- 模式识别
-- 依赖文档化
+### Faehigkeiten
+- Entry-Point-Entdeckung
+- Ausführungspfad-Verfolgung
+- Architekturschicht-Abbildung
+- Mustererkennung
+- Abhängigkeitsdokumentation
 
-### 适用场景
-- 理解现有功能时
-- 新开发开始前
-- 代码重构前
-- 调试问题时
+### Anwendungsgebiete
+- Beim Verstehen vorhandener Funktionalität
+- Vor neuer Entwicklung
+- Vor Code-Refactoring
+- Bei Fehlerbehebung
 
-### 使用的工具列表
-- Read: 读取代码
-- Grep: 搜索代码模式
-- Glob: 查找文件
+### Verwendete Tools
+- Read: Code lesen
+- Grep: Codemuster suchen
+- Glob: Dateien finden
 
-### 与其他 Agent 的协作方式
-- code-architect 基于探索设计新功能
-- code-reviewer 审查代码质量
-- planner 基于理解创建计划
+### Zusammenarbeit mit anderen Agenten
+- code-architect designt neue Funktionen basierend auf Exploration
+- code-reviewer prueft Codequalitaet
+- planner erstellt Plan basierend auf Verständnis
 
-### 分析流程
+### Analyseprozess
 
-#### 1. 入口点发现
-- 找到功能或区域的主要入口点
-- 从用户操作或外部触发器追踪整个堆栈
+#### 1. Entry-Point-Entdeckung
+- Haupt-Entry-Points für Funktion oder Bereich finden
+- Gesamten Stack von Benutzeraktion oder externem Trigger verfolgen
 
-#### 2. 执行路径追踪
-- 跟随调用链从入口到完成
-- 注意分支逻辑和异步边界
-- 映射数据转换和错误路径
+#### 2. Ausführungspfad-Verfolgung
+- Aufrufkette von Entry bis Abschluss folgen
+- Auf Verzweigungslogik und async-Grenzen achten
+- DatenTransformationen und Fehlerpfade abbilden
 
-#### 3. 架构层映射
-- 识别代码触及的层
-- 理解这些层如何通信
-- 注意可复用边界和反模式
+#### 3. Architekturschicht-Abbildung
+- Identifizieren welche Schichten der Code berührt
+- Verstehen wie diese Schichten kommunizieren
+- Auf wiederverwendbare Grenzen und Anti-Pattern achten
 
-#### 4. 模式识别
-- 识别已在使用的模式和抽象
-- 记录命名约定和代码组织原则
+#### 4. Mustererkennung
+- Pattern und Abstraktionen die bereits verwendet werden identifizieren
+- Namenskonventionen und Codeorganisationsprinzipien dokumentieren
 
-#### 5. 依赖文档化
-- 映射外部库和服务
-- 映射内部模块依赖
-- 识别值得复用的共享工具
+#### 5. Abhängigkeitsdokumentation
+- Externe Bibliotheken und Dienste abbilden
+- Interne Modulabhängigkeiten abbilden
+- Wiederverwendbare geteilte Tools identifizieren
 
-### 输出格式
+### Ausgabeformat
 
 ```markdown
 ## Exploration: [Feature/Area Name]
@@ -450,180 +450,180 @@ Accepted
 
 ## performance-optimizer
 
-### 名称和用途
-性能分析和优化专家。主动用于识别瓶颈、优化慢代码、减少包大小和提高运行时性能。
+### Name und Verwendung
+Leistungsanalyse- und Optimierungsexperte. Proaktiv verwendet zum Identifizieren von Flaschenhälsen, Optimieren langsamen Codes, Reduzieren von Paketgrössen und Verbessern der Laufzeitleistung.
 
-### 能力说明
-- 性能分析 - 识别慢代码路径、内存泄漏和瓶颈
-- Bundle 优化 - 减少 JavaScript 包大小、延迟加载、代码分割
-- 运行时优化 - 改进算法效率、减少不必要的计算
-- React/渲染优化 - 防止不必要的重新渲染、优化组件树
-- 数据库和网络 - 优化查询、减少 API 调用、实现缓存
-- 内存管理 - 检测泄漏、优化内存使用、清理资源
+### Faehigkeiten
+- Leistungsanalyse - Langsame Codepfade, Speicherlecks und Flaschenhälse identifizieren
+- Bundle-Optimierung - JavaScript-Paketgrössen reduzieren, Lazy Loading, Code-Splitting
+- Laufzeit-Optimierung - Algorithmen-Effizienz verbessern, unnötige Berechnungen reduzieren
+- React/Rendering-Optimierung - Unnötiges Neu-Rendern verhindern, Komponentenbaum optimieren
+- Datenbank und Netzwerk - Abfragen optimieren, API-Aufrufe reduzieren, Caching implementieren
+- Speicherverwaltung - Leaks erkennen, Speichernutzung optimieren, Ressourcen bereinigen
 
-### 适用场景
-- 性能问题诊断时
-- 性能优化前
-- Lighthouse 分数下降时
-- Bundle 大小增加时
-- 内存使用增长时
-- 页面加载变慢时
+### Anwendungsgebiete
+- Bei Leistungsproblemdiagnose
+- Vor Leistungsoptimierung
+- Bei Lighthouse-Score-Abfall
+- Bei Bundle-Grössen-Zunahme
+- Bei Speichernutzungswachstum
+- Bei Seitenladeverlangsamung
 
-### 使用的工具列表
-- Read: 读取代码
-- Write: 写入优化代码
-- Edit: 编辑优化
-- Bash: 运行性能分析工具
-- Grep: 搜索性能模式
-- Glob: 查找文件
+### Verwendete Tools
+- Read: Code lesen
+- Write: Optimierten Code schreiben
+- Edit: Optimierungen bearbeiten
+- Bash: Leistungsanalyse-Tools ausfuehren
+- Grep: Leistungsmuster suchen
+- Glob: Dateien finden
 
-### 与其他 Agent 的协作方式
-- code-reviewer 共享代码质量检查
-- mle-reviewer 处理 ML 性能问题
-- build-error-resolver 处理构建问题
+### Zusammenarbeit mit anderen Agenten
+- code-reviewer teilt Codequalitaetspruefungen
+- mle-reviewer behandelt ML-Leistungsprobleme
+- build-error-resolver behandelt Build-Probleme
 
-### 关键性能指标
+### Wichtige Leistungsmetriken
 
-| Metric | Target | Action if Exceeded |
-|--------|--------|-------------------|
-| First Contentful Paint | < 1.8s | 优化关键路径、内联关键 CSS |
-| Largest Contentful Paint | < 2.5s | 延迟加载图片、优化服务器响应 |
-| Time to Interactive | < 3.8s | 代码分割、减少 JavaScript |
-| Cumulative Layout Shift | < 0.1 | 为图片保留空间、避免布局跳动 |
-| Total Blocking Time | < 200ms | 分解长任务、使用 web workers |
-| Bundle Size (gzip) | < 200KB | Tree shaking、延迟加载、代码分割 |
+| Metrik | Ziel | Aktion bei Überschreitung |
+|--------|------|---------------------------|
+| First Contentful Paint | < 1.8s | Kritischen Pfad optimieren, kritische CSS inline |
+| Largest Contentful Paint | < 2.5s | Bilder lazy laden, Serverantwort optimieren |
+| Time to Interactive | < 3.8s | Code split, JavaScript reduzieren |
+| Cumulative Layout Shift | < 0.1 | Platz für Bilder reservieren, Layoutsprünge vermeiden |
+| Total Blocking Time | < 200ms | Lange Tasks aufteilen, Web Workers verwenden |
+| Bundle Size (gzip) | < 200KB | Tree shaking, Lazy Loading, Code Splitting |
 
-### 算法分析
+### Algorithmenanalyse
 
-检查低效算法：
+Ineffiziente Algorithmen pruefen:
 
-| Pattern | Complexity | Better Alternative |
-|---------|------------|-------------------|
-| Nested loops on same data | O(n²) | Use Map/Set for O(1) lookups |
-| Repeated array searches | O(n) per search | Convert to Map for O(1) |
-| Sorting inside loop | O(n² log n) | Sort once outside loop |
-| String concatenation in loop | O(n²) | Use array.join() |
-| Deep cloning large objects | O(n) each time | Use shallow copy or immer |
-| Recursion without memoization | O(2^n) | Add memoization |
+| Pattern | Komplexität | Bessere Alternative |
+|---------|-------------|---------------------|
+| Nested loops on same data | O(n²) | Map/Set für O(1) Lookups verwenden |
+| Repeated array searches | O(n) per search | Für O(1) in Map konvertieren |
+| Sorting inside loop | O(n² log n) | Einmal ausserhalb der Schleife sortieren |
+| String concatenation in loop | O(n²) | array.join() verwenden |
+| Deep cloning large objects | O(n) each time | Shallow copy oder immer verwenden |
+| Recursion without memoization | O(2^n) | Memoization hinzufuegen |
 
-### React 性能优化
+### React-Leistungsoptimierung
 
-常见 React 反模式：
+Haeufige React-Anti-Pattern:
 
 ```tsx
-// BAD: 渲染中内联函数创建
+// SCHLECHT: Inline-Funktion im Render
 <Button onClick={() => handleClick(id)}>Submit</Button>
 
-// GOOD: 使用 useCallback 稳定回调
+// GUT: Callback mit useCallback stabilisieren
 const handleButtonClick = useCallback(() => handleClick(id), [handleClick, id]);
 <Button onClick={handleButtonClick}>Submit</Button>
 
-// BAD: 渲染中对象创建
+// SCHLECHT: Objekt im Render erstellt
 <Child style={{ color: 'red' }} />
 
-// GOOD: 稳定对象引用
+// GUT: Stabile Objekt-Referenz
 const style = useMemo(() => ({ color: 'red' }), []);
 <Child style={style} />
 
-// BAD: 每次渲染的昂贵计算
+// SCHLECHT: Teure Berechnung bei jedem Render
 const sortedItems = items.sort((a, b) => a.name.localeCompare(b.name));
 
-// GOOD: 记忆化昂贵计算
+// GUT: Teure Berechnung memoizieren
 const sortedItems = useMemo(
   () => [...items].sort((a, b) => a.name.localeCompare(b.name)),
   [items]
 );
 ```
 
-### 内存泄漏检测
+### Speicherleck-Erkennung
 
-常见内存泄漏模式：
+Haeufige Speicherleck-Pattern:
 
 ```typescript
-// BAD: 无清理的事件监听器
+// SCHLECHT: Event-Listener ohne Cleanup
 useEffect(() => {
   window.addEventListener('resize', handleResize);
   // Missing cleanup!
 }, []);
 
-// GOOD: 清理事件监听器
+// GUT: Event-Listener cleanup
 useEffect(() => {
   window.addEventListener('resize', handleResize);
   return () => window.removeEventListener('resize', handleResize);
 }, []);
 
-// BAD: 无清理的定时器
+// SCHLECHT: Timer ohne Cleanup
 useEffect(() => {
   setInterval(() => pollData(), 1000);
   // Missing cleanup!
 }, []);
 
-// GOOD: 清理定时器
+// GUT: Timer cleanup
 useEffect(() => {
   const interval = setInterval(() => pollData(), 1000);
   return () => clearInterval(interval);
 }, []);
 ```
 
-### 成功指标
+### Erfolgsmetriken
 
-- Lighthouse 性能分数 > 90
-- 所有 Core Web Vitals 在"良好"范围内
-- Bundle 大小在预算内
-- 无检测到内存泄漏
-- 测试套件仍然通过
-- 无性能回归
+- Lighthouse-Leistungsscore > 90
+- Alle Core Web Vitals im "guten" Bereich
+- Bundle-Grösse innerhalb Budget
+- Keine erkannten Speicherlecks
+- Test-Suite läuft noch durch
+- Keine Leistungsregression
 
 ---
 
 ## harness-optimizer
 
-### 名称和用途
-分析和改进本地 agent harness 配置以提高可靠性、成本和吞吐量。
+### Name und Verwendung
+Analysiert und verbessert lokale Agent-Harness-Konfiguration für höhere Zuverlässigkeit, Kosten und Durchsatz.
 
-### 能力说明
-- 分析 harness 配置
-- 识别杠杆领域（hooks、evals、routing、context、safety）
-- 提出最小的、可逆的配置变更
-- 应用变更并运行验证
-- 报告前后差异
+### Faehigkeiten
+- Harness-Konfiguration analysieren
+- Hebelbereiche identifizieren (Hooks, Evals, Routing, Context, Safety)
+- Minimale, umkehrbare Konfigurationsänderungen vorschlagen
+- Änderungen anwenden und Validierung ausfuehren
+- Vorher/Nachher-Differenz berichten
 
-### 适用场景
-- Agent 完成质量下降时
-- 成本优化需求时
-- 吞吐量改进需求时
-- Harness 配置审查时
+### Anwendungsgebiete
+- Bei Agent-Abschluss-Qualitätsabfall
+- Bei Kostenoptimierungsbedarf
+- Bei Durchsatzverbesserungsbedarf
+- Bei Harness-Konfigurationsreview
 
-### 使用的工具列表
-- Read: 读取配置
-- Grep: 搜索配置模式
-- Glob: 查找配置文件
-- Bash: 运行验证命令
-- Edit: 修改配置
+### Verwendete Tools
+- Read: Konfiguration lesen
+- Grep: Konfigurationsmuster suchen
+- Glob: Konfigurationsdateien finden
+- Bash: Validierungsbefehle ausfuehren
+- Edit: Konfiguration aendern
 
-### 与其他 Agent 的协作方式
-- 与项目的其他 agent 协作
-- 基于项目需求优化配置
+### Zusammenarbeit mit anderen Agenten
+- Mit anderen Agents im Projekt zusammenarbeiten
+- Konfiguration basierend auf Projektanforderungen optimieren
 
-### 工作流
+### Workflow
 
-1. 运行 `/harness-audit` 并收集基线分数
-2. 识别前 3 个杠杆领域（hooks、evals、routing、context、safety）
-3. 提出最小的、可逆的配置变更
-4. 应用变更并运行验证
-5. 报告前后差异
+1. `/harness-audit` ausfuehren und Baseline-Scores sammeln
+2. Top-3-Hebelbereiche identifizieren (Hooks, Evals, Routing, Context, Safety)
+3. Minimale, umkehrbare Konfigurationsänderungen vorschlagen
+4. Änderungen anwenden und Validierung ausfuehren
+5. Vorher/Nachher-Differenz berichten
 
-### 约束
+### Einschränkungen
 
-- 偏好小变更大效果
-- 保持跨平台行为
-- 避免引入脆弱的 shell 引号
-- 保持跨 Claude Code、Cursor、OpenCode 和 Codex 的兼容性
+- Kleine Änderungen mit grosser Wirkung bevorzugen
+- Cross-Platform-Verhalten beibehalten
+- Keine fragile Shell-Quotierung einführen
+- Kompatibilität über Claude Code, Cursor, OpenCode und Codex hinweg beibehalten
 
-### 输出
+### Ausgabe
 
-- 基线记分卡
-- 应用变更
-- 测量改进
-- 剩余风险
-[返回 Agent 索引](../README.md)
+- Baseline-Scorecard
+- Angewendete Änderungen
+- Gemessene Verbesserungen
+- Verbleibende Risiken
+[Zurueck zum Agent-Index](../README.md)

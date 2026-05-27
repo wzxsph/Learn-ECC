@@ -1,318 +1,320 @@
-# 规划类 Agent
+# Agentes de Planejamento
 
-规划类 Agent 专门负责功能规划、技术架构设计和实施步骤分解。
+Agentes de planejamento são especializados em planejamento de funcionalidades, design de arquitetura técnica e decomposição de etapas de implementação.
 
-## Agent 列表
+## Lista de Agentes
 
-| Agent 名称 | 用途 | 使用模型 | 核心工具 |
-|------------|------|----------|----------|
-| planner | 复杂功能实施规划专家 | opus | Read, Grep, Glob |
-| code-architect | 功能架构设计专家 | sonnet | Read, Grep, Glob, Bash |
-| pr-test-analyzer | PR 测试覆盖分析 | sonnet | Read, Grep, Glob, Bash |
-| type-design-analyzer | 类型设计分析 | sonnet | Read, Grep, Glob |
-| comment-analyzer | 代码注释分析 | sonnet | Read, Grep, Glob |
+| Nome do Agente | Propósito | Modelo | Ferramentas Principais |
+|----------------|-----------|--------|----------------------|
+| planner | Especialista em planejamento de implementação de funcionalidades complexas | opus | Read, Grep, Glob |
+| code-architect | Especialista em design de arquitetura de funcionalidades | sonnet | Read, Grep, Glob, Bash |
+| pr-test-analyzer | Análise de cobertura de testes de PR | sonnet | Read, Grep, Glob, Bash |
+| type-design-analyzer | Análise de design de tipos | sonnet | Read, Grep, Glob |
+| comment-analyzer | Análise de comentários de código | sonnet | Read, Grep, Glob |
 
 ---
 
 ## planner
 
-### 名称和用途
-复杂功能实施和重构的规划专家。在用户请求功能实施、架构变更或复杂重构时主动使用。
+### Nome e Propósito
+Especialista em planejamento de implementação de funcionalidades complexas e refatoração. Usado proativamente quando o usuário solicita implementação de funcionalidade, mudanças de arquitetura ou refatoração complexa.
 
-### 能力说明
-- 需求分析和详细实施计划创建
-- 将复杂功能分解为可管理的步骤
-- 识别依赖关系和潜在风险
-- 建议最优实施顺序
-- 考虑边缘情况和错误场景
+### Capacidades
+- Análise de requisitos e criação de planos de implementação detalhados
+- Decompor funcionalidades complexas em etapas gerenciáveis
+- Identificar dependências e riscos potenciais
+- Sugerir ordem ótima de implementação
+- Considerar casos de borda e cenários de erro
 
-### 适用场景
-- 新功能实施规划
-- 架构变更规划
-- 复杂重构规划
-- 技术债务清理规划
+### Cenários de Uso
+- Planejamento de implementação de nova funcionalidade
+- Planejamento de mudanças de arquitetura
+- Planejamento de refatoração complexa
+- Planejamento de limpeza de technical debt
 
-### 使用的工具列表
-- Read: 读取现有代码和文档
-- Grep: 搜索相关模式和现有实现
-- Glob: 查找相关文件
+### Ferramentas Utilizadas
+- Read: Ler código e documentação existentes
+- Grep: Pesquisar padrões e implementações existentes
+- Glob: Encontrar arquivos relevantes
 
-### 与其他 Agent 的协作方式
-- 生成的计划供 code-architect 进一步细化
-- 生成的计划供 tdd-guide 编写测试
-- 生成的计划供 code-reviewer 审查
+### Colaboração com Outros Agentes
+- Planos gerados são refinados ainda mais pelo code-architect
+- Planos gerados são usados pelo tdd-guide para escrever testes
+- Planos gerados são usados pelo code-reviewer para revisão
 
-### 规划流程
+### Fluxo de Planejamento
 
-1. **需求分析**
-   - 完全理解功能请求
-   - 如有需要提出澄清问题
-   - 识别成功标准
-   - 列出假设和约束
+1. **Análise de Requisitos**
+   - Entender completamente a solicitação de funcionalidade
+   - Fazer perguntas de esclarecimento se necessário
+   - Identificar critérios de sucesso
+   - Listar suposições e restrições
 
-2. **架构审查**
-   - 分析现有代码库结构
-   - 识别受影响的组件
-   - 审查类似实现
-   - 考虑可复用模式
+2. **Revisão de Arquitetura**
+   - Analisar estrutura do codebase existente
+   - Identificar componentes afetados
+   - Revisar implementações similares
+   - Considerar padrões reutilizáveis
 
-3. **步骤分解**
-   - 创建详细步骤，包含：
-     - 清晰、具体的操作
-     - 文件路径和位置
-     - 步骤之间的依赖关系
-     - 预估复杂度
-     - 潜在风险
+3. **Decomposição de Etapas**
+   - Criar etapas detalhadas contendo:
+     - Operações concretas e claras
+     - Caminhos de arquivo e localizações
+     - Dependências entre etapas
+     - Complexidade estimada
+     - Riscos potenciais
 
-4. **实施顺序**
-   - 按依赖关系排序
-   - 将相关变更分组
-   - 最小化上下文切换
-   - 支持增量测试
+4. **Ordem de Implementação**
+   - Ordenar por dependências
+   - Agrupar mudanças relacionadas
+   - Minimizar troca de contexto
+   - Suportar teste incremental
 
-### 规划输出格式
+### Formato de Saída do Plano
 
 ```markdown
-# 实施计划: [功能名称]
+# Plano de Implementação: [Nome da Funcionalidade]
 
-## 概述
-[2-3 句话总结]
+## Visão Geral
+[Resumo de 2-3 frases]
 
-## 需求
-- [需求 1]
-- [需求 2]
+## Requisitos
+- [Requisito 1]
+- [Requisito 2]
 
-## 架构变更
-- [变更 1: 文件路径和描述]
-- [变更 2: 文件路径和描述]
+## Mudanças de Arquitetura
+- [Mudança 1: caminho e descrição do arquivo]
+- [Mudança 2: caminho e descrição do arquivo]
 
-## 实施步骤
+## Etapas de Implementação
 
-### 阶段 1: [阶段名称]
-1. **[步骤名称]** (文件: path/to/file.ts)
-   - 操作: 要采取的具体操作
-   - 原因: 此步骤的原因
-   - 依赖: 无 / 需要步骤 X
-   - 风险: 低/中/高
+### Fase 1: [Nome da Fase]
+1. **[Nome da Etapa]** (Arquivo: path/to/file.ts)
+   - Ação: Ação concreta a ser tomada
+   - Razão: Razão para esta etapa
+   - Dependência: Nenhuma / Requer etapa X
+   - Risco: Baixo/Médio/Alto
 
-2. **[步骤名称]** (文件: path/to/file.ts)
+2. **[Nome da Etapa]** (Arquivo: path/to/file.ts)
    ...
 
-### 阶段 2: [阶段名称]
+### Fase 2: [Nome da Fase]
 ...
 
-## 测试策略
-- 单元测试: [要测试的文件]
-- 集成测试: [要测试的流程]
-- E2E 测试: [用户旅程要测试]
+## Estratégia de Testes
+- Testes de unidade: [Arquivos a serem testados]
+- Testes de integração: [Fluxos a serem testados]
+- Testes E2E: [Jornadas do usuário a serem testadas]
 
-## 风险与缓解
-- **风险**: [描述]
-  - 缓解: [如何处理]
+## Riscos e Mitigação
+- **Risco**: [Descrição]
+  - Mitigação: [Como lidar]
 
-## 成功标准
-- [ ] 标准 1
-- [ ] 标准 2
+## Critérios de Sucesso
+- [ ] Critério 1
+- [ ] Critério 2
 ```
 
 ---
 
 ## code-architect
 
-### 名称和用途
-基于对现有代码库的深入理解设计功能架构。提供具体文件、接口、数据流和构建顺序的实施蓝图。
+### Nome e Propósito
+Design de arquitetura de funcionalidades baseada em compreensão profunda do codebase existente. Fornece blueprint de implementação com arquivos específicos, interfaces, fluxo de dados e ordem de construção.
 
-### 能力说明
-- 研究现有代码组织和命名约定
-- 识别已有的架构模式
-- 记录测试模式和现有边界
-- 理解依赖关系图后再提出新抽象
-- 设计适合当前模式的功能架构
+### Capacidades
+- Pesquisar organização de código e convenções de nomenclatura existentes
+- Identificar padrões de arquitetura já estabelecidos
+- Documentar padrões de teste e limites existentes
+- Entender gráfico de dependências antes de propor novas abstrações
+- Design de arquitetura que se encaixa naturalmente nos padrões atuais
 
-### 适用场景
-- 新功能架构设计
-- 现有功能重构设计
-- 代码组织优化
+### Cenários de Uso
+- Design de arquitetura de nova funcionalidade
+- Design de refatoração de funcionalidade existente
+- Otimização de organização de código
 
-### 使用的工具列表
-- Read: 读取现有代码
-- Grep: 搜索模式和约定
-- Glob: 查找相关文件
-- Bash: 运行诊断命令
+### Ferramentas Utilizadas
+- Read: Ler código existente
+- Grep: Pesquisar padrões e convenções
+- Glob: Encontrar arquivos relevantes
+- Bash: Executar comandos de diagnóstico
 
-### 与其他 Agent 的协作方式
-- 基于 planner 的计划进行架构设计
-- 为代码实现提供蓝图
-- 与 build-error-resolver 协作修复构建问题
+### Colaboração com Outros Agentes
+- Design de arquitetura baseado no plano do planner
+- Fornecer blueprint para implementação de código
+- Colaborar com build-error-resolver para corrigir problemas de build
 
-### 设计流程
+### Fluxo de Design
 
-1. **模式分析**
-   - 研究现有代码组织和命名约定
-   - 识别已有的架构模式
-   - 注意测试模式和现有边界
-   - 在提出新抽象前理解依赖关系
+1. **Análise de Padrões**
+   - Pesquisar organização de código e convenções de nomenclatura existentes
+   - Identificar padrões de arquitetura já estabelecidos
+   - Notar padrões de teste e limites existentes
+   - Entender dependências antes de propor novas abstrações
 
-2. **架构设计**
-   - 设计功能以自然契合当前模式
-   - 选择满足需求的最简单架构
-   - 避免投机性抽象（除非代码库已使用）
+2. **Design de Arquitetura**
+   - Design de funcionalidade para se encaixar naturalmente nos padrões atuais
+   - Escolher arquitetura mais simples que atenda aos requisitos
+   - Evitar abstrações especulativas (a menos que o codebase já use)
 
-3. **实施蓝图**
-   为每个重要组件提供：
-   - 文件路径
-   - 目的
-   - 关键接口
-   - 依赖关系
-   - 数据流角色
+3. **Blueprint de Implementação**
+   Para cada componente importante fornecer:
+   - Caminho do arquivo
+   - Propósito
+   - Interfaces-chave
+   - Dependências
+   - Papel no fluxo de dados
 
-4. **构建顺序**
-   按依赖关系排序实施：
-   1. 类型和接口
-   2. 核心逻辑
-   3. 集成层
+4. **Ordem de Construção**
+   Ordenar implementação por dependências:
+   1. Tipos e interfaces
+   2. Lógica principal
+   3. Camada de integração
    4. UI
-   5. 测试
-   6. 文档
+   5. Testes
+   6. Documentação
 
-### 输出格式
+### Formato de Saída
 
 ```markdown
-## 架构: [功能名称]
+## Arquitetura: [Nome da Funcionalidade]
 
-### 设计决策
-- 决策 1: [理由]
-- 决策 2: [理由]
+### Decisões de Design
+- Decisão 1: [Razão]
+- Decisão 2: [Razão]
 
-### 要创建的文件
-| 文件 | 目的 | 优先级 |
-|------|------|--------|
+### Arquivos a Criar
+| Arquivo | Propósito | Prioridade |
+|---------|-----------|------------|
 | | | |
 
-### 要修改的文件
-| 文件 | 变更 | 优先级 |
-|------|------|--------|
+### Arquivos a Modificar
+| Arquivo | Mudança | Prioridade |
+|---------|---------|------------|
 | | | |
 
-### 数据流
-[描述]
+### Fluxo de Dados
+[Descrever]
 
-### 构建顺序
-1. 步骤 1
-2. 步骤 2
+### Ordem de Construção
+1. Etapa 1
+2. Etapa 2
 ```
 
 ---
 
 ## pr-test-analyzer
-（详见 [04-Testes.md](./4.%20测试类.md)）
+
+(Veja [04-Testes.md](./04-Testes.md))
+
 ---
 
 ## type-design-analyzer
 
-### 名称和用途
-分析类型设计是否使非法状态难以或不可能表示。
+### Nome e Propósito
+Analisa se design de tipo torna estados ilegais difíceis ou impossíveis de representar.
 
-### 能力说明
-- 封装评估
-- 不变性表达分析
-- 不变性有用性评估
-- 强制执行验证
+### Capacidades
+- Avaliação de encapsulamento
+- Análise de expressão de invariância
+- Avaliação de utilidade de invariância
+- Verificação de imposição
 
-### 适用场景
-- 类型系统设计审查
-- API 设计审查
-- 领域建模审查
+### Cenários de Uso
+- Revisão de design de sistema de tipos
+- Revisão de design de API
+- Revisão de modelagem de domínio
 
-### 使用的工具列表
-- Read: 读取类型定义
-- Grep: 搜索类型使用
-- Glob: 查找类型文件
+### Ferramentas Utilizadas
+- Read: Ler definições de tipo
+- Grep: Pesquisar uso de tipos
+- Glob: Encontrar arquivos de tipo
 
-### 与其他 Agent 的协作方式
-- 与 code-reviewer 协作进行代码审查
-- 与 code-architect 协作进行架构设计
+### Colaboração com Outros Agentes
+- Colaborar com code-reviewer para revisão de código
+- Colaborar com code-architect para design de arquitetura
 
-### 评估标准
+### Critérios de Avaliação
 
-1. **封装**
-   - 内部细节是否隐藏
-   - 不变量是否可以从外部违反
+1. **Encapsulamento**
+   - Detalhes internos estão escondidos
+   - Invariantes podem ser violados externamente
 
-2. **不变性表达**
-   - 类型是否编码业务规则
-   - 不可能状态是否在类型级别被阻止
+2. **Expressão de Invariância**
+   - Tipo codifica regras de negócio
+   - Estados impossíveis são impedidos no nível de tipo
 
-3. **不变性有用性**
-   - 这些不变量是否防止真实 bug
-   - 是否与领域对齐
+3. **Utilidade de Invariância**
+   - Invariantes previnem bugs reais
+   - Alinhado com domínio
 
-4. **强制执行**
-   - 不变量是否由类型系统强制执行
-   - 是否有简单的逃逸舱
+4. **Imposição**
+   - Invariantes são impostas pelo sistema de tipos
+   - Há escape simples se necessário
 
-### 输出格式
+### Formato de Saída
 
-对每个审查的类型：
-- 类型名和位置
-- 四个维度的评分
-- 整体评估
-- 具体改进建议
+Para cada tipo revisado:
+- Nome e localização do tipo
+- Pontuação em quatro dimensões
+- Avaliação geral
+- Sugestões de melhoria específicas
 
 ---
 
 ## comment-analyzer
 
-### 名称和用途
-分析代码注释的准确性、完整性、可维护性和注释腐坏风险。
+### Nome e Propósito
+Analisa precisão, completude, manutenibilidade e risco de putrefação de comentários de código.
 
-### 能力说明
-- 事实准确性验证
-- 完整性检查
-- 长期价值评估
-- 误导性元素识别
+### Capacidades
+- Verificação de precisão factual
+- Verificação de completude
+- Avaliação de valor de longo prazo
+- Identificação de elementos enganosos
 
-### 适用场景
-- 代码审查时
-- 文档质量评估时
-- 识别注释技术债务时
+### Cenários de Uso
+- Durante revisão de código
+- Avaliação de qualidade de documentação
+- Identificação de technical debt de comentários
 
-### 使用的工具列表
-- Read: 读取代码和注释
-- Grep: 搜索注释和代码
-- Glob: 查找源文件
+### Ferramentas Utilizadas
+- Read: Ler código e comentários
+- Grep: Pesquisar comentários e código
+- Glob: Encontrar arquivos fonte
 
-### 与其他 Agent 的协作方式
-- 与 code-reviewer 协作进行代码审查
-- 与 doc-updater 协作更新文档
+### Colaboração com Outros Agentes
+- Colaborar com code-reviewer para revisão de código
+- Colaborar com doc-updater para atualização de documentação
 
-### 分析框架
+### Framework de Análise
 
-1. **事实准确性**
-   - 验证声明与代码对比
-   - 检查参数和返回描述与实现对比
-   - 标记过时引用
+1. **Precisão Factual**
+   - Verificar declarações contra código
+   - Verificar descrições de parâmetros e retornos contra implementação
+   - Marcar referências desatualizadas
 
-2. **完整性**
-   - 检查复杂逻辑是否有足够解释
-   - 验证重要副作用和边缘用例是否已记录
-   - 确保公共 API 有足够注释
+2. **Completude**
+   - Verificar se lógica complexa tem explicação suficiente
+   - Verificar se efeitos colaterais importantes e casos de borda estão documentados
+   - Garantir que APIs públicas têm comentários suficientes
 
-3. **长期价值**
-   - 标记只重述代码的注释
-   - 识别会快速腐坏的脆弱注释
-   - 发现 TODO / FIXME / HACK 债务
+3. **Valor de Longo Prazo**
+   - Marcar comentários que apenas reescrevem código
+   - Identificar comentários frágeis que apodrecem rapidamente
+   - Descobrir dívida de TODO / FIXME / HACK
 
-4. **误导性元素**
-   - 与代码矛盾的注释
-   - 对已移除行为的过时引用
-   - 过度承诺或描述不足的行为
+4. **Elementos Enganosos**
+   - Comentários que contradizem código
+   - Referências desatualizadas a comportamento removido
+   - Comportamento exagerado ou descrito insuficientemente
 
-### 输出格式
+### Formato de Saída
 
-按严重性分组的咨询发现：
-- Inaccurate（不准确）
-- Stale（过时）
-- Incomplete（不完整）
-- Low-value（低价值）
-[返回 Agent 索引](../README.md)
+Descobertas agrupadas por severidade:
+- Inaccurate (Impreciso)
+- Stale (Desatualizado)
+- Incomplete (Incompleto)
+- Low-value (Baixo valor)
+[Voltar ao Índice de Agentes](../README.md)

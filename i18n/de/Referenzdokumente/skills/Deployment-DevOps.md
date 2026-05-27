@@ -1,104 +1,104 @@
-# 部署与 DevOps 技能
+# Deployment- und DevOps-Faehigkeiten
 
-## 概述
+## Ueberblick
 
-部署与 DevOps 技能用于容器化、基础设施即代码、持续集成和部署自动化。
+Deployment- und DevOps-Faehigkeiten werden fuer Containerisierung, Infrastructure-as-Code, kontinuierliche Integration und Deployment-Automatisierung verwendet.
 
-## 核心技能
+## Kernfaehigkeiten
 
 ### docker-patterns
 
-**用途**: Docker 容器最佳实践
+**Zweck**: Docker-Container-Best-Practices
 
-**核心概念**:
-- 多阶段构建
-- 最小化镜像大小
-- 健康检查
-- 日志管理
-- 资源限制
+**Kernkonzepte**:
+- Multi-Stage-Builds
+- Minimierung der Image-Groesse
+- Health-Checks
+- Log-Management
+- Ressourcenlimits
 
 ---
 
 ### deployment-patterns
 
-**用途**: 部署策略与模式
+**Zweck**: Deployment-Strategien und -Muster
 
-**核心概念**:
-- 蓝绿部署
-- 金丝雀发布
+**Kernkonzepte**:
+- Blue-Green-Deployment
+- Canary-Releases
 - Rolling Update
-- 回滚策略
-- 零停机部署
+- Rollback-Strategien
+- Zero-Downtime-Deployment
 
 ---
 
 ### production-audit
 
-**用途**: 生产环境审计
+**Zweck**: Produktionsumgebungs-Audit
 
-**检查项**:
-- 安全性配置
-- 性能指标
-- 可用性检查
-- 监控告警验证
+**Pruefpunkte**:
+- Sicherheitskonfiguration
+- Performance-Metriken
+- Verfuegbarkeitspruefungen
+- Ueberwachungs-Alarm-Verifizierung
 
 ---
 
 ### production-scheduling
 
-**用途**: 生产调度管理
+**Zweck**: Produktions-Scheduling-Management
 
-**使用场景**:
-- 定时任务管理
-- 批处理作业
-- 维护窗口规划
+**Anwendungsszenarien**:
+- Zeitgesteuerte Aufgabenverwaltung
+- Batch-Job-Verarbeitung
+- Wartungsfenster-Planung
 
 ---
 
 ### canary-watch
 
-**用途**: 金丝雀发布监控
+**Zweck**: Canary-Release-Ueberwachung
 
-**功能**:
-- 流量分割监控
-- 错误率追踪
-- 性能对比
-- 自动回滚触发
+**Funktionen**:
+- Traffic-Splitting-Ueberwachung
+- Fehlerraten-Verfolgung
+- Performance-Vergleich
+- Automatischer Rollback-Ausloeser
 
 ---
 
-## 基础设施
+## Infrastruktur
 
 ### network-config-validation
 
-**用途**: 网络配置验证
+**Zweck**: Netzwerkkonfigurations-Validierung
 
-**检查项**:
-- 防火墙规则
-- 负载均衡配置
-- DNS 设置
-- SSL/TLS 证书
+**Pruefpunkte**:
+- Firewall-Regeln
+- Load-Balancer-Konfiguration
+- DNS-Einstellungen
+- SSL/TLS-Zertifikate
 
 ---
 
 ### network-interface-health
 
-**用途**: 网络接口健康检查
+**Zweck**: Netzwerkinterface-Gesundheitspruefung
 
-**监控指标**:
-- 带宽使用
-- 延迟
-- 丢包率
-- 连接数
+**Ueberwachungsmetriken**:
+- Bandbreitennutzung
+- Latenz
+- Paketverlustrate
+- Verbindungsanzahl
 
 ---
 
-## 相关技能
+## Zugehoerige Faehigkeiten
 
-- `docker-patterns` - Docker 模式
-- `deployment-patterns` - 部署模式
-- `production-audit` - 生产审计
-- `production-scheduling` - 生产调度
-- `canary-watch` - 金丝雀监控
-- `network-config-validation` - 网络配置验证
-- `network-interface-health` - 网络接口健康
+- `docker-patterns` - Docker-Muster
+- `deployment-patterns` - Deployment-Muster
+- `production-audit` - Produktions-Audit
+- `production-scheduling` - Produktions-Scheduling
+- `canary-watch` - Canary-Ueberwachung
+- `network-config-validation` - Netzwerkkonfigurations-Validierung
+- `network-interface-health` - Netzwerkinterface-Gesundheit

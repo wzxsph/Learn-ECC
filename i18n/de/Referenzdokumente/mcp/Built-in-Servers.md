@@ -1,72 +1,72 @@
-# 内置 MCP 服务器
+# Eingebaute MCP-Server
 
-ECC 项目在 `mcp-configs/mcp-servers.json` 中预置了多个常用 MCP 服务器配置。
+Das ECC-Projekt stellt mehrere haeufig verwendete MCP-Serverkonfigurationen in `mcp-configs/mcp-servers.json` vor.
 
-## 按功能分类
+## Nach Funktionalitaet kategorisiert
 
-### 开发工具
+### Entwicklungstools
 
-| 服务器 | 类型 | 描述 |
+| Server | Typ | Beschreibung |
 |--------|------|------|
-| `github` | process | GitHub 操作 - PRs, issues, repos |
-| `jira` | process | Jira 问题跟踪 - 搜索、创建、更新、评论、流转问题 |
-| `confluence` | process | Confluence Cloud 集成 - 搜索页面、获取内容、探索空间 |
-| `filesystem` | process | 文件系统操作（需配置路径） |
-| `memory` | process | 跨会话持久化内存 |
-| `omega-memory` | process | 增强版持久化代理内存，支持语义搜索、多代理协作和知识图谱 |
-| `sequential-thinking` | process | 链式思维推理 |
+| `github` | process | GitHub-Operationen - PRs, Issues, Repos |
+| `jira` | process | Jira-Problemverfolgung - Suchen, Erstellen, Aktualisieren, Kommentieren, Workflow von Problemen |
+| `confluence` | process | Confluence Cloud-Integration - Seiten suchen, Inhalt abrufen, Raeume erkunden |
+| `filesystem` | process | Dateisystem-Operationen (Pfad muss konfiguriert werden) |
+| `memory` | process | Cross-Session persistent Memory |
+| `omega-memory` | process | Verbessertes persistentes Agent-Memory mit semantischer Suche, Multi-Agent-Kollaboration und Knowledge Graph |
+| `sequential-thinking` | process | Verkettete Denk-Reasoning |
 
-### 部署与基础设施
+### Deployment und Infrastruktur
 
-| 服务器 | 类型 | 描述 |
+| Server | Typ | Beschreibung |
 |--------|------|------|
-| `vercel` | http | Vercel 部署和项目 |
-| `railway` | process | Railway 部署 |
-| `cloudflare-docs` | http | Cloudflare 文档搜索 |
-| `cloudflare-workers-builds` | http | Cloudflare Workers 构建 |
-| `cloudflare-workers-bindings` | http | Cloudflare Workers 绑定 |
-| `cloudflare-observability` | http | Cloudflare 可观测性/日志 |
+| `vercel` | http | Vercel Deployment und Projekte |
+| `railway` | process | Railway Deployment |
+| `cloudflare-docs` | http | Cloudflare-Dokumentationssuche |
+| `cloudflare-workers-builds` | http | Cloudflare Workers Builds |
+| `cloudflare-workers-bindings` | http | Cloudflare Workers Bindings |
+| `cloudflare-observability` | http | Cloudflare Observability/Logging |
 
-### 数据库
+### Datenbanken
 
-| 服务器 | 类型 | 描述 |
+| Server | Typ | Beschreibung |
 |--------|------|------|
-| `supabase` | process | Supabase 数据库操作 |
-| `clickhouse` | http | ClickHouse 分析查询 |
+| `supabase` | process | Supabase Datenbankoperationen |
+| `clickhouse` | http | ClickHouse analytische Abfragen |
 
-### AI 与机器学习
+### KI und maschinelles Lernen
 
-| 服务器 | 类型 | 描述 |
+| Server | Typ | Beschreibung |
 |--------|------|------|
-| `fal-ai` | process | fal.ai 模型的 AI 图片/视频/音频生成 |
-| `exa-web-search` | process | 通过 Exa API 进行网页搜索和研究 |
-| `context7` | process | 实时文档查询 - 与 /docs 命令和 documentation-lookup skill 配合使用 |
-| `magic` | process | Magic UI 组件 |
-| `evalview` | process | AI agent 回归测试 - 快照行为，检测工具调用和输出质量的回归 |
+| `fal-ai` | process | fal.ai Modell AI Bild/Video/Audio-Generierung |
+| `exa-web-search` | process | Websuche und Recherche ueber Exa API |
+| `context7` | process | Echtzeit-Dokumentationsabfrage - funktioniert mit /docs Befehl und documentation-lookup skill |
+| `magic` | process | Magic UI Komponenten |
+| `evalview` | process | AI Agent Regressions-Tests - Verhalten schnappen, Regressions bei Tool-Aufrufen und Ausgabequalitaet erkennen |
 
-### 浏览器自动化
+### Browser-Automatisierung
 
-| 服务器 | 类型 | 描述 |
+| Server | Typ | Beschreibung |
 |--------|------|------|
-| `playwright` | process | 通过 Playwright 进行浏览器自动化和测试 |
-| `browserbase` | process | Browserbase 云浏览器会话 |
-| `browser-use` | http | AI 浏览器代理，执行网页任务 |
+| `playwright` | process | Browser-Automatisierung und Testing via Playwright |
+| `browserbase` | process | Browserbase Cloud-Browser-Sessions |
+| `browser-use` | http | AI Browser-Agent, fuehrt Web-Aufgaben aus |
 
-### 其他工具
+### Sonstige Tools
 
-| 服务器 | 类型 | 描述 |
+| Server | Typ | Beschreibung |
 |--------|------|------|
-| `firecrawl` | process | 网页抓取和爬取 |
-| `longhand` | process | 无损 Claude Code 会话历史 - 将原始工具调用索引到本地 SQLite + ChromaDB |
-| `token-optimizer` | process | Token 优化 - 通过内容去重和压缩实现 95%+ 上下文缩减 |
-| `devfleet` | http | 多代理编排 - 在隔离的 worktrees 中调度并行 Claude Code agents |
-| `laraplugins` | http | Laravel 插件发现 - 按关键字搜索包、健康分数、Laravel/PHP 版本兼容性 |
+| `firecrawl` | process | Web-Scraping und Crawling |
+| `longhand` | process | verlustfreier Claude Code Sitzungsverlauf - Indexiert RAW Tool-Aufrufe in lokale SQLite + ChromaDB |
+| `token-optimizer` | process | Token-Optimierung - 95%+ Kontextreduktion durch Content-Deduplizierung und -Komprimierung |
+| `devfleet` | http | Multi-Agent-Orchestrierung - Schedules parallele Claude Code Agents in isolierten Worktrees |
+| `laraplugins` | http | Laravel Plugin-Entdeckung - Sucht Pakete nach Keywords, Health-Scores, Laravel/PHP-Versionskompatibilitaet |
 
-## 快速启用
+## Schnellstart
 
-复制需要的服务器配置到 `~/.claude.json` 的 `mcpServers` 节，替换 `YOUR_*_HERE` 占位符为实际值。
+Relevante Serverkonfiguration in `~/.claude.json` `mcpServers`-Abschnitt kopieren und `YOUR_*_HERE`-Platzhalter durch tatsaechliche Werte ersetzen.
 
-**示例 - 启用 GitHub 服务器：**
+**Beispiel - GitHub-Server aktivieren:**
 
 ```json
 {
@@ -83,17 +83,17 @@ ECC 项目在 `mcp-configs/mcp-servers.json` 中预置了多个常用 MCP 服务
 }
 ```
 
-## 环境变量要求
+## Umgebungsvariablen-Anforderungen
 
-| 服务器 | 必需的环境变量 |
+| Server | Erforderliche Umgebungsvariablen |
 |--------|----------------|
 | `github` | `GITHUB_PERSONAL_ACCESS_TOKEN` |
 | `jira` | `JIRA_URL`, `JIRA_EMAIL`, `JIRA_API_TOKEN` |
 | `firecrawl` | `FIRECRAWL_API_KEY` |
-| `supabase` | `--project-ref` 参数 |
+| `supabase` | `--project-ref` Parameter |
 | `exa-web-search` | `EXA_API_KEY` |
 | `fal-ai` | `FAL_KEY` |
 | `browserbase` | `BROWSERBASE_API_KEY` |
-| `browser-use` | `x-browser-use-api-key` 请求头 |
+| `browser-use` | `x-browser-use-api-key` Request-Header |
 | `confluence` | `CONFLUENCE_BASE_URL`, `CONFLUENCE_EMAIL`, `CONFLUENCE_API_TOKEN` |
-| `evalview` | `OPENAI_API_KEY`（可选） |
+| `evalview` | `OPENAI_API_KEY` (optional) |

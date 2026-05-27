@@ -1,82 +1,171 @@
-# 循环与自动化命令
+# Lệnh Lập Kế Hoạch và Kiến Trúc
 
-## 概述
+## Tổng quan
 
-循环与自动化命令用于启动和管理自主循环工作模式。
+Lệnh lập kế hoạch và kiến trúc dùng để lập kế hoạch sản phẩm, thiết kế tính năng và quyết định kiến trúc hệ thống. Các lệnh này đảm bảo có kế hoạch rõ ràng trước khi viết code, giảm làm lại và cải thiện chất lượng mã。
 
-## 命令列表
+## Danh sách lệnh
 
-### /loop-start
+### /plan
 
-**用途**: 启动托管自主循环模式，带安全默认设置和明确停止条件
+**Mục đích**: Universal implementation planning - diễn giải lại requirement, đánh giá risk, tạo step-by-step implementation plan
 
-**描述**: 启动带安全默认设置和明确停止条件的托管自主循环模式。
+**Mô tả**: Tạo comprehensive implementation plan sau khi chờ user xác nhận, trước khi chạm bất kỳ code nào. Accept free-form requirement hoặc PRD markdown file.
 
-**用法**: `/loop-start [pattern] [--mode safe|fast]`
+**Input mode**:
 
-**参数**:
-
-| 参数 | 值 | 说明 |
+| Input | Mode | Behavior |
 |---|---|---|
-| `pattern` | `sequential` | 顺序执行任务，一个接一个 |
-| | `continuous-pr` | 持续 PR 创建和合并循环 |
-| | `rfc-dag` | 基于 RFC 的有向无环图工作流 |
-| | `infinite` | 无限循环（需明确停止条件） |
-| `--mode` | `safe`（默认） | 严格质量门禁和检查点 |
-| | `fast` | 为速度减少门禁 |
+| `path/to/name.prd.md` | PRD artifact mode | Đọc PRD, chọn next delivery milestone, generate `.claude/plans/{name}.plan.md` |
+| Markdown path khác | Reference mode | Đọc file làm context, produce inline plan |
+| Free-form text | Dialog mode | Produce inline plan |
+| Empty input | Clarify mode | Ask what to plan |
 
-**工作流**:
-1. 确认仓库状态和分支策略
-2. 选择循环模式和相关模型层级策略
-3. 为所选模式启用所需 hooks/profile
-4. 创建循环计划并在 `.claude/plans/` 下写 runbook
-5. 打印启动和监控命令
+**Key tham số**:
+- `$ARGUMENTS`: `[feature description | path/to/*.prd.md]` - Mô tả tính năng hoặc PRD file path
 
-**必需安全检查**:
-- 验证测试在首次循环前通过
-- 确保 `ECC_HOOK_PROFILE` 未全局禁用
-- 确保循环有明确停止条件
+**Quy trình**:
+1. **Diễn giải lại requirement** - Làm rõ cần xây dựng gì
+2. **Xác định risk** - Liệt kê potential issue và obstacle
+3. **Tạo step plan** - Chia thành phased implementation
+4. **Chờ xác nhận** - Phải có user approval trước khi tiếp tục
 
-**参数传递**:
-- `$ARGUMENTS`: `[pattern]` 和可选的 `[--mode safe|fast]`
-- 模式是可选的（默认为 sequential）
-- mode 标志是可选的（默认为 safe）
+**Output format** (PRD artifact mode):
+```markdown
+# Plan: {Feature Name}
 
-**最佳实践**:
-- 在 infinite 模式之前确保设置明确的停止条件
-- fast 模式仅在充分测试的代码上使用
-- 监控循环进度，使用 `/loop-status` 检查状态
+**Source PRD**: {path}
+**Selected Milestone**: {milestone or phase name}
+**Complexity**: {Small | Medium | Large}
 
-**常见陷阱**:
-- 在未验证测试的情况下启动循环
-- 使用 infinite 模式而无明确停止条件
-- 在全局禁用 hooks 时尝试使用安全模式
+## Summary
+{2-3 sentences}
 
-**与其他命令集成**:
-- 使用 `/loop-status` 监控运行中循环
-- 使用 `/santa-loop` 进行 Santa 风格循环
-- 使用 `/checkpoint` 创建关键节点检查点
+## Patterns to Mirror
+| Category | Source | Pattern |
+|---|---|---|
+| Naming | `path:line` | {short description} |
+| Errors | `path:line` | {short description} |
+| Tests | `path:line` | {short description} |
+
+## Files to Change
+| File | Action | Why |
+|---|---|---|
+| `path` | CREATE / UPDATE / DELETE | {reason} |
+
+## Tasks
+### Task 1: {name}
+- **Action**: {what to do}
+- **Mirror**: {pattern to follow}
+- **Validate**: {command that proves correctness}
+
+## Validation
+```bash
+{project-specific validation commands}
+```
+
+## Risks
+| Risk | Likelihood | Mitigation |
+|---|---|---|
+```
+
+**Best practice**:
+- Research existing pattern trong codebase trước khi dùng
+- Trong PRD artifact mode, tạo `.claude/plans/` directory (nếu chưa có)
+- Nếu PRD chứa `Delivery Milestones` table, chỉ update selected row status
+
+**Common trap**:
+- Try to plan mà không ask clarification khi input trống
+- Bắt đầu viết code mà không chờ user xác nhận
+- Skip Pattern Grounding step
+
+**Tích hợp với các lệnh khác**:
+- Sau khi plan, dùng `tdd-workflow` skill cho test-driven development
+- Dùng `/build-fix` để sửa build error
+- Dùng `/code-review` để review completed implementation
+- Dùng `/pr` hoặc `/prp-pr` để mở Pull Request
 
 ---
 
-### /loop-status
+### /plan-prd
 
-**用途**: 检查运行中循环的状态
+**Mục đích**: Interactive PRD generator
 
-**描述**: 查看当前运行中循环的状态和进度。
+**Mô tả**: Generate problem-centered product requirement document, bao gồm problem definition, user persona, success metric và MVP scope.
+
+**Khi nào sử dụng**: 
+- Khi xác định tính năng cần xây dựng
+- Khi cần làm rõ product requirement
+- Khi lập kế hoạch tính năng mới từ đầu
+
+**Quy trình**:
+1. FRAME - Understand user và problem
+2. GROUND - Gather evidence
+3. DECIDE - Determine scope và assumption
+4. GENERATE - Generate PRD file
 
 ---
 
-### /santa-loop
+### /prp-plan
 
-**用途**: Santa 风格自主循环
+**Mục đích**: Comprehensive feature planning
 
-**描述**: 一种特殊风格的自主循环模式。
+**Mô tả**: Complete project planning, cover codebase analysis, risk assessment và step-by-step implementation plan.
+
+**Khi nào sử dụng**:
+- Detailed planning cho complex feature
+- Cần codebase context analysis
+- Multi-phase implementation project
 
 ---
 
-## 相关命令
+### /prp-prd
 
-- `/loop-start` - 启动循环
-- `/loop-status` - 检查状态
-- `/santa-loop` - Santa 风格
+**Mục đích**: PRP workflow PRD generator
+
+**Mô tả**: Generate product requirement document sử dụng PRP (Plan-Record-Produce) workflow.
+
+---
+
+### /prp-implement
+
+**Mục đích**: Execute PRP plan + verification loop
+
+**Mô tả**: Execute plan theo PRP workflow, bao gồm continuous verification và check.
+
+---
+
+### /prp-pr
+
+**Mục đích**: Create PR from PRP workflow
+
+**Mô tả**: Create GitHub Pull Request từ PRP workflow result.
+
+---
+
+### /prp-commit
+
+**Mục đích**: PRP verification commit
+
+**Mô tả**: Execute verification và commit code trong PRP workflow.
+
+---
+
+### /multi-plan
+
+**Mục đích**: Multi-model collaborative planning
+
+**Mô tả**: Combine dual-model analysis của Codex và Gemini, generate comprehensive implementation plan.
+
+**Khi nào sử dụng**:
+- Cần multi-perspective analysis
+- Complex cross-domain project
+- Cần balance frontend và backend consideration
+
+---
+
+## Các lệnh liên quan
+
+- `/plan` - Universal implementation planning
+- `/code-review` - Code review
+- `/build-fix` - Build fix

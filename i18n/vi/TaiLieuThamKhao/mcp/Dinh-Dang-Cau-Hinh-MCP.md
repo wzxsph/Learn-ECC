@@ -1,49 +1,49 @@
-# MCP 配置格式
+# Định dạng Cấu hình MCP
 
-## 概述
+## Tổng quan
 
-MCP (Model Context Protocol) 服务器通过 `~/.claude.json` 文件中的 `mcpServers` 节进行配置。Claude Code 支持两种类型的 MCP 服务器：
+MCP (Model Context Protocol) servers được cấu hình qua phần `mcpServers` trong file `~/.claude.json`. Claude Code hỗ trợ hai loại MCP servers:
 
-- **进程模式 (process)**：通过本地命令启动的服务器
-- **HTTP 模式 (http)**：通过 HTTP/HTTPS 访问的远程服务器
+- **Process mode (process)**: Servers được khởi động qua lệnh local
+- **HTTP mode (http)**: Remote servers được truy cập qua HTTP/HTTPS
 
-## JSON 配置结构
+## Cấu trúc cấu hình JSON
 
 ```json
 {
   "mcpServers": {
-    "服务器名称": {
-      "type": "http",           // 可选，默认 process
-      "command": "npx",        // 进程模式必需
-      "url": "https://...",    // HTTP 模式必需
-      "args": ["参数1", "参数2"],  // 可选
-      "env": {                 // 可选，环境变量
+    "server-name": {
+      "type": "http",           // Tùy chọn, mặc định là process
+      "command": "npx",        // Bắt buộc cho process mode
+      "url": "https://...",    // Bắt buộc cho HTTP mode
+      "args": ["param1", "param2"],  // Tùy chọn
+      "env": {                 // Tùy chọn, biến môi trường
         "KEY": "value"
       },
-      "headers": {             // 可选，HTTP 请求头
+      "headers": {             // Tùy chọn, HTTP request headers
         "Header-Name": "value"
       },
-      "description": "服务器描述"  // 可选
+      "description": "Server description"  // Tùy chọn
     }
   }
 }
 ```
 
-## 字段说明
+## Mô tả trường
 
-| 字段 | 类型 | 必需 | 说明 |
+| Trường | Loại | Bắt buộc | Mô tả |
 |------|------|------|------|
-| `type` | string | 否 | 连接类型：`process`（默认）或 `http` |
-| `command` | string | type=process 时必需 | 启动命令（如 `npx`, `uvx`, `python3`） |
-| `url` | string | type=http 时必需 | MCP 服务器的 HTTP/HTTPS URL |
-| `args` | array | 否 | 传递给命令的参数数组 |
-| `env` | object | 否 | 环境变量键值对 |
-| `headers` | object | 否 | HTTP 请求头（仅 http 模式） |
-| `description` | string | 否 | 服务器功能描述 |
+| `type` | string | Không | Loại kết nối: `process` (mặc định) hoặc `http` |
+| `command` | string | Khi type=process | Lệnh khởi động (ví dụ: `npx`, `uvx`, `python3`) |
+| `url` | string | Khi type=http | HTTP/HTTPS URL của MCP server |
+| `args` | array | Không | Mảng tham số truyền cho lệnh |
+| `env` | object | Không | Các cặp key-value biến môi trường |
+| `headers` | object | Không | HTTP request headers (chỉ HTTP mode) |
+| `description` | string | Không | Mô tả chức năng server |
 
-## 配置示例
+## Ví dụ cấu hình
 
-### 进程模式示例
+### Ví dụ Process Mode
 
 ```json
 {
@@ -54,13 +54,13 @@ MCP (Model Context Protocol) 服务器通过 `~/.claude.json` 文件中的 `mcpS
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_xxxx"
       },
-      "description": "GitHub 操作 - PRs, issues, repos"
+      "description": "Thao tác GitHub - PRs, issues, repos"
     }
   }
 }
 ```
 
-### HTTP 模式示例
+### Ví dụ HTTP Mode
 
 ```json
 {
@@ -68,13 +68,13 @@ MCP (Model Context Protocol) 服务器通过 `~/.claude.json` 文件中的 `mcpS
     "vercel": {
       "type": "http",
       "url": "https://mcp.vercel.com",
-      "description": "Vercel 部署和项目"
+      "description": "Deployment và project Vercel"
     }
   }
 }
 ```
 
-### 带认证头的 HTTP 模式
+### HTTP Mode với Authentication Header
 
 ```json
 {
@@ -85,20 +85,20 @@ MCP (Model Context Protocol) 服务器通过 `~/.claude.json` 文件中的 `mcpS
       "headers": {
         "x-browser-use-api-key": "YOUR_KEY_HERE"
       },
-      "description": "AI 浏览器代理"
+      "description": "AI browser agent"
     }
   }
 }
 ```
 
-## 最佳实践
+## Best Practices
 
-1. **环境变量管理**：敏感信息（API keys, tokens）必须使用环境变量，不要硬编码
-2. **上下文窗口**：建议保持启用不超过 10 个 MCP 服务器，以保留上下文窗口
-3. **禁用服务器**：使用 `ECC_DISABLED_MCPS=server1,server2` 环境变量可禁用打包的 MCP 服务器
+1. **Quản lý biến môi trường**: Thông tin nhạy cảm (API keys, tokens) phải sử dụng biến môi trường, không hardcode
+2. **Context window**: Khuyến nghị không bật quá 10 MCP servers để giữ context window
+3. **Vô hiệu hóa server**: Sử dụng biến môi trường `ECC_DISABLED_MCPS=server1,server2` để vô hiệu hóa MCP servers đi kèm
 
-## 故障排除
+## Khắc phục sự cố
 
-- 确保命令可执行（npx, uvx 等已安装）
-- 检查环境变量是否正确设置
-- 查看 Claude Code 日志中的服务器连接错误
+- Đảm bảo lệnh có thể thực thi (npx, uvx, v.v. đã được cài đặt)
+- Kiểm tra biến môi trường đã được đặt đúng chưa
+- Xem Claude Code logs để tìm server connection errors

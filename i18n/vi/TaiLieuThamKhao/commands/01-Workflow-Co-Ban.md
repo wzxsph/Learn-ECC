@@ -1,200 +1,273 @@
-# 核心工作流命令
+# Lệnh Sửa Lỗi Build
 
-本文档介绍 ECC 中用于核心开发工作流的命令。
-
----
-
-## /plan
-
-**用途说明**: 重述需求、评估风险，并创建分步实施计划。在触碰任何代码之前**等待用户确认**。
-
-**使用方法**:
-```
-/plan [功能描述 | PRD文件路径]
-```
-
-**使用场景**:
-- 开始新功能开发
-- 进行重大架构变更
-- 复杂的重构工作
-- 需求不明确或模糊时
-
-**详细说明**:
-该命令会：
-1. **重述需求** - 清晰表达需要构建的内容
-2. **识别风险** - 揭示潜在问题和阻碍
-3. **创建分步计划** - 将实施分解为阶段
-4. **等待确认** - 必须获得用户明确批准后才能继续
-
-支持多种输入模式：
-| 输入 | 模式 | 行为 |
-|------|------|------|
-| `path/to/name.prd.md` | PRD 模式 | 读取 PRD，选择下一个待处理的交付里程碑 |
-| 其他 markdown 路径 | 引用模式 | 读取文件作为上下文并生成内联计划 |
-| 自由格式文本 | 对话模式 | 生成内联计划 |
-| 空输入 | 澄清模式 | 询问应该规划什么 |
+Tài liệu này giới thiệu các lệnh chuyên dụng trong ECC để sửa lỗi build cho các ngôn ngữ khác nhau.
 
 ---
 
-## /code-review
+## /go-build
 
-**用途说明**: 本地未提交变更或 GitHub PR 的全面代码审查。
+**Mục đích**: Từng bước sửa lỗi build Go, cảnh báo go vet và vấn đề linter.
 
-**使用方法**:
+**Cách sử dụng**:
 ```
-/code-review                 # 本地审查模式
-/code-review [PR号 | PR链接]  # PR 审查模式
+/go-build
 ```
 
-**使用场景**:
-- 提交代码之前进行全面审查
-- PR 审查以发现潜在问题
-- 学习代码库中的最佳实践
+**Khi nào sử dụng**:
+- `go build ./...` thất bại
+- `go vet ./...` báo vấn đề
+- `golangci-lint run` hiển thị cảnh báo
+- Phụ thuộc module bị hỏng
+- Build thất bại sau khi kéo thay đổi
 
-**本地审查模式**:
-1. 收集变更文件（`git diff --name-only HEAD`）
-2. 检查安全问题（硬编码凭证、SQL注入、XSS等）
-3. 检查代码质量问题（函数>50行、文件>800行等）
-4. 生成带严重级别标注的报告
+**Quy trình làm việc**:
+1. **Chạy chẩn đoán** - Thực thi `go build`, `go vet`, `staticcheck`
+2. **Phân tích lỗi** - Nhóm theo file và sắp xếp theo mức độ nghiêm trọng
+3. **Sửa từng bước** - Mỗi lần một lỗi
+4. **Xác minh sửa** - Chạy lại build sau mỗi thay đổi
+5. **Báo cáo tổng kết** - Hiển thị đã sửa và vấn đề còn lại
 
-**PR 审查模式**:
-1. 获取 PR 元数据和差异
-2. 检查相关项目规范和规划文档
-3. 读取完整变更文件
-4. 应用 7 个审查类别（正确性、类型安全、模式合规、安全、性能、完整性、可维护性）
-5. 运行验证命令（类型检查、lint、测试、构建）
-6. 发布审查意见到 GitHub
+**Sửa lỗi thường gặp**:
+
+| Lỗi | Sửa lỗi điển hình |
+|------|----------|
+| `undefined: X` | Thêm import hoặc sửa lỗi chính tả |
+| `cannot use X as Y` | Ép kiểu hoặc sửa gán |
+| `missing return` | Thêm câu lệnh return |
+| `X does not implement Y` | Thêm method còn thiếu |
+| `import cycle` | Tái cấu trúc cấu trúc package |
+| `declared but not used` | Xóa hoặc sử dụng biến |
+| `cannot find package` | `go get` hoặc `go mod tidy` |
+
+**Lệnh chẩn đoán**:
+```bash
+go build ./...                # Build chính
+go vet ./...                  # Phân tích tĩnh
+staticcheck ./...             # Lint nâng cao (nếu có)
+golangci-lint run             # Linting
+go mod verify                # Xác minh module
+go mod tidy -v               # Dọn dẹp phụ thuộc
+```
 
 ---
 
-## /build-fix
+## /kotlin-build
 
-**用途说明**: 检测项目构建系统并逐步修复构建/类型错误。
+**Mục đích**: Từng bước sửa lỗi build Kotlin/Gradle, cảnh báo trình biên dịch và vấn đề phụ thuộc.
 
-**使用方法**:
+**Cách sử dụng**:
 ```
-/build-fix
+/kotlin-build
 ```
 
-**使用场景**:
-- 构建失败时
-- TypeScript/JavaScript 类型错误
-- 编译错误
-- 依赖问题
+**Khi nào sử dụng**:
+- `./gradlew build` thất bại
+- Trình biên dịch Kotlin báo lỗi
+- `./gradlew detekt` báo vi phạm
+- Gradle dependency resolution thất bại
+- Build thất bại sau khi kéo thay đổi
 
-**工作流程**:
-1. **检测构建系统** - 根据文件类型选择合适的构建命令
-2. **解析错误** - 按文件和依赖顺序分组
-3. **逐步修复** - 一次修复一个错误
-4. **验证** - 每次修复后重新运行构建
+**Sửa lỗi thường gặp**:
 
-支持的构建系统：
+| Lỗi | Sửa lỗi điển hình |
+|------|----------|
+| `Unresolved reference: X` | Thêm import hoặc dependency |
+| `Type mismatch` | Sửa ép kiểu hoặc gán |
+| `'when' must be exhaustive` | Thêm branch sealed class còn thiếu |
+| `Suspend function can only be called from coroutine` | Thêm modifier `suspend` |
+| `Smart cast impossible` | Dùng `val` cục bộ hoặc `let` |
+| `Could not resolve dependency` | Sửa version hoặc thêm repository |
 
-| 指示器 | 构建命令 |
+**Lệnh chẩn đoán**:
+```bash
+./gradlew build 2>&1                      # Build chính
+./gradlew detekt 2>&1                      # Phân tích tĩnh (nếu cấu hình)
+./gradlew ktlintCheck 2>&1                # Kiểm tra format (nếu cấu hình)
+./gradlew dependencies --configuration runtimeClasspath | head -100  # Vấn đề phụ thuộc
+./gradlew build --refresh-dependencies     # Refresh sâu (khi cache hoặc metadata đáng ngờ)
+```
+
+---
+
+## /rust-build
+
+**Mục đích**: Từng bước sửa lỗi build Rust, vấn đề borrow checker và lifecycle.
+
+**Cách sử dụng**:
+```
+/rust-build
+```
+
+**Khi nào sử dụng**:
+- `cargo build` hoặc `cargo check` thất bại
+- `cargo clippy` báo cảnh báo
+- Borrow checker hoặc lỗi lifecycle ngăn compile
+- Cargo dependency resolution thất bại
+- Build thất bại sau khi kéo thay đổi
+
+**Sửa lỗi thường gặp**:
+
+| Lỗi | Sửa lỗi điển hình |
+|------|----------|
+| `cannot borrow as mutable` | Tái cấu trúc để immutable borrow kết thúc trước mutable access |
+| `does not live long enough` | Dùng owned type hoặc thêm annotation lifecycle |
+| `cannot move out of` | Tái cấu trúc để lấy ownership; clone chỉ là phương án cuối cùng |
+| `mismatched types` | Thêm `.into()`, `as` hoặc conversion rõ ràng |
+| `trait X not implemented` | Thêm `#[derive(Trait)]` hoặc implement thủ công |
+| `unresolved import` | Thêm vào Cargo.toml hoặc sửa đường dẫn `use` |
+| `cannot find value` | Thêm import hoặc sửa đường dẫn |
+
+**Lệnh chẩn đoán**:
+```bash
+cargo check 2>&1                               # Build chính
+cargo clippy -- -D warnings 2>&1               # Lints
+cargo fmt --check 2>&1                         # Kiểm tra format
+cargo tree --duplicates                        # Phụ thuộc trùng lặp
+cargo audit                                   # Audit bảo mật (nếu có)
+```
+
+---
+
+## /cpp-build
+
+**Mục đích**: Từng bước sửa lỗi build C++, vấn đề CMake và linker.
+
+**Cách sử dụng**:
+```
+/cpp-build
+```
+
+**Khi nào sử dụng**:
+- `cmake --build build` thất bại
+- Lỗi linker (undefined reference, multiple definition)
+- Template instantiation thất bại
+- Vấn đề include/phụ thuộc
+- Build thất bại sau khi kéo thay đổi
+
+**Sửa lỗi thường gặp**:
+
+| Lỗi | Sửa lỗi điển hình |
+|------|----------|
+| `undeclared identifier` | Thêm `#include` hoặc sửa lỗi chính tả |
+| `no matching function` | Sửa kiểu tham số hoặc thêm overload |
+| `undefined reference` | Link library hoặc thêm implementation |
+| `multiple definition` | Dùng `inline` hoặc chuyển vào .cpp |
+| `incomplete type` | Thay forward declaration bằng `#include` |
+| `no member named X` | Sửa tên member hoặc thêm include |
+| `cannot convert X to Y` | Thêm conversion phù hợp |
+| `CMake Error` | Sửa cấu hình CMakeLists.txt |
+
+**Lệnh chẩn đoán**:
+```bash
+cmake -B build -S .                        # Cấu hình CMake
+cmake --build build 2>&1 | head -100       # Build
+clang-tidy src/*.cpp -- -std=c++17         # Phân tích tĩnh (nếu có)
+cppcheck --enable=all src/                 # Phân tích thêm (nếu có)
+```
+
+---
+
+## /gradle-build
+
+**Mục đích**: Sửa lỗi build Gradle cho Android và Kotlin Multiplatform (KMP).
+
+**Cách sử dụng**:
+```
+/gradle-build
+```
+
+**Khi nào sử dụng**:
+- Build Android thất bại
+- Lỗi compile KMP
+- Gradle sync thất bại
+- Xung đột phụ thuộc
+
+**Phát hiện loại project**:
+
+| Indicator | Lệnh build |
 |--------|----------|
-| `package.json` + `build` 脚本 | `npm run build` |
-| `tsconfig.json` (TypeScript) | `npx tsc --noEmit` |
-| `Cargo.toml` | `cargo build` |
-| `pom.xml` | `mvn compile` |
-| `build.gradle` | `./gradlew compileJava` |
-| `go.mod` | `go build ./...` |
-| `pyproject.toml` | `python -m compileall` 或 `mypy` |
+| `build.gradle.kts` + `composeApp/` (KMP) | `./gradlew composeApp:compileKotlinMetadata` |
+| `build.gradle.kts` + `app/` (Android) | `./gradlew app:compileDebugKotlin` |
+| `settings.gradle.kts` với modules | `./gradlew assemble` |
+| Có detekt cấu hình | `./gradlew detekt` |
+
+**Sửa lỗi thường gặp**:
+
+| Lỗi | Sửa |
+|------|------|
+| Unresolved reference trong `commonMain` | Kiểm tra dependency có trong `commonMain.dependencies {}` |
+| Expect declaration không có actual | Thêm `actual` implementation trong mỗi platform source set |
+| Compose compiler version không khớp | Căn chỉnh Kotlin và Compose compiler version trong `libs.versions.toml` |
+| Duplicate class | Kiểm tra dependency xung đột với `./gradlew dependencies` |
+| Lỗi KSP | Chạy `./gradlew kspCommonMainKotlinMetadata` để regenerate |
+| Vấn đề configuration cache | Kiểm tra task input không serializable |
 
 ---
 
-## /verify
+## /flutter-build
 
-**用途说明**: 验证代码变更是否按预期工作。用于验证 PR、确认修复或测试变更。
+**Mục đích**: Từng bước sửa lỗi Dart analyzer và Flutter build.
 
-**使用方法**:
+**Cách sử dụng**:
 ```
-/verify [quick]           # 快速验证（推荐）
-/verify full             # 完整验证
+/flutter-build
 ```
 
-**使用场景**:
-- 验证 PR 更改
-- 确认修复有效
-- 手动测试变更
-- 本地验证后再推送
+**Khi nào sử dụng**:
+- `flutter analyze` báo lỗi
+- `flutter build` thất bại trên bất kỳ platform nào
+- `flutter pub get` xung đột version
+- `build_runner` tạo code thất bại
+- Build thất bại sau khi kéo thay đổi
 
-**验证步骤**:
-1. 运行相关测试
-2. 检查类型安全性
-3. 验证构建成功
-4. 检查 linting
+**Sửa lỗi thường gặp**:
+
+| Lỗi | Sửa lỗi điển hình |
+|------|----------|
+| `A value of type 'X?' can't be assigned to 'X'` | Thêm `?? default` hoặc null guard |
+| `The name 'X' isn't defined` | Thêm import hoặc sửa lỗi chính tả |
+| `Non-nullable instance field must be initialized` | Thêm initializer hoặc `late` |
+| `Version solving failed` | Điều chỉnh version constraint trong pubspec.yaml |
+| `Missing concrete implementation of 'X'` | Implement interface method còn thiếu |
+| `build_runner: Part of X expected` | Xóa `.g.dart` cũ và build lại |
+
+**Lệnh chẩn đoán**:
+```bash
+flutter analyze 2>&1                  # Phân tích
+flutter pub get 2>&1                  # Phụ thuộc
+dart run build_runner build --delete-conflicting-outputs 2>&1  # Tạo code (nếu dùng build_runner)
+flutter build apk 2>&1                # Build platform
+flutter build web 2>&1                # Build web
+```
 
 ---
 
-## /quality-gate
+## Bảng so sánh lệnh sửa build
 
-**用途说明**: 为文件或项目范围运行 ECC 质量管道并报告修复步骤。
-
-**使用方法**:
-```
-/quality-gate [path|.] [--fix] [--strict]
-```
-
-**使用场景**:
-- 按需运行质量检查
-- 在 CI 管道中集成
-- 确保代码符合项目标准
-
-**管道步骤**:
-1. 检测目标语言/工具
-2. 运行格式化程序检查
-3. 运行 lint/类型检查
-4. 生成简洁的修复列表
+| Lệnh | Ngôn ngữ/Platform | Tool chính | Vấn đề thường gặp |
+|------|----------|----------|----------|
+| `/go-build` | Go | go build, go vet | Lỗi kiểu, import cycle |
+| `/kotlin-build` | Kotlin | Gradle, detekt | Kiểu không khớp, when không đầy đủ |
+| `/rust-build` | Rust | cargo check, clippy | Lỗi borrow, lifecycle |
+| `/cpp-build` | C++ | CMake, clang-tidy | Lỗi linker, vấn đề template |
+| `/gradle-build` | Android/KMP | Gradle | Xung đột phụ thuộc, lỗi cấu hình |
+| `/flutter-build` | Flutter/Dart | Flutter analyze | Null safety, lỗi phân tích |
 
 ---
 
-## /tdd
+## Chiến lược sửa chung
 
-**用途说明**: 测试驱动开发工作流。遵循红-绿-重构循环。
+Tất cả các lệnh sửa build đều tuân theo cùng một chiến lược cơ bản:
 
-**使用方法**:
-```
-/tdd                      # 启动 TDD 工作流
-```
+1. **Sửa lỗi build trước** - Code phải compile được
+2. **Sau đó sửa cảnh báo lint** - Sửa các cấu trúc đáng ngờ
+3. **Rồi sửa cảnh báo format** - Style và best practice
+4. **Mỗi lần sửa một lỗi** - Xác minh mỗi thay đổi
+5. **Thay đổi tối thiểu** - Đừng refactor, chỉ sửa
 
-**使用场景**:
-- 实现新功能
-- 修复 bug（先写失败的测试）
-- 添加测试覆盖
-- 学习 TDD 方法论
-
-**TDD 循环**:
-```
-RED    → 写一个失败的测试
-GREEN  → 编写最少的代码使测试通过
-REFACTOR → 改进代码，测试保持绿色
-REPEAT → 下一个测试用例
-```
-
-**最佳实践**:
-- **先写测试** - 在任何实现之前
-- **每次修改后运行测试** - 验证进度
-- **测试行为，而非实现** - 关注接口而非细节
-- **包含边界情况** - 空值、null、最大值等
-
----
-
-## 命令集成关系
-
-```
-需求不明 → /plan-prd (创建 PRD)
-     ↓
-需求明确 → /plan (创建实施计划)
-     ↓
-/tdd (或 /feature-dev) 实现
-     ↓
-/build-fix 修复构建错误
-     ↓
-/code-review 代码审查
-     ↓
-/quality-gate 质量门禁
-     ↓
-/verify 验证
-     ↓
-/pr 创建 PR
-```
+**Điều kiện dừng**:
+Nếu xảy ra những điều sau, agent sẽ dừng lại và báo cáo:
+- Cùng một lỗi vẫn tồn tại sau 3 lần thử
+- Sửa đã tạo thêm lỗi
+- Cần thay đổi kiến trúc
+- Thiếu phụ thuộc bên ngoài

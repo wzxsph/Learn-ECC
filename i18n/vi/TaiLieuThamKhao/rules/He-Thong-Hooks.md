@@ -1,30 +1,30 @@
-# Hooks 系统
+# Hệ thống Hooks
 
-## Hook 类型
+## Loại Hook
 
-- **PreToolUse**: 工具执行前（验证、参数修改）
-- **PostToolUse**: 工具执行后（自动格式化、检查）
-- **Stop**: 会话结束时（最终验证）
+- **PreToolUse**: Trước khi thực thi công cụ (xác thực, sửa đổi tham số)
+- **PostToolUse**: Sau khi thực thi công cụ (định dạng tự động, kiểm tra)
+- **Stop**: Khi phiên kết thúc (xác minh cuối cùng)
 
-## 自动接受权限
+## Tự động chấp nhận quyền
 
-谨慎使用：
-- 为可信的、定义明确的计划启用
-- 为探索性工作禁用
-- 切勿使用 dangerously-skip-permissions 标志
-- 在 `~/.claude.json` 中配置 `allowedTools`
+Sử dụng cẩn thận:
+- Bật cho các kế hoạch đáng tin cậy, được xác định rõ ràng
+- Tắt cho công việc khám phá
+- Không bao giờ sử dụng flag dangerously-skip-permissions
+- Định cấu hình `allowedTools` trong `~/.claude.json`
 
-## TodoWrite 最佳实践
+## Thực hành tốt nhất TodoWrite
 
-使用 TodoWrite 工具：
-- 跟踪多步骤任务的进度
-- 验证对指令的理解
-- 启用实时指导
-- 显示粒度实施步骤
+Sử dụng công cụ TodoWrite để:
+- Theo dõi tiến độ tác vụ nhiều bước
+- Xác minh hiểu biết về hướng dẫn
+- Bật steering thời gian thực
+- Hiển thị các bước triển khai chi tiết
 
-Todo 列表揭示：
-- 乱序步骤
-- 缺失项目
-- 多余的不必要项目
-- 错误的粒度
-- 误解的需求
+Danh sách Todo cho thấy:
+- Các bước không theo thứ tự
+- Các mục còn thiếu
+- Các mục không cần thiết thừa
+- Độ chi tiết sai
+- Yêu cầu bị hiểu sai

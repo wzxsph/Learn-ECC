@@ -1,102 +1,102 @@
-# 测试
+# Testing
 
-本部分涵盖各编程语言的测试策略、TDD工作流和E2E测试模式。
+Dieser Abschnitt behandelt Teststrategien fuer verschiedene Programmiersprachen, TDD-Workflows und E2E-Testmuster.
 
 ---
 
-## TDD工作流
+## TDD-Workflow
 
-### 用途说明
-TDD工作流确保所有代码开发遵循测试驱动开发原则，具有全面的测试覆盖率。
+### Verwendungszweck
+TDD-Workflow stellt sicher, dass jegliche Codeentwicklung testgetriebenen Entwicklungsprinzipien folgt, mit umfassender Testabdeckung.
 
-### 使用时机
-- 编写新功能或功能
-- 修复bug或问题
-- 重构现有代码
-- 添加API端点
-- 创建新组件
+### Verwendung
+- Neue Features oder Funktionalitaeten schreiben
+- Bugs oder Probleme beheben
+- Bestehenden Code refaktorieren
+- API-Endpunkte hinzufuegen
+- Neue Komponenten erstellen
 
-### 核心概念
+### Kernkonzepte
 
-**1. 测试先行**
-总是先写测试，然后实现代码使测试通过。
+**1. Test First**
+Immer zuerst Tests schreiben, dann Code implementieren, damit Tests bestehen.
 
-**2. 覆盖率要求**
-最低80%覆盖率（单元测试 + 集成测试 + E2E测试）
+**2. Abdeckungsanforderung**
+Minimum 80% Abdeckung (Unit-Tests + Integration-Tests + E2E-Tests)
 
-**3. 测试类型**
-- 单元测试：独立函数和组件
-- 集成测试：API端点和数据库操作
-- E2E测试：关键用户流和浏览器自动化
+**3. Testtypen**
+- Unit-Tests: Eigenstaendige Funktionen und Komponenten
+- Integration-Tests: API-Endpunkte und Datenbankoperationen
+- E2E-Tests: Kritische Benutzerfloesse und Browser-Automatisierung
 
-**4. RED-GREEN-REFACTOR循环**
-- RED: 先写失败的测试
-- GREEN: 写最简代码使测试通过
-- REFACTOR: 保持测试绿色的情况下改进代码
+**4. RED-GREEN-REFACTOR-Zyklus**
+- RED: Zuerst fehlgeschlagenen Test schreiben
+- GREEN: Minimalen Code schreiben, damit Test besteht
+- REFACTOR: Codequalitaet verbessern, Tests gruen halten
 
-### TDD流程步骤
+### TDD-Flow-Schritte
 
 ```bash
-# 1. 写测试（RED）
-npm test  # 测试应该失败
+# 1. Test schreiben (RED)
+npm test  # Test sollte fehlschlagen
 
-# 2. 实现代码（GREEN）
-# 写最简代码使测试通过
+# 2. Code implementieren (GREEN)
+# Minimalen Code schreiben, damit Test besteht
 
-# 3. 重构（REFACTOR）
-# 改进代码质量，保持测试绿色
+# 3. Refaktorieren (REFACTOR)
+# Codequalitaet verbessern, Tests gruen halten
 
-# 4. 验证覆盖率
-npm run test:coverage  # 验证80%+覆盖率
+# 4. Abdeckung verifizieren
+npm run test:coverage  # 80%+ Abdeckung verifizieren
 ```
 
-### 测试隔离原则
+### Testisolationsprinzipien
 
 ```typescript
-// 错误：测试相互依赖
+// Falsch: Tests sind voneinander abhaengig
 test('creates user', () => { /* ... */ })
-test('updates same user', () => { /* 依赖前一个测试 */ })
+test('updates same user', () => { /* Haengt von vorherigem Test ab */ })
 
-// 正确：每个测试独立设置
+// Richtig: Jeder Test unabhaengig einrichten
 test('creates user', () => {
   const user = createTestUser()
-  // 测试逻辑
+  // Testlogik
 })
 
 test('updates user', () => {
   const user = createTestUser()
-  // 更新逻辑
+  // Update-Logik
 })
 ```
 
 ---
 
-## Python测试
+## Python-Testing
 
-### 用途说明
-Python测试策略使用pytest、TDD方法论、fixtures、mocking、参数化和覆盖率要求。
+### Verwendungszweck
+Python-Teststrategien verwenden pytest, TDD-Methodik, Fixtures, Mocking, Parametrisierung und Abdeckungsanforderungen.
 
-### 使用时机
-- 遵循TDD方法论编写新Python代码
-- 设计Python项目测试套件
-- 审查Python测试覆盖率
-- 设置测试基础设施
+### Verwendung
+- Neuen Python-Code nach TDD-Methodik schreiben
+- Python-Projekt-Testsuite entwerfen
+- Python-Testabdeckung ueberpruefen
+- Testinfrastruktur einrichten
 
-### 核心概念
+### Kernkonzepte
 
 **1. pytest Fixtures**
-使用`@pytest.fixture`创建可复用测试数据。
+`@pytest.fixture` verwenden, um wiederverwendbare Testdaten zu erstellen.
 
-**2. 参数化测试**
-使用`@pytest.mark.parametrize`用不同输入运行测试。
+**2. Parametrisierte Tests**
+`@pytest.mark.parametrize` verwenden, um Tests mit verschiedenen Eingaben auszufuehren.
 
 **3. Mocking**
-使用`unittest.mock`的`@patch`模拟外部依赖。
+`@patch` von `unittest.mock` verwenden, um externe Abhaengigkeiten zu mocken.
 
-**4. 覆盖率**
-使用`--cov`测量覆盖率，目标80%+。
+**4. Abdeckung**
+`--cov` verwenden, um Abdeckung zu messen, Ziel 80%+.
 
-### 使用示例
+### Verwendungsbeispiel
 
 ```python
 import pytest
@@ -110,7 +110,7 @@ def database():
     yield db
     db.close()
 
-# 参数化测试
+# Parametrisierte Tests
 @pytest.mark.parametrize("input,expected", [
     ("hello", "HELLO"),
     ("world", "WORLD"),
@@ -126,49 +126,49 @@ def test_with_mock(api_call_mock):
     result = my_function()
     assert result["status"] == "success"
 
-# 异常测试
+# Exception-Tests
 with pytest.raises(ValueError, match="invalid input"):
     raise ValueError("invalid input provided")
 
-# 运行命令
+# Ausfuehrungsbefehle
 pytest --cov=mypackage --cov-report=html
 ```
 
 ---
 
-## Go测试
+## Go-Testing
 
-### 用途说明
-Go测试模式包括表驱动测试、子测试、基准测试、模糊测试和测试覆盖率，遵循TDD方法和惯用Go实践。
+### Verwendungszweck
+Go-Testmuster umfassen Table-Driven-Tests, Subtests, Benchmark-Tests, Fuzz-Tests und Testabdeckung, nach TDD-Methodik und idiomatischen Go-Praktiken.
 
-### 使用时机
-- 编写新的Go函数或方法
-- 为现有代码添加测试覆盖率
-- 为性能关键代码创建基准测试
-- 实现模糊测试进行输入验证
-- 在Go项目中遵循TDD工作流
+### Verwendung
+- Neue Go-Funktionen oder -Methoden schreiben
+- Testabdeckung fuer bestehenden Code hinzufuegen
+- Benchmark-Tests fuer performancekritischen Code erstellen
+- Fuzz-Tests fuer Eingabevalidierung implementieren
+- TDD-Workflow in Go-Projekten folgen
 
-### 核心概念
+### Kernkonzepte
 
-**1. 表驱动测试**
-使用表驱动模式实现全面覆盖。
+**1. Table-Driven Tests**
+Table-Driven-Pattern fuer umfassende Abdeckung verwenden.
 
-**2. 子测试**
-使用`t.Run`组织相关测试。
+**2. Subtests**
+`t.Run` verwenden, um verwandte Tests zu organisieren.
 
-**3. 测试辅助函数**
-使用`t.Helper()`标记辅助函数。
+**3. Test-Helper**
+`t.Helper()` verwenden, um Helper-Funktionen zu markieren.
 
-**4. 接口Mocking**
-使用接口进行依赖解耦和测试。
+**4. Interface Mocking**
+Interfaces fuer Dependency-Decoupling und Testing verwenden.
 
-**5. 基准测试和模糊测试**
-性能测试和随机输入测试。
+**5. Benchmark-Tests und Fuzz-Tests**
+Performance-Tests und Zufallseingabe-Tests.
 
-### 使用示例
+### Verwendungsbeispiel
 
 ```go
-// 表驱动测试
+// Table-Driven Tests
 func TestAdd(t *testing.T) {
     tests := []struct {
         name     string
@@ -190,7 +190,7 @@ func TestAdd(t *testing.T) {
     }
 }
 
-// 测试辅助函数
+// Test-Helper
 func setupTestDB(t *testing.T) *sql.DB {
     t.Helper()
     db, err := sql.Open("sqlite3", ":memory:")
@@ -201,7 +201,7 @@ func setupTestDB(t *testing.T) *sql.DB {
     return db
 }
 
-// 接口Mocking
+// Interface Mocking
 type UserRepository interface {
     GetUser(id string) (*User, error)
     SaveUser(user *User) error
@@ -216,7 +216,7 @@ func (m *MockUserRepository) GetUser(id string) (*User, error) {
     return m.GetUserFunc(id)
 }
 
-// 基准测试
+// Benchmark
 func BenchmarkProcess(b *testing.B) {
     data := generateTestData(1000)
     b.ResetTimer()
@@ -225,7 +225,7 @@ func BenchmarkProcess(b *testing.B) {
     }
 }
 
-// 运行命令
+// Ausfuehrungsbefehle
 go test -cover ./...
 go test -bench=. -benchmem
 go test -fuzz=FuzzParse -fuzztime=30s
@@ -233,39 +233,39 @@ go test -fuzz=FuzzParse -fuzztime=30s
 
 ---
 
-## Rust测试
+## Rust-Testing
 
-### 用途说明
-Rust测试模式包括单元测试、集成测试、异步测试、属性测试、mocking和覆盖率，遵循TDD方法论。
+### Verwendungszweck
+Rust-Testmuster umfassen Unit-Tests, Integration-Tests, Async-Tests, Property-Tests, Mocking und Abdeckung, nach TDD-Methodik.
 
-### 使用时机
-- 编写新的Rust函数、方法或trait
-- 为现有代码添加测试覆盖率
-- 为性能关键代码创建基准测试
-- 实现属性测试进行输入验证
-- 在Rust项目中遵循TDD工作流
+### Verwendung
+- Neue Rust-Funktionen, -Methoden oder -Traits schreiben
+- Testabdeckung fuer bestehenden Code hinzufuegen
+- Benchmark-Tests fuer performancekritischen Code erstellen
+- Property-Tests fuer Eingabevalidierung implementieren
+- TDD-Workflow in Rust-Projekten folgen
 
-### 核心概念
+### Kernkonzepte
 
-**1. 模块级测试**
-在`#[cfg(test)]`模块中编写单元测试。
+**1. Module-Level Tests**
+Unit-Tests in `#[cfg(test)]`-Modulen schreiben.
 
-**2. 集成测试**
-在`tests/`目录中编写集成测试。
+**2. Integration-Tests**
+Integration-Tests im `tests/`-Verzeichnis schreiben.
 
-**3. 异步测试**
-使用`#[tokio::test]`进行异步测试。
+**3. Async-Tests**
+`#[tokio::test]` fuer Async-Tests verwenden.
 
-**4. 属性测试**
-使用`proptest`进行基于属性的测试。
+**4. Property-Tests**
+`proptest` fuer Property-Based-Testing verwenden.
 
 **5. Mocking**
-使用`mockall`模拟trait。
+`mockall` fuer Trait-Mocking verwenden.
 
-### 使用示例
+### Verwendungsbeispiel
 
 ```rust
-// 模块级测试
+// Module-Level Tests
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -283,7 +283,7 @@ mod tests {
     }
 }
 
-// 异步测试
+// Async Tests
 #[tokio::test]
 async fn fetches_data_successfully() {
     let client = TestClient::new().await;
@@ -291,7 +291,7 @@ async fn fetches_data_successfully() {
     assert!(result.is_ok());
 }
 
-// 属性测试
+// Property Tests
 proptest! {
     #[test]
     fn encode_decode_roundtrip(input in ".*") {
@@ -323,7 +323,7 @@ fn service_returns_user_when_found() {
     assert_eq!(user.name, "Alice");
 }
 
-// 运行命令
+// Ausfuehrungsbefehle
 cargo test
 cargo llvm-cov --fail-under-lines 80
 cargo bench
@@ -331,40 +331,40 @@ cargo bench
 
 ---
 
-## E2E测试
+## E2E-Testing
 
-### 用途说明
-Playwright E2E测试模式提供了构建稳定、快速、可维护E2E测试套件的全面模式，包括页面对象模型、配置、CI/CD集成和防抖测试策略。
+### Verwendungszweck
+Playwright E2E-Testmuster bieten umfassende Muster fuer den Aufbau stabiler, schneller, wartbarer E2E-Testsuites, einschliesslich Page-Object-Model, Konfiguration, CI/CD-Integration und Flaky-Test-Strategien.
 
-### 使用时机
-- 创建端到端测试验证完整用户流
-- 使用Playwright进行浏览器自动化
-- 设置CI/CD中的E2E测试
-- 处理不稳定测试
+### Verwendung
+- End-to-End-Tests erstellen, um vollstaendige Benutzerfloesse zu verifizieren
+- Playwright fuer Browser-Automatisierung verwenden
+- E2E-Tests in CI/CD einrichten
+- Mit instabilen Tests umgehen
 
-### 核心概念
+### Kernkonzepte
 
-**1. 页面对象模型(POM)**
-将页面交互封装在页面对象类中。
+**1. Page-Object-Model (POM)**
+Seiteninteraktionen in Page-Object-Klassen kapseln.
 
-**2. 测试隔离**
-每个测试独立设置数据。
+**2. Testisolierung**
+Jeder Test richtet unabhaengige Daten ein.
 
-**3. 定位器策略**
-使用语义定位器而非CSS类名。
+**3. Locator-Strategien**
+Semantische Locators statt CSS-Klassennamen verwenden.
 
-**4. 防抖测试**
-识别和处理不稳定测试。
+**4. Flaky-Test-Strategien**
+Instabile Tests erkennen und behandeln.
 
-**5. Artifacts管理**
-截图、视频、跟踪记录用于调试。
+**5. Artifacts-Management**
+Screenshots, Videos, Trace-Aufzeichnungen fuer Debugging verwenden.
 
-### 使用示例
+### Verwendungsbeispiel
 
 ```typescript
 import { test, expect } from '@playwright/test'
 
-// 页面对象模型
+// Page-Object-Model
 export class ItemsPage {
   readonly page: Page
   readonly searchInput: Locator
@@ -387,7 +387,7 @@ export class ItemsPage {
   }
 }
 
-// 测试结构
+// Teststruktur
 test.describe('Item Search', () => {
   let itemsPage: ItemsPage
 
@@ -404,7 +404,7 @@ test.describe('Item Search', () => {
   })
 })
 
-// Playwright配置
+// Playwright-Konfiguration
 export default defineConfig({
   testDir: './tests/e2e',
   retries: process.env.CI ? 2 : 0,
@@ -419,7 +419,7 @@ export default defineConfig({
   ],
 })
 
-// 防抖测试
+// Flaky-Test
 test('conditional skip', async ({ page }) => {
   test.skip(process.env.CI, 'Flaky in CI - Issue #123')
 })
@@ -431,10 +431,10 @@ test('flaky: complex search', async ({ page }) => {
 
 ---
 
-## 相关技能
+## Zugehoerige Faehigkeiten
 
-| 技能 | 用途 |
+| Faehigkeit | Verwendungszweck |
 |------|------|
-| `coding-standards` | 编码标准和最佳实践 |
-| `error-handling` | 错误处理模式 |
-| `security-review` | 安全审查检查清单 |
+| `coding-standards` | Coding-Standards und Best-Practices |
+| `error-handling` | Fehlerbehandlungsmuster |
+| `security-review` | Sicherheits-Review-Checkliste |

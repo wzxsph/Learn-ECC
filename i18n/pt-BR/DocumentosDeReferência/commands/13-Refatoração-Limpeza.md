@@ -1,45 +1,45 @@
-# 重构与清理命令
+# Comandos de Refatoração e Limpeza
 
-## 概述
+## Visão Geral
 
-重构与清理命令用于代码重构、死代码清理和自动更新。
+Comandos de refatoração e limpeza são usados para refatoração de código, limpeza de código morto e auto-atualização.
 
-## 命令列表
+## Lista de Comandos
 
 ### /refactor-clean
 
-**用途**: 删除死代码+合并重复
+**Propósito**: Excluir código morto + mesclar duplicatas
 
-**描述**: 识别并删除未使用的代码，合并重复的代码片段。
+**Descrição**: Identifica e exclui código não usado, mescla fragmentos de código duplicados.
 
-**分析内容**:
-- 未使用的函数和变量
-- 重复代码块
-- 过时的注释
-- 未使用的导入
+**Analisa**:
+- Funções e variáveis não usadas
+- Blocos de código duplicados
+- Comentários desatualizados
+- Imports não usados
 
-**工具支持**:
-- `knip` - 检测死代码
-- `depcheck` - 检测未使用依赖
-- `ts-prune` - TypeScript 死代码检测
+**Ferramentas Suportadas**:
+- `knip` - Detecção de código morto
+- `depcheck` - Detecção de dependências não usadas
+- `ts-prune` - Detecção de código morto TypeScript
 
 ---
 
 ### /auto-update
 
-**用途**: 自动更新能力
+**Propósito**: Capacidades de auto-atualização
 
-**描述**: 自动更新项目依赖和配置到最新版本。
+**Descrição**: Atualiza automaticamente dependências e configurações de projeto para versões mais recentes.
 
-**更新内容**:
-- npm/pip 包更新
-- 配置文件迁移
-- 代码迁移
-- 版本兼容性检查
+**Atualiza**:
+- Atualizações de pacotes npm/pip
+- Migração de arquivos de configuração
+- Migração de código
+- Verificação de compatibilidade de versão
 
 ---
 
-## 相关命令
+## Comandos Relacionados
 
-- `/refactor-clean` - 重构清理
-- `/auto-update` - 自动更新
+- `/refactor-clean` - Refatoração e limpeza
+- `/auto-update` - Auto-atualização

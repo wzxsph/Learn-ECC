@@ -1,55 +1,55 @@
-# 性能优化
+# Tối ưu hiệu suất
 
-## 模型选择策略
+## Chiến lược lựa chọn mô hình
 
-**Haiku 4.5**（Sonnet 90% 能力，1/3 成本）：
-- 频繁调用的轻量级 agent
-- 结对编程和代码生成
-- 多 agent 系统中的 worker agent
+**Haiku 4.5** (90% khả năng Sonnet, 1/3 chi phí):
+- Agent nhẹ được gọi thường xuyên
+- Pair programming và sinh mã
+- Agent worker trong hệ thống đa agent
 
-**Sonnet 4.6**（最佳编码模型）：
-- 主要开发工作
-- 编排多 agent 工作流
-- 复杂编码任务
+**Sonnet 4.6** (Mô hình mã hóa tốt nhất):
+- Công việc phát triển chính
+- Điều phối workflow đa agent
+- Tác vụ mã hóa phức tạp
 
-**Opus 4.5**（最深度推理）：
-- 复杂架构决策
-- 最大推理需求
-- 研究和分析任务
+**Opus 4.5** (Suy luận sâu nhất):
+- Quyết định kiến trúc phức tạp
+- Nhu cầu suy luận tối đa
+- Tác vụ nghiên cứu và phân tích
 
-## 上下文窗口管理
+## Quản lý cửa sổ ngữ cảnh
 
-避免使用上下文窗口的最后 20%：
-- 大规模重构
-- 跨多文件的功能实现
-- 调试复杂交互
+Tránh sử dụng 20% cuối của cửa sổ ngữ cảnh cho:
+- Tái cấu trúc quy mô lớn
+- Triển khai tính năng qua nhiều file
+- Gỡ lỗi tương tác phức tạp
 
-低上下文敏感度任务：
-- 单文件编辑
-- 独立工具创建
-- 文档更新
-- 简单 bug 修复
+Tác vụ ít nhạy cảm ngữ cảnh:
+- Chỉnh sửa file đơn
+- Tạo utility độc lập
+- Cập nhật tài liệu
+- Sửa lỗi đơn giản
 
-## 扩展思考 + 计划模式
+## Extended Thinking + Plan Mode
 
-扩展思考默认启用，为内部推理保留最多 31,999 tokens。
+Extended thinking được bật theo mặc định, dành tới 31,999 tokens cho suy luận nội bộ.
 
-控制扩展思考：
-- **切换**: Option+T (macOS) / Alt+T (Windows/Linux)
-- **配置**: 在 `~/.claude/settings.json` 中设置 `alwaysThinkingEnabled`
-- **预算上限**: `export MAX_THINKING_TOKENS=10000`
-- **详细模式**: Ctrl+O 查看思考输出
+Điều khiển extended thinking:
+- **Chuyển đổi**: Option+T (macOS) / Alt+T (Windows/Linux)
+- **Cấu hình**: Đặt `alwaysThinkingEnabled` trong `~/.claude/settings.json`
+- **Ngân sách tối đa**: `export MAX_THINKING_TOKENS=10000`
+- **Chế độ chi tiết**: Ctrl+O xem đầu ra suy luận
 
-需要深度推理的复杂任务：
-1. 确保扩展思考已启用（默认）
-2. 启用**计划模式**以获得结构化方法
-3. 使用多轮批评进行彻底分析
-4. 使用分角色 sub-agents 获得不同视角
+Với tác vụ phức tạp cần suy luận sâu:
+1. Đảm bảo extended thinking được bật (theo mặc định)
+2. Bật **Plan Mode** để tiếp cận có cấu trúc
+3. Sử dụng nhiều vòng phê bình để phân tích kỹ
+4. Sử dụng sub-agents theo vai trò để có góc nhìn đa dạng
 
-## 构建故障排除
+## Xử lý lỗi build
 
-如果构建失败：
-1. 使用 **build-error-resolver** agent
-2. 分析错误消息
-3. 增量修复
-4. 每次修复后验证
+Nếu build thất bại:
+1. Sử dụng agent **build-error-resolver**
+2. Phân tích thông báo lỗi
+3. Sửa theo từng bước
+4. Xác minh sau mỗi lần sửa

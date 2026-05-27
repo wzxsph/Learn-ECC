@@ -1,55 +1,55 @@
-# Otimização-de-Desempenho
+# Otimização de Performance
 
-## 模型选择策略
+## Estratégia de Seleção de Modelo
 
-**Haiku 4.5**（Sonnet 90% 能力，1/3 成本）：
-- 频繁调用的轻量级 agent
-- 结对编程和代码生成
-- 多 agent 系统中的 worker agent
+**Haiku 4.5** (90% da capacidade do Sonnet, 1/3 do custo):
+- Agent leve invoked com alta frequência
+- Programação em par e geração de código
+- Agent worker em sistemas multi-agent
 
-**Sonnet 4.6**（最佳编码模型）：
-- 主要开发工作
-- 编排多 agent 工作流
-- 复杂编码任务
+**Sonnet 4.6** (melhor modelo de codificação):
+- Trabalho principal de desenvolvimento
+- Orquestrar workflows multi-agent
+- Tarefas de codificação complexas
 
-**Opus 4.5**（最深度推理）：
-- 复杂架构决策
-- 最大推理需求
-- 研究和分析任务
+**Opus 4.5** (raciocínio mais profundo):
+- Decisões de arquitetura complexas
+- Necessidade máxima de raciocínio
+- Tarefas de pesquisa e análise
 
-## 上下文窗口管理
+## Gerenciamento de Janela de Contexto
 
-避免使用上下文窗口的最后 20%：
-- 大规模重构
-- 跨多文件的功能实现
-- 调试复杂交互
+Evitar usar os últimos 20% da janela de contexto:
+- Refatoração em larga escala
+- Implementação de funcionalidade cruzando múltiplos arquivos
+- Debug de interações complexas
 
-低上下文敏感度任务：
-- 单文件编辑
-- 独立工具创建
-- 文档更新
-- 简单 bug 修复
+Tarefas de baixa sensibilidade a contexto:
+- Edição de arquivo único
+- Criação de utilitários independentes
+- Atualização de documentação
+- Correção de bugs simples
 
-## 扩展思考 + 计划模式
+## Extended Thinking + Modo Plan
 
-扩展思考默认启用，为内部推理保留最多 31,999 tokens。
+Extended thinking habilitado por default, reservando até 31.999 tokens para raciocínio interno.
 
-控制扩展思考：
-- **切换**: Option+T (macOS) / Alt+T (Windows/Linux)
-- **配置**: 在 `~/.claude/settings.json` 中设置 `alwaysThinkingEnabled`
-- **预算上限**: `export MAX_THINKING_TOKENS=10000`
-- **详细模式**: Ctrl+O 查看思考输出
+Controlar extended thinking:
+- **Alternar**: Option+T (macOS) / Alt+T (Windows/Linux)
+- **Configurar**: Definir `alwaysThinkingEnabled` em `~/.claude/settings.json`
+- **Limite de budget**: `export MAX_THINKING_TOKENS=10000`
+- **Modo verbose**: Ctrl+O para ver saída de pensamento
 
-需要深度推理的复杂任务：
-1. 确保扩展思考已启用（默认）
-2. 启用**计划模式**以获得结构化方法
-3. 使用多轮批评进行彻底分析
-4. 使用分角色 sub-agents 获得不同视角
+Para tarefas complexas requiring deep reasoning:
+1. Garantir que extended thinking está habilitado (default)
+2. Habilitar **Modo Plan** para abordagem estruturada
+3. Usar múltiplas rodadas de crítica para análise completa
+4. Usar sub-agents com papéis diferentes para perspectivas diversas
 
-## 构建故障排除
+## Troubleshooting de Build
 
-如果构建失败：
-1. 使用 **build-error-resolver** agent
-2. 分析错误消息
-3. 增量修复
-4. 每次修复后验证
+Se build falha:
+1. Usar agent **build-error-resolver**
+2. Analisar mensagens de erro
+3. Corrigir incrementalmente
+4. Verificar após cada correção

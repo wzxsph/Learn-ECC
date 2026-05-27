@@ -1,273 +1,273 @@
-# 构建修复命令
+# คำสั่งแก้ไขการสร้าง
 
-本文档介绍 ECC 中用于修复各语言构建错误的专门命令。
+เอกสารนี้แนะนำคำสั่งเฉพาะทางสำหรับแก้ไขข้อผิดพลาดในการสร้าง (build) สำหรับแต่ละภาษาใน ECC
 
 ---
 
 ## /go-build
 
-**用途说明**: 逐步修复 Go 构建错误、go vet 警告和 linter 问题。
+**วัตถุประสงค์**: แก้ไขข้อผิดพลาดในการสร้าง Go ทีละขั้นตอน คำเตือน go vet และปัญหา linter
 
-**使用方法**:
+**วิธีใช้**:
 ```
 /go-build
 ```
 
-**使用场景**:
-- `go build ./...` 失败
-- `go vet ./...` 报告问题
-- `golangci-lint run` 显示警告
-- 模块依赖损坏
-- 拉取更改后构建失败
+**สถานการณ์การใช้งาน**:
+- `go build ./...` ล้มเหลว
+- `go vet ./...` รายงานปัญหา
+- `golangci-lint run` แสดงคำเตือน
+- การพึ่งพาโมดูลเสียหาย
+- การสร้างล้มเหลวหลังดึงการเปลี่ยนแปลง
 
-**工作流程**:
-1. **运行诊断** - 执行 `go build`、`go vet`、`staticcheck`
-2. **解析错误** - 按文件分组并按严重程度排序
-3. **逐步修复** - 一次一个错误
-4. **验证修复** - 每次更改后重新运行构建
-5. **报告总结** - 显示已修复和剩余问题
+**ขั้นตอนการทำงาน**:
+1. **รันการวินิจฉัย** - รัน `go build`, `go vet`, `staticcheck`
+2. **แยกวิเคราะห์ข้อผิดพลาด** - จัดกลุ่มตามไฟล์และเรียงตามระดับความรุนแรง
+3. **แก้ไขทีละขั้นตอน** - ทีละข้อผิดพลาด
+4. **ตรวจสอบการแก้ไข** - รันการสร้างใหม่หลังการเปลี่ยนแปลงแต่ละครั้ง
+5. **สรุปรายงาน** - แสดงปัญหาที่แก้ไขและที่ยังคงมี
 
-**常见错误修复**:
+**การแก้ไขข้อผิดพลาดทั่วไป**:
 
-| 错误 | 典型修复 |
+| ข้อผิดพลาด | การแก้ไขทั่วไป |
 |------|----------|
-| `undefined: X` | 添加导入或修复拼写 |
-| `cannot use X as Y` | 类型转换或修复赋值 |
-| `missing return` | 添加 return 语句 |
-| `X does not implement Y` | 添加缺失方法 |
-| `import cycle` | 重构包结构 |
-| `declared but not used` | 移除或使用变量 |
-| `cannot find package` | `go get` 或 `go mod tidy` |
+| `undefined: X` | เพิ่ม import หรือแก้ไขการสะกด |
+| `cannot use X as Y` | แปลงประเภทหรือแก้ไขการกำหนดค่า |
+| `missing return` | เพิ่มคำสั่ง return |
+| `X does not implement Y` | เพิ่ม method ที่ขาดหาย |
+| `import cycle` | ปรับโครงสร้างแพ็กเกจ |
+| `declared but not used` | ลบหรือใช้ตัวแปร |
+| `cannot find package` | `go get` หรือ `go mod tidy` |
 
-**诊断命令**:
+**คำสั่งการวินิจฉัย**:
 ```bash
-go build ./...                # 主构建检查
-go vet ./...                  # 静态分析
-staticcheck ./...             # 高级 lint（如果可用）
+go build ./...                # การตรวจสอบการสร้างหลัก
+go vet ./...                  # การวิเคราะห์แบบคงที่
+staticcheck ./...             # lint ขั้นสูง (ถ้ามี)
 golangci-lint run             # Linting
-go mod verify                # 模块验证
-go mod tidy -v               # 整理依赖
+go mod verify                # การยืนยันโมดูล
+go mod tidy -v               # จัดเรียงการพึ่งพา
 ```
 
 ---
 
 ## /kotlin-build
 
-**用途说明**: 逐步修复 Kotlin/Gradle 构建错误、编译器警告和依赖问题。
+**วัตถุประสงค์**: แก้ไขข้อผิดพลาดในการสร้าง Kotlin/Gradle ทีละขั้นตอน คำเตือนคอมไพลเลอร์ และปัญหาการพึ่งพา
 
-**使用方法**:
+**วิธีใช้**:
 ```
 /kotlin-build
 ```
 
-**使用场景**:
-- `./gradlew build` 失败
-- Kotlin 编译器报告错误
-- `./gradlew detekt` 报告违规
-- Gradle 依赖解析失败
-- 拉取更改后构建失败
+**สถานการณ์การใช้งาน**:
+- `./gradlew build` ล้มเหลว
+- Kotlin compiler รายงานข้อผิดพลาด
+- `./gradlew detekt` รายงานการละเมิด
+- Gradle dependency resolution ล้มเหลว
+- การสร้างล้มเหลวหลังดึงการเปลี่ยนแปลง
 
-**常见错误修复**:
+**การแก้ไขข้อผิดพลาดทั่วไป**:
 
-| 错误 | 典型修复 |
+| ข้อผิดพลาด | การแก้ไขทั่วไป |
 |------|----------|
-| `Unresolved reference: X` | 添加导入或依赖 |
-| `Type mismatch` | 修复类型转换或赋值 |
-| `'when' must be exhaustive` | 添加缺失的密封类分支 |
-| `Suspend function can only be called from coroutine` | 添加 `suspend` 修饰符 |
-| `Smart cast impossible` | 使用局部 `val` 或 `let` |
-| `Could not resolve dependency` | 修复版本或添加仓库 |
+| `Unresolved reference: X` | เพิ่ม import หรือการพึ่งพา |
+| `Type mismatch` | แก้ไขการแปลงประเภทหรือการกำหนดค่า |
+| `'when' must be exhaustive` | เพิ่ม branch ของ sealed class ที่ขาดหาย |
+| `Suspend function can only be called from coroutine` | เพิ่ม `suspend` modifier |
+| `Smart cast impossible` | ใช้ `val` ในพื้นที่หรือ `let` |
+| `Could not resolve dependency` | แก้ไขเวอร์ชันหรือเพิ่มที่เก็บ |
 
-**诊断命令**:
+**คำสั่งการวินิจฉัย**:
 ```bash
-./gradlew build 2>&1                      # 主构建检查
-./gradlew detekt 2>&1                      # 静态分析（如果配置）
-./gradlew ktlintCheck 2>&1                # 格式检查（如果配置）
-./gradlew dependencies --configuration runtimeClasspath | head -100  # 依赖问题
-./gradlew build --refresh-dependencies     # 深度刷新（缓存或依赖元数据可疑时）
+./gradlew build 2>&1                      # การตรวจสอบการสร้างหลัก
+./gradlew detekt 2>&1                      # การวิเคราะห์แบบคงที่ (ถ้าตั้งค่า)
+./gradlew ktlintCheck 2>&1                # การตรวจสอบรูปแบบ (ถ้าตั้งค่า)
+./gradlew dependencies --configuration runtimeClasspath | head -100  # ปัญหาการพึ่งพา
+./gradlew build --refresh-dependencies     # รีเฟรชเชิงลึก (เมื่อสงสัย cache หรือ metadata การพึ่งพา)
 ```
 
 ---
 
 ## /rust-build
 
-**用途说明**: 逐步修复 Rust 构建错误、借用检查器问题和依赖问题。
+**วัตถุประสงค์**: แก้ไขข้อผิดพลาดในการสร้าง Rust ทีละขั้นตอน ปัญหา borrow checker และ lifetime และปัญหาการพึ่งพา
 
-**使用方法**:
+**วิธีใช้**:
 ```
 /rust-build
 ```
 
-**使用场景**:
-- `cargo build` 或 `cargo check` 失败
-- `cargo clippy` 报告警告
-- 借用检查器或生命周期错误阻止编译
-- Cargo 依赖解析失败
-- 拉取更改后构建失败
+**สถานการณ์การใช้งาน**:
+- `cargo build` หรือ `cargo check` ล้มเหลว
+- `cargo clippy` รายงานคำเตือน
+- borrow checker หรือ lifetime errors ที่ป้องกันการคอมไพล์
+- Cargo dependency resolution ล้มเหลว
+- การสร้างล้มเหลวหลังดึงการเปลี่ยนแปลง
 
-**常见错误修复**:
+**การแก้ไขข้อผิดพลาดทั่วไป**:
 
-| 错误 | 典型修复 |
+| ข้อผิดพลาด | การแก้ไขทั่วไป |
 |------|----------|
-| `cannot borrow as mutable` | 重构以在使用可变访问之前结束不可变借用 |
-| `does not live long enough` | 使用拥有类型或添加生命周期标注 |
-| `cannot move out of` | 重构以获取所有权；仅作为最后手段克隆 |
-| `mismatched types` | 添加 `.into()`、`as` 或显式转换 |
-| `trait X not implemented` | 添加 `#[derive(Trait)]` 或手动实现 |
-| `unresolved import` | 添加到 Cargo.toml 或修复 `use` 路径 |
-| `cannot find value` | 添加导入或修复路径 |
+| `cannot borrow as mutable` | ปรับโครงสร้างเพื่อให้ immutable borrow จบก่อนที่จะเข้าถึงแบบ mutable |
+| `does not live long enough` | ใช้ owning type หรือเพิ่ม lifetime annotation |
+| `cannot move out of` | ปรับโครงสร้างเพื่อรับ ownership; clone เฉพาะเมื่อจำเป็นที่สุด |
+| `mismatched types` | เพิ่ม `.into()`, `as` หรือการแปลงประเภทที่ชัดเจน |
+| `trait X not implemented` | เพิ่ม `#[derive(Trait)]` หรือ implement ด้วยตนเอง |
+| `unresolved import` | เพิ่มใน Cargo.toml หรือแก้ไข path ของ `use` |
+| `cannot find value` | เพิ่ม import หรือแก้ไข path |
 
-**诊断命令**:
+**คำสั่งการวินิจฉัย**:
 ```bash
-cargo check 2>&1                               # 主构建检查
+cargo check 2>&1                               # การตรวจสอบการสร้างหลัก
 cargo clippy -- -D warnings 2>&1               # Lints
-cargo fmt --check 2>&1                         # 格式检查
-cargo tree --duplicates                        # 重复依赖
-cargo audit                                   # 安全审计（如果可用）
+cargo fmt --check 2>&1                         # การตรวจสอบรูปแบบ
+cargo tree --duplicates                        # การพึ่งพาที่ซ้ำกัน
+cargo audit                                   # การตรวจสอบความปลอดภัย (ถ้ามี)
 ```
 
 ---
 
 ## /cpp-build
 
-**用途说明**: 逐步修复 C++ 构建错误、CMake 问题和链接器问题。
+**วัตถุประสงค์**: แก้ไขข้อผิดพลาดในการสร้าง C++ ทีละขั้นตอน ปัญหา CMake และปัญหา linker
 
-**使用方法**:
+**วิธีใช้**:
 ```
 /cpp-build
 ```
 
-**使用场景**:
-- `cmake --build build` 失败
-- 链接器错误（未定义引用、多次定义）
-- 模板实例化失败
-- 包含/依赖问题
-- 拉取更改后构建失败
+**สถานการณ์การใช้งาน**:
+- `cmake --build build` ล้มเหลว
+- linker errors (undefined references, multiple definitions)
+- template instantiation failures
+- include/dependency issues
+- การสร้างล้มเหลวหลังดึงการเปลี่ยนแปลง
 
-**常见错误修复**:
+**การแก้ไขข้อผิดพลาดทั่วไป**:
 
-| 错误 | 典型修复 |
+| ข้อผิดพลาด | การแก้ไขทั่วไป |
 |------|----------|
-| `undeclared identifier` | 添加 `#include` 或修复拼写 |
-| `no matching function` | 修复参数类型或添加重载 |
-| `undefined reference` | 链接库或添加实现 |
-| `multiple definition` | 使用 `inline` 或移到 .cpp |
-| `incomplete type` | 用 `#include` 替换前向声明 |
-| `no member named X` | 修复成员名称或添加 include |
-| `cannot convert X to Y` | 添加适当转换 |
-| `CMake Error` | 修复 CMakeLists.txt 配置 |
+| `undeclared identifier` | เพิ่ม `#include` หรือแก้ไขการสะกด |
+| `no matching function` | แก้ไขประเภทพารามิเตอร์หรือเพิ่ม overload |
+| `undefined reference` | Link library หรือเพิ่ม implementation |
+| `multiple definition` | ใช้ `inline` หรือย้ายไปยัง .cpp |
+| `incomplete type` | ใช้ `#include` แทน forward declaration |
+| `no member named X` | แก้ไขชื่อ member หรือเพิ่ม include |
+| `cannot convert X to Y` | เพิ่มการแปลงที่เหมาะสม |
+| `CMake Error` | แก้ไขการตั้งค่า CMakeLists.txt |
 
-**诊断命令**:
+**คำสั่งการวินิจฉัย**:
 ```bash
-cmake -B build -S .                        # CMake 配置
-cmake --build build 2>&1 | head -100       # 构建
-clang-tidy src/*.cpp -- -std=c++17         # 静态分析（如果可用）
-cppcheck --enable=all src/                 # 额外分析（如果可用）
+cmake -B build -S .                        # CMake configuration
+cmake --build build 2>&1 | head -100       # การสร้าง
+clang-tidy src/*.cpp -- -std=c++17         # การวิเคราะห์แบบคงที่ (ถ้ามี)
+cppcheck --enable=all src/                 # การวิเคราะห์เพิ่มเติม (ถ้ามี)
 ```
 
 ---
 
 ## /gradle-build
 
-**用途说明**: 修复 Android 和 Kotlin Multiplatform (KMP) 项目的 Gradle 构建错误。
+**วัตถุประสงค์**: แก้ไขข้อผิดพลาดในการสร้าง Gradle สำหรับโปรเจกต์ Android และ Kotlin Multiplatform (KMP)
 
-**使用方法**:
+**วิธีใช้**:
 ```
 /gradle-build
 ```
 
-**使用场景**:
-- Android 项目构建失败
-- KMP 项目编译错误
-- Gradle 同步失败
-- 依赖冲突
+**สถานการณ์การใช้งาน**:
+- โปรเจกต์ Android build ล้มเหลว
+- KMP โปรเจกต์ compilation errors
+- Gradle sync ล้มเหลว
+- dependency conflicts
 
-**项目类型检测**:
+**การตรวจจับประเภทโปรเจกต์**:
 
-| 指示器 | 构建命令 |
+| ตัวบ่งชี้ | คำสั่งการสร้าง |
 |--------|----------|
 | `build.gradle.kts` + `composeApp/` (KMP) | `./gradlew composeApp:compileKotlinMetadata` |
 | `build.gradle.kts` + `app/` (Android) | `./gradlew app:compileDebugKotlin` |
-| `settings.gradle.kts` 带模块 | `./gradlew assemble` |
-| 配置了 detekt | `./gradlew detekt` |
+| `settings.gradle.kts` พร้อมโมดูล | `./gradlew assemble` |
+| ตั้งค่า detekt | `./gradlew detekt` |
 
-**常见错误修复**:
+**การแก้ไขข้อผิดพลาดทั่วไป**:
 
-| 错误 | 修复 |
+| ข้อผิดพลาด | การแก้ไข |
 |------|------|
-| `commonMain` 中未解析的引用 | 检查依赖是否在 `commonMain.dependencies {}` 中 |
-| Expect 声明无 actual | 在每个平台源集中添加 `actual` 实现 |
-| Compose 编译器版本不匹配 | 在 `libs.versions.toml` 中对齐 Kotlin 和 Compose 编译器版本 |
-| 重复类 | 用 `./gradlew dependencies` 检查冲突依赖 |
-| KSP 错误 | 运行 `./gradlew kspCommonMainKotlinMetadata` 重新生成 |
-| 配置缓存问题 | 检查非可序列化的任务输入 |
+| Unresolved reference ใน `commonMain` | ตรวจสอบการพึ่งพาใน `commonMain.dependencies {}` |
+| Expect declaration ไม่มี actual | เพิ่ม `actual` implementation ในแต่ละ platform source set |
+| Compose compiler version mismatch | จัดตำแหน่ง Kotlin และ Compose compiler versions ใน `libs.versions.toml` |
+| คลาสซ้ำกัน | ตรวจสอบ dependency conflicts ด้วย `./gradlew dependencies` |
+| KSP errors | รัน `./gradlew kspCommonMainKotlinMetadata` เพื่อสร้างใหม่ |
+| Configuration cache issues | ตรวจสอบ task inputs ที่ไม่สามารถ serialize ได้ |
 
 ---
 
 ## /flutter-build
 
-**用途说明**: 逐步修复 Dart 分析器错误和 Flutter 构建失败。
+**วัตถุประสงค์**: แก้ไขข้อผิดพลาด Dart analyzer และ Flutter build failures ทีละขั้นตอน
 
-**使用方法**:
+**วิธีใช้**:
 ```
 /flutter-build
 ```
 
-**使用场景**:
-- `flutter analyze` 报告错误
-- `flutter build` 任何平台失败
-- `flutter pub get` 版本冲突
-- `build_runner` 生成代码失败
-- 拉取更改后构建失败
+**สถานการณ์การใช้งาน**:
+- `flutter analyze` รายงานข้อผิดพลาด
+- `flutter build` ล้มเหลวในทุกแพลตฟอร์ม
+- `flutter pub get` version conflicts
+- `build_runner` code generation ล้มเหลว
+- การสร้างล้มเหลวหลังดึงการเปลี่ยนแปลง
 
-**常见错误修复**:
+**การแก้ไขข้อผิดพลาดทั่วไป**:
 
-| 错误 | 典型修复 |
+| ข้อผิดพลาด | การแก้ไขทั่วไป |
 |------|----------|
-| `A value of type 'X?' can't be assigned to 'X'` | 添加 `?? default` 或空值保护 |
-| `The name 'X' isn't defined` | 添加导入或修复拼写 |
-| `Non-nullable instance field must be initialized` | 添加初始化器或 `late` |
-| `Version solving failed` | 调整 pubspec.yaml 中的版本约束 |
-| `Missing concrete implementation of 'X'` | 实现缺失的接口方法 |
-| `build_runner: Part of X expected` | 删除过时的 `.g.dart` 并重新构建 |
+| `A value of type 'X?' can't be assigned to 'X'` | เพิ่ม `?? default` หรือ null protection |
+| `The name 'X' isn't defined` | เพิ่ม import หรือแก้ไขการสะกด |
+| `Non-nullable instance field must be initialized` | เพิ่ม initializer หรือ `late` |
+| `Version solving failed` | ปรับ version constraints ใน pubspec.yaml |
+| `Missing concrete implementation of 'X'` | implement interface method ที่ขาดหาย |
+| `build_runner: Part of X expected` | ลบ `.g.dart` ที่ล้าสมัยแล้วสร้างใหม่ |
 
-**诊断命令**:
+**คำสั่งการวินิจฉัย**:
 ```bash
-flutter analyze 2>&1                  # 分析
-flutter pub get 2>&1                  # 依赖
-dart run build_runner build --delete-conflicting-outputs 2>&1  # 代码生成（如果使用 build_runner）
-flutter build apk 2>&1                # 平台构建
-flutter build web 2>&1                # Web 构建
+flutter analyze 2>&1                  # การวิเคราะห์
+flutter pub get 2>&1                  # การพึ่งพา
+dart run build_runner build --delete-conflicting-outputs 2>&1  # การสร้างโค้ด (ถ้าใช้ build_runner)
+flutter build apk 2>&1                # การสร้างแพลตฟอร์ม
+flutter build web 2>&1                # การสร้าง Web
 ```
 
 ---
 
-## 构建修复命令对比表
+## ตารางเปรียบเทียบคำสั่งแก้ไขการสร้าง
 
-| 命令 | 语言/平台 | 主要工具 | 常见问题 |
+| คำสั่ง | ภาษา/แพลตฟอร์ม | เครื่องมือหลัก | ปัญหาทั่วไป |
 |------|----------|----------|----------|
-| `/go-build` | Go | go build, go vet | 类型错误、导入循环 |
-| `/kotlin-build` | Kotlin | Gradle, detekt | 类型不匹配、when 非穷举 |
-| `/rust-build` | Rust | cargo check, clippy | 借用错误、生命周期 |
-| `/cpp-build` | C++ | CMake, clang-tidy | 链接器错误、模板问题 |
-| `/gradle-build` | Android/KMP | Gradle | 依赖冲突、配置错误 |
-| `/flutter-build` | Flutter/Dart | Flutter analyze | 空安全、分析错误 |
+| `/go-build` | Go | go build, go vet | ข้อผิดพลาดประเภท, import cycle |
+| `/kotlin-build` | Kotlin | Gradle, detekt | ประเภทไม่ตรงกัน, when ไม่ครบ |
+| `/rust-build` | Rust | cargo check, clippy | borrow errors, lifetimes |
+| `/cpp-build` | C++ | CMake, clang-tidy | linker errors, template issues |
+| `/gradle-build` | Android/KMP | Gradle | dependency conflicts, ข้อผิดพลาดการตั้งค่า |
+| `/flutter-build` | Flutter/Dart | Flutter analyze | null safety, ข้อผิดพลาดการวิเคราะห์ |
 
 ---
 
-## 通用修复策略
+## กลยุทธ์การแก้ไขทั่วไป
 
-所有构建修复命令遵循相同的基本策略：
+คำสั่งแก้ไขการสร้างทั้งหมดใช้กลยุทธ์พื้นฐานเดียวกัน:
 
-1. **先修复构建错误** - 代码必须编译
-2. **其次修复 lint 警告** - 修复可疑构造
-3. **然后修复格式警告** - 样式和最佳实践
-4. **一次修复一个** - 验证每次更改
-5. **最小更改** - 不要重构，只是修复
+1. **แก้ไขข้อผิดพลาด build ก่อน** - โค้ดต้องคอมไพล์ได้
+2. **แก้ไขคำเตือน lint ต่อไป** - แก้ไขโครงสร้างที่น่าสงสัย
+3. **จากนั้นแก้ไขคำเตือนรูปแบบ** - รูปแบบและแนวปฏิบัติที่ดีที่สุด
+4. **แก้ไขทีละอย่าง** - ตรวจสอบการเปลี่ยนแปลงแต่ละครั้ง
+5. **เปลี่ยนน้อยที่สุด** - อย่าปรับโครงสร้าง แค่แก้ไข
 
-**停止条件**:
-如果发生以下情况，代理将停止并报告：
-- 相同错误在 3 次尝试后仍然存在
-- 修复引入了更多错误
-- 需要架构更改
-- 缺少外部依赖
+**เงื่อนไขการหยุด**:
+ถ้าเกิดสิ่งต่อไปนี้ agent จะหยุดและรายงาน:
+- ข้อผิดพลาดเดียวกันยังคงอยู่หลังจากพยายาม 3 ครั้ง
+- การแก้ไขทำให้เกิดข้อผิดพลาดเพิ่มเติม
+- ต้องมีการเปลี่ยนแปลงสถาปัตยกรรม
+- การพึ่งพาภายนอกที่ขาดหาย

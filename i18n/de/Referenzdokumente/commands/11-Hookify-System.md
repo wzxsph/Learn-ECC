@@ -1,55 +1,55 @@
-# Hookify 系统命令
+# Hookify-System-Befehle
 
-## 概述
+## Ueberblick
 
-Hookify 系统用于创建和管理 hooks，防止不良行为和自动化工作流。
+Das Hookify-System wird verwendet um Hooks zu erstellen und zu verwalten, um unerwuenschtes Verhalten zu verhindern und Workflows zu automatisieren.
 
-## 命令列表
+## Befehlsliste
 
 ### /hookify
 
-**用途**: 创建 hooks 防止不良行为
+**Zweck**: Hooks erstellen um unerwuenschtes Verhalten zu verhindern
 
-**描述**: 创建自定义 hooks 来防止不希望发生的行为。
+**Beschreibung**: Erstellt benutzerdefinierte Hooks um unerwuenschtes Verhalten zu verhindern.
 
-**使用场景**:
-- 防止意外删除操作
-- 阻止危险命令
-- 自动格式化
-- 质量检查
+**Anwendungsszenarien**:
+- Versehentliche Loeschoperationen verhindern
+- Gefaehrliche Befehle blockieren
+- Automatische Formatierung
+- Qualitaetspruefungen
 
-**Hook 类型**:
-- **PreToolUse**: 工具执行前
-- **PostToolUse**: 工具执行后
-- **Stop**: 会话结束时
+**Hook-Typen**:
+- **PreToolUse**: Vor Werkzeugausfuehrung
+- **PostToolUse**: Nach Werkzeugausfuehrung
+- **Stop**: Bei Sitzungsende
 
 ---
 
 ### /hookify-list
 
-**用途**: 列出所有配置的 hookify 规则
+**Zweck**: Alle konfigurierten Hookify-Regeln auflisten
 
-**描述**: 显示当前所有已配置的 hookify 规则。
+**Beschreibung**: Zeigt alle aktuell konfigurierten Hookify-Regeln.
 
 ---
 
 ### /hookify-configure
 
-**用途**: 交互式启用/禁用 hookify 规则
+**Zweck**: Interaktiv Hookify-Regeln aktivieren/deaktivieren
 
-**描述**: 交互式配置 hookify 规则的启用和禁用状态。
+**Beschreibung**: Interaktive Konfiguration der Aktivierungs- und Deaktivierungsstatus von Hookify-Regeln.
 
 ---
 
 ### /hookify-help
 
-**用途**: Hookify 系统帮助
+**Zweck**: Hookify-System-Hilfe
 
-**描述**: 获取 Hookify 系统的详细帮助信息。
+**Beschreibung**: Detaillierte Hilfeinformationen ueber das Hookify-System abrufen.
 
 ---
 
-## Hook 配置示例
+## Hook-Konfigurationsbeispiel
 
 ```json
 {
@@ -65,9 +65,9 @@ Hookify 系统用于创建和管理 hooks，防止不良行为和自动化工作
 
 ---
 
-## 相关命令
+## Zugehoerige Befehle
 
-- `/hookify` - 创建 hook
-- `/hookify-list` - 列出规则
-- `/hookify-configure` - 配置规则
-- `/hookify-help` - 获取帮助
+- `/hookify` - Hook erstellen
+- `/hookify-list` - Regeln auflisten
+- `/hookify-configure` - Regeln konfigurieren
+- `/hookify-help` - Hilfe abrufen

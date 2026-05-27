@@ -1,130 +1,130 @@
-# 后端与 API 技能
+# Kỹ Năng Backend và API
 
-## 概述
+## Tổng quan
 
-后端与 API 相关技能用于构建服务器端应用、API 设计和数据库操作。
+Backend và API related skill dùng để build server-side application, API design và database operation.
 
-## 核心技能
+## Core Skill
 
 ### backend-patterns
 
-**用途**: 后端开发最佳实践
+**Mục đích**: Backend development best practice
 
-**核心概念**:
-- 分层架构（Controller → Service → Repository）
-- 依赖注入
-- 错误处理策略
-- 缓存模式
-- 消息队列集成
+**Core concept**:
+- Layer architecture (Controller → Service → Repository)
+- Dependency injection
+- Error handling strategy
+- Caching pattern
+- Message queue integration
 
 ---
 
 ### api-design
 
-**用途**: API 设计与RESTful 规范
+**Mục đích**: API design và RESTful convention
 
-**核心概念**:
-- RESTful 路由设计
-- 请求/响应格式
-- 认证与授权
-- 版本控制策略
-- 限流与缓存
+**Core concept**:
+- RESTful route design
+- Request/response format
+- Authentication và authorization
+- Version control strategy
+- Rate limiting và caching
 
 ---
 
 ### api-connector-builder
 
-**用途**: API 连接器构建工具
+**Mục đích**: API connector builder tool
 
-**使用场景**:
-- 第三方 API 集成
-- Webhook 处理
-- OAuth 流程实现
-- API 错误重试机制
+**Usage scenario**:
+- Third-party API integration
+- Webhook handling
+- OAuth flow implementation
+- API error retry mechanism
 
 ---
 
-## 数据库技能
+## Database Skill
 
 ### database-migrations
 
-**用途**: 数据库迁移管理
+**Mục đích**: Database migration management
 
-**核心概念**:
-- 迁移文件组织
-- 数据回滚策略
-- 种子数据管理
-- 零停机部署
+**Core concept**:
+- Migration file organization
+- Data rollback strategy
+- Seed data management
+- Zero-downtime deployment
 
 ---
 
 ### mysql-patterns
 
-**用途**: MySQL 数据库最佳实践
+**Mục đích**: MySQL database best practice
 
-**核心概念**:
-- 索引优化
-- 查询优化
-- 分表策略
-- 主从复制
+**Core concept**:
+- Index optimization
+- Query optimization
+- Table sharding strategy
+- Master-slave replication
 
 ---
 
 ### postgres-patterns
 
-**用途**: PostgreSQL 数据库最佳实践
+**Mục đích**: PostgreSQL database best practice
 
-**核心概念**:
-- JSONB 操作
-- 全文搜索
-- 分区表
-- 高级索引策略
+**Core concept**:
+- JSONB operation
+- Full-text search
+- Partitioned table
+- Advanced index strategy
 
 ---
 
 ### redis-patterns
 
-**用途**: Redis 缓存模式
+**Mục đích**: Redis caching pattern
 
-**核心概念**:
-- 缓存策略（Cache-Aside、Write-Through）
-- 分布式锁
-- 会话存储
-- 消息发布/订阅
+**Core concept**:
+- Caching strategy (Cache-Aside, Write-Through)
+- Distributed lock
+- Session storage
+- Pub/Sub messaging
 
 ---
 
 ### clickhouse-io
 
-**用途**: ClickHouse 列式存储
+**Mục đích**: ClickHouse columnar storage
 
-**使用场景**:
-- 分析型查询
-- 日志存储
-- 实时分析
-- 大数据管道
+**Usage scenario**:
+- Analytical query
+- Log storage
+- Real-time analysis
+- Big data pipeline
 
 ---
 
-## 消息队列
+## Message Queue
 
 ### logistics-exception-management
 
-**用途**: 物流异常管理
+**Mục đích**: Logistics exception management
 
-**使用场景**:
-- 订单异常处理
-- 退货流程
-- 库存同步
+**Usage scenario**:
+- Order exception handling
+- Return process
+- Inventory synchronization
 
 ---
 
-## 相关技能
+## Related Skill
 
-- `backend-patterns` - 后端模式
-- `api-design` - API 设计
-- `database-migrations` - 数据库迁移
-- `mysql-patterns` - MySQL 模式
-- `postgres-patterns` - PostgreSQL 模式
-- `redis-patterns` - Redis 模式
+- `backend-patterns` - Backend pattern
+- `api-design` - API design
+- `database-migrations` - Database migration
+- `mysql-patterns` - MySQL pattern
+- `postgres-patterns` - PostgreSQL pattern
+- `redis-patterns` - Redis pattern
 - `clickhouse-io` - ClickHouse

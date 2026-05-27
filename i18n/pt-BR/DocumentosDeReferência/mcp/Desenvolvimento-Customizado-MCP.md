@@ -1,14 +1,14 @@
-# 自定义 MCP 服务器开发
+# Desenvolvimento Customizado de Servidores MCP
 
-## 概述
+## Visão Geral
 
-MCP 服务器基于 Model Context Protocol 实现，用于扩展 Claude Code 的能力。本指南介绍如何开发和集成自定义 MCP 服务器。
+Servidores MCP baseados no Model Context Protocol são usados para expandir capacidades do Claude Code. Este guia apresenta como desenvolver e integrar servidores MCP customizados.
 
-## 服务器类型
+## Tipos de Servidor
 
-### 进程模式服务器
+### Servidor em Modo Processo
 
-通过本地进程启动，适合需要本地执行或访问本地资源的服务。
+Iniciado via processo local, adequado para serviços que precisam de acesso local ou recursos locais.
 
 ```json
 {
@@ -20,9 +20,9 @@ MCP 服务器基于 Model Context Protocol 实现，用于扩展 Claude Code 的
 }
 ```
 
-### HTTP 模式服务器
+### Servidor em Modo HTTP
 
-通过 HTTP/HTTPS 访问远程服务器，适合微服务架构或云服务。
+Acessado via HTTP/HTTPS, adequado para arquitetura de microsserviços ou serviços em nuvem.
 
 ```json
 {
@@ -34,11 +34,11 @@ MCP 服务器基于 Model Context Protocol 实现，用于扩展 Claude Code 的
 }
 ```
 
-## 开发流程
+## Fluxo de Desenvolvimento
 
-### 1. 使用 MCP SDK
+### 1. Usar MCP SDK
 
-官方提供多种语言的 SDK：
+SDKs oficiais disponíveis em múltiplas linguagens:
 
 ```bash
 # Node.js
@@ -48,9 +48,9 @@ npm install @modelcontextprotocol/sdk
 pip install mcp
 ```
 
-### 2. 实现服务器
+### 2. Implementar Servidor
 
-**Node.js 示例：**
+**Exemplo Node.js:**
 
 ```javascript
 const { Server } = require('@modelcontextprotocol/sdk');
@@ -69,13 +69,13 @@ const server = new Server(
   }
 );
 
-// 注册工具
+// Registrar ferramentas
 server.setRequestHandler('tools/list', async () => {
   return {
     tools: [
       {
         name: "my_tool",
-        description: "执行自定义操作",
+        description: "Executar operação customizada",
         inputSchema: {
           type: "object",
           properties: {
@@ -87,17 +87,17 @@ server.setRequestHandler('tools/list', async () => {
   };
 });
 
-// 处理工具调用
+// Tratar chamada de ferramenta
 server.setRequestHandler('tools/call', async (request) => {
   const { name, arguments: args } = request.params;
 
   if (name === "my_tool") {
-    // 执行操作
-    return { content: [{ type: "text", text: "结果" }] };
+    // Executar operação
+    return { content: [{ type: "text", text: "resultado" }] };
   }
 });
 
-// 启动服务器
+// Iniciar servidor
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
@@ -106,7 +106,7 @@ async function main() {
 main();
 ```
 
-**Python 示例：**
+**Exemplo Python:**
 
 ```python
 from mcp.server import Server
@@ -119,7 +119,7 @@ async def list_tools():
     return [
         Tool(
             name="my_tool",
-            description="执行自定义操作",
+            description="Executar operação customizada",
             inputSchema={
                 "type": "object",
                 "properties": {
@@ -132,17 +132,17 @@ async def list_tools():
 @server.call_tool()
 async def call_tool(name, arguments):
     if name == "my_tool":
-        # 执行操作
-        return [TextContent(type="text", text="结果")]
+        # Executar operação
+        return [TextContent(type="text", text="resultado")]
 
 async def main():
     async with stdio_server() as (read_stream, write_stream):
         await server.run(read_stream, write_stream, server.create_initialization_options())
 ```
 
-## 配置与集成
+## Configuração e Integração
 
-### 1. 本地测试
+### 1. Teste Local
 
 ```json
 {
@@ -158,9 +158,9 @@ async def main():
 }
 ```
 
-### 2. 添加到 ECC
+### 2. Adicionar ao ECC
 
-将配置添加到 `mcp-configs/mcp-servers.json`：
+Adicionar configuração ao `mcp-configs/mcp-servers.json`:
 
 ```json
 {
@@ -171,35 +171,35 @@ async def main():
       "env": {
         "YOUR_API_KEY": "YOUR_KEY_HERE"
       },
-      "description": "你的自定义服务器描述"
+      "description": "Descrição do seu servidor customizado"
     }
   }
 }
 ```
 
-## Melhores-Práticas
+## Melhores Práticas
 
-1. **错误处理**：始终返回结构化的错误响应
-2. **输入验证**：验证所有输入参数，拒绝无效请求
-3. **超时控制**：设置合理的超时时间
-4. **日志记录**：记录关键操作便于调试
-5. **资源清理**：确保连接和资源正确释放
-6. **版本管理**：遵循语义化版本
+1. **Tratamento de Erros**: Sempre retornar respostas de erro estruturadas
+2. **Validação de Input**: Validar todos os parâmetros de input, rejeitar requisições inválidas
+3. **Controle de Timeout**: Definir timeouts razoáveis
+4. **Logging**: Registrar operações importantes para debugging
+5. **Limpeza de Recursos**: Garantir que conexões e recursos são liberados corretamente
+6. **Gerenciamento de Versão**: Seguir versionamento semântico
 
-## 常用工具类型
+## Tipos Comuns de Ferramentas
 
-| 类型 | 用途 |
-|------|------|
-| `tools/list` | 列出可用工具 |
-| `tools/call` | 调用工具 |
-| `resources/list` | 列出资源 |
-| `resources/read` | 读取资源 |
-| `prompts/list` | 列出提示模板 |
-| `prompts/get` | 获取提示 |
+| Tipo | Propósito |
+|------|----------|
+| `tools/list` | Listar ferramentas disponíveis |
+| `tools/call` | Chamar ferramenta |
+| `resources/list` | Listar recursos |
+| `resources/read` | Ler recurso |
+| `prompts/list` | Listar templates de prompt |
+| `prompts/get` | Obter prompt |
 
-## 参考资源
+## Recursos de Referência
 
-- [MCP 官方文档](https://modelcontextprotocol.io/)
+- [Documentação oficial MCP](https://modelcontextprotocol.io/)
 - [MCP SDK (Node.js)](https://github.com/modelcontextprotocol/typescript-sdk)
 - [MCP SDK (Python)](https://github.com/modelcontextprotocol/python-sdk)
-- [MCP 规范](https://modelcontextprotocol.io/specification)
+- [Especificação MCP](https://modelcontextprotocol.io/specification)

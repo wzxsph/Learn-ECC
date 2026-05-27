@@ -1,50 +1,50 @@
-# 自动化与脚本技能
+# Kỹ Năng Tự Động Hóa và Script
 
-## 概述
+## Tổng quan
 
-自动化与脚本技能用于任务自动化、脚本编写和工作流编排。
+Tự động hóa và script skill dùng để task automation, script writing và workflow orchestration.
 
-## 核心技能
+## Core Skill
 
 ### automation-audit-ops
 
-**用途**: 自动化审计操作
+**Mục đích**: Automation audit operation
 
-**检查项**:
-- 自动化覆盖率
-- 故障转移验证
-- 恢复时间目标
-- 审计日志
+**Check item**:
+- Automation coverage
+- Failover verification
+- Recovery time objective
+- Audit log
 
 ---
 
 ### continuous-learning
 
-**用途**: 持续学习系统
+**Mục đích**: Continuous learning system
 
-**功能**:
-- 模式提取
-- 知识积累
-- 经验复用
+**Function**:
+- Pattern extraction
+- Knowledge accumulation
+- Experience reuse
 
 ---
 
 ### continuous-learning-v2
 
-**用途**: 持续学习 v2
+**Mục đích**: Continuous learning v2
 
-**核心组件**:
-- Instinct 系统
-- 模式进化
-- 知识图谱
+**Core component**:
+- Instinct system
+- Pattern evolution
+- Knowledge graph
 
 ---
 
 ### autonomous-loops
 
-**用途**: 自主循环模式
+**Mục đích**: Autonomous loop pattern
 
-**循环类型**:
+**Loop type**:
 - Sequential Pipeline
 - NanoClaw REPL
 - Continuous Claude PR Loop
@@ -54,80 +54,80 @@
 
 ### autonomous-agent-harness
 
-**用途**: 自主代理架构
+**Mục đích**: Autonomous agent architecture
 
-**组件**:
-- 持久内存
-- 定时调度
-- 远程代理
-- 计算机控制
+**Component**:
+- Persistent memory
+- Cron scheduling
+- Remote agent
+- Computer control
 
 ---
 
-## 代理与评估
+## Agent và Evaluation
 
 ### agent-eval
 
-**用途**: 代理评估框架
+**Mục đích**: Agent evaluation framework
 
-**功能**:
-- 性能指标
-- 质量评估
-- 对比分析
+**Function**:
+- Performance metric
+- Quality assessment
+- Comparative analysis
 
 ---
 
 ### eval-harness
 
-**用途**: 评估工具链
+**Mục đích**: Evaluation toolchain
 
-**用途**:
-- 测试框架
-- 基准测试
-- 回归检测
+**Usage**:
+- Testing framework
+- Benchmark
+- Regression detection
 
 ---
 
 ### agent-harness-construction
 
-**用途**: 代理工具链构建
+**Mục đích**: Agent toolchain construction
 
-**内容**:
-- 工具定义
-- 代理配置
-- 集成模式
+**Content**:
+- Tool definition
+- Agent configuration
+- Integration pattern
 
 ---
 
 ### agentic-engineering
 
-**用途**: 代理工程学
+**Mục đích**: Agentic engineering
 
-**核心概念**:
-- 代理架构
-- 任务分解
-- 协作模式
+**Core concept**:
+- Agent architecture
+- Task decomposition
+- Collaboration pattern
 
 ---
 
 ### agentic-os
 
-**用途**: 代理操作系统
+**Mục đích**: Agent operating system
 
-**功能**:
-- 资源管理
-- 任务调度
-- 状态持久化
+**Function**:
+- Resource management
+- Task scheduling
+- State persistence
 
 ---
 
-## 相关技能
+## Related Skill
 
-- `automation-audit-ops` - 自动化审计
-- `continuous-learning` - 持续学习
-- `autonomous-loops` - 自主循环
-- `autonomous-agent-harness` - 自主代理架构
-- `agent-eval` - 代理评估
-- `eval-harness` - 评估工具链
-- `agent-harness-construction` - 代理工具链构建
-- `agentic-engineering` - 代理工程学
+- `automation-audit-ops` - Automation audit
+- `continuous-learning` - Continuous learning
+- `autonomous-loops` - Autonomous loop
+- `autonomous-agent-harness` - Autonomous agent architecture
+- `agent-eval` - Agent evaluation
+- `eval-harness` - Evaluation toolchain
+- `agent-harness-construction` - Agent toolchain construction
+- `agentic-engineering` - Agentic engineering

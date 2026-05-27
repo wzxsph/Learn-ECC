@@ -1,42 +1,42 @@
-# 框架
+# Frameworks
 
-本部分涵盖主要Web框架的开发模式、最佳实践和核心概念。
+Dieser Abschnitt behandelt Entwicklungsmodi, Best Practices und Kernkonzepte fuer die wichtigsten Web-Frameworks.
 
 ---
 
 ## Django
 
-### 用途说明
-Django开发模式提供了可扩展、可维护的生产级Django应用程序架构模式，包括REST API设计、ORM最佳实践、缓存、信号和中间件。
+### Verwendungszweck
+Django-Entwicklungsmuster bieten skalierbare, wartbare, produktionsreife Django-Anwendungs-Architekturmuster, einschliesslich REST-API-Design, ORM-Best-Practices, Caching, Signals und Middleware.
 
-### 使用时机
-- 构建Django Web应用程序
-- 设计Django REST Framework API
-- 使用Django ORM和模型
-- 设置Django项目结构
-- 实现缓存、信号、中间件
+### Verwendung
+- Django-Webanwendungen bauen
+- Django REST Framework API entwerfen
+- Django ORM und Modelle verwenden
+- Django-Projektstruktur einrichten
+- Caching, Signals, Middleware implementieren
 
-### 核心概念
+### Kernkonzepte
 
-**1. 项目结构**
-推荐使用`config/`目录进行设置分离。
+**1. Projektstruktur**
+Es wird empfohlen, ein `config/`-Verzeichnis fuer die Trennung von Konfiguration zu verwenden.
 
-**2. 模型设计**
-使用自定义QuerySet和Manager实现可复用查询逻辑。
+**2. Modell-Design**
+Benutzerdefinierte QuerySets und Manager fuer wiederverwendbare Abfragelogik verwenden.
 
-**3. Django REST Framework模式**
-使用序列化器、视图集和路由组织API。
+**3. Django REST Framework-Muster**
+Serializer, Viewsets und Router fuer API-Organisation verwenden.
 
-**4. 服务层**
-将业务逻辑从视图中分离到服务层。
+**4. Service-Schicht**
+Geschaeftslogik aus Views in eine Service-Schicht auslagern.
 
-**5. 缓存策略**
-使用视图级缓存、模板片段缓存和低级缓存。
+**5. Caching-Strategien**
+View-Level-Caching, Template-Fragment-Caching und Low-Level-Caching verwenden.
 
-### 使用示例
+### Verwendungsbeispiel
 
 ```python
-# 模型最佳实践
+# Modell-Best-Practices
 class Product(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
@@ -51,7 +51,7 @@ class Product(models.Model):
             models.Index(fields=['-created_at']),
         ]
 
-# 自定义QuerySet
+# Benutzerdefiniertes QuerySet
 class ProductQuerySet(models.QuerySet):
     def active(self):
         return self.filter(is_active=True)
@@ -59,7 +59,7 @@ class ProductQuerySet(models.QuerySet):
     def in_stock(self):
         return self.filter(stock__gt=0)
 
-# 服务层
+# Service-Schicht
 class OrderService:
     @staticmethod
     @transaction.atomic
@@ -75,37 +75,37 @@ class OrderService:
 
 ## Laravel
 
-### 用途说明
-Laravel开发模式提供了可扩展、可维护的生产级Laravel应用程序架构模式，包括路由、控制器、服务层、队列、事件、缓存和API资源。
+### Verwendungszweck
+Laravel-Entwicklungsmuster bieten skalierbare, wartbare, produktionsreife Laravel-Anwendungs-Architekturmuster, einschliesslich Routing, Controller, Service-Schicht, Queues, Events, Caching und API-Resources.
 
-### 使用时机
-- 构建Laravel Web应用程序或API
-- 组织控制器、服务和领域逻辑
-- 使用Eloquent模型和关系
-- 使用资源和分页设计API
-- 添加队列、事件、缓存和后台作业
+### Verwendung
+- Laravel-Webanwendungen oder APIs bauen
+- Controller, Services und Domain-Logik organisieren
+- Eloquent-Modelle und Beziehungen verwenden
+- Resources und Pagination fuer API-Design verwenden
+- Queues, Events, Caching und Hintergrundjobs hinzufuegen
 
-### 核心概念
+### Kernkonzepte
 
-**1. 控制器 -> 服务 -> Actions**
-保持控制器薄，将协调逻辑放在服务中，单一用途逻辑放在actions中。
+**1. Controller -> Service -> Actions**
+Controller duenn halten, Koordinationslogik in Services, einzweckige Logik in Actions.
 
-**2. 路由模型绑定**
-使用作用域绑定保持路由可预测。
+**2. Routing-Modell-Binding**
+Scoped Binding verwenden, um Routes vorhersehbar zu halten.
 
-**3. Eloquent模型**
-使用类型提示、casts和scopes保持领域逻辑一致。
+**3. Eloquent-Modelle**
+Type-Hints, Casts und Scopes verwenden, um Domain-Logik konsistent zu halten.
 
-**4. 表单请求验证**
-将验证逻辑放在表单请求中，转换为DTO。
+**4. Form-Request-Validierung**
+Validierungslogik in Form-Requests ablegen und in DTOs konvertieren.
 
-**5. API资源**
-使用API资源保持响应一致。
+**5. API-Resources**
+API-Resources verwenden, um Antworten konsistent zu halten.
 
-### 使用示例
+### Verwendungsbeispiel
 
 ```php
-// Action保持单一职责
+// Action behält eine einzelne Verantwortung
 final class CreateOrderAction
 {
     public function __construct(private OrderRepository $orders) {}
@@ -116,7 +116,7 @@ final class CreateOrderAction
     }
 }
 
-// 控制器使用Action
+// Controller verwendet Action
 final class OrdersController extends Controller
 {
     public function __construct(private CreateOrderAction $createOrder) {}
@@ -128,7 +128,7 @@ final class OrdersController extends Controller
     }
 }
 
-// Eloquent模型
+// Eloquent-Modell
 final class Project extends Model
 {
     use HasFactory;
@@ -147,37 +147,37 @@ final class Project extends Model
 
 ## NestJS
 
-### 用途说明
-NestJS开发模式提供了模块化TypeScript后端的生产级模式，包括模块、控制器、提供者、DTO验证、守卫、拦截器和配置。
+### Verwendungszweck
+NestJS-Entwicklungsmuster bieten modulare TypeScript-Backend-Produktionsmuster, einschliesslich Module, Controller, Provider, DTO-Validierung, Guards, Interceptors und Konfiguration.
 
-### 使用时机
-- 构建NestJS API或服务
-- 组织模块、控制器和提供者
-- 添加DTO验证、守卫、拦截器或异常过滤器
-- 配置环境感知设置和数据库集成
-- 测试NestJS单元或HTTP端点
+### Verwendung
+- NestJS APIs oder Services bauen
+- Module, Controller und Provider organisieren
+- DTO-Validierung, Guards, Interceptors oder Exception-Filter hinzufuegen
+- Umgebungsbewusste Einstellungen und Datenbankintegration konfigurieren
+- NestJS-Unit- oder HTTP-Endpunkte testen
 
-### 核心概念
+### Kernkonzepte
 
-**1. 模块化结构**
-将领域代码放在功能模块中，跨领域关注点放在`common/`中。
+**1. Modulare Struktur**
+Domain-Code in Feature-Modulen ablegen, domingenuebergreifende Anliegen in `common/`.
 
-**2. DTO验证**
-使用`class-validator`验证每个请求DTO。
+**2. DTO-Validierung**
+`class-validator` verwenden, um jeden Request-DTO zu validieren.
 
-**3. 依赖注入**
-NestJS使用依赖注入管理依赖。
+**3. Abhaengigkeitsinjektion**
+NestJS verwendet Abhaengigkeitsinjektion zur Verwaltung von Abhaengigkeiten.
 
-**4. 守卫和拦截器**
-用于认证、授权和日志记录。
+**4. Guards und Interceptors**
+Verwendet fuer Authentifizierung, Autorisierung und Logging.
 
-**5. 异常过滤器**
-集中处理错误并保持响应格式一致。
+**5. Exception-Filter**
+Zentralisierte Fehlerbehandlung, um Antwortformat konsistent zu halten.
 
-### 使用示例
+### Verwendungsbeispiel
 
 ```typescript
-// 模块结构
+// Modulstruktur
 @Module({
   controllers: [UsersController],
   providers: [UsersService],
@@ -185,7 +185,7 @@ NestJS使用依赖注入管理依赖。
 })
 export class UsersModule {}
 
-// DTO验证
+// DTO-Validierung
 export class CreateUserDto {
   @IsEmail()
   email!: string;
@@ -199,7 +199,7 @@ export class CreateUserDto {
   role?: UserRole;
 }
 
-// 控制器
+// Controller
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
@@ -210,7 +210,7 @@ export class UsersController {
   }
 }
 
-// 全局验证管道
+// Globale Validierungspipeline
 app.useGlobalPipes(
   new ValidationPipe({
     whitelist: true,
@@ -224,36 +224,36 @@ app.useGlobalPipes(
 
 ## FastAPI
 
-### 用途说明
-FastAPI模式提供了生产级异步API模式，包括依赖注入、Pydantic请求/响应模型、OpenAPI文档、测试、安全性和生产准备。
+### Verwendungszweck
+FastAPI-Muster bieten produktionsreife asynchrone API-Muster, einschliesslich Abhaengigkeitsinjektion, Pydantic Request/Response-Modellen, OpenAPI-Dokumentation, Tests, Sicherheit und Produktionstauglichkeit.
 
-### 使用时机
-- 构建或审查FastAPI应用
-- 拆分路由、schema、依赖和数据库访问
-- 编写调用数据库或外部服务的异步端点
-- 添加认证、授权、OpenAPI文档、测试或部署设置
+### Verwendung
+- FastAPI-Anwendungen bauen oder ueberpruefen
+- Routes, Schemas, Abhaengigkeiten und Datenbankzugriff aufteilen
+- Asynchrone Endpunkte schreiben, die Datenbanken oder externe Services aufrufen
+- Authentifizierung, Autorisierung, OpenAPI-Dokumentation, Tests oder Deployment-Einstellungen hinzufuegen
 
-### 核心概念
+### Kernkonzepte
 
-**1. 应用工厂**
-使用工厂模式使测试和worker可以使用受控设置构建应用。
+**1. App-Factory**
+Factory-Muster verwenden, damit Tests und Worker mit kontrollierter Konfiguration Apps bauen koennen.
 
-**2. Pydantic Schema**
-保持请求、更新和响应模型分离。
+**2. Pydantic-Schema**
+Request-, Update- und Response-Modelle getrennt halten.
 
-**3. 依赖注入**
-使用依赖注入管理请求作用域资源。
+**3. Abhaengigkeitsinjektion**
+Abhaengigkeitsinjektion verwenden, um Request-Scope-Ressourcen zu verwalten.
 
-**4. 异步端点**
-异步路由处理器中进行I/O操作时使用异步库。
+**4. Asynchrone Endpunkte**
+Asynchrone Bibliotheken verwenden, wenn I/O-Operationen in asynchronen Route-Handlern durchgefuehrt werden.
 
-**5. 错误处理**
-集中化领域异常，保持响应形状稳定。
+**5. Fehlerbehandlung**
+Domain-Ausnahmen zentralisieren, Antwortform konsistent halten.
 
-### 使用示例
+### Verwendungsbeispiel
 
 ```python
-# 应用工厂
+# App-Factory
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await init_db()
@@ -265,7 +265,7 @@ def create_app() -> FastAPI:
     app.include_router(users.router, prefix="/api/v1/users", tags=["users"])
     return app
 
-# Pydantic Schema
+# Pydantic-Schema
 class UserBase(BaseModel):
     email: EmailStr
     full_name: Annotated[str, Field(min_length=1, max_length=100)]
@@ -278,7 +278,7 @@ class UserResponse(UserBase):
     id: UUID
     created_at: datetime
 
-# 依赖注入
+# Abhaengigkeitsinjektion
 async def get_current_user(
     token: str = Depends(oauth2_scheme),
     db: AsyncSession = Depends(get_db),
@@ -294,37 +294,37 @@ async def get_current_user(
 
 ## Spring Boot
 
-### 用途说明
-Spring Boot开发模式提供了可扩展、生产级服务的架构和API模式，包括REST API设计、分层服务、数据访问、缓存和异步处理。
+### Verwendungszweck
+Spring Boot-Entwicklungsmuster bieten skalierbare, produktionsreife Service-Architektur- und API-Muster, einschliesslich REST-API-Design, geschichtete Services, Datenzugriff, Caching und asynchrone Verarbeitung.
 
-### 使用时机
-- 使用Spring MVC或WebFlux构建REST API
-- 组织控制器 -> 服务 -> 仓库层
-- 配置Spring Data JPA、缓存或异步处理
-- 添加验证、异常处理或分页
-- 设置dev/staging/production环境配置文件
+### Verwendung
+- REST APIs mit Spring MVC oder WebFlux bauen
+- Controller -> Service -> Repository-Schichten organisieren
+- Spring Data JPA, Caching oder asynchrone Verarbeitung konfigurieren
+- Validierung, Exception-Handling oder Pagination hinzufuegen
+- dev/staging/production-Umgebungskonfigurationsdateien einrichten
 
-### 核心概念
+### Kernkonzepte
 
-**1. REST API结构**
-使用`@RestController`和`@RequestMapping`组织端点。
+**1. REST-API-Struktur**
+`@RestController` und `@RequestMapping` zur Endpunkt-Organisation verwenden.
 
-**2. 仓储模式**
-使用Spring Data JPA定义数据访问接口。
+**2. Repository-Muster**
+Spring Data JPA verwenden, um Datenzugriffsschnittstellen zu definieren.
 
-**3. 服务层事务**
-使用`@Transactional`管理事务边界。
+**3. Service-Schicht-Transaktionen**
+`@Transactional` verwenden, um Transaktionsgrenzen zu verwalten.
 
-**4. DTO和验证**
-使用记录类型和Bean验证注解。
+**4. DTOs und Validierung**
+ Record-Typen und Bean-Validierungsannotationen verwenden.
 
-**5. 异常处理**
-使用`@ControllerAdvice`集中处理异常。
+**5. Exception-Handling**
+`@ControllerAdvice` verwenden, um Exceptions zentral zu behandeln.
 
-### 使用示例
+### Verwendungsbeispiel
 
 ```java
-// REST控制器
+// REST-Controller
 @RestController
 @RequestMapping("/api/markets")
 @Validated
@@ -346,7 +346,7 @@ class MarketController {
   }
 }
 
-// 服务层事务
+// Service-Schicht-Transaktion
 @Service
 public class MarketService {
   private final MarketRepository repo;
@@ -358,14 +358,14 @@ public class MarketService {
   }
 }
 
-// DTO和验证
+// DTOs und Validierung
 public record CreateMarketRequest(
     @NotBlank @Size(max = 200) String name,
     @NotBlank @Size(max = 2000) String description,
     @NotNull @FutureOrPresent Instant endDate,
     @NotEmpty List<@NotBlank String> categories) {}
 
-// 全局异常处理
+// Globaler Exception-Handler
 @ControllerAdvice
 class GlobalExceptionHandler {
   @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -380,12 +380,12 @@ class GlobalExceptionHandler {
 
 ---
 
-## 相关技能
+## Zugehoerige Faehigkeiten
 
-| 技能 | 用途 |
+| Faehigkeit | Verwendungszweck |
 |------|------|
-| `python-patterns` | Python惯用模式和最佳实践 |
-| `django-security` | Django安全最佳实践 |
-| `fastapi-patterns` | FastAPI生产级模式 |
-| `nestjs-patterns` | NestJS模块化TypeScript后端 |
-| `springboot-patterns` | Spring Boot架构模式 |
+| `python-patterns` | Python-idiomatische Muster und Best-Practices |
+| `django-security` | Django-Sicherheits-Best-Practices |
+| `fastapi-patterns` | FastAPI-Produktionsmuster |
+| `nestjs-patterns` | NestJS modulares TypeScript-Backend |
+| `springboot-patterns` | Spring Boot-Architekturmuster |

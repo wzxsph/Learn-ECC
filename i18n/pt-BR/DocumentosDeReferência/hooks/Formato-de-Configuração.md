@@ -1,8 +1,8 @@
-# Formato-de-Configuração
+# Formato de Configuração de Hooks
 
-## hooks.json 结构概述
+## Visão Geral da Estrutura hooks.json
 
-ECC Sistema-Hooks的配置文件采用JSON格式，主要结构如下：
+O arquivo de configuração do sistema ECC Hooks usa formato JSON com a seguinte estrutura principal:
 
 ```json
 {
@@ -19,18 +19,18 @@ ECC Sistema-Hooks的配置文件采用JSON格式，主要结构如下：
 }
 ```
 
-## 顶层结构
+## Estrutura de Topo
 
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| `$schema` | string | JSON Schema URL，用于验证配置 |
-| `hooks` | object | 包含所有钩子类型的对象 |
+| Campo | Tipo | Descrição |
+|------|------|----------|
+| `$schema` | string | URL JSON Schema, para validação de configuração |
+| `hooks` | object | Objeto contendo todos os tipos de hook |
 
 ---
 
-## 钩子数组结构
+## Estrutura de Array de Hooks
 
-每个事件类型（PreToolUse、PostToolUse等）包含一个钩子数组，每个钩子对象具有以下结构：
+Cada tipo de evento (PreToolUse, PostToolUse etc.) contém um array de hooks, cada objeto de hook tem a seguinte estrutura:
 
 ```json
 {
@@ -43,80 +43,80 @@ ECC Sistema-Hooks的配置文件采用JSON格式，主要结构如下：
       "timeout": 30
     }
   ],
-  "description": "钩子描述",
+  "description": "Descrição do hook",
   "id": "unique-hook-id"
 }
 ```
 
-### matcher 字段
+### Campo matcher
 
-#### 类型说明
-matcher字段用于指定触发钩子的工具类型，支持单个工具或多个工具（用`|`分隔）。
+#### Descrição do Tipo
+O campo matcher especifica qual tipo de ferramenta dispara o hook, suporta ferramenta única ou múltiplas ferramentas (separadas por `|`).
 
-#### 可用值
-| matcher值 | 匹配的工具有哪些 |
-|-----------|-----------------|
-| `*` | 所有工具 |
-| `Bash` | Bash工具 |
-| `Edit` | Edit工具 |
-| `Write` | Write工具 |
-| `Read` | Read工具 |
-| `MultiEdit` | MultiEdit工具 |
-| `Bash\|Edit\|Write` | Bash、Edit或Write |
-| `Edit\|Write\|MultiEdit` | Edit、Write或MultiEdit |
+#### Valores Disponíveis
+| Valor matcher | Ferramentas correspondentes |
+|---------------|-----------------|
+| `*` | Todas as ferramentas |
+| `Bash` | Ferramenta Bash |
+| `Edit` | Ferramenta Edit |
+| `Write` | Ferramenta Write |
+| `Read` | Ferramenta Read |
+| `MultiEdit` | Ferramenta MultiEdit |
+| `Bash\|Edit\|Write` | Bash, Edit ou Write |
+| `Edit\|Write\|MultiEdit` | Edit, Write ou MultiEdit |
 
-#### 使用示例
+#### Exemplo de Uso
 ```json
-// 匹配所有工具
+// Combinar todas as ferramentas
 "matcher": "*"
 
-// 仅匹配Bash工具
+// Apenas ferramenta Bash
 "matcher": "Bash"
 
-// 匹配多个工具
+// Combinar múltiplas ferramentas
 "matcher": "Edit|Write|MultiEdit"
 ```
 
 ---
 
-## hooks 数组结构
+## Estrutura de Array de hooks
 
-hooks数组包含一个或多个钩子命令对象：
+O array hooks contém um ou mais objetos de comando de hook:
 
-### type 字段
+### Campo type
 
-| type值 | 说明 |
-|--------|------|
-| `command` | 执行Node.js命令 |
+| Valor type | Descrição |
+|-----------|-----------|
+| `command` | Executar comando Node.js |
 
-### command 字段
+### Campo command
 
-要执行的命令，通常是Node.js脚本路径。
+O comando a executar, geralmente caminho de script Node.js.
 
-### async 字段（可选）
+### Campo async (opcional)
 
 ```json
 "async": true
 ```
 
-- `true`: 异步执行，不阻塞工具执行
-- `false`或省略: 同步执行，阻塞工具执行
+- `true`: Execução assíncrona, não bloqueia execução de ferramenta
+- `false` ou omitido: Execução síncrona, bloqueia execução de ferramenta
 
-### timeout 字段（可选）
+### Campo timeout (opcional)
 
 ```json
 "timeout": 30
 ```
 
-最大执行时间（秒）。建议：
-- 同步钩子: <200ms
-- 异步钩子: ≤30秒
+Tempo máximo de execução (segundos). Recomendado:
+- Hooks síncronos: <200ms
+- Hooks assíncronos: ≤30 segundos
 
 ---
 
-## 完整配置示例
+## Exemplo de Configuração Completa
 
-### PreToolUse 钩子示例
+### Exemplo de Hook PreToolUse
 
 ```json
 {
@@ -127,12 +127,12 @@ hooks数组包含一个或多个钩子命令对象：
       "command": "node scripts/hooks/pre-bash-dispatcher.js"
     }
   ],
-  "description": "Bash预检分发器，用于质量、tmux、推送和GateGuard检查",
+  "description": "Dispatcher de pré-verificação Bash, para verificação de qualidade, tmux, push e GateGuard",
   "id": "pre:bash:dispatcher"
 }
 ```
 
-### PostToolUse 钩子示例
+### Exemplo de Hook PostToolUse
 
 ```json
 {
@@ -145,12 +145,12 @@ hooks数组包含一个或多个钩子命令对象：
       "timeout": 30
     }
   ],
-  "description": "文件编辑后运行质量门检查",
+  "description": "Executar verificação de quality gate após edição de arquivo",
   "id": "post:quality-gate"
 }
 ```
 
-### Stop 钩子示例
+### Exemplo de Hook Stop
 
 ```json
 {
@@ -163,12 +163,12 @@ hooks数组包含一个或多个钩子命令对象：
       "timeout": 10
     }
   ],
-  "description": "每次响应后保存会话状态",
+  "description": "Salvar estado da sessão após cada resposta",
   "id": "stop:session-end"
 }
 ```
 
-### SessionStart 钩子示例
+### Exemplo de Hook SessionStart
 
 ```json
 {
@@ -179,54 +179,54 @@ hooks数组包含一个或多个钩子命令对象：
       "command": "node scripts/hooks/session-start-bootstrap.js"
     }
   ],
-  "description": "加载先前上下文并检测新会话的包管理器",
+  "description": "Carregar contexto prévio com limites e detectar gerenciador de pacotes da nova sessão",
   "id": "session:start"
 }
 ```
 
 ---
 
-## 生命周期事件Formato-de-Configuração
+## Configuração de Evento de Lifecycle
 
-对于SessionStart、SessionEnd、PreCompact等生命周期事件，使用不同的配置结构：
+Para eventos de lifecycle como SessionStart, SessionEnd, PreCompact, usar estrutura de configuração diferente:
 
 ```json
 {
-  "description": "内存持久化的生命周期钩子定义",
+  "description": "Definição de hook de lifecycle para persistência de memória",
   "events": [
     {
       "event": "SessionStart",
       "id": "session:start",
       "script": "scripts/hooks/session-start-bootstrap.js",
-      "purpose": "在会话开始时加载有界限的先前上下文并检测项目状态",
+      "purpose": "Carregar contexto prévio com limites e detectar estado do projeto no início da sessão",
       "blocking": false
     },
     {
       "event": "PreCompact",
       "id": "pre:compact",
       "script": "scripts/hooks/pre-compact.js",
-      "purpose": "在上下文压缩前持久化会话状态",
+      "purpose": "Persistir estado da sessão antes da compactação de contexto",
       "blocking": false
     }
   ]
 }
 ```
 
-### 生命周期事件字段
+### Campos de Evento de Lifecycle
 
-| 字段 | 说明 |
-|------|------|
-| `event` | 事件类型（SessionStart、PreCompact、SessionEnd等） |
-| `id` | 唯一标识符 |
-| `script` | 脚本路径 |
-| `purpose` | 用途描述 |
-| `blocking` | 是否阻塞（通常为false） |
+| Campo | Descrição |
+|------|----------|
+| `event` | Tipo de evento (SessionStart, PreCompact, SessionEnd etc.) |
+| `id` | Identificador único |
+| `script` | Caminho do script |
+| `purpose` | Descrição de propósito |
+| `blocking` | Se bloqueia (geralmente false) |
 
 ---
 
-## 禁用钩子
+## Desabilitar Hooks
 
-### 通过编辑配置禁用
+### Através de Edição de Configuração
 
 ```json
 {
@@ -235,78 +235,78 @@ hooks数组包含一个或多个钩子命令对象：
       {
         "matcher": "Write",
         "hooks": [],
-        "description": "覆盖：允许所有.md文件创建"
+        "description": "Override: permitir toda criação de arquivos .md"
       }
     ]
   }
 }
 ```
 
-### 通过环境变量禁用
+### Através de Variável de Ambiente
 
 ```bash
-# 禁用特定钩子（逗号分隔）
+# Desabilitar hooks específicos (separados por vírgula)
 export ECC_DISABLED_HOOKS="pre:bash:tmux-reminder,post:edit:typecheck"
 
-# 禁用GateGuard
+# Desabilitar GateGuard
 export ECC_GATEGUARD=off
 ```
 
 ---
 
-## 钩子ID命名规范
+## Convenções de Nomenclatura de ID de Hook
 
-ECC使用冒号分隔的命名约定：
+ECC usa convenção de nomenclatura separada por dois pontos:
 
-| 前缀 | 用途 | 示例 |
-|------|------|------|
-| `pre:` | PreToolUse钩子 | `pre:bash:dispatcher` |
-| `post:` | PostToolUse钩子 | `post:quality-gate` |
-| `stop:` | Stop钩子 | `stop:session-end` |
-| `session:` | 会话生命周期钩子 | `session:start` |
+| Prefixo | Propósito | Exemplo |
+|---------|-----------|---------|
+| `pre:` | Hooks PreToolUse | `pre:bash:dispatcher` |
+| `post:` | Hooks PostToolUse | `post:quality-gate` |
+| `stop:` | Hooks Stop | `stop:session-end` |
+| `session:` | Hooks de lifecycle de sessão | `session:start` |
 
 ---
 
-## run-with-flags.js 封装器
+## Wrapper run-with-flags.js
 
-ECC使用`run-with-flags.js`封装器来运行钩子，支持配置文件的运行时门控：
+ECC usa wrapper `run-with-flags.js` para executar hooks, suportando gating de configuração em runtime:
 
 ```
 node scripts/hooks/run-with-flags.js <hook-id> <script-path> <profiles>
 ```
 
-### 参数说明
-| 参数 | 说明 |
-|------|------|
-| `hook-id` | 钩子的唯一标识符 |
-| `script-path` | 实际要运行的脚本路径 |
-| `profiles` | 逗号分隔的配置文件列表（minimal, standard, strict） |
+### Descrição de Parâmetros
+| Parâmetro | Descrição |
+|-----------|-----------||
+| `hook-id` | Identificador único do hook |
+| `script-path` | Caminho real do script a executar |
+| `profiles` | Lista separada por vírgula de arquivos de configuração (minimal, standard, strict) |
 
-### 工作原理
-1. 读取`ECC_HOOK_PROFILE`环境变量（默认: standard）
-2. 检查钩子ID是否在`ECC_DISABLED_HOOKS`中
-3. 如果允许，则运行脚本
+### Como Funciona
+1. Ler variável de ambiente `ECC_HOOK_PROFILE` (default: standard)
+2. Verificar se hook ID está em `ECC_DISABLED_HOOKS`
+3. Se permitido, executar script
 
 ---
 
-## 跨平台路径处理
+## Tratamento de Caminhos Cross-Platform
 
-ECC的hook命令使用Node.js脚本实现跨平台行为：
+Hooks ECC usam scripts Node.js para comportamento cross-platform:
 
 ```javascript
 const path = require('path');
 const homedir = require('os').homedir();
 
-// 跨平台路径解析
-const configDir = path.join(homedir, '.claude');
+// Resolução de caminho cross-platform
+const configDir = path.join(homedir(), '.claude');
 const hookScript = path.join(configDir, 'scripts', 'hooks', 'my-hook.js');
 ```
 
 ---
 
-## 配置验证
+## Validação de Configuração
 
-建议使用JSON Schema验证配置：
+Recomenda-se usar JSON Schema para validar configuração:
 ```json
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json"

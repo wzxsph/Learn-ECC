@@ -1,36 +1,36 @@
-# 规划与架构命令
+# Planungs- und Architektur-Befehle
 
-## 概述
+## Ueberblick
 
-规划与架构命令用于产品规划、功能设计和系统架构决策。这些命令确保在写代码之前有清晰的计划，减少返工和提高代码质量。
+Planungs- und Architektur-Befehle werden fuer Produktplanung, Funktionsdesign und Systemarchitektur-Entscheidungen verwendet. Diese Befehle stellen sicher dass klare Plaene vorhanden sind BEVOR Code geschrieben wird, reduzieren Nacharbeit und verbessern die Codequalitaet.
 
-## 命令列表
+## Befehlsliste
 
 ### /plan
 
-**用途**: 通用实施规划 - 复述需求、评估风险、创建分步骤实施计划
+**Zweck**: Universelle Implementierungsplanung - Anforderungen umformulieren, Risiken bewerten, schrittweisen Implementierungsplan erstellen
 
-**描述**: 在触碰任何代码之前，等待用户确认后创建全面的实施计划。接受自由形式需求或 PRD markdown 文件。
+**Beschreibung**: Erstellt umfassenden Implementierungsplan und wartet auf Benutzerbestaetigung BEVOR Code beruehrt wird. Akzeptiert Freiform-Anforderungen oder PRD-Markdown-Dateien.
 
-**输入模式**:
+**Eingabemodi**:
 
-| 输入 | 模式 | 行为 |
+| Eingabe | Modus | Verhalten |
 |---|---|---|
-| `path/to/name.prd.md` | PRD artifact 模式 | 读取 PRD，选择下一个待交付里程碑，生成 `.claude/plans/{name}.plan.md` |
-| 其他 markdown 路径 | 引用模式 | 读取文件作为上下文，产生内联计划 |
-| 自由形式文本 | 对话模式 | 产生内联计划 |
-| 空输入 | 澄清模式 | 询问要规划什么 |
+| `path/to/name.prd.md` | PRD artifact-Modus | PRD lesen, naechsten ausstehenden Liefer-Meilenstein auswaehlen, `.claude/plans/{name}.plan.md` generieren |
+| Andere Markdown-Pfade | Referenz-Modus | Datei als Kontext lesen, Inline-Plan generieren |
+| Freiform-Text | Dialog-Modus | Inline-Plan generieren |
+| Leere Eingabe | Klaerungs-Modus | Fragen was geplant werden soll |
 
-**关键参数**:
-- `$ARGUMENTS`: `[feature description | path/to/*.prd.md]` - 功能描述或 PRD 文件路径
+**Schluesselparameter**:
+- `$ARGUMENTS`: `[feature description | path/to/*.prd.md]` - Funktionsbeschreibung oder PRD-Dateipfad
 
-**工作流**:
-1. **复述需求** - 澄清需要构建什么
-2. **识别风险** - 列出潜在问题和阻碍
-3. **创建步骤计划** - 分解为阶段性实施
-4. **等待确认** - 必须收到用户批准后才能继续
+**Workflow**:
+1. **Anforderungen umformulieren** - Klarstellen was gebaut werden muss
+2. **Risiken identifizieren** - Potenzielle Probleme und Blocker auflisten
+3. **Schrittweisen Plan erstellen** - In phasenweise Implementierung aufteilen
+4. **Auf Bestaetigung warten** - Muss Benutzerfreigabe erhalten bevor fortgefahren wird
 
-**输出格式** (PRD artifact 模式):
+**Ausgabeformat** (PRD artifact-Modus):
 ```markdown
 # Plan: {Feature Name}
 
@@ -69,103 +69,103 @@
 |---|---|---|
 ```
 
-**最佳实践**:
-- 使用前先研究代码库中的现有模式
-- 在 PRD artifact 模式中创建 `.claude/plans/` 目录（如不存在）
-- 如果 PRD 包含 `Delivery Milestones` 表格，只更新所选行状态
+**Best Practices**:
+- Recherche vorhandene Muster im Codebase VOR Verwendung
+- Im PRD artifact-Modus `.claude/plans/` Verzeichnis erstellen falls nicht vorhanden
+- Wenn PRD eine `Delivery Milestones`-Tabelle enthaelt, nur ausgewaehlte Zeilenstatus aktualisieren
 
-**常见陷阱**:
-- 空输入时不询问澄清就尝试规划
-- 不等待用户确认就开始写代码
-- 跳过 Pattern Grounding 步骤
+**Haeufige Fallstricke**:
+- Keine Klaerung erfragen wenn Eingabe leer ist
+- Nicht auf Benutzerbestaetigung warten bevor Code geschrieben wird
+- Pattern-Grounding-Schritt ueberspringen
 
-**与其他命令集成**:
-- 规划后使用 `tdd-workflow` skill 进行测试驱动开发
-- 使用 `/build-fix` 修复构建错误
-- 使用 `/code-review` 审查完成实现
-- 使用 `/pr` 或 `/prp-pr` 打开 Pull Request
+**Integration mit anderen Befehlen**:
+- Nach Planung `tdd-workflow` skill fuer testgetriebene Entwicklung verwenden
+- `/build-fix` zum Beheben von Build-Fehlern verwenden
+- `/code-review` zum Review der fertigen Implementierung verwenden
+- `/pr` oder `/prp-pr` zum Oeffnen eines Pull Request verwenden
 
 ---
 
 ### /plan-prd
 
-**用途**: 交互式 PRD 生成器
+**Zweck**: Interaktiver PRD-Generator
 
-**描述**: 生成以问题为中心的产品需求文档，包含问题定义、用户画像、成功指标和 MVP 范围。
+**Beschreibung**: Generiert problemzentriertes Produkt-Anforderungsdokument mit Problemdefinition, Benutzer-Personas, Erfolgsmetriken und MVP-Umfang.
 
-**使用场景**: 
-- 确定要构建的功能
-- 需要明确产品需求
-- 从零开始新功能规划
+**Anwendungsszenarien**:
+- Zu bauende Funktion bestimmen
+- Produktanforderungen muessen geklaert werden
+- Planung eines Features von Grund auf
 
-**工作流**:
-1. FRAME - 了解用户和问题
-2. GROUND - 收集证据
-3. DECIDE - 确定范围和假设
-4. GENERATE - 生成 PRD 文件
+**Workflow**:
+1. FRAME - Problem und Benutzer verstehen
+2. GROUND - Belege sammeln
+3. DECIDE - Umfang und Annahmen bestimmen
+4. GENERATE - PRD-Datei generieren
 
 ---
 
 ### /prp-plan
 
-**用途**: 全面的功能规划
+**Zweck**: Umfassende Funktionsplanung
 
-**描述**: 完整的项目规划，涵盖代码库分析、风险评估和分步骤实施计划。
+**Beschreibung**: Vollstaendige Projektplanung mit Codebase-Analyse, Risikobewertung und schrittweisem Implementierungsplan.
 
-**使用场景**:
-- 复杂功能的详细规划
-- 需要代码库上下文分析
-- 多阶段实施项目
+**Anwendungsszenarien**:
+- Detaillierte Planung fuer komplexe Funktionen
+- Codebase-Kontextanalyse erforderlich
+- Mehrphasen-Implementierungsprojekte
 
 ---
 
 ### /prp-prd
 
-**用途**: PRP 工作流 PRD 生成器
+**Zweck**: PRP-Workflow PRD-Generator
 
-**描述**: 使用 PRP（Plan-Record-Produce）工作流生成产品需求文档。
+**Beschreibung**: Generiert Produkt-Anforderungsdokumente unter Verwendung des PRP (Plan-Record-Produce) Workflows.
 
 ---
 
 ### /prp-implement
 
-**用途**: 执行 PRP 计划+验证循环
+**Zweck**: PRP-Plan-Validierungs-Schleife ausfuehren
 
-**描述**: 按照 PRP 工作流执行计划，包含持续的验证和检查。
+**Beschreibung**:Fuehrt den Plan im PRP-Workflow aus mit kontinuierlicher Validierung und Pruefung.
 
 ---
 
 ### /prp-pr
 
-**用途**: 从 PRP 工作流创建 PR
+**Zweck**: PR aus PRP-Workflow erstellen
 
-**描述**: 从 PRP 工作流的结果创建 GitHub Pull Request。
+**Beschreibung**: Erstellt GitHub Pull Request aus den Ergebnissen des PRP-Workflows.
 
 ---
 
 ### /prp-commit
 
-**用途**: PRP 验证提交
+**Zweck**: PRP-Validierungs-Commit
 
-**描述**: 在 PRP 工作流中执行验证并提交代码。
+**Beschreibung**: Fuehrt Validierung aus und committed Code im PRP-Workflow.
 
 ---
 
 ### /multi-plan
 
-**用途**: 多模型协作规划
+**Zweck**: Multi-Modell-Kollaborationsplanung
 
-**描述**: 结合 Codex 和 Gemini 的双模型分析，生成综合实施计划。
+**Beschreibung**: Kombiniert Codex- und Gemini-Doppelmodell-Analyse um umfassenden Implementierungsplan zu generieren.
 
-**使用场景**:
-- 需要多角度分析
-- 复杂跨领域项目
-- 需要平衡前端和后端考量
+**Anwendungsszenarien**:
+- Mehrperspektivenanalyse erforderlich
+- Komplexe domaenenuebergreifende Projekte
+- Balance zwischen Frontend- und Backend-Ueberlegungen noetig
 
 ---
 
-## 相关命令
+## Zugehoerige Befehle
 
-- `/plan` - 通用实施规划
-- `/code-review` - 代码审查
-- `/build-fix` - 构建修复
+- `/plan` - Universelle Implementierungsplanung
+- `/code-review` - Code-Review
+- `/build-fix` - Build-Reparatur

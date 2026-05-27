@@ -1,153 +1,155 @@
-# 代码风格规则
+# Quy tắc phong cách mã
 
-## 规则概述
+## Tổng quan quy tắc
 
-ECC Rules 代码风格规则定义了代码组织的核心原则和最佳实践。这些规则确保代码保持可读性、可维护性和一致性，涵盖从不可变性到命名约定的所有方面。
+ECC Rules quy tắc phong cách mã định nghĩa các nguyên tắc cốt lõi và thực hành tốt nhất cho tổ chức mã. Các quy tắc này đảm bảo mã duy trì tính dễ đọc, khả năng bảo trì và tính nhất quán, bao gồm mọi thứ từ tính bất biến đến quy ước đặt tên.
 
-## 核心要求
+## Yêu cầu cốt lõi
 
-### 不可变性（关键原则）
+### Tính bất biến (Nguyên tắc then chốt)
 
-**必须**：始终创建新对象，绝不修改现有对象。
+**BẮT BUỘC**: Luôn tạo đối tượng mới, không bao giờ sửa đổi đối tượng hiện có.
 
 ```typescript
-// 错误示例 - 修改原对象
+// Ví dụ sai - Sửa đổi đối tượng gốc
 function modify(user, name) {
-  user.name = name;  // 改变了原对象
+  user.name = name;  // Thay đổi đối tượng gốc
   return user;
 }
 
-// 正确示例 - 返回新对象
+// Ví dụ đúng - Trả về đối tượng mới
 function update(user, name) {
-  return { ...user, name };  // 创建新副本
+  return { ...user, name };  // Tạo bản sao mới
 }
 ```
 
-**理由**：不可变数据防止隐藏副作用，使调试更容易，并支持安全并发。
+**Lý do**: Dữ liệu bất biến ngăn chặn side effects ẩn, giúp debug dễ dàng hơn và hỗ trợ concurrency an toàn.
 
-### 核心设计原则
+### Nguyên tắc thiết kế cốt lõi
 
-| 原则 | 说明 | 实践 |
+| Nguyên tắc | Mô tả | Thực hành |
+|------|------|----------|
+| **KISS** | Keep It Simple | Ưu tiên giải pháp đơn giản nhất hoạt động, tránh tối ưu hóa sớm, ưu tiên rõ ràng hơn thông minh |
+| **DRY** | Don't Repeat Yourself | Trích xuất logic trùng lặp thành hàm chia sẻ hoặc utility, tránh copy-paste dẫn đến drift triển khai |
+| **YAGNI** | You Aren't Gonna Need It | Không xây dựng tính năng hoặc abstract chưa cần thiết, bắt đầu đơn giản, tái cấu trúc khi thực sự cần |
+
+### Tổ chức file
+
+| Yêu cầu | Mô tả |
+|------|------|
+| Nhiều file nhỏ > Ít file lớn | Kết dính cao, ghép nối thấp |
+| Số dòng điển hình | 200-400 dòng, tối đa 800 dòng |
+| Tách file lớn | Trích xuất utility từ module lớn |
+| Cách tổ chức | Theo chức năng/lĩnh vực, không theo loại |
+
+### Xử lý lỗi
+
+| Yêu cầu | Mô tả |
+|------|------|
+| Xử lý rõ ràng | Xử lý lỗi rõ ràng ở mọi cấp |
+| Mã giao diện người dùng | Cung cấp thông báo lỗi thân thiện với người dùng |
+| Server-side | Ghi log context lỗi chi tiết |
+| Hành vi cấm | Không được nuốt lỗi âm thầm |
+
+### Xác thực đầu vào
+
+| Yêu cầu | Mô tả |
+|------|------|
+| Xác thực ranh giới | Xác thực tất cả đầu vào ở ranh giới hệ thống |
+| Xác thực Schema | Sử dụng xác thực dựa trên Schema khi có thể |
+| Fail nhanh | Fail nhanh với thông báo lỗi rõ ràng |
+| Dữ liệu bên ngoài | Không bao giờ tin tưởng dữ liệu bên ngoài (phản hồi API, đầu vào người dùng, nội dung file) |
+
+## Chi tiết triển khai
+
+### Quy ước đặt tên
+
+| Loại | Quy ước | Ví dụ |
 |------|------|------|
-| **KISS** | Keep It Simple | 首选最简单的可行方案，避免过早优化，优先考虑清晰而非巧妙 |
-| **DRY** | Don't Repeat Yourself | 将重复逻辑提取到共享函数或工具类，避免复制粘贴导致的实现漂移 |
-| **YAGNI** | You Aren't Gonna Need It | 不构建未来可能需要的特性或抽象，简单开始，在真正需要时重构 |
-### 文件组织
+| Biến và hàm | camelCase + tên mô tả | `calculateTotal`, `userName` |
+| Boolean | Tiền tố is/has/should/can | `isActive`, `hasPermission` |
+| Interface, Type, Component | PascalCase | `UserProfile`, `ButtonComponent` |
+| Hằng số | UPPER_SNAKE_CASE | `MAX_RETRY_COUNT`, `API_TIMEOUT` |
+| Custom Hooks | camelCase + tiền tố use | `useUserData`, `useFetch` |
 
-| 要求 | 说明 |
-|------|------|
-| 多小文件 > 少大文件 | 高内聚、低耦合 |
-| 典型行数 | 200-400行，最多800行 |
-| 大模块拆分 | 从大模块中提取工具函数 |
-| 组织方式 | 按功能/领域组织，而非按类型 |
+### Mùi mã
 
-### 错误处理
+#### Lồng ghép sâu
 
-| 要求 | 说明 |
-|------|------|
-| 显式处理 | 每个层级都要显式处理错误 |
-| UI代码 | 提供用户友好的错误消息 |
-| 服务端 | 记录详细的错误上下文 |
-| 禁止行为 | 不得静默吞掉错误 |
-
-### 输入验证
-
-| 要求 | 说明 |
-|------|------|
-| 边界验证 | 在系统边界验证所有输入 |
-| Schema验证 | 尽可能使用基于Schema的验证 |
-| 快速失败 | 用清晰的错误消息快速失败 |
-| 外部数据 | 永远不信任外部数据（API响应、用户输入、文件内容） |
-## 实施细节
-
-### 命名约定
-
-| 类型 | 约定 | 示例 |
-|------|------|------|
-| 变量和函数 | camelCase + 描述性名称 | `calculateTotal`, `userName` |
-| 布尔值 | is/has/should/can 前缀 | `isActive`, `hasPermission` |
-| 接口、类型、组件 | PascalCase | `UserProfile`, `ButtonComponent` |
-| 常量 | UPPER_SNAKE_CASE | `MAX_RETRY_COUNT`, `API_TIMEOUT` |
-| 自定义Hooks | camelCase + use前缀 | `useUserData`, `useFetch` |
-
-### 代码异味
-
-#### 深层嵌套
-
-超过4层嵌套应使用早期返回重构：
+Sử dụng early return để tái cấu trúc khi lồng hơn 4 tầng:
 
 ```typescript
-// 避免
+// Tránh
 function processOrder(order) {
   if (order) {
     if (order.items) {
       if (order.items.length > 0) {
-        // 处理逻辑
+        // Logic xử lý
       }
     }
   }
 }
 
-// 推荐
+// Khuyến nghị
 function processOrder(order) {
   if (!order || !order.items || order.items.length === 0) {
     return;
   }
-  // 处理逻辑
+  // Logic xử lý
 }
 ```
 
-#### 魔法数字
+#### Số ma thuật
 
-使用命名常量代替魔法数字：
+Sử dụng hằng số có tên thay cho số ma thuật:
 
 ```typescript
-// 避免
+// Tránh
 setTimeout(callback, 300000);
 
-// 推荐
-const SESSION_TIMEOUT_MS = 5 * 60 * 1000; // 5分钟
+// Khuyến nghị
+const SESSION_TIMEOUT_MS = 5 * 60 * 1000; // 5 phút
 setTimeout(callback, SESSION_TIMEOUT_MS);
 ```
 
-#### 长函数
+#### Hàm dài
 
-拆分大型函数为具有清晰职责的小型函数：
+Tách hàm lớn thành các hàm nhỏ với trách nhiệm rõ ràng:
 
-| 函数长度 | 建议 |
-|----------|------|
-| <50行 | 理想 |
-| 50-100行 | 可接受，考虑拆分 |
-| >100行 | 必须拆分 |
+| Độ dài hàm | Khuyến nghị |
+|----------|------------|
+| <50 dòng | Lý tưởng |
+| 50-100 dòng | Có thể chấp nhận, cân nhắc tách |
+| >100 dòng | Bắt buộc tách |
 
-## 违规处理
+## Xử lý vi phạm
 
-### 代码质量检查清单
+### Danh sách kiểm tra chất lượng mã
 
-完成工作前必须检查：
+Trước khi đánh dấu hoàn thành:
 
-- [ ] 代码可读且命名良好
-- [ ] 函数短小（<50行）
-- [ ] 文件专注（<800行）
-- [ ] 无深层嵌套（>4层）
-- [ ] 适当的错误处理
-- [ ] 无硬编码值（使用常量或配置）
-- [ ] 使用不可变模式（无mutation）
+- [ ] Mã dễ đọc và có tên tốt
+- [ ] Hàm nhỏ (<50 dòng)
+- [ ] File tập trung (<800 dòng)
+- [ ] Không lồng ghép sâu (>4 tầng)
+- [ ] Xử lý lỗi phù hợp
+- [ ] Không có giá trị hardcoded (sử dụng hằng số hoặc cấu hình)
+- [ ] Sử dụng pattern bất biến (không mutation)
 
-### 严重程度分级
+### Phân loại mức độ nghiêm trọng
 
-| 级别 | 含义 | 操作 |
+| Mức độ | Ý nghĩa | Hành động |
 |------|------|------|
-| CRITICAL | 安全漏洞或数据丢失风险 | **阻止** - 合并前必须修复 |
-| HIGH | Bug或重大质量问题 | **警告** - 合并前应修复 |
-| MEDIUM | 可维护性问题 | **提示** - 建议修复 |
-| LOW | 样式或小建议 | **备注** - 可选 |
+| CRITICAL | Lỗ hổng bảo mật hoặc nguy cơ mất dữ liệu | **Ngăn chặn** - Phải sửa trước khi merge |
+| HIGH | Bug hoặc vấn đề chất lượng nghiêm trọng | **Cảnh báo** - Nên sửa trước khi merge |
+| MEDIUM | Vấn đề khả năng bảo trì | **Gợi ý** - Khuyến nghị sửa |
+| LOW | Vấn đề kiểu dáng hoặc đề xuất nhỏ | **Ghi chú** - Tùy chọn |
 
-## 相关规则
+## Quy tắc liên quan
 
-| 关联规则 | 说明 |
+| Quy tắc liên quan | Mô tả |
 |----------|------|
-| 测试规则 | 测试覆盖率要求 |
-| 安全规则 | 安全检查项 |
-| 代码审查规则 | 详细审查标准 |
-| 开发工作流 | TDD和代码审查流程 |
+| Quy tắc kiểm thử | Yêu cầu coverage kiểm thử |
+| Quy tắc bảo mật | Mục kiểm tra bảo mật |
+| Quy tắc kiểm tra mã | Tiêu chuẩn kiểm tra chi tiết |
+| Quy trình phát triển | Quy trình TDD và kiểm tra mã |

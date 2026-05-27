@@ -1,118 +1,118 @@
-# Regras-de-Teste
+# Regras de Teste
 
-## 规则概述
+## Visão Geral das Regras
 
-ECC Rules Regras-de-Teste定义了确保代码质量的强制性测试标准。该规则涵盖测试驱动开发(TDD)、最低覆盖率要求和测试结构规范，确保所有代码都经过充分验证。
+As regras ECC Regras-de-Teste definem padrões de teste obrigatórios para garantir qualidade de código. Estas regras cobrem desenvolvimento dirigido por testes (TDD), requisitos mínimos de cobertura e especificações de estrutura de teste, garantindo que todo código seja suficientemente verificado.
 
-## 核心要求
+## Requisitos Centrais
 
-### 最低测试覆盖率：80%
+### Cobertura Mínima de Testes: 80%
 
-必须包含以下三种测试类型：
+Devem incluir os seguintes três tipos de teste:
 
-| 测试类型 | 说明 | 覆盖范围 |
-|----------|------|----------|
-| 单元测试 | 独立函数、工具类、组件 | Individual units |
-| 集成测试 | API端点、数据库操作 | Integration points |
-| 端到端测试 | 关键用户流程 | Critical user flows |
+| Tipo de Teste | Descrição | Escopo |
+|----------------|-----------|--------|
+| Testes Unitários | Funções, utilities, componentes independentes | Individual units |
+| Testes de Integração | Endpoints de API, operações de banco de dados | Integration points |
+| Testes End-to-End | Fluxos críticos de usuário | Critical user flows |
 
-### 测试驱动开发（TDD）
+### Desenvolvimento Dirigido por Testes (TDD)
 
-**强制工作流**：
+**Workflow obrigatório**:
 
 ```
-1. 编写测试 (RED)   - 先写一个会失败的测试
-2. 运行测试          - 验证测试失败
-3. 编写最小实现 (GREEN) - 编写通过测试的最小代码
-4. 运行测试          - 验证测试通过
-5. 重构 (IMPROVE)    - 改进代码结构
-6. 验证覆盖率        - 确保达到80%+
+1. Escrever Teste (RED)   - Primeiro escrever um teste que falha
+2. Executar Teste          - Verificar que o teste falha
+3. Escrever Implementação Mínima (GREEN) - Escrever código mínimo para fazer o teste passar
+4. Executar Teste          - Verificar que o teste passa
+5. Refatorar (IMPROVE)    - Melhorar estrutura do código
+6. Verificar Cobertura        - Garantir alcançar 80%+
 ```
 
-## 实施细节
+## Detalhes de Implementação
 
-### AAA模式（Arrange-Act-Assert）
+### Padrão AAA (Arrange-Act-Assert)
 
-所有测试必须遵循AAA结构：
+Todos os testes devem seguir estrutura AAA:
 
 ```typescript
-test('正确计算余弦相似度', () => {
-  // Arrange - 准备测试数据
+test('calculates cosine similarity correctly', () => {
+  // Arrange - Preparar dados de teste
   const vector1 = [1, 0, 0];
   const vector2 = [0, 1, 0];
 
-  // Act - 执行被测试的操作
+  // Act - Executar a operação testada
   const similarity = calculateCosineSimilarity(vector1, vector2);
 
-  // Assert - 验证结果
+  // Assert - Verificar resultado
   expect(similarity).toBe(0);
 });
 ```
 
-### 测试命名规范
+### Convenções de Nomenclatura de Testes
 
-使用描述性名称说明被测试的行为：
+Usar nomes descritivos que expliquem o comportamento sendo testado:
 
 ```typescript
-// 推荐 - 描述预期行为
-test('当没有市场匹配查询时返回空数组', () => {});
-test('当API密钥缺失时抛出错误', () => {});
-test('当Redis不可用时回退到子字符串搜索', () => {});
+// Recomendado - Descrever comportamento esperado
+test('returns empty array when no markets match query', () => {});
+test('throws error when API key is missing', () => {});
+test('falls back to substring search when Redis is unavailable', () => {});
 
-// 避免 - 模糊命名
+// Evitar - Nomes vagos
 test('test1', () => {});
 test('edge case', () => {});
 ```
 
-### 测试故障排除
+### Troubleshooting de Testes
 
-当测试失败时：
+Quando testes falham:
 
-| 步骤 | 操作 |
-|------|------|
-| 1 | 使用 **tdd-guide** agent |
-| 2 | 检查测试隔离 |
-| 3 | 验证Mock正确性 |
-| 4 | 修复实现，而非测试（除非测试本身有误） |
+| Passo | Ação |
+|-------|------|
+| 1 | Usar agent **tdd-guide** |
+| 2 | Verificar isolamento de teste |
+| 3 | Validar correção de Mocks |
+| 4 | Corrigir implementação, não testes (a menos que testes estejam errados) |
 
-### Agent支持
+### Suporte a Agent
 
-| Agent | 用途 | 使用时机 |
-|-------|------|----------|
-| **tdd-guide** | 测试驱动开发指导 | 新功能开发、错误修复时强制使用 |
-| **code-reviewer** | 代码审查 | 代码编写完成后 |
+| Agent | Propósito | Quando Usar |
+|-------|-----------|-------------|
+| **tdd-guide** | Guia de desenvolvimento dirigido por testes | Usar proativamente para nova funcionalidade, correção de bugs |
+| **code-reviewer** | Revisão de código | Após escrever código |
 
-## 违规处理
+## Tratamento de Violações
 
-### 覆盖率不足
+### Cobertura Insuficiente
 
-- 覆盖率低于80%的代码不得合并
-- CI/CD流水线应阻止低覆盖率代码提交
-- 使用 `c8` 或类似工具生成覆盖率报告
+- Código com cobertura menor que 80% não deve ser feito merge
+- Pipeline CI/CD deve bloquear commits de código com cobertura baixa
+- Usar `c8` ou ferramenta similar para gerar relatórios de cobertura
 
-### 测试失败处理
+### Falha de Teste
 
 ```
-1. 分析失败原因
-2. 诊断是实现问题还是测试问题
-3. 如果是实现问题 - 修复实现代码
-4. 如果是测试问题 - 修复测试代码
-5. 确保所有测试通过后再提交
+1. Analisar causa de falha
+2. Diagnosticar se é problema de implementação ou problema de teste
+3. Se problema de implementação - Corrigir código de implementação
+4. Se problema de teste - Corrigir código de teste
+5. Garantir que todos os testes passam antes de fazer commit
 ```
 
-### 常见问题
+### Problemas Comuns
 
-| 问题 | 原因 | 解决方案 |
-|------|------|----------|
-| Flaky测试 | 异步操作、竞态条件 | 增加等待时间、使用mock |
-| 测试隔离失败 | 共享状态污染 | 每个测试前重置状态 |
-| Mock不正确 | 期望值与实际不符 | 验证mock设置是否正确 |
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| Flaky tests | Operações assíncronas, condições de corrida | Aumentar wait time, usar mocks |
+| Falha de isolamento de teste | Poluição de estado compartilhado | Resetar estado antes de cada teste |
+|Mocks incorretos | Valores esperados não coincidem com reais | Validar configuração de mock |
 
-## 相关规则
+## Regras Relacionadas
 
-| 关联规则 | 说明 |
-|----------|------|
-| Estilo-de-Código规则 | 代码可读性和可维护性 |
-| Regras-de-Segurança | 安全测试要求 |
-| 代码审查规则 | 测试覆盖率检查 |
-| 开发工作流 | TDD流程集成 |
+| Regra Relacionada | Descrição |
+|-------------------|-----------|
+| Regras de Estilo de Código | Legibilidade e manutenibilidade de código |
+| Regras de Segurança | Requisitos de teste de segurança |
+| Regras de revisão de código | Verificações de cobertura de teste |
+| Workflow de desenvolvimento | Integração de fluxo TDD |

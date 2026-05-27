@@ -1,12 +1,12 @@
-# Desenvolvimento-Customizado
+# Desenvolvimento Customizado de Hooks
 
-## 概述
+## Visão Geral
 
-本指南介绍如何为ECC Sistema-Hooks开发自定义钩子，包括基础结构、Melhores-Práticas和exit 0要求。
+Este guia apresenta como desenvolver hooks customizados para o Sistema-Hooks do ECC, incluindo estrutura básica, melhores práticas e requisito de exit 0.
 
-## 基础结构
+## Estrutura Básica
 
-### 最小钩子模板
+### Modelo Mínimo de Hook
 
 ```javascript
 // my-custom-hook.js
@@ -15,66 +15,66 @@ process.stdin.on('data', chunk => data += chunk);
 process.stdin.on('end', () => {
   const input = JSON.parse(data);
 
-  // 访问工具信息
-  const toolName = input.tool_name;        // "Edit", "Bash", "Write"等
-  const toolInput = input.tool_input;      // 工具特定参数
-  const toolOutput = input.tool_output;    // 仅在PostToolUse可用
+  // Acessar informações da ferramenta
+  const toolName = input.tool_name;        // "Edit", "Bash", "Write" etc.
+  const toolInput = input.tool_input;      // Parâmetros específicos da ferramenta
+  const toolOutput = input.tool_output;    // Apenas disponível em PostToolUse
 
-  // 警告（非阻塞）：写入stderr
-  console.error('[Hook] 警告信息');
+  // Aviso (não bloqueante): escrever para stderr
+  console.error('[Hook] Mensagem de aviso');
 
-  // 阻止（仅PreToolUse）：exit code 2
+  // Bloquear (apenas PreToolUse): exit code 2
   // process.exit(2);
 
-  // 始终将原始数据输出到stdout
+  // Sempre outputar dados originais para stdout
   console.log(data);
 });
 ```
 
 ---
 
-## 退出码要求
+## Requisitos de Exit Code
 
-### 关键规则：exit 0 on 非关键错误
+### Regra-Chave: exit 0 em erros não-críticos
 
-**重要**: 所有钩子必须在非关键错误时exit 0，避免意外阻塞工具执行。
+**Importante**: Todos os hooks devem fazer exit 0 em erros não-críticos, para evitar bloqueio inesperado da execução da ferramenta.
 
-| 退出码 | 含义 | 使用场景 |
-|--------|------|----------|
-| 0 | 成功 | 继续执行，或非关键警告 |
-| 2 | 阻止 | 仅用于PreToolUse的关键阻塞 |
-| 其他非零 | 错误 | 仅记录日志，**不要使用** |
+| Exit Code | Significado | Cenário de Uso |
+|-----------|-------------|----------------|
+| 0 | Sucesso | Continuar execução, ou aviso não-crítico |
+| 2 | Bloquear | Apenas para bloqueio crítico em PreToolUse |
+| Outros não-zero | Erro | Apenas logar, **não usar** |
 
-### 为什么非零退出码不好？
+### Por que exit codes não-zero são ruins?
 
-如果钩子以非零退出码退出（除2外），Claude Code会将整个工具调用标记为失败，这可能导致：
-- 工具执行被意外中断
-- 用户体验受损
-- 难以调试的问题
+Se o hook sai com exit code não-zero (exceto 2), o Claude Code marcará toda a chamada de ferramenta como falha, o que pode causar:
+- Execução de ferramenta interrompida inesperadamente
+- Experiência do usuário prejudicada
+- Problemas difíceis de debug
 
-### 正确处理错误
+### Tratamento Correto de Erros
 
 ```javascript
-// 错误示例 - 不要这样做
+// Exemplo errado - não fazer isso
 process.stdin.on('end', () => {
   try {
     const input = JSON.parse(data);
-    // 处理逻辑
+    // lógica de processamento
   } catch (e) {
     console.error('[Hook] Error:', e.message);
-    process.exit(1);  // 错误：会阻塞工具
+    process.exit(1);  // Erro: vai bloquear a ferramenta
   }
   console.log(data);
 });
 
-// 正确示例 - 这样做
+// Exemplo correto - fazer isso
 process.stdin.on('end', () => {
   try {
     const input = JSON.parse(data);
-    // 处理逻辑
+    // lógica de processamento
   } catch (e) {
     console.error('[Hook] Error:', e.message);
-    // 非关键错误，exit 0继续执行
+    // Erro não-crítico, exit 0 para continuar
     console.log(data);
     return;
   }
@@ -84,36 +84,36 @@ process.stdin.on('end', () => {
 
 ---
 
-## 钩子输入模式
+## Modos de Input de Hook
 
-### HookInput 接口
+### Interface HookInput
 
 ```typescript
 interface HookInput {
-  tool_name: string;          // 工具名称
-  tool_input: {               // 工具输入参数
-    command?: string;         // Bash: 命令
-    file_path?: string;        // Edit/Write/Read: 文件路径
-    old_string?: string;       // Edit: 被替换的文本
-    new_string?: string;       // Edit: 替换文本
-    content?: string;          // Write: 文件内容
+  tool_name: string;          // Nome da ferramenta
+  tool_input: {               // Parâmetros de input da ferramenta
+    command?: string;         // Bash: comando
+    file_path?: string;        // Edit/Write/Read: caminho do arquivo
+    old_string?: string;       // Edit: texto substituído
+    new_string?: string;       // Edit: texto de substituição
+    content?: string;          // Write: conteúdo do arquivo
   };
-  tool_output?: {             // PostToolUse only
-    output?: string;          // 命令/工具输出
+  tool_output?: {             // Apenas em PostToolUse
+    output?: string;          // Output do comando/ferramenta
   };
 }
 ```
 
-### 访问工具信息
+### Acessar Informações da Ferramenta
 
 ```javascript
 process.stdin.on('end', () => {
   const input = JSON.parse(data);
 
-  // 获取工具名称
+  // Obter nome da ferramenta
   console.log('Tool:', input.tool_name);
 
-  // 根据工具类型处理
+  // Processar baseado no tipo de ferramenta
   if (input.tool_name === 'Bash') {
     console.log('Command:', input.tool_input.command);
   }
@@ -122,7 +122,7 @@ process.stdin.on('end', () => {
     console.log('File:', input.tool_input.file_path);
   }
 
-  // PostToolUse可访问输出
+  // PostToolUse pode acessar output
   if (input.tool_output) {
     console.log('Output:', input.tool_output.output);
   }
@@ -131,9 +131,9 @@ process.stdin.on('end', () => {
 
 ---
 
-## 常见钩子配方
+## Receitas Comuns de Hook
 
-### 警告 TODO/FIXME 注释
+### Aviso de Comentários TODO/FIXME
 
 ```json
 {
@@ -142,11 +142,11 @@ process.stdin.on('end', () => {
     "type": "command",
     "command": "node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const i=JSON.parse(d);const ns=i.tool_input?.new_string||'';if(/TODO|FIXME|HACK/.test(ns)){console.error('[Hook] New TODO/FIXME added - consider creating an issue')}console.log(d)})\""
   }],
-  "description": "警告添加TODO/FIXME注释"
+  "description": "Avisar ao adicionar comentários TODO/FIXME"
 }
 ```
 
-### 阻止创建过大文件
+### Bloquear Criação de Arquivos Muito Grandes
 
 ```json
 {
@@ -155,11 +155,11 @@ process.stdin.on('end', () => {
     "type": "command",
     "command": "node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const i=JSON.parse(d);const c=i.tool_input?.content||'';const lines=c.split('\\n').length;if(lines>800){console.error('[Hook] BLOCKED: File exceeds 800 lines ('+lines+' lines)');console.error('[Hook] Split into smaller, focused modules');process.exit(2)}console.log(d)})\""
   }],
-  "description": "阻止创建超过800行的文件"
+  "description": "Bloquear criação de arquivos com mais de 800 linhas"
 }
 ```
 
-### 用ruff自动格式化Python文件
+### Auto-formatar Arquivos Python com ruff Após Editar
 
 ```json
 {
@@ -168,11 +168,11 @@ process.stdin.on('end', () => {
     "type": "command",
     "command": "node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const i=JSON.parse(d);const p=i.tool_input?.file_path||'';if(/\\.py$/.test(p)){const{execFileSync}=require('child_process');try{execFileSync('ruff',['format',p],{stdio:'pipe'})}catch(e){}}console.log(d)})\""
   }],
-  "description": "编辑后用ruff自动格式化Python文件"
+  "description": "Auto-formatar arquivos Python com ruff após editar"
 }
 ```
 
-### 要求新源文件附带测试
+### Lembrar de Criar Testes ao Adicionar Novos Arquivos Fonte
 
 ```json
 {
@@ -181,15 +181,15 @@ process.stdin.on('end', () => {
     "type": "command",
     "command": "node -e \"const fs=require('fs');let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const i=JSON.parse(d);const p=i.tool_input?.file_path||'';if(/src\\/.*\\.(ts|js)$/.test(p)&&!/\\.test\\.|\\.spec\\./.test(p)){const testPath=p.replace(/\\.(ts|js)$/,'.test.$1');if(!fs.existsSync(testPath)){console.error('[Hook] No test file found for: '+p);console.error('[Hook] Expected: '+testPath);console.error('[Hook] Consider writing tests first (/tdd)')}}console.log(d)})\""
   }],
-  "description": "添加新源文件时提醒创建测试"
+  "description": "Lembrar de criar testes ao adicionar novos arquivos fonte"
 }
 ```
 
 ---
 
-## 异步钩子
+## Hooks Assíncronos
 
-对于不应阻塞主流程的钩子（如后台分析）：
+Para hooks que não devem bloquear o fluxo principal (como análise em background):
 
 ```json
 {
@@ -203,41 +203,41 @@ process.stdin.on('end', () => {
 }
 ```
 
-### 异步钩子注意事项
+### Observações sobre Hooks Assíncronos
 
-- 异步钩子运行在后台
-- 无法阻塞工具执行
-- 应该在30秒内完成
-- 适用于：日志、分析、遥测
+- Hooks assíncronos executam em background
+- Não podem bloquear execução de ferramenta
+- Devem completar em 30 segundos
+- Adequados para: logging, análise, telemetria
 
 ---
 
-## 阻塞钩子
+## Hooks de Bloqueio
 
-对于必须阻止工具执行的情况（PreToolUse only）：
+Para situações que devem bloquear execução de ferramenta (PreToolUse apenas):
 
 ```javascript
-// 在PreToolUse中阻止
-process.exit(2);  // 退出码2表示阻止
+// Em PreToolUse, bloquear
+process.exit(2);  // Exit code 2 significa bloquear
 ```
 
-### 何时使用阻止
+### Quando Usar Bloqueio
 
-- 安全检查失败（如检测到密钥）
-- 违反硬性策略
-- 可能导致数据丢失的操作
+- Verificações de segurança falhando (como detectar chave)
+- Violações de política rígida
+- Operações que podem causar perda de dados
 
-### 何时不要使用阻止
+### Quando NÃO Usar Bloqueio
 
-- Estilo-de-Código问题（使用警告代替）
-- 非关键检查
-- 建议类检查
+- Problemas de estilo de código (usar aviso ao invés disso)
+- Verificações não-críticas
+- Sugestões
 
 ---
 
-## 运行时配置
+## Configuração em Runtime
 
-### 使用 run-with-flags.js
+### Usar run-with-flags.js
 
 ```json
 {
@@ -249,9 +249,9 @@ process.exit(2);  // 退出码2表示阻止
 }
 ```
 
-### 简化版本
+### Versão Simplificada
 
-直接使用脚本路径（如果插件根目录已知）：
+Usar caminho de script direto (se o root do plugin for conhecido):
 
 ```json
 {
@@ -265,64 +265,64 @@ process.exit(2);  // 退出码2表示阻止
 
 ---
 
-## 跨平台注意事项
+## Considerações Cross-Platform
 
-### 路径处理
+### Tratamento de Caminhos
 
 ```javascript
 const path = require('path');
 const os = require('os');
 
-// 使用path.join而非硬编码路径分隔符
+// Usar path.join ao invés de caminhos hardcoded
 const configPath = path.join(os.homedir(), '.claude', 'config.json');
 
-// 检测平台
+// Detectar plataforma
 if (process.platform === 'win32') {
-  // Windows特定处理
+  // Tratamento específico para Windows
 }
 ```
 
-### 进程输出
+### Output de Processo
 
 ```javascript
-// 使用console.error输出警告（显示给用户）
+// Usar console.error para output de aviso (mostra para usuário)
 console.error('[Hook] Warning: some issue detected');
 
-// 使用console.log输出原始数据（必须）
+// Usar console.log para output de dados originais (obrigatório)
 console.log(data);
 
-// 绝不要使用console.log输出消息文本（会干扰stdout数据流）
+// Nunca usar console.log para mensagens de texto (vai quebrar fluxo de dados)
 ```
 
 ---
 
-## 性能Melhores-Práticas
+## Melhores Práticas de Performance
 
-### 保持快速
+### Manter Rápido
 
-- PreToolUse钩子：<200ms
-- PostToolUse同步钩子：<1秒
-- 异步钩子：<30秒
+- Hooks PreToolUse: <200ms
+- Hooks PostToolUse síncronos: <1 segundo
+- Hooks assíncronos: <30 segundos
 
-### 避免阻塞操作
+### Evitar Operações Bloqueantes
 
 ```javascript
-// 不好：同步文件读取
+// Ruim: leitura de arquivo síncrona
 const content = fs.readFileSync('large-file.txt', 'utf8');
 
-// 好：异步或延迟加载
+// Bom: leitura assíncrona ou lazy loading
 fs.readFile('large-file.txt', 'utf8', (err, content) => {
-  // 处理
+  // processar
 });
 ```
 
-### 缓存结果
+### Cache de Resultados
 
 ```javascript
-// 缓存昂贵操作
+// Cache de operações caras
 let cachedResult = null;
 let cacheTime = 0;
-const CACHE_TTL = 60000; // 1分钟
+const CACHE_TTL = 60000; // 1 minuto
 
 function getCachedResult() {
   const now = Date.now();
@@ -336,36 +336,36 @@ function getCachedResult() {
 
 ---
 
-## 测试钩子
+## Testando Hooks
 
-### 手动测试
+### Teste Manual
 
 ```bash
-# 测试PreToolUse钩子
+# Testar hook PreToolUse
 echo '{"tool_name":"Bash","tool_input":{"command":"echo test"}}' | node scripts/hooks/my-hook.js
 
-# 测试PostToolUse钩子
+# Testar hook PostToolUse
 echo '{"tool_name":"Bash","tool_input":{"command":"echo test"},"tool_output":{"output":"test\n"}}' | node scripts/hooks/my-hook.js
 ```
 
-### 测试输出格式
+### Formato de Output de Teste
 
 ```javascript
-// 正确的stdout输出（JSON）
-console.log(data);  // 原始输入数据
+// Output stdout correto (JSON)
+console.log(data);  // Dados de input originais
 
-// 正确的stderr输出（警告）
+// Output stderr correto (avisos)
 console.error('[Hook] Warning message');
 
-// 不正确的做法 - 不要输出其他内容到stdout
-console.log('Some message');  // 这会破坏数据流
+// Maneira incorreta - não outputar outras coisas para stdout
+console.log('Some message');  // Isso vai quebrar o fluxo de dados
 ```
 
 ---
 
-## 调试钩子
+## Debugging de Hooks
 
-### 添加调试输出
+### Adicionar Output de Debug
 
 ```javascript
 const DEBUG = process.env.DEBUG_HOOKS === '1';
@@ -374,7 +374,7 @@ process.stdin.on('end', () => {
   if (DEBUG) {
     console.error('[DEBUG] Received input:', data);
   }
-  // 处理逻辑
+  // lógica de processamento
   if (DEBUG) {
     console.error('[DEBUG] Sending output');
   }
@@ -382,20 +382,20 @@ process.stdin.on('end', () => {
 });
 ```
 
-### 常见问题
+### Problemas Comuns
 
-| 问题 | 原因 | 解决方案 |
-|------|------|----------|
-| 工具被意外阻止 | 钩子exit非零（除2外） | 改用exit 0和stderr警告 |
-| 挂起 | 钩子没有结束 | 确保总是输出到stdout |
-| 数据损坏 | 输出到stdout非JSON | 仅输出原始data |
-| 性能问题 | 钩子太慢 | 优化或改为异步 |
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| Ferramenta bloqueada inesperadamente | Hook exit com código não-zero (exceto 2) | Usar exit 0 e avisos stderr |
+| Travando | Hook não terminou | Garantir sempre outputar para stdout |
+| Dados corrompidos | Output para stdout não é JSON | Apenas outputar data original |
+| Problemas de performance | Hook muito lento | Otimizar ou tornar assíncrono |
 
 ---
 
-## 集成到 hooks.json
+## Integrando ao hooks.json
 
-### 添加新钩子
+### Adicionar Novo Hook
 
 ```json
 {
@@ -409,7 +409,7 @@ process.stdin.on('end', () => {
             "command": "node scripts/hooks/my-new-hook.js"
           }
         ],
-        "description": "我的新钩子描述",
+        "description": "Descrição do meu novo hook",
         "id": "pre:custom:my-new-hook"
       }
     ]
@@ -417,7 +417,7 @@ process.stdin.on('end', () => {
 }
 ```
 
-### 禁用内置钩子
+### Desabilitar Hooks Embutidos
 
 ```json
 {
@@ -426,7 +426,7 @@ process.stdin.on('end', () => {
       {
         "matcher": "Write",
         "hooks": [],
-        "description": "禁用文档文件警告"
+        "description": "Desabilitar aviso de arquivos de documentação"
       }
     ]
   }
@@ -435,13 +435,13 @@ process.stdin.on('end', () => {
 
 ---
 
-## Melhores-Práticas总结
+## Resumo de Melhores Práticas
 
-1. **始终exit 0 on 非关键错误** - 不要用非零退出码（除2外）
-2. **使用console.error输出警告** - 不要用console.log
-3. **保持快速** - PreToolUse <200ms
-4. **总是输出原始data到stdout** - 不要改变数据流
-5. **使用异步处理长时间操作** - 设置async: true
-6. **跨平台路径处理** - 使用path.join
-7. **测试输出格式** - 确保stdout是原始JSON
-8. **文档化你的钩子** - 添加清晰的description
+1. **Sempre exit 0 em erros não-críticos** - Não usar códigos de saída não-zero (exceto 2)
+2. **Usar console.error para avisos** - Não usar console.log
+3. **Manter rápido** - PreToolUse <200ms
+4. **Sempre outputar data original para stdout** - Não mudar fluxo de dados
+5. **Usar processamento assíncrono para operações longas** - Definir async: true
+6. **Tratamento de caminhos cross-platform** - Usar path.join
+7. **Testar formato de output** - Garantir stdout é JSON original
+8. **Documentar hook** - Adicionar description clara

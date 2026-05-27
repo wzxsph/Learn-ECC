@@ -1,34 +1,34 @@
-# 测试运行器
+# Trình chạy kiểm thử
 
-本文档介绍 ECC 项目的测试结构和运行方式。
+Tài liệu này giới thiệu cấu trúc và cách chạy kiểm thử của dự án ECC.
 
-## 测试入口
+## Điểm vào kiểm thử
 
-**路径**: `tests/run-all.js`
+**Đường dẫn**: `tests/run-all.js`
 
-集中式测试运行器,自动发现并运行所有测试文件。
+Trình chạy kiểm thử tập trung, tự động khám phá và chạy tất cả file kiểm thử.
 
-### 使用方法
+### Cách sử dụng
 
 ```bash
-# 运行所有测试
+# Chạy tất cả kiểm thử
 node tests/run-all.js
 
-# 运行单个测试文件
+# Chạy một file kiểm thử
 node tests/lib/utils.test.js
 node tests/hooks/hooks.test.js
 ```
 
-### 测试文件发现
+### Khám phá file kiểm thử
 
-测试运行器通过 glob 模式 `tests/**/*.test.js` 自动发现测试文件。
+Trình chạy kiểm thử khám phá file kiểm thử qua glob pattern `tests/**/*.test.js`.
 
-规则:
-- 文件必须位于 `tests/` 目录下
-- 文件名必须以 `.test.js` 结尾
-- 目录结构会被保留用于显示
+Quy tắc:
+- File phải nằm trong thư mục `tests/`
+- Tên file phải kết thúc bằng `.test.js`
+- Cấu trúc thư mục được giữ để hiển thị
 
-### 输出格式
+### Định dạng output
 
 ```
 ╔══════════════════════════════════════════════════════════╗
@@ -36,9 +36,9 @@ node tests/hooks/hooks.test.js
 ╚══════════════════════════════════════════════════════════╝
 
 ━━━ Running lib/utils.test.js ━━━
-(测试输出...)
+(output kiểm thử...)
 ━━━ Running hooks/hooks.test.js ━━━
-(测试输出...)
+(output kiểm thử...)
 
 ╔══════════════════════════════════════════════════════════╗
 ║                     Final Results                        ║
@@ -49,58 +49,58 @@ node tests/hooks/hooks.test.js
 ╚══════════════════════════════════════════════════════════╝
 ```
 
-### 测试统计
+### Thống kê kiểm thử
 
-测试运行器会解析每个测试文件的输出来汇总统计:
-- `Passed: <数量>`
-- `Failed: <数量>`
+Trình chạy kiểm thử parse output của mỗi file để tổng hợp:
+- `Passed: <số lượng>`
+- `Failed: <số lượng>`
 
 ---
 
-## 测试结构
+## Cấu trúc kiểm thử
 
-### 目录布局
+### Bố cục thư mục
 
 ```
 tests/
-├── run-all.js              # 主测试运行器
-├── lib/                    # 库工具测试
+├── run-all.js              # Trình chạy kiểm thử chính
+├── lib/                    # Kiểm thử utility
 │   ├── utils.test.js
 │   ├── package-manager.test.js
 │   └── ...
-├── hooks/                  # Hook 集成测试
+├── hooks/                  # Kiểm thử tích hợp Hook
 │   └── hooks.test.js
-├── integration/            # 集成测试
-├── scripts/                # 脚本测试
-├── commands/               # 命令测试
-├── docs/                   # 文档测试
+├── integration/            # Kiểm thử tích hợp
+├── scripts/                # Kiểm thử script
+├── commands/               # Kiểm thử command
+├── docs/                   # Kiểm thử tài liệu
 ├── opencode-config.test.js
 ├── plugin-manifest.test.js
-├── test_*.py               # Python 测试
-└── conftest.py             # pytest 配置
+├── test_*.py               # Kiểm thử Python
+└── conftest.py             # Cấu hình pytest
 ```
 
-### 测试类型
+### Loại kiểm thử
 
-1. **单元测试** (`*.test.js`)
-   - 测试独立函数和工具
-   - 使用 Node.js 原生 assert 或 Jest 风格
+1. **Kiểm thử đơn vị** (`*.test.js`)
+   - Kiểm thử hàm và utility độc lập
+   - Sử dụng Node.js assert native hoặc Jest style
 
-2. **集成测试** (`tests/integration/`)
-   - 测试多个组件协作
-   - 测试钩子完整流程
+2. **Kiểm thử tích hợp** (`tests/integration/`)
+   - Kiểm thử nhiều component cùng làm việc
+   - Kiểm thử luồng Hook hoàn chỉnh
 
-3. **Python 测试** (`test_*.py`)
-   - pytest 格式的 Python 测试
-   - 使用 `conftest.py` 配置
+3. **Kiểm thử Python** (`test_*.py`)
+   - Kiểm thử format pytest
+   - Sử dụng `conftest.py` để cấu hình
 
 ---
 
-## 测试配置
+## Cấu hình kiểm thử
 
-### Node.js 测试
+### Kiểm thử Node.js
 
-测试文件使用标准的 Node.js assert 模块:
+File kiểm thử sử dụng Node.js assert module chuẩn:
 
 ```javascript
 const assert = require('assert');
@@ -110,42 +110,42 @@ test('example test', () => {
 });
 ```
 
-### Python 测试 (pytest)
+### Kiểm thử Python (pytest)
 
-位置: `tests/conftest.py`
+Vị trí: `tests/conftest.py`
 
-pytest 配置文件,提供共享的 fixtures 和配置。
+File cấu hình pytest, cung cấp shared fixtures và cấu hình.
 
 ```bash
-# 运行 Python 测试
+# Chạy kiểm thử Python
 python -m pytest tests/
 
-# 运行特定测试
+# Chạy kiểm thử cụ thể
 python -m pytest tests/test_builder.py
 ```
 
 ---
 
-## 测试最佳实践
+## Thực hành tốt nhất kiểm thử
 
-### AAA 模式
+### Mẫu AAA
 
 ```
-test('测试描述', () => {
-  // Arrange - 准备测试数据
+test('mô tả kiểm thử', () => {
+  // Arrange - Chuẩn bị dữ liệu kiểm thử
   const input = 'test data';
 
-  // Act - 执行被测操作
+  // Act - Thực hiện thao tác được kiểm thử
   const result = myFunction(input);
 
-  // Assert - 验证结果
+  // Assert - Xác minh kết quả
   assert.strictEqual(result, expected);
 });
 ```
 
-### 测试命名
+### Đặt tên kiểm thử
 
-使用描述性名称,清晰说明测试的行为:
+Sử dụng tên mô tả, giải thích rõ hành vi được kiểm thử:
 
 ```javascript
 test('returns empty array when no markets match query', () => {});
@@ -153,18 +153,18 @@ test('throws error when API key is missing', () => {});
 test('falls back to substring search when Redis is unavailable', () => {});
 ```
 
-### 测试隔离
+### Cô lập kiểm thử
 
-每个测试应该:
-- 独立运行,不依赖其他测试
-- 清理自己的测试数据
-- 使用 mock 隔离外部依赖
+Mỗi kiểm thử nên:
+- Chạy độc lập, không phụ thuộc các kiểm thử khác
+- Dọn dẹp dữ liệu kiểm thử riêng
+- Sử dụng mock để cô lập external dependencies
 
 ---
 
-## CI 集成
+## Tích hợp CI
 
-在 `package.json` 中配置测试脚本:
+Trong `package.json`, cấu hình script kiểm thử:
 
 ```json
 {
@@ -174,7 +174,7 @@ test('falls back to substring search when Redis is unavailable', () => {});
 }
 ```
 
-测试运行器设计为可在 CI 环境中工作:
-- 非零退出码表示失败
-- JSON 输出用于自动化解析
-- 清晰的错误消息用于调试
+Trình chạy kiểm thử được thiết kế để hoạt động trong môi trường CI:
+- Exit code khác 0 cho biết fail
+- Output JSON cho parse tự động
+- Thông báo lỗi rõ ràng cho debug

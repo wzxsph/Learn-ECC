@@ -1,80 +1,80 @@
-# 项目管理命令
+# Comandos de Gerenciamento de Projeto
 
-## 概述
+## Visão Geral
 
-项目管理命令用于项目配置、基础设施设置和工具链管理。
+Comandos de gerenciamento de projeto são usados para configuração de projeto, infraestrutura e gerenciamento de toolchain.
 
-## 命令列表
+## Lista de Comandos
 
 ### /projects
 
-**用途**: 列出已知项目 + instinct 统计
+**Propósito**: Listar projetos conhecidos + estatísticas de instinct
 
-**描述**: 列出用户所有已知项目及其相关的 instinct 统计信息。
+**Descrição**: Lista todos os projetos conhecidos do usuário junto com suas estatísticas de instinct relacionadas.
 
 ---
 
 ### /harness-audit
 
-**用途**: 审计 agent harness 配置
+**Propósito**: Auditar configuração do agent harness
 
-**描述**: 检查和审计 Claude Code 的 harness 配置。
+**Descrição**: Verifica e audita a configuração do harness do Claude Code.
 
-**检查内容**:
-- 工具链配置
-- 代理设置
-- MCP 服务器状态
-- 规则配置
+**Verifica**:
+- Configuração de toolchain
+- Configurações de agent
+- Status do servidor MCP
+- Configuração de regras
 
 ---
 
 ### /model-route
 
-**用途**: 路由任务到合适模型
+**Propósito**: Rotear tarefas para modelo apropriado
 
-**描述**: 根据任务类型选择最合适的模型（Haiku/Sonnet/Opus）。
+**Descrição**: Seleciona o modelo mais apropriado baseado no tipo de tarefa (Haiku/Sonnet/Opus).
 
-**模型选择指南**:
-- **Haiku**: 轻量级任务、代码生成、频繁调用
-- **Sonnet**: 主要开发工作、复杂编码任务
-- **Opus**: 架构决策、深度推理、研究分析
+**Guia de Seleção de Modelo**:
+- **Haiku**: Tarefas leves, geração de código, invocações frequentes
+- **Sonnet**: Trabalho principal de desenvolvimento, tarefas de codificação complexas
+- **Opus**: Decisões de arquitetura, reasoning profundo, tarefas de pesquisa e análise
 
 ---
 
 ### /pm2
 
-**用途**: PM2 进程管理器初始化
+**Propósito**: Inicialização do gerenciador de processos PM2
 
-**描述**: 初始化 PM2 进程管理器配置。
+**Descrição**: Inicializa configuração do gerenciador de processos PM2.
 
 ---
 
 ### /setup-pm
 
-**用途**: 配置包管理器
+**Propósito**: Configurar gerenciador de pacotes
 
-**描述**: 配置项目使用的包管理器。
+**Descrição**: Configura o gerenciador de pacotes usado pelo projeto.
 
-**支持的包管理器**:
+**Gerenciadores de Pacotes Suportados**:
 - npm
 - pnpm
 - yarn
 - bun
 
-**可通过** `CLAUDE_PACKAGE_MANAGER` **环境变量配置**
+**Pode ser configurado via variável de ambiente** `CLAUDE_PACKAGE_MANAGER`
 
 ---
 
 ### /project-init
 
-**用途**: 项目初始化
+**Propósito**: Inicialização de projeto
 
-**描述**: 初始化新项目的标准结构和配置。
+**Descrição**: Inicializa estrutura e configuração padrão de novo projeto.
 
 ---
 
-## 相关命令
+## Comandos Relacionados
 
-- `/projects` - 列出项目
-- `/harness-audit` - 审计配置
-- `/model-route` - 模型路由
+- `/projects` - Listar projetos
+- `/harness-audit` - Auditar configuração
+- `/model-route` - Rotear modelo

@@ -1,130 +1,130 @@
-# 后端与 API 技能
+# Backend- und API-Faehigkeiten
 
-## 概述
+## Ueberblick
 
-后端与 API 相关技能用于构建服务器端应用、API 设计和数据库操作。
+Backend- und API-Faehigkeiten werden fuer den Aufbau von Serverseit-Anwendungen, API-Design und Datenbankoperationen verwendet.
 
-## 核心技能
+## Kernfaehigkeiten
 
 ### backend-patterns
 
-**用途**: 后端开发最佳实践
+**Zweck**: Backend-Entwicklungs-Best-Practices
 
-**核心概念**:
-- 分层架构（Controller → Service → Repository）
-- 依赖注入
-- 错误处理策略
-- 缓存模式
-- 消息队列集成
+**Kernkonzepte**:
+- Schichtarchitektur (Controller → Service → Repository)
+- Abhaengigkeitsinjektion
+- Fehlerbehandlungsstrategien
+- Caching-Muster
+- Message-Queue-Integration
 
 ---
 
 ### api-design
 
-**用途**: API 设计与RESTful 规范
+**Zweck**: API-Design und RESTful-Konventionen
 
-**核心概念**:
-- RESTful 路由设计
-- 请求/响应格式
-- 认证与授权
-- 版本控制策略
-- 限流与缓存
+**Kernkonzepte**:
+- RESTful-Routing-Design
+- Request-/Response-Format
+- Authentifizierung und Autorisierung
+- Versionierungsstrategien
+- Rate-Limiting und Caching
 
 ---
 
 ### api-connector-builder
 
-**用途**: API 连接器构建工具
+**Zweck**: API-Connector-Builder-Tool
 
-**使用场景**:
-- 第三方 API 集成
-- Webhook 处理
-- OAuth 流程实现
-- API 错误重试机制
+**Anwendungsszenarien**:
+- Drittanbieter-API-Integration
+- Webhook-Behandlung
+- OAuth-Flow-Implementierung
+- API-Fehler-Retry-Mechanismus
 
 ---
 
-## 数据库技能
+## Datenbankfaehigkeiten
 
 ### database-migrations
 
-**用途**: 数据库迁移管理
+**Zweck**: Datenbank-Migrations-Management
 
-**核心概念**:
-- 迁移文件组织
-- 数据回滚策略
-- 种子数据管理
-- 零停机部署
+**Kernkonzepte**:
+- Migrationsdatei-Organisation
+- Daten-Rollback-Strategien
+- Seed-Daten-Management
+- Zero-Downtime-Deployment
 
 ---
 
 ### mysql-patterns
 
-**用途**: MySQL 数据库最佳实践
+**Zweck**: MySQL-Datenbank-Best-Practices
 
-**核心概念**:
-- 索引优化
-- 查询优化
-- 分表策略
-- 主从复制
+**Kernkonzepte**:
+- Index-Optimierung
+- Query-Optimierung
+- Tabellen-Partitionierung
+- Master-Slave-Replikation
 
 ---
 
 ### postgres-patterns
 
-**用途**: PostgreSQL 数据库最佳实践
+**Zweck**: PostgreSQL-Datenbank-Best-Practices
 
-**核心概念**:
-- JSONB 操作
-- 全文搜索
-- 分区表
-- 高级索引策略
+**Kernkonzepte**:
+- JSONB-Operationen
+- Volltextsuche
+- Partitionierte Tabellen
+- Erweiterte Indexstrategien
 
 ---
 
 ### redis-patterns
 
-**用途**: Redis 缓存模式
+**Zweck**: Redis-Caching-Muster
 
-**核心概念**:
-- 缓存策略（Cache-Aside、Write-Through）
-- 分布式锁
-- 会话存储
-- 消息发布/订阅
+**Kernkonzepte**:
+- Caching-Strategien (Cache-Aside, Write-Through)
+- Verteilte Locks
+- Session-Storage
+- Message Publish/Subscribe
 
 ---
 
 ### clickhouse-io
 
-**用途**: ClickHouse 列式存储
+**Zweck**: ClickHouse Columnar-Storage
 
-**使用场景**:
-- 分析型查询
-- 日志存储
-- 实时分析
-- 大数据管道
+**Anwendungsszenarien**:
+- Analytische Abfragen
+- Logs-Speicherung
+- Echtzeitanalyse
+- Big-Data-Pipelines
 
 ---
 
-## 消息队列
+## Message-Queues
 
 ### logistics-exception-management
 
-**用途**: 物流异常管理
+**Zweck**: Logistik-Exception-Management
 
-**使用场景**:
-- 订单异常处理
-- 退货流程
-- 库存同步
+**Anwendungsszenarien**:
+- Bestellausnahme-Behandlung
+- Rueckgabe-Flows
+- Bestandssynchronisation
 
 ---
 
-## 相关技能
+## Zugehoerige Faehigkeiten
 
-- `backend-patterns` - 后端模式
-- `api-design` - API 设计
-- `database-migrations` - 数据库迁移
-- `mysql-patterns` - MySQL 模式
-- `postgres-patterns` - PostgreSQL 模式
-- `redis-patterns` - Redis 模式
+- `backend-patterns` - Backend-Muster
+- `api-design` - API-Design
+- `database-migrations` - Datenbank-Migrationen
+- `mysql-patterns` - MySQL-Muster
+- `postgres-patterns` - PostgreSQL-Muster
+- `redis-patterns` - Redis-Muster
 - `clickhouse-io` - ClickHouse

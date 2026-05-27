@@ -1,409 +1,409 @@
-# 构建修复类 Agent
+# Agentes de Build e Correção
 
-构建修复类 Agent 专门负责诊断和修复各种Linguagens-de-Programação的构建错误、编译错误和依赖问题。
+Agentes de build e correção são especializados em diagnosticar e corrigir erros de build, erros de compilação e problemas de dependência em várias linguagens de programação.
 
-## Agent 列表
+## Lista de Agentes
 
-| Agent 名称 | 用途 | 使用模型 | 核心工具 |
-|------------|------|----------|----------|
-| build-error-resolver | TypeScript/通用构建错误修复 | sonnet | Read, Write, Edit, Bash, Grep, Glob |
-| go-build-resolver | Go 构建/编译错误修复 | sonnet | Read, Write, Edit, Bash, Grep, Glob |
-| kotlin-build-resolver | Kotlin/Gradle 构建错误修复 | sonnet | Read, Write, Edit, Bash, Grep, Glob |
-| rust-build-resolver | Rust 构建/借用检查器错误修复 | sonnet | Read, Write, Edit, Bash, Grep, Glob |
-| cpp-build-resolver | C++/CMake 构建错误修复 | sonnet | Read, Write, Edit, Bash, Grep, Glob |
-| java-build-resolver | Java/Maven/Gradle 构建错误修复 | sonnet | Read, Write, Edit, Bash, Grep, Glob |
-| swift-build-resolver | Swift/Xcode 构建错误修复 | sonnet | Read, Write, Edit, Bash, Grep, Glob |
-| dart-build-resolver | Dart/Flutter 构建错误修复 | sonnet | Read, Write, Edit, Bash, Grep, Glob |
-| django-build-resolver | Django/Python 构建问题修复 | sonnet | Read, Write, Edit, Bash, Grep, Glob |
-| pytorch-build-resolver | PyTorch/CUDA 构建问题修复 | sonnet | Read, Write, Edit, Bash, Grep, Glob |
+| Nome do Agente | Propósito | Modelo | Ferramentas Principais |
+|----------------|-----------|--------|----------------------|
+| build-error-resolver | Correção de erros TypeScript/build genéricos | sonnet | Read, Write, Edit, Bash, Grep, Glob |
+| go-build-resolver | Correção de erros build/compilação Go | sonnet | Read, Write, Edit, Bash, Grep, Glob |
+| kotlin-build-resolver | Correção de erros Kotlin/Gradle build | sonnet | Read, Write, Edit, Bash, Grep, Glob |
+| rust-build-resolver | Correção de erros Rust build/borrow checker | sonnet | Read, Write, Edit, Bash, Grep, Glob |
+| cpp-build-resolver | Correção de erros C++/CMake build | sonnet | Read, Write, Edit, Bash, Grep, Glob |
+| java-build-resolver | Correção de erros Java/Maven/Gradle build | sonnet | Read, Write, Edit, Bash, Grep, Glob |
+| swift-build-resolver | Correção de erros Swift/Xcode build | sonnet | Read, Write, Edit, Bash, Grep, Glob |
+| dart-build-resolver | Correção de erros Dart/Flutter build | sonnet | Read, Write, Edit, Bash, Grep, Glob |
+| django-build-resolver | Correção de problemas Django/Python build | sonnet | Read, Write, Edit, Bash, Grep, Glob |
+| pytorch-build-resolver | Correção de problemas PyTorch/CUDA build | sonnet | Read, Write, Edit, Bash, Grep, Glob |
 
 ---
 
 ## build-error-resolver
 
-### 名称和用途
-TypeScript 构建和类型错误解决专家。修复构建失败或类型错误，专注于让构建变绿，不做架构修改。
+### Nome e Propósito
+Especialista em resolver erros de build e tipo TypeScript. Corrige build failing ou erros de tipo, focado em deixar o build verde, sem fazer mudanças de arquitetura.
 
-### 能力说明
-- TypeScript 错误解决
-- 构建错误修复
-- 依赖问题修复
-- 配置错误解决
-- 最小化 diff 修复
+### Capacidades
+- Resolução de erros TypeScript
+- Correção de erros de build
+- Correção de problemas de dependência
+- Resolução de erros de configuração
+- Correção de diff mínima
 
-### 适用场景
-- 构建失败时
-- TypeScript 类型错误发生时
-- 模块解析问题时
+### Cenários de Uso
+- Quando o build falha
+- Quando ocorrem erros de tipo TypeScript
+- Quando há problemas de resolução de módulo
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Write: 写入修复
-- Edit: 编辑文件
-- Bash: 运行 tsc, npm build, eslint
-- Grep: 搜索错误模式
-- Glob: 查找相关文件
+### Ferramentas Utilizadas
+- Read: Ler conteúdo de arquivo
+- Write: Escrever correções
+- Edit: Editar arquivos
+- Bash: Executar tsc, npm build, eslint
+- Grep: Pesquisar padrões de erro
+- Glob: Encontrar arquivos relacionados
 
-### 与其他 Agent 的协作方式
-- 不做重构 → 使用 refactor-cleaner
-- 不做架构变更 → 使用 architect
-- 不添加新功能 → 使用 planner
-- 不修复测试 → 使用 tdd-guide
-- 不处理安全问题 → 使用 security-reviewer
+### Colaboração com Outros Agentes
+- Não fazer refatoração → usar refactor-cleaner
+- Não fazer mudanças de arquitetura → usar architect
+- Não adicionar novas funcionalidades → usar planner
+- Não corrigir testes → usar tdd-guide
+- Não lidar com problemas de segurança → usar security-reviewer
 
-### 核心原则
-- 只修复错误，不要重构
-- 最小化变更
-- 验证每次修复后构建通过
+### Princípios Centrais
+- Apenas corrigir erros, não refatorar
+- Mudanças mínimas
+- Verificar após cada correção se o build passa
 
 ---
 
 ## go-build-resolver
 
-### 名称和用途
-Go 构建、vet 和编译错误解决专家。修复 Go 构建错误、go vet 问题和 linter 警告。
+### Nome e Propósito
+Especialista em resolver erros de build Go, vet e compilação. Corrige erros de build Go, problemas de go vet e avisos de linter.
 
-### 能力说明
-- Go 编译错误诊断
-- go vet 警告修复
-- staticcheck/golangci-lint 问题修复
-- 模块依赖问题解决
-- 类型错误和接口不匹配处理
+### Capacidades
+- Diagnóstico de erros de compilação Go
+- Correção de avisos go vet
+- Correção de problemas staticcheck/golangci-lint
+- Resolução de problemas de dependência de módulo
+- Tratamento de erros de tipo e incompatibilidade de interface
 
-### 适用场景
-- Go 构建失败时
-- go vet 报错时
-- 模块依赖冲突时
+### Cenários de Uso
+- Quando o build Go falha
+- Quando go vet reporta problemas
+- Quando há conflitos de dependência de módulo
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Write: 写入修复
-- Edit: 编辑文件
-- Bash: 运行 go build, go vet, staticcheck, golangci-lint
-- Grep: 搜索错误模式
-- Glob: 查找相关文件
+### Ferramentas Utilizadas
+- Read: Ler conteúdo de arquivo
+- Write: Escrever correções
+- Edit: Editar arquivos
+- Bash: Executar go build, go vet, staticcheck, golangci-lint
+- Grep: Pesquisar padrões de erro
+- Glob: Encontrar arquivos relacionados
 
-### 与其他 Agent 的协作方式
-- go-reviewer 审查代码质量
-- security-reviewer 处理安全相关问题
+### Colaboração com Outros Agentes
+- go-reviewer para revisar qualidade de código
+- security-reviewer para lidar com problemas relacionados a segurança
 
-### 常见错误修复模式
+### Padrões Comuns de Correção de Erros
 
-| 错误类型 | 原因 | 修复方法 |
-|----------|------|----------|
-| undefined: X | 缺少导入、拼写错误 | 添加导入或修复大小写 |
-| cannot use X as type Y | 类型不匹配 | 类型转换或解引用 |
-| X does not implement Y | 缺少方法 | 使用正确 receiver 实现方法 |
-| import cycle not allowed | 循环依赖 | 提取共享类型到新包 |
-| cannot find package | 缺少依赖 | go get pkg@version 或 go mod tidy |
+| Tipo de Erro | Causa | Método de Correção |
+|--------------|-------|-------------------|
+| undefined: X | Importação faltando, erro de digitação | Adicionar importação ou corrigir maiúsculas/minúsculas |
+| cannot use X as type Y | Tipo incompatível | Conversão de tipo ou dereferência |
+| X does not implement Y | Método faltando | Implementar método com receiver correto |
+| import cycle not allowed | Dependência circular | Extrair tipo compartilhado para novo pacote |
+| cannot find package | Dependência faltando | go get pkg@version ou go mod tidy |
 
 ---
 
 ## kotlin-build-resolver
 
-### 名称和用途
-Kotlin/Gradle 构建、编译和依赖错误解决专家。修复 Kotlin 构建错误、Kotlin 编译器错误和 Gradle 问题。
+### Nome e Propósito
+Especialista em resolver erros de build, compilação e dependência Kotlin/Gradle. Corrige erros de build Kotlin, erros do compilador Kotlin e problemas do Gradle.
 
-### 能力说明
-- Kotlin 编译错误诊断
-- Gradle 构建配置问题修复
-- 依赖冲突和版本不匹配解决
-- Kotlin 编译器错误处理
-- detekt 和 ktlint 违规修复
+### Capacidades
+- Diagnóstico de erros de compilação Kotlin
+- Correção de problemas de configuração de build Gradle
+- Resolução de conflitos de dependência e incompatibilidade de versão
+- Tratamento de erros do compilador Kotlin
+- Correção de violações detekt e ktlint
 
-### 适用场景
-- Kotlin 构建失败时
-- Gradle 依赖冲突时
-- Kotlin 编译器报错时
+### Cenários de Uso
+- Quando o build Kotlin falha
+- Quando há conflitos de dependência Gradle
+- Quando o compilador Kotlin reporta erros
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Write: 写入修复
-- Edit: 编辑文件
-- Bash: 运行 ./gradlew build, detekt, ktlintCheck
-- Grep: 搜索错误模式
-- Glob: 查找相关文件
+### Ferramentas Utilizadas
+- Read: Ler conteúdo de arquivo
+- Write: Escrever correções
+- Edit: Editar arquivos
+- Bash: Executar ./gradlew build, detekt, ktlintCheck
+- Grep: Pesquisar padrões de erro
+- Glob: Encontrar arquivos relacionados
 
-### 与其他 Agent 的协作方式
-- kotlin-reviewer 审查代码质量
-- security-reviewer 处理安全相关问题
+### Colaboração com Outros Agentes
+- kotlin-reviewer para revisar qualidade de código
+- security-reviewer para lidar com problemas relacionados a segurança
 
-### 常见错误修复模式
+### Padrões Comuns de Correção de Erros
 
-| 错误类型 | 原因 | 修复方法 |
-|----------|------|----------|
-| Unresolved reference: X | 缺少导入、拼写错误 | 添加导入或依赖 |
-| Type mismatch | 类型错误 | 添加转换或修复类型 |
-| Smart cast impossible | 可变属性或并发访问 | 使用局部 val 副本 |
-| when expression must be exhaustive | sealed class when 缺少分支 | 添加缺失分支或 else |
-| Suspend function can only be called from coroutine | 缺少 suspend 或协程作用域 | 添加 suspend 修饰符 |
+| Tipo de Erro | Causa | Método de Correção |
+|--------------|-------|-------------------|
+| Unresolved reference: X | Importação faltando, erro de digitação | Adicionar importação ou dependência |
+| Type mismatch | Erro de tipo | Adicionar conversão ou corrigir tipo |
+| Smart cast impossible | Propriedade mutável ou acesso concorrente | Usar cópia val local ou let |
+| when expression must be exhaustive | Falta branch em sealed class when | Adicionar branch faltando ou else |
+| Suspend function can only be called from coroutine | Falta modificador suspend ou escopo de coroutine | Adicionar modificador suspend |
 
 ---
 
 ## rust-build-resolver
 
-### 名称和用途
-Rust 构建、编译和依赖错误解决专家。修复 cargo 构建错误、借用检查器问题和 Cargo.toml 问题。
+### Nome e Propósito
+Especialista em resolver erros de build, compilação e dependência Rust. Corrige erros de cargo build, problemas do borrow checker e problemas de Cargo.toml.
 
-### 能力说明
-- cargo build/check 错误诊断
-- 借用检查器和生命周期错误修复
-- 特征实现不匹配解决
-- Cargo 依赖和特征问题处理
-- cargo clippy 警告修复
+### Capacidades
+- Diagnóstico de erros cargo build/check
+- Correção de erros de borrow checker e lifetime
+- Resolução de incompatibilidade de implementação de trait
+- Tratamento de problemas de dependência e feature do Cargo
+- Correção de avisos cargo clippy
 
-### 适用场景
-- Rust 构建失败时
-- 借用检查器报错时
-- Cargo 依赖冲突时
+### Cenários de Uso
+- Quando o build Rust falha
+- Quando o borrow checker reporta erros
+- Quando há conflitos de dependência Cargo
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Write: 写入修复
-- Edit: 编辑文件
-- Bash: 运行 cargo check, clippy, fmt, tree
-- Grep: 搜索错误模式
-- Glob: 查找相关文件
+### Ferramentas Utilizadas
+- Read: Ler conteúdo de arquivo
+- Write: Escrever correções
+- Edit: Editar arquivos
+- Bash: Executar cargo check, clippy, fmt, tree
+- Grep: Pesquisar padrões de erro
+- Glob: Encontrar arquivos relacionados
 
-### 与其他 Agent 的协作方式
-- rust-reviewer 审查代码质量
-- security-reviewer 处理安全相关问题
+### Colaboração com Outros Agentes
+- rust-reviewer para revisar qualidade de código
+- security-reviewer para lidar com problemas relacionados a segurança
 
-### 常见错误修复模式
+### Padrões Comuns de Correção de Erros
 
-| 错误类型 | 原因 | 修复方法 |
-|----------|------|----------|
-| cannot borrow as mutable | 不可变借用激活 | 重构以先结束不可变借用 |
-| does not live long enough | 值在仍被借用时丢弃 | 扩展生命周期作用域 |
-| cannot move out of | 从引用后移动 | 使用 .clone() 或重构 |
-| mismatched types | 类型错误 | 添加 .into()、as 或显式转换 |
-| trait X is not implemented for Y | 缺少 impl 或 derive | 添加 #[derive(Trait)] |
+| Tipo de Erro | Causa | Método de Correção |
+|--------------|-------|-------------------|
+| cannot borrow as mutable | Empréstimo imutável ainda ativo | Refatorar para terminar empréstimo imutável primeiro |
+| does not live long enough | Valor descartado enquanto ainda emprestado | Expandir escopo do lifetime |
+| cannot move out of | Mover após referência | Usar .clone() ou refatorar |
+| mismatched types | Erro de tipo | Adicionar .into(), as ou conversão explícita |
+| trait X is not implemented for Y | Falta impl ou derive | Adicionar #[derive(Trait)] |
 
 ---
 
 ## cpp-build-resolver
 
-### 名称和用途
-C++ 构建、CMake 和编译错误解决专家。修复构建错误、链接器问题和模板错误。
+### Nome e Propósito
+Especialista em resolver erros de build, CMake e compilação C++. Corrige erros de build, problemas de linker e erros de template.
 
-### 能力说明
-- C++ 编译错误诊断
-- CMake 配置问题修复
-- 链接器错误解决（未定义引用、重复定义）
-- 模板实例化错误处理
-- 包含和依赖问题修复
+### Capacidades
+- Diagnóstico de erros de compilação C++
+- Correção de problemas de configuração CMake
+- Resolução de erros de linker (referências indefinidas, definições duplicadas)
+- Tratamento de erros de instanciação de template
+- Correção de problemas de inclusão e dependência
 
-### 适用场景
-- C++ 构建失败时
-- CMake 配置错误时
-- 链接器报错时
+### Cenários de Uso
+- Quando o build C++ falha
+- Quando há erros de configuração CMake
+- Quando o linker reporta erros
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Write: 写入修复
-- Edit: 编辑文件
-- Bash: 运行 cmake --build, clang-tidy, cppcheck
-- Grep: 搜索错误模式
-- Glob: 查找相关文件
+### Ferramentas Utilizadas
+- Read: Ler conteúdo de arquivo
+- Write: Escrever correções
+- Edit: Editar arquivos
+- Bash: Executar cmake --build, clang-tidy, cppcheck
+- Grep: Pesquisar padrões de erro
+- Glob: Encontrar arquivos relacionados
 
-### 与其他 Agent 的协作方式
-- cpp-reviewer 审查代码质量
-- security-reviewer 处理安全相关问题
+### Colaboração com Outros Agentes
+- cpp-reviewer para revisar qualidade de código
+- security-reviewer para lidar com problemas relacionados a segurança
 
-### 常见错误修复模式
+### Padrões Comuns de Correção de Erros
 
-| 错误类型 | 原因 | 修复方法 |
-|----------|------|----------|
-| undefined reference to X | 缺少实现或库 | 添加源文件或链接库 |
-| no matching function for call | 参数类型错误 | 修复类型或添加重载 |
-| multiple definition of | 重复符号 | 使用 inline 或移到 .cpp |
-| cannot convert X to Y | 类型不匹配 | 添加转换或修复类型 |
-| template argument deduction failed | 模板参数错误 | 修复模板参数 |
+| Tipo de Erro | Causa | Método de Correção |
+|--------------|-------|-------------------|
+| undefined reference to X | Implementação ou biblioteca faltando | Adicionar arquivo fonte ou linkar biblioteca |
+| no matching function for call | Erro de tipo de parâmetro | Corrigir tipo ou adicionar overload |
+| multiple definition of | Símbolo duplicado | Usar inline ou mover para .cpp |
+| cannot convert X to Y | Tipo incompatível | Adicionar conversão ou corrigir tipo |
+| template argument deduction failed | Erro de parâmetro de template | Corrigir parâmetros de template |
 
 ---
 
 ## java-build-resolver
 
-### 名称和用途
-Java/Maven/Gradle 构建、编译和依赖错误解决专家。自动检测 Spring Boot 或 Quarkus 并应用框架特定修复。
+### Nome e Propósito
+Especialista em resolver erros de build, compilação e dependência Java/Maven/Gradle. Detecta automaticamente Spring Boot ou Quarkus e aplica correções específicas do framework.
 
-### 能力说明
-- Java 编译错误诊断
-- Maven 和 Gradle 构建配置问题修复
-- 依赖冲突和版本不匹配解决
-- 注解处理器错误处理（Lombok、MapStruct、Spring、Quarkus）
-- Checkstyle 和 SpotBugs 违规修复
+### Capacidades
+- Diagnóstico de erros de compilação Java
+- Correção de problemas de configuração de build Maven e Gradle
+- Resolução de conflitos de dependência e incompatibilidade de versão
+- Tratamento de erros de processador de anotação (Lombok, MapStruct, Spring, Quarkus)
+- Correção de violações Checkstyle e SpotBugs
 
-### 适用场景
-- Java 构建失败时
-- Maven/Gradle 依赖冲突时
-- 框架特定构建问题时
+### Cenários de Uso
+- Quando o build Java falha
+- Quando há conflitos de dependência Maven/Gradle
+- Quando há problemas específicos de build de framework
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Write: 写入修复
-- Edit: 编辑文件
-- Bash: 运行 ./mvnw compile, ./gradlew build, dependency:tree
-- Grep: 搜索错误模式
-- Glob: 查找相关文件
+### Ferramentas Utilizadas
+- Read: Ler conteúdo de arquivo
+- Write: Escrever correções
+- Edit: Editar arquivos
+- Bash: Executar ./mvnw compile, ./gradlew build, dependency:tree
+- Grep: Pesquisar padrões de erro
+- Glob: Encontrar arquivos relacionados
 
-### 与其他 Agent 的协作方式
-- java-reviewer 审查代码质量
-- security-reviewer 处理安全相关问题
+### Colaboração com Outros Agentes
+- java-reviewer para revisar qualidade de código
+- security-reviewer para lidar com problemas relacionados a segurança
 
-### 框架检测
-自动检测项目框架：
-- 如果包含 `quarkus` → 应用 [QUARKUS] 规则
-- 如果包含 `spring-boot` → 应用 [SPRING] 规则
-- 两者都有 → 应用两个规则集
+### Detecção de Framework
+Detecção automática de framework do projeto:
+- Se contém `quarkus` → aplicar regras [QUARKUS]
+- Se contém `spring-boot` → aplicar regras [SPRING]
+- Ambos → aplicar dois conjuntos de regras
 
-### 常见错误修复模式
+### Padrões Comuns de Correção de Erros
 
-| 错误类型 | 原因 | 修复方法 |
-|----------|------|----------|
-| cannot find symbol | 缺少导入、拼写错误 | 添加导入或依赖 |
-| incompatible types | 类型不匹配 | 添加显式转换 |
-| package X does not exist | 缺少依赖 | 添加到 pom.xml/build.gradle |
-| No qualifying bean of type X | 缺少 @Component 或组件扫描 | 添加注解或修复扫描包 |
+| Tipo de Erro | Causa | Método de Correção |
+|--------------|-------|-------------------|
+| cannot find symbol | Importação faltando, erro de digitação | Adicionar importação ou dependência |
+| incompatible types | Tipo incompatível | Adicionar conversão explícita |
+| package X does not exist | Dependência faltando | Adicionar ao pom.xml/build.gradle |
+| No qualifying bean of type X | Falta @Component ou scanning de componente | Adicionar anotação ou corrigir pacote de scanning |
 
 ---
 
 ## swift-build-resolver
 
-### 名称和用途
-Swift/Xcode 构建、编译和依赖错误解决专家。修复 swift 构建错误、Xcode 构建失败、SPM 依赖问题和代码签名问题。
+### Nome e Propósito
+Especialista em resolver erros de build, compilação e dependência Swift/Xcode. Corrige erros de build swift, falhas de build Xcode, problemas de dependência SPM e problemas de code signing.
 
-### 能力说明
-- swift build/xcodebuild 错误诊断
-- 类型检查器和协议一致性错误修复
-- Swift Concurrency 和 Sendable 问题解决
-- SPM 依赖和版本解析失败处理
-- Xcode 项目配置和代码签名问题修复
+### Capacidades
+- Diagnóstico de erros swift build/xcodebuild
+- Correção de erros de type checker e conformidade de protocolo
+- Resolução de problemas de Swift Concurrency e Sendable
+- Tratamento de falhas de resolução e versão de dependência SPM
+- Correção de problemas de configuração de projeto Xcode e code signing
 
-### 适用场景
-- Swift 构建失败时
-- Xcode 构建失败时
-- SPM 依赖冲突时
+### Cenários de Uso
+- Quando o build Swift falha
+- Quando o build Xcode falha
+- Quando há conflitos de dependência SPM
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Write: 写入修复
-- Edit: 编辑文件
-- Bash: 运行 swift build, xcodebuild, swiftlint
-- Grep: 搜索错误模式
-- Glob: 查找相关文件
+### Ferramentas Utilizadas
+- Read: Ler conteúdo de arquivo
+- Write: Escrever correções
+- Edit: Editar arquivos
+- Bash: Executar swift build, xcodebuild, swiftlint
+- Grep: Pesquisar padrões de erro
+- Glob: Encontrar arquivos relacionados
 
-### 与其他 Agent 的协作方式
-- swift-reviewer 审查代码质量
-- security-reviewer 处理安全相关问题
+### Colaboração com Outros Agentes
+- swift-reviewer para revisar qualidade de código
+- security-reviewer para lidar com problemas relacionados a segurança
 
-### 常见错误修复模式
+### Padrões Comuns de Correção de Erros
 
-| 错误类型 | 原因 | 修复方法 |
-|----------|------|----------|
-| cannot find type 'X' in scope | 缺少导入或拼写错误 | 添加 import 或修复名称 |
-| type 'X' does not conform to protocol 'Y' | 缺少必需成员 | 实现缺失的协议要求 |
-| non-sendable type passed | Sendable 违规 | 添加 Sendable 一致性或重构 |
-| @MainActor function cannot be called | Main actor 隔离 | 添加 await 或使用 MainActor.run |
+| Tipo de Erro | Causa | Método de Correção |
+|--------------|-------|-------------------|
+| cannot find type 'X' in scope | Importação faltando ou erro de digitação | Adicionar import ou corrigir nome |
+| type 'X' does not conform to protocol 'Y' | Faltam membros requeridos | Implementar requisitos de protocolo faltando |
+| non-sendable type passed | Violação de Sendable | Adicionar conformidade Sendable ou refatorar |
+| @MainActor function cannot be called | Isolamento Main actor | Adicionar await ou usar MainActor.run |
 
 ---
 
 ## dart-build-resolver
 
-### 名称和用途
-Dart/Flutter 构建、分析和依赖错误解决专家。修复 dart analyze 错误、Flutter 编译失败、pub 依赖冲突和 build_runner 问题。
+### Nome e Propósito
+Especialista em resolver erros de build, análise e dependência Dart/Flutter. Corrige erros de dart analyze, falhas de compilação Flutter, conflitos de dependência pub e problemas de build_runner.
 
-### 能力说明
-- dart analyze/flutter analyze 错误诊断
-- Dart 类型错误、空安全违规和缺少导入修复
-- pubspec.yaml 依赖冲突和版本约束解决
-- build_runner 代码生成失败修复
-- Flutter 特定构建错误处理（Android Gradle、iOS CocoaPods、web）
+### Capacidades
+- Diagnóstico de erros dart analyze/flutter analyze
+- Correção de erros de tipo Dart, violações de null safety e importações faltando
+- Resolução de conflitos de dependência pubspec.yaml e restrições de versão
+- Correção de falhas de geração de código build_runner
+- Tratamento de erros específicos de build Flutter (Android Gradle, iOS CocoaPods, web)
 
-### 适用场景
-- Dart/Flutter 构建失败时
-- pub 依赖冲突时
-- build_runner 生成失败时
+### Cenários de Uso
+- Quando o build Dart/Flutter falha
+- Quando há conflitos de dependência pub
+- Quando a geração de build_runner falha
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Write: 写入修复
-- Edit: 编辑文件
-- Bash: 运行 flutter analyze, dart analyze, flutter pub get, build_runner
-- Grep: 搜索错误模式
-- Glob: 查找相关文件
+### Ferramentas Utilizadas
+- Read: Ler conteúdo de arquivo
+- Write: Escrever correções
+- Edit: Editar arquivos
+- Bash: Executar flutter analyze, dart analyze, flutter pub get, build_runner
+- Grep: Pesquisar padrões de erro
+- Glob: Encontrar arquivos relacionados
 
-### 与其他 Agent 的协作方式
-- flutter-reviewer 审查代码质量
-- security-reviewer 处理安全相关问题
+### Colaboração com Outros Agentes
+- flutter-reviewer para revisar qualidade de código
+- security-reviewer para lidar com problemas relacionados a segurança
 
-### 常见错误修复模式
+### Padrões Comuns de Correção de Erros
 
-| 错误类型 | 原因 | 修复方法 |
-|----------|------|----------|
-| The name 'X' isn't defined | 缺少导入或拼写错误 | 添加正确的 import |
-| A value of type 'X?' can't be assigned to type 'X' | 空安全 - 可空类型未处理 | 添加 !、?? default 或 null 检查 |
-| Because X depends on Y >=A and Z depends on Y <B | Pub 版本冲突 | 调整版本约束或添加 dependency_overrides |
-| build_runner: No actions were run | 代码生成输入没有变化 | 使用 --delete-conflicting-outputs 强制重建 |
+| Tipo de Erro | Causa | Método de Correção |
+|--------------|-------|-------------------|
+| The name 'X' isn't defined | Importação faltando ou erro de digitação | Adicionar import correto |
+| A value of type 'X?' can't be assigned to type 'X' | Null safety - tipo anulável não tratado | Adicionar !, ?? default ou verificação null |
+| Because X depends on Y >=A and Z depends on Y <B | Conflito de versão pub | Ajustar restrições de versão ou adicionar dependency_overrides |
+| build_runner: No actions were run | Entrada de geração de código sem mudanças | Usar --delete-conflicting-outputs para forçar reconstrução |
 
 ---
 
 ## django-build-resolver
 
-### 名称和用途
-Django/Python 构建和依赖问题修复专家。处理 Django 特定构建问题和 Python 依赖冲突。
+### Nome e Propósito
+Especialista em corrigir problemas de build e dependência Django/Python. Trata problemas específicos de build Django e conflitos de dependência Python.
 
-### 能力说明
-- Django 项目配置问题修复
-- Python 依赖冲突解决
-- Django 迁移问题处理
--requirements.txt/pipfile 依赖管理
+### Capacidades
+- Correção de problemas de configuração de projeto Django
+- Resolução de conflitos de dependência Python
+- Tratamento de problemas de migração Django
+- Gerenciamento de dependências requirements.txt/pipfile
 
-### 适用场景
-- Django 项目构建失败时
-- Python 依赖冲突时
-- Django 迁移问题时
+### Cenários de Uso
+- Quando o build de projeto Django falha
+- Quando há conflitos de dependência Python
+- Quando há problemas de migração Django
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Write: 写入修复
-- Edit: 编辑文件
-- Bash: 运行 pip, pipenv, poetry, django-admin
-- Grep: 搜索错误模式
-- Glob: 查找相关文件
+### Ferramentas Utilizadas
+- Read: Ler conteúdo de arquivo
+- Write: Escrever correções
+- Edit: Editar arquivos
+- Bash: Executar pip, pipenv, poetry, django-admin
+- Grep: Pesquisar padrões de erro
+- Glob: Encontrar arquivos relacionados
 
-### 与其他 Agent 的协作方式
-- python-reviewer 审查代码质量
-- security-reviewer 处理安全相关问题
+### Colaboração com Outros Agentes
+- python-reviewer para revisar qualidade de código
+- security-reviewer para lidar com problemas relacionados a segurança
 
 ---
 
 ## pytorch-build-resolver
 
-### 名称和用途
-PyTorch/CUDA 构建问题修复专家。处理 PyTorch 特定构建问题、CUDA 兼容性问题和张量操作错误。
+### Nome e Propósito
+Especialista em corrigir problemas de build PyTorch/CUDA. Trata problemas específicos de build PyTorch, problemas de compatibilidade CUDA e erros de operação de tensor.
 
-### 能力说明
-- PyTorch 构建错误诊断
-- CUDA 兼容性问题修复
-- 张量形状和设备放置错误处理
-- DataLoader 和 AMP 失败修复
-- PyTorch 环境配置问题
+### Capacidades
+- Diagnóstico de erros de build PyTorch
+- Correção de problemas de compatibilidade CUDA
+- Tratamento de erros de forma e posicionamento de tensor
+- Correção de falhas de DataLoader e AMP
+- Problemas de configuração de ambiente PyTorch
 
-### 适用场景
-- PyTorch 构建失败时
-- CUDA 兼容性问题时
-- 训练/推理失败时
+### Cenários de Uso
+- Quando o build PyTorch falha
+- Quando há problemas de compatibilidade CUDA
+- Quando há falhas de training/inference
 
-### 使用的工具列表
-- Read: 读取文件内容
-- Write: 写入修复
-- Edit: 编辑文件
-- Bash: 运行 python, pip, nvcc, nvidia-smi
-- Grep: 搜索错误模式
-- Glob: 查找相关文件
+### Ferramentas Utilizadas
+- Read: Ler conteúdo de arquivo
+- Write: Escrever correções
+- Edit: Editar arquivos
+- Bash: Executar python, pip, nvcc, nvidia-smi
+- Grep: Pesquisar padrões de erro
+- Glob: Encontrar arquivos relacionados
 
-### 与其他 Agent 的协作方式
-- mle-reviewer 审查 ML 代码
-- security-reviewer 处理安全相关问题
-[返回 Agent 索引](../README.md)
+### Colaboração com Outros Agentes
+- mle-reviewer para revisar código ML
+- security-reviewer para lidar com problemas relacionados a segurança
+[Voltar ao Índice de Agentes](../README.md)

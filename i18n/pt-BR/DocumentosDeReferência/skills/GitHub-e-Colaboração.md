@@ -1,63 +1,63 @@
-# GitHub 与协作技能
+# GitHub e Colaboração
 
-## 概述
+## Visão Geral
 
-GitHub 与协作技能用于 GitHub 操作、代码审查、PR 管理和团队协作。
+Habilidades de GitHub e Colaboração são usadas para operações GitHub, code review, gerenciamento de PR e colaboração em equipe.
 
-## 核心技能
+## Habilidades Principais
 
 ### github-ops
 
-**用途**: GitHub 操作与自动化
+**Propósito**: Operações e automação GitHub
 
-**功能**:
-- Issue 管理
-- PR 创建与审查
-- 代码审查自动化
-- GitHub Actions 工作流
+**Funcionalidades**:
+- Gerenciamento de Issues
+- Criação e revisão de PR
+- Automação de code review
+- Workflows de GitHub Actions
 
 ---
 
 ### git-workflow
 
-**用途**: Git 工作流规范
+**Propósito**: Especificação de workflow Git
 
-**核心概念**:
-- 分支策略
-- Commit 规范
-- Merge 策略
-- 冲突解决
+**Conceitos Centrais**:
+- Estratégia de branch
+- Convenção de commit
+- Estratégia de merge
+- Resolução de conflitos
 
 ---
 
 ### repo-scan
 
-**用途**: 代码库扫描
+**Propósito**: Varredura de codebase
 
-**检查项**:
-- 依赖漏洞
-- 代码重复
-- 圈复杂度
-- 文档完整性
+**Verificações**:
+- Vulnerabilidades de dependência
+- Duplicação de código
+- Complexidade de código
+- Completude de documentação
 
 ---
 
-## 代码审查
+## Code Review
 
 ### click-path-audit
 
-**用途**: 点击路径审计
+**Propósito**: Auditoria de caminho de clique
 
-**使用场景**:
-- 用户行为分析
-- 转化率优化
-- 漏斗分析
+**Cenários de Uso**:
+- Análise de comportamento de usuário
+- Otimização de taxa de conversão
+- Análise de funil
 
 ---
 
-## 相关技能
+## Habilidades Relacionadas
 
-- `github-ops` - GitHub 操作
-- `git-workflow` - Git 工作流
-- `repo-scan` - 代码库扫描
-- `click-path-audit` - 点击路径审计
+- `github-ops` - Operações GitHub
+- `git-workflow` - Workflow Git
+- `repo-scan` - Varredura de codebase
+- `click-path-audit` - Auditoria de caminho de clique

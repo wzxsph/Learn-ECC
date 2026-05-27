@@ -1,23 +1,23 @@
-# Habilidades-de-Domínio-Especializado
+# Habilidades de Domínio Especializado
 
-本部分涵盖特定领域的专业技能，包括区块链、游戏开发、音视频处理等。
+Esta seção abrange habilidades especializadas em domínios específicos, incluindo blockchain, desenvolvimento de jogos, processamento de áudio/vídeo e mais.
 
 ---
 
-## 区块链与 Web3
+## Blockchain e Web3
 
 ### solidity
 
-**用途**: Solidity 智能合约开发
+**Propósito**: Desenvolvimento de smart contracts Solidity
 
-**核心概念**:
-- 合约结构
-- 数据类型
-- 函数修饰符
-- 事件与日志
-- 继承与库
+**Conceitos Centrais**:
+- Estrutura de contratos
+- Tipos de dados
+- Modificadores de funções
+- Eventos e logs
+- Herança e bibliotecas
 
-**示例**:
+**Exemplo**:
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -38,19 +38,19 @@ contract Token {
 
 ### defi-amm-security
 
-**用途**: DeFi AMM Segurança
+**Propósito**: Segurança DeFi AMM
 
-**核心概念**:
-- 无常损失
-- 闪电贷攻击
-- 预言机操纵
-- 合约审计
+**Conceitos Centrais**:
+- Perda impermanente
+- Ataques de flash loan
+- Manipulação de oráculos
+- Auditoria de contratos
 
 ### ethereum-development
 
-**用途**: 以太坊开发
+**Propósito**: Desenvolvimento Ethereum
 
-**工具**:
+**Ferramentas**:
 - Hardhat
 - Foundry
 - ethers.js
@@ -58,325 +58,316 @@ contract Token {
 
 ---
 
-## 游戏开发
+## Desenvolvimento de Jogos
 
 ### unity
 
-**用途**: Unity 游戏开发
+**Propósito**: Desenvolvimento de jogos Unity
 
-**核心概念**:
-- 场景管理
-- 物理引擎
-- 粒子系统
-- 动画状态机
-- UI 系统
+**Conceitos Centrais**:
+- Gerenciamento de cenas
+- Motor físico
+- Sistemas de partículas
+- Máquinas de estado de animação
+- Sistema de UI
 
 ### godot
 
-**用途**: Godot 游戏引擎
+**Propósito**: Engine de jogos Godot
 
-**特点**:
+**Características**:
 - GDScript
-- 场景系统
-- 信号机制
-- 跨平台导出
+- Sistema de cenas
+- Mecanismo de sinais
+- Exportação cross-platform
 
 ### unreal-engine
 
-**用途**: Unreal Engine 开发
+**Propósito**: Desenvolvimento Unreal Engine
 
-**核心概念**:
+**Conceitos Centrais**:
 - Blueprint
-- C++ 编程
-- 材质系统
-- 动画蓝图
+- Programação C++
+- Sistema de materiais
+- Blueprints de animação
 
 ### game-ai
 
-**用途**: 游戏 AI
+**Propósito**: AI de jogos
 
-**技术**:
-- 状态机
-- 行为树
-- 路径规划
-- 决策树
+**Tecnologias**:
+- Máquinas de estado
+- Árvores de comportamento
+- Planejamento de caminhos
+- Árvores de decisão
 
 ---
 
-## 音视频处理
+## Processamento de Áudio/Vídeo
 
 ### video-editing
 
-**用途**: 视频编辑
+**Propósito**: Edição de vídeo
 
-**工具**:
+**Ferramentas**:
 - FFmpeg
 - DaVinci Resolve
 - Adobe Premiere
 
 ### audio-processing
 
-**用途**: 音频处理
+**Propósito**: Processamento de áudio
 
-**技术**:
-- 音频编码
-- 降噪
-- 混音
+**Tecnologias**:
+- Codificação de áudio
+- Redução de ruído
+- Mixagem
 
 ### streaming
 
-**用途**: 流媒体处理
+**Propósito**: Processamento de streaming
 
-**协议**:
+**Protocolos**:
 - HLS
 - DASH
 - RTMP
 
 ### media-processing
 
-**用途**: 媒体处理管道
+**Propósito**: Pipeline de processamento de mídia
 
-**工具**:
+**Ferramentas**:
 - GStreamer
 - MediaConvert
 - Transmux
 
 ---
 
-## 物联网
+## Internet das Coisas
 
 ### bluetooth-low-energy
 
-**用途**: BLE 开发
+**Propósito**: Desenvolvimento BLE
 
-**核心概念**:
-- GATT 协议
-- 广播与扫描
-- 连接管理
-- 功耗优化
+**Conceitos Centrais**:
+- Protocolo GATT
+- Broadcasting e scanning
+- Gerenciamento de conexões
+- Otimização de consumo de energia
 
 ### iot-development
 
-**用途**: IoT 开发
+**Propósito**: Desenvolvimento IoT
 
-**平台**:
+**Plataformas**:
 - Arduino
 - Raspberry Pi
 - ESP32
 
 ### embedded-systems
 
-**用途**: 嵌入式系统
+**Propósito**: Sistemas embarcados
 
-**技能**:
-- C/C++ 编程
-- 裸机开发
+**Habilidades**:
+- Programação C/C++
+- Desenvolvimento bare-metal
 - RTOS
-- 驱动开发
+- Desenvolvimento de drivers
 
 ---
 
-## 数据库与存储
+## Banco de Dados e Armazenamento
 
 ### sql-injection
 
-**用途**: SQL 注入防御
+**Propósito**: Defesa contra injeção SQL
 
-**防御措施**:
-- 参数化查询
-- ORM 使用
-- 输入验证
-- 最小权限原则
+**Medidas de Defesa**:
+- Queries parametrizadas
+- Uso de ORM
+- Validação de input
+- Princípio de privilégio mínimo
 
 ### postgresql
 
-**用途**: PostgreSQL Melhores-Práticas
+**Propósito**: Melhores-Práticas PostgreSQL
 
-**核心概念**:
-- 索引策略
-- 查询优化
-- 分区表
-- JSONB 操作
-- 复制配置
+**Conceitos Centrais**:
+- Estratégias de indexação
+- Otimização de queries
+- Tabelas particionadas
+- Operações JSONB
+- Configuração de replicação
 
 ### sqlite
 
-**用途**: SQLite 使用
+**Propósito**: Uso de SQLite
 
-**特点**:
-- 轻量级
-- 无服务器
-- ACID 兼容
-- 移动端应用
+**Características**:
+- Leve
+- Sem servidor
+- Compatível com ACID
+- Aplicações móveis
 
 ### snowflake
 
-**用途**: Snowflake 数据仓库
+**Propósito**: Data warehouse Snowflake
 
-**核心功能**:
-- 数据分享
-- 时间旅行
-- 克隆
-- 扩展微分区
+**Funcionalidades Centrais**:
+- Compartilhamento de dados
+- Viagem no tempo
+- Clonagem
+- Extensão de micropartição
 
 ---
 
-## 消息队列
+## Message Queue
 
 ### kafka
 
-**用途**: Apache Kafka
+**Propósito**: Apache Kafka
 
-**核心概念**:
-- Topic 与 Partition
-- 生产者与消费者
-- 消费者组
-- 复制与一致性
-- 流处理
+**Conceitos Centrais**:
+- Tópico e Partição
+- Produtor e Consumidor
+- Grupo de consumidores
+- Replicação e consistência
+- Processamento de streams
 
-**示例**:
+**Exemplo**:
 ```java
-// 生产者
+// Produtor
 KafkaProducer<String, String> producer = new KafkaProducer<>(props);
 ProducerRecord<String, String> record = new ProducerRecord<>("topic", "key", "value");
 producer.send(record);
 
-// 消费者
+// Consumidor
 KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
 consumer.subscribe(List.of("topic"));
 while (true) {
     ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
     for (ConsumerRecord<String, String> record : records) {
-        // 处理消息
+        // Processar mensagem
     }
 }
 ```
 
 ### nats
 
-**用途**: NATS 消息系统
+**Propósito**: Sistema de mensagens NATS
 
-**特点**:
-- 轻量级
-- 低延迟
-- 支持多种模式 (发布/订阅、请求/响应)
+**Características**:
+- Leve
+- Baixa latência
+- Suporte a múltiplos padrões (publicação/assinatura, request/response)
 
 ### mqtt
 
-**用途**: MQTT 物联网协议
+**Propósito**: Protocolo MQTT IoT
 
-**QoS 级别**:
-- QoS 0: 至多一次
-- QoS 1: 至少一次
-- QoS 2: 恰好一次
+**Níveis de QoS**:
+- QoS 0: No máximo uma vez
+- QoS 1: Pelo menos uma vez
+- QoS 2: Exatamente uma vez
 
 ---
 
-## 前端特定领域
+## Domínios Frontend Específicos
 
 ### pwa
 
-**用途**: Progressive Web App
+**Propósito**: Progressive Web App
 
-**核心功能**:
+**Funcionalidades Centrais**:
 - Service Worker
 - Web App Manifest
-- 离线支持
-- 推送通知
+- Suporte offline
+- Notificações push
 
 ### webgl
 
-**用途**: WebGL 图形编程
+**Propósito**: Programação gráfica WebGL
 
-**应用**:
-- 3D 渲染
-- 游戏
-- 数据可视化
+**Aplicações**:
+- Renderização 3D
+- Jogos
+- Visualização de dados
 
 ### webrtc
 
-**用途**: WebRTC 实时通信
+**Propósito**: Comunicação em tempo real WebRTC
 
-**核心 API**:
+**APIs Centrais**:
 - getUserMedia
 - RTCPeerConnection
 - RTCDataChannel
 
 ---
 
-## 文档与写作
+## Documentação e Escrita
 
 ### markdown
 
-**用途**: Markdown 编写
+**Propósito**: Escrita Markdown
 
-**扩展**:
+**Extensões**:
 - GFM (GitHub Flavored Markdown)
-- 表格
-- 代码块高亮
-- 任务列表
+- Tabelas
+- Destaque de código em blocos
+- Listas de tarefas
 
 ### latex
 
-**用途**: LaTeX 文档排版
+**Propósito**: Tipografia LaTeX
 
-**用途**:
-- 学术论文
-- 数学公式
-- 技术文档
+**Propósito**:
+- Papéis acadêmicos
+- Fórmulas matemáticas
+- Documentação técnica
 
 ### plantuml
 
-**用途**: PlantUML 图表
+**Propósito**: Diagramas PlantUML
 
-**图表类型**:
-- 类图
-- 序列图
-- 用例图
-- 活动图
+**Tipos de Diagramas**:
+- Diagramas de classe
+- Diagramas de sequência
+- Diagramas de caso de uso
+- Diagramas de atividade
 
 ---
 
-## 特殊工具
+## Ferramentas Especiais
 
 ### vim
 
-**用途**: Vim 编辑器
+**Propósito**: Editor Vim
 
-**核心技能**:
-- 模式切换
-- 移动命令
-- 文本对象
-- 宏与寄存器
-- 插件管理
+**Habilidades Centrais**:
+- Troca de modos
+- Comandos de movimento
+- Objetos de texto
+- Macros e registros
+- Gerenciamento de plugins
 
 ### shell-scripting
 
-**用途**: Shell 脚本编写
+**Propósito**: Escrita de scripts shell
 
-**脚本类型**:
+**Tipos de Scripts**:
 - Bash
 - Zsh
 - POSIX
 
-### latex
-
-**用途**: LaTeX 排版
-
-**用途**:
-- 学术论文
-- 数学公式
-- 复杂文档
-
 ---
 
-## 相关技能
+## Habilidades Relacionadas
 
-| 技能 | 用途 |
+| Habilidade | Propósito |
 |------|------|
-| `solidity` | 智能合约开发 |
-| `unity` | Unity 游戏开发 |
-| `video-editing` | 视频编辑 |
-| `kafka` | Kafka 消息队列 |
-| `pwa` | PWA 开发 |
-| `webgl` | WebGL 图形 |
+| `solidity` | Desenvolvimento de smart contracts |
+| `unity` | Desenvolvimento de jogos Unity |
+| `video-editing` | Edição de vídeo |
+| `kafka` | Message queue Kafka |
+| `pwa` | Desenvolvimento PWA |
+| `webgl` | Gráficos WebGL |

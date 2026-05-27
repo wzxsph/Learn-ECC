@@ -1,25 +1,25 @@
-# 云原生与基础设施技能
+# Kỹ Năng Cloud-Native và Hạ Tầng
 
-本部分涵盖容器化、 orchestration、基础设施即代码和云原生架构。
+Phần này cover containerization, orchestration, infrastructure as code và cloud-native architecture.
 
 ---
 
-## 容器化
+## Containerization
 
 ### docker-patterns
 
-**用途**: Docker 容器最佳实践
+**Mục đích**: Docker container best practice
 
-**核心概念**:
-- 多阶段构建
-- 最小化镜像大小
-- 健康检查配置
-- 日志管理
-- 资源限制 (CPU/内存)
+**Core concept**:
+- Multi-stage build
+- Minimize image size
+- Health check configuration
+- Log management
+- Resource limit (CPU/memory)
 
-**示例**:
+**Example**:
 ```dockerfile
-# 多阶段构建
+# Multi-stage build
 FROM node:18-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
@@ -36,14 +36,14 @@ CMD ["node", "dist/index.js"]
 
 ### container-security
 
-**用途**: 容器安全
+**Mục đích**: Container security
 
-**检查项**:
-- 最小化基础镜像
-- 不使用 root 用户运行
-- 密钥管理
-- 镜像扫描
-- 网络隔离
+**Check item**:
+- Minimize base image
+- Don't run as root user
+- Secret management
+- Image scanning
+- Network isolation
 
 ---
 
@@ -51,55 +51,55 @@ CMD ["node", "dist/index.js"]
 
 ### kubernetes-ai
 
-**用途**: Kubernetes AI 工作负载
+**Mục đích**: Kubernetes AI workload
 
-**核心概念**:
-- GPU 调度
-- 分布式训练
-- 模型服务
-- 自动扩缩容
+**Core concept**:
+- GPU scheduling
+- Distributed training
+- Model serving
+- Auto scaling
 
-**工具**:
+**Tool**:
 - Kubeflow
 - KServe
 - Argo Workflows
 
 ### k8s-security
 
-**用途**: Kubernetes 安全
+**Mục đích**: Kubernetes security
 
-**安全措施**:
-- RBAC 配置
-- 网络策略
-- Pod 安全策略
-- 密钥管理
-- 审计日志
+**Security measure**:
+- RBAC configuration
+- Network policy
+- Pod security policy
+- Secret management
+- Audit log
 
 ### kube-bench
 
-**用途**: Kubernetes 安全基准测试
+**Mục đích**: Kubernetes security benchmark
 
-**检查项**:
+**Check item**:
 - CIS Kubernetes Benchmark
-- 自动化合规检查
-- 修复建议
+- Automated compliance check
+- Fix suggestion
 
 ---
 
-## 基础设施即代码
+## Infrastructure as Code
 
 ### terraform
 
-**用途**: Terraform 基础设施编排
+**Mục đích**: Terraform infrastructure orchestration
 
-**核心概念**:
-- HCL 配置语言
-- Provider 开发
-- 状态管理
-- 模块化设计
-- 远程后端
+**Core concept**:
+- HCL configuration language
+- Provider development
+- State management
+- Modular design
+- Remote backend
 
-**示例**:
+**Example**:
 ```hcl
 resource "aws_instance" "web" {
   ami           = "ami-0c55b159cbfafe1f0"
@@ -114,43 +114,43 @@ resource "aws_instance" "web" {
 
 ### ansible
 
-**用途**: Ansible 自动化配置
+**Mục đích**: Ansible automation configuration
 
-**核心功能**:
-- 幂等性配置
-- 角色与 playbook
-- Jinja2 模板
-- 库存管理
+**Core function**:
+- Idempotent configuration
+- Role và playbook
+- Jinja2 template
+- Inventory management
 
 ### helm
 
-**用途**: Helm Kubernetes 包管理
+**Mục đích**: Helm Kubernetes package management
 
-**核心概念**:
-- Chart 开发
-- 模板渲染
-- 版本管理
-- 仓库管理
+**Core concept**:
+- Chart development
+- Template rendering
+- Version management
+- Repository management
 
 ### infrastructure-as-code
 
-**用途**: IaC 最佳实践
+**Mục đích**: IaC best practice
 
-**核心原则**:
-- 版本控制
-- 自动化部署
-- 幂等性
-- 文档化
+**Core principle**:
+- Version control
+- Automated deployment
+- Idempotent
+- Documentation
 
 ---
 
-## 云平台
+## Cloud Platform
 
 ### aws-solution-architect
 
-**用途**: AWS 架构设计
+**Mục đích**: AWS architecture design
 
-**核心服务**:
+**Core service**:
 - EC2, ECS, EKS
 - S3, RDS, ElastiCache
 - VPC, IAM
@@ -158,9 +158,9 @@ resource "aws_instance" "web" {
 
 ### gcp-cloud-architect
 
-**用途**: GCP 架构设计
+**Mục đích**: GCP architecture design
 
-**核心服务**:
+**Core service**:
 - Compute Engine
 - Kubernetes Engine
 - Cloud Storage
@@ -168,9 +168,9 @@ resource "aws_instance" "web" {
 
 ### azure-cloud-architect
 
-**用途**: Azure 架构设计
+**Mục đích**: Azure architecture design
 
-**核心服务**:
+**Core service**:
 - Azure VMs
 - Azure Kubernetes Service
 - Azure Storage
@@ -178,19 +178,19 @@ resource "aws_instance" "web" {
 
 ---
 
-## 监控与可观测性
+## Monitoring và Observability
 
 ### prometheus
 
-**用途**: Prometheus 监控
+**Mục đích**: Prometheus monitoring
 
-**核心概念**:
-- 指标采集
-- PromQL 查询
-- 告警规则
-- 服务发现
+**Core concept**:
+- Metrics collection
+- PromQL query
+- Alert rule
+- Service discovery
 
-**示例**:
+**Example**:
 ```yaml
 - alert: HighErrorRate
   expr: rate(http_errors_total[5m]) > 0.05
@@ -201,72 +201,72 @@ resource "aws_instance" "web" {
 
 ### observability
 
-**用途**: 可观测性架构
+**Mục đích**: Observability architecture
 
-**三大支柱**:
-- 指标 (Metrics)
-- 日志 (Logs)
-- 追踪 (Traces)
+**Three pillar**:
+- Metrics
+- Logs
+- Traces
 
 ### tracing
 
-**用途**: 分布式追踪
+**Mục đích**: Distributed tracing
 
-**工具**:
+**Tool**:
 - Jaeger
 - Zipkin
 - OpenTelemetry
 
 ### logging-best-practices
 
-**用途**: 日志最佳实践
+**Mục đích**: Log best practice
 
-**核心原则**:
-- 结构化日志
-- 日志级别
-- 采样策略
-- 集中存储
+**Core principle**:
+- Structured log
+- Log level
+- Sampling strategy
+- Centralized storage
 
 ---
 
-## 网络
+## Network
 
 ### nginx
 
-**用途**: Nginx 配置与管理
+**Mục đích**: Nginx configuration và management
 
-**核心功能**:
-- 反向代理
-- 负载均衡
-- SSL/TLS 终止
-- 缓存配置
+**Core function**:
+- Reverse proxy
+- Load balancing
+- SSL/TLS termination
+- Cache configuration
 
 ### network-analysis
 
-**用途**: 网络分析
+**Mục đích**: Network analysis
 
-**工具**:
+**Tool**:
 - Wireshark
 - tcpdump
 - netstat
 
 ### ssh-tunneling
 
-**用途**: SSH 隧道
+**Mục đích**: SSH tunneling
 
-**用例**:
-- 端口转发
-- 跳板机
-- VPN 替代
+**Use case**:
+- Port forwarding
+- Jump host
+- VPN alternative
 
 ---
 
-## 相关技能
+## Related Skill
 
-| 技能 | 用途 |
+| Skill | Usage |
 |------|------|
-| `docker-patterns` | Docker 容器化 |
-| `kubernetes-ai` | K8s AI 工作负载 |
+| `docker-patterns` | Docker containerization |
+| `kubernetes-ai` | K8s AI workload |
 | `terraform` | Terraform IaC |
-| `prometheus` | Prometheus 监控 |
-| `observability` | 可观测性 |
+| `prometheus` | Prometheus monitoring |
+| `observability` | Observability |

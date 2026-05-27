@@ -1,99 +1,99 @@
-# 前端与设计技能
+# Kỹ Năng Frontend và Thiết Kế
 
-## 概述
+## Tổng quan
 
-前端与设计技能用于构建现代 Web 应用、UI/UX 设计和前端架构。
+Frontend và design skill dùng để build modern Web application, UI/UX design và frontend architecture.
 
-## 核心技能
+## Core Skill
 
 ### frontend-patterns
 
-**用途**: 前端开发最佳实践
+**Mục đích**: Frontend development best practice
 
-**核心概念**:
-- 组件架构
-- 状态管理
-- 性能优化
-- 响应式设计
-- 无障碍访问
+**Core concept**:
+- Component architecture
+- State management
+- Performance optimization
+- Responsive design
+- Accessibility
 
 ---
 
 ### frontend-design-direction
 
-**用途**: 前端设计方向指导
+**Mục đích**: Frontend design direction guide
 
-**涵盖内容**:
-- 设计系统
-- 设计令牌
-- 主题化
-- 品牌一致性
+**Cover content**:
+- Design system
+- Design token
+- Theming
+- Brand consistency
 
 ---
 
 ### frontend-slides
 
-**用途**: 演示文稿制作
+**Mục đích**: Presentation tạo
 
-**使用场景**:
-- 技术演讲
-- 产品演示
-- 架构图绘制
+**Usage scenario**:
+- Technical presentation
+- Product demo
+- Architecture diagram drawing
 
 ---
 
 ### design-system
 
-**用途**: 设计系统构建
+**Mục đích**: Design system construction
 
-**核心组件**:
-- 色彩系统
-- 字体规范
-- 组件库
-- 文档站点
+**Core component**:
+- Color system
+- Typography specification
+- Component library
+- Documentation site
 
 ---
 
 ### canvas-design
 
-**用途**: Canvas 画布设计
+**Mục đích**: Canvas design
 
-**使用场景**:
-- 数据可视化
-- 图表绘制
-- 交互式图形
+**Usage scenario**:
+- Data visualization
+- Chart drawing
+- Interactive graphic
 
 ---
 
 ### ui-demo
 
-**用途**: UI 演示制作
+**Mục đích**: UI demo tạo
 
-**用途**:
-- 组件演示
-- 交互原型
-- 视觉验证
+**Usage**:
+- Component demo
+- Interactive prototype
+- Visual verification
 
 ---
 
-## Web 技术
+## Web Technology
 
 ### web-artifacts-builder
 
-**用途**: Web 产物构建器
+**Mục đích**: Web artifact builder
 
-**功能**:
-- HTML/CSS/JS 生成
-- 原型构建
-- 静态站点生成
+**Function**:
+- HTML/CSS/JS generation
+- Prototype building
+- Static site generation
 
 ---
 
-## 相关技能
+## Related Skill
 
-- `frontend-patterns` - 前端模式
-- `frontend-design-direction` - 前端设计方向
-- `frontend-slides` - 前端幻灯片
-- `design-system` - 设计系统
-- `canvas-design` - Canvas 设计
-- `ui-demo` - UI 演示
+- `frontend-patterns` - Frontend pattern
+- `frontend-design-direction` - Frontend design direction
+- `frontend-slides` - Frontend slides
+- `design-system` - Design system
+- `canvas-design` - Canvas design
+- `ui-demo` - UI demo

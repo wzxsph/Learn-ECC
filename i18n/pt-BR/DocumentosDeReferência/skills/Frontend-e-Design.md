@@ -1,99 +1,99 @@
-# Frontend-e-Design技能
+# Habilidades Frontend-e-Design
 
-## 概述
+## Visão Geral
 
-Frontend-e-Design技能用于构建现代 Web 应用、UI/UX 设计和前端架构。
+Habilidades frontend-e-design são usadas para construção de aplicações web modernas, design de UI/UX e arquitetura frontend.
 
-## 核心技能
+## Habilidades Principais
 
 ### frontend-patterns
 
-**用途**: 前端开发Melhores-Práticas
+**Propósito**: Melhores-Práticas de desenvolvimento frontend
 
-**核心概念**:
-- 组件架构
-- 状态管理
-- Otimização-de-Desempenho
-- 响应式设计
-- 无障碍访问
+**Conceitos Centrais**:
+- Arquitetura de componentes
+- Gerenciamento de estado
+- Otimização de performance
+- Design responsivo
+- Acessibilidade
 
 ---
 
 ### frontend-design-direction
 
-**用途**: 前端设计方向指导
+**Propósito**: Direção de design de frontend
 
-**涵盖内容**:
-- 设计系统
-- 设计令牌
-- 主题化
-- 品牌一致性
+**Conteúdo Abrangido**:
+- Sistemas de design
+- Design tokens
+- Theming
+- Consistência de marca
 
 ---
 
 ### frontend-slides
 
-**用途**: 演示文稿制作
+**Propósito**: Criação de apresentações
 
-**使用场景**:
-- 技术演讲
-- 产品演示
-- 架构图绘制
+**Cenários de Uso**:
+- Palestras técnicas
+- Demonstrações de produtos
+- Diagramas de arquitetura
 
 ---
 
 ### design-system
 
-**用途**: 设计系统构建
+**Propósito**: Construção de sistemas de design
 
-**核心组件**:
-- 色彩系统
-- 字体规范
-- 组件库
-- 文档站点
+**Componentes Centrais**:
+- Sistema de cores
+- Especificações de tipografia
+- Biblioteca de componentes
+- Site de documentação
 
 ---
 
 ### canvas-design
 
-**用途**: Canvas 画布设计
+**Propósito**: Design com Canvas
 
-**使用场景**:
-- 数据可视化
-- 图表绘制
-- 交互式图形
+**Cenários de Uso**:
+- Visualização de dados
+- Desenho de gráficos
+- Gráficos interativos
 
 ---
 
 ### ui-demo
 
-**用途**: UI 演示制作
+**Propósito**: Criação de demonstrações de UI
 
-**用途**:
-- 组件演示
-- 交互原型
-- 视觉验证
+**Propósito**:
+- Demonstrações de componentes
+- Protótipos interativos
+- Verificação visual
 
 ---
 
-## Web 技术
+## Tecnologias Web
 
 ### web-artifacts-builder
 
-**用途**: Web 产物构建器
+**Propósito**: Construtor de artefatos web
 
-**功能**:
-- HTML/CSS/JS 生成
-- 原型构建
-- 静态站点生成
+**Funcionalidades**:
+- Geração de HTML/CSS/JS
+- Construção de protótipos
+- Geração de sites estáticos
 
 ---
 
-## 相关技能
+## Habilidades Relacionadas
 
-- `frontend-patterns` - 前端模式
-- `frontend-design-direction` - 前端设计方向
-- `frontend-slides` - 前端幻灯片
-- `design-system` - 设计系统
-- `canvas-design` - Canvas 设计
-- `ui-demo` - UI 演示
+- `frontend-patterns` - Padrões frontend
+- `frontend-design-direction` - Direção de design frontend
+- `frontend-slides` - Slides de frontend
+- `design-system` - Sistema de design
+- `canvas-design` - Design Canvas
+- `ui-demo` - Demonstrações de UI

@@ -1,45 +1,45 @@
-# 重构与清理命令
+# Refactoring- und Bereinigungs-Befehle
 
-## 概述
+## Ueberblick
 
-重构与清理命令用于代码重构、死代码清理和自动更新。
+Refactoring- und Bereinigungs-Befehle werden verwendet fuer Coderefactoring, Totcode-Bereinigung und automatische Updates.
 
-## 命令列表
+## Befehlsliste
 
 ### /refactor-clean
 
-**用途**: 删除死代码+合并重复
+**Zweck**: Toten Code loeschen + Duplikate zusammenfuehren
 
-**描述**: 识别并删除未使用的代码，合并重复的代码片段。
+**Beschreibung**: Identifiziert und loescht ungenutzten Code, fuehrt duplizierte Codeteile zusammen.
 
-**分析内容**:
-- 未使用的函数和变量
-- 重复代码块
-- 过时的注释
-- 未使用的导入
+**Analysiert**:
+- Ungenutzte Funktionen und Variablen
+- Duplizierte Codebloecke
+- Veraltete Kommentare
+- Ungenutzte Imports
 
-**工具支持**:
-- `knip` - 检测死代码
-- `depcheck` - 检测未使用依赖
-- `ts-prune` - TypeScript 死代码检测
+**Werkzeugunterstuetzung**:
+- `knip` - Totcode-Erkennung
+- `depcheck` - Ungenutzte Abhaengigkeiten erkennen
+- `ts-prune` - TypeScript-Totcode-Erkennung
 
 ---
 
 ### /auto-update
 
-**用途**: 自动更新能力
+**Zweck**: Automatische Update-Faehigkeiten
 
-**描述**: 自动更新项目依赖和配置到最新版本。
+**Beschreibung**: Aktualisiert Projektabhaengigkeiten und Konfigurationen automatisch auf neueste Versionen.
 
-**更新内容**:
-- npm/pip 包更新
-- 配置文件迁移
-- 代码迁移
-- 版本兼容性检查
+**Aktualisiert**:
+- npm/pip-Pakete
+- Konfigurationsdateien
+- Codemigrationen
+- Versionskompatibilitaetspruefungen
 
 ---
 
-## 相关命令
+## Zugehoerige Befehle
 
-- `/refactor-clean` - 重构清理
-- `/auto-update` - 自动更新
+- `/refactor-clean` - Refactoring-Bereinigung
+- `/auto-update` - Automatisches Update

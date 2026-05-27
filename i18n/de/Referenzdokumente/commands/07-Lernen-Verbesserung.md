@@ -1,27 +1,27 @@
-# 学习与改进命令
+# Lern- und Verbesserungs-Befehle
 
-## 概述
+## Ueberblick
 
-学习与改进命令用于从会话中提取模式、追踪 instinct 和管理组织知识。
+Lern- und Verbesserungs-Befehle werden verwendet um Muster aus Sitzungen zu extrahieren, Instincts zu verfolgen und Organisationswissen zu verwalten.
 
-## 命令列表
+## Befehlsliste
 
 ### /learn
 
-**用途**: 从当前会话中提取可复用模式并保存为候选 skills
+**Zweck**: Wiederverwendbare Muster aus der aktuellen Sitzung extrahieren und als Kandidaten-Skills speichern
 
-**描述**: 分析当前会话，提取任何值得保存为 skills 的模式。运行 `/learn` 可在会话期间任何时候使用。
+**Beschreibung**: Analysiert die aktuelle Sitzung und extrahiert alle Muster die wert sind als Skills gespeichert zu werden. `/learn` kann jederzeit waehrend der Sitzung verwendet werden.
 
-**提取内容类型**:
+**Extrahierte Inhaltstypen**:
 
-| 类型 | 描述 |
+| Typ | Beschreibung |
 |---|---|
-| **错误解决方案模式** | 什么错误？根本原因是什么？什么修复了？类似错误可复用吗？ |
-| **调试技术** | 非显而易见的调试步骤、有效的工具组合、诊断模式 |
-| **变通方法** | 库怪癖、API 限制、特定版本修复 |
-| **项目特定模式** | 发现的代码库约定、架构决策、集成模式 |
+| **Fehlerloesungs-Muster** | Welcher Fehler? Was war die Grundursache? Was hat ihn behoben? Kann fuer aehnliche Fehler wiederverwendet werden? |
+| **Debugging-Techniken** | Nicht-offensichtliche Debugging-Schritte, effektive Werkzeugkombinationen, Diagnosemuster |
+| **Workarounds** | Bibliotheks-Quirks, API-Einschraenkungen, versionsspezifische Fixes |
+| **Projektspezifische Muster** | Entdeckte Codebase-Konventionen, Architekturentscheidungen, Integrationsmuster |
 
-**输出格式**: 保存到 `~/.claude/skills/learned/[pattern-name].md`
+**Ausgabeformat**: Gespeichert in `~/.claude/skills/learned/[pattern-name].md`
 
 ```markdown
 # [Descriptive Pattern Name]
@@ -42,101 +42,101 @@
 [Trigger conditions - what should activate this skill]
 ```
 
-**工作流**:
-1. 审查会话中可提取的模式
-2. 识别最有价值/可复用的见解
-3. 起草 skill 文件
-4. 请求用户确认后再保存
-5. 保存到 `~/.claude/skills/learned/`
+**Workflow**:
+1. Sitzung nach extrahierbaren Mustern ueberpruefen
+2. Wertvollste/wiederverwendbarste Erkenntnisse identifizieren
+3. Skill-Datei entwerfen
+4. Benutzerbestaetigung einholen bevor gespeichert wird
+5. In `~/.claude/skills/learned/` speichern
 
-**最佳实践**:
-- 不要提取trivial修复（拼写错误、简单语法错误）
-- 不要提取一次性问题（特定 API 中断等）
-- 关注未来会话可节省时间的模式
-- 保持 skills 专注 - 一个模式一个 skill
+**Best Practices**:
+- Keine trivialen Fixes extrahieren (Tippfehler, einfache Syntaxfehler)
+- Keine Einmal-Probleme extrahieren (spezifischer API-Ausfall usw.)
+- Auf Muster fokussieren die zukuenftige Sitzungen Zeit sparen
+- Skills fokussiert halten - ein Muster pro Skill
 
 ---
 
 ### /learn-eval
 
-**用途**: 提取模式 + 自我评估质量
+**Zweck**: Muster extrahieren + Selbstbewertung der Qualitaet
 
-**描述**: 在提取模式的同时进行质量评估。
+**Beschreibung**: Fuehrt Qualitaetsbewertung waehrend der Musterextraktion durch.
 
 ---
 
 ### /evolve
 
-**用途**: 分析 instinct + 建议进化结构
+**Zweck**: Instincts analysieren + Evolutionsstruktur empfehlen
 
-**描述**: 分析已学习的 instinct，提供结构演进建议。
+**Beschreibung**: Analysiert erlernte Instincts und bietet strukturelle Evolutionsempfehlungen.
 
 ---
 
 ### /promote
 
-**用途**: 将项目 instinct 提升到全局范围
+**Zweck**: Projekt-Instincts auf globale Ebene heben
 
-**描述**: 将项目特定的 instinct 提升为全局可用的知识。
+**Beschreibung**: Hebt projektspezifische Instincts auf global verfuegbares Wissen.
 
 ---
 
 ### /instinct-status
 
-**用途**: 显示所有学习的 instinct
+**Zweck**: Alle erlernten Instincts anzeigen
 
-**描述**: 显示当前所有 instinct 的状态和置信度。
+**Beschreibung**: Zeigt Status und Konfidenz aller aktuellen Instincts.
 
 ---
 
 ### /instinct-export
 
-**用途**: 导出 instinct 到文件
+**Zweck**: Instincts in Datei exportieren
 
-**描述**: 将 instinct 导出为可分享的文件格式。
+**Beschreibung**: Exportiert Instincts in sharebares Dateiformat.
 
 ---
 
 ### /instinct-import
 
-**用途**: 从文件/URL 导入 instinct
+**Zweck**: Instincts aus Datei/URL importieren
 
-**描述**: 从文件或 URL 导入 instinct 到系统中。
+**Beschreibung**: Importiert Instincts aus Datei oder URL ins System.
 
 ---
 
 ### /skill-create
 
-**用途**: 分析 git 历史+生成 skill 文件
+**Zweck**: Git-Historie analysieren+Skill-Datei generieren
 
-**描述**: 分析项目 git 历史，提取可复用的模式生成 skill 文件。
+**Beschreibung**: Analysiert Projekt-Git-Historie und generiert wiederverwendbare Skill-Dateien aus Mustern.
 
-**工作流**:
-1. 分析 git 提交历史
-2. 识别重复模式
-3. 生成 skill 文件
-4. 验证并保存
+**Workflow**:
+1. Git-Commit-Historie analysieren
+2. Wiederholende Muster identifizieren
+3. Skill-Datei generieren
+4. Verifizieren und speichern
 
 ---
 
 ### /skill-health
 
-**用途**: Skill 组合健康仪表板
+**Zweck**: Skill-Portfolio-Gesundheits-Dashboard
 
-**描述**: 显示 skill 组合的健康状态和使用统计。
+**Beschreibung**: Zeigt Gesundheitsstatus und Nutzungsstatistiken des Skill-Portfolios.
 
 ---
 
 ### /rules-distill
 
-**用途**: 扫描 skills + 提取跨领域原则
+**Zweck**: Skills scannen + domaenenuebergreifende Prinzipien extrahieren
 
-**描述**: 扫描所有 skills，提取跨领域的通用原则。
+**Beschreibung**: Scannt alle Skills und extrahiert domaenenuebergreifende universelle Prinzipien.
 
 ---
 
-## 相关命令
+## Zugehoerige Befehle
 
-- `/learn` - 提取模式
-- `/skill-create` - 从 git 历史生成 skill
-- `/instinct-status` - 查看 instinct 状态
+- `/learn` - Muster extrahieren
+- `/skill-create` - Skill aus Git-Historie generieren
+- `/instinct-status` - Instinct-Status anzeigen

@@ -1,141 +1,141 @@
-# 构建脚本
+# Script xây dựng
 
-本文档介绍 ECC 项目的构建和发布脚本。
+Tài liệu này giới thiệu các script xây dựng và phát hành của dự án ECC.
 
 ---
 
 ## release.sh
 
-**路径**: `scripts/release.sh`
+**Đường dẫn**: `scripts/release.sh`
 
-插件版本升级和发布脚本。
+Script nâng cấp và phát hành phiên bản plugin.
 
-### 功能
+### Chức năng
 
-1. **版本验证**
-   - 确认提供了 semver 格式版本号 (X.Y.Z 或 X.Y.Z-prerelease)
-   - 确认当前分支是 main
-   - 确认工作区干净
+1. **Xác minh phiên bản**
+   - Xác nhận phiên bản semver được cung cấp (X.Y.Z hoặc X.Y.Z-prerelease)
+   - Xác nhận nhánh hiện tại là main
+   - Xác nhận working tree sạch
 
-2. **文件更新**
-   - 更新所有包/插件清单中的版本号
-   - 更新文档中的版本引用
-   - 更新 agent 配置
+2. **Cập nhật file**
+   - Cập nhật số phiên bản trong tất cả manifest của gói/plugin
+   - Cập nhật tham chiếu phiên bản trong tài liệu
+   - Cập nhật cấu hình agent
 
-3. **验证构建**
-   - 运行 OpenCode 构建
-   - 运行构建测试
-   - 运行插件清单测试
+3. **Xác minh xây dựng**
+   - Chạy xây dựng OpenCode
+   - Chạy kiểm thử xây dựng
+   - Chạy kiểm thử manifest plugin
 
-4. **Git 操作**
-   - 暂存所有更改
-   - 创建提交
-   - 创建并推送标签
+4. **Thao tác Git**
+   - Stage tất cả thay đổi
+   - Tạo commit
+   - Tạo và push tag
 
-### 使用方法
+### Cách sử dụng
 
 ```bash
-# 发布新版本
+# Phát hành phiên bản mới
 ./scripts/release.sh 1.5.0
 
-# 预发布版本
+# Phiên bản pre-release
 ./scripts/release.sh 2.0.0-rc.1
 ```
 
-### 更新的文件
+### Các file được cập nhật
 
-| 文件 | 更新内容 |
+| File | Nội dung cập nhật |
 |------|----------|
-| `package.json` | version 字段 |
-| `package-lock.json` | version 和 packages[""].version |
-| `AGENTS.md` | Version 行 |
-| `docs/tr/AGENTS.md` | Sürüm 行 |
-| `docs/zh-CN/AGENTS.md` | 版本 行 |
-| `agent.yaml` | version 字段 |
-| `VERSION` | 版本文件 |
-| `.claude-plugin/plugin.json` | version 字段 |
-| `.claude-plugin/marketplace.json` | version 字段 |
-| `.agents/plugins/marketplace.json` | ecc 插件版本 |
-| `.codex-plugin/plugin.json` | version 字段 |
-| `.opencode/package.json` | version 字段 |
-| `.opencode/package-lock.json` | version 和 packages[""].version |
-| `.opencode/plugins/ecc-hooks.ts` | 横幅版本 |
-| `README.md` | 版本表格行 |
-| `README.zh-CN.md` | 版本表格行 |
-| `docs/tr/README.md` | 最新发布标题 |
-| `docs/pt-BR/README.md` | 最新发布标题 |
-| `docs/zh-CN/README.md` | 最新发布标题 |
-| `docs/SELECTIVE-INSTALL-ARCHITECTURE.md` | repoVersion 示例 |
+| `package.json` | Trường version |
+| `package-lock.json` | version và packages[""].version |
+| `AGENTS.md` | Dòng Version |
+| `docs/tr/AGENTS.md` | Dòng Version |
+| `docs/zh-CN/AGENTS.md` | Dòng Version |
+| `agent.yaml` | Trường version |
+| `VERSION` | File phiên bản |
+| `.claude-plugin/plugin.json` | Trường version |
+| `.claude-plugin/marketplace.json` | Trường version |
+| `.agents/plugins/marketplace.json` | Phiên bản plugin ecc |
+| `.codex-plugin/plugin.json` | Trường version |
+| `.opencode/package.json` | Trường version |
+| `.opencode/package-lock.json` | version và packages[""].version |
+| `.opencode/plugins/ecc-hooks.ts` | Banner version |
+| `README.md` | Dòng bảng version |
+| `README.zh-CN.md` | Dòng bảng version |
+| `docs/tr/README.md` | Tiêu đề phát hành mới nhất |
+| `docs/pt-BR/README.md` | Tiêu đề phát hành mới nhất |
+| `docs/zh-CN/README.md` | Tiêu đề phát hành mới nhất |
+| `docs/SELECTIVE-INSTALL-ARCHITECTURE.md` | Ví dụ repoVersion |
 
-### 前提条件
+### Điều kiện tiên quyết
 
-- Git 工作区必须干净
-- 必须位于 main 分支
-- 所有清单文件必须存在
+- Git working tree phải sạch
+- Phải ở trên nhánh main
+- Tất cả file manifest phải tồn tại
 
 ---
 
 ## build-opencode.js
 
-**路径**: `scripts/build-opencode.js`
+**Đường dẫn**: `scripts/build-opencode.js`
 
-构建 OpenCode 插件的 TypeScript 代码。
+Xây dựng mã TypeScript cho plugin OpenCode.
 
-### 构建流程
+### Quy trình xây dựng
 
-1. 清理 `dist` 目录
-2. 查找 TypeScript 编译器 (`typescript/bin/tsc`)
-3. 使用项目根目录的 tsconfig.json 编译 `.opencode` 目录
+1. Dọn dẹp thư mục `dist`
+2. Tìm trình biên dịch TypeScript (`typescript/bin/tsc`)
+3. Biên dịch thư mục `.opencode` bằng tsconfig.json từ root
 
-### 使用方法
+### Cách sử dụng
 
 ```bash
-# 构建 OpenCode
+# Xây dựng OpenCode
 node scripts/build-opencode.js
 
-# 作为 release 的一部分自动运行
+# Tự động chạy như một phần của release
 ./scripts/release.sh 1.5.0
 ```
 
-### 前提条件
+### Điều kiện tiên quyết
 
-需要已安装根目录的开发依赖,确保 TypeScript 编译器可用。
+Yêu cầu dev dependencies đã được cài đặt từ root, đảm bảo trình biên dịch TypeScript khả dụng.
 
 ---
 
-## 其他脚本
+## Các script khác
 
 ### gan-harness.sh
 
-**路径**: `scripts/gan-harness.sh`
+**Đường dẫn**: `scripts/gan-harness.sh`
 
-GAN (General Agent Network) 测试工具相关。
+Công cụ liên quan đến thử nghiệm GAN (General Agent Network).
 
 ### orchestrate-codex-worker.sh
 
-**路径**: `scripts/orchestrate-codex-worker.sh`
+**Đường dẫn**: `scripts/orchestrate-codex-worker.sh`
 
-编排 Codex worker 进程。
+Điều phối các worker process Codex.
 
 ### sync-ecc-to-codex.sh
 
-**路径**: `scripts/sync-ecc-to-codex.sh`
+**Đường dẫn**: `scripts/sync-ecc-to-codex.sh`
 
-同步 ECC 到 Codex。
+Đồng bộ ECC sang Codex.
 
 ---
 
-## 发布工作流程
+## Quy trình phát hành
 
 ```
-1. 确保在 main 分支且工作区干净
-2. 运行发布脚本并提供版本号
-3. 脚本自动完成:
-   ├── 验证前提条件
-   ├── 更新所有版本引用
-   ├── 构建 OpenCode
-   ├── 运行测试验证
-   ├── 创建 Git 提交
-   └── 推送标签
-4. GitHub Actions 检测到标签自动发布
+1. Đảm bảo ở nhánh main và working tree sạch
+2. Chạy script phát hành với số phiên bản
+3. Script tự động:
+   ├── Xác minh điều kiện tiên quyết
+   ├── Cập nhật tất cả tham chiếu phiên bản
+   ├── Xây dựng OpenCode
+   ├── Chạy kiểm thử xác minh
+   ├── Tạo Git commit
+   └── Push tag
+4. GitHub Actions tự động phát hành khi phát hiện tag
 ```

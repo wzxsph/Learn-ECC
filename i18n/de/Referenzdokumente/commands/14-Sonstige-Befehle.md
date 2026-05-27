@@ -1,138 +1,138 @@
-# 其他命令
+# Sonstige Befehle
 
-## 概述
+## Ueberblick
 
-其他杂项命令，包括 Jira 集成、GAN 操作、安全扫描等功能。
+Sonstige diverse Befehle, einschliesslich Jira-Integration, GAN-Operationen, Sicherheitsscans und weitere Funktionen.
 
-## 命令列表
+## Befehlsliste
 
 ### /jira
 
-**用途**: 与 Jira 工单交互 - 获取、分析、评论、转换状态、搜索
+**Zweck**: Mit Jira-Tickets interagieren - Abrufen, Analysieren, Kommentieren, Statusaenderungen, Suchen
 
-**描述**: 与 Jira 项目管理工具集成，支持直接工作流中使用 Jira tickets。
+**Beschreibung**: Integration mit Jira-Projektmanagement-Tool, unterstuetzt direkte Workflow-Nutzung von Jira-Tickets.
 
-**用法**:
+**Verwendung**:
 
-| 命令 | 说明 |
+| Befehl | Beschreibung |
 |---|---|
-| `/jira get <TICKET-KEY>` | 获取并分析 Jira 工单 |
-| `/jira comment <TICKET-KEY>` | 添加进度评论 |
-| `/jira transition <TICKET-KEY>` | 更改工单状态 |
-| `/jira search <JQL>` | 使用 JQL 搜索问题 |
+| `/jira get <TICKET-KEY>` | Jira-Ticket abrufen und analysieren |
+| `/jira comment <TICKET-KEY>` | Fortschrittskommentar hinzufuegen |
+| `/jira transition <TICKET-KEY>` | Ticketstatus aendern |
+| `/jira search <JQL>` | Probleme mit JQL suchen |
 
-**`/jira get` 工作流**:
-1. 从 Jira 获取工单（通过 MCP 或 REST API）
-2. 提取所有字段：摘要、描述、验收标准、优先级、标签、关联问题
-3. 可选获取评论以获取额外上下文
-4. 生成结构化分析
+**`/jira get` Workflow**:
+1. Ticket von Jira abrufen (ueber MCP oder REST API)
+2. Alle Felder extrahieren: Zusammenfassung, Beschreibung, Akzeptanzkriterien, Prioritaet, Tags, verknuepfte Probleme
+3. Optional Kommentare abrufen fuer zusaetzlichen Kontext
+4. Strukturierten Analysebericht generieren
 
-**先决条件** - Jira 凭证配置（二选一）:
+**Voraussetzungen** - Jira-Credentials konfigurieren (eins von zwei):
 
-**选项 A — MCP Server（推荐）**:
-将 `jira` 添加到 `mcpServers` 配置。
+**Option A — MCP Server (empfohlen)**:
+`jira` zu `mcpServers`-Konfiguration hinzufuegen.
 
-**选项 B — 环境变量**:
+**Option B — Umgebungsvariablen**:
 ```bash
 export JIRA_URL="https://yourorg.atlassian.net"
 export JIRA_EMAIL="your.email@example.com"
 export JIRA_API_TOKEN="your-api-token"
 ```
 
-**与其他命令集成**:
-- 分析工单后使用 `/plan` 创建实施计划
-- 使用 `tdd-workflow` skill 进行测试驱动开发
-- 使用 `/code-review` 审查实现
-- 使用 `/jira comment` 或 `/jira transition` 更新工单状态
+**Integration mit anderen Befehlen**:
+- Nach Ticket-Analyse `/plan` zum Erstellen eines Implementierungsplans verwenden
+- `tdd-workflow` skill fuer testgetriebene Entwicklung verwenden
+- `/code-review` zum Reviewen der Implementierung verwenden
+- `/jira comment` oder `/jira transition` zum Aktualisieren des Ticketstatus verwenden
 
 ---
 
-### /gan-build（待完善）
+### /gan-build (in Bearbeitung)
 
-**用途**: GAN 构建操作
+**Zweck**: GAN-Build-Operationen
 
-**描述**: GAN（Generative Agent Network）构建操作。
+**Beschreibung**: GAN (Generative Agent Network) Build-Operationen.
 
 ---
 
-### /gan-design（待完善）
+### /gan-design (in Bearbeitung)
 
-**用途**: GAN 设计操作
+**Zweck**: GAN-Design-Operationen
 
-**描述**: GAN 设计相关的操作。
+**Beschreibung**: GAN-Design-bezogene Operationen.
 
 ---
 
 ### /prune
 
-**用途**: 删除超过 30 天未提升的陈旧 pending instinct
+**Zweck**: Veraltete pending Instincts loeschen die ueber 30 Tage nicht erhoeht wurden
 
-**描述**: 清理超过 30 天的陈旧 instinct，这些 instinct 是自动生成但从未被审查或提升的。
+**Beschreibung**: Veraltete Instincts bereinigen die ueber 30 Tage alt sind, automatisch generiert aber nie ueberprueft oder erhoeft wurden.
 
-**用法**:
+**Verwendung**:
 ```
-/prune                    # 删除超过 30 天的 instinct
-/prune --max-age 60      # 自定义天数阈值
-/prune --dry-run         # 预览而不删除
+/prune                    # Instincts loeschen die ueber 30 Tage alt sind
+/prune --max-age 60      # Benutzerdefinierte Tagesschwelle
+/prune --dry-run         # Vorschau ohne zu loeschen
 ```
 
-**实现**:
+**Implementierung**:
 ```bash
 python3 "${CLAUDE_PLUGIN_ROOT}/skills/continuous-learning-v2/scripts/instinct-cli.py" prune
 ```
 
-或手动安装时（`CLAUDE_PLUGIN_ROOT` 未设置）:
+Oder bei manueller Installation (wenn `CLAUDE_PLUGIN_ROOT` nicht gesetzt):
 ```bash
 python3 ~/.claude/skills/continuous-learning-v2/scripts/instinct-cli.py prune
 ```
 
-**参数**:
+**Parameter**:
 
-| 参数 | 说明 |
+| Parameter | Beschreibung |
 |---|---|
-| 无 | 删除超过 30 天的 instinct |
-| `--max-age <days>` | 自定义时间阈值（天） |
-| `--dry-run` | 预览将删除的内容，不实际删除 |
+| Keine | Instincts loeschen die ueber 30 Tage alt sind |
+| `--max-age <days>` | Benutzerdefinierte Zeitschwelle (Tage) |
+| `--dry-run` | Vorschau was geloescht wird, ohne tatsaechlich zu loeschen |
 
-**最佳实践**:
-- 使用 `--dry-run` 先预览要删除的内容
-- 定期运行 prune 保持 instinct 库存整洁
-- 注意：只会删除 pending 状态的 instinct，不会删除已提升的
+**Best Practices**:
+- Zuerst `--dry-run` verwenden um anzuzeigen was geloescht wird
+- Regelmaessig prune ausfuehren um Instinct-Inventar sauber zu halten
+- Beachtung: Es werden nur Instincts im Status pending geloescht, keine erhoeften
 
 ---
 
 ### /security-scan
 
-**用途**: 安全扫描
+**Zweck**: Sicherheitsscan
 
-**描述**: 对代码库进行安全漏洞扫描。
+**Beschreibung**: Sicherheitsluecken-Scan der Codebasis.
 
-**扫描内容**:
-- 硬编码凭证
-- SQL 注入风险
-- XSS 漏洞
-- 依赖漏洞
+**Scan-Inhalt**:
+- Hartcodierte Credentials
+- SQL-Injection-Risiken
+- XSS-Schwachstellen
+- Abhaengigkeitsschwachstellen
 
 ---
 
-### /feature-dev（待完善）
+### /feature-dev (in Bearbeitung)
 
-**用途**: 功能开发助手
+**Zweck**: Feature-Entwicklungs-Assistent
 
-**描述**: 提供功能开发的辅助工作流。
+**Beschreibung**: Bietet Hilfs-Workflow fuer Feature-Entwicklung.
 
 ---
 
 ### /cost-report
 
-**用途**: 模型成本报告
+**Zweck**: Modellkostenbericht
 
-**描述**: 生成 AI 模型使用成本报告。
+**Beschreibung**: Generiert Kostenbericht fuer AI-Modellnutzung.
 
 ---
 
-## 相关命令
+## Zugehoerige Befehle
 
-- `/security-scan` - 安全扫描
-- `/jira` - Jira 集成
-- `/prune` - 清理 instinct
+- `/security-scan` - Sicherheitsscan
+- `/jira` - Jira-Integration
+- `/prune` - Instinct-Bereinigung

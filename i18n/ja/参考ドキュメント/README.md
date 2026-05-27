@@ -55,31 +55,31 @@ ECC/
 
 ### 3.1 コアワークフロー (6)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
-| `/plan` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 需求分析+リスク評価+段階的計画 |
-| `/code-review` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | コード品質/セキュリティ/保守性レビュー |
-| `/build-fix` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 自動検出言語+増分修正ビルドエラー |
+| `/plan` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 要件分析+リスク評価+段階的計画 |
+| `/code-review` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | コード品質/セキュリティ/保守性のレビュー |
+| `/build-fix` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 自動検出言語+増分修正ビルドエラー修正 |
 | `/verify` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 完全検証ループ：ビルド→lint→テスト→型チェック |
-| `/quality-gate` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 需要に応じてECC品質パイプラインを実行 |
+| `/quality-gate` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 必要に応じてECC品質パイプラインを実行 |
 | `/tdd` | [01-コアワークフロー.md](commands/01-コアワークフロー.md) | 汎用 TDD ワークフロー |
 
 ### 3.2 テスト関連 (8)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
-| `/go-test` | [02-テスト関連.md](commands/02-テスト関連.md) | Go TDD (テーブル駆動、80%+ カバレッジ) |
-| `/kotlin-test` | [02-テスト関連.md](commands/02-テスト関連.md) | Kotlin TDD (Kotest + Kover) |
-| `/rust-test` | [02-テスト関連.md](commands/02-テスト関連.md) | Rust TDD (cargo test + 統合テスト) |
-| `/cpp-test` | [02-テスト関連.md](commands/02-テスト関連.md) | C++ TDD (GoogleTest + gcov/lcov) |
-| `/flutter-test` | [02-テスト関連.md](commands/02-テスト関連.md) | Flutter TDD |
-| `/e2e` | [02-テスト関連.md](commands/02-テスト関連.md) | 生成 + 実行 Playwright e2e テスト |
-| `/test-coverage` | [02-テスト関連.md](commands/02-テスト関連.md) | テストカバレッジレポート+差距分析 |
-| `/python-testing` | [02-テスト関連.md](commands/02-テスト関連.md) | Python テストベストプラクティス |
+| `/go-test` | [02-テスト.md](commands/02-テスト.md) | Go TDD (テーブル駆動、80%+ カバレッジ) |
+| `/kotlin-test` | [02-テスト.md](commands/02-テスト.md) | Kotlin TDD (Kotest + Kover) |
+| `/rust-test` | [02-テスト.md](commands/02-テスト.md) | Rust TDD (cargo test + 統合テスト) |
+| `/cpp-test` | [02-テスト.md](commands/02-テスト.md) | C++ TDD (GoogleTest + gcov/lcov) |
+| `/flutter-test` | [02-テスト.md](commands/02-テスト.md) | Flutter TDD |
+| `/e2e` | [02-テスト.md](commands/02-テスト.md) | 生成 + 実行 Playwright e2e テスト |
+| `/test-coverage` | [02-テスト.md](commands/02-テスト.md) | テストカバレッジレポート+ギャップ分析 |
+| `/python-testing` | [02-テスト.md](commands/02-テスト.md) | Python テストベストプラクティス |
 
 ### 3.3 言語レビュー (7)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
 | `/python-review` | [03-言語レビュー.md](commands/03-言語レビュー.md) | Python PEP 8、型ヒント、セキュリティ |
 | `/go-review` | [03-言語レビュー.md](commands/03-言語レビュー.md) | Go 慣用法、並行処理、エラー処理 |
@@ -91,18 +91,18 @@ ECC/
 
 ### 3.4 ビルド修正 (6)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
-| `/go-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | Go ビルドエラー + go vet 警告を修正 |
-| `/kotlin-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | Kotlin/Gradle コンパイラエラー修正 |
-| `/rust-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | Rust ビルド + 借用チェッカー問題修正 |
-| `/cpp-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | C++ CMake + リンカー問題修正 |
-| `/gradle-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | Android/KMP Gradle エラー修正 |
-| `/flutter-build` | [04-ビルド修正.md](commands/04-ビルド修正.md) | Flutter ビルド修正 |
+| `/go-build` | [04-ビルド修復.md](commands/04-ビルド修復.md) | Go ビルドエラー + go vet 警告を修正 |
+| `/kotlin-build` | [04-ビルド修復.md](commands/04-ビルド修復.md) | Kotlin/Gradle コンパイラエラー修正 |
+| `/rust-build` | [04-ビルド修復.md](commands/04-ビルド修復.md) | Rust ビルド + 借用チェッカー問題修正 |
+| `/cpp-build` | [04-ビルド修復.md](commands/04-ビルド修復.md) | C++ CMake + リンカー問題修正 |
+| `/gradle-build` | [04-ビルド修復.md](commands/04-ビルド修復.md) | Android/KMP Gradle エラー修正 |
+| `/flutter-build` | [04-ビルド修復.md](commands/04-ビルド修復.md) | Flutter ビルド修正 |
 
 ### 3.5 計画とアーキテクチャ (7)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
 | `/plan-prd` | [05-計画とアーキテクチャ.md](commands/05-計画とアーキテクチャ.md) | インタラクティブ PRD 生成器 |
 | `/prp-plan` | [05-計画とアーキテクチャ.md](commands/05-計画とアーキテクチャ.md) | 全面的機能計画 |
@@ -114,7 +114,7 @@ ECC/
 
 ### 3.6 セッション管理 (5)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
 | `/save-session` | [06-セッション管理.md](commands/06-セッション管理.md) | セッション状態を ~/.claude/session-data/ に保存 |
 | `/resume-session` | [06-セッション管理.md](commands/06-セッション管理.md) | 保存したセッションをロードして再開 |
@@ -124,7 +124,7 @@ ECC/
 
 ### 3.7 学習と改善 (10)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
 | `/learn` | [07-学習と改善.md](commands/07-学習と改善.md) | セッションから再利用可能なパターンを抽出 |
 | `/learn-eval` | [07-学習と改善.md](commands/07-学習と改善.md) | パターンを抽出 + 自己評価品質 |
@@ -139,7 +139,7 @@ ECC/
 
 ### 3.8 ループと自動化 (3)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
 | `/loop-start` | [08-ループと自動化.md](commands/08-ループと自動化.md) | 管理自主ループパターンを起動 |
 | `/loop-status` | [08-ループと自動化.md](commands/08-ループと自動化.md) | 実行中ループの状態を確認 |
@@ -147,18 +147,18 @@ ECC/
 
 ### 3.9 プロジェクト管理 (6)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
-| `/projects` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | 已知プロジェクト + instinct 統計を一覧表示 |
+| `/projects` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | 既存のプロジェクト + instinct 統計を一覧表示 |
 | `/harness-audit` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | agent harness 設定を監査 |
 | `/model-route` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | タスクを適切なモデルにルーティング |
 | `/pm2` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | PM2 プロセス管理器を初期化 |
-| `/setup-pm` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | パッケージマネージャを設定 (npm/pnpm/yarn/bun) |
+| `/setup-pm` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | パッケージマネージャーを設定 (npm/pnpm/yarn/bun) |
 | `/project-init` | [09-プロジェクト管理.md](commands/09-プロジェクト管理.md) | プロジェクトを初期化 |
 
 ### 3.10 PR ワークフロー (6)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
 | `/pr` | [10-PRワークフロー.md](commands/10-PRワークフロー.md) | 現在のブランチから GitHub PR を作成 |
 | `/review-pr` | [10-PRワークフロー.md](commands/10-PRワークフロー.md) | GitHub PR をレビュー |
@@ -169,16 +169,16 @@ ECC/
 
 ### 3.11 Hookify システム (4)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
-| `/hookify` | [11-Hookifyシステム.md](commands/11-Hookifyシステム.md) | 不良行為を防止するhooksを作成 |
+| `/hookify` | [11-Hookifyシステム.md](commands/11-Hookifyシステム.md) | 望ましくない動作を防止するhooksを作成 |
 | `/hookify-list` | [11-Hookifyシステム.md](commands/11-Hookifyシステム.md) | 設定されたすべての hookify ルールを一覧表示 |
 | `/hookify-configure` | [11-Hookifyシステム.md](commands/11-Hookifyシステム.md) | インタラクティブに hookify ルールを有効/無効化 |
 | `/hookify-help` | [11-Hookifyシステム.md](commands/11-Hookifyシステム.md) | Hookify システムヘルプ |
 
 ### 3.12 ドキュメントと研究 (3)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
 | `/update-docs` | [12-ドキュメントと研究.md](commands/12-ドキュメントと研究.md) | プロジェクトドキュメントを更新 |
 | `/update-codemaps` | [12-ドキュメントと研究.md](commands/12-ドキュメントと研究.md) | codemaps を再生成 |
@@ -186,14 +186,14 @@ ECC/
 
 ### 3.13 リファクタリングとクリーンアップ (2)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
 | `/refactor-clean` | [13-リファクタリングとクリーンアップ.md](commands/13-リファクタリングとクリーンアップ.md) | 死コード削除+重複をマージ |
 | `/auto-update` | [13-リファクタリングとクリーンアップ.md](commands/13-リファクタリングとクリーンアップ.md) | 自動更新能力 |
 
 ### 3.14 その他のコマンド (7)
 
-| コマンド | ファイル | 用途 |
+| コマンド | ファイル | 説明 |
 |------|------|------|
 | `/jira` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | Jira チケットとの対話 |
 | `/gan-build` | [14-その他のコマンド.md](commands/14-その他のコマンド.md) | GAN ビルド操作 |
@@ -211,12 +211,12 @@ ECC/
 
 | Agent クラス | ファイル | 説明 |
 |------------|------|------|
-| [コードレビュー類](agents/1.%20コードレビュー類.md) | [1. コードレビュー類.md](agents/1.%20コードレビュー類.md) | 14個のレビューAgent |
-| [ビルドリペア類](agents/2.%20ビルドリペア類.md) | [2. ビルドリペア類.md](agents/2.%20ビルドリペア類.md) | 14個のビルド修正Agent |
-| [計画類](agents/3.%20計画類.md) | [3. 計画類.md](agents/3.%20計画類.md) | 5個の計画Agent |
-| [テスト類](agents/4.%20テスト類.md) | [4. テスト類.md](agents/4.%20テスト類.md) | 2個のテストAgent |
-| [セキュリティ類](agents/5.%20セキュリティ類.md) | [5. セキュリティ類.md](agents/5.%20セキュリティ類.md) | 3個のセキュリティAgent |
-| [アーキテクチャ類](agents/6.%20アーキテクチャ類.md) | [6. アーキテクチャ類.md](agents/6.%20アーキテクチャ類.md) | 3個のアーキテクチャAgent |
+| [コードレビュー類](agents/1-コードレビュー.md) | [1-コードレビュー.md](agents/1-コードレビュー.md) | 14個のレビューAgent |
+| [ビルドリペア類](agents/2-ビルド修復.md) | [2-ビルド修復.md](agents/2-ビルド修復.md) | 14個のビルド修正Agent |
+| [計画類](agents/3-計画.md) | [3-計画.md](agents/3-計画.md) | 5個の計画Agent |
+| [テスト類](agents/4-テスト.md) | [4-テスト.md](agents/4-テスト.md) | 2個のテストAgent |
+| [セキュリティ類](agents/5-セキュリティ.md) | [5-セキュリティ.md](agents/5-セキュリティ.md) | 3個のセキュリティAgent |
+| [アーキテクチャ類](agents/6-アーキテクチャ.md) | [6-アーキテクチャ.md](agents/6-アーキテクチャ.md) | 3個のアーキテクチャAgent |
 
 ---
 
@@ -233,16 +233,16 @@ ECC/
 | [セキュリティ](skills/セキュリティ.md) | [セキュリティ.md](skills/セキュリティ.md) | セキュリティレビュー、脆弱性スキャン |
 | [フロントエンドとデザイン](skills/フロントエンドとデザイン.md) | [フロントエンドとデザイン.md](skills/フロントエンドとデザイン.md) | フロントエンド開発、設計システム |
 | [バックエンドとAPI](skills/バックエンドとAPI.md) | [バックエンドとAPI.md](skills/バックエンドとAPI.md) | バックエンドサービス、API 設計、データベース |
-| [デプロイとDevOps](skills/デプロイとDevOps.md) | [デプロイとDevOps.md](skills/デプロイとDevOps.md) | Docker/K8s/デプロイ戦略 |
-| [監視と可観測性](skills/監視と可観測性.md) | [監視と可観測性.md](skills/監視と可観測性.md) | 可観測性、ネットワーク診断 |
+| [DevOpsとデプロイ](skills/DevOpsとデプロイ.md) | [DevOpsとデプロイ.md](skills/DevOpsとデプロイ.md) | Docker/K8s/デプロイ戦略 |
+| [モニタリングと可観測性](skills/モニタリングと可観測性.md) | [モニタリングと可観測性.md](skills/モニタリングと可観測性.md) | 可観測性、ネットワーク診断 |
 | [自動化とスクリプト](skills/自動化とスクリプト.md) | [自動化とスクリプト.md](skills/自動化とスクリプト.md) | 自主ループ、持續学習、エージェント工学 |
 | [検索とデータ取得](skills/検索とデータ取得.md) | [検索とデータ取得.md](skills/検索とデータ取得.md) | Exa 検索、データスクレイピング、MCP |
-| [GitHubと協調](skills/GitHubと協調.md) | [GitHubと協調.md](skills/GitHubと協調.md) | GitHub ワークフロー、コードレビュー |
+| [GitHubとコラボレーション](skills/GitHubとコラボレーション.md) | [GitHubとコラボレーション.md](skills/GitHubとコラボレーション.md) | GitHub ワークフロー、コードレビュー |
 | [AIと機械学習](skills/AIと機械学習.md) | [AIと機械学習.md](skills/AIと機械学習.md) | ニューラルネットワーク、PyTorch、MLOps |
 | [クラウドネイティブとインフラ](skills/クラウドネイティブとインフラ.md) | [クラウドネイティブとインフラ.md](skills/クラウドネイティブとインフラ.md) | Kubernetes、Docker、Terraform |
-| [特殊分野スキル](skills/特殊分野スキル.md) | [特殊分野スキル.md](skills/特殊分野スキル.md) | ブロックチェーン、ゲーム開発、音视频、IoT |
+| [特殊技能](skills/特殊技能.md) | [特殊技能.md](skills/特殊技能.md) | ブロックチェーン、ゲーム開発、音视频、IoT |
 | [開発ツールチェーン](skills/開発ツールチェーン.md) | [開発ツールチェーン.md](skills/開発ツールチェーン.md) | テストフレームワーク、CI/CD、コード品質 |
-| [前沿技術](skills/前沿技術.md) | [前沿技術.md](skills/前沿技術.md) | AI Agent、量子計算、エッジ計算 |
+| [先進技術](skills/先進技術.md) | [先進技術.md](skills/先進技術.md) | AI Agent、量子計算、エッジ計算 |
 
 ---
 
@@ -254,9 +254,9 @@ ECC/
 |------|------|------|
 | [Git ワークフロー](rules/Gitワークフロー.md) | [Gitワークフロー.md](rules/Gitワークフロー.md) | Git コミット仕様と PR ワークフロー |
 | [Hooks システム](rules/Hooksシステム.md) | [Hooksシステム.md](rules/Hooksシステム.md) | Hook 設定と使用ガイド |
-| [Agentオーケストレーション](rules/Agentオーケストレーション.md) | [Agentオーケストレーション.md](rules/Agentオーケストレーション.md) | Agent 编排パターン |
+| [Agentオーケストレーション](rules/エージェントオーケストレーション.md) | [エージェントオーケストレーション.md](rules/エージェントオーケストレーション.md) | Agent 编排パターン |
 | [パフォーマンス最適化](rules/パフォーマンス最適化.md) | [パフォーマンス最適化.md](rules/パフォーマンス最適化.md) | パフォーマンス最適化ガイド |
-| [コーディングスタイル](rules/コーディングスタイル.md) | [コーディングスタイル.md](rules/コーディングスタイル.md) | コーディングスタイル仕様 |
+| [コーディングスタイル](rules/コードスタイル.md) | [コードスタイル.md](rules/コードスタイル.md) | コーディングスタイル仕様 |
 | [テストルール](rules/テストルール.md) | [テストルール.md](rules/テストルール.md) | テスト要件（80% カバレッジ） |
 | [セキュリティルール](rules/セキュリティルール.md) | [セキュリティルール.md](rules/セキュリティルール.md) | セキュリティチェックリスト |
 
@@ -269,7 +269,7 @@ ECC/
 | ドキュメント | ファイル | 説明 |
 |------|------|------|
 | [Hook タイプ](hooks/Hookタイプ.md) | [Hookタイプ.md](hooks/Hookタイプ.md) | PreToolUse、PostToolUse、Stop タイプ |
-| [内置 Hooks](hooks/内置Hooks.md) | [内置Hooks.md](hooks/内置Hooks.md) | 内蔵 Hook リストと使用 |
+| [組み込み Hooks](hooks/組み込みHooks.md) | [組み込みHooks.md](hooks/組み込みHooks.md) | 内蔵 Hook リストと使用 |
 | [カスタム開発](hooks/カスタム開発.md) | [カスタム開発.md](hooks/カスタム開発.md) | カスタム Hook 開発ガイド |
 | [設定フォーマット](hooks/設定フォーマット.md) | [設定フォーマット.md](hooks/設定フォーマット.md) | hooks.json 設定フォーマット |
 
@@ -282,7 +282,7 @@ ECC/
 | ドキュメント | ファイル | 説明 |
 |------|------|------|
 | [MCP 設定フォーマット](mcp/MCP設定フォーマット.md) | [MCP設定フォーマット.md](mcp/MCP設定フォーマット.md) | MCP 設定ファイルフォーマット |
-| [内置サーバー](mcp/内置サーバー.md) | [内置サーバー.md](mcp/内置サーバー.md) | 内蔵 MCP サーバー |
+| [組み込みサーバー](mcp/組み込みサーバー.md) | [組み込みサーバー.md](mcp/組み込みサーバー.md) | 内蔵 MCP サーバー |
 | [カスタム開発](mcp/カスタム開発.md) | [カスタム開発.md](mcp/カスタム開発.md) | カスタム MCP サーバー開発 |
 
 ---
@@ -294,7 +294,7 @@ ECC/
 | ドキュメント | ファイル | 説明 |
 |------|------|------|
 | [ツールスクリプト](scripts/ツールスクリプト.md) | [ツールスクリプト.md](scripts/ツールスクリプト.md) | ecc.js、install-apply.js 等 |
-| [ツール関数ライブラリ](scripts/ツール関数ライブラリ.md) | [ツール関数ライブラリ.md](scripts/ツール関数ライブラリ.md) | 共有関数ライブラリ |
+| [ユーティリティライブラリ](scripts/ユーティリティライブラリ.md) | [ユーティリティライブラリ.md](scripts/ユーティリティライブラリ.md) | 共有関数ライブラリ |
 | [テストランナー](scripts/テストランナー.md) | [テストランナー.md](scripts/テストランナー.md) | テストランナー使用 |
 | [ビルドスクリプト](scripts/ビルドスクリプト.md) | [ビルドスクリプト.md](scripts/ビルドスクリプト.md) | ビルドスクリプト |
 

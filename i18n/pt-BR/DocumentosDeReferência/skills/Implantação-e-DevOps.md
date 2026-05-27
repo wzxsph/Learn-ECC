@@ -1,104 +1,104 @@
-# 部署与 DevOps 技能
+# Implantação-e-DevOps Habilidades
 
-## 概述
+## Visão Geral
 
-部署与 DevOps 技能用于容器化、基础设施即代码、持续集成和部署自动化。
+Implantação-e-DevOps habilidades são usadas para containerização, infraestrutura como código, integração contínua e automação de deploy.
 
-## 核心技能
+## Habilidades Principais
 
 ### docker-patterns
 
-**用途**: Docker 容器Melhores-Práticas
+**Propósito**: Melhores-Práticas de containers Docker
 
-**核心概念**:
-- 多阶段构建
-- 最小化镜像大小
-- 健康检查
-- 日志管理
-- 资源限制
+**Conceitos Centrais**:
+- Builds multi-stage
+- Minimização de tamanho de imagem
+- Configuração de health checks
+- Gerenciamento de logs
+- Limites de recursos (CPU/memória)
 
 ---
 
 ### deployment-patterns
 
-**用途**: 部署策略与模式
+**Propósito**: Estratégias e padrões de deploy
 
-**核心概念**:
-- 蓝绿部署
-- 金丝雀发布
+**Conceitos Centrais**:
+- Deploy blue-green
+- Releases canary
 - Rolling Update
-- 回滚策略
-- 零停机部署
+- Estratégias de rollback
+- Deploy zero-downtime
 
 ---
 
 ### production-audit
 
-**用途**: 生产环境审计
+**Propósito**: Auditoria de ambiente de produção
 
-**检查项**:
-- 安全性配置
-- 性能指标
-- 可用性检查
-- 监控告警验证
+**Itens de Verificação**:
+- Configuração de segurança
+- Métricas de performance
+- Verificações de disponibilidade
+- Validação de monitoramento e alertas
 
 ---
 
 ### production-scheduling
 
-**用途**: 生产调度管理
+**Propósito**: Gerenciamento de agendamento de produção
 
-**使用场景**:
-- 定时任务管理
-- 批处理作业
-- 维护窗口规划
+**Cenários de Uso**:
+- Gerenciamento de tarefas cron
+- Jobs de processamento em lote
+- Planejamento de janelas de manutenção
 
 ---
 
 ### canary-watch
 
-**用途**: 金丝雀发布监控
+**Propósito**: Monitoramento de releases canary
 
-**功能**:
-- 流量分割监控
-- 错误率追踪
-- 性能对比
-- 自动回滚触发
+**Funcionalidades**:
+- Monitoramento de divisão de tráfego
+- Rastreamento de taxa de erros
+- Comparação de performance
+- Trigger de rollback automático
 
 ---
 
-## 基础设施
+## Infraestrutura
 
 ### network-config-validation
 
-**用途**: 网络配置验证
+**Propósito**: Validação de configuração de rede
 
-**检查项**:
-- 防火墙规则
-- 负载均衡配置
-- DNS 设置
-- SSL/TLS 证书
+**Itens de Verificação**:
+- Regras de firewall
+- Configuração de load balancer
+- Configurações de DNS
+- Certificados SSL/TLS
 
 ---
 
 ### network-interface-health
 
-**用途**: 网络接口健康检查
+**Propósito**: Verificações de saúde de interface de rede
 
-**监控指标**:
-- 带宽使用
-- 延迟
-- 丢包率
-- 连接数
+**Métricas de Monitoramento**:
+- Uso de largura de banda
+- Latência
+- Taxa de perda de pacotes
+- Número de conexões
 
 ---
 
-## 相关技能
+## Habilidades Relacionadas
 
-- `docker-patterns` - Docker 模式
-- `deployment-patterns` - 部署模式
-- `production-audit` - 生产审计
-- `production-scheduling` - 生产调度
-- `canary-watch` - 金丝雀监控
-- `network-config-validation` - 网络配置验证
-- `network-interface-health` - 网络接口健康
+- `docker-patterns` - Padrões de container Docker
+- `deployment-patterns` - Padrões de deploy
+- `production-audit` - Auditoria de produção
+- `production-scheduling` - Agendamento de produção
+- `canary-watch` - Monitoramento canary
+- `network-config-validation` - Validação de configuração de rede
+- `network-interface-health` - Saúde de interface de rede

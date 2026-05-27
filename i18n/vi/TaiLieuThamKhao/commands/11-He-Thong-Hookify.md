@@ -1,55 +1,55 @@
-# Hookify 系统命令
+# Lệnh Hệ Thống Hookify
 
-## 概述
+## Tổng quan
 
-Hookify 系统用于创建和管理 hooks，防止不良行为和自动化工作流。
+Hệ thống Hookify dùng để tạo và quản lý hooks, ngăn chặn behavior không mong muốn và tự động hóa workflow。
 
-## 命令列表
+## Danh sách lệnh
 
 ### /hookify
 
-**用途**: 创建 hooks 防止不良行为
+**Mục đích**: Tạo hooks để ngăn behavior không mong muốn
 
-**描述**: 创建自定义 hooks 来防止不希望发生的行为。
+**Mô tả**: Tạo custom hooks để ngăn chặn behavior không mong muốn.
 
-**使用场景**:
-- 防止意外删除操作
-- 阻止危险命令
-- 自动格式化
-- 质量检查
+**Khi nào sử dụng**:
+- Ngăn chặn accidental delete operation
+- Block dangerous command
+- Auto formatting
+- Quality check
 
-**Hook 类型**:
-- **PreToolUse**: 工具执行前
-- **PostToolUse**: 工具执行后
-- **Stop**: 会话结束时
+**Hook types**:
+- **PreToolUse**: Trước tool execution
+- **PostToolUse**: Sau tool execution
+- **Stop**: Khi phiên kết thúc
 
 ---
 
 ### /hookify-list
 
-**用途**: 列出所有配置的 hookify 规则
+**Mục đích**: Liệt kê tất cả hookify rule đã configure
 
-**描述**: 显示当前所有已配置的 hookify 规则。
+**Mô tả**: Hiển thị tất cả hookify rule đã configure hiện tại.
 
 ---
 
 ### /hookify-configure
 
-**用途**: 交互式启用/禁用 hookify 规则
+**Mục đích**: Interactive enable/disable hookify rule
 
-**描述**: 交互式配置 hookify 规则的启用和禁用状态。
+**Mô tả**: Interactive configure enable/disable state của hookify rule.
 
 ---
 
 ### /hookify-help
 
-**用途**: Hookify 系统帮助
+**Mục đích**: Hookify system help
 
-**描述**: 获取 Hookify 系统的详细帮助信息。
+**Mô tả**: Lấy detailed help information về Hookify system.
 
 ---
 
-## Hook 配置示例
+## Hook configuration example
 
 ```json
 {
@@ -65,9 +65,9 @@ Hookify 系统用于创建和管理 hooks，防止不良行为和自动化工作
 
 ---
 
-## 相关命令
+## Các lệnh liên quan
 
-- `/hookify` - 创建 hook
-- `/hookify-list` - 列出规则
-- `/hookify-configure` - 配置规则
-- `/hookify-help` - 获取帮助
+- `/hookify` - Tạo hook
+- `/hookify-list` - Liệt kê rule
+- `/hookify-configure` - Configure rule
+- `/hookify-help` - Lấy help

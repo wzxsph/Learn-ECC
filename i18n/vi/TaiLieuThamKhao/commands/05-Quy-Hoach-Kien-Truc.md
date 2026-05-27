@@ -1,171 +1,142 @@
-# 规划与架构命令
+# Lệnh Học Hỏi và Cải Tiến
 
-## 概述
+## Tổng quan
 
-规划与架构命令用于产品规划、功能设计和系统架构决策。这些命令确保在写代码之前有清晰的计划，减少返工和提高代码质量。
+Lệnh học hỏi và cải tiến dùng để trích xuất pattern từ phiên, theo dõi instinct và quản lý kiến thức tổ chức.
 
-## 命令列表
+## Danh sách lệnh
 
-### /plan
+### /learn
 
-**用途**: 通用实施规划 - 复述需求、评估风险、创建分步骤实施计划
+**Mục đích**: Trích xuất pattern có thể tái sử dụng từ phiên hiện tại và lưu thành candidate skills
 
-**描述**: 在触碰任何代码之前，等待用户确认后创建全面的实施计划。接受自由形式需求或 PRD markdown 文件。
+**Mô tả**: Phân tích phiên hiện tại, trích xuất bất kỳ pattern nào đáng lưu thành skills. Chạy `/learn` có thể dùng bất kỳ lúc nào trong phiên.
 
-**输入模式**:
+**Các loại nội dung được trích xuất**:
 
-| 输入 | 模式 | 行为 |
-|---|---|---|
-| `path/to/name.prd.md` | PRD artifact 模式 | 读取 PRD，选择下一个待交付里程碑，生成 `.claude/plans/{name}.plan.md` |
-| 其他 markdown 路径 | 引用模式 | 读取文件作为上下文，产生内联计划 |
-| 自由形式文本 | 对话模式 | 产生内联计划 |
-| 空输入 | 澄清模式 | 询问要规划什么 |
+| Loại | Mô tả |
+|---|---|
+| **Error solution pattern** | Lỗi gì? Nguyên nhân gốc là gì? Sửa gì đã hiệu quả? Lỗi tương tự có thể tái sử dụng? |
+| **Debug technique** | Các bước debug không hiển nhiên, combination tool hiệu quả, diagnostic pattern |
+| **Workaround** | Quirks thư viện, API limitation, fix specific version |
+| **Project-specific pattern** | Convention codebase discovered, architectural decision, integration pattern |
 
-**关键参数**:
-- `$ARGUMENTS`: `[feature description | path/to/*.prd.md]` - 功能描述或 PRD 文件路径
+**Output format**: Lưu vào `~/.claude/skills/learned/[pattern-name].md`
 
-**工作流**:
-1. **复述需求** - 澄清需要构建什么
-2. **识别风险** - 列出潜在问题和阻碍
-3. **创建步骤计划** - 分解为阶段性实施
-4. **等待确认** - 必须收到用户批准后才能继续
-
-**输出格式** (PRD artifact 模式):
 ```markdown
-# Plan: {Feature Name}
+# [Descriptive Pattern Name]
 
-**Source PRD**: {path}
-**Selected Milestone**: {milestone or phase name}
-**Complexity**: {Small | Medium | Large}
+**Extracted:** [Date]
+**Context:** [Brief description of when this applies]
 
-## Summary
-{2-3 sentences}
+## Problem
+[What problem this solves - be specific]
 
-## Patterns to Mirror
-| Category | Source | Pattern |
-|---|---|---|
-| Naming | `path:line` | {short description} |
-| Errors | `path:line` | {short description} |
-| Tests | `path:line` | {short description} |
+## Solution
+[The pattern/technique/workaround]
 
-## Files to Change
-| File | Action | Why |
-|---|---|---|
-| `path` | CREATE / UPDATE / DELETE | {reason} |
+## Example
+[Code example if applicable]
 
-## Tasks
-### Task 1: {name}
-- **Action**: {what to do}
-- **Mirror**: {pattern to follow}
-- **Validate**: {command that proves correctness}
-
-## Validation
-```bash
-{project-specific validation commands}
+## When to Use
+[Trigger conditions - what should activate this skill]
 ```
 
-## Risks
-| Risk | Likelihood | Mitigation |
-|---|---|---|
-```
+**Quy trình**:
+1. Xem xét các pattern có thể trích xuất từ phiên
+2. Xác định insight có giá trị nhất/có thể tái sử dụng nhất
+3. Soạn skill file
+4. Yêu cầu user xác nhận trước khi lưu
+5. Lưu vào `~/.claude/skills/learned/`
 
-**最佳实践**:
-- 使用前先研究代码库中的现有模式
-- 在 PRD artifact 模式中创建 `.claude/plans/` 目录（如不存在）
-- 如果 PRD 包含 `Delivery Milestones` 表格，只更新所选行状态
-
-**常见陷阱**:
-- 空输入时不询问澄清就尝试规划
-- 不等待用户确认就开始写代码
-- 跳过 Pattern Grounding 步骤
-
-**与其他命令集成**:
-- 规划后使用 `tdd-workflow` skill 进行测试驱动开发
-- 使用 `/build-fix` 修复构建错误
-- 使用 `/code-review` 审查完成实现
-- 使用 `/pr` 或 `/prp-pr` 打开 Pull Request
+**Best practice**:
+- Không trích xuất trivial fix (lỗi chính tả, simple syntax error)
+- Không trích xuất one-time problem (API ngắt đặc biệt, etc.)
+- Tập trung vào pattern tiết kiệm thời gian cho phiên tương lai
+- Giữ skills tập trung - một pattern một skill
 
 ---
 
-### /plan-prd
+### /learn-eval
 
-**用途**: 交互式 PRD 生成器
+**Mục đích**: Trích xuất pattern + tự đánh giá chất lượng
 
-**描述**: 生成以问题为中心的产品需求文档，包含问题定义、用户画像、成功指标和 MVP 范围。
-
-**使用场景**: 
-- 确定要构建的功能
-- 需要明确产品需求
-- 从零开始新功能规划
-
-**工作流**:
-1. FRAME - 了解用户和问题
-2. GROUND - 收集证据
-3. DECIDE - 确定范围和假设
-4. GENERATE - 生成 PRD 文件
+**Mô tả**: Trích xuất pattern đồng thời đánh giá chất lượng.
 
 ---
 
-### /prp-plan
+### /evolve
 
-**用途**: 全面的功能规划
+**Mục đích**: Phân tích instinct + đề xuất cấu trúc tiến hóa
 
-**描述**: 完整的项目规划，涵盖代码库分析、风险评估和分步骤实施计划。
-
-**使用场景**:
-- 复杂功能的详细规划
-- 需要代码库上下文分析
-- 多阶段实施项目
+**Mô tả**: Phân tích instinct đã học, cung cấp đề xuất cấu trúc tiến hóa.
 
 ---
 
-### /prp-prd
+### /promote
 
-**用途**: PRP 工作流 PRD 生成器
+**Mục đích**: Nâng cấp instinct project lên phạm vi toàn cục
 
-**描述**: 使用 PRP（Plan-Record-Produce）工作流生成产品需求文档。
-
----
-
-### /prp-implement
-
-**用途**: 执行 PRP 计划+验证循环
-
-**描述**: 按照 PRP 工作流执行计划，包含持续的验证和检查。
+**Mô tả**: Nâng cấp instinct đặc thù của project thành kiến thức có thể dùng toàn cục.
 
 ---
 
-### /prp-pr
+### /instinct-status
 
-**用途**: 从 PRP 工作流创建 PR
+**Mục đích**: Hiển thị tất cả instinct đã học
 
-**描述**: 从 PRP 工作流的结果创建 GitHub Pull Request。
-
----
-
-### /prp-commit
-
-**用途**: PRP 验证提交
-
-**描述**: 在 PRP 工作流中执行验证并提交代码。
+**Mô tả**: Hiển thị trạng thái và confidence của tất cả instinct hiện tại.
 
 ---
 
-### /multi-plan
+### /instinct-export
 
-**用途**: 多模型协作规划
+**Mục đích**: Export instinct ra file
 
-**描述**: 结合 Codex 和 Gemini 的双模型分析，生成综合实施计划。
-
-**使用场景**:
-- 需要多角度分析
-- 复杂跨领域项目
-- 需要平衡前端和后端考量
+**Mô tả**: Export instinct thành file format có thể chia sẻ.
 
 ---
 
-## 相关命令
+### /instinct-import
 
-- `/plan` - 通用实施规划
-- `/code-review` - 代码审查
-- `/build-fix` - 构建修复
+**Mục đích**: Import instinct từ file/URL
+
+**Mô tả**: Import instinct vào system từ file hoặc URL.
+
+---
+
+### /skill-create
+
+**Mục đích**: Phân tích git history + tạo skill file
+
+**Mô tả**: Phân tích project git history, trích xuất pattern có thể tái sử dụng để tạo skill file.
+
+**Quy trình**:
+1. Phân tích git commit history
+2. Xác định pattern lặp lại
+3. Tạo skill file
+4. Xác minh và lưu
+
+---
+
+### /skill-health
+
+**Mục đích**: Skill portfolio health dashboard
+
+**Mô tả**: Hiển thị skill portfolio health status và usage statistics.
+
+---
+
+### /rules-distill
+
+**Mục đích**: Scan skills + trích xuất cross-domain principle
+
+**Mô tả**: Scan tất cả skills, trích xuất cross-domain general principle.
+
+---
+
+## Các lệnh liên quan
+
+- `/learn` - Trích xuất pattern
+- `/skill-create` - Tạo skill từ git history
+- `/instinct-status` - Xem instinct status

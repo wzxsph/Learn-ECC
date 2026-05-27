@@ -1,488 +1,488 @@
-# 内置Hooks
+# Eingebaute Hooks
 
-## 概述
+## Ueberblick
 
-ECC插件提供了丰富的内置Hook实现，位于`ECC/scripts/hooks/`目录中。
+ECC Plugins stellen umfangreiche eingebaute Hook-Implementierungen bereit, located in `ECC/scripts/hooks/` directory.
 
-## PreToolUse 内置钩子
+## PreToolUse Eingebaute Hooks
 
 ### pre:bash:dispatcher
 
-**类型**: PreToolUse
+**Typ**: PreToolUse
 **matcher**: Bash
-**描述**: Bash预检分发器，整合了质量检查、tmux提醒、git推送提醒和GateGuard检查
+**Beschreibung**: Bash pre-check Dispatcher, kombiniert Qualitaetspruefungen, tmux-Erinnerungen, git-push-Erinnerungen und GateGuard-Checks
 
-**功能**:
-- 开发服务器阻止器 - 阻止在tmux外运行`npm run dev`等命令
-- Tmux提醒 - 建议对长时间运行的命令（npm test、cargo build、docker）使用tmux
-- Git推送提醒 - 提醒在`git push`前审查更改
-- Pre-commit质量检查 - 运行质量检查：lint暂存文件、验证提交信息格式、检测console.log/debugger/密钥
+**Funktionen**:
+- Dev-Server-Blocker - Verhindert das Ausfuehren von `npm run dev` ausserhalb von tmux
+- Tmux-Erinnerung - Empfehlung fuer tmux bei laenger laufenden Befehlen (npm test, cargo build, docker)
+- Git-Push-Erinnerung - Erinnert daran Aenderungen vor `git push` zu reviewen
+- Pre-commit-Qualitaetspruefung - Qualitaetspruefungen ausfuehren: lint gestagerte Dateien, Commit-Message-Format verifizieren, console.log/debugger/Schluessel erkennen
 
-**退出码**:
-- 0: 警告但继续
-- 2: 阻止执行
+**Exit-Codes**:
+- 0: Warnung aber fortsetzen
+- 2: Ausfuehrung blockieren
 
 ---
 
 ### pre:write:doc-file-warning
 
-**类型**: PreToolUse
+**Typ**: PreToolUse
 **matcher**: Write
-**描述**: 警告创建非标准文档文件
+**Beschreibung**: Warnung beim Erstellen nicht-standardmaessiger Dokumentationsdateien
 
-**功能**:
-- 允许标准文件: README, CLAUDE, CONTRIBUTING, CHANGELOG, LICENSE, SKILL
-- 允许目录: docs/, skills/
-- 警告其他.md/.txt文件
-- 跨平台路径处理
+**Funktionen**:
+- Standarddateien erlauben: README, CLAUDE, CONTRIBUTING, CHANGELOG, LICENSE, SKILL
+- Verzeichnisse erlauben: docs/, skills/
+- Bei anderen .md/.txt-Dateien warnen
+- Plattformuebergreifende Pfadbehandlung
 
-**退出码**: 0（仅警告）
+**Exit-Code**: 0 (nur Warnung)
 
 ---
 
 ### pre:edit-write:suggest-compact
 
-**类型**: PreToolUse
+**Typ**: PreToolUse
 **matcher**: Edit|Write
-**描述**: 在逻辑间隔（约每50次工具调用）建议手动`/compact`
+**Beschreibung**: Empfehlung fuer manuelles `/compact` in logischen Intervallen (ca. alle 50 Tool-Aufrufe)
 
-**功能**:
-- 追踪工具调用次数
-- 在适当间隔提醒上下文压缩
-- 非阻塞，仅提供建议
+**Funktionen**:
+- Tool-Aufruf-Anzahl verfolgen
+- Bei angemessenen Intervallen an Context-Komprimierung erinnern
+- Non-Blocking, nur Empfehlungen
 
-**退出码**: 0（建议）
+**Exit-Code**: 0 (Empfehlung)
 
 ---
 
 ### pre:observe:continuous-learning
 
-**类型**: PreToolUse
+**Typ**: PreToolUse
 **matcher**: *
-**描述**: 记录工具意图以支持持续学习信号
+**Beschreibung**: Werkzeugintention aufzeichnen um kontinuierliche Lernsignale zu unterstuetzen
 
-**功能**:
-- 捕获工具使用观察
-- 用于模式提取和分析
-- 异步执行，不阻塞
+**Funktionen**:
+- Werkzeugnutzungsbeobachtungen erfassen
+- Zur Musterextraktion und -analyse verwendet
+- Asynchron ausgefuehrt, nicht blockierend
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### pre:governance-capture
 
-**类型**: PreToolUse
+**Typ**: PreToolUse
 **matcher**: Bash|Write|Edit|MultiEdit
-**描述**: 捕获治理事件（密钥、策略违规、审批请求）
+**Beschreibung**: Governance-Events erfassen (Schluessel, Richtlinienverstoesze, Genehmigungsanfragen)
 
-**功能**:
-- 检测秘密/密钥泄露
-- 捕获策略违规
-- 记录审批请求
+**Funktionen**:
+- Secret/Schluessel-Leaks erkennen
+- Richtlinienverstoesze erfassen
+- Genehmigungsanfragen aufzeichnen
 
-**启用条件**: `ECC_GOVERNANCE_CAPTURE=1`
+**Aktivierung**: `ECC_GOVERNANCE_CAPTURE=1`
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### pre:config-protection
 
-**类型**: PreToolUse
+**Typ**: PreToolUse
 **matcher**: Write|Edit|MultiEdit
-**描述**: 阻止修改linter/formatter配置文件
+**Beschreibung**: Aenderungen an Linter/Formatter-Konfigurationsdateien blockieren
 
-**功能**:
-- 阻止.eslintrc、.prettierrc等修改
-- 引导修复代码而非削弱配置
+**Funktionen**:
+- .eslintrc, .prettierrc usw. Aenderungen blockieren
+- Auf Code-Reparatur statt auf Abschwaechung der Konfiguration hinweisen
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### pre:mcp-health-check
 
-**类型**: PreToolUse
+**Typ**: PreToolUse
 **matcher**: *
-**描述**: MCP工具执行前检查MCP服务器健康状态
+**Beschreibung**: MCP-Server-Gesundheitsstatus vor MCP-Tool-Ausfuehrung pruefen
 
-**功能**:
-- 检查MCP服务器状态
-- 阻止对不健康MCP服务器的调用
+**Funktionen**:
+- MCP-Server-Status pruefen
+- Aufrufe an ungesunde MCP-Server blockieren
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### pre:edit-write:gateguard-fact-force
 
-**类型**: PreToolUse
+**Typ**: PreToolUse
 **matcher**: Edit|Write|MultiEdit
-**描述**: 事实强制GateGuard：阻止每个文件的首次编辑/写入，要求在允许前进行调查
+**Beschreibung**: Fact-Force GateGuard: Erste Bearbeitung/Schreiben jeder Datei blockieren, Untersuchung vor Erlaubnis erforderlich
 
-**功能**:
-- 阻止首次编辑
-- 要求确认：导入、数据模式、用户指令
-- 确保有充分的理由再修改
+**Funktionen**:
+- Erste Bearbeitung blockieren
+- Bestaetigung erforderlich machen: Import, Datenschema, Benutzeranweisung
+- Sicherstellen dass Begruendung vorliegt bevor modifiziert wird
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
-## PostToolUse 内置钩子
+## PostToolUse Eingebaute Hooks
 
 ### post:bash:dispatcher
 
-**类型**: PostToolUse
+**Typ**: PostToolUse
 **matcher**: Bash
-**描述**: Bash后检分发器，用于日志记录、PR和构建通知
+**Beschreibung**: Bash post-check Dispatcher fuer Logging, PR- und Build-Benachrichtigungen
 
-**功能**:
-- PR日志 - `gh pr create`后记录PR URL和审查命令
-- 构建分析 - 构建命令后的后台分析（异步，非阻塞）
+**Funktionen**:
+- PR-Logging - PR-URL und Review-Befehl nach `gh pr create` protokollieren
+- Build-Analyse - Hintergrundanalyse nach Build-Befehlen (asynchron, non-blocking)
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### post:quality-gate
 
-**类型**: PostToolUse
+**Typ**: PostToolUse
 **matcher**: Edit|Write|MultiEdit
-**描述**: 文件编辑后运行快速质量检查
+**Beschreibung**: Schnelle Qualitaetspruefung nach Dateibearbeitung ausfuehren
 
-**功能**:
-- 代码质量检查
-- 异步执行
-- 不阻塞编辑操作
+**Funktionen**:
+- Codequalitaetspruefungen
+- Asynchron ausgefuehrt
+- Bearbeitung nicht blockieren
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### post:edit:design-quality-check
 
-**类型**: PostToolUse
+**Typ**: PostToolUse
 **matcher**: Edit|Write|MultiEdit
-**描述**: 警告前端编辑偏离为通用模板外观的UI
+**Beschreibung**: Warnung wenn Frontend-Bearbeitungen zu generischem Template-Look-UI abweichen
 
-**功能**:
-- 检测UI设计质量
-- 防止过于通用的模板外观
+**Funktionen**:
+- UI-Designqualitaet erkennen
+- Zu generisches Template-Erscheinungsbild verhindern
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### post:edit:accumulator
 
-**类型**: PostToolUse
+**Typ**: PostToolUse
 **matcher**: Edit|Write|MultiEdit
-**描述**: 记录编辑的JS/TS文件路径，以便在Stop时批量格式化和类型检查
+**Beschreibung**: Bearbeitete JS/TS-Dateipfade aufzeichnen fuer Stop-seitige Batch-Formatierung und Typpruefung
 
-**功能**:
-- 累积编辑的文件列表
-- 供stop:format-typecheck使用
+**Funktionen**:
+- Liste bearbeiteter Dateien akkumulieren
+- Fuer stop:format-typecheck verwendet
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### post:edit:console-warn
 
-**类型**: PostToolUse
+**Typ**: PostToolUse
 **matcher**: Edit
-**描述**: 编辑后警告console.log语句
+**Beschreibung**: console.log-Anweisungen nach Bearbeitung warnen
 
-**功能**:
-- 检测代码中的console.log
-- 警告开发者清理调试代码
+**Funktionen**:
+- console.log im Code erkennen
+- Entwickler warnen Debug-Code zu bereinigen
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### post:governance-capture
 
-**类型**: PostToolUse
+**Typ**: PostToolUse
 **matcher**: Bash|Write|Edit|MultiEdit
-**描述**: 从工具输出捕获治理事件
+**Beschreibung**: Governance-Events aus Werkzeugausgaben erfassen
 
-**功能**:
-- 分析工具输出
-- 检测潜在问题
+**Funktionen**:
+- Werkzeugausgaben analysieren
+- Potenzielle Probleme erkennen
 
-**启用条件**: `ECC_GOVERNANCE_CAPTURE=1`
+**Aktivierung**: `ECC_GOVERNANCE_CAPTURE=1`
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### post:session-activity-tracker
 
-**类型**: PostToolUse
+**Typ**: PostToolUse
 **matcher**: *
-**描述**: 记录每个会话的工具调用和文件活动
+**Beschreibung**: Tool-Aufrufe und Dateiaktivitaeten pro Session aufzeichnen
 
-**功能**:
-- 追踪工具使用统计
-- 文件活动记录
-- 用于ECC2指标
+**Funktionen**:
+- Werkzeugnutzungsstatistik verfolgen
+- Dateiaktivitaeten aufzeichnen
+- Fuer ECC2-Metriken verwendet
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### post:observe:continuous-learning
 
-**类型**: PostToolUse
+**Typ**: PostToolUse
 **matcher**: *
-**描述**: 记录工具结果以支持持续学习信号
+**Beschreibung**: Werkzeugergebnisse aufzeichnen um kontinuierliche Lernsignale zu unterstuetzen
 
-**功能**:
-- 捕获工具执行结果
-- 支持模式分析
+**Funktionen**:
+- Werkzeugausfuehrungsergebnisse erfassen
+- Musteranalyse unterstuetzen
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### post:ecc-metrics-bridge
 
-**类型**: PostToolUse
+**Typ**: PostToolUse
 **matcher**: *
-**描述**: 维护运行中的会话指标聚合
+**Beschreibung**: Laufende Session-Metrik-Aggregation pflegen
 
-**功能**:
-- 追踪token和成本指标
-- 供状态栏和上下文监视器使用
+**Funktionen**:
+- Token- und Kostenmetriken verfolgen
+- Fuer Statusleiste und Kontextmonitor verwendet
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### post:ecc-context-monitor
 
-**类型**: PostToolUse
+**Typ**: PostToolUse
 **matcher**: *
-**描述**: 在上下文耗尽、高成本、范围 creep 或工具循环时注入代理警告
+**Beschreibung**: Proxy-Warnungen injizieren wenn Kontext erschöpft, hohe Kosten, Scope Creep oder Tool-Schleifen auftreten
 
-**功能**:
-- 上下文使用监控
-- 成本警告
-- 范围 creep 检测
-- 工具循环检测
+**Funktionen**:
+- Kontextnutzung monitoren
+- Kostenwarnungen
+- Scope Creep-Erkennung
+- Tool-Schleifen-Erkennung
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### post:mcp-health-check
 
-**类型**: PostToolUseFailure
+**Typ**: PostToolUseFailure
 **matcher**: *
-**描述**: 追踪失败的MCP工具调用，标记不健康的服务器并尝试重连
+**Beschreibung**: Fehlgeschlagene MCP-Tool-Aufrufe verfolgen, ungesunde Server markieren und Wiederverbindung versuchen
 
-**功能**:
-- 失败追踪
-- 健康状态标记
-- 自动重连尝试
+**Funktionen**:
+- Fehlerverfolgung
+- Gesundheitsstatus-Markierung
+- Automatische Wiederverbindungsversuche
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
-## Stop 内置钩子
+## Stop Eingebaute Hooks
 
 ### stop:format-typecheck
 
-**类型**: Stop
+**Typ**: Stop
 **matcher**: *
-**描述**: 批量格式化（Biome/Prettier）和类型检查（tsc）本次响应中编辑的所有JS/TS文件
+**Beschreibung**: Batch-Formatierung (Biome/Prettier) und Typpruefung (tsc) fuer alle JS/TS-Dateien die in dieser Antwort bearbeitet wurden
 
-**功能**:
-- Prettier/Biome格式化
-- TypeScript类型检查
-- 在Stop时运行一次，而非每次编辑后
+**Funktionen**:
+- Prettier/Biome-Formatierung
+- TypeScript-Typpruefung
+- Bei Stop einmal ausfuehren, nicht nach jeder Bearbeitung
 
-**退出码**: 0
+**Exit-Code**: 0
 
-**超时**: 300秒
+**Timeout**: 300 Sekunden
 
 ---
 
 ### stop:check-console-log
 
-**类型**: Stop
+**Typ**: Stop
 **matcher**: *
-**描述**: 每次响应后检查修改文件中的console.log
+**Beschreibung**: Nach jeder Antwort console.log in modifizierten Dateien pruefen
 
-**功能**:
-- 扫描修改的文件
-- 报告console.log使用情况
+**Funktionen**:
+- Modifizierte Dateien scannen
+- console.log-Verwendung melden
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### stop:session-end
 
-**类型**: Stop
+**Typ**: Stop
 **matcher**: *
-**描述**: 每次响应后持久化会话状态（Stop携带transcript_path）
+**Beschreibung**: Session-Status nach jeder Antwort persistent machen (Stop traegt transcript_path)
 
-**功能**:
-- 会话状态保存
-- 上下文持久化
+**Funktionen**:
+- Session-Status speichern
+- Kontextpersistenz
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### stop:evaluate-session
 
-**类型**: Stop
+**Typ**: Stop
 **matcher**: *
-**描述**: 评估会话以提取可学习的模式
+**Beschreibung**: Session evaluieren um lernbare Muster zu extrahieren
 
-**功能**:
-- 模式识别
-- 持续学习支持
-- 异步执行
+**Funktionen**:
+- Mustererkennung
+- Kontinuierliche Lernunterstuetzung
+- Asynchron ausgefuehrt
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### stop:cost-tracker
 
-**类型**: Stop
+**Typ**: Stop
 **matcher**: *
-**描述**: 追踪每个会话的token和成本指标
+**Beschreibung**: Token- und Kostenmetriken pro Session verfolgen
 
-**功能**:
-- Token使用统计
-- 成本估算
-- 轻量级运行成本遥测标记
+**Funktionen**:
+- Token-Nutzungsstatistik
+- Kostenabschaetzung
+- Leichtgewichtige Runtime-Kostentelemetrie-Markierung
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
 ### stop:desktop-notify
 
-**类型**: Stop
+**Typ**: Stop
 **matcher**: *
-**描述**: 在Claude响应时发送macOS/WSL桌面通知，包含任务摘要
+**Beschreibung**: macOS/WSL-Desktop-Benachrichtigungen mit Aufgabenzusammenfassung beim Claude-Response senden
 
-**功能**:
-- 桌面通知
-- 任务摘要显示
+**Funktionen**:
+- Desktop-Benachrichtigungen
+- Aufgabenzusammenfassung anzeigen
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
-## SessionStart 内置钩子
+## SessionStart Eingebaute Hooks
 
 ### session:start
 
-**类型**: SessionStart
+**Typ**: SessionStart
 **matcher**: *
-**描述**: 加载先前上下文并检测新会话的包管理器
+**Beschreibung**: Vorherigen Kontext laden und Paketmanager neuer Sessions erkennen
 
-**功能**:
-- 加载有界限的先前上下文
-- 项目状态检测
-- 包管理器检测（npm/pnpm/yarn/bun）
+**Funktionen**:
+- Begrenzten vorherigen Kontext laden
+- Projektstatus erkennen
+- Paketmanager erkennen (npm/pnpm/yarn/bun)
 
-**环境变量**:
-- `ECC_SESSION_START_MAX_CHARS`: 控制额外上下文大小（默认8000字符）
-- `ECC_SESSION_START_CONTEXT=off`: 完全禁用额外上下文
+**Umgebungsvariablen**:
+- `ECC_SESSION_START_MAX_CHARS`: Steuerung der zusaetzlichen Kontextgroesse (standard 8000 Zeichen)
+- `ECC_SESSION_START_CONTEXT=off`: Zusaetzlichen Kontext vollstaendig deaktivieren
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
-## PreCompact 内置钩子
+## PreCompact Eingebaute Hooks
 
 ### pre:compact
 
-**类型**: PreCompact
+**Typ**: PreCompact
 **matcher**: *
-**描述**: 在上下文压缩前保存状态
+**Beschreibung**: Status vor Kontextkomprimierung speichern
 
-**功能**:
-- 会话状态持久化
-- 为压缩准备上下文
+**Funktionen**:
+- Session-Status-Persistierung
+- Kontext fuer Komprimierung vorbereiten
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
-## SessionEnd 内置钩子
+## SessionEnd Eingebaute Hooks
 
 ### session:end:marker
 
-**类型**: SessionEnd
+**Typ**: SessionEnd
 **matcher**: *
-**描述**: 会话结束生命周期标记
+**Beschreibung**: Session-End-Lebenszyklusmarker
 
-**功能**:
-- 生命周期事件标记
-- 清理日志
+**Funktionen**:
+- Lebenszyklus-Ereignismarkierung
+- Cleanup-Logging
 
-**退出码**: 0
+**Exit-Code**: 0
 
 ---
 
-## 内置钩子速查表
+## Eingebaute Hooks Spickzettel
 
-### PreToolUse 钩子
+### PreToolUse Hooks
 
-| ID | Matcher | 功能 | 阻塞 |
+| ID | Matcher | Funktion | Blockierend |
 |----|---------|------|------|
-| pre:bash:dispatcher | Bash | 质量/tmux/推送/GateGuard检查 | 可阻塞 |
-| pre:write:doc-file-warning | Write | 文档文件警告 | 否 |
-| pre:edit-write:suggest-compact | Edit\|Write | 建议压缩 | 否 |
-| pre:observe:continuous-learning | * | 持续学习观察 | 否 |
-| pre:governance-capture | Bash\|Write\|Edit\|MultiEdit | 治理事件捕获 | 否 |
-| pre:config-protection | Write\|Edit\|MultiEdit | 配置保护 | 否 |
-| pre:mcp-health-check | * | MCP健康检查 | 可阻塞 |
-| pre:edit-write:gateguard-fact-force | Edit\|Write\|MultiEdit | 首次编辑GateGuard | 可阻塞 |
+| pre:bash:dispatcher | Bash | Qualitaet/tmux/push/GateGuard-Pruefungen | Kann blockieren |
+| pre:write:doc-file-warning | Write | Dokumentationsdatei-Warnung | Nein |
+| pre:edit-write:suggest-compact | Edit|Write | Komprimierung empfehlen | Nein |
+| pre:observe:continuous-learning | * | Kontinuierliches Lernen beobachten | Nein |
+| pre:governance-capture | Bash|Write|Edit|MultiEdit | Governance-Event-Erfassung | Nein |
+| pre:config-protection | Write|Edit|MultiEdit | Konfigurationsschutz | Nein |
+| pre:mcp-health-check | * | MCP-Gesundheitspruefung | Kann blockieren |
+| pre:edit-write:gateguard-fact-force | Edit|Write|MultiEdit | Erste Bearbeitung GateGuard | Kann blockieren |
 
-### PostToolUse 钩子
+### PostToolUse Hooks
 
-| ID | Matcher | 功能 | 异步 |
+| ID | Matcher | Funktion | Async |
 |----|---------|------|------|
-| post:bash:dispatcher | Bash | PR日志/构建通知 | 是 |
-| post:quality-gate | Edit\|Write\|MultiEdit | 质量门检查 | 是 |
-| post:edit:design-quality-check | Edit\|Write\|MultiEdit | 设计质量检查 | 否 |
-| post:edit:accumulator | Edit\|Write\|MultiEdit | 编辑累积器 | 否 |
-| post:edit:console-warn | Edit | console.log警告 | 否 |
-| post:governance-capture | Bash\|Write\|Edit\|MultiEdit | 治理事件捕获 | 否 |
-| post:session-activity-tracker | * | 会话活动追踪 | 否 |
-| post:observe:continuous-learning | * | 持续学习观察 | 是 |
-| post:ecc-metrics-bridge | * | 指标桥接 | 否 |
-| post:ecc-context-monitor | * | 上下文监控 | 否 |
-| post:mcp-health-check | * (PostToolUseFailure) | MCP健康检查 | 否 |
+| post:bash:dispatcher | Bash | PR-Logging/Build-Benachrichtigungen | Ja |
+| post:quality-gate | Edit|Write|MultiEdit | Qualitaets-Gate-Pruefung | Ja |
+| post:edit:design-quality-check | Edit|Write|MultiEdit | Design-Qualitaetspruefung | Nein |
+| post:edit:accumulator | Edit|Write|MultiEdit | Bearbeitungs-Akkumulator | Nein |
+| post:edit:console-warn | Edit | console.log-Warnung | Nein |
+| post:governance-capture | Bash|Write|Edit|MultiEdit | Governance-Event-Erfassung | Nein |
+| post:session-activity-tracker | * | Session-Aktivitaetsverfolgung | Nein |
+| post:observe:continuous-learning | * | Kontinuierliches Lernen beobachten | Ja |
+| post:ecc-metrics-bridge | * | Metrik-Bridge | Nein |
+| post:ecc-context-monitor | * | Kontext-Monitor | Nein |
+| post:mcp-health-check | * (PostToolUseFailure) | MCP-Gesundheitspruefung | Nein |
 
-### Stop 钩子
+### Stop Hooks
 
-| ID | Matcher | 功能 | 超时 |
+| ID | Matcher | Funktion | Timeout |
 |----|---------|------|------|
-| stop:format-typecheck | * | 批量格式化和类型检查 | 300s |
-| stop:check-console-log | * | console.log检查 | 30s |
-| stop:session-end | * | 会话状态持久化 | 10s |
-| stop:evaluate-session | * | 会话评估 | 10s |
-| stop:cost-tracker | * | 成本追踪 | 10s |
-| stop:desktop-notify | * | 桌面通知 | 10s |
+| stop:format-typecheck | * | Batch-Formatierung und Typpruefung | 300s |
+| stop:check-console-log | * | console.log-Pruefung | 30s |
+| stop:session-end | * | Session-Status-Persistierung | 10s |
+| stop:evaluate-session | * | Session-Auswertung | 10s |
+| stop:cost-tracker | * | Kostenverfolgung | 10s |
+| stop:desktop-notify | * | Desktop-Benachrichtigung | 10s |
 
-### 生命周期钩子
+### Lebenszyklus-Hooks
 
-| ID | Event | 功能 |
+| ID | Event | Funktion |
 |----|-------|------|
-| session:start | SessionStart | 加载上下文和检测包管理器 |
-| pre:compact | PreCompact | 压缩前状态保存 |
-| session:end:marker | SessionEnd | 会话结束标记 |
+| session:start | SessionStart | Kontext laden und Paketmanager erkennen |
+| pre:compact | PreCompact | Status vor Komprimierung speichern |
+| session:end:marker | SessionEnd | Session-Ende-Marker |
